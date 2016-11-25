@@ -23,7 +23,7 @@ ms.openlocfilehash: a3bd8ac5466ae67df0a1865509c8fb897d1374ec
 ---
 # <a name="sql-database-tutorial-create-sql-database-user-accounts-to-access-and-manage-a-database"></a>SQL Database チュートリアル: データベースにアクセスして管理するための SQL Database ユーザー アカウントを作成する
 > [!div class="op_single_selector"]
-> * [Notification Hubs の使用](sql-database-get-started-security.md)
+> * [チュートリアルの開始](sql-database-get-started-security.md)
 > * [アクセス権の付与](sql-database-manage-logins.md)
 > 
 > 
