@@ -22,7 +22,7 @@ ms.openlocfilehash: 3621acd9b341f194ab067f4c0436d1e9bd0c98f2
 ---
 # <a name="collecting-logs-and-metrics-for-azure-services-in-log-analytics"></a>Log Analytics での Azure サービスのログとメトリックの収集
 
-Azure サービスのログとメトリックを収集する方法は&4; 種類あります。
+Azure サービスのログとメトリックを収集する方法は 4 種類あります。
 
 1. Azure 診断から Log Analytics に直接 (次の表の "*診断*")
 2. Azure 診断から Azure storage 経由で Log Analytics に (次の表の "*ストレージ*")
