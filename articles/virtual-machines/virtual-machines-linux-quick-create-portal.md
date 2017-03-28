@@ -22,9 +22,9 @@ ms.lasthandoff: 03/14/2017
 
 ---
 
-# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
+# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure ポータルで Linux 仮想マシンを作成する
 
-Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで VM と関連するすべての Azure リソースを作成および構成できます。
+Azure 仮想マシンは、Azure ポータルで作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで VM と関連するすべての Azure リソースを作成および構成できます。
 
 開始する前に、秘密および公開 SSH キーを用意しておく必要があります。 Azure 用 SSH キーの作成の詳細については、[Azure 用 SSH キーの作成](./virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
@@ -54,13 +54,13 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 デプロイが完了したら、仮想マシンとの SSH 接続を作成します。
 
-1. 仮想マシンをクリックします。 VM は、Azure Portal のホーム画面に表示されます。または、左側のメニューで **[Virtual Machines]** を選択すると表示されます。
+1. 仮想マシンをクリックします。 VM は、Azure ポータルのホーム画面に表示されます。または、左側のメニューで **[Virtual Machines]** を選択すると表示されます。
 
 2. **[接続]** をクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
 
     ![ポータル 9](./media/virtual-machine-quick-start/portal-quick-start-9.png) 
 
-3. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure Portal からコピーしたものに置き換えます。
+3. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure ポータルからコピーしたものに置き換えます。
 
 ```bash 
 ssh <replace with IP address>
