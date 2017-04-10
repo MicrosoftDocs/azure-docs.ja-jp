@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure における VM バックアップ インフラストラクチャの計画を立てる | Microsoft Docs"
 description: "Azure で仮想マシンをバックアップする計画を立てる際の重要な考慮事項"
 services: backup
