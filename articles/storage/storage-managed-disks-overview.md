@@ -145,7 +145,7 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 * [PowerShell を使用して Windows VM に 管理データ ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 
-* [Linux VM に Managed Disks を追加する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Linux VM に Managed Disks を追加する](../virtual-machines/virtual-machines-linux-add-disk#attach-a-managed-disk)
 
 ### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較 
 
