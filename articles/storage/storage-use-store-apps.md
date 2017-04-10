@@ -1,23 +1,27 @@
 ---
-title: Windows ストア アプリでの Azure ストレージの使用 | Microsoft Docs
-description: Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。
+title: "Windows ストア アプリでの Azure ストレージの使用 | Microsoft Docs"
+description: "Azure BLOB、Queue、Table、または File ストレージを使用する Windows ストア アプリを作成する方法について説明します。"
 services: storage
-documentationcenter: ''
-author: tamram
-manager: carmonm
+documentationcenter: 
+author: mmacy
+manager: timlt
 editor: tysonn
-
+ms.assetid: 63c4b29d-b2f2-4d7c-b164-a0d38f4d14f6
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: 5b86154414c7745430af11d59355a937fc525d54
+ms.openlocfilehash: 3284f94b28d814b3442d8088f69a301ef4dabc79
+
 
 ---
 # <a name="how-to-use-azure-storage-in-windows-store-apps"></a>Windows ストア アプリでの Azure Storage の使用方法
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure ストレージを利用する Windows ストア アプリケーションの開発に着手する方法を紹介します。
 
 ## <a name="download-required-tools"></a>必要なツールのダウンロード
@@ -38,16 +42,20 @@ Visual Studio 2012 以降で、新しい Windows ストア アプリケーショ
 ### <a name="using-the-library-with-the-blob-and-queue-services"></a>BLOB およびキュー サービスでのライブラリの使用
 この時点で、アプリケーションは、Azure BLOB およびキュー サービスを呼び出すことができる状態になっています。 Azure ストレージの型を直接参照できるようにするために、次の **using** ステートメントを追加します。
 
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
+```csharp
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+```
 
 次に、ページにボタンを追加します。 次のコードをボタンの **Click** イベントに追加し、イベント ハンドラー メソッドを [async キーワード](http://msdn.microsoft.com/library/vstudio/hh156513.aspx)で変更します。
 
-    var credentials = new StorageCredentials(accountName, accountKey);
-    var account = new CloudStorageAccount(credentials, true);
-    var blobClient = account.CreateCloudBlobClient();
-    var container = blobClient.GetContainerReference("container1");
-    await container.CreateIfNotExistsAsync();
+```csharp
+var credentials = new StorageCredentials(accountName, accountKey);
+var account = new CloudStorageAccount(credentials, true);
+var blobClient = account.CreateCloudBlobClient();
+var container = blobClient.GetContainerReference("container1");
+await container.CreateIfNotExistsAsync();
+```
 
 このコードでは、2 種類の文字列変数、*accountName* と *accountKey* があると想定しています。 これらは、ストレージ アカウントの名前と、そのアカウントに関連付けられたアカウント キーを表します。
 
@@ -66,11 +74,13 @@ Azure Table サービスとの通信に使用される型は、Windows ストア
 
 WCF Data Services NuGet パッケージを参照したら、ボタンの **Click** イベントのコードを変更します。
 
-    var credentials = new StorageCredentials(accountName, accountKey);
-    var account = new CloudStorageAccount(credentials, true);
-    var tableClient = account.CreateCloudTableClient();
-    var table = tableClient.GetTableReference("table1");
-    await table.CreateIfNotExistsAsync();
+```csharp
+var credentials = new StorageCredentials(accountName, accountKey);
+var account = new CloudStorageAccount(credentials, true);
+var tableClient = account.CreateCloudTableClient();
+var table = tableClient.GetTableReference("table1");
+await table.CreateIfNotExistsAsync();
+```
 
 このコードで、" *table1* " というテーブルがアカウントに存在するかどうかがチェックされ、存在しない場合は作成されます。
 
@@ -82,6 +92,6 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

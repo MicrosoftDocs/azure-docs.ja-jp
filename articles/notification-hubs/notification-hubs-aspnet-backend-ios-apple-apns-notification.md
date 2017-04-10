@@ -1,12 +1,12 @@
 ---
-title: Azure Notification Hubs Notify Users for iOS with .NET backend
-description: Learn how to send push notifications to users in Azure. Code samples written in Objective-C and the .NET API for the backend.
+title: "Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知"
+description: "Azure のユーザーにプッシュ通知を送信する方法について説明します。 コード サンプルは Objective-C で記述されています。また、バックエンドには .NET API を使用しています。"
 documentationcenter: ios
 author: ysxu
 manager: erikre
-editor: ''
+editor: 
 services: notification-hubs
-
+ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -14,44 +14,48 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
+
 
 ---
-# <a name="azure-notification-hubs-notify-users-for-ios-with-.net-backend"></a>Azure Notification Hubs Notify Users for iOS with .NET backend
+# <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Overview
-Push notification support in Azure enables you to access an easy-to-use, multiplatform, and scaled-out push infrastructure, which greatly simplifies the implementation of push notifications for both consumer and enterprise applications for mobile platforms. This tutorial shows you how to use Azure Notification Hubs to send push notifications to a specific app user on a specific device. An ASP.NET WebAPI backend is used to authenticate clients and to generate notifications, as shown in the guidance topic [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。 このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 [アプリ バックエンドからの登録管理](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)に関するガイダンス トピックに示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
 
 > [!NOTE]
-> This tutorial assumes that you have created and configured your notification hub as described in [Getting Started with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). This tutorial is also the prerequisite to the [Secure Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) tutorial.
-> If you want to use Mobile Apps as your backend service, see the [Mobile Apps Get Started with Push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+> このチュートリアルでは、「 [Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。 また、「 [安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 」チュートリアルの前提条件でもあります。
+> バックエンド サービスとして Mobile Apps を使用する場合は、「 [iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="modify-your-ios-app"></a>Modify your iOS app
-1. Open the Single Page view app you created in the [Getting Started with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) tutorial.
+## <a name="modify-your-ios-app"></a>iOS アプリを変更する
+1. 「 [Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」で作成した単一枠ビュー アプリケーションを開きます。
    
    > [!NOTE]
-   > In this section we assume that your project is configured with an empty organization name. If not, you will need to prepend your organization name to all class names.
+   > このセクションでは、プロジェクトの組織名は空で構成されていると想定しています。 そうでない場合は、すべてのクラス名の前にその組織名を付けてください。
    > 
    > 
-2. In your Main.storyboard add the components shown in the screenshot below from the object library.
+2. Main.storyboard で、オブジェクト ライブラリから、以下のスクリーンショットに表示されているコンポーネントを追加します。
    
     ![][1]
    
-   * **Username**: A UITextField with placeholder text, *Enter Username*, immediately beneath the send results label and constrained to the left and right margins and beneath the send results label.
-   * **Password**: A UITextField with placeholder text, *Enter Password*, immediately beneath the username text field and constrained to the left and right margins and beneath the username text field. Check the **Secure Text Entry** option in the Attribute Inspector, under *Return Key*.
-   * **Log in**: A UIButton labeled immediately beneath the password text field and uncheck the **Enabled** option in the Attributes Inspector, under *Control-Content*
-   * **WNS**: Label and switch to enable sending the notification Windows Notification Service if it has been setup on the hub. See the [Windows Getting Started](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) tutorial.
-   * **GCM**: Label and switch to enable sending the notification to Google Cloud Messaging if it has been setup on the hub. See [Android Getting Started](notification-hubs-android-push-notification-google-gcm-get-started.md) tutorial.
-   * **APNS**: Label and switch to enable sending the notification to the Apple Platform Notification Service.
-   * **Recipent Username**:A UITextField with placeholder text, *Recipient username tag*, immediately beneath the GCM label and constrained to the left and right margins and beneath the GCM label.
+   * **Username**: "*Enter Username*" というプレースホルダー テキストが入っている UI テキスト フィールドです。結果の送信ラベルのすぐ下にあり、左右の余白と、結果の送信ラベルの下の余白による制約が適用されます。
+   * **Password**: "*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
+   * **Log in**: パスワードのテキスト フィールドのすぐ下にあるラベル付きの UI ボタンです。Attributes Inspector の *[Control-Content]* の下にある **[Enabled]** オプションをオフにします。
+   * **WNS**: Windows Notification Service に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Windows で通知ハブを使用する方法に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)をご覧ください。
+   * **GCM**: Google Cloud Messaging に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Android で通知ハブを使用する方法に関するチュートリアル](notification-hubs-android-push-notification-google-gcm-get-started.md)をご覧ください。
+   * **APNS**: Apple Platform Notification Service に通知を送信するためのスイッチとそのラベルです。
+   * **Recipent Username**: "*Recipient username tag*" というプレースホルダー テキストが入っている UI テキスト フィールドです。GCM ラベルのすぐ下にあり、左右の余白と、GCM ラベルの下の余白による制約が適用されます。
 
-    Some components were added in the [Getting Started with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) tutorial.
+    「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
 
-1. **Ctrl** drag from the components in the view to ViewController.h and add these new outlets.
+1. ビューに表示されているコンポーネントを **Ctrl** キーを押しながらドラッグし、ViewController.h まで移動します。これにより、新しいアウトレットが追加されます。
    
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
         @property (weak, nonatomic) IBOutlet UITextField *PasswordField;
@@ -68,10 +72,10 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
         @property (weak, nonatomic) IBOutlet UISwitch *APNSSwitch;
    
         - (IBAction)LogInAction:(id)sender;
-2. In ViewController.h, add the following `#define` just below your import statements. Substitute the *<Enter Your Backend Endpoint\>* placeholder with the Destination URL you used to deploy your app backend in the previous section. For example, *http://you_backend.azurewebsites.net*.
+2. ViewController.h で、インポート ステートメントのすぐ下に以下の `#define` を追加します。 *<Enter Your Backend Endpoint\>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。 たとえば、*http://you_backend.azurewebsites.net* のように指定します。
    
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
-3. In your project, create a new **Cocoa Touch class** named **RegisterClient** to interface with the ASP.NET back-end you created. Create the class inheriting from `NSObject`. Then add the following code in the RegisterClient.h.
+3. プロジェクトで、新しく **RegisterClient** という名前の **Cocoa Touch クラス**を作成します。これは、前もって作成しておいた ASP.NET バックエンドとの間のインターフェイスに使用します。 `NSObject` から継承するクラスを作成したら、 RegisterClient.h に以下のコードを追加します。
    
         @interface RegisterClient : NSObject
    
@@ -83,7 +87,7 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
         -(instancetype) initWithEndpoint:(NSString*)Endpoint;
    
         @end
-4. In the RegisterClient.m update the `@interface` section:
+4. RegisterClient.m で、`@interface` セクションを次のように更新します。
    
         @interface RegisterClient ()
    
@@ -98,7 +102,7 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
                     tags:(NSSet*)tags andCompletion:(void(^)(NSURLResponse*, NSError*))completion;
    
         @end
-5. Replace the `@implementation` section in the RegisterClient.m with the following code.
+5. RegisterClient.m の `@implementation` セクションを、以下のコードで置き換えます。
 
         @implementation RegisterClient
 
@@ -257,17 +261,17 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
 
         @end
 
-    The code above implements the logic explained in the guidance article [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) using NSURLSession to perform REST calls to your app backend, and NSUserDefaults to locally store the registrationId returned by the notification hub.
+    上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「 [アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) 」で説明したロジックを実装します。
 
-    Note that this class requires its property **authorizationHeader** to be set in order to work properly. This property is set by the **ViewController** class after the log in.
+    このクラスが適切に機能するためには、プロパティ **authorizationHeader** を設定する必要があります。 このプロパティは、ログイン後に **ViewController** クラスによって設定されます。
 
-1. In ViewController.h, add a `#import` statement for RegisterClient.h. Then add a declaration for the device token and reference to a `RegisterClient` instance in the `@interface` section:
+1. ViewController.h で、RegisterClient.h の `#import` ステートメントを追加し、 デバイス トークンの宣言と、`@interface` セクションの`RegisterClient` インスタンスに対する参照を追加します。
    
         #import "RegisterClient.h"
    
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
-2. In ViewController.m, add a private method declaration in the `@interface` section:
+2. ViewController.m で、以下のように `@interface` セクションのプライベート メソッドの宣言を追加します。
    
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
    
@@ -278,11 +282,11 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
         @end
 
 > [!NOTE]
-> The following snippet is not a secure authentication scheme, you should substitute the implementation of the **createAndSetAuthenticationHeaderWithUsername:AndPassword:** with your specific authentication mechanism that generates an authentication token to be consumed by the register client class, e.g. OAuth, Active Directory.
+> これは安全な認証スキームではないため、 **createAndSetAuthenticationHeaderWithUsername:AndPassword** : の実装を登録クライアント クラス (OAuth、Active Directory など) によって読み取られる認証トークンを生成する特定の認証メカニズムで置き換えます。
 > 
 > 
 
-1. Then in the `@implementation` section of ViewController.m add the following code which adds the implementation for setting the device token and authentication header.
+1. 次に、ViewController.m の `@implementation` セクションに以下のコードを追加します。これは、デバイス トークンと認証ヘッダーに関する設定の実装を追加するものです。
    
         -(void) setDeviceToken: (NSData*) deviceToken
         {
@@ -307,8 +311,8 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
             return YES;
         }
    
-    Note how setting the device token enables the log in button. This is becasue as a part of the login action, the view controller registers for push notifications with the app backend. Hence, we do not want Log In action to be accessible till the device token has been properly set up. You can decouple the log in from the push registration as long as the former happens before the latter.
-2. In ViewController.m, use the following snippets to implement the action method for your **Log In** button and a method to send the notification message using the ASP.NET backend.
+    ログイン ボタンを有効にするデバイス トークンの設定方法に注意してください。 これは、ログイン アクションの一部として、View Controller がアプリケーション バックエンドでプッシュ通知を登録するためです。 そのため、デバイス トークンが適切に設定される前にユーザーがログイン ボタンを押すのを防ぐ必要があります。 プッシュ登録の前にログインが発生する場合には、プッシュ登録からログインを切り離す必要があります。
+2. 以下のスニペットを使って、ViewController.m に **[Log in]** ボタンのアクション メソッドと、ASP.NET バックエンドを使って通知メッセージを送信するためのメソッドを実装します。
    
        - (IBAction)LogInAction:(id)sender {   // create authentication header and set it in register client   NSString* username = self.UsernameField.text;   NSString* password = self.PasswordField.text;
    
@@ -316,46 +320,17 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
    
            __weak ViewController* selfie = self;   [self.registerClient registerWithDeviceToken:self.deviceToken tags:nil       andCompletion:^(NSError* error) {       if (!error) {           dispatch_async(dispatch_get_main_queue(),           ^{               selfie.SendNotificationButton.enabled = YES;               [self MessageBox:@"Success" message:@"Registered successfully!"];           });       }   }]; }
 
-        - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag
-                    Message:(NSString*)message
-        {
-            NSURLSession* session = [NSURLSession
-                sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil
-                delegateQueue:nil];
+        - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag            Message:(NSString*)message {    NSURLSession* session = [NSURLSession        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil        delegateQueue:nil];
 
-            // Pass the pns and username tag as parameters with the REST URL to the ASP.NET backend
-            NSURL* requestURL = [NSURL URLWithString:[NSString
-                stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,
-                usernameTag]];
+            // Pass the pns and username tag as parameters with the REST URL to the ASP.NET backend    NSURL* requestURL = [NSURL URLWithString:[NSString        stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,        usernameTag]];
 
-            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
-            [request setHTTPMethod:@"POST"];
+            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];    [request setHTTPMethod:@"POST"];
 
-            // Get the mock authenticationheader from the register client
-            NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",
-                self.registerClient.authenticationHeader];
-            [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            // Get the mock authenticationheader from the register client    NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",        self.registerClient.authenticationHeader];    [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 
-            //Add the notification message body
-            [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
+            //Add the notification message body    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
 
-            // Execute the send notification REST API on the ASP.NET Backend
-            NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-            {
-                NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-                if (error || httpResponse.statusCode != 200)
-                {
-                    NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",
-                                        pns, httpResponse.statusCode, error];
-                    dispatch_async(dispatch_get_main_queue(),
-                    ^{
-                        // Append text because all 3 PNS calls may also have information to view
-                        [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];
-                    });
-                    NSLog(status);
-                }
+            // Execute the send notification REST API on the ASP.NET Backend    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)    {        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;        if (error || httpResponse.statusCode != 200)        {            NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",                                pns, httpResponse.statusCode, error];            dispatch_async(dispatch_get_main_queue(),            ^{                // Append text because all 3 PNS calls may also have information to view                [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
 
                 if (data != NULL)
                 {
@@ -363,14 +338,16 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
                     [xmlParser setDelegate:self];
                     [xmlParser parse];
                 }
-            }];
-            [dataTask resume];
+            }];    [dataTask resume]; }
+
+
+1. **[Send Notification]** ボタンのアクションを更新し、ASP.NET バックエンドを使用すると共に、スイッチで有効になっている PNS があればそれに通知を送信するようにします。
+
+        - (IBAction)SendNotificationMessage:(id)sender
+        {
+            //[self SendNotificationRESTAPI];
+            [self SendToEnabledPlatforms];
         }
-
-
-1. Update the action for the **Send Notification** button to use the ASP.NET backend and send to any PNS enabled by a switch.
-
-        - (IBAction)SendNotificationMessage:(id)sender {   //[self SendNotificationRESTAPI];   [self SendToEnabledPlatforms]; }
 
 
         -(void)SendToEnabledPlatforms
@@ -391,13 +368,13 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
 
 
 
-1. In function **ViewDidLoad**, add the following to instantiate the RegisterClient instance and set the delegate for your text fields.
+1. **ViewDidLoad**関数で次のコードを追加して、RegisterClient インスタンスをインスタンス化し、テキスト フィールドに対するデリゲートを設定します。
    
        self.UsernameField.delegate = self;
        self.PasswordField.delegate = self;
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
-2. Now in **AppDelegate.m**, remove all the content of the method **application:didRegisterForPushNotificationWithDeviceToken:** and replace it with the following to make sure that the view controller contains the latest device token retrieved from APNs:
+2. **AppDelegate.m** 内の **application:didRegisterForPushNotificationWithDeviceToken:** メソッドの内容をすべて削除して以下で置き換え、View Controller に APNs から取得した最新のデバイス トークンが含まれることを確認します。
    
        // Add import to the top of the file
        #import "ViewController.h"
@@ -408,23 +385,23 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
            ViewController* rvc = (ViewController*) self.window.rootViewController;
            rvc.deviceToken = deviceToken;
        }
-3. Finally in **AppDelegate.m**, make sure you have the following method:
+3. 最後に、 **AppDelegate.m**に次のメソッドが含まれることを確認してください。
    
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
            NSLog(@"%@", userInfo);
            [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
        }
 
-## <a name="test-the-application"></a>Test the Application
-1. In XCode, run the app on a physical iOS device (push notifications will not work in the simulator).
-2. In the iOS app UI, enter a username and password. These can be any string, but they must both be the same string value. Then click **Log In**.
+## <a name="test-the-application"></a>アプリケーションをテストする
+1. XCode を使用して、物理 iOS デバイスでアプリケーションを実行します (プッシュ通知はシミュレーターでは機能しません)。
+2. iOS アプリケーションの UI で、ユーザー名とパスワードを入力します。 文字列は任意ですが、値は同じである必要があります。 その後、 **[ログイン]**をクリックします。
    
     ![][2]
-3. You should see a pop-up informing you of registration success. Click **OK**.
+3. 登録の成功を通知するポップアップが表示されます。 **[OK]**をクリックします。
    
     ![][3]
-4. In the **Recipient username tag* text field, enter the user name tag used with the registration from another device.
-5. Enter a notification message and click **Send Notification**.  Only the devices that have a registration with the recipient user name tag receive the notification message.  It is only sent to those users.
+4. *"Recipient username tag"** というテキストが表示されているフィールドに、別のデバイスから登録するときに使用したユーザー名のタグを入力します。
+5. 通知メッセージを入力して **[Send Notification]**をクリックします。  入力したタグが登録されているデバイスのみ、通知メッセージを受信します。  通知は、該当するユーザーにのみ送信されます。
    
     ![][4]
 
@@ -435,6 +412,6 @@ Push notification support in Azure enables you to access an easy-to-use, multipl
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

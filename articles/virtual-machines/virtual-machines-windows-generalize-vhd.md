@@ -1,43 +1,53 @@
 ---
-title: Generalize a Windows VHD | Microsoft Docs
-description: Learn to use Sysprep to generalize a Windows VM to use with the Resource Manager deployment model.
+title: "Azure で使うために Windows VM を一般化する | Microsoft Docs"
+description: "Resource Manager デプロイメント モデルで使用する Windows VM を Sysprep を使用して一般化する方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: a745d400-c8be-48b4-a891-4a18495ef3fd
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 10/20/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: a0fca1e2a1d354be9ad34fb3a36714d0bdf393d2
+ms.lasthandoff: 03/06/2017
+
 
 ---
-# <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Generalize a Windows virtual machine using Sysprep
-This section shows you how to generalize your Windows virtual machine for use as an image. Sysprep removes all your personal account information, among other things, and prepares the machine to be used as an image. For details about Sysprep, see [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx).
+# <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Sysprep を使用した Windows 仮想マシンの一般化
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> If you are running Sysprep before uploading your VHD to Azure for the first time, make sure you have [prepared your VM](virtual-machines-windows-prepare-for-upload-vhd-image.md) before running Sysprep. 
+> 初めて VHD を Azure にアップロードする前に Sysprep を実行する場合、Sysprep の実行前に [VM の準備](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。 
 > 
 > 
 
-1. Sign in to the Windows virtual machine.
-2. Open the Command Prompt window as an administrator. Change the directory to **%windir%\system32\sysprep**, and then run `sysprep.exe`.
-3. In the **System Preparation Tool** dialog box, select **Enter System Out-of-Box Experience (OOBE)**, and make sure that the **Generalize** check box is selected.
-4. In **Shutdown Options**, select **Shutdown**.
-5. Click **OK**.
+1. Windows 仮想マシンへのサインイン
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+5. **[OK]**をクリックします。
    
-    ![Start Sysprep](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
-6. When Sysprep completes, it will shutdown the virtual machine. 
+    ![Sysprep の開始](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
+6. Sysprep は完了時に仮想マシンをシャットダウンします。 
 
-## <a name="next-steps"></a>Next Steps
-* If the VM is on-premises, you can now [upload the VHD to Azure](virtual-machines-windows-upload-image.md).
-* If the VM is already in Azure, you can now [create a VM from the generalized VHD](virtual-machines-windows-create-vm-generalized.md).
+> [!IMPORTANT]
+> Azure に VHD をアップロードするか VM からイメージを作成するまで、VM を再起動しないでください。 誤って VM を再起動した場合は、もう一度 Sysprep を実行して一般化してください。
+> 
+> 
 
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+* VM がオンプレミスの場合、[VHD を Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できるようになりました。
+* VM が既に Azure に存在する場合、[一般化された VM からイメージを作成](virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できるようになりました。
 
 

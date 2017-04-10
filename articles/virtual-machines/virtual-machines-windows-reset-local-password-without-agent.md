@@ -1,79 +1,83 @@
 ---
-title: Reset a local Windows password when Azure guest agent is not installed | Microsoft Docs
-description: How to reset the password of a local Windows user account when the Azure guest agent is not installed or functioning on a VM
+title: "Azure エージェントなしでローカルの Windows パスワードをリセットする | Microsoft Docs"
+description: "Azure のゲスト エージェントが VM 上にインストールされていない場合または Azure のゲスト エージェントが VM 上で機能していない場合に、ローカルの Windows ユーザー アカウントのパスワードをリセットする方法"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/05/2016
+ms.date: 12/20/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: 74b1282bf205bc38f13c51c5e05f55987d0cd12e
+
 
 ---
-# <a name="how-to-reset-local-windows-password-for-azure-vm"></a>How to reset local Windows password for Azure VM
-You can reset the local Windows password of a VM in Azure using the [Azure portal or Azure PowerShell](virtual-machines-windows-reset-rdp.md) provided the Azure guest agent is installed. This method is the primary way to reset a password for an Azure VM. If you encounter issues with the Azure guest agent not responding, or failing to install after uploading a custom image, you can manually reset a Windows password. This article details how to reset a local account password by attaching the source OS virtual disk to another VM. 
+# <a name="how-to-reset-local-windows-password-for-azure-vm"></a>Azure VM のローカルの Windows パスワードをリセットする方法
+Azure ゲスト エージェントがインストールされている場合、[Azure Portal または Azure PowerShell](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Azure 内の VM のローカルの Windows パスワードをリセットできます。 これは、Azure VM のパスワードをリセットする最も一般的な方法です。 Azure のゲスト エージェントが応答しない場合やカスタム イメージのアップロード後にインストールに失敗する場合、Windows のパスワードを手動でリセットできます。 この記事では、ソース OS の仮想ディスクを別の VM に接続してローカル アカウントのパスワードをリセットする方法について説明します。 
 
 > [!WARNING]
-> Only use this process as a last resort. Always try to reset a password using the [Azure portal or Azure PowerShell](virtual-machines-windows-reset-rdp.md) first.
+> この方法は、他の方法を利用できない場合のみ使用してください。 必ず最初に、[Azure Portal または Azure PowerShell](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用したパスワードのリセットをお試しください。
 > 
 > 
 
-## <a name="overview-of-the-process"></a>Overview of the process
-The core steps for performing a local password reset for a Windows VM in Azure when there is no access to the Azure guest agent is as follows:
+## <a name="overview-of-the-process"></a>プロセスの概要
+Azure ゲスト エージェントへのアクセス権がない場合に Azure 内の Windows VM のローカル パスワードをリセットする基本的な手順は次のとおりです。
 
-* Delete the source VM. The virtual disks are retained.
-* Attach the source VM's OS disk to another VM within your Azure subscription. This VM is referred to as the troubleshooting VM.
-* Using the troubleshooting VM, create some config files on the source VM's OS disk.
-* Detach the VM's OS disk from the troubleshooting VM.
-* Use a Resource Manager template to create a VM, using the original virtual disk.
-* When the new VM boots, the config files you create update the password of the required user.
+* ソース VM を準備します。 仮想ディスクは保持されます。
+* Azure サブスクリプション内の別の VM に、ソース VM の OS ディスクを接続します。 この VM は、トラブルシューティング VM と呼ばれます。
+* トラブルシューティング VM を使用して、ソース VM の OS ディスクに構成ファイルをいくつか作成します。
+* トラブルシューティング VM から VM の OS ディスクを取り外します。
+* Resource Manager テンプレートを使用して、オリジナル仮想ディスクを使って VM を作成します。
+* 新しい VM が起動すると、作成した構成ファイルによって、必要なユーザーのパスワードが更新されます。
 
-## <a name="detailed-steps"></a>Detailed steps
-Always try to reset a password using the [Azure portal or Azure PowerShell](virtual-machines-windows-reset-rdp.md) before trying the following steps. Make sure you have a backup of your VM before you start. 
+## <a name="detailed-steps"></a>詳細な手順
+次の手順を試す前に、[Azure Portal または Azure PowerShell](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用したパスワードのリセットを必ずお試しください。 開始する前に、必ず VM のバックアップをおとりください。 
 
-1. Delete the affected VM in Azure portal. Deleting the VM only deletes the metadata, the reference of the VM within Azure. The virtual disks are retained when the VM is deleted:
+1. Azure Portal で、影響を受ける VM を削除します。 VM を削除しても削除されるのは、Azure 内の VM の参照であるメタデータのみです。 VMが削除されても、仮想ディスクは保持されます。
    
-   * Select the VM in the Azure portal, click *Delete*:
+   * Azure Portal で VM を選んで、*[削除]* をクリックします。
      
-     ![Delete existing VM](./media/virtual-machines-windows-reset-local-password-without-guest-agent/delete_vm.png)
-2. Attach the source VM’s OS disk to the troubleshooting VM. The troubleshooting VM must be in the same region as the source VM's OS disk (such as `West US`):
+     ![既存の VM を削除する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/delete_vm.png)
+2. トラブルシューティング VM に VM の OS ディスクを接続します。 トラブルシューティング VM は、ソース VM の OS ディスクと同じリージョン (`West US` など) にある必要があります。
    
-   * Select the troubleshooting VM in the Azure portal. Click *Disks* | *Attach existing*:
+   * Azure Portal でトラブルシューティング VM を選びます。 *[Disks]* | *[Attach existing]* をクリックします。
      
-     ![Attach existing disk](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_attach_existing.png)
+     ![既存のディスクを接続する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_attach_existing.png)
      
-     Select *VHD File* and then select the storage account that contains your source VM:
+     *[VHD File]* を選択してから、ソース VM を含むストレージ アカウントを選びます。
      
-     ![Select storage account](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_storageaccount.PNG)
+     ![ストレージ アカウントを選択する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_storageaccount.PNG)
      
-     Select the source container. The source container is typically *vhds*:
+     ソース コンテナーを選びます。 ソース コンテナーは、通常 *VHD* です。
      
-     ![Select storage container](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_container.png)
+     ![ストレージ コンテナーを選ぶ](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_container.png)
      
-     Select the OS vhd to attach. Click *Select* to complete the process:
+     接続する OS VHD を選びます。 *[選択]* をクリックしてプロセスを完了します。
      
-     ![Select source virtual disk](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_source_vhd.png)
-3. Connect to the troubleshooting VM using Remote Desktop and ensure the source VM's OS disk is visible:
+     ![ソース仮想ディスクを選択する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/disks_select_source_vhd.png)
+3. リモート デスクトップを使用してトラブルシューティング VM に接続し、ソース VM の OS ディスクが表示されていることを確認します。
    
-   * Select the troubleshooting VM in the Azure portal and click *Connect*.
-   * Open the RDP file that downloads. Enter the username and password of the troubleshooting VM.
-   * In File Explorer, look for the data disk you attached. If the source VM’s VHD is the only data disk attached to the troubleshooting VM, it should be the F: drive:
+   * Azure Portal でトラブルシューティング VM を選択して、*[接続]* をクリックします。
+   * ダウンロードを行う RDP ファイルを開きます。 トラブルシューティング VM のユーザー名とパスワードを入力します。
+   * エクスプローラーで、接続されているデータ ディスクを探します。 ソース VM の VHD がトラブルシューティングの VM に接続されている唯一のデータ ディスクの場合は、ソース VM の VHD が F: ドライブになっている必要があります。
      
-     ![View attached data disk](./media/virtual-machines-windows-reset-local-password-without-guest-agent/troubleshooting_vm_fileexplorer.png)
-4. Create `gpt.ini` in `\Windows\System32\GroupPolicy` on the source VM’s drive (if gpt.ini exists, rename to gpt.ini.bak):
+     ![接続されたデータ ディスクを表示する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/troubleshooting_vm_fileexplorer.png)
+4. ソース VM のドライブ上の `\Windows\System32\GroupPolicy` に `gpt.ini` を作成します (gpt.ini が存在する場合は、gpt.ini.bak に名前を変更します)。
    
    > [!WARNING]
-   > Make sure that you do not accidentally create the following files in C:\Windows, the OS drive for the troubleshooting VM. Create the following files in the OS drive for your source VM that is attached as a data disk.
+   > トラブルシューティング VM の OS ドライブである C:\Windows に誤って次のファイルを作成していないかご確認ください。 次のファイルは、データ ディスクとして接続されているソース VM の OS ドライブに作成してください。
    > 
    > 
    
-   * Add the following lines into the `gpt.ini` file you created:
+   * 作成した `gpt.ini` ファイルに次の行を追加します。
      
      ```
      [General]
@@ -82,10 +86,10 @@ Always try to reset a password using the [Azure portal or Azure PowerShell](virt
      Version=1
      ```
      
-     ![Create gpt.ini](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_gpt_ini.png)
-5. Create `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts`. Make sure hidden folders are shown. If needed, create the `Machine` or `Scripts` folders.
+     ![gpt.ini を作成する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_gpt_ini.png)
+5. `\Windows\System32\GroupPolicy\Machine\Scripts` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
-   * Add the following lines the `scripts.ini` file you created:
+   * 作成した `scripts.ini` ファイルに次の行を追加します。
      
      ```
      [Startup]
@@ -93,52 +97,55 @@ Always try to reset a password using the [Azure portal or Azure PowerShell](virt
      0Parameters=
      ```
      
-     ![Create scripts.ini](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_scripts_ini.png)
-6. Create `FixAzureVM.cmd` in `\Windows\System32` with the following contents, replacing `<username>` and `<newpassword>` with your own values:
+     ![scripts.ini を作成する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_scripts_ini.png)
+6. `\Windows\System32` に次の内容を含む `FixAzureVM.cmd` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
    
     ```
     NET USER <username> <newpassword>
     ```
    
-    ![Create FixAzureVM.cmd](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_fixazure_cmd.png)
+    ![FixAzureVM.cmd を作成する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_fixazure_cmd.png)
    
-    You must meet the configured password complexity requirements for your VM when defining the new password.
-7. In Azure portal, detach the disk from the troubleshooting VM:
+    新しいパスワードを決めるときには、VM のパスワードの複雑さの要件を満たす必要があります。
+7. Azure Portal で、トラブルシューティング VM からディスクを取り外します。
    
-   * Select the troubleshooting VM in the Azure portal, click *Disks*.
-   * Select the data disk attached in step 2, click *Detach*:
+   * Azure Portal でトラブルシューティング VM を選び、*[Disks]* をクリックします。
+   * 手順 2 で接続したデータ ディスクを選んで、*[Detach]* をクリックします。
      
-     ![Detach disk](./media/virtual-machines-windows-reset-local-password-without-guest-agent/detach_disk.png)
-8. Before you create a VM, obtain the URI to your source OS disk:
+     ![ディスクを取り外す](./media/virtual-machines-windows-reset-local-password-without-guest-agent/detach_disk.png)
+8. VM を作成する前に、ソース OS ディスクへの URI を取得します。
    
-   * Select the storage account in the Azure portal, click *Blobs*.
-   * Select the container. The source container is typically *vhds*:
+   * Azure Portal でストレージ アカウントを選んで、*[Blobs]* を選択します。
+   * コンテナーを選びます。 ソース コンテナーは、通常 *VHD* です。
      
-     ![Select storage account blob](./media/virtual-machines-windows-reset-local-password-without-guest-agent/select_storage_details.png)
+     ![ストレージ アカウント BLOB を選ぶ](./media/virtual-machines-windows-reset-local-password-without-guest-agent/select_storage_details.png)
      
-     Select your source VM OS VHD and click the *Copy* button next to the *URL* name:
+     ソース VM の OS VHD を選び、*[URL]* 名の横にある *[コピー]* をクリックします。
      
-     ![Copy disk URI](./media/virtual-machines-windows-reset-local-password-without-guest-agent/copy_source_vhd_uri.png)
-9. Create a VM from the source VM’s OS disk:
+     ![ディスクの URI をコピーする](./media/virtual-machines-windows-reset-local-password-without-guest-agent/copy_source_vhd_uri.png)
+9. ソース VM の OS ディスクから VM を作成します。
    
-   * Use [this Azure Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd) to create a VM from a specialized VHD. Click the `Deploy to Azure` button to open the Azure portal with the templated details populated for you.
-   * If you want to retain all the previous settings for the VM, select *Edit template* to provide your existing VNet, subnet, network adapter, or public IP.
-   * In the `OSDISKVHDURI` parameter text box, paste the URI of your source VHD obtain in the preceding step:
+   * [この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)を使って、特殊な VHD から VM を作成します。 [`Deploy to Azure`] をクリックして Azure Portal を開きます。テンプレートの情報が自動入力されています。
+   * VM の以前の設定をすべて保持する場合は、*[Edit template]* を選んで、既存の VNet、サブネット、ネットワーク アダプター、パブリック IP のいずれかを入力します。
+   * [`OSDISKVHDURI`] パラメーター テキスト ボックスに、前の手順で取得したソース VHD の URI を貼り付けます。
      
-     ![Create a VM from template](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_new_vm_from_template.png)
-10. After the new VM is running, connect to the VM using Remote Desktop with the new password you specified in the `FixAzureVM.cmd` script.
-11. From your remote session to the new VM, remove the following files to clean up the environment:
+     ![テンプレートから VM を作成する](./media/virtual-machines-windows-reset-local-password-without-guest-agent/create_new_vm_from_template.png)
+10. 新しい VM が起動したら、`FixAzureVM.cmd` スクリプトに指定した新しいパスワードを使って、VM に接続します。
+11. リモート セッションから新しい VM までの次のファイルを削除して環境をクリーンアップします。
     
-    * From %windir%\System32
-      * remove FixAzureVM.cmd
-    * From %windir%\System32\GroupPolicy\Machine\
-      * remove scripts.ini
-    * From %windir%\System32\GroupPolicy
-      * remove gpt.ini (if gpt.ini existed before, and you renamed it to gpt.ini.bak, rename the .bak file back to gpt.ini)
+    * %Windir%\System32 から
+      * FixAzureVM.cmd を削除します
+    * %windir%\System32\GroupPolicy\Machine\ から
+      * scripts.ini を削除します
+    * %windir%\System32\GroupPolicy から
+      * gpt.ini を削除します (以前に gpt.ini が存在し、gpt.ini.bak に名前を変更した場合、この .bak ファイルの名前を変更して gpt.ini に戻します)
 
-## <a name="next-steps"></a>Next steps
-If you still cannot connect using Remote Desktop, see the [RDP troubleshooting guide](virtual-machines-windows-troubleshoot-rdp-connection.md). The [detailed RDP troubleshooting guide](virtual-machines-windows-detailed-troubleshoot-rdp.md) looks at troubleshooting methods rather than specific steps. You can also [open an Azure support request](https://azure.microsoft.com/support/options/) for hands-on assistance.
+## <a name="next-steps"></a>次のステップ
+それでもリモート デスクトップを使用して接続できない場合は、[RDP トラブルシューティング ガイド](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。 [詳細な RDP トラブルシューティングガイド](virtual-machines-windows-detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)では、具体的な手順というよりは、トラブルシューティングの手法について説明しています。 また、直接のサポートについては、[Azure のサポートに依頼](https://azure.microsoft.com/support/options/)できます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

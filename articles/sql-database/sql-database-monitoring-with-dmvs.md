@@ -1,24 +1,29 @@
 ---
-title: 動的管理ビューを使用した Azure SQL Database の監視 | Microsoft Docs
-description: 動的管理ビューを使用して Microsoft Azure SQL Database を監視することで、一般的なパフォーマンスの問題を検出および診断する方法について説明します。
+title: "動的管理ビューを使用した Azure SQL Database の監視 | Microsoft Docs"
+description: "動的管理ビューを使用して Microsoft Azure SQL Database を監視することで、一般的なパフォーマンスの問題を検出および診断する方法について説明します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: d08f505f-3c62-47d4-bab7-35c9a834b79b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/20/2016
+ms.date: 01/10/2017
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ae0054ac9d87562f6babbfaeaf440d653d60963a
+
 
 ---
-# 動的管理ビューを使用した Azure SQL Database の監視
-Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
+# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用した Azure SQL Database の監視
+Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
 
 SQL Database は、次に示す 3 つの動的管理ビューを一部サポートしています。
 
@@ -26,20 +31,21 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 * 実行関連の動的管理ビュー。
 * トランザクション関連の動的管理ビュー。
 
-動的管理ビューの詳細については、SQL Server オンライン ブックの「[動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx)」を参照してください。
+動的管理ビューの詳細については、SQL Server オンライン ブックの「 [動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) 」を参照してください。
 
-## アクセス許可
-SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
+## <a name="permissions"></a>アクセス許可
+SQL Database で、動的管理ビューに対してクエリを実行するには、 **VIEW DATABASE STATE** アクセス許可が必要です。 **VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。
+**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
 ```GRANT VIEW DATABASE STATE TO database_user; ```
 
-オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
+オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。 SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
-## データベースのサイズを計算しています
+## <a name="calculating-database-size"></a>データベースのサイズを計算しています
 次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- データベースのサイズを計算します。 
+-- Calculates the size of the database.
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
@@ -56,8 +62,9 @@ GROUP BY sys.objects.name;
 GO
 ```
 
-## 接続の監視
-[sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
+## <a name="monitoring-connections"></a>接続の監視
+[sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。 また、[sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。
+次のクエリは、現在の接続に関する情報を取得します。
 
 ```
 SELECT
@@ -73,15 +80,15 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> **sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、データベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションが表示されます。アクセス許可を持っていない場合は、現在のセッションのみが表示されます。
+> **sys.dm_exec_requests** と **sys.dm_exec_sessions views** を実行するときに、データベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションが表示されます。アクセス許可を持っていない場合は、現在のセッションのみが表示されます。
 > 
 > 
 
-## クエリのパフォーマンスの監視
-クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)についての記事が、古いものの今でもトラブルシューティングに役立ちます。
+## <a name="monitoring-query-performance"></a>クエリのパフォーマンスの監視
+クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。 ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。 Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) についての記事が、古いものの今でもトラブルシューティングに役立ちます。
 
-### 上位 N 個のクエリの検索
-次の例では、平均 CPU 時間の上位 5 個のクエリに関する情報を返します。この例では、論理的に等価なクエリがリソースの累計消費量ごとにグループ化されるように、クエリ ハッシュに応じてクエリを集計します。
+### <a name="finding-top-n-queries"></a>上位 N 個のクエリの検索
+次の例では、平均 CPU 時間の上位 5 個のクエリに関する情報を返します。 この例では、論理的に等価なクエリがリソースの累計消費量ごとにグループ化されるように、クエリ ハッシュに応じてクエリを集計します。
 
 ```
 SELECT TOP 5 query_stats.query_hash AS "Query Hash",
@@ -100,11 +107,11 @@ GROUP BY query_stats.query_hash
 ORDER BY 2 DESC;
 ```
 
-### クエリのブロックの監視
-クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm\_tran\_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
+### <a name="monitoring-blocked-queries"></a>クエリのブロックの監視
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。 ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。 sys.dm_tran_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。 コード例については、SQL Server オンライン ブックの「[sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」をご覧ください。
 
-### クエリ プランの監視
-クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
+### <a name="monitoring-query-plans"></a>クエリ プランの監視
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。 次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
 ```
 SELECT
@@ -126,7 +133,12 @@ FROM
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

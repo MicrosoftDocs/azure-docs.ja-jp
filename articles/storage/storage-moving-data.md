@@ -1,19 +1,24 @@
 ---
-title: Azure Storage との間でのデータの移動 | Microsoft Docs
-description: この記事では、Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。
+title: "Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs"
+description: "Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。"
 services: storage
-documentationcenter: ''
-author: micurd
-manager: jahogg
+documentationcenter: 
+author: JarrettRenshaw
+manager: msmets
 editor: tysonn
-
+ms.assetid: 5e3947a9-d99b-4108-9d57-3eb67c03e7ba
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: jarrettr
+translationtype: Human Translation
+ms.sourcegitcommit: 245fb30a64c8a19f6ea0073d533419e9c3628cb5
+ms.openlocfilehash: 538a43e549f47709616dd93e7eab9c8cb7d99dc6
+ms.lasthandoff: 02/10/2017
+
 
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
@@ -28,7 +33,7 @@ Azure Storage では、.NET、iOS、Java、Android、Universal Windows Platform 
 
 さらに、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように設計されたライブラリである、 [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) も用意されています。 詳細については、Data Movement Library の [ドキュメント](https://github.com/Azure/azure-storage-net-data-movement) を参照してください。 
 
-## <a name="quickly-viewing/interacting-with-your-data"></a>データのすばやい表示/操作
+## <a name="quickly-viewinginteracting-with-your-data"></a>データのすばやい表示/操作
 Azure Storage のデータを簡単に表示するだけでなく、データのアップロードやダウンロードも行いたい場合は、Azure ストレージ エクスプローラーを使用できます。
 
 詳細については、 [Azure ストレージ エクスプローラー](storage-explorers.md) の一覧を確認してください。
@@ -52,7 +57,7 @@ Azure CLI は、Azure サービスで使用できるオープン ソース、ク
 詳細については、「 [Azure Storage での Azure CLI の使用](storage-azure-cli.md) 」を参照してください。
 
 ## <a name="moving-large-amounts-of-data-with-a-slow-network"></a>低速ネットワークでの大量のデータの移動
-大量のデータの移動に関する最も大きな課題の 1 つは、転送時間です。 ネットワーク コストやコードの作成を心配することなく Azure Storage との間でデータを移動したい場合は、Azure Import/Export が適切なソリューションです。
+大量のデータの移動に関する最も大きな課題の&1; つは、転送時間です。 ネットワーク コストやコードの作成を心配することなく Azure Storage との間でデータを移動したい場合は、Azure Import/Export が適切なソリューションです。
 
 詳細については、 [Azure Import/Export](storage-import-export-service.md) に関する記事を参照してください。
 
@@ -70,7 +75,7 @@ Azure Storage にデータをバックアップするだけの場合は、Azure 
 オンプレミスのワークロードとアプリケーションがある場合、障害が発生してもビジネスを継続できるソリューションが必要です。 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を処理します。 レプリケートされたデータは Azure Storage に格納されるので、オンサイトのセカンダリ データセンターは必要ありません。
 
 詳細については、 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) に関する記事を参照してください。
-
-<!--HONumber=Oct16_HO2-->
-
+### <a name="moving-data-faq"></a>データの移動に関してよく寄せられる質問:
+## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>VHD をコピーせずにリージョン間で移行できますか?
+リージョン間で VHD をコピーするには、各リージョンのストレージ アカウント間でデータをコピーする方法しかありません。 これには AZCopy を使用します。 詳細については、「AzCopy コマンド ライン ユーティリティを使用してデータを転送する」を参照してください。 データ容量が非常に大きい場合には、Azure Import/Export を使用することもできます。 詳細については、 [Azure Import/Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service) に関する記事を参照してください。
 

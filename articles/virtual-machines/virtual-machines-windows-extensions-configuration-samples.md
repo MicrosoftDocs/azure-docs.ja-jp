@@ -1,13 +1,13 @@
 ---
-title: Windows VM 拡張機能のサンプル構成 | Microsoft Docs
-description: 拡張機能を使用したテンプレート作成のサンプル構成
+title: "Windows VM 拡張機能のサンプル構成 | Microsoft Docs"
+description: "拡張機能を使用したテンプレート作成のサンプル構成"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 0a1cee6c-51ea-4c03-b607-f158586d7175
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 380778b28a233e28c93f1ae8b16ac01a9f72ca20
+
 
 ---
-# Azure Windows VM 拡張機能の構成サンプル
+# <a name="azure-windows-vm-extension-configuration-samples"></a>Azure Windows VM 拡張機能の構成サンプル
 > [!div class="op_single_selector"]
-> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
-> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
@@ -28,13 +32,13 @@ ms.author: kundanap
 
 この記事には、Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)」を参照してください。
+これらの拡張機能について詳しくは、[Azure VM 拡張機能の概要](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
-拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)」を参照してください。
+拡張機能テンプレートの作成について詳しくは、[拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 この記事では、一部の Windows 拡張機能について、予測される構成値の一覧を示します。
 
-## IaaS VM による VM 拡張機能のサンプル テンプレート スニペット。
+## <a name="sample-template-snippet-for-vm-extensions-with-iaas-vms"></a>IaaS VM による VM 拡張機能のサンプル テンプレート スニペット。
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
 
       {
@@ -55,7 +59,7 @@ ms.author: kundanap
       }
       }
 
-## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets"></a>VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
     {
      "type":"Microsoft.Compute/virtualMachineScaleSets",
     ....
@@ -82,7 +86,7 @@ ms.author: kundanap
 
 拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
 
-### CustomScript 拡張機能 1.4
+### <a name="customscript-extension-14"></a>CustomScript 拡張機能 1.4
       {
           "publisher": "Microsoft.Compute",
           "type": "CustomScriptExtension",
@@ -99,14 +103,14 @@ ms.author: kundanap
           }
       }
 
-#### パラメーターの説明:
-* fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。何も指定しない場合、ファイルはダウンロードされません。ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
+#### <a name="parameter-description"></a>パラメーターの説明:
+* fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。 何も指定しない場合、ファイルはダウンロードされません。 ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
 * commandToExecute: [必須パラメーター]: 拡張機能によって実行されるコマンド。
 * storageAccountName: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント名。
 * storageAccountKey: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント キー。
 
-### CustomScript 拡張機能 1.7
-パラメーターの説明については、CustomScript バージョン 1.4 を参照してください。バージョン 1.7 では、スクリプト パラメーター (commandToExecute) を protectedSettings として送信する機能がサポートされるようになりました。その場合、パラメーターは送信前に暗号化されます。"commandToExecute" パラメーターは、settings または protectedSettings で指定できますが、両方に指定することはできません。
+### <a name="customscript-extension-17"></a>CustomScript 拡張機能 1.7
+パラメーターの説明については、CustomScript バージョン 1.4 を参照してください。 バージョン 1.7 ではスクリプトのパラメーター (commandToExecute) を protectedSettings として送信できます。この場合、パラメーターは送信前に暗号化されます。 'commandToExecute' は settings または protectedSettings のいずれかに指定できますが、両方には指定できません。
 
         {
             "publisher": "Microsoft.Compute",
@@ -125,7 +129,7 @@ ms.author: kundanap
             }
         }
 
-### VMAccess 拡張機能
+### <a name="vmaccess-extension"></a>VMAccess 拡張機能
       {
           "publisher": "Microsoft.Compute",
           "type": "VMAccessAgent",
@@ -138,7 +142,7 @@ ms.author: kundanap
           }
       }
 
-### DSC 拡張機能
+### <a name="dsc-extension"></a>DSC 拡張機能
       {
           "publisher": "Microsoft.Powershell",
           "type": "DSC",
@@ -170,7 +174,7 @@ ms.author: kundanap
       }
 
 
-### Symantec Endpoint Protection
+### <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
       {
         "publisher": "SymantecEndpointProtection",
         "type": "Symantec",
@@ -178,13 +182,13 @@ ms.author: kundanap
         "settings": {}
       }
 
-### Trend Micro Deep Security Agent
+### <a name="trend-micro-deep-security-agent"></a>Trend Micro Deep Security Agent
       {
         "publisher": "TrendMicro.DeepSecurity",
         "type": "TrendMicroDSA",
         "typeHandlerVersion": "9.6",
         "settings": {
-          "ManagerAddress" : "Enter the externally accessible DNS name or IP address of the Deep Security Manager. Please enter "agents.deepsecurity.trendmicro.com" if using Deep Security as a Service",
+          "ManagerAddress" : "Enter the externally accessible DNS name or IP address of the Deep Security Manager. Please enter \"agents.deepsecurity.trendmicro.com\" if using Deep Security as a Service",
 
           "ActivationPort" : "Enter the port number of the Deep Security Manager, default value - 443",
 
@@ -196,7 +200,7 @@ ms.author: kundanap
         }
       }
 
-### Vormertric Transparent Encryption Agent
+### <a name="vormertric-transparent-encryption-agent"></a>Vormertric Transparent Encryption Agent
             {
               "publisher": "Vormetric",
               "type": "VormetricTransparentEncryptionAgent",
@@ -205,7 +209,7 @@ ms.author: kundanap
               }
             }
 
-### Puppet Enterprise Agent
+### <a name="puppet-enterprise-agent"></a>Puppet Enterprise Agent
             {
               "publisher": "PuppetLabs",
               "type": "PuppetEnterpriseAgent",
@@ -215,7 +219,7 @@ ms.author: kundanap
               }
             }  
 
-### Azure Operational Insights 向け Microsoft Monitoring Agent
+### <a name="microsoft-monitoring-agent-for-azure-operational-insights"></a>Azure Operational Insights 向け Microsoft Monitoring Agent
             {
               "publisher": "Microsoft.EnterpriseCloud.Monitoring",
               "type": "MicrosoftMonitoringAgent",
@@ -229,7 +233,7 @@ ms.author: kundanap
               }
             }
 
-### McAfee EndpointSecurity
+### <a name="mcafee-endpointsecurity"></a>McAfee EndpointSecurity
             {
               "publisher": "McAfee.EndpointSecurity",
               "type": "McAfeeEndpointSecurity",
@@ -243,7 +247,7 @@ ms.author: kundanap
               }
             }
 
-### Azure IaaS マルウェア対策
+### <a name="azure-iaas-antimalware"></a>Azure IaaS マルウェア対策
           {
             "publisher": "Microsoft.Azure.Security",
             "type": "IaaSAntimalware",
@@ -261,7 +265,7 @@ ms.author: kundanap
             }
           }
 
-### ESET File Security
+### <a name="eset-file-security"></a>ESET File Security
           {
             "publisher": "ESET",
             "type": "FileSecurity",
@@ -270,7 +274,7 @@ ms.author: kundanap
             }
           }
 
-### Datadog Agent
+### <a name="datadog-agent"></a>Datadog Agent
           {
             "publisher": "Datadog.Agent",
             "type": "DatadogWindowsAgent",
@@ -280,7 +284,7 @@ ms.author: kundanap
             }
           }
 
-### Confer の Azure 向けの Advanced Threat Prevention and Incident Response
+### <a name="confer-advanced-threat-prevention-and-incident-response-for-azure"></a>Confer の Azure 向けの Advanced Threat Prevention and Incident Response
           {
             "publisher": "Confer",
             "type": "ConferForAzure",
@@ -291,7 +295,7 @@ ms.author: kundanap
             }
           }
 
-### CloudLink SecureVM Agent
+### <a name="cloudlink-securevm-agent"></a>CloudLink SecureVM Agent
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMWindowsAgent",
@@ -301,7 +305,7 @@ ms.author: kundanap
             }
           }
 
-### Microsoft Azure 用 Barracuda VPN Connectivity Agent
+### <a name="barracuda-vpn-connectivity-agent-for-microsoft-azure"></a>Microsoft Azure 用 Barracuda VPN Connectivity Agent
           {
             "publisher": "Barracuda.Azure.ConnectivityAgent",
             "type": "BarracudaConnectivityAgent",
@@ -314,7 +318,7 @@ ms.author: kundanap
             }
           }
 
-### Alert Logic Log Manager
+### <a name="alert-logic-log-manager"></a>Alert Logic Log Manager
           {
             "publisher": "AlertLogic.Extension",
             "type": "AlertLogicLM",
@@ -324,7 +328,7 @@ ms.author: kundanap
             }
           }
 
-### Chef Agent
+### <a name="chef-agent"></a>Chef Agent
           {
             "publisher": "Chef.Bootstrap.WindowsAzure",
             "type": "ChefClient",
@@ -336,8 +340,8 @@ ms.author: kundanap
             }
           }
 
-### Azure 診断
-診断を構成する方法の詳細については、「[Azure 診断の拡張機能](virtual-machines-windows-extensions-diagnostics-template.md)」を参照してください。
+### <a name="azure-diagnostics"></a>Azure 診断
+診断を構成する方法について詳しくは、[Azure 診断の拡張機能](virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
           {
             "publisher": "Microsoft.Azure.Diagnostics",
@@ -361,4 +365,9 @@ ms.author: kundanap
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

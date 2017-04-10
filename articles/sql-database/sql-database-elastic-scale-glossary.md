@@ -1,63 +1,68 @@
 ---
-title: Elastic Database ツールの用語集 | Microsoft Docs
-description: エラスティック データベース ツールで使用される用語の説明
+title: "Elastic Database ツールの用語集 | Microsoft Docs"
+description: "エラスティック データベース ツールで使用される用語の説明"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 manager: jhubbard
 author: ddove
-editor: ''
-
+editor: 
+ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 10/24/2016
 ms.author: ddove
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
+
 
 ---
-# Elastic Database ツールの用語集
-Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。
+# <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
+Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。 このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。 
 
-これらの用語は、「[エラスティック データベース ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」と「[RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)」で使用されています。
+これらの用語は、「[Elastic Database ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」と「[RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)」で使用されています。
 
 ![Elastic Scale の用語][1]
 
-**データベース**: Azure SQL Database。
+**データベース**: Azure SQL Database。 
 
-**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。**[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)**と比較してください。
+**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。 「 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 **[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)**と比較してください。
 
-**グローバル シャード マップ**: **シャード セット**内のシャーディング キーとそれに対応するシャードの間のマップ。グローバル シャード マップは、**シャード マップ マネージャー**に格納されます。**ローカル シャード マップ**も参照。
+**グローバル シャード マップ**: **シャード セット**内のシャーディング キーとそれに対応するシャードの間のマップ。 グローバル シャード マップは、 **シャード マップ マネージャー**に格納されます。 **ローカル シャード マップ**も参照。
 
-**リスト シャード マップ**: シャーディング キーが個別にマップされたシャード マップ。**範囲シャード マップ**も参照。
+**リスト シャード マップ**: シャーディング キーが個別にマップされたシャード マップ。 **範囲シャード マップ**も参照。   
 
 **ローカル シャード マップ**: ローカル シャード マップは、シャードに格納され、シャードに存在するシャードレットのマッピングを含みます。
 
-**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス ("ファンアウト クエリ" とも呼ばれます) を使用して返されます。**データ依存ルーティング**も参照。
+**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス (「ファンアウト クエリ」とも呼ばれます) を使用して返されます。  **data dependent routing**が含まれます。
 
 **マルチテナント**と**シングルテナント**: これは、シングルテナント データベースとマルチテナント データベースを示します。
 
 ![Single and multi-tenant databases](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
-次に、**シャード化された**シングルテナント データベースとマルチテナント データベースを示します。
+次に、 **シャード化された** シングルテナント データベースとマルチテナント データベースを示します。 
 
 ![Single and multi-tenant databases](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**範囲シャード マップ**: 連続値の複数の範囲に基づくシャード分散戦略を持つシャード マップ。
+**範囲シャード マップ**: 連続値の複数の範囲に基づくシャード分散戦略を持つシャード マップ。 
 
-**参照テーブル**: シャード化されず、シャード間で複製されるテーブル。たとえば、郵便番号を参照テーブルに格納できます。
+**参照テーブル**: シャード化されず、シャード間で複製されるテーブル。 たとえば、郵便番号を参照テーブルに格納できます。 
 
-**シャード**: シャード化されたデータ セットのデータを格納する Azure SQL データベース。
+**シャード**: シャード化されたデータ セットのデータを格納する Azure SQL データベース。 
 
 **シャードの弾力性**: **水平スケーリング**と**垂直スケーリング**の両方を実行する機能。
 
-**シャード化テーブル**: シャード化されたテーブル。つまり、データがシャーディング キー値に基づいて複数のシャードに分散されたテーブル。
+**シャード化テーブル**: シャード化されたテーブル。つまり、データがシャーディング キー値に基づいて複数のシャードに分散されたテーブル。 
 
-**シャーディング キー**: シャード間でデータを分散する方法を決定する値です。値の型には、**int**、**bigint**、**varbinary**、**uniqueidentifier** のいずれかを使用できます。
+**シャーディング キー**: シャード間でデータを分散する方法を決定する値です。 値の型には、**int**、**bigint**、**varbinary**、**uniqueidentifier** のいずれかを使用できます。 
 
-**シャード セット**: シャード マップ マネージャーの同じシャード マップに属するシャードのコレクション。
+**シャード セット**: シャード マップ マネージャーの同じシャード マップに属するシャードのコレクション。  
 
-**シャードレット**: シャード上のシャーディング キーの単一の値に関連付けられたデータのすべて。シャードレットは、シャード化テーブルを再分散する際に使用できる最小データ移動単位です。
+**シャードレット**: シャード上のシャーディング キーの単一の値に関連付けられたデータのすべて。 シャードレットは、シャード化テーブルを再分散する際に使用できる最小データ移動単位です。 
 
 **シャード マップ**: シャーディング キーとそれに対応するシャードの間のマッピングのセット。
 
@@ -65,20 +70,20 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 ![マッピング][2]
 
-## 動詞
+## <a name="verbs"></a>動詞
 **水平スケーリング**: シャード マップに対するシャードの追加や削除を行ってシャードのコレクションをスケール アウト (またはスケール イン) する操作 (下図参照)。
 
 ![水平および垂直方向のスケーリング][3]
 
 **マージ**: 2 つのシャードから 1 つのシャードにシャードレットを移動し、それに応じてシャード マップを更新する操作。
 
-**シャードレットの移動**: 1 つのシャードレットを異なるシャードに移動する操作。
+**シャードレットの移動**: 1 つのシャードレットを異なるシャードに移動する操作。 
 
 **シャード**: 同じ構造を持つデータをシャーディング キーに基づいて複数のデータベースに水平方向に分割する操作。
 
-**分割**: 1 つのシャードから別の (通常は新しい) シャードに複数のシャードレットを移動する操作。シャーディング キーは分割ポイントとしてユーザーから提供されます。
+**分割**: 1 つのシャードから別の (通常は新しい) シャードに複数のシャードレットを移動する操作。 シャーディング キーは分割ポイントとしてユーザーから提供されます。
 
-**垂直スケーリング**: 個々のシャードのパフォーマンス レベルをスケール アップ (またはダウン) する操作。たとえば、シャードを Standard から Premium に変更 (結果、コンピューティング リソースが増大)。
+**垂直スケーリング**: 個々のシャードのパフォーマンス レベルをスケール アップ (またはダウン) する操作。 たとえば、シャードを Standard から Premium に変更 (結果、コンピューティング リソースが増大)。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -88,4 +93,8 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
 
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

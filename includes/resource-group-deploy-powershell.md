@@ -1,4 +1,4 @@
-## PowerShell でデプロイする方法
+## <a name="how-to-deploy-with-powershell"></a>PowerShell でデプロイする方法
 1. Azure アカウントにログインします。
    
           Add-AzureAccount
@@ -14,7 +14,7 @@
 3. Azure リソース マネージャー モジュールに切り替える
    
           Switch-AzureMode AzureResourceManager
-4. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。
+4. 既存のリソース グループがない場合は、新しいリソース グループを作成します。 ソリューションに必要なリソース グループと場所の名前を指定します。
    
         New-AzureResourceGroup -Name ExampleResourceGroup -Location "West US"
    
@@ -29,9 +29,9 @@
                     =======  ==========
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
-5. リソース グループに新しいデプロイメントを作成するには、**New-AzureResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。 
+5. リソース グループに新しいデプロイメントを作成するには、 **New-AzureResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。 パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。 
    
-   次のオプションを使用してパラメーターの値を提供できます。
+   次のオプションを使用してパラメーターの値を提供できます。 
    
    * インライン パラメーターを使用する
      
@@ -59,4 +59,8 @@
    
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

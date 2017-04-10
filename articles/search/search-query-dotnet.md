@@ -11,11 +11,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
 
 
 ---
@@ -28,16 +28,16 @@ ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
 > 
 > 
 
-この記事では、 [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)を使用してインデックスを照会する方法について説明します。
+この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用してインデックスを照会する方法について説明します。
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んで](search-what-is-data-import.md)います。
 
 この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。
 
-## <a name="i-identify-your-azure-search-services-query-apikey"></a>I. Azure Search サービスのクエリ API キーの識別
+## <a name="identify-your-azure-search-services-query-api-key"></a>Azure Search サービスのクエリ API キーの識別
 Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. サービスの API キーを探すには、 [Azure ポータル](https://portal.azure.com/)
+1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Search サービスのブレードに移動します。
 3. "キー" アイコンをクリックします。
 
@@ -48,7 +48,7 @@ Azure Search インデックスの作成は済んでいるので、.NET SDK を�
 
 インデックスを照会する目的では、いずれかのクエリ キーを使用できます。 クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
-## <a name="ii-create-an-instance-of-the-searchindexclient-class"></a>II. SearchIndexClient クラスのインスタンスの作成
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。 `SearchCredentials` は API キーをラップします。
 
 次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
@@ -62,7 +62,7 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 
 `SearchIndexClient` には `Documents` プロパティがあります。 このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
 
-## <a name="iii-query-your-index"></a>III. インデックスの照会
+## <a name="query-your-index"></a>インデックスの照会
 .NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。 このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。
 
 #### <a name="types-of-queries"></a>クエリの種類
@@ -127,7 +127,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv-handle-search-results"></a>IV. 検索結果の処理方法
+## <a name="handle-search-results"></a>検索結果の処理方法
 `Documents.Search` メソッドは、クエリの結果を含む `DocumentSearchResult` オブジェクトを返します。 前のセクションの例では、 `WriteDocuments` というメソッドを使用して検索結果をコンソールに出力しています。
 
 ```csharp
@@ -162,7 +162,6 @@ Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 Search the entire index for the term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
-
 ```
 
 上記のサンプル コードでは、コンソールを使って検索結果を出力します。 同様に、独自のアプリケーションに検索結果を表示する場合もあります。 ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、 [GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) を参照してください。
@@ -170,6 +169,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,41 +1,47 @@
 ---
-title: HDInsight での Hadoop Sqoop の使用 | Microsoft Docs
-description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
+title: "PowerShell と Azure HDInsight を使用して Sqoop ジョブを実行する | Microsoft Docs"
+description: "コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 12bcff92f7d2f877fa90b35fddf88266488c5f78
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# HDInsight で Azure PowerShell for Hadoop を使用した Sqoop ジョブの実行
+# <a name="run-sqoop-jobs-using-azure-powershell-for-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Hadoop を使用した Sqoop ジョブの実行
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する Sqoop ジョブを HDInsight で実行する方法について説明します。
 
 > [!NOTE]
-> この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。他のジョブ送信方法については、この記事の上部にあるタブ セレクターをクリックしてください。
+> この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他のジョブ送信方法については、この記事の上部にあるタブ セレクターをクリックしてください。
 > 
 > 
 
-### 前提条件
+### <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure PowerShell を実行できるワークステーション**。
   
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-* **HDInsight の Hadoop クラスター**。「[クラスターと SQL Database を作成する](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」を参照してください。
+* **HDInsight の Hadoop クラスター**。 「 [クラスターと SQL Database を作成する](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」を参照してください。
 
-## PowerShell を使用した Sqoop の実行
+## <a name="run-sqoop-using-powershell"></a>PowerShell を使用した Sqoop の実行
 次の PowerShell スクリプトでは、ソース ファイルを前処理し、Azure SQL Database にエクスポートします。
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -160,12 +166,12 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
     Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardOutput
     #endregion
 
-## 制限事項
+## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
 
-## 次のステップ
-ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
+## <a name="next-steps"></a>次のステップ
+ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [HDInsight での Oozie の使用](hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
@@ -173,4 +179,3 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0914_2016-->

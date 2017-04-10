@@ -1,5 +1,5 @@
-## Traffic Manager プロファイル
-Traffic Manager とその子エンドポイントのリソースは、Azure 内と Azure 外部のエンドポイントへ DNS のルーティングをできるようにします。このようなトラフィック分散は、ルーティング ポリシー メソッドによって管理されます。Traffic Manager では、エンドポイントの正常性を監視できます。また、エンドポイントの正常性に基づいて、トラフィックが適切に転送できるようにします。
+## <a name="traffic-manager-profile"></a>Traffic Manager プロファイル
+Traffic Manager とその子エンドポイントのリソースは、Azure 内と Azure 外部のエンドポイントへ DNS のルーティングをできるようにします。 このようなトラフィック分散は、ルーティング ポリシー メソッドによって管理されます。 Traffic Manager では、エンドポイントの正常性を監視できます。また、エンドポイントの正常性に基づいて、トラフィックが適切に転送できるようにします。 
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -10,17 +10,17 @@ Traffic Manager とその子エンドポイントのリソースは、Azure 内�
 | **パス** |監視パス |
 | **Endpoints** |エンドポイント リソースのコンテナー |
 
-### エンドポイント
-エンドポイントは、Traffic Manager プロファイルの子リソースです。Traffic Manager プロファイル リソースに構成されたポリシーに基づいてユーザー トラフィックが配信されるサービスまたは Web エンドポイントを表します。
+### <a name="endpoint"></a>エンドポイント
+エンドポイントは、Traffic Manager プロファイルの子リソースです。 Traffic Manager プロファイル リソースに構成されたポリシーに基づいてユーザー トラフィックが配信されるサービスまたは Web エンドポイントを表します。 
 
 | プロパティ | 説明 |
 | --- | --- |
 | **型** |エンドポイントの種類。有効な値は *Azure エンドポイント*、*外部エンドポイント*、および*入れ子になったエンドポイント*です。 |
-| **targetResourceId** |サービスまたは Web のエンドポイントのパブリック IP アドレスです。Azure のエンドポイントまたは外部のエンドポイントを指定できます。 |
+| **targetResourceId** |サービスまたは Web のエンドポイントのパブリック IP アドレスです。 Azure のエンドポイントまたは外部のエンドポイントを指定できます。 |
 | **重量** |トラフィック管理に使用されるエンドポイントの重み付けです。 |
 | **優先順位** |フェールオーバー アクションを定義するために使用されるエンドポイントの優先度です。 |
 
-Json 形式での Traffic Manager のサンプル:
+Json 形式での Traffic Manager のサンプル: 
 
         {
             "apiVersion": "[variables('tmApiVersion')]",
@@ -77,7 +77,11 @@ Json 形式での Traffic Manager のサンプル:
         }
 
 
-## その他のリソース
-詳細については、[Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx)を参照してください。
+## <a name="additional-resources"></a>その他のリソース
+詳細については、 [Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx) を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

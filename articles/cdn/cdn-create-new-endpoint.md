@@ -1,9 +1,9 @@
 ---
-title: "Azure CDN の使用 | Microsoft Docs"
-description: "このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。 このチュートリアルでは、新しい CDN プロファイルとエンドポイントの作成手順について説明します。"
+title: "Azure CDN の概要 | Microsoft Docs"
+description: "このトピックでは、Azure Content Delivery Network (CDN) を有効にする方法について説明します。 このチュートリアルでは、新しい CDN プロファイルとエンドポイントの作成手順について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
+ms.sourcegitcommit: bdf6e27463fcc6186a3b15a55653fa468da91bdc
+ms.openlocfilehash: d263e911d0d0b3cdc1e48e300a3c8a0994b38c39
 
 
 ---
-# <a name="using-azure-cdn"></a>Azure CDN の使用
+# <a name="getting-started-with-azure-cdn"></a>Azure CDN の概要
 このトピックでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする手順を紹介しています。
 
 > [!IMPORTANT]
@@ -32,7 +32,7 @@ ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
 CDN プロファイルは、CDN エンドポイントのコレクションです。  各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。  複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
 > [!NOTE]
-> 既定では、1 つの Azure サブスクリプションは 8 つの CDN プロファイルに限定されます。 各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
+> 既定では、1 つの Azure サブスクリプションは&8; つの CDN プロファイルに限定されます。 各 CDN プロファイルは&10; 個の CDN エンドポイントに制限されます。
 > 
 > CDN の価格は、CDN プロファイル レベルで適用されます。 Azure CDN の価格レベルを組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 > 
@@ -67,7 +67,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
    > Azure Storage や Web Apps など、配信元の種類によっては、ホスト ヘッダーを配信元のドメインに合わせる必要があります。 ホスト ヘッダーがそのドメインと異なっていることをご利用の配信元で要求される場合以外は、既定値をそのまま使用してください。
    > 
    > 
-8. **[プロトコル]** と **[配信元ポート]** に、配信元のリソースへのアクセスに使用するプロトコルとポートを指定します。  少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。
+8. **[プロトコル]** と **[配信元ポート]** に、配信元のリソースへのアクセスに使用するプロトコルとポートを指定します。  少なくとも&1; つのプロトコル (HTTP または HTTPS) を選択する必要があります。
    
    > [!NOTE]
    > **[配信元ポート]** は、エンドポイントが配信元から情報を取得するときに使用されるポートにのみ影響します。  エンドポイントそのものは、 **配信元ポート**に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。  
@@ -86,7 +86,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
     ![CDN エンドポイント][cdn-endpoint-success]
     
     > [!IMPORTANT]
-    > 登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントは、すぐには利用できません。   <b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。  <b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
+    > 登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントは、すぐには利用できません。  <b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は&1; 分以内で完了します。  <b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
     > 
     > エンドポイントの構成が POP に反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答コードがユーザーに表示されます。  エンドポイントを作成してから数時間が経過しても、404 が応答として返される場合は、「 [404 状態を返す CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)」を参照してください。
     > 
@@ -106,6 +106,6 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

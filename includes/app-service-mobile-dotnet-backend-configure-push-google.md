@@ -1,12 +1,12 @@
-バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に一致する手順を使用します。
+バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に応じた手順を使用します。
 
-### <a name="dotnet"></a>.NET バックエンド プロジェクト
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージを管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、**[インストール]** をクリックします。これにより、Notification Hubs のクライアント ライブラリがインストールされます。
+### <a name="a-namedotnetanet-back-end-project"></a><a name="dotnet"></a>.NET バックエンド プロジェクト
+1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、**[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. Controllers フォルダーで、TodoItemController.cs を開き、次の `using` ステートメントを追加します。
-   
+
         using Microsoft.Azure.Mobile.Server.Config;
         using Microsoft.Azure.NotificationHubs;
-3. `PostTodoItem` メソッドを次のコードに置き換えます。
+3. `PostTodoItem` メソッドを次のコードに置き換えます。  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -14,7 +14,7 @@
             // Get the settings for the server project.
             HttpConfiguration config = this.Configuration;
 
-            MobileAppSettingsDictionary settings = 
+            MobileAppSettingsDictionary settings =
                 this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
             // Get the Notification Hubs credentials for the Mobile App.
@@ -27,7 +27,7 @@
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
             // Android payload
-            var androidNotificationPayload = "{ "data" : {"message":"" + item.Text + ""}}";
+            var androidNotificationPayload = "{ \"data\" : {\"message\":\"" + item.Text + "\"}}";
 
             try
             {
@@ -46,30 +46,30 @@
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-1. サーバー プロジェクトを発行します。
+4. サーバー プロジェクトを発行します。
 
-### <a name="nodejs"></a>Node.js バックエンド プロジェクト
-1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure ポータルでオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+### <a name="a-namenodejsanodejs-back-end-project"></a><a name="nodejs"></a>Node.js バックエンド プロジェクト
+1. これをまだ行っていない場合は、[クイック スタート プロジェクト](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)をダウンロードするか、[Azure Portal でオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
-   
+
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
         logger = require('azure-mobile-apps/src/logger');
-   
+
         var table = azureMobileApps.table();
-   
+
         table.insert(function (context) {
-        // For more information about the Notification Hubs JavaScript SDK, 
+        // For more information about the Notification Hubs JavaScript SDK,
         // see http://aka.ms/nodejshubs
         logger.info('Running TodoItem.insert');
-   
+
         // Define the GCM payload.
         var payload = {
             "data": {
                 "message": context.item.text
             }
         };   
-   
+
         // Execute the insert.  The insert returns the results as a Promise,
         // Do the push as a post-execute action within the promise flow.
         return context.execute()
@@ -92,10 +92,13 @@
                 logger.error('Error while running context.execute: ', error);
             });
         });
-   
+
         module.exports = table;  
-   
+
     これにより、新しい ToDo 項目が挿入されたときには item.text を含む GCM 通知が送信されます。
 3. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
 
-<!---HONumber=AcomDC_1223_2015-->
+
+<!--HONumber=Dec16_HO2-->
+
+

@@ -1,142 +1,166 @@
 ---
-title: Use the Azure portal to create an IoT Hub | Microsoft Docs
-description: An overview of how to create and manage Azure IoT hubs through the Azure portal
+title: "Azure Portal を使用して IoT Hub を作成する | Microsoft Docs"
+description: "Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。"
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: d88c6e8d4c0c5aecbdbcf6262da8d919ad3b325d
+ms.lasthandoff: 01/31/2017
+
 
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Create an IoT hub using the Azure portal
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>Introduction
-This article describes how to find the IoT Hub service in the portal, and how to create and manage IoT hubs.
+## <a name="introduction"></a>はじめに
+この記事では、Azure Portal で IoT Hub サービスを検索する方法と、IoT hub を作成して管理する方法について説明します。
 
-## <a name="where-to-find-iot-hubs"></a>Where to find IoT hubs
-There are various places where you can find IoT hubs.
+## <a name="where-to-find-iot-hubs"></a>IoT Hub の検索場所
+さまざまな場所で IoT hub を見つけることができます。
 
-1. **+ New**: **Azure IoT Hub** is an IoT service, and can be found in the category **Internet of Things**, under **+ New**, similar to other services.
-2. IoT hubs can also be accessed through the Marketplace as the hero service under **Internet of Things**.
+1. **[+ 新規]**: **Azure IoT Hub** は IoT サービスであり、他のサービスと同じように、**[+ 新規]** にある **[モノのインターネット]** カテゴリで見つけることができます。
+2. また、IoT Hub には、 **[モノのインターネット]**のヒーロー サービスである Marketplace からアクセスできます。
 
-## <a name="create-an-iot-hub"></a>Create an IoT hub
-You can create an IoT hub using the following methods:
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
+IoT Hub の作成には、次の方法を使用できます。
 
-* Creating an IoT hub through the **+ New** option leads to the blade shown in the next screen shot. The steps for creating the IoT hub through this method and through the marketplace are identical.
-* Creating an IoT hub through the Marketplace: Clicking **Create** opens a blade that is identical to the previous blade for the **+New** experience. The next sections list the several steps involved in creating an IoT hub.
+* **[+ 新規]** オプションを使用して IoT Hub を作成すると、次のスクリーン ショットに示すブレードが表示されます。 この方法および Marketplace を使用して IoT Hub を作成する手順は同じです。
+* Marketplace を使用した IoT Hub の作成: **[作成]** をクリックすると、ブレードが開きます。これは、**[+ 新規]** の場合と同じものです。 次のセクションでは、IoT Hub の作成に関連するいくつかの手順を示します。
 
-### <a name="choose-the-name-of-the-iot-hub"></a>Choose the name of the IoT hub
-To create an IoT hub, you must name the hub. This name must be unique across the hubs. No duplication of hubs is allowed on the back end, so it is recommended that this hub is named as uniquely as possible.
+### <a name="choose-the-name-of-the-iot-hub"></a>IoT Hub の名前の選択
+IoT Hub を作成するには、IoT ハブに名前を付ける必要があります。 この名前は、IoT ハブ全体で一意にする必要があります。 ソリューション バックエンドではハブの重複は許可されないため、このハブの名前はできるだけ一意にすることをお勧めします。
 
-### <a name="choose-the-pricing-tier"></a>Choose the pricing tier
-You can choose from four tiers: **Free**, **Standard 1** and **Standard 2**, and **Standard S3**. The free tier allows only 500 devices to be connected to the IoT hub and up to 8,000 messages per day.
+### <a name="choose-the-pricing-tier"></a>価格レベルの選択
+**Free**、**Standard 1**、**Standard 2**、**Standard S3** の 4 つのレベルから選択することができます。 Free レベルでは、IoT Hub に接続できるデバイスは 500 個のみで、1 日に許可されるメッセージ数は最大 8,000 件です。
 
-**Standard S1**: IoT Hubs S1 edition is designed for IoT solutions that have a large number of devices generating relatively small amounts of data per device. Each unit of the S1 edition allows up to 400,000 messages per day across all connected devices.
+**Standard S1**: IoT Hub S1 エディションは、デバイスごとの生成データが比較的少量であるデバイスが多数存在する IoT ソリューション用に設計されています。 S1 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 400,000 メッセージを送信できます。
 
-**Standard S2**: IoT Hub S2 edition is designed for IoT solutions in which devices generate large amounts of data. Each unit of the S2 edition allows up to 6 million messages per day between all connected devices.
+**Standard S2**: IoT Hub S2 エディションは、デバイスが大量のデータを生成する IoT ソリューション用に設計されています。 S2 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 600 万メッセージを送信できます。
 
-**Standard S3**: IoT Hub S3 edition is designed for IoT solutions that generate large amounts of data. Each unit of the S3 edition allows up to 300 million messages per day between all connected devices.
+**Standard S3**: IoT Hub S3 エディションは、大量のデータが生成される IoT ソリューションに適しています。 S3 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 3 億件のメッセージを送信できます。
 
 ![][4]
 
 > [!NOTE]
-> IoT Hub only allows one free hub per subscription.
+> IoT Hub で許可される無料ハブは Azure サブスクリプションごとに&1; つのみです。
 > 
 > 
 
-### <a name="iot-hub-units"></a>IoT hub units
-An IoT hub unit includes a certain number of messages per day. The total number of messages supported for this hub is the number of units multiplied by the number of messages per day for that tier. For example, if you want the IoT hub to support ingress of 700,000 messages, you choose two S1 tier units.
+### <a name="iot-hub-units"></a>IoT Hub ユニット
+ユニットごとに許可される&1; 日あたりのメッセージの数は、ハブの価格レベルによって決まります。 たとえば、IoT Hub で 700,000 件の受信メッセージをサポートする場合は、S1 レベルのユニットを 2 つ選択します。
 
-### <a name="device-to-cloud-partitions-and-resource-group"></a>Device to cloud partitions and resource group
-You can change the number of partitions for an IoT hub. Default partitions are set to 4; however, you can choose a different number of partitions from a drop-down list.
+### <a name="device-to-cloud-partitions-and-resource-group"></a>デバイスとクラウド間のパーティションおよびリソース グループ
+IoT Hub のパーティションの数を変更することができます。 既定のパーティションは 4 に設定されますが、ドロップダウン リストからパーティションの別の数を選択できます。
 
-For resource groups, you do not need to explicitly create an empty resource group. When creating a resource, you can choose to either create a new resource group or use an existing resource group.
+リソース グループについては、明示的に空のリソース グループを作成する必要はありません。 リソースを作成するときは、新しいリソース グループを作成することも、既存のリソース グループを使用することもできます。
 
 ![][5]
 
-### <a name="choose-subscriptions"></a>Choose subscriptions
-Azure IoT Hub automatically shows the list of subscriptions to which the user account is linked. You can choose one of the options here to associate the IoT hub with that subscription.
+### <a name="choose-subscriptions"></a>サブスクリプションの選択
+Azure IoT Hub は、ユーザー アカウントがリンクされている Azure サブスクリプションのリストを自動的に表示します。 IoT Hub をその Azure サブスクリプションに関連付ける場合は、ここでオプションのいずれかを選択できます。
 
-### <a name="choose-the-location"></a>Choose the location
-The location option provides a list of the regions in which IoT Hub is offered. IoT Hub is available to deploy in the following locations: Australia East, Australia Southeast, Asia East, Asia Southeast, Europe North, Europe West, Japan East, Japan West, US East, US West.
+### <a name="choose-the-location"></a>場所の選択
+場所のオプションでは、IoT Hub が提供されるリージョンのリストが提供されます。 IoT Hub は、オーストラリア東部、オーストラリア南東部、アジア東部、アジア南東部、北ヨーロッパ、西ヨーロッパ、東日本、西日本、米国東部、米国西部にデプロイできるようになっています。
 
-### <a name="create-the-iot-hub"></a>Create the IoT hub
-When all previous steps are complete, the IoT hub is ready to be created. Click **Create** to start the back-end process of creating this IoT hub with the specific options, and to deploy it to the location specified.
+### <a name="create-the-iot-hub"></a>IoT Hub の作成
+前の手順がすべて完了したら、IoT Hub を作成することができます。 **[作成]** をクリックし、特定のオプションでこの IoT Hub を作成するバックエンド プロセスを開始して、指定した場所にデプロイします。
 
-It can take a few minutes for the IoT hub to be created as it takes time for the back-end deployment to occur in the appropriate location servers.
+適切な場所のサーバーでのバックエンド デプロイメントには時間がかかるため、IoT Hub の作成には数分かかる場合があります。
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Change the settings of the IoT hub
-You can change the settings of an existing IoT hub after it is created from the IoT Hub blade.
+## <a name="change-the-settings-of-the-iot-hub"></a>IoT Hub の設定変更
+IoT Hub ブレードから IoT Hub を作成したら、既存の設定を変更できます。
 
 ![][8]
 
-**Shared Access Policies**: These policies define the permissions for devices and services to connect to IoT Hub. You can access these policies by clicking **Shared Access Policies** under **General**. In this blade, you can either modify existing policies or add a new policy.
+**共有アクセス ポリシー**: これらのポリシーは、IoT Hub に接続するデバイスとサービスのアクセス許可を定義します。 これらのポリシーには、**[一般]** にある **[共有アクセス ポリシー]** をクリックすることでアクセスできます。 このブレードでは、既存のポリシーを変更したり、新しいポリシーを追加したりすることができます。
 
-### <a name="create-a-policy"></a>Create a policy
-* Click **Add** to open a blade. Here you can enter the new policy name and the permissions that you want to associate with this policy, as shown in the following figure.
+### <a name="create-a-policy"></a>ポリシーの作成
+* **[追加]** をクリックしてブレードを開きます。 このブレードで、次の図に示すように、新しいポリシーの名前と、このポリシーに関連付けるアクセス許可を入力できます。
   
-    There are several permissions that can be associated with these shared policies. The first two policies, **Registry read** and **Registry write**, grant read and write access rights to the device identity store or the identity registry. Choosing the write option automatically chooses the read option as well.
+    これらの共有ポリシーに関連付けることができるアクセス許可はいくつかあります。 最初の&2; つのポリシーの **[レジストリの読み取り]** と **[レジストリの書き込み]** は、デバイス ID ストアまたは ID レジストリに対する読み取りと書き込みのアクセス権を付与するためのものです。 書き込みオプションを選択すると、読み取りオプションも自動的に選択されます。
   
-    The **Service connect** policy grants permission to access the cloud-side endpoints such as the consumer group for services connecting to the IoT hub. The **Device connect** policy grants permissions for sending and receiving messages on the device-side endpoints of the IoT hub.
-* Click **Create** to add this newly created policy to the existing list.
+     **サービス接続** ポリシーは、IoT Hub に接続するサービスのコンシューマー グループなどのクラウド側エンドポイントへのアクセス許可を付与します。 **デバイス接続** ポリシーは、IoT Hub のデバイス側のエンドポイントにメッセージを送受信するためのアクセス許可を付与します。
+* **[作成]** をクリックして、この新しく作成されたポリシーを既存のリストに追加します。
 
 ![][10]
 
-## <a name="messaging"></a>Messaging
-Click **Messaging** to display a list of messaging properties for the IoT hub that is being modified. There are two main types of properties that you can modify or copy: **Cloud to Device** and **Device to Cloud**.
-
-* **Cloud to Device** settings: This setting has two subsettings: **Cloud to Device TTL** (time-to-live) and **Retention time** for the messages. When the IoT hub is first created, both these settings are created with a default value of one hour. To adjust these values, use the sliders or type the values.
-* **Device to Cloud** settings: This setting has several subsettings, some of which are named/assigned when the IoT hub is created and can only be copied to other subsettings that are customizable. These settings are listed in the next section.
-
-**Partitions**: This value is set when the IoT hub is created and can be changed through this setting.
-
-**Event Hub compatible name and endpoint**: When the IoT hub is created, an Event Hub is created internally that you may need access to under certain circumstances. This Event Hub name and endpoint cannot be customized but is available for use via the **Copy** button.
-
-**Retention Time**: Set to one day by default but can be customized to other values using the drop-down list. This value is in days for Device to Cloud and not in hours, as is the similar setting for Cloud to Device.
-
-**Consumer Groups**: Consumer Groups are a setting similar to other messaging systems that can be used to pull data in specific ways to connect other applications or services to IoT Hub. Every IoT hub is created with a default consumer group. However, you can add or delete consumer groups to your IoT hubs.
-
-> [!NOTE]
-> The default consumer group cannot be edited or deleted.
-> 
-> 
+## <a name="endpoints"></a>エンドポイント
+**[エンドポイント]** をクリックして、変更対象となる IoT Hub のエンドポイントの一覧を表示します。 エンドポイントには、IoT Hub に組み込まれているエンドポイントと、IoT Hub を作成した後に追加したエンドポイントの&2; 種類があります。
 
 ![][11]
 
-## <a name="pricing-and-scale"></a>Pricing and scale
-The pricing of an existing IoT hub can be changed through the **Pricing** settings, with the following exceptions:
+### <a name="built-in-endpoints"></a>組み込みのエンドポイント
+組み込みのエンドポイントには、**クラウドからデバイスへのフィードバック**と**イベント**の&2; つがあります。
 
-* In the current implementation, an IoT hub with a free SKU cannot change tiers to one of the paid SKUs, or vice versa.
-* There can only be one free tier IoT hub in the subscription.
+* **クラウドからデバイスへのフィードバック**設定: この設定には、メッセージに関する **[クラウドからデバイスの TTL]** (有効期限) と **[保存期間]** (時間単位) の&2; つのサブ設定があります。 IoT Hub を最初に作成したときは、どちらも既定値の&1; 時間に設定されます。 これらの設定を調整するには、スライダーを使用するか、値を入力します。
+* **イベント**設定: この設定には複数のサブ設定があり、その中には読み取り専用のものもあります。 これらの設定を以下に示します。
+
+    * **パーティション**: IoT Hub の作成時に既定値が設定されます。 この設定を使用してパーティションの数を変更できます。
+
+    * **イベント ハブと互換性のある名前とエンドポイント**: IoT Hub の作成時に、イベント ハブが内部的に作成され、ユーザーは特定の状況ではアクセスが必要な場合があります。 イベント ハブと互換性のある名前とエンドポイントの値をカスタマイズすることはできませんが、**[コピー]** をクリックすることで値をコピーできます。
+
+    * **保存期間**: 既定で&1; 日に設定されますが、ドロップダウン リストを使用して値を変更できます。 デバイスからクラウド設定では、この値は日数です。
+
+    * **コンシューマー グループ**: コンシューマー グループは、他のアプリケーションやサービスを IoT Hub に接続する特定の方法でデータをプルするために使用できる他のメッセージング システムと同様の設定です。 すべての IoT Hub は、既定のコンシューマー グループを使用して作成されます。 ただし、この設定を使用して、コンシューマー グループを IoT Hub に追加したり、削除したりすることができます。
+
+    > [!NOTE]
+    > 既定のコンシューマー グループを編集したり削除したりすることはできません。
+    > 
+    > 
+
+### <a name="custom-endpoints"></a>カスタム エンドポイント
+ポータルを使用して、IoT Hub にカスタム エンドポイントを追加できます。 **[エンドポイント]** ブレードで、上部にある **[追加]** をクリックして **[エンドポイントの追加]** ブレードを開きます。 必要な情報を入力し、**[OK]** をクリックします。 メインの **[エンドポイント]** ブレードに、カスタム エンドポイントが表示されます。
+
+![][13]
+
+カスタム エンドポイントの詳細については、「[リファレンス - IoT Hub エンドポイント][lnk-devguide-endpoints]」を参照してください。
+
+## <a name="routes"></a>ルート
+IoT Hub がデバイスからクラウドへのメッセージをディスパッチする方法を管理するには、**[ルート]** をクリックします。
+
+![][14]
+
+IoT Hub にルートを追加するには、**[ルート]*** ブレードの上部にある **[追加]** をクリックし、必要な情報を入力して、**[OK]** をクリックします。メインの **[ルート]** ブレードにルートが表示されます。ルートを編集するには、一覧でルートをクリックします。ルートを有効にするには、一覧でルートをクリックし、**有効/無効**の切り替えを **[オフ]** に設定します。ブレード下部の **[OK]** をクリックして変更を保存します。
+
+![][15]
+
+## <a name="pricing-and-scale"></a>価格とスケール
+既存の IoT Hub の価格は **[価格]** 設定を介して変更できますが、次の例外があります。
+
+* 現在の実装では、無料の SKU の IoT Hub のレベルを、有料の SKU のいずれかに変更することはできません。その逆も同じです。
+* Azure サブスクリプションで許可される Free レベルの IoT Hub は&1; つのみです。
 
 ![][12]
 
-Moving from a higher tier (S2 or S3) to lower tier (S1 or S2) is allowed only when the number of messages sent for that day are not in conflict. For example, if the number of messages per day exceeds 400,000, then the tier for the IoT hub can be changed. However, if you change to the S1 tier then the hub is throttled for that day.
+高レベル (S2 または S3) から低レベル (S1 または S2) への移行は、当該日に送信されるメッセージの数が競合していない場合にのみ許可されます。 たとえば、1 日あたりのメッセージの数が 400,000 件を超える場合、IoT Hub のレベルを変更できます。 ただし、S1 レベルに変更すると、その IoT ハブは当該日に制限を受けます。
 
-## <a name="delete-the-iot-hub"></a>Delete the IoT hub
-You can browse to the IoT hub you want to delete by clicking **Browse**, and then choosing the appropriate hub to delete. Click the **Delete** button below the hub name to delete the hub.
+## <a name="delete-the-iot-hub"></a>IoT Hub の削除
+削除する IoT Hub は、 **[参照]**をクリックしてから、削除対象の適切なハブを選択することで参照できます。 IoT ハブ名の下の **[削除]** をクリックすると、その IoT ハブが削除されます。
 
-## <a name="next-steps"></a>Next steps
-Follow these links to learn more about managing Azure IoT Hub:
+## <a name="next-steps"></a>次のステップ
+Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-* [Bulk manage IoT devices][lnk-bulk]
-* [Usage metrics][lnk-metrics]
-* [Operations monitoring][lnk-monitor]
+* [IoT デバイスの一括管理][lnk-bulk]
+* [IoT Hub メトリック][lnk-metrics]
+* [操作の監視][lnk-monitor]
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [Developer guide][lnk-devguide]
-* [Simulating a device with the Gateway SDK][lnk-gateway]
-* [Secure your IoT solution from the ground up][lnk-securing]
+* [IoT Hub 開発者ガイド][lnk-devguide]
+* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+* [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png
 [5]: ./media/iot-hub-create-through-portal/location1.png
@@ -144,6 +168,9 @@ To further explore the capabilities of IoT Hub, see:
 [10]: ./media/iot-hub-create-through-portal/shared-access-policies.png
 [11]: ./media/iot-hub-create-through-portal/messaging-settings.png
 [12]: ./media/iot-hub-create-through-portal/pricing-error.png
+[13]: ./media/iot-hub-create-through-portal/endpoint-creation.png
+[14]: ./media/iot-hub-create-through-portal/routes-list.png
+[15]: ./media/iot-hub-create-through-portal/route-edit.png
 
 [lnk-bulk]: iot-hub-bulk-identity-mgmt.md
 [lnk-metrics]: iot-hub-metrics.md
@@ -152,8 +179,5 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
-
-
-<!--HONumber=Oct16_HO2-->
-
+[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 88c0bd67562111baa5aa5882b7c1a4ef52bc6dd2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: df1a5b2c200b7fa69961247ac036ee35fd14f54d
 
 
 ---
@@ -87,6 +87,6 @@ Azure Site Recovery には、3 つの基本的なレプリケーション シナ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

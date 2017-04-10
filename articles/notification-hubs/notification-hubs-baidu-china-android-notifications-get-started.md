@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Baidu で Azure Notification H
 services: notification-hubs
 documentationcenter: android
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -43,16 +44,16 @@ Baidu を使用するには、Baidu アカウントが必要です。 既にア�
 
 1. [Baidu ポータル]で **[登录]** (**ログイン**) のリンクをクリックします。 **[立即注册]** をクリックしてアカウントの登録プロセスを開始します。
    
-       ![][1]
+   ![][1]
 2. 電話番号/電子メール アドレス、パスワード、認証コードなどの必要情報を入力し、 **[Signup]**をクリックします。
    
-       ![][2]
+   ![][2]
 3. 入力した電子メール アドレスに、Baidu アカウントをアクティブ化するリンクが記載された電子メールが届きます。
    
-       ![][3]
+   ![][3]
 4. 電子メール アカウントにログインし、Baidu のアクティブ化メールを開き、リンクをクリックして Baidu アカウントをアクティブ化します。
    
-       ![][4]
+   ![][4]
 
 アクティブ化した Baidu アカウントを取得したら、 [Baidu ポータル]にログインします。
 
@@ -60,7 +61,7 @@ Baidu を使用するには、Baidu アカウントが必要です。 既にア�
 1. [Baidu ポータル]にログインしたら、**[更多>>]** (**詳細**) をクリックします。
    
       ![][5]
-2. **[站长与开发者服务] (Web 管理者および開発者向けサービス)** セクションを下にスクロールし、**[百度开放云平台]** (**Baidu オープン クラウド プラットフォーム**) をクリックします。
+2. **[站长与开发者服务] \(Web 管理者および開発者向けサービス)** セクションを下にスクロールし、**[百度开放云平台]** \(**Baidu オープン クラウド プラットフォーム**) をクリックします。
    
       ![][6]
 3. 次のページで、右上にある **[开发者服务]** (**開発者向けサービス**) をクリックします。
@@ -86,7 +87,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 1. [Baidu ポータル]にログインしたら、**[更多>>]** (**詳細**) をクリックします。
    
       ![][5]
-2. **[站长与开发者服务]** (**Web 管理者および開発者向けサービス**) セクションを下にスクロールし、**[百度开放云平台]** (**Baidu オープン クラウド プラットフォーム**) をクリックします。
+2. **[站长与开发者服务]** \(**Web 管理者および開発者向けサービス**) セクションを下にスクロールし、**[百度开放云平台]** \(**Baidu オープン クラウド プラットフォーム**) をクリックします。
    
       ![][6]
 3. 次のページで、右上にある **[开发者服务]** (**開発者向けサービス**) をクリックします。
@@ -446,9 +447,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

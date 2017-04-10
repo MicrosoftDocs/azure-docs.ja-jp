@@ -11,4 +11,8 @@
 | **テクニカル ドキュメント** |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **FAQ** |[VPN Gateway に関する FAQ](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN Gateway に関する FAQ](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute の FAQ](../articles/expressroute/expressroute-faqs.md) |
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,10 +1,25 @@
 ---
+title: "Azure Mobile Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドしてホストする方法について説明します。"
+services: app-service\mobile
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
+ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
 
 ---
-# Mobile Apps Documentation
+# <a name="mobile-apps-documentation"></a>Mobile Apps ドキュメント
 
-API Management helps organizations publish APIs to external, partner and internal developers to unlock the potential of their data and services. Businesses everywhere are looking to extend their operations as a digital platform, creating new channels, finding new customers and driving deeper engagement with existing ones. API Management provides the core competencies to ensure a successful API program through developer engagement, business insights, analytics, security and protection.
+Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドする方法について説明します。 チュートリアル、ビデオ、クライアント SDK ドキュメントなどで、モバイル アプリ用のバックエンドを構築およびホストする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +33,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Mobile Apps</h3>
+                        <h3>Mobile Apps についての詳細情報</h3>
                     </div>
                 </div>
             </div>
@@ -26,7 +41,7 @@ API Management helps organizations publish APIs to external, partner and interna
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -36,7 +51,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>App Service のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +69,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Andriod app</h3>
+                        <h3>Android アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +87,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Apache Cordova app</h3>
+                        <h3>Apache Cordova アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +105,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an iOS app</h3>
+                        <h3>iOS アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +123,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Windows app</h3>
+                        <h3>Windows アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -126,7 +141,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.Andriod app</h3>
+                        <h3>xamarin.Android アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -144,7 +159,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.Forms app</h3>
+                        <h3>xamarin.Forms アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -162,7 +177,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.iOS app</h3>
+                        <h3>Xamarin.iOS アプリ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -173,16 +188,29 @@ API Management helps organizations publish APIs to external, partner and interna
 
 ---
 
-## Reference
-
-### .NET
-[Mobile Apps .NET Reference](https://msdn.microsoft.com/library/azure/dn961176)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-mobile.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Mobile Apps Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET バックエンド SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js バックエンド SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android クライアント SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-ios-client/">iOS クライアント SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-js-client/">JavaScript/Cordova クライアント SDK</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt419521.aspx">Windows/Xamarin クライアント SDK</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+</ul>
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

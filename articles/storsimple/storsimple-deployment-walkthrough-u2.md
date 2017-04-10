@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
+ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: f71c7e080b2c0b382f241d55b9ca0c7507c24a88
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>オンプレミスの StorSimple デバイス (Update 2) のデプロイ
+# <a name="deploy-your-on-premises-storsimple-device-update-2"></a>オンプレミスの StorSimple デバイス (Update 2) のデプロイ
 > [!div class="op_single_selector"]
 > * [Update 2 以降 ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -56,7 +56,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
 | [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key) |このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
 | [手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用して、デバイスをネットワークに接続して Azure に登録し、セットアップを完了します。 |
-| [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setupd)</br>[省略可能: StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
+| [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[省略可能: StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
 | [手順 5. ボリューム コンテナーを作成する](#step-5-create-a-volume-container) |ボリュームをプロビジョニングするためのコンテナーを作成します。 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
 | [手順 6. ボリュームを作成する](#step-6-create-a-volume) |サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
 | [手順 7. ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
@@ -95,7 +95,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 * 「 [StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
 
-## <a name="stepbystep-deployment"></a>デプロイの手順
+## <a name="step-by-step-deployment"></a>デプロイの手順
 StorSimple デバイスをデータセンター内にデプロイするには、次の詳細な手順を実行します。
 
 ## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
@@ -224,6 +224,6 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

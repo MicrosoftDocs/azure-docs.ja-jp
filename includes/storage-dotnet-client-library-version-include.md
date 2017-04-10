@@ -1,12 +1,7 @@
 > [!NOTE]
-> このチュートリアルを完了するには、.NET 用の Azure ストレージ クライアント ライブラリの最新バージョンを使用することをお勧めします。 ライブラリの最新バージョン 7.x は、 [NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/)でダウンロードできます。 クライアント ライブラリのソースは、 [GitHub](https://github.com/Azure/azure-storage-net)で入手できます。
+> このチュートリアルを完了するには、.NET 用の Azure ストレージ クライアント ライブラリの最新バージョンを使用することをお勧めします。 ダウンロードできる最新版については、[NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/) を参照してください。 クライアント ライブラリのソース コードは、[GitHub](https://github.com/Azure/azure-storage-net) で入手できます。
 > 
-> ストレージ エミュレーターを使用している場合は、バージョン 7.x のクライアント ライブラリではバージョン 4.3 以降のストレージ エミュレーターが必要であることに注意してください。 
+> ストレージ エミュレーターを使用している場合は、[クライアント ライブラリの Readme](https://github.com/Azure/azure-storage-net/blob/master/README.md) でバージョン要件を確認してください。 ストレージ エミュレーターで .NET 用ストレージ クライアント ライブラリを使用するには、対応する Azure ストレージ エミュレーターの最小バージョンを使用する必要があります。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

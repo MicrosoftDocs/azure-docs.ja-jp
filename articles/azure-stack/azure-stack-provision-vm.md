@@ -1,6 +1,6 @@
 ---
-title: Provision a VM in Azure Stack (tenant) | Microsoft Docs
-description: As a tenant, learn how to provision a VM in Azure Stack.
+title: Provision a VM in Azure Stack | Microsoft Docs
+description: Learn how to provision a VM in Azure Stack.
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,21 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2016
+ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 0aee1c31876060777c32c768e0767a39de86cb2a
-ms.openlocfilehash: 3fcd07c74a70d39b3fb8a68819fccf88a01bb1ee
+ms.sourcegitcommit: 33592f5cf36308eb900b555c9ae1d583dff91e03
+ms.openlocfilehash: 6e396679adce46107a72d576698f0a2ad047295b
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="provision-a-virtual-machine"></a>Provision a virtual machine
 As an administrator, you can create virtual machines to evaluate resources before offering them in plans.
 
-## <a name="provision-a-virtual-machine"></a>Provision a virtual machine
-1. On the Azure Stack POC computer, log in to `https://portal.azurestack.local` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Virtual machines** > **WindowsServer-2012-R2-Datacenter**.  
+> [!NOTE]
+> Before you can provision virtual machines, you must [add the Windows Server 2016 Eval image to the Azure Stack marketplace](azure-stack-add-default-image.md).
+> 
+> 
 
-   ![](media/azure-stack-provision-vm/image01.png)
+## <a name="provision-a-virtual-machine"></a>Provision a virtual machine
+1. On the Azure Stack POC computer, log in to `https://portal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Virtual machines** > **Windows Server 2016 Datacenter Eval**.  
+
 2. In the **Basics** blade, type a **Name**, **User name**, and **Password**. For **VM disk type**, choose **HDD**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
 3. In the **Choose a size** blade, click **A1 Basic**, and then click **Select**.  
 4. In the **Settings** blade, click **Virtual network**. In the **Choose virtual network** blade, click **Create new**. In the **Create virtual network** blade, accept all the defaults, and click **OK**. In the **Settings** blade, click **OK**.
@@ -39,9 +44,4 @@ As an administrator, you can create virtual machines to evaluate resources befor
 
 ## <a name="next-steps"></a>Next steps
 [Storage accounts](azure-stack-provision-storage-account.md)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -12,20 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 02/19/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86a4bc7ea89416f2c67626439f08fa615a2e6511
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 7fd5c4edadc6d9cc070dff937a963f9a83ec66c2
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="secure-your-cloud-and-onpremises-resources-using-azure-multifactor-authentication-server-with-ad-fs-in-windows-server-2012-r2"></a>Azure Multi-Factor Authentication Server と Windows Server 2012 R2 の AD FS を使用したクラウドとオンプレミスのリソースのセキュリティ保護
-Active Directory フェデレーション サービス (AD FS) を使用しており、クラウドまたはオンプレミスのリソースをセキュリティで保護したい場合には、Azure Multi-Factor Authentication Server を構成し、AD FS と連携させることができます。 この構成を行うことで、重要なエンドポイントの 2 段階認証がトリガーされます。
+# <a name="configure-azure-multi-factor-authentication-server-to-work-with-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
+Active Directory フェデレーション サービス (AD FS) を使用しており、クラウドまたはオンプレミスのリソースをセキュリティで保護したい場合には、Azure Multi-Factor Authentication Server を構成し、AD FS と連携させることができます。 この構成を行うことで、重要なエンドポイントの&2; 段階認証がトリガーされます。
 
 この記事では、Azure Multi-Factor Authentication Server と Windows Server 2012 R2 の AD FS の使用について説明します。 詳細については、「 [Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-adfs2.md)」を参照してください。
 
-## <a name="secure-windows-server-2012-r2-ad-fs-with-azure-multifactor-authentication-server"></a>Windows Server 2012 R2 AD FS を Azure Multi-Factor Authentication Server でセキュリティ保護する
+## <a name="secure-windows-server-2012-r2-ad-fs-with-azure-multi-factor-authentication-server"></a>Windows Server 2012 R2 AD FS を Azure Multi-Factor Authentication Server でセキュリティ保護する
 Azure Multi-Factor Authentication Server をインストールする際、次のオプションがあります。
 
 * AD FS と同じサーバーに Azure Multi-Factor Authentication Server をローカル インストールする
@@ -39,7 +40,7 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 * Multi-Factor Authentication AD FS アダプターのインストール ウィザードでは、Active Directory のインスタンスに PhoneFactor Admins というセキュリティ グループが作成されます。 その後、フェデレーション サービスの AD FS サービス アカウントがこのグループに追加されます。 PhoneFactor Admins グループが実際に作成されていることと、AD FS サービス アカウントがこのグループのメンバーであることを、ドメイン コントローラーで確認することをお勧めします。 必要に応じて、ドメイン コントローラーで AD FS サービス アカウントを PhoneFactor Admins グループに手動で追加します。
 * ユーザー ポータルを使用した Web サービス SDK のインストールについては、「 [Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ](multi-factor-authentication-get-started-portal.md)
 
-### <a name="install-azure-multifactor-authentication-server-locally-on-the-ad-fs-server"></a>Azure Multi-Factor Authentication Server を AD FS サーバーにローカル インストールする
+### <a name="install-azure-multi-factor-authentication-server-locally-on-the-ad-fs-server"></a>Azure Multi-Factor Authentication Server を AD FS サーバーにローカル インストールする
 1. AD FS サーバーに Azure Multi-Factor Authentication Server をダウンロードしてインストールします。 インストール情報については、「 [Azure Multi-Factor Authentication Server の概要](multi-factor-authentication-get-started-server.md)」を参照してください。
 2. Azure Multi-Factor Authentication Server 管理コンソールで、**AD FS** アイコンをクリックし、**[ユーザー登録を許可する]** と **[ユーザーに認証方法の選択を許可する]** のオプションを選択します。
 3. 対象の組織について指定するオプションが他にあれば、それを選択します。
@@ -93,7 +94,7 @@ Web サービス SDK の構成には、2 つの選択肢があります。 1 つ
 3. クライアント証明書の公開キーと秘密キーを .pfx ファイルにエクスポートします。  
 4. 公開キーを Base64 形式で .cer ファイルにエクスポートします。  
 5. サーバー マネージャーで、Web Server (IIS)\Web Server\Security\IIS Client Certificate Mapping Authentication 機能がインストールされていることを確認します。 インストールされていない場合は、 **[役割と機能の追加]** を選択して、この機能を追加します。  
-6. IIS マネージャーで、Web サービス SDK 仮想ディレクトリが含まれている Web サイトの **[構成エディター]** をダブルクリックします。 これを仮想ディレクトリ レベルでなく、Web サイト レベルで行うことが重要です。  
+6. IIS マネージャーで、Web サービス SDK 仮想ディレクトリが含まれている Web サイトの **[構成エディター]** をダブルクリックします。 仮想ディレクトリではなく、Web サイトを選択することが重要です。  
 7. **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** セクションに移動します。  
 8. [enabled] を **true** に設定します。  
 9. [oneToOneCertificateMappingsEnabled] を **true** に設定します。  
@@ -116,12 +117,29 @@ Web サービス SDK の構成には、2 つの選択肢があります。 1 つ
 
 最後に、アダプターを登録するために、\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを PowerShell で実行します。 アダプターが WindowsAzureMultiFactorAuthentication として登録されます。 登録を有効にするには、AD FS サービスを再起動する必要があります。
 
+## <a name="secure-azure-ad-resources-using-ad-fs"></a>AD FS を使って Azure AD リソースのセキュリティを確保する
+クラウド リソースをセキュリティで保護するには、ユーザーが&2; 段階認証の実行に成功したときに、Active Directory フェデレーション サービスが multipleauthn 要求を出力するよう要求規則を設定します。 この要求は、Azure AD に渡されます。 以下では、その手順を説明します。
+
+1. AD FS 管理を開きます。
+2. 左側で、**[証明書利用者信頼]** を選択します。
+3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集…]** を選択します
+
+   ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
+
+4. [発行変換規則] で、**[規則の追加]** をクリックします。
+
+   ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
+
+5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、**[次へ]** をクリックします。
+
+   ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
+
+6. 規則に名前を付けます。 
+7. 受信要求の種類として **[認証方法の参照]** を選択します。
+8. **[すべての要求値をパススルーする]** を選択します。
+    ![変換要求規則の追加ウィザード](./media/multi-factor-authentication-get-started-adfs-cloud/configurewizard.png)
+9. **[完了]**をクリックします。 AD FS 管理コンソールを閉じます。
+
 ## <a name="related-topics"></a>関連トピック
 トラブルシューティングのヘルプについては、「 [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

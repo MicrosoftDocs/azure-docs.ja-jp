@@ -1,170 +1,135 @@
 ---
-title: Migrate your existing Azure SQL Data Warehouse to premium storage | Microsoft Docs
-description: Instructions for migrating an existing SQL Data Warehouse to premium storage
+title: "Premium Storage への既存の Azure データ ウェアハウスの移行 | Microsoft Docs"
+description: "Premium Storage へ既存のデータ ウェアハウスを移行する手順"
 services: sql-data-warehouse
 documentationcenter: NA
 author: happynicolle
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: nicw;barbkess
+ms.custom: migrate
+ms.date: 11/29/2016
+ms.author: rortloff;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
+ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
+ms.lasthandoff: 12/16/2016
+
 
 ---
-# <a name="migration-to-premium-storage-details"></a>Migration to Premium Storage Details
-SQL Data Warehouse recently introduced [Premium Storage for greater performance predictability][Premium Storage for greater performance predictability].  We are now ready to migrate existing Data Warehouses currently on Standard Storage to Premium Storage.  Read on for more details about how and when automatic migrations occur and how to self-migrate if you prefer to control when the downtime occurs.
+# <a name="migrate-your-data-warehouse-to-premium-storage"></a>Premium Storage へのデータ ウェアハウスの移行
+Azure SQL Data Warehouse では最近、パフォーマンス予測能力の向上を目的として [Premium Storage][premium storage for greater performance predictability] が導入されました。 これにより、現在 Standard Storage 上に存在するデータ ウェアハウスを Premium Storage に移行できるようになりました。 移行は自動で行われますが、移行のタイミングを制御する必要がある場合は、手動で行うこともできます (移行の際にはダウンタイムが生じます)。
 
-If you have more than one Data Warehouse, use the [automatic migration schedule][automatic migration schedule] below to determine when it will also be migrated.
+データ ウェアハウスが複数ある場合は、[自動移行スケジュール][automatic migration schedule]を参照して、それらの移行時期についても確認してください。
 
-## <a name="determine-storage-type"></a>Determine storage type
-If you created a DW before the dates below, you are currently using Standard Storage.  Each Data Warehouse on Standard Storage that is subject to automatic migration has a notice at the top of the Data Warehouse blade in the [Azure Portal][Azure Portal] that says "*An upcoming upgrade to premium storage will require an outage.  Learn more ->*."
+## <a name="determine-storage-type"></a>ストレージの種類を確認する
+次に示す日付より前にデータ ウェアハウスを作成した場合、現在は Standard Storage を使用していることになります。
 
-| **Region** | **DW Created Before This Date** |
+| **[リージョン]** | **この日付より前にデータ ウェアハウスを作成** |
 |:--- |:--- |
-| Australia East |Premium Storage Not Yet Available |
-| Australia Southeast |August 5, 2016 |
-| Brazil South |August 5, 2016 |
-| Canada Central |May 25, 2016 |
-| Canada East |May 26, 2016 |
-| Central US |May 26, 2016 |
-| China East |Premium Storage Not Yet Available |
-| China North |Premium Storage Not Yet Available |
-| East Asia |May 25, 2016 |
-| East US |May 26, 2016 |
-| East US2 |May 27, 2016 |
-| India Central |May 27, 2016 |
-| India South |May 26, 2016 |
-| India West |Premium Storage Not Yet Available |
-| Japan East |August 5, 2016 |
-| Japan West |Premium Storage Not Yet Available |
-| North Central US |Premium Storage Not Yet Available |
-| North Europe |August 5, 2016 |
-| South Central US |May 27, 2016 |
-| Southeast Asia |May 24, 2016 |
-| West Europe |May 25, 2016 |
-| West Central US |August 26, 2016 |
-| West US |May 26, 2016 |
-| West US2 |August 26, 2016 |
+| オーストラリア東部 |Premium Storage はまだ利用できません |
+| 中国 (東部) |2016 年 11 月 1 日 |
+| 中国 (北部) |2016 年 11 月 1 日 |
+| ドイツ中部 |2016 年 11 月 1 日 |
+| ドイツ北東部 |2016 年 11 月 1 日 |
+| インド西部 |Premium Storage はまだ利用できません |
+| 西日本 |Premium Storage はまだ利用できません |
+| 米国中北部 |2016 年 11 月 10 日 |
 
-## <a name="automatic-migration-details"></a>Automatic migration details
-By default, we will migrate your database for you during 6pm and 6am in your region's local time during the [automatic migration schedule][automatic migration schedule] below.  Your existing Data Warehouse will be unusable during the migration.  We estimate that the migration will take around one hour per TB of storage per Data Warehouse.  We will also ensure that you are not charged during any portion of the automatic migration.
+## <a name="automatic-migration-details"></a>自動移行の詳細
+データベースの移行は、既定では[自動移行スケジュール][automatic migration schedule]に示した期間内の、各リージョンの現地時刻で午後 6 時から午前 6 時の間に行われます。 移行中は、既存のデータ ウェアハウスが使用できなくなります。 移行にかかる時間は、各データ ウェアハウスで 1 TB (テラバイト) ストレージあたり約 1 時間です。 また、自動移行中のどの段階においても課金は行われません。
 
 > [!NOTE]
-> You will not be able to use your existing Data Warehouse during the migration.  Once the migration is complete, your Data Warehouse will be back online.
-> 
-> 
+> 移行が完了すると、データ ウェアハウスはオンラインに戻ります。
+>
+>
 
-The details below are steps that Microsoft is taking on your behalf to complete the migration and does not require any involvement on your part.  In this example, imagine that your existing DW on Standard Storage is currently named “MyDW.”
+Microsoft は、次の手順に従って移行を完了します (お客様による操作は必要ありません) 。 この例では、現在 Standard Storage 上に "MyDW" という名前のデータ ウェアハウスが存在していると仮定します。
 
-1. Microsoft renames “MyDW” to “MyDW_DO_NOT_USE_[Timestamp]”
-2. Microsoft pauses “MyDW_DO_NOT_USE_[Timestamp].”  During this time, a backup is taken.  You may see multiple pause/resumes if we encounter any issues during this process.
-3. Microsoft creates a new DW named “MyDW” on Premium Storage from the backup taken in step 2.  “MyDW” will not appear until after the restore is complete.
-4. Once the restore is complete, “MyDW” returns to the same DWUs and paused or active state it was before the migration.
-5. Once the migration is complete, Microsoft deletes “MyDW_DO_NOT_USE_[Timestamp]”
+1. Microsoft により、この名前は "MyDW" から "MyDW_ DO_NOT_USE_[タイムスタンプ]" に変更されます。
+2. Microsoft により、"MyDW_DO_NOT_USE_[タイムスタンプ]" が一時停止されます。 この期間中に、バックアップが実行されます。 この処理の実行中に何らかの問題が発生すると、一時停止と再開が何度も繰り返される可能性があります。
+3. Microsoft により、手順 2 で作成したバックアップから "MyDW" という名前の新しいデータ ウェアハウスが Premium Storage 上に作成されます。 "MyDW" は、復元が完了するまで表示されません。
+4. 復元が完了すると、"MyDW" は移行前と同じ DWU に戻り、一時停止またはアクティブ状態になります。
+5. 移行が完了すると、Microsoft によって "MyDW_DO_NOT_USE_[タイムスタンプ]" が削除されます。
 
 > [!NOTE]
-> These settings do not carry over as part of the migration:
-> 
-> * Auditing at the Database level needs to be re-enabled
-> * Firewall rules at the **Database** level need to be readded.  Firewall rules at the **Server** level are not be impacted.
-> 
-> 
+> 移行処理の一部として、次の各設定が引き継がれることはありません。
+>
+> * データベース レベルでの監査は再度有効化する必要があります。
+> * データベース レベルのファイアウォール規則は再追加する必要があります。 サーバー レベルのファイアウォール規則は影響を受けません。
+>
+>
 
-### <a name="automatic-migration-schedule"></a>Automatic migration schedule
-Automatic migrations occur from 6pm – 6am (local time per region) during the following outage schedule.
+### <a name="automatic-migration-schedule"></a>自動移行スケジュール
+自動移行は、次の停止スケジュール期間内の午後 6 時～午前 6 時 (該当するリージョンの現地時刻) の間に行われます。
 
-| **Region** | **Estimated Start Date** | **Estimated End Date** |
+| **[リージョン]** | **開始予定日** | **終了予定日** |
 |:--- |:--- |:--- |
-| Australia East |Not determined yet |Not determined yet |
-| Australia Southeast |August 10, 2016 |August 24, 2016 |
-| Brazil South |August 10, 2016 |August 24, 2016 |
-| Canada Central |June 23, 2016 |July 1, 2016 |
-| Canada East |June 23, 2016 |July 1, 2016 |
-| Central US |June 23, 2016 |July 4, 2016 |
-| China East |Not determined yet |Not determined yet |
-| China North |Not determined yet |Not determined yet |
-| East Asia |June 23, 2016 |July 1, 2016 |
-| East US |June 23, 2016 |July 11, 2016 |
-| East US2 |June 23, 2016 |July 8, 2016 |
-| India Central |June 23, 2016 |July 1, 2016 |
-| India South |June 23, 2016 |July 1, 2016 |
-| India West |Not determined yet |Not determined yet |
-| Japan East |August 10, 2016 |August 24, 2016 |
-| Japan West |Not determined yet |Not determined yet |
-| North Central US |Not determined yet |Not determined yet |
-| North Europe |August 10, 2016 |August 31, 2016 |
-| South Central US |June 23, 2016 |July 2, 2016 |
-| Southeast Asia |June 23, 2016 |July 1, 2016 |
-| West Europe |June 23, 2016 |July 8, 2016 |
-| West Central US |August 14, 2016 |August 31, 2016 |
-| West US |June 23, 2016 |July 7, 2016 |
-| West US2 |August 14, 2016 |August 31, 2016 |
+| オーストラリア東部 |未定 |未定 |
+| 中国 (東部) |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| 中国 (北部) |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| ドイツ中部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| ドイツ北東部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| インド西部 |未定 |未定 |
+| 西日本 |未定 |未定 |
+| 米国中北部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
 
-## <a name="selfmigration-to-premium-storage"></a>Self-migration to Premium Storage
-If you would like to control when your downtime will occur, you can use the following steps to migrate an existing Data Warehouse on Standard Storage to Premium Storage.  If you choose to self-migrate, you must complete the self-migration before the automatic migration begins in that region to avoid any risk of the automatic migration causing a conflict (refer to the [automatic migration schedule][automatic migration schedule]).
+## <a name="self-migration-to-premium-storage"></a>Premium Storage への手動移行
+ダウンタイムの発生するタイミングを制御する必要がある場合は、以下の手順に従って Standard Storage 上の既存のデータ ウェアハウスを Premium Storage に移行することができます。 手動移行を選択した場合、対象のリージョンで自動移行が開始される前に、手動移行を完了する必要があります。 そうすることで、自動移行によって競合が引き起こされる危険を回避することができます (「[自動移行スケジュール][automatic migration schedule]」を参照)。
 
-### <a name="selfmigration-instructions"></a>Self-migration instructions
-If you would like to control your downtime, you can self-migrate your Data Warehouse by using backup/restore.  The restore portion of the migration is expected to take around one hour per TB of storage per DW.  If you want to keep the same name once migration is complete, follow the steps for [steps to rename during migration][steps to rename during migration]. 
+### <a name="self-migration-instructions"></a>手動移行の手順
+データ ウェアハウスを手動で移行するには、バックアップと復元の機能を使用します。 移行処理の復元部分にかかる時間は、各データ ウェアハウスで 1 TB (テラバイト) ストレージあたり約 1 時間と予想されています。 移行後に同じ名前を保持する必要がある場合は、[移行時の名前変更][steps to rename during migration]の手順に従ってください。
 
-1. [Pause][Pause] your DW which takes an automatic backup
-2. [Restore][Restore] from your most recent snapshot
-3. Delete your existing DW on Standard Storage. **If you fail to do this step, you will be charged for both DWs.**
+1. データ ウェアハウスを[一時停止][Pause]します。 自動バックアップが表示されます。
+2. 最新のスナップショットから[復元][Restore]します。
+3. Standard Storage 上の既存のデータ ウェアハウスを削除します。 **この手順を行わないと、両方のデータ ウェアハウスに対して課金されることになります。**
 
 > [!NOTE]
-> These settings do not carry over as part of the migration:
-> 
-> * Auditing at the Database level needs to be re-enabled
-> * Firewall rules at the **Database** level need to be readded.  Firewall rules at the **Server** level are not be impacted.
-> 
-> 
+> 移行処理の一部として、次の各設定が引き継がれることはありません。
+>
+> * データベース レベルでの監査は再度有効化する必要があります。
+> * データベース レベルのファイアウォール規則は再追加する必要があります。 サーバー レベルのファイアウォール規則は影響を受けません。
+>
+>
 
-#### <a name="optional-steps-to-rename-during-migration"></a>Optional: steps to rename during migration
-Two databases on the same logical server cannot have the same name. SQL Data Warehouse now supports the ability to rename a DW.
+#### <a name="rename-data-warehouse-during-migration-optional"></a>移行中にデータ ウェアハウスの名前を変更する (オプション)
+同じ論理サーバー上の 2 つのデータベースが同じ名前を持つことはできません。 SQL Data Warehouse で、データ ウェアハウスの名前の変更機能がサポートされるようになりました。
 
-In this example, imagine that your existing DW on Standard Storage is currently named “MyDW.”
+この例では、現在 Standard Storage 上に "MyDW" という名前のデータ ウェアハウスが存在していると仮定します。
 
-1. Rename "MyDW" using the ALTER DATABASE command that follows to something like "MyDW_BeforeMigration."  This command kills all existing transactions and must be done in the master database to succeed.
+1. 次の ALTER DATABASE コマンドを使用して、"MyDW" を変更します (この例では、"MyDW_BeforeMigration" に変更します)。このコマンドにより、既存のトランザクションがすべて終了します。この操作を成功させるには、master データベース内で行う必要があります。
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [Pause][Pause] "MyDW_BeforeMigration" which takes an automatic backup
-3. [Restore][Restore] from your most recent snapshot a new database with the name you used to have (ex: "MyDW")
-4. Delete "MyDW_BeforeMigration".  **If you fail to do this step, you will be charged for both DWs.**
+2. "MyDW_BeforeMigration" を[一時停止][Pause]します。 自動バックアップが表示されます。
+3. 最新のスナップショットから、以前の名前 ("MyDW" など) の新しいデータベースを[復元][Restore]します。
+4. "MyDW_BeforeMigration" を削除します。 **この手順を行わないと、両方のデータ ウェアハウスに対して課金されることになります。**
 
-> [!NOTE]
-> These settings do not carry over as part of the migration:
-> 
-> * Auditing at the Database level needs to be re-enabled
-> * Firewall rules at the **Database** level need to be readded.  Firewall rules at the **Server** level are not be impacted.
-> 
-> 
 
-## <a name="next-steps"></a>Next steps
-With the change to Premium Storage, we have also increased the number of database blob files in the underlying architecture of your Data Warehouse.  To maximize the performance benefits of this change, we recommend that you rebuild your Clustered Columnstore Indexes using the following script.  The script below works by forcing some of your existing data to the additional blobs.  If you take no action, the data will naturally redistribute over time as you load more data into your Data Warehouse tables.
+## <a name="next-steps"></a>次のステップ
+Premium Storage の変更により、データ ウェアハウスの基になるアーキテクチャでデータベース BLOB ファイルの数も増えています。 この変更のパフォーマンスの利点を最大化するには、以下のスクリプトを使用して、クラスター化列ストア インデックスを再構築します。 このスクリプトにより、既存のデータの一部が追加の BLOB に転送されます。 何も行わない場合、データ ウェアハウスのテーブルに読み込むデータが増えるにつれて、データは自然に再配布されます。
 
-**Pre-requisites:**
+**前提条件:**
 
-1. Data Warehouse should run with 1,000 DWUs or higher (see [scale compute power][scale compute power])
-2. User executing the script should be in the [mediumrc role][mediumrc role] or higher
-   1. To add a user to this role, execute the following: 
-      1. ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- データ ウェアハウスは 1,000 DWU 以上で実行する必要があります (「[コンピューティング能力のスケーリング][scale compute power]」セクションを参照)。
+- このスクリプトを実行するユーザーは、[mediumrc ロール][mediumrc role]以上である必要があります。 このロールにユーザーを追加するには、次のコマンドを実行します。    ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
--- Step 1: Create Table to control Index Rebuild
+-- Step 1: Create table to control index rebuild
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 create table sql_statements
 WITH (distribution = round_robin)
-as select 
+as select
     'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
     row_number() over (order by s.name, t.name) as sequence
-from 
+from
     sys.schemas s
     inner join sys.tables t
         on s.schema_id = t.schema_id
@@ -174,7 +139,7 @@ where
 go
 
 --------------------------------------------------------------------------------
--- Step 2: Execute Index Rebuilds.  If script fails, the below can be rerun to restart where last left off
+-- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 
@@ -190,13 +155,13 @@ begin
 end;
 go
 -------------------------------------------------------------------------------
--- Step 3: Cleanup Table Created in Step 1
+-- Step 3: Clean up table created in Step 1
 --------------------------------------------------------------------------------
 drop table sql_statements;
 go
 ````
 
-If you encounter any issues with your Data Warehouse, [create a support ticket][create a support ticket] and reference “Migration to Premium Storage” as the possible cause.
+データ ウェアハウスで問題が発生した場合は、[サポート チケットを作成][create a support ticket]し、考えられる原因を "Premium Storage への移行" としてください。
 
 <!--Image references-->
 
@@ -206,11 +171,11 @@ If you encounter any issues with your Data Warehouse, [create a support ticket][
 [create a support ticket]: sql-data-warehouse-get-started-create-support-ticket.md
 [Azure paired region]: best-practices-availability-paired-regions.md
 [main documentation site]: services/sql-data-warehouse.md
-[Pause]: sql-data-warehouse-manage-compute-portal.md/#pause-compute
+[Pause]: sql-data-warehouse-manage-compute-portal.md#pause-compute
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
-[scale compute power]: sql-data-warehouse-manage-compute-portal/#scale-compute-power
-[mediumrc role]: sql-data-warehouse-develop-concurrency/#workload-management
+[scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power
+[mediumrc role]: sql-data-warehouse-develop-concurrency.md
 
 <!--MSDN references-->
 
@@ -218,9 +183,4 @@ If you encounter any issues with your Data Warehouse, [create a support ticket][
 <!--Other Web references-->
 [Premium Storage for greater performance predictability]: https://azure.microsoft.com/en-us/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

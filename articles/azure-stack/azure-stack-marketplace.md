@@ -2,11 +2,11 @@
 title: Publish a custom marketplace item in Azure Stack (service administrator) | Microsoft Docs
 description: As a service administrator, learn how to publish a custom marketplace item in Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: rupisure
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: rupisure
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f19d6fcabaadc0ba970c2143e32da3452d6fb947
+
 
 ---
 # <a name="the-azure-stack-marketplace"></a>The Azure Stack Marketplace
@@ -37,6 +41,9 @@ Every item published to the Marketplace uses a format called the Azure Gallery P
 ## <a name="next-steps"></a>Next steps
 [Create and publish a marketplace item](azure-stack-create-and-publish-marketplace-item.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,24 @@
 ---
-title: Team Data Science Process のチュートリアル | Microsoft Docs
-description: チュートリアルでは、クラウドとオンプレミスのツールとサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。
+title: "Team Data Science Process のチュートリアル | Microsoft Docs"
+description: "チュートリアルでは、クラウドとオンプレミスのツールとサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 03/31/2017
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fde069560d53c5b5010bbb59b52d60a6971d8dac
+ms.lasthandoff: 11/17/2016
+
 
 ---
 # <a name="team-data-science-process-walkthroughs"></a>Team Data Science Process のチュートリアル
@@ -46,9 +51,7 @@ ms.author: bradsev
 ## <a name="use-t-sql-with-sql-server-r-services"></a>SQL Server R Services で T-SQL を使用する
 [SQL 開発者を対象とした高度な In-Database 分析](https://msdn.microsoft.com/library/mt683480.aspx)チュートリアルは、SQL プログラマ向けに、SQL Server R Services で Transact-SQL を使用した高度な分析ソリューション構築の体験を提供して、R ソリューションを扱えるようにします。
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)に関するページをご覧ください。 
-
-<!--HONumber=Oct16_HO2-->
 
 

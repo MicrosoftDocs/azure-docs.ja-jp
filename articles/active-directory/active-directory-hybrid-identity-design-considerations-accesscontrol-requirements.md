@@ -1,20 +1,23 @@
-
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - アクセス制御要件の決定 | Microsoft Docs
-description: ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - アクセス制御要件の決定 | Microsoft Docs"
+description: "ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 032467e0885d574a7b0f4a1c043e1800e5cc4071
+
 
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
@@ -54,6 +57,7 @@ ms.author: billmath
   * 「はい」の場合、ハイブリッド ID モデルを採用すると、このプロセスに影響がありますか。
 
 ## <a name="access-control"></a>Access Control
+
 認証と承認は、ユーザーの検証によって企業データへのアクセスを可能にするための重要な要素ですが、ユーザーが持つアクセス権のレベルと、管理者が管理対象のリソースに対して持つアクセス権のレベルを制御するためにも重要です。 ハイブリッド ID ソリューションの場合、リソース、委任、ロール ベースのアクセス制御に対するアクセス権をより詳細に指定できるようにします。 アクセス制御について、次のチェック項目に回答してください。
 
 * 社内には、ID システムを管理するための昇格された特権を持つ複数のユーザーがいますか。
@@ -77,6 +81,9 @@ ms.author: billmath
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

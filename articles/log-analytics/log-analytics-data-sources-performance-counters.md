@@ -1,19 +1,24 @@
 ---
-title: Log Analytics での Windows および Linux のパフォーマンス カウンター | Microsoft Docs
-description: Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。
+title: "Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
+description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
-
+ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/24/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 853177202e4724546242d4e8d1b41b456a444eeb
+ms.openlocfilehash: 2381b7e9ab4514d6668569c2a58d108af5008a7e
+ms.lasthandoff: 02/27/2017
+
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
@@ -30,7 +35,7 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 
 収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。
 
-1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。 
+1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。
 2. **+** をクリックするか、または **Enter** キーを押して、一覧にカウンターを追加します。
 3. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
 4. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
@@ -59,7 +64,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または SCOM <br>  Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |データが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり
@@ -78,7 +83,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | Type=Perf (ObjectName=Processor) CounterName="% Processor Time" InstanceName=_Total &#124; measure Avg(Average) as AVGCPU  by Computer |コンピューター全体の平均 CPU 使用率 |
 | Type=Perf (CounterName="% Processor Time") &#124;  measure max(Max) by Computer |コンピューター全体の最大 CPU 使用率 |
 | Type=Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName |特定のコンピューターのインスタンス全体における現在のディスク キューの長さの平均 |
-| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |コンピューター全体のディスク転送数/秒の 95 パーセンタイル |
+| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |コンピューター全体のディスク転送数/秒の&95; パーセンタイル |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |全コンピューターの CPU 使用率の平均値 (1 時間ごと) |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |特定のコンピューターの各パーセント (%) カウンターの 70 パーセンタイル (1 時間ごと) |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
@@ -88,16 +93,9 @@ Log Analytics は、カウンターがインストールされているすべて
 
 ![折りたたまれた [メトリック] ビュー](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
 
-選択した時間範囲が 6 時間以下の場合、グラフは数秒ごとに更新されます。  ライブ データが明るい青色でグラフの右側に表示されます。
-
-![展開された [メトリック] ビューとライブ データ](media/log-analytics-data-sources-performance-counters/metricsexpanded.png)
-
 ログ検索でパフォーマンス データを集計する方法については、「[On-demand metric aggregation and visualization in OMS (OMS におけるオンデマンドのメトリック集計と視覚化)](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](log-analytics-powerbi.md) にエクスポートします。
-
-<!--HONumber=Oct16_HO2-->
-
 

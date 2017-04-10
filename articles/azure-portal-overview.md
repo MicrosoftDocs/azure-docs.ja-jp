@@ -4,7 +4,7 @@ description: "Microsoft Azure ポータルの使用方法を説明します。"
 services: 
 documentationcenter: 
 author: davidwrede
-manager: dwrede
+manager: erikre
 editor: jimbe
 ms.assetid: 53cb9df1-c96a-4f4e-b022-18336cd3d697
 ms.service: na
@@ -15,13 +15,14 @@ ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 31bea465db1afb5efc22b2280d83d3b50bced329
+ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
+ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
+ms.lasthandoff: 02/06/2017
 
 
 ---
 # <a name="microsoft-azure-portal-overview"></a>Microsoft Azure ポータルの概要
-Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
+Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って&1; か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
 
 * **包括的なマーケットプレイス** : マイクロソフトや他のベンダーから購入またはプロビジョニングできる数千に及ぶアイテムを参照できます。
 * **統合されたスケーラブルな参照機能** : 関心のあるリソースの検索やさまざまな管理操作の簡単な実行を可能にします。
@@ -60,16 +61,6 @@ Azure には、1 か所で作成できる何千という項目を備えたマー
 
 ![リソースの管理][ManageResource]
 
-## <a name="how-to-customize-a-resource-blade"></a>リソースのブレードをカスタマイズする方法
-Azure ではリソースに応じてブレードが事前設定されますが、ブレード上のタイルはめがコントロールに自由に管理できます。  カスタマイズ モードに簡単に移動して、タイルを追加、削除、サイズ変更、再配置できます。 ブレードをカスタマイズするには、次の手順に従います。
-
-1. リソースを参照します。
-2. カスタマイズするブレードの上部にある […]  をクリックします。
-3. [パーツの追加] をクリックします。
-4. パーツをドラッグ アンド ドロップします。  
-
-![ブレードのカスタマイズ][CustomizeBlades]
-
 ## <a name="how-to-get-help"></a>ヘルプを表示する方法
 問題が発生した場合は、心配は要りません。  ポータルは、操作を支援するヘルプとサポート ページを備えています。  また、 [サポート プラン](https://azure.microsoft.com/support/plans/)によっては、ポータルで直接サポート チケットを作成できます。  サポート チケットを作成したら、ポータル内からチケットのライフサイクルを管理できます。 ヘルプとサポート ページにアクセスするには、[参照]、[ヘルプ] または [サポート] の順に移動します。  
 
@@ -94,9 +85,4 @@ Microsoft Azure ポータルならクラウドでのアプリケーションの�
 [ManageResource]: ./media/azure-portal-how-to-use/azure_portal_4.png
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

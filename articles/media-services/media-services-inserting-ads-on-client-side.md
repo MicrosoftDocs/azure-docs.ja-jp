@@ -1,12 +1,12 @@
 ---
-title: クライアント側での広告の挿入 | Microsoft Docs
-description: このトピックでは、クライアント側で広告を挿入する方法について説明します。
+title: "クライアント側での広告の挿入 | Microsoft Docs"
+description: "このトピックでは、クライアント側で広告を挿入する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: aaa0e2757875d8f9ac6a19f218bfb19bf9870b0d
+ms.openlocfilehash: 54cf700463ff0a08f5f28a3d2b66c8814ab0a764
+
 
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
@@ -26,7 +30,7 @@ ms.author: juliako
 > 
 > 
 
-## <a name="<a-id="insert_ads_into_media"></a>inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>メディアへの広告の挿入
+## <a name="a-idinsertadsintomediaainserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>メディアへの広告の挿入
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。 広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。 各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。メディアには、3 種類の広告を挿入できます。
 
 * **線形** – メイン ビデオを一時停止するフル フレーム広告
@@ -42,7 +46,7 @@ Azure Media Services では、Windows メディア プラットフォームの�
 * MAST ファイルを返す (VAST が埋め込まれています)
 * VPAID 広告を含む VAST ファイルを返す
 
-### <a name="using-a-video-ad-service-template-(vast)-file"></a>Video Ad Service Template (VAST) ファイルの使用
+### <a name="using-a-video-ad-service-template-vast-file"></a>Video Ad Service Template (VAST) ファイルの使用
 VAST ファイルは、表示する広告を指定します。 次の XML に、線形広告の VAST ファイルの例を示します。
 
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -87,7 +91,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
       </Ad>
     </VAST>
 
-線形広告は、**<Linear>**要素で記述されます。 この要素は、広告の期間、追跡イベント、クリック スルー、クリック追跡、多くの**<MediaFile>**要素を指定します。 追跡イベントは、**<TrackingEvents>** 要素内で指定され、広告サーバーが広告の表示中に発生するさまざまなイベントを追跡できるようにします。 この場合、開始、中間、完了、拡大の各イベントが追跡されます。 開始イベントは、広告が表示されたときに発生します。 中間イベントは、広告の時系列が 50% 以上表示されたときに発生します。 完了イベントは、広告が最後まで実行されたときに発生します。 拡大イベントは、ユーザーがビデオ プレーヤーをフル スクリーンに拡大したときに表示されます。 Clickthroughs は、**<VideoClicks>** 要素内の **<ClickThrough>** 要素で指定され、ユーザーが広告をクリックしたときに表示するリソースに対する URI を指定します。 ClickTracking は、**<ClickTracking>** 要素と  **<VideoClicks>** 要素内で指定され、ユーザーが広告をクリックしたときに要求する追跡リソースをプレーヤーに対して指定します。**<MediaFile>** 要素は、広告の特定のエンコードに関する情報を指定します。 複数の  **<MediaFile>** 要素がある場合、ビデオ プレーヤーはプラットフォームに最適なエンコードを選択できます。 
+線形広告は、<**Linear**> 要素で記述されます。 この要素は、広告の期間、追跡イベント、クリック スルー、クリック追跡、多くの **MediaFile** 要素を指定します。 追跡イベントは、<**TrackingEvents**> 要素内で指定され、広告サーバーが広告の表示中に発生するさまざまなイベントを追跡できるようにします。 この場合、開始、中間、完了、拡大の各イベントが追跡されます。 開始イベントは、広告が表示されたときに発生します。 中間イベントは、広告の時系列が 50% 以上表示されたときに発生します。 完了イベントは、広告が最後まで実行されたときに発生します。 拡大イベントは、ユーザーがビデオ プレーヤーをフル スクリーンに拡大したときに表示されます。 Clickthroughs は、<**VideoClicks**> 要素内の <**ClickThrough**> 要素で指定され、ユーザーが広告をクリックしたときに表示するリソースに対する URI を指定します。 ClickTracking は、<**ClickTracking**> 要素と <**VideoClicks**> 要素内で指定され、ユーザーが広告をクリックしたときに要求する追跡リソースをプレーヤーに対して指定します。<**MediaFile**> 要素は、広告の特定のエンコードに関する情報を指定します。 複数の <**MediaFile**> 要素がある場合、ビデオ プレーヤーはプラットフォームに最適なエンコードを選択できます。 
 
 線形広告は、指定された順序で表示できます。 これを行うには、VAST ファイルに <Ad> 要素を追加し、sequence 属性を使用して順序を指定します。 次の例を使って説明します。
 
@@ -150,19 +154,19 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </Creative>
 
 
-**<NonLinearAds>** 要素には 1 つ以上の **<NonLinear>** 要素が含まれており、それぞれ非線形広告を記述できます。 **<NonLinear>** 要素は、非線形広告のリソースを指定します。 このリソースは、 **<StaticResouce>**、**<IFrameResource>**、**<HTMLResouce>**です。**<StaticResource>** は、HTML 以外のリソースを記述し、次のようなリソースの表示方法を指定する creativeType 属性を定義します。
+<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource**> は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
 
-Image/gif、image/jpeg、image/png – リソースが HTML **<img>** タグで表示されます。
+Image/gif、image/jpeg、image/png – リソースが HTML <**img**> タグで表示されます。
 
 Application/x-javascript – リソースが HTML <**script**> タグで表示されます。
 
 Application/x-shockwave-flash – リソースが Flash プレーヤーで表示されます。
 
-**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。 **<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。 **<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。 このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。  **<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。 **<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく ** <NonLinearAds>** 要素にある点に注意してください。
+**IFrameResource** は、IFrame で表示可能な HTML リソースを記述します。 **HTMLResource** は、Web ページに挿入可能な HTML コードを記述します。 **TrackingEvents** は、追跡イベントと、イベント発生時に要求する URI を指定します。 このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。 **NonLinearAds** 要素とその子の詳細については、「IAB.NET/VAST」を参照してください。 **TrackingEvents** 要素は、**NonLinear** 要素ではなく **NonLinearAds** 要素にある点に注意してください。
 
 コンパニオン広告は、<CompanionAds> 要素内で定義されます。 <CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。 各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、<HTMLResource> を含めることができます。 VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。 VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 
-### <a name="using-a-digital-video-multiple-ad-playlist-(vmap)-file"></a>Digital Video Multiple Ad Playlist (VMAP) ファイルの使用
+### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Digital Video Multiple Ad Playlist (VMAP) ファイルの使用
 VMAP ファイルを使用すると、広告の中断がいつ発生するか、各中断の長さ、中断中に表示できる広告の数、中断中に表示できる広告の種類を指定できます。 1 つの広告の中断を定義する VMAP ファイルの例を次に示します。
 
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -264,7 +268,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 
 <**TrackingEvents**> 要素とその子の詳細については、http://iab.org/VMAP.pdf を参照してください。
 
-### <a name="using-a-media-abstract-sequencing-template-(mast)-file"></a>Media Abstract Sequencing Template (MAST) ファイルの使用
+### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Media Abstract Sequencing Template (MAST) ファイルの使用
 MAST ファイルを使用すると、広告がいつ表示されるかを定義するトリガーを指定できます。 プリロール広告、ミッドロール広告、ポストロール広告のトリガーを含む MAST ファイルの例を次に示します。
 
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -310,16 +314,16 @@ MAST ファイルを使用すると、広告がいつ表示されるかを定義
 
 
 
-MAST ファイルの先頭は、 **<triggers>** 要素が 1 つ含まれる  **<MAST>** 要素です。 <triggers> 要素には、広告をいつ再生するかを定義する 1 つ以上の **<trigger>** 要素が含まれています。 
+MAST ファイルの先頭は、**triggers** 要素が 1 つ含まれる **MAST** 要素です。 <triggers> 要素には、広告をいつ再生するかを定義する 1 つ以上の **trigger** 要素が含まれています。 
 
-**<trigger>** 要素には、広告の再生をいつ開始するかを指定する **<startConditions>** 要素が含まれています。 **<startConditions>** 要素には、1 つ以上の <condition> 要素が含まれています。 各 <condition> が true と評価された場合、 <condition> が **<startConditions**> 要素と **<endConditions>** 要素のどちらに含まれているかに応じてそれぞれトリガーが開始されるか、取り消されます。 複数の <condition> 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。 <condition> 要素はネストできます。 子の <condition> 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。 <condition> 要素には、条件を定義する次の属性が含まれています。 
+**trigger** 要素には、広告の再生をいつ開始するかを指定する **startConditions** 要素が含まれています。 **startConditions** 要素には、1 つ以上の <condition> 要素が含まれています。 各 <condition> が true と評価された場合、<condition> が **startConditions** 要素または **endConditions** 要素のどちらに含まれているかに応じて、トリガーが開始されるか取り消されます。 複数の <condition> 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。 <condition> 要素はネストできます。 子の <condition> 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。 <condition> 要素には、条件を定義する次の属性が含まれています。 
 
 1. **type** – 条件、イベント、プロパティの種類を指定します。
 2. **name** – 評価時に使用するイベントまたはプロパティの名前。
 3. **value** – プロパティが評価される値。
 4. **operator** – 評価時に使用する演算。EQ (等しい)、NEQ (等しくない)、GTR (より大きい)、GEQ (以上)、LT (より小さい)、LEQ (以下)、MOD (モジュロ) です。
 
-**<endConditions>** には <condition> 要素を含めることもできます。 条件が true と表示された場合、トリガーがリセットされます。<trigger> 要素には、1 つ以上の <source> 要素が含まれる <sources> 要素を含めることもできます。 <source> 要素は、広告応答への URI と広告応答の種類を定義します。 次の例では、VAST 応答への URI が指定されています。 
+**endConditions** には <condition> 要素を含めることもできます。 条件が true と表示された場合、トリガーがリセットされます。<trigger> 要素には、1 つ以上の <source> 要素が含まれる <sources> 要素を含めることもできます。 <source> 要素は、広告応答への URI と広告応答の種類を定義します。 次の例では、VAST 応答への URI が指定されています。 
 
     <trigger id="postroll" description="postroll"  >
       <startConditions>
@@ -333,7 +337,7 @@ MAST ファイルの先頭は、 **<triggers>** 要素が 1 つ含まれる  **<
     </trigger>
 
 
-### <a name="using-video-player-ad-interface-definition-(vpaid)"></a>Video Player Ad Interface Definition (VPAID) の使用
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video Player Ad Interface Definition (VPAID) の使用
 VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり取りできるようにするための API です。 これにより、インタラクティブ性の高い広告の操作性が実現します。 ユーザーは、広告を操作でき、広告はビューアーにより実行されたアクションに応答できます。 たとえば、ユーザーが広告の詳細情報やロング バージョンを参照できるボタンを広告に表示することができます。 ビデオ プレーヤーで VPAID API がサポートされていて、実行可能広告に API が実装されている必要があります。 プレーヤーが広告サーバーから広告を要求すると、サーバーは VPAID 広告を含む VAST 応答で応答できます。
 
 実行可能広告は、Web ブラウザーで実行可能な Adobe Flash™ や JavaScript などのランタイム環境で実行する必要があるコードで作成されます。 広告サーバーが VPAID 広告を含む VAST 応答を返す場合、<MediaFile> 要素内の apiFramework 属性の値は "VPAID" にする必要があります。 この属性は、含まれている広告が VPAID 実行可能広告であることを指定します。 type 属性は、実行可能ファイルの MIME タイプ ("application/x-shockwave-flash" や "application/x-javascript" など) に設定する必要があります。 次の XML スニペットは、VPAID 実行可能広告を含む VAST 応答からの <MediaFile> 要素を示しています。 
@@ -788,6 +792,9 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 ## <a name="see-also"></a>関連項目
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

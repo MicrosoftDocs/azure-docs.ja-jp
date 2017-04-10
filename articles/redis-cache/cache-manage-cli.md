@@ -1,39 +1,44 @@
 ---
-title: Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法 | Microsoft Docs
-description: 任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で Redis Cache を作成および管理する方法。
+title: "Azure CLI を使用した Azure Redis Cache の管理 | Microsoft Docs"
+description: "任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で Redis Cache を作成および管理する方法。"
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/23/2017
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
+ms.lasthandoff: 03/21/2017
+
 
 ---
-# Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
 > * [Azure CLI](cache-manage-cli.md)
-> 
-> 
+>
+>
 
-Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。この記事では、Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
+Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 この記事では、Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
 
-* Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)をほんの少しの時間で作成することができます。
-* [Azure CLI のインストール](../xplat-cli-install.md)を実行します。
-* Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、`azure login` コマンドを使用して Azure CLI からログインすることができます。相違点を理解して選択するには、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」を参照してください。
-* 以下のコマンドを実行する前に、`azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。詳細については、「[Azure Resource Manager モードの設定](../xplat-cli-azure-resource-manager.md#set-the-azure-resource-manager-mode)」を参照してください。
+* Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) をほんの少しの時間で作成することができます。
+* [Azure CLI のインストール](../cli-install-nodejs.md)を実行します。
+* Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、 `azure login` コマンドを使用して Azure CLI からログインすることができます。 相違点を理解して選択するには、「 [Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」を参照してください。
+* 以下のコマンドを実行する前に、 `azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。 詳細については、「[Azure CLI を使用して Azure のリソースとリソース グループを管理する](../xplat-cli-azure-resource-manager.md)」を参照してください。
 
-## Redis Cache のプロパティ
+## <a name="redis-cache-properties"></a>Redis Cache のプロパティ
 Redis Cache インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
 | プロパティ | Switch | Description |
@@ -41,21 +46,21 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | name |-n, --name |Redis Cache の名前です。 |
 | resource group |-g, --resource-group |リソース グループの名前です。 |
 | location |-l, --location |キャッシュを作成する場所です。 |
-| size |-z, --size |Redis Cache のサイズです。有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
-| sku |-x, --sku |Redis SKU です。値は次のいずれかです: [Basic、Standard、Premium] |
-| EnableNonSslPort |-e、--enable-non-ssl-port |Redis Cache の EnableNonSslPort プロパティです。キャッシュの非 SSL ポートを有効にする場合は、このフラグを追加します。 |
-| Redis 構成 |-c、--redis-configuration |Redis 構成。構成のキーと値の JSON 形式の文字列をここに入力します。形式: "{"":"","":""}" |
-| Redis 構成 |-f、--redis-configuration-file |Redis 構成。構成キーおよび値を含むファイルのパスをここに入力します。ファイル エントリの形式: {"":"","":""} |
+| size |-z, --size |Redis Cache のサイズです。 有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
+| sku |-x, --sku |Redis SKU です。 値は次のいずれかです: [Basic、Standard、Premium] |
+| EnableNonSslPort |-e、--enable-non-ssl-port |Redis Cache の EnableNonSslPort プロパティです。 キャッシュの非 SSL ポートを有効にする場合は、このフラグを追加します。 |
+| Redis 構成 |-c、--redis-configuration |Redis 構成。 構成のキーと値の JSON 形式の文字列をここに入力します。 形式: "{"":"","":""}" |
+| Redis 構成 |-f、--redis-configuration-file |Redis 構成。 構成キーおよび値を含むファイルのパスをここに入力します。 ファイル エントリの形式: {"":"","":""} |
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
-| 仮想ネットワーク |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| key type |-t、--key-type |更新するキーの種類です。有効な値: [Primary、Secondary] |
-| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
-| サブネット |t, --subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
-| VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| 仮想ネットワーク |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| key type |-t、--key-type |更新するキーの種類です。 有効な値: [Primary、Secondary] |
+| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが&1; つ選択されます。 |
+| サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
+| VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
 
-## すべての Redis Cache コマンドを参照してください。
-すべての Redis Cache コマンドとそのパラメーターを表示するには、`azure rediscache -h` コマンドを使用します。
+## <a name="see-all-redis-cache-commands"></a>すべての Redis Cache コマンドを参照してください。
+すべての Redis Cache コマンドとそのパラメーターを表示するには、 `azure rediscache -h` コマンドを使用します。
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Redis Cache(s)
@@ -86,12 +91,12 @@ Redis Cache インスタンスを作成および更新する場合には、次�
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Redis Cache の作成
+## <a name="create-a-redis-cache"></a>Redis Cache の作成
 Redis Cache を作成するには、次のコマンドを使用します。
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
-このコマンドの詳細を確認するには、`azure rediscache create -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache create -h` コマンドを実行します。
 
     C:\>azure rediscache create -h
     help:    Create a Redis Cache
@@ -119,12 +124,12 @@ Redis Cache を作成するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## 既存の Redis Cache を削除する
+## <a name="delete-an-existing-redis-cache"></a>既存の Redis Cache を削除する
 Redis Cache を削除するには、次のコマンドを使用します。
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
-このコマンドの詳細を確認するには、`azure rediscache delete -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache delete -h` コマンドを実行します。
 
     C:\>azure rediscache delete -h
     help:    Delete an existing Redis Cache
@@ -142,12 +147,12 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## サブスクリプションまたはリソース グループ内のすべての Redis Cache を一覧表示する
+## <a name="list-all-redis-caches-within-your-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループ内のすべての Redis Cache を一覧表示する
 サブスクリプションまたはリソース グループ内のすべての Redis Cache を一覧表示するには、次のコマンドを使用します。
 
     azure rediscache list [options]
 
-このコマンドの詳細を確認するには、`azure rediscache list -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache list -h` コマンドを実行します。
 
     C:\>azure rediscache list -h
     help:    List all Redis Caches within your Subscription or Resource Group
@@ -164,12 +169,12 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## 既存の Redis Cache のプロパティを表示する
+## <a name="show-properties-of-an-existing-redis-cache"></a>既存の Redis Cache のプロパティを表示する
 既存の Redis Cache のプロパティを表示するには、次のコマンドを使用します。
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
-このコマンドの詳細を確認するには、`azure rediscache show -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache show -h` コマンドを実行します。
 
     C:\>azure rediscache show -h
     help:    Show properties of an existing Redis Cache
@@ -189,12 +194,12 @@ Redis Cache を削除するには、次のコマンドを使用します。
 
 <a name="scale"></a>
 
-## 既存の Redis Cache の設定を変更する
+## <a name="change-settings-of-an-existing-redis-cache"></a>既存の Redis Cache の設定を変更する
 既存の Redis Cache の設定を変更するには、次のコマンドを使用します。
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
-このコマンドの詳細を確認するには、`azure rediscache set -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache set -h` コマンドを実行します。
 
     C:\>azure rediscache set -h
     help:    Change settings of an existing Redis Cache
@@ -214,7 +219,7 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## 既存の Redis Cache の認証キーを更新する
+## <a name="renew-the-authentication-key-for-an-existing-redis-cache"></a>既存の Redis Cache の認証キーを更新する
 既存の Redis Cache の認証キーを更新するには、次のコマンドを使用します。
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
@@ -240,12 +245,12 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## 既存の Redis Cache のプライマリ キーとセカンダリ キーを一覧表示する
+## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>既存の Redis Cache のプライマリ キーとセカンダリ キーを一覧表示する
 既存の Redis Cache のプライマリ キーとセカンダリ キーを一覧表示するには、次のコマンドを使用します。
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 
-このコマンドの詳細を確認するには、`azure rediscache list-keys -h` コマンドを実行します。
+このコマンドの詳細を確認するには、 `azure rediscache list-keys -h` コマンドを実行します。
 
     C:\>azure rediscache list-keys -h
     help:    Lists Primary and Secondary key of an existing Redis Cache
@@ -263,4 +268,3 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_0921_2016-->

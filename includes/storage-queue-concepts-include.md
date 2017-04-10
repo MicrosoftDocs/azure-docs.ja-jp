@@ -16,13 +16,14 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
   
     次の URL を使用すると、図のいずれかのキューをアドレス指定できます。  
   
-        http://myaccount.queue.core.windows.net/images-to-download
+    `http://myaccount.queue.core.windows.net/images-to-download`
+
 * **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md) を参照してください。
 * **キュー:** キューは、メッセージのセットを格納します。 すべてのメッセージはキューに 格納されている必要があります。 キュー名は小文字で入力する必要があります。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](https://msdn.microsoft.com/library/azure/dd179349.aspx)」を参照してください。
 * **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。 メッセージをキューで保持できる最長時間は 7 日間です。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

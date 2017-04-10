@@ -1,25 +1,32 @@
 ---
-title: Traffic Manager エンドポイントの監視とフェールオーバー | Microsoft Docs
-description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
+title: "Azure Traffic Manager エンドポイントの監視 | Microsoft Docs"
+description: "この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。"
 services: traffic-manager
-documentationcenter: ''
-author: sdwheeler
-manager: carmonm
-editor: ''
-
+documentationcenter: 
+author: kumudd
+manager: timlt
+editor: 
+ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
-ms.author: sewhee
+ms.date: 03/16/2017
+ms.author: kumud
+translationtype: Human Translation
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: cec4f541ebac6202a3880ec7338a9f0a0ac645b5
+ms.lasthandoff: 03/18/2017
 
 ---
-# <a name="traffic-manager-endpoint-monitoring-and-failover"></a>Traffic Manager エンドポイントの監視とフェールオーバー
+
+# <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
+
 Azure Traffic Manager には、エンドポイントの監視と自動フェールオーバーの機能が組み込まれています。 この機能を使用して、Azure リージョンの障害を含むエンドポイント障害に対する回復性を備えた高可用性アプリケーションを提供できます。
 
 ## <a name="configure-endpoint-monitoring"></a>エンドポイント監視の構成
+
 エンドポイント監視を構成するには、Traffic Manager プロファイルで次の設定を指定する必要があります。
 
 * **プロトコル**。 HTTP または HTTPS を選択します。 HTTPS 監視は、その証明書の存在のみをチェックして、SSL 証明書が有効であるかどうかを検証しないことに注意することが重要です。
@@ -33,15 +40,19 @@ Traffic Manager は、各エンドポイントの正常性をチェックする�
 Traffic Manager プロファイルのすべてのエンドポイントは、監視設定を共有します。 複数のエンドポイントに対して異なる監視設定を使用する場合は、 [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md#example-5-per-endpoint-monitoring-settings)を作成できます。
 
 ## <a name="endpoint-and-profile-status"></a>エンドポイントとプロファイルの状態
+
 Traffic Manager のプロファイルとエンドポイントは、ユーザーが有効と無効を切り替えることができます。 ただし、Traffic Manager の設定とプロセスを自動化した結果、エンドポイントの状態が変更される場合もあります。
 
 ### <a name="endpoint-status"></a>エンドポイントの状態
+
 特定のエンドポイントを有効または無効にすることができます。 正常な状態になっている基になるサービスに影響はありません。 エンドポイントの状態を変更することで、Traffic Manager プロファイルでのエンドポイントの可用性を制御します。 エンドポイントの状態を無効にすると、正常性はチェックされず、DNS 応答に含まれなくなります。
 
 ### <a name="profile-status"></a>プロファイルの状態
+
 プロファイルの状態の設定を使用して、特定のプロファイルを有効または無効にすることができます。 エンドポイントの状態が 1 つのエンドポイントに影響を与えるのに対して、プロファイルの状態はすべてのエンドポイントを含むプロファイル全体に作用します。 プロファイルを無効にすると、エンドポイントの正常性はチェックされず、DNS 応答にエンドポイントが含まれなくなります。 DNS クエリに対して、[NXDOMAIN](https://tools.ietf.org/html/rfc2308) 応答コードが返されます。
 
 ### <a name="endpoint-monitor-status"></a>エンドポイント監視の状態
+
 エンドポイント監視の状態は Traffic Manager で生成される値で、エンドポイントの状態を示します。 手動でこの設定を変更することはできません。 エンドポイントの監視の状態は、エンドポイントの監視の結果と構成されているエンドポイントの状態の組み合わせです。 エンドポイント監視の状態がとりうる値を、次の表に示します。
 
 | プロファイルの状態 | エンドポイントの状態 | エンドポイント監視の状態 | メモ |
@@ -56,9 +67,10 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 入れ子になったエンドポイントのエンドポイント監視の状態を計算する方法の詳細については、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」を参照してください。
 
 ### <a name="profile-monitor-status"></a>プロファイル モニターの状態
+
 プロファイル モニターの状態は、構成済みのプロファイル状態とすべてのエンドポイントのエンドポイント監視状態の値を組み合わせたものです。 とりうる値を、次の表に示します。
 
-| (構成された)プロファイルの状態 | エンドポイント監視の状態 | プロファイル モニターの状態 | メモ |
+| (構成された)プロファイルの状態  | エンドポイント監視の状態 | プロファイル モニターの状態 | メモ |
 | --- | --- | --- | --- |
 | 無効 |&lt;いずれも&gt; または、プロファイルでエンドポイントが定義されていません。 |無効 |プロファイルは無効にされています。 |
 | 有効 |少なくとも 1 つのエンドポイントの状態が低下です。 |低下しています |個々のエンドポイントの状態の値を確認し、さらなる注意が必要なエンドポイントを特定します。 |
@@ -67,19 +79,18 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 | 有効 |プロファイルで定義されているすべてのエンドポイントの状態が無効または停止のいずれかであるか、プロファイルにエンドポイントが定義されていません。 |非アクティブ |アクティブなエンドポイントはありませんが、プロファイルは引き続き有効です。 |
 
 ## <a name="endpoint-failover-and-recovery"></a>エンドポイントのフェールオーバーと復旧
+
 Traffic Manager は、問題のあるエンドポイントを含むすべてのエンドポイントの正常性を定期的にチェックします。 Traffic Manager は、エンドポイントが正常な状態になり、ローテーションに帰ったときに検出します。
 
 > [!NOTE]
 > 応答メッセージが 200 OK の場合にのみ、Traffic Manager は、エンドポイントがオンラインであると見なします。 次のいずれかのイベントが発生した場合、エンドポイントは異常です。
-> 
+>
 > * 200 以外の応答を受信した (別の 2 xx コードまたは 301/302 リダイレクトを含む)。
 > * クライアント認証の要求
 > * タイムアウト (タイムアウトのしきい値は 10 秒)
 > * 接続できない
-> 
+>
 > 失敗したチェックのトラブルシューティングについての詳細については、「 [Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)」を参照してください。
-> 
-> 
 
 次のタイムラインは、監視プロセスの詳細な説明です。
 
@@ -98,10 +109,9 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 > [!NOTE]
 > Traffic Manager は DNS レベルで動作するため、いずれかのエンドポイントとの既存の接続に影響を与えることはありません。 (プロファイル設定を変更するか、フェールオーバーまたはフェールバックが発生して) エンドポイント間でトラフィックが送信される際、新しい接続は Traffic Manager によって使用可能なエンドポイントに転送されます。 ただし、他のエンドポイントは、セッションが終了するまで既存の接続を介してトラフィックを受信し続ける可能性があります。 トラフィックが既存の接続に転送されないようにするには、各エンドポイントで使用されるセッション期間をアプリケーションで制限する必要があります。
-> 
-> 
 
 ## <a name="traffic-routing-methods"></a>トラフィックのルーティング方法
+
 エンドポイントが、機能低下状態になっているときは、DNS クエリに対する応答でエンドポイントが返されなくなります。 代わりに別のエンドポイントが選択されて返されます。 プロファイルで構成されているトラフィック ルーティング方法によって、代替のエンドポイントの選択方法が決定されます。
 
 * **優先順位**。 エンドポイントの優先度リストが使用されます。 常に、リスト内で最初に使用可能なエンドポイントが返されます。 エンドポイントが低下状態になると、次に使用可能なエンドポイントが返されます。
@@ -112,84 +122,25 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 > [!NOTE]
 > トラフィック ルーティングの通常の動作の 1 つの例外は、すべての対象となるエンドポイントが低下状態になった場合に発生します。 この場合、Traffic Manager は、"ベスト エフォート" として、*低下状態のすべてのエンドポイントが実際にはオンラインであるかのように応答*します。 この動作は、DNS 応答でどのエンドポイントも返されないよりは望ましい手段です。 無効または停止状態のエンドポイントは監視されないため、トラフィックの対象と見なされません。
-> 
+>
 > このような状況は、一般的に次のようなサービスの誤った構成が原因になっています。
-> 
+>
 > * アクセス制御リスト (ACL) が Traffic Manager の正常性チェックをブロックしている。
 > * Traffic Manager プロファイルの監視パスの構成が正しくない。
-> 
+>
 > どのエンドポイントも返されない場合、Traffic Manager の正常性チェックが正しく構成されていなくても、トラフィック ルーティングの観点では Traffic Manager が正常に動作 *している* ように見える場合があります。 ただし、この場合、エンドポイントのフェールオーバーが行われず、アプリケーション全体の可用性に影響を与えます。 プロファイルに低下状態ではなくオンライン状態を表示することが重要になります。 オンライン状態は、Traffic Manager の正常性チェックが正常に動作していることを示しています。
-> 
-> 
 
 失敗した正常性チェックのトラブルシューティングについての詳細については、「 [Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)」を参照してください。
 
-## <a name="faq"></a>FAQ
-### <a name="is-traffic-manager-resilient-to-azure-region-failures?"></a>Traffic Manager には Azure リージョンの障害に対する回復性がありますか。
-トラフィック マネージャーは、Azure での高可用性アプリケーションの配信の重要なコンポーネントです。
-高可用性を実現するには、Traffic Manager は非常に高いレベルの可用性を実現し、地域の障害に対応できる必要があります。
 
-仕様では、Traffic Manager のコンポーネントは、どの Azure リージョン全体の障害に対しても耐障害性を持っています。 この回復性は Traffic Manager のすべての構成要素、つまり、DNS ネーム サーバー、API、ストレージ層、エンドポイント監視サービスに適用されます。
-
-万一 Azure リージョン全体が停止した場合で、Traffic Manager は引き続き正常に機能すると予想されます。 複数の Azure リージョンにデプロイされたアプリケーションは、Traffic Manager を利用して、そのアプリケーションの利用可能なインスタンスにトラフィックを送ることができます。
-
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager?"></a>リソース グループの場所の選択は Traffic Manager にどのような影響を与えますか。
-Traffic Manager は、1 つのグローバル サービスです。 いずれかのリージョンに限定されたものではありません。 リソース グループの場所をどこに選択しても、そのリソース グループにデプロイされる Traffic Manager プロファイルに違いはありません。
-
-Azure Resource Manager では、すべてのリソース グループに対して場所を指定することが求められます。これに基づいて、リソース グループにデプロイされたリソースの既定の場所が決定されます。 Traffic Manager プロファイルを作成するときには、プロファイルはリソース グループ内に作成されます。 Traffic Manager プロファイル自体の場所には、常に **グローバル** が使用され、リソース グループの既定値はオーバーライドされます。
-
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint?"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://msdn.microsoft.com/library/mt125941.aspx)、および [クロスプラットフォームの Azure CLI](../xplat-cli-install.md) を使用して取得することもできます。
-
-Azure では、過去のエンドポイントの正常性に関する履歴情報や、エンドポイントの正常性の変更に関してアラートを生成する機能は提供されません。
-
-### <a name="can-i-monitor-https-endpoints?"></a>HTTPS エンドポイントを監視できますか。
-はい。 Traffic Manager は、HTTPS 経由のプローブをサポートしています。 監視構成でプロトコルとして **HTTPS** を構成します。
-
-Traffic Manager は、次のように証明書の検証を提供できません。
-
-* サーバー側証明書は検証されません。
-* SNI サーバー側証明書はサポートされていません。
-* クライアント証明書はサポートされていません。
-
-### <a name="what-host-header-do-endpoint-health-checks-use?"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
-トラフィック マネージャーは、HTTP および HTTPS の正常性チェックにホスト ヘッダーを使用します。 Traffic Manager で使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイントのターゲットの名前です。 ホスト ヘッダーで使用される値を、ターゲットプロパティとは別に指定することはできません。
-
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate?"></a>正常性チェックはどの IP アドレスから発信されますか。
-次の一覧には、Traffic Manager の正常性チェックの実行元になる IP アドレスが含まれています。 この一覧を使用して、正常性状態をチェックするためにこれらの IP アドレスからの受信接続がエンドポイントで許可されるように設定できます。
-
-* 13.75.153.124
-* 13.75.152.253
-* 191.232.214.62
-* 191.232.208.52
-* 52.172.155.168
-* 52.172.158.37
-* 13.75.124.254
-* 13.75.127.63
-* 137.135.82.249
-* 137.135.80.149
-* 104.41.190.203
-* 104.41.187.209
-* 65.52.217.19
-* 23.96.236.252
-* 40.87.147.10
-* 40.87.151.34
-* 104.215.91.84
-* 13.84.222.37
-* 40.68.30.66
-* 40.68.31.178
-* 137.135.47.215
-* 137.135.46.163
 
 ## <a name="next-steps"></a>次のステップ
- [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
+
+[Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
 
 Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 
- [Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
+[Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
 
 [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を行う。
-
-<!--HONumber=Oct16_HO2-->
-
 

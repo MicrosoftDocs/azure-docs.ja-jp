@@ -1,12 +1,12 @@
 ---
-title: Widevine ライセンス テンプレートの概要 | Microsoft Docs
-description: このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。
+title: "Widevine ライセンス テンプレートの概要 | Microsoft Docs"
+description: "このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。"
 author: juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 0e6f1f05-7ed6-4ed6-82a0-0cc2182b075a
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a90e56bb2b7db0bb964684f9cac04096a6577adc
+
 
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
@@ -102,10 +106,10 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | provider_client_token |Base64 でエンコードされた文字列 |ライセンスの応答で返信されるクライアント トークンです。  ライセンス要求にクライアント トークンが含まれる場合、この値は無視されます。 クライアント トークンは、ライセンス セッションの範囲を超えて保持されます。 |
 | override_provider_client_token |ブール値。 true または false |値が false で、ライセンス要求にクライアント トークンが含まれているときは、この構造体でクライアント トークンを指定している場合でも要求からのトークンが使用されます。  true の場合は、常に、この構造体で指定したトークンが使用されます。 |
 
-## <a name="configure-your-widevine-licenses-using-.net-types"></a>.NET 型を使用した Widevine ライセンスの構成
+## <a name="configure-your-widevine-licenses-using-net-types"></a>.NET 型を使用した Widevine ライセンスの構成
 Media Services が提供する .NET API を使用して、Widevine ライセンスを構成できます。 
 
-### <a name="classes-as-defined-in-the-media-services-.net-sdk"></a>Media Services .NET SDK で定義されているクラス
+### <a name="classes-as-defined-in-the-media-services-net-sdk"></a>Media Services .NET SDK で定義されているクラス
 これらの型の定義を次に示します。
 
     public class WidevineMessage
@@ -194,6 +198,9 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 ## <a name="see-also"></a>関連項目
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

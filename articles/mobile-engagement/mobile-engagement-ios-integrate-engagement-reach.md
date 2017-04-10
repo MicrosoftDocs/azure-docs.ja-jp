@@ -1,19 +1,23 @@
 ---
-title: Azure Mobile Engagement iOS SDK Reach の統合 | Microsoft Docs
-description: Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順
+title: "Azure Mobile Engagement iOS SDK Reach の統合 | Microsoft Docs"
+description: "Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
+ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
+
 
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>iOS でエンゲージメント リーチを統合する方法
@@ -86,7 +90,7 @@ ms.author: piyushjo
 この機能を有効にするには、Apple プッシュ通知用のアプリケーションを準備し、アプリケーション デリゲートを変更する必要があります。
 
 ### <a name="prepare-your-application-for-apple-push-notifications"></a>Apple プッシュ通知用アプリケーションを準備する
- [Apple プッシュ通知用アプリケーションを準備する方法](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+[Apple プッシュ通知用アプリケーションを準備する方法](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
 ### <a name="add-the-necessary-client-code"></a>必要なクライアント コードを追加する
 *この時点で、アプリケーションにはエンゲージメント フロントエンドで登録済みの Apple プッシュ証明書が必要になります。*
@@ -129,7 +133,7 @@ ms.author: piyushjo
     }
 
 > [!NOTE]
-> 上記のメソッドは、iOS 7 で導入されました。 iOS 7 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
+> 上記のメソッドは、iOS 7 で導入されました。 iOS&7; 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
 > 
 > 
 
@@ -178,12 +182,15 @@ ms.author: piyushjo
         [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
     }
 
-### <a name="if-you-have-your-own-unusernotificationcenterdelegate-implementation"></a>開発者独自の UNUserNotificationCenterDelegate 実装がある場合
-SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装があります。 これは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 UNUserNotificationCenter デリゲートはアプリケーションごとに 1 つしか使用できないため、SDK は開発者のデリゲートを検出すると、独自の実装を使用しなくなります。 これは、開発者独自のデリゲートに Engagement ロジックを追加する必要があることを意味します。
+### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>UNUserNotificationCenter デリゲートの競合を解決する
 
-これを実現する方法は 2 つあります。
+*アプリケーションも、いずれかのサードパーティ ライブラリも `UNUserNotificationCenterDelegate` を実装していない場合は、この部分をスキップできます。*
 
-デリゲート呼び出しを SDK に転送します。
+`UNUserNotificationCenter` デリゲートは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在できる `UNUserNotificationCenter` デリゲートは&1; つだけです。 `UNUserNotificationCenter` オブジェクトに追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはサード パーティのデリゲートが検出された場合、SDK によって独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
+
+これを実現する方法は&2; つあります。
+
+提案 1: 単に、デリゲート呼び出しを SDK に転送します。
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -210,7 +217,7 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
     }
     @end
 
-または、`AEUserNotificationHandler` クラスから継承します。
+提案 2: `AEUserNotificationHandler` クラスから継承します。
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -238,12 +245,20 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 > [!NOTE]
 > 通知が Engagement から送信されたものかどうかを確認するには、`userInfo` ディクショナリをエージェントの `isEngagementPushPayload:` クラス メソッドに渡します。
-> 
-> 
+
+`UNUserNotificationCenter` オブジェクトのデリゲートがアプリケーション デリゲートの `application:willFinishLaunchingWithOptions:` または `application:didFinishLaunchingWithOptions:` メソッド内のデリゲートに設定されていることを確認します。
+たとえば、上記の提案 1 を実装した場合は、次のようになります。
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
 
 ## <a name="how-to-customize-campaigns"></a>キャンペーンをカスタマイズする方法
 ### <a name="notifications"></a>通知
-通知には、システム通知とアプリ内通知の 2 種類があります。
+通知には、システム通知とアプリ内通知の&2; 種類があります。
 
 システム通知は iOS によって処理され、カスタマイズすることはできません。
 
@@ -327,11 +342,11 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 一部のビューのオーバーレイ システムに不満な場合は、これらのビューをカスタマイズできます。
 
-既存のビューに通知のレイアウトを含めることができます。 これを行うには、次の 2 つの実装スタイルがあります。
+既存のビューに通知のレイアウトを含めることができます。 これを行うには、次の&2; つの実装スタイルがあります。
 
 1. インターフェイス ビルダーを使用して、通知ビューを追加します。
    
-   * [ *インターフェイス ビルダー*
+   *  *インターフェイス ビルダー*
    * 通知を表示する場所に 320 x 60 (または、iPad の場合は 768 x 60) の `UIView` を配置します。
    * このビューのタグ値を **36822491**
 2. プログラムを使用して通知ビューを追加します。 ビューが初期化されたら、次のコードを追加します。
@@ -500,6 +515,6 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

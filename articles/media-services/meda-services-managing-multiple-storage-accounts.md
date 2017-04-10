@@ -1,19 +1,24 @@
 ---
-title: 複数のストレージ アカウントでの Media Services 資産の管理 | Microsoft Docs
-description: この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。
+title: "複数のストレージ アカウントでの Media Services 資産の管理 | Microsoft Docs"
+description: "この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/27/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 1a074e54204ff8098bea09eb4aa2066ccee47608
+ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
+ms.lasthandoff: 01/28/2017
+
 
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
@@ -22,7 +27,7 @@ Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカ
 * アセットを複数のストレージ アカウントに負荷分散します。
 * 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
 
-このトピックでは、Azure サービス管理 REST API を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
+このトピックでは、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
 
 ## <a name="considerations"></a>考慮事項
 Media Services アカウントに複数のストレージ アカウントをアタッチする場合は、次の考慮事項が適用されます。
@@ -30,13 +35,33 @@ Media Services アカウントに複数のストレージ アカウントをア�
 * Media Services アカウントにアタッチされているすべてのストレージ アカウントは、Media Services アカウントと同じデータ センターにある必要があります。
 * 現時点では、ストレージ アカウントが指定された Media Services アカウントにアタッチされると、デタッチできなくなります。
 * プライマリ ストレージ アカウントは、Media Services アカウントの作成時に示されているものです。 現時点では、既定のストレージ アカウントを変更することはできません。 
+* 現時点では、クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#[]". は使用できません。また、‘.’ は単体で使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
+Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。  "." は&amp;1; つのみです。 また、ファイル名拡張子で使用できる
 
-## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>Azure サービス管理 REST API でストレージ アカウントをアタッチするには
-現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、 [Azure サービス管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx)を使用することです。 「 [方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx) 」トピックのコード サンプルは、 **AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。 同じトピックのコードは、 **ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
+## <a name="to-attach-storage-accounts"></a>ストレージ アカウントをアタッチするには  
+
+ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) を使用します。
+
+    $regionName = "West US"
+    $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
+    $resourceGroupName = "SkyMedia-USWest-App"
+    $mediaAccountName = "sky"
+    $storageAccount1Name = "skystorage1"
+    $storageAccount2Name = "skystorage2"
+    $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
+    $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
+    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccounts = @($storageAccount1, $storageAccount2)
+    
+    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+
+### <a name="support-for-cool-storage"></a>クール ストレージのサポート
+
+現時点では、クール ストレージ アカウントを AMS アカウントに追加する場合、ストレージ アカウントが BLOB 型であり、非プライマリに設定されている必要があります。
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントで Media Services 資産を管理するには
 次のコードは、最新の Media Services SDK を使用して次のタスクを実行します。
@@ -140,7 +165,7 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
                     // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("My encoding task",
                         processor,
-                        "H264 Multiple Bitrate 720p",
+                        "Adaptive Streaming",
                         Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 
                     // Specify the input asset to be encoded.
@@ -249,7 +274,5 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-<!--HONumber=Oct16_HO2-->
 
 

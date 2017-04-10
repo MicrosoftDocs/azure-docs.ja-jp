@@ -1,9 +1,25 @@
 ---
+title: "Azure Devtest Labs のドキュメント - チュートリアル | Microsoft Docs"
+description: "再利用可能なアーティファクトを使用して、アプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアルやビデオなどで、ラボを作成、管理、保護する方法を紹介します。"
+services: devtest-lab
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Devtest Lab Documentation
+ms.assetid: 
+ms.service: devtest-lab
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 78ae030b07f8f96ab3e4e0cb506fa8495d16543c
+ms.openlocfilehash: 19536533ad795ceab7e6223a36575a774d0cfc27
 
-Devtest Lab is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and addresses the significant challenges in developing and managing cloud applications.  Devtest Lab represents the next-generation middleware platform for building and managing these enterprise-class, Tier-1 cloud-scale applications.
+---
+#<a name="devtest-labs-documentation"></a>DevTest Labs ドキュメント
+
+Devtest Labs を使用して、再利用可能なアーティファクトを用いてアプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、ラボの作成、管理、保護と、アーティファクトの追加と管理の方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Devtest Labs</h3>
+                        <h3>Azure DevTest Labs の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +41,7 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=devtest-lab">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +51,7 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Devtest Lab Video Library</h3>
+                        <h3>Azure DevTest Labs のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a lab in Azure DevTest Labs</h3>
+                        <h3>Azure Portal での Azure DevTest Labs の概要</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +83,11 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a VM artifacts with Azure DevTest labs</h3>
+                        <h3>Azure DevTest Labs での VM アーティファクト作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -85,11 +101,11 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a lab for training using Azure DevTest Labs</h3>
+                        <h3>Azure DevTest Labs でのトレーニング ラボ作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -98,13 +114,10 @@ Devtest Lab is a distributed systems platform that makes it easy to package, dep
     </li>
 </ul>
 
----
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/devtest-lab.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Devtest Lab Documentation
-        </div>
-    </a>
-</div>
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

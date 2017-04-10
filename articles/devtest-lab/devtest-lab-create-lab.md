@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
+ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
+ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
 
 
 ---
@@ -39,9 +39,8 @@ ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
    1. 新しいラボの **[ラボ名]** を入力します。
    2. ラボに関連付ける **[サブスクリプション]** を選択します。
    3. ラボを格納する **[場所]** を選択します。
-   4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。
-   5. **[ストレージの種類]** を選択し、ラボの VM のストレージ ディスクの種類を指定します。 
-   6. **[作成]**を選択します。
+   4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。 
+   5. **[作成]**を選択します。
       
       ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -59,6 +58,6 @@ ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

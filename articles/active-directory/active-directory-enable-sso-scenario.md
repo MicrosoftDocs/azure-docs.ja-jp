@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs
-description: この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。
+title: "Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs"
+description: "この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 95b96f10-2d5c-4b78-8af8-d3657a24140f
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 04/06/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6bceb2fd03230e4a39c22605ad1fea8dd422be1
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションの管理
@@ -94,7 +98,7 @@ SSO のプロセスは 2 つの手順で構成されます。
 ## <a name="access-management"></a>アクセス管理
 Azure AD を使用することで、個別またはルール駆動型の割り当てを使用してアプリケーションへのアクセスを管理できます。 組織の適切なユーザーにアクセス管理を委任して、管理を最適化し、ヘルプ デスクの負荷を軽減することもできます。
 
-## <a name="onpremises-applications"></a>オンプレミスのアプリケーション
+## <a name="on-premises-applications"></a>オンプレミスのアプリケーション
 組み込みアプリケーション プロキシを使用してユーザーにオンプレミスのアプリケーションを発行でき、最新のクラウド アプリケーションに対する一貫性のあるアクセス エクスペリエンスと、Azure AD の監視、レポート、およびセキュリティの機能がもたらすメリットの両方を得ることができます。
 
 ## <a name="reporting-and-monitoring"></a>レポートと監視
@@ -108,7 +112,5 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 ## <a name="see-also"></a>関連項目
 [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

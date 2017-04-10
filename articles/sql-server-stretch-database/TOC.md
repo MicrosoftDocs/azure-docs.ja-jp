@@ -25,6 +25,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

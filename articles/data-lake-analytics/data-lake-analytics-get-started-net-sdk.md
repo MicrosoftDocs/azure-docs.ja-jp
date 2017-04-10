@@ -1,6 +1,6 @@
 ---
 title: ".NET SDK で Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
-description: ".NET SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Analytics ジョブを作成してから、U-SQL で記述されたジョブを送信する方法について説明します。 "
+description: ".NET SDK を使用して、Data Lake Analytics アカウントを作成し、Data Lake Analytics ジョブを作成してから、U-SQL で記述されたジョブを送信する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
+ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 
 ---
@@ -196,7 +196,6 @@ C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Ou
                     Console.WriteLine(nextAction);
             }
 
-
             // List all Data Lake Analytics accounts within the subscription
             public static List<DataLakeAnalyticsAccount> ListADLAAccounts()
             {
@@ -217,6 +216,7 @@ C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Ou
 
                 return accounts;
             }
+
             public static Guid SubmitJobByPath(string scriptPath, string jobName)
             {
                 var script = File.ReadAllText(scriptPath);
@@ -241,10 +241,10 @@ C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Ou
           }
         }
 
-1. **F5** キーを押してアプリケーションを実行します。 出力は次のようになります。
+5. **F5** キーを押してアプリケーションを実行します。 出力は次のようになります。
    
     ![Azure Data Lake Analytics job U-SQL .NET SDK output](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. 出力ファイルをチェックします。  既定のパスとファイル名は、c:\Temp\SearchLog-from-Data-Lake.csv です。
+6. 出力ファイルをチェックします。  既定のパスとファイル名は、c:\Temp\SearchLog-from-Data-Lake.csv です。
 
 ## <a name="see-also"></a>関連項目
 * 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
@@ -257,6 +257,6 @@ C# プログラムでは、**/Samples/Data/SearchLog.tsv** ファイルと **/Ou
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

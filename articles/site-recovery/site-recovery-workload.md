@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/10/2016
+ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddeadcf741eb099f7c14a554dd4f31561a408aa1
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 34a9d187eecec185e2b8d6977baea267ca9e60e5
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -130,12 +131,19 @@ Site Recovery を使用して、SAP デプロイを次のように保護でき�
 
 [こちら](http://aka.ms/asr-sap) を参照してください。
 
+## <a name="protect-iis"></a>IIS の保護
+Site Recovery を使用して、IIS デプロイを次のように保護できます。
+
+Azure Site Recovery では、環境内の重要なコンポーネントをリモートのコールド サイトまたはパブリック クラウド (Microsoft Azure など) にレプリケートして、障害復旧を実行できます。 Web サーバーとデータベースを備えた仮想マシンが復旧サイトにレプリケートされるため、構成ファイルまたは証明書を別々にバックアップする必要はありません。 アプリケーションのマッピングとバインドはフェールオーバー後に変更される環境変数に依存しますが、これらは障害復旧計画に統合されたスクリプトを使用して更新できます。 仮想マシンが復旧サイトで起動されるのはフェールオーバーの発生時だけです。 さらに、Azure Site Recovery はエンド ツー エンドのフェールオーバーを調整する場合にも役立ちます。これは次の機能を備えているためです。
+
+-    各種階層における仮想マシンのシャットダウンと起動のシーケンス処理。
+-    仮想マシン上のアプリケーションの依存関係とバインドを仮想マシンの起動後に更新できるスクリプトの追加。 スクリプトは、復旧サイトを指すよう DNS サーバーを更新するためにも使用できます。
+-    プライマリ ネットワークと復旧ネットワークをマッピングして、フェールオーバー前に IP アドレスを仮想マシンに割り当てます。そのため、使用するスクリプトはフェールオーバー後に更新する必要がありません。
+-    Web サーバー上の複数の Web アプリケーションをワンクリックでフェールオーバーする機能。この機能により、障害発生時の混乱を回避できます。
+-    DR ドリル用の分離された環境で復旧計画のテストを実行する機能。
+
+IIS Web ファームの保護の詳細については、[こちら](https://aka.ms/asr-iis)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
-[Site Recovery のデプロイを準備する](site-recovery-best-practices.md) 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[前提条件を確認する](site-recovery-prereq.md) 
 

@@ -1,30 +1,34 @@
 ---
-title: Cloud Services でのロールの通信 | Microsoft Docs
-description: Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。
+title: "Cloud Services でのロールの通信 | Microsoft Docs"
+description: "Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。"
 services: cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: Thraka
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/14/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
+ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
+
 
 ---
-# Azure におけるロール インスタンスの通信の有効化
-クラウド サービスのロールは、内部接続および外部接続で通信します。外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。このトピックでは、[サービス定義](cloud-services-model-and-package.md#csdef)を変更してエンドポイントを作成する方法を説明します。
+# <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
+クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
 
-## 入力エンドポイント
-入力エンドポイントは、ポートを外部に公開するときに使用します。プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。必要に応じて、[localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
+## <a name="input-endpoint"></a>入力エンドポイント
+入力エンドポイントは、ポートを外部に公開するときに使用します。 プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。 必要に応じて、 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
 
-入力エンドポイントには、プロトコル **http、https、tcp、udp** を使用できます。
+入力エンドポイントには、プロトコル **http、https、tcp、udp**を使用できます。
 
-入力エンドポイントを作成するには、子要素 **InputEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**に追加します。
+入力エンドポイントを作成するには、Web ロールまたは worker ロールの **Endpoints** 要素に **InputEndpoint** 子要素を追加します。
 
 ```xml
 <Endpoints>
@@ -32,12 +36,12 @@ ms.author: adegeo
 </Endpoints> 
 ```
 
-## インスタンス入力エンドポイント
-インスタンス入力エンドポイントは入力エンドポイントに似ていますが、ロード バランサーにポート フォワーディングを使用することで、個々のロール インスタンスごとに、特定の公開ポートをマップできます。1 つの公開ポートまたはポートの範囲を指定できます。
+## <a name="instance-input-endpoint"></a>インスタンス入力エンドポイント
+インスタンス入力エンドポイントは入力エンドポイントに似ていますが、ロード バランサーにポート フォワーディングを使用することで、個々のロール インスタンスごとに、特定の公開ポートをマップできます。 1 つの公開ポートまたはポートの範囲を指定できます。
 
 インスタンス入力エンドポイントでは、**tcp** または **udp** のみをプロトコルとして使用できます。
 
-インスタンス入力エンドポイントを作成するには、子要素 **InstanceInputEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**要素に追加します。
+インスタンス入力エンドポイントを作成するには、Web ロールまたは worker ロールの **Endpoints** 要素に **InstanceInputEndpoint** 子要素を追加します。
 
 ```xml
 <Endpoints>
@@ -49,12 +53,12 @@ ms.author: adegeo
 </Endpoints>
 ```
 
-## 内部エンドポイント
-内部エンドポイントは、インスタンス間の通信で使用できます。ポートは省略可能なので、省略した場合、動的なポートがエンドポイントに割り当てられます。ポートの範囲も使用できます。使用できる内部エンドポイントは、1 ロールあたり 5 つに制限されています。
+## <a name="internal-endpoint"></a>内部エンドポイント
+内部エンドポイントは、インスタンス間の通信で使用できます。 ポートは省略可能なので、省略した場合、動的なポートがエンドポイントに割り当てられます。 ポートの範囲も使用できます。 使用できる内部エンドポイントは、1 ロールあたり 5 つに制限されています。
 
-内部エンドポイントには、プロトコル **http、tcp、udp、any** を使用できます。
+内部エンドポイントには、プロトコル **http、tcp、udp、any**を使用できます。
 
-内部入力エンドポイントを作成するには、子要素 **InternalEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**要素に追加します。
+内部入力エンドポイントを作成するには、Web ロールまたは worker ロールの **Endpoints** 要素に **InternalEndpoint** 子要素を追加します。
 
 ```xml
 <Endpoints>
@@ -73,8 +77,8 @@ ms.author: adegeo
 ```
 
 
-## worker ロールとWeb ロールの比較
-Worker ロールと Web ロールの両方を使用する場合は、エンドポイントにはわずかな相違点が 1 つあります。Web ロールには、**HTTP** プロトコルを使用している入力エンドポイントが少なくとも 1 つ必要です。
+## <a name="worker-roles-vs-web-roles"></a>worker ロールとWeb ロールの比較
+Worker ロールと Web ロールの両方を使用する場合は、エンドポイントにはわずかな相違点が 1 つあります。 Web ロールには、 **HTTP** プロトコルを使用している入力エンドポイントが少なくとも 1 つ必要です。
 
 ```xml
 <Endpoints>
@@ -83,30 +87,30 @@ Worker ロールと Web ロールの両方を使用する場合は、エンド�
 </Endpoints>
 ```
 
-## .NET SDK を使用してエンドポイントにアクセスする方法
-Azure マネージ ライブラリは、実行時に通信できるようロール インスタンスにメソッドを提供します。ロール インスタンス内で実行するコードから、現在のロール インスタンスに関する情報だけでなく、他のロール インスタンスの存在およびそのエンドポイントに関する情報を取得できます。
+## <a name="using-the-net-sdk-to-access-an-endpoint"></a>.NET SDK を使用してエンドポイントにアクセスする方法
+Azure マネージ ライブラリは、実行時に通信できるようロール インスタンスにメソッドを提供します。 ロール インスタンス内で実行するコードから、現在のロール インスタンスに関する情報だけでなく、他のロール インスタンスの存在およびそのエンドポイントに関する情報を取得できます。
 
 > [!NOTE]
-> 取得できるのは、自身のクラウド サービスで実行されているロール インスタンスに関する情報と、少なくとも 1 つの内部エンドポイントを定義するロール インスタンスの情報のみです。別のサービスで実行されているロール インスタンスに関するデータは取得することはできません。
+> 取得できるのは、自身のクラウド サービスで実行されているロール インスタンスに関する情報と、少なくとも 1 つの内部エンドポイントを定義するロール インスタンスの情報のみです。 別のサービスで実行されているロール インスタンスに関するデータは取得することはできません。
 > 
 > 
 
-ロール インスタンスを取得するには、[Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) プロパティを使用します。まず [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 使用して現在のロール インスタンスに参照を返してから、[Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) プロパティを使用してそのロール自体に参照を返します。
+ロール インスタンスを取得するには、 [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) プロパティを使用します。 まず [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) を使用して現在のロール インスタンスへの参照を返し、次に [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) プロパティを使用してそのロール自体への参照を返します。
 
-.NET SDK を介してプログラムによってロール インスタンスに接続する場合、比較的簡単にエンドポイントの情報にアクセスできます。たとえば、特定のロール環境にすでに接続している場合、次のコードで特定のエンドポイントのポートを取得できます。
+.NET SDK を介してプログラムによってロール インスタンスに接続する場合、比較的簡単にエンドポイントの情報にアクセスできます。 たとえば、特定のロール環境にすでに接続している場合、次のコードで特定のエンドポイントのポートを取得できます。
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-**Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。このコレクションには常に、現在のインスタンスが含まれています。ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
+**Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。 このコレクションには常に、現在のインスタンスが含まれています。 ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。 コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。 ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
 
 > [!NOTE]
-> Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](cloud-services-dotnet-diagnostics.md)を使用すると、実行中のロール インスタンスの情報を取得できます。
+> Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。 [Azure 診断](cloud-services-dotnet-diagnostics.md) を使用すると、実行中のロール インスタンスの情報を取得できます。
 > 
 > 
 
-ロール インスタンスの内部エンドポイントのポート番号を判断するには、[InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。[IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。**PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。**PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
+ロール インスタンスの内部エンドポイントのポート番号を判断するには、 [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。 [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。 **PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。 **PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
 
 ロール インスタンスを反復処理する例を次に示します。
 
@@ -124,7 +128,7 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 これは、サービス定義で公開されるエンドポイントを取得し、接続のリッスンを開始する worker ロールの例です。
 
 > [!WARNING]
-> このコードは、デプロイ済みのサービスのみに使用できます。Azure 計算エミュレーターでの実行時に、直接ポート エンドポイントを作成するサービス構成要素 (**InstanceInputEndpoint** 要素) は無視されます。
+> このコードは、デプロイ済みのサービスのみに使用できます。 Azure 計算エミュレーターでの実行時に、直接ポート エンドポイントを作成するサービス構成要素 (**InstanceInputEndpoint** 要素) は無視されます。
 > 
 > 
 
@@ -212,12 +216,12 @@ namespace WorkerRole1
 }
 ```
 
-## ロール通信を制御するためのネットワーク トラフィック規則
-内部エンドポイントを定義した後、作成したエンドポイントに基づいてネットワーク トラフィック規則を追加して、ロール インスタンス間の通信方法を制御できます。次の図は、ロール通信を制御するためのいくつかの一般的なシナリオを示しています。
+## <a name="network-traffic-rules-to-control-role-communication"></a>ロール通信を制御するためのネットワーク トラフィック規則
+内部エンドポイントを定義した後、作成したエンドポイントに基づいてネットワーク トラフィック規則を追加して、ロール インスタンス間の通信方法を制御できます。 次の図は、ロール通信を制御するためのいくつかの一般的なシナリオを示しています。
 
-![ネットワーク トラフィック規則のシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック規則のシナリオ")
+![ネットワーク トラフィック ルールのシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック ルールのシナリオ")
 
-次のコード例は、前の図で示されたロールのロール定義を示しています。各ロール定義では、少なくとも 1 つの内部エンドポイントが定義されています。
+次のコード例は、前の図で示されたロールのロール定義を示しています。 各ロール定義では、少なくとも 1 つの内部エンドポイントが定義されています。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -253,9 +257,9 @@ namespace WorkerRole1
 > 
 > 
 
-既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。通信を制限するには、サービス定義ファイル内で、**NetworkTrafficRules** 要素を **ServiceDefinition** 要素に追加する必要があります。
+既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。 通信を制限するには、サービス定義ファイル内で、**NetworkTrafficRules** 要素を **ServiceDefinition** 要素に追加する必要があります。
 
-### シナリオ 1
+### <a name="scenario-1"></a>シナリオ 1
 **WebRole1** から **WorkerRole1** へのネットワーク トラフィックのみを許可する。
 
 ```xml
@@ -274,7 +278,7 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### シナリオ 2
+### <a name="scenario-2"></a>シナリオ 2
 **WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
@@ -293,7 +297,7 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### シナリオ 3
+### <a name="scenario-3"></a>シナリオ 3
 **WebRole1** から **WorkerRole1** へのネットワーク トラフィック、**WorkerRole1** から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
@@ -322,7 +326,7 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-### シナリオ 4
+### <a name="scenario-4"></a>シナリオ 4
 **WebRole1** から **WorkerRole1** へのネットワーク トラフィック、**WebRole1** から **WorkerRole2** へのネットワーク トラフィック、および **WorkerRole1** から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
@@ -363,9 +367,14 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-上記で使用される要素の XML スキーマ参照は[こちら](https://msdn.microsoft.com/library/azure/gg557551.aspx)でご覧ください。
+上記で使用される要素の XML スキーマ参照は [こちら](https://msdn.microsoft.com/library/azure/gg557551.aspx)でご覧ください。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO3-->
+
+

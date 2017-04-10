@@ -1,130 +1,157 @@
 ---
-title: 'Azure Insights: Best practices for Azure Insights autoscaling. | Microsoft Docs'
-description: Learn principles to effectively use autoscaling in Azure Insights.
+title: "自動スケールのベスト プラクティス | Microsoft Docs"
+description: "Virtual Machines、Virtual Machine Scale Sets、および Cloud Services の自動スケールを効率的に行うための原則について説明します。"
 author: kamathashwin
-manager: ''
-editor: ''
+manager: carmonm
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 9fa2b94b-dfa5-4106-96ff-74fd1fba4657
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2016
+ms.date: 01/23/2016
 ms.author: ashwink
+translationtype: Human Translation
+ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
+ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
+
 
 ---
-# <a name="best-practices-for-azure-insights-autoscaling"></a>Best practices for Azure Insights autoscaling
-The following sections in this document will help you understand the best practices for Autoscale in Azure Insights. After reviewing this information, you'll be better able to effectively use Autoscale in your Azure infrastructure.
+# <a name="best-practices-autoscaling-virtual"></a>仮想環境の自動スケールに関するベスト プラクティス
+この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 対象は、Virtual Machines、Virtual Machine Scale Sets、および Cloud Services です。  他の Azure サービスでは、異なるスケーリング方法が使用されています。
 
-## <a name="autoscale-concepts"></a>Autoscale concepts
-* A resource can have only *one* autoscale setting
-* An autoscale setting can have one or more profiles and each profile can have one or more autoscale rules.
-* An autoscale setting scales instances horizontally, which is *out* by increasing the instances and *in* by decreasing the number of instances.
-  An autoscale setting has a maximum, minimum, and default value of instances.
-* An autoscale job always reads the associated metric to scale by, checking if it has crossed the configured threshold for scale out or scale in. You can view a list of metrics that autoscale can scale by at [Azure Insights autoscaling common metrics](insights-autoscale-common-metrics.md).
-* All thresholds are calculated at an instance level. For example, "scale out by 1 instance when average CPU > 80% when instance count is 2", means scale out when the average CPU across all instances is greater than 80%.
-* You will always receive failure notifications via email. Specifically, the owner, contributor, and readers of the target resource will receive email. You will also always receive a *recovery* email when autoscale recovers from a failure and starts functioning normally.
-* You can opt-in to receive a successful scale action notification via email and webhooks.
+## <a name="autoscale-concepts"></a>自動スケールの概念
+* 1 つのリソースで使用できる自動スケール設定は *1 つ* に限られます。
+* 自動スケール設定では、1 つ以上のプロファイルを使用できます。また、プロファイルごとに&1; つ以上の自動スケール ルールを設定できます。
+* 自動スケール設定では、インスタンスが水平方向にスケールされます。つまり、インスタンス数を増やしてスケール "*アウト*" し、インスタンス数を減らしてスケール "*イン*" します。
+  自動スケール設定には、インタンスの最大値、最小値、既定値があります。
+* 自動スケール ジョブでは、スケールに使用する関連付けられたメトリックを常に読み取り、スケールアウトまたはスケールインの構成済みのしきい値を超えているかどうかをチェックします。 自動スケールで使用できるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)」をご覧ください。
+* しきい値はすべてインスタンス レベルで計算されます。 たとえば、"インスタンス数が 2 で、平均 CPU 使用率が 80% を超えたときに、インスタンスを 1 つ増やしてスケールアウトする" とは、全インスタンスの平均 CPU 使用率が 80% を超えたときにスケールアウトすることを意味します。
+* 電子メールでエラー通知が必ず送信されます。 具体的には、対象のリソースの所有者、共同作成者、閲覧者に電子メールが送信されます。 自動スケールがエラーから回復し、正常に機能し始めると、"*回復*" メールも必ず送信されます。
+* 電子メールや Webhook でスケール操作の成功通知を受け取るかどうかを選択できます。
 
-## <a name="autoscale-best-practices"></a>Autoscale best practices
-Use the following best practices as you use Autoscale.
+## <a name="autoscale-best-practices"></a>自動スケールのベスト プラクティス
+自動スケールを使用するときは、次のベスト プラクティスを使用します。
 
-### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Ensure the maximum and minimum values are different and have an adequate margin between them
-If you have a setting that has maximum=2, minimum=2 and the current instance count is 2, no scale action can occur. A recommended setting is to keep an adequate margin between the maximum and minimum instance counts. Autoscale will always scale between these limits, which is inclusive. However, assume that you decide to manually scale (update) the instance count to a value above the maximum. The next time an autoscale job runs, it checks if the current instance count is greater than maximum - if so, it scales in to the maximum, regardless of the threshold set on the rules. Similarly, if you manually arrive at a current instance count less than the minimum, the next time an autoscale job runs, it scales out to the minimum number of instances.
+### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>最大値と最小値が異なっており、これらの値に十分な差があることを確認する
+最小値が 2 で最大値も 2 の設定があり、現在のインスタンス数が 2 の場合、スケール操作が実行されない可能性があります。 インスタンスの最大数と最小数に十分な差を付けておきます。 自動スケールでは、常にこれらの制限の範囲でスケールします。
 
-### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Always use a scale out and scale in rule combination that performs an increase and decrease
-If you use only one part of the combination, autoscale will scale in that single out, or in, until the maximum, or minimum, is reached.
+### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>手動スケールは、自動スケールの最小値と最大値によってリセットされる
+インスタンス数を最大値を上回る値または下回る値に手動で更新した場合、自動スケール エンジンにより、自動的に最小値 (下回る場合) または最大値 (上回る場合) にスケールされます。 たとえば、3 ～ 6 の範囲を設定します。 実行中のインスタンスが 1 つの場合は、自動スケール エンジンにより、次回の実行時にインスタンスが 3 つにスケールされます。 同様に、インスタンスが 8 つの場合は、次回の実行時に 6 つにスケールインします。  自動スケール ルールもリセットしない限り、手動スケールの効果はごく一時的です。
 
-### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>Do not switch between the Azure portal and the Azure classic portal when managing Autoscale
-For Cloud Services and App Services (Web Apps), use the Azure portal (portal.azure.com) to create and manage Autoscale settings. For Virtual Machine Scale Sets use PoSH, CLI or REST API to create and manage autoscale setting. Do not switch between the Azure classic portal (manage.windowsazure.com) and the Azure portal (portal.azure.com) when managing autoscale configurations. The Azure classic portal and its underlying backend has limitations. Move to the Azure portal to manage autoscale using a graphical user interface. The options are to use the Autoscale PowerShell, CLI or REST API (via Azure Resource Explorer).
+### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>増減を実行するスケールアウトとスケールインのルールの組み合わせを常に使用する
+組み合わせの一方だけを使用すると、最大値または最小値に達するまで、スケールアウトのみまたはスケールインのみが実行されます。
 
-### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Choose the appropriate statistic for your diagnostics metric
-For diagnostics metrics, you can choose among *Average*, *Minimum*, *Maximum* and *Total* as a metric to scale by. The most common statistic is *Average*.
+### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>自動スケールを管理するときに、Azure ポータルと Azure クラシック ポータルを切り替えない
+Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azure.com) を使用して自動スケール設定を作成し、管理します。 Virtual Machine Scale Sets の場合、PowerShell、CLI、または REST API を使用して自動スケール設定を作成し、管理します。 自動スケールの構成を管理するときに、Azure クラシック ポータル (manage.windowsazure.com) と Azure ポータル (portal.azure.com) を切り替えないでください。 Azure クラシック ポータルとその基になるバックエンドには制限事項があります。 グラフィカル ユーザー インターフェイスを使用して自動スケールを管理するには、Azure ポータルに移動します。 自動スケールで、PowerShell、CLI、または REST API (Azure リソース エクスプローラーを使用) を使用することもできます。
 
-### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Choose the thresholds carefully for all metric types
-We recommend carefully choosing different thresholds for scale out and scale in based on practical situations.
+### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>診断メトリックに適切な統計を選択する
+診断メトリックの場合、スケールに使用するメトリックとして、"*平均*"、"*最小*"、"*最大*"、"*合計*" の中から選択できます。 最も一般的な統計は *平均*です。
 
-We *do not recommend* autoscale settings like the examples below with the same or very similar threshold values for out and in conditions:
+### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>どのメトリックの種類でもしきい値を慎重に選択する
+実際の状況に基づいて、スケールアウトとスケールインに異なるしきい値を慎重に選択することをお勧めします。
 
-* Increase instances by 1 count when Thread Count <= 600
-* Decrease instances by 1 count when Thread Count >= 600
+スケールアウトとスケールインの条件に同じまたは非常に近いしきい値を指定した次の例のような自動スケール設定は *お勧めできません* 。
 
-Let's look at an example of what can lead to a behavior that may seem confusing. Assume there are 2 instances to begin with and then the average number of threads per instance grows to 625. Autoscale scales out adding a 3rd instance. Next, assume that the average thread count across instance falls to 575. Before scaling down, autoscale tries to estimate what the final state will be if it scaled in. For example, 575 x  3 (current instance count) = 1,725 / 2 (final number of instances when scaled down) = 862.5 threads. This means Autoscale will have to immediately scale out again even after it scaled in, if the average thread count remains the same or even falls only a small amount. However, if it scaled up again, the whole process would repeat, leading to an infinite loop. To avoid this *flappy* situation, Autoscale does not scale down at all. Instead, it skips and reevaluates the condition again the next time the service's job executes. This could confuse many people because autoscale wouldn't appear to work when the average thread count was 575.
+* スレッド数が 600 以下のときにインスタンスを 1 つ増やす
+* スレッド数が 600 以上のときにインスタンスを 1 つ減らす
 
-This estimation behavior during a scale in is intended to avoid a flappy situation. You should keep this behavior in mind when you choose the same thresholds for scale out and in.
+混乱を招くと思われる動作につながる可能性のある例を見てみましょう。 次の例を考えます。
 
-We recommend choosing an adequate margin between the scale out and in thresholds. As an example, consider the following better rule combination.
+1. 最初に 2 つのインスタンスがあり、インスタンスあたりの平均スレッド数が 625 に増加したとします。
+2. 自動スケールによって 3 つ目のインスタンスが追加され、スケールアウトされます。
+3. 次に、インスタンスの平均スレッド数が 575 に減少したとします。
+4. 自動スケールでは、スケールダウンを実行する前に、スケールインした場合の最終状態の推定を試みます。 たとえば、575 x 3 (現在のインスタンス数) = 1,725 / 2 (スケールダウンしたときの最終的なインスタンス数) = 862.5 スレッドになります。 つまり、スケールインした後も、平均スレッド数に変化がない場合や少し減少しただけである場合、すぐにスケールアウトを再度実行する必要があります。 しかし、再度スケールアップすると、このプロセス全体が繰り返されることになり、無限ループが発生します。
+5. この状態 ("締まりのない" といいます) を回避するために、スケールダウンはまったく実行されません。 代わりに、スケールダウンをスキップし、サービスのジョブが次回実行されたときに、条件が再評価されます。 平均スレッド数が 575 のときに自動スケールが機能していないように見えるため、これは多くのユーザーを混乱させるおそれがあります。
 
-* Increase instances by 1 count when CPU%  >= 80
-* Decrease instances by 1 count when CPU% <= 60
+スケールイン時の推定動作は、スケールインとスケールアウトが連続して交互に行われる "締まりのない" 状態を回避するためのものです。 スケールアウトとスケールインに同じしきい値を使用する場合は、この動作に留意してください。
 
-Let's review how this example works. Assume there are 2 instances to start with. If the average CPU% across instances goes to 80, autoscale scales out adding a 3rd instance. Now assume that over time the CPU% falls to 60. Autoscale's scale in rule estimates the final state if it were to scale in. For example, 60 x 3 (current instance count) = 180 / 2 (final number of instances when scaled down) = 90. So Autoscale does not scale in because it would have to scale out again immediately. Instead, it skips scaling down. Next, assume that the next time it checks, the CPU continues to fall to 50, then it estimates again -  50 x 3 instance = 150 / 2 instances = 75, which is below the scale out threshold of 80, so it scales in successfully to 2 instances.
+スケールアウトとスケールインのしきい値に十分な差を付けておくことをお勧めします。 たとえば、次の有効なルールの組み合わせについて考えてみます。
 
-### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Considerations for scaling threshold values for special metrics
- For special metrics such as Storage or Service Bus Queue length metric, the threshold is the average number of messages available per current number of instances. Carefully choose the choose the threshold value for this metric.
+* CPU 使用率が 80 以上のときにインスタンスを 1 つ増やす
+* CPU 使用率が 60 以下のときにインスタンスを 1 つ減らす
 
-Let's illustrate it with an example to ensure you understand the behavior better.
+この場合、次のようになります。  
 
-* Increase instances by 1 count when Storage Queue message count >= 50
-* Decrease instances by 1 count when Storage Queue message count <= 10
+1. 最初に 2 つのインスタンスがあるとします。
+2. 全インスタンスの平均 CPU 使用率が 80 に達すると、3 つ目のインスタンスが追加され、スケールアウトされます。
+3. 時間の経過と共に、CPU 使用率が 60 に低下したとします。
+4. 自動スケールのスケールイン ルールにより、スケールインした場合の最終状態が推定されます。 たとえば、60 x 3 (現在のインスタンス数) = 180 / 2 (スケールダウンしたときの最終的なインスタンス数) = 90 になります。 そのため、すぐにスケールアウトを再度実行しなければならないので、スケールインは実行されません。 代わりに、スケールダウンがスキップされます。
+5. 次回チェックされたときに、CPU 使用率が引き続き 50 に低下していると、 再び推定が行われます。50 x 3 インスタンス = 150 / 2 インスタンス = 75 となり、スケールアウトのしきい値である 80 を下回っているため、2 つのインスタンスに正常にスケールインされます。
 
-Assume there are 2 instances to start with. Next, assume that messages keep coming and when you review the storage queue, the total count reads 50. You might assume that autoscale should start a scale out action. However, note that it is still 50/2 = 25 messages per instance. So, scale out does not occur. For the first scale out to happen, the total message count in the storage queue should be 100. Next, assume that the total message count reaches 100. A 3rd instance is added due to a scale out action. The next scale out action will not happen until the total message count in the queue reaches 150. Let's look at the scale in action. Assume that the number of instances is 3. The first scale in action happens when the total messages in the queue reaches 30, making it 30/3 = 10 messages per instance, which is the scale in threshold.
+### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>特殊なメトリックのスケーリングしきい値に関する考慮事項
+ Storage や Service Bus のキューの長さメトリックなどの特殊なメトリックでは、しきい値は現在のインスタンス数あたりの使用可能な平均メッセージ数です。 このメトリックのしきい値は慎重に選択します。
 
-### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Considerations for scaling when multiple profiles are configured in an autoscale setting
-In an autoscale setting, you can choose a default profile, which is always applied without any dependency on schedule or time, or you can choose a recurring profile or a profile for a fixed period with a date and time range.
+動作を理解しやすいように、例を挙げて説明します。
 
-When Autoscale service processes them, it always checks in the following order:
+* Storage のキューのメッセージ数が 50 以上のときにインスタンスを 1 つ増やす
+* Storage のキューのメッセージ数が 10 以下のときにインスタンスを 1 つ減らす
 
-1. Fixed Date profile
-2. Recurring profile
-3. Default ("Always") profile
+次の例について考えてみます。
 
-If a profile condition is met, autoscale does not check the next profile condition below it. Autoscale only processes one profile at a time. This means if you want to also include a processing condition from a lower-tier profile, you must include those rules as well in the current profile.
+1. 2 つのストレージ キュー インスタンスがあります。
+2. メッセージが次々にキューに入り、ストレージ キューを確認したところ、メッセージの総数が 50 になっていました。 この場合、自動スケールによってスケールアウト操作が開始されると思われるかもしれませんが、 インスタンスあたりのメッセージ数はまだ 50/2 = 25 です。 そのため、スケールアウトは実行されません。 最初のスケールアウトを実行するには、ストレージ キューのメッセージの総数が 100 である必要があります。
+3. 次に、メッセージの総数が 100 に達したとします。
+4. スケールアウト操作により、3 つ目のストレージ キュー インスタンスが追加されます。  150/3 = 50 であるため、キューのメッセージの総数が 150 に達するまで、次のスケールアウト操作は実行されません。
+5. これで、キューあたりのメッセージの数が減少します。 インスタンスが 3 つの場合、すべてのキューのメッセージの総数が 30 に達すると、インスタンスあたりのメッセージ数がスケールインのしきい値である 30/3 = 10 になるため、最初のスケールイン操作が実行されます。
 
-Let's review this using an example:
+### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>自動スケール設定で複数のプロファイルが構成されている場合のスケーリングに関する考慮事項
+自動スケール設定では、スケジュールや時間に依存せずに常に適用される既定のプロファイルを選択できます。また、定期的プロファイル (日時の範囲が指定された一定期間のプロファイル) を選択することもできます。
 
-The image below shows an autoscale setting with a default profile of minimum instances = 2 and maximum instances = 10. In this example, rules are configured to scale out when the message count in the queue is greater than 10 and scale in when the message count in the queue is less than 3. So now the resource can scale between 2 and 10 instances.
+自動スケール サービスがこれらのプロファイルを処理するときには、常に次の順序でチェックされます。
 
-In addition, there is a recurring profile set for Monday. It is set for minimum instances = 2 and maximum instances = 12. This means on Monday, the first time Autoscale checks for this condition, if the instance count was 2, it will scale it to the new minimum of 3. As long as autoscale continues to find this profile condition matched (Monday), it will only process the CPU based scale out/in rules configured for this profile. At this time, it will not check for the queue length. However, if you also want the queue length condition to be checked, you should include those rules from the default profile as well in your Monday profile. 
+1. 指定日プロファイル
+2. 定期的プロファイル
+3. 既定の ("常時") プロファイル
 
-Similarly, when Autoscale switches back to the default profile, it first checks if the minimum and maximum conditions are met. If the number of instances at the time is 12, it scales in to 10, the maximum allowed for the default profile.
+自動スケールでは、プロファイルの条件が満たされると、それより下位のプロファイルの条件はチェックされません。 自動スケールで処理されるプロファイルは一度に&1; つに限られます。 つまり、下位層のプロファイルの処理条件も含める場合は、現在のプロファイルにそれらのルールも含める必要があります。
 
-![autoscale settings](./media/insights-autoscale-best-practices/insights-autoscale-best-practices.png)
+例を使用してこれを確認しましょう。
 
-### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Considerations for scaling when multiple rules are configured in a profile
-There are cases where you may have to set multiple rules in a profile. The following set of autoscale rules are used by services use when multiple rules are set.
+次の図は、インスタンスの最小数が 2、最大数が 10 の既定のプロファイルを使用する自動スケール設定を示しています。 この例では、キューのメッセージ数が 10 を超えたときにスケールアウトし、キューのメッセージ数が 3 未満のときにスケールインするようにルールが構成されています。 したがって、リソースは 2 から 10 の間でインスタンスをスケールできます。
 
-On *scale out*, Autoscale will run if any rule is met.
-On *scale in*, Autoscale require all rules to be met.
+さらに、月曜日に設定された定期的プロファイルがあります。 このプロファイルでは、インスタンスの最小数が 2、最大数が 12 に設定されています。 これは、月曜日に自動スケールでこの条件が初めてチェックされたときに、インスタンス数が 2 の場合、新たな最小数の 3 にスケールされることを意味します。 自動スケールによってこのプロファイルの条件 (月曜日) に一致することが確認されている限り、このプロファイルに構成されている CPU ベースのスケールアウト/イン ルールだけが処理されます。 この時点では、キューの長さはチェックされません。 ただし、キューの長さの条件もチェックする場合は、月曜日プロファイルに既定のプロファイルのこれらのルールも含める必要があります。
 
-To illustrate, assume that you have the following 4 autoscale rules:
+同様に、自動スケールが既定のプロファイルに切り替えたときに、最小数と最大数の条件が満たされているかどうかが最初にチェックされます。 その時点でインスタンス数が 12 の場合、既定のプロファイルで許可されている最大数の 10 にスケールインされます。
 
-* If CPU < 30 %, scale in by 1
-* If Memory < 50%, scale in by 1
-* If CPU > 75%, scale out by 1
-* If Memory > 75%, scale out by 1
+![自動スケール設定](./media/insights-autoscale-best-practices/insights-autoscale-best-practices.png)
 
-Then the follow will occur: 
+### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>プロファイルに複数のルールが構成されている場合のスケーリングに関する考慮事項
+プロファイルに複数のルールを設定することが必要な場合があります。 複数のルールが設定されている場合、サービスで自動スケール ルールの次のセットが使用されます。
 
-* If CPU is 76% and Memory is 50%, we will scale out.
-* If CPU is 50% and Memory is 76% we will scale out.
+"*スケールアウト*" の場合、いずれかのルールが満たされていれば、自動スケールが実行されます。
+"*スケールイン*" の場合、すべてのルールが満たされている必要があります。
 
-On the other hand, if CPU is 25% and memory is 51% autoscale will **not** scale in. In order to scale in, CPU must be 29% and Memory 49%.
+わかりやすく説明するために、次の 4 つの自動スケール ルールがあると仮定します。
 
-### <a name="always-select-a-safe-default-instance-count"></a>Always select a safe default instance count
-The default instance count is important because it the instance count that Autoscale scales your service to when metrics are not available. Therefore, select a default instance count that's safe for your workloads.
+* CPU 使用率が 30% 未満の場合は 1 つスケールインする
+* メモリ使用率が 50% 未満の場合は 1 つスケールインする
+* CPU 使用率が 75% を超えた場合は 1 つスケールアウトする
+* メモリ使用率が 75% を超えた場合は 1 つスケールアウトする
 
-### <a name="configure-autoscale-notifications"></a>Configure autoscale notifications
-Autoscale notifies the administrators and contributors of the resource by email if any of the following conditions occur:
+この場合、結果は次のようになります。
 
-* Autoscale service fails to take an action.
-* Metrics are not available for autoscale service to make a scale decision.
-* Metrics are available (recovery) again to make a scale decision.
-  In addition to the conditions above, you can configure email or webhook notifications to get notified for successful scale actions.
+* CPU が 76% でメモリが 50% の場合、スケールアウトします。
+* CPU が 50% でメモリが 76% の場合、スケールアウトします。
 
-<!--HONumber=Oct16_HO2-->
+一方、CPU が 25% でメモリが 51% の場合、スケールインは "**実行されません**"。 スケールインを実行するためには、CPU が 29%、メモリが 49% である必要があります。
+
+### <a name="always-select-a-safe-default-instance-count"></a>常に、安全な既定のインスタンス数を選択する
+自動スケールでは、メトリックを使用できないときにサービスをその数にスケールするので、既定のインスタンス数が重要となります。 そのため、ワークロードにとって安全な既定のインスタンス数を選択する必要があります。
+
+### <a name="configure-autoscale-notifications"></a>自動スケールの通知を構成する
+自動スケールでは、次のいずれかの状況が発生した場合に、リソースの管理者と共同作成者に電子メールで通知が行われます。
+
+* 自動スケール サービスが操作の実行に失敗した場合。
+* 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
+* スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。
+  上記の状況に加え、スケール操作が正常に完了した場合に通知されるように、電子メールまたは Webhook の通知を構成できます。
+
+
+
+<!--HONumber=Jan17_HO5-->
 
 

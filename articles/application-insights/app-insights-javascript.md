@@ -1,21 +1,22 @@
 ---
-title: "JavaScript Web アプリのための Application Insights | Microsoft Docs"
+title: "JavaScript Web アプリのための Azure Application Insights | Microsoft Docs"
 description: "ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -44,7 +45,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/01-create.png)
 
-*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resourceのサブスクリプションが必要です。md)のサブスクリプションが必要です。
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
 クイック スタートで、Web ページのスクリプトを取得します。
@@ -97,7 +98,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>アプリを実行する
+## <a name="run"></a>アプリを実行する
 Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。 **F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
 Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで**F12** です)。 データは dc.services.visualstudio.com に送信されます。
@@ -107,7 +108,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
-*まだデータが表示されませんか?ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
+*まだデータが表示されませんか?ページの上部にある**[更新]**をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
@@ -121,7 +122,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 多くの場合、"*ネットワーク接続*" 時間は予想よりも短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。 個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
 ### <a name="slow-loading"></a>読み込みに時間がかかる
-ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
+ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の&1; つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
 
 このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。 問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
 
@@ -135,11 +136,11 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 [`...`] をクリックすると、該当するイベントの一連のプロパティがすべて表示されます。また、AJAX 呼び出しや関連するイベントを詳しく調査することもできます。 AJAX 呼び出しが同期処理で実行されている場合、呼び出しに時間がかかると、ページ読み込み時間全体に影響します。 関連するイベントとしては、同じ URL に対するサーバー要求があります (Web サーバーに対して Application Insights を設定した場合)。
 
-**時間経過に伴うページ パフォーマンス。**  特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
+**時間経過に伴うページ パフォーマンス。** 特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
 
 ![Click the head of the grid and select a new chart type](./media/app-insights-javascript/10-page-perf-area.png)
 
-**セグメント化の基準となるディメンションの変更。**  ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、 **[グループ化]** で適宜ディメンションを変えながら試してください。
+**セグメント化の基準となるディメンションの変更。** ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、 **[グループ化]** で適宜ディメンションを変えながら試してください。
 
 ![](./media/app-insights-javascript/21.png)
 
@@ -167,10 +168,11 @@ Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに�
 
 ![](./media/app-insights-javascript/37.png)
 
+
 [ `...` ] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
 
 ### <a name="no-ajax-calls-reported"></a>AJAX 呼び出しが報告されない場合
-AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP 呼び出しが含まれます。 これらが表示されない場合は、コード スニペットで `disableAjaxTracking` または `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないことを確認してください。
+AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP/HTTPS 呼び出しが含まれます。 これらが表示されない場合は、コード スニペットで `disableAjaxTracking` または `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないことを確認してください。
 
 ## <a name="browser-exceptions"></a>ブラウザーの例外
 [ブラウザー] ブレードには、例外の集計グラフが表示されるほか、例外の種類を示すグリッドがブレードの下の方に表示されます。
@@ -180,6 +182,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ブラウザーの例外がまったく表示されない場合は、コード スニペットで `disableExceptionTracking` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
 
 ## <a name="inspect-individual-page-view-events"></a>個別のページ ビュー イベントを調査する
+
 通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。 ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
@@ -193,7 +196,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 > 
 > 
 
-強力な [Analytics クエリ言語](app-insights-analytics-tour.md) を使って、ページ ビューを検索することもできます。
+強力な [Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) を使って、ページ ビューを検索することもできます。
 
 ### <a name="page-view-properties"></a>ページ ビュー プロパティ
 * **ページ ビュー時間** 
@@ -217,19 +220,16 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [使用状況の追跡について](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> 動画: 使用状況の追跡
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a> ビデオ
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a> 次のステップ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
+
+## <a name="next"></a> 次のステップ
 * [利用状況を追跡する](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

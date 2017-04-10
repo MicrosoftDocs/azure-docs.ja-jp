@@ -1,25 +1,10 @@
 ---
-title: 仮想マシンにカスタム データを挿入する | Microsoft Docs
-description: このトピックでは、Azure の仮想マシンのインスタンスを作成する際に、仮想マシンにカスタム データを挿入する方法のほか、Windows と Linux の場合について、カスタム データの場所を探して利用する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
-author: squillace
-manager: timlt
-editor: tysonn
-tags: azure-service-management
-
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 08/23/2016
-ms.author: rasquill
+redirect_url: /azure/virtual-machines/windows/classic/inject-custom-data
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 0172be039c84d616c1c3eaa12241e884925ba653
+ms.lasthandoff: 03/25/2017
 
 ---
-# Azure の仮想マシンにカスタム データを挿入する
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-[!INCLUDE [virtual-machines-common-classic-inject-custom-data](../../includes/virtual-machines-common-classic-inject-custom-data.md)]
-
-<!---HONumber=AcomDC_0824_2016-->

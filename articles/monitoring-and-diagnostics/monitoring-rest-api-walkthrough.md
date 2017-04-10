@@ -1,12 +1,12 @@
 ---
-title: Azure 監視 REST API のチュートリアル | Microsoft Docs
-description: 要求を認証し、Azure 監視 REST API を使用する方法。
+title: "Azure 監視 REST API のチュートリアル | Microsoft Docs"
+description: "要求を認証し、Azure 監視 REST API を使用する方法。"
 author: mcollier
-manager: ''
-editor: ''
+manager: carolz
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 565e6a88-3131-4a48-8b82-3effc9a3d5c6
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
+translationtype: Human Translation
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: 6d66a8fa6eac5bc0ecdddc12b67697045556bf46
+
 
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
@@ -26,7 +30,7 @@ Monitor API では、さまざまなメトリック データ ポイントを処
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor 要求の認証
 まず、要求を認証します。
 
-Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password—powershell)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../resource-group-create-service-principal-portal.md)することもできます。
+Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)することもできます。
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -41,7 +45,7 @@ $pwd = "{service-principal-password}"
 
 # Create a new Azure AD application
 $azureAdApplication = New-AzureRmADApplication `
-                        -DisplayName "My Azure Insights" `
+                        -DisplayName "My Azure Monitor" `
                         -HomePage "https://localhost/azure-monitor" `
                         -IdentifierUris "https://localhost/azure-monitor" `
                         -Password $pwd
@@ -55,7 +59,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Azure Monitor API を照会するには、クライアント アプリケーションは、前に作成したサービス プリンシパルを使用して認証する必要があります。 次の PowerShell スクリプトの例は、 [Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md) (ADAL) を使用して JWT 認証トークンを取得する 1 つの方法を示しています。 JWT トークンは、要求の HTTP 承認パラメーターの一部として Azure Insights API に渡されます。
+Azure Monitor API を照会するには、クライアント アプリケーションは、前に作成したサービス プリンシパルを使用して認証する必要があります。 次の PowerShell スクリプトの例は、 [Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md) (ADAL) を使用して JWT 認証トークンを取得する 1 つの方法を示しています。 JWT トークンは、要求の HTTP 承認パラメーターの一部として Azure Monitor REST API に渡されます。
 
 ```PowerShell
 $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -71,7 +75,7 @@ $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.Cli
 
 $result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
 
-# Build an array of HTTP header values 
+# Build an array of HTTP header values
 $authHeader = @{
 'Content-Type'='application/json'
 'Accept'='application/json'
@@ -87,8 +91,8 @@ $authHeader = @{
 ## <a name="retrieve-metric-definitions"></a>メトリック定義の取得
 > [!NOTE]
 > Azure Monitor REST API を使用してメトリック定義を取得するには、"2016-03-01" API バージョンを使用します。
-> 
-> 
+>
+>
 
 ```PowerShell
 $apiVersion = "2016-03-01"
@@ -110,8 +114,8 @@ Azure ロジック アプリの場合、メトリック定義は次のスクリ�
 
 > [!NOTE]
 > Azure Monitor REST API を使用してメトリック値を取得するには、"2016-06-01" API バージョンを使用します。
-> 
-> 
+>
+>
 
 **メソッド**: GET
 
@@ -187,15 +191,15 @@ Azure ポータルからリソース ID を取得することもできます。 
 ### <a name="azure-powershell"></a>Azure PowerShell
 リソース ID は、Azure PowerShell コマンドレットを使用して取得することもできます。 たとえば Azure Web アプリのリソース ID を取得するには、次のスクリーンショットのように、Get-AzureRmWebApp コマンドレットを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_powershell.png)
+![Alt "PowerShell 取得したリソース ID"](./media/monitoring-rest-api-walkthrough/resourceid_powershell.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 Azure CLI を使用してリソース ID を取得するには、次のスクリーンショットのように、"-json" オプションを指定して "azure webapp show" コマンドを実行します。
 
-![Alt "PowerShell 取得したリソース ID"](./media\\monitoring-rest-api-walkthrough\\resourceid_azurecli.png)
+![Alt "PowerShell 取得したリソース ID"](./media/monitoring-rest-api-walkthrough/resourceid_azurecli.png)
 
 ## <a name="retrieve-activity-log-data"></a>アクティビティ ログ データの取得
-メトリック定義と関連する値を処理するだけでなく、Azure リソースに関連するその他の興味深い洞察を取得することもできです。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次の例は、Azure Monitor REST API を使用して、Azure サブスクリプションの特定の日付範囲にあるアクティビティ ログ データにクエリを実行しています。 
+メトリック定義と関連する値を処理するだけでなく、Azure リソースに関連するその他の興味深い洞察を取得することもできです。 たとえば、 [アクティビティ ログ](https://msdn.microsoft.com/library/azure/dn931934.aspx) データにクエリを実行できます。 次の例は、Azure Monitor REST API を使用して、Azure サブスクリプションの特定の日付範囲にあるアクティビティ ログ データにクエリを実行しています。
 
 ```PowerShell
 $apiVersion = "2014-04-01"
@@ -213,6 +217,8 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 * [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を確認します。
 * [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を確認します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Feb17_HO3-->
 
 

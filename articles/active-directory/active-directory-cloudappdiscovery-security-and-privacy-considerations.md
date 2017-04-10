@@ -1,65 +1,70 @@
 ---
-title: Cloud App Discovery のセキュリティとプライバシーの考慮事項 | Microsoft Docs
-description: このトピックでは、Cloud App Discovery に関連するセキュリティとプライバシーの考慮事項について説明します。
+title: "Cloud App Discovery のセキュリティとプライバシーの考慮事項 | Microsoft Docs"
+description: "このトピックでは、Cloud App Discovery に関連するセキュリティとプライバシーの考慮事項について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 2fce5c82-d3de-4097-808f-40214768df9e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: markusvi
+ms.date: 04/06/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
+ms.openlocfilehash: 5c4ab6e08c8f1af89ea80ac7f4d58d82ee931ec9
+ms.lasthandoff: 01/12/2017
+
 
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery のセキュリティとプライバシーの考慮事項
-Microsoft は、組織のセキュリティの管理に役立つソフトウェアやサービスを提供すると同時に、お客様のプライバシーとデータの保護に努めています。 <br>
+Microsoft は、組織のセキュリティの管理に役立つソフトウェアやサービスを提供すると同時に、お客様のプライバシーとデータの保護に努めています。  
 他者にデータを委託する場合、信頼には厳格なセキュリティ エンジニアリングへの投資とそれを裏付ける専門知識が必要であることを把握しております。
-Microsoft ではセキュリティで保護されたソフトウェア開発ライフサイクルの実践からサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。 <br>
+Microsoft ではセキュリティで保護されたソフトウェア開発ライフサイクルの実践からサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。  
 Microsoft においてデータの保護は最優先事項になります。
 
 このトピックでは、Azure Active Directory Cloud App Discovery でデータを収集、処理、およびセキュリティ保護する方法について説明します。
 
 ## <a name="overview"></a>概要
-Cloud App Discovery は Azure AD の機能であり、Microsoft Azure でホストされます。 <br>
-Cloud App Discovery Endpoint Agent は、IT で管理されているコンピューターからアプリケーション検出データを収集するために使用します。 <br>
-収集したデータは、暗号化されたチャネル経由でセキュリティで保護されて Azure AD Cloud App Discovery サービスに送信されます。 <br>
-その後、組織の Cloud App Discovery データは、Azure ポータルに表示されます。 <br>
+Cloud App Discovery は Azure AD の機能であり、Microsoft Azure でホストされます。  
+Cloud App Discovery Endpoint Agent は、IT で管理されているコンピューターからアプリケーション検出データを収集するために使用します。  
+収集したデータは、暗号化されたチャネル経由でセキュリティで保護されて Azure AD Cloud App Discovery サービスに送信されます。  
+その後、組織の Cloud App Discovery データは、Azure Portal に表示されます。 
 
-<center>![Cloud App Discovery のしくみ](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) </center> <br>
+![Cloud App Discovery のしくみ](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) 
 
 次のセクションでは、情報のフローに従い、情報が組織から Cloud App Discovery サービスに、最終的には Cloud App Discovery ポータルに移動する際にどのようにセキュリティ保護されるのかについて説明します。
 
 ## <a name="collecting-data-from-your-organization"></a>組織からのデータの収集
 Azure Active Directory の Cloud App Discovery 機能を使用して組織内の従業員が使用するアプリケーションに関する洞察を得るには、まず Azure AD Cloud App Discovery Endpoint Agent を組織のコンピューターにデプロイする必要があります。
 
-Azure Active Directory テナントの管理者 (またはその代理人) は、Azure ポータルから、このエージェントのインストール パッケージをダウンロードできます。 エージェントは、手動でインストールすることも、SCCM またはグループ ポリシーを使用して組織内の複数のコンピューターにインストールすることもできます。
+Azure Active Directory テナントの管理者 (またはその代理人) は、Azure Portal から、このエージェントのインストール パッケージをダウンロードできます。 エージェントは、手動でインストールすることも、SCCM またはグループ ポリシーを使用して組織内の複数のコンピューターにインストールすることもできます。
 
 デプロイ オプションの詳細については、 [Cloud App Discovery Group Policy Deployment Guide (Cloud App Discovery のグループ ポリシーのデプロイ ガイド)](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)をご覧ください。
-<br>
+
 
 ### <a name="data-collected-by-the-agent"></a>エージェントによって収集されたデータ
-Web アプリケーションに接続すると、以下の一覧に概要が説明されている情報が、エージェントによって収集されます。 情報は、管理者が検出用に構成したアプリケーションについてのみ収集されます。 <br>
-エージェントが監視するクラウド アプリの一覧を編集できます。そのためには、Microsoft [Azure Portal](https://portal.azure.com/) の [Cloud App Discovery] ブレードで、**[設定]** -> **[データ収集]** の順に選択し、->**[アプリ コレクション]** ボックスの一覧を操作します。 詳細については、「[Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
-」を参照してください<br>
-**情報カテゴリ**: ユーザー情報 <br>
-**説明**: <br>
+Web アプリケーションに接続すると、以下の一覧に概要が説明されている情報が、エージェントによって収集されます。 情報は、管理者が検出用に構成したアプリケーションについてのみ収集されます。  
+エージェントが監視するクラウド アプリの一覧を編集できます。そのためには、Microsoft [Azure Portal](https://portal.azure.com/) の [Cloud App Discovery] ブレードで、**[設定]** -> **[データ収集]** の順に選択し、->**[アプリ コレクション]** ボックスの一覧を操作します。 詳細については、 [Getting Started With Cloud App Discovery (Cloud App Discovery の概要)](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
+
+
+**情報カテゴリ**: ユーザー情報  
+**説明**:  
 ターゲットの Web アプリケーションに対する要求を作成したプロセスの Windows ユーザー名 (例: DOMAIN\username) とそのユーザーの Windows セキュリティ識別子 (SID)。
 
-**情報カテゴリ**: プロセス情報 <br>
-**説明**: <br>
+**情報カテゴリ**: プロセス情報  
+**説明**:  
 ターゲットの Web アプリケーションに対する要求を作成したプロセスの名前 (例: "iexplore.exe")
 
-**情報カテゴリ**: コンピューター情報 <br>
-**説明**: <br>
+**情報カテゴリ**: コンピューター情報  
+**説明**:  
 エージェントがインストールされているコンピューターの NetBIOS の名前
 
-**情報カテゴリ**: アプリのトラフィック情報 <br>
-**説明**: <br>
+**情報カテゴリ**: アプリのトラフィック情報  
+**説明**: 
 
 接続情報:
 
@@ -89,19 +94,18 @@ HTTP 情報:
 
 エージェントは、ネットワーク アクティビティに関するデータに加え、ソフトウェアとハードウェアの構成に関する匿名の情報、エラー報告、エージェントの使用方法に関する情報を収集します。
 
-<br><br>
 
 ### <a name="how-the-agent-works"></a>エージェントの動作
-エージェントのインストールには、次の 2 つのコンポーネントが含まれています。
+エージェントのインストールには、次の&2; つのコンポーネントが含まれています。
 
 * ユーザーモード コンポーネント
 * カーネルモード ドライバー コンポーネント (Windows フィルタリング プラットフォーム ドライバー)
 
-エージェントは、最初にインストールされたときに、コンピューター上にコンピューター固有の信頼された証明書を格納し、その後、これを使用して Cloud App Discovery サービスとセキュリティで保護された接続を確立します。 <br>
-エージェントは、このセキュリティで保護された接続経由で、定期的に Cloud App Discovery サービスからポリシーの構成を取得します。 <br>
+エージェントは、最初にインストールされたときに、コンピューター上にコンピューター固有の信頼された証明書を格納し、その後、これを使用して Cloud App Discovery サービスとセキュリティで保護された接続を確立します。  
+エージェントは、このセキュリティで保護された接続経由で、定期的に Cloud App Discovery サービスからポリシーの構成を取得します。  
 ポリシーには、監視するクラウド アプリケーション、自動更新の有効化などについての情報が含まれています。
 
-コンピューター上で Chrome や Internet Explorer から Web トラフィックが送受信されると、Cloud App Discovery エージェントがトラフィックを分析し、関連するメタデータ を抽出します (前のセクション「 **エージェントによって収集されたデータ** 」を参照) 。 <br>
+コンピューター上で Chrome や Internet Explorer から Web トラフィックが送受信されると、Cloud App Discovery エージェントがトラフィックを分析し、関連するメタデータ を抽出します (前のセクション「 **エージェントによって収集されたデータ** 」を参照) 。  
 エージェントは、1 分ごとに暗号化されたチャネル経由で、収集したメタデータを Cloud App Discovery サービスにアップロードします。
 
 ドライバー コンポーネントでは、暗号化されたトラフィックをインターセプトし、暗号化されたストリームに挿入します。 詳細については、後のセクション「 **暗号化された接続からのデータのインターセプト (詳細な検査)** 」を参照してください。
@@ -116,7 +120,7 @@ HTTP 情報:
 Cloud App Discovery エンドポイントのエージェントが収集するのは、前のセクション「 **エージェントによって収集されたデータ** 」で説明された情報のみです。
 
 ### <a name="intercepting-data-from-encrypted-connections-deep-inspection"></a>暗号化された接続からのデータのインターセプト (詳細な検査)
-既に説明したように、管理者は、エージェントを構成して、暗号化された接続のデータを監視することができます ("詳細な検査")。 TLS ([トランスポート層セキュリティ](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) は、インターネット上で現在最も一般的に使用されているプロトコルの 1 つです。 TLS で通信を暗号化することによって、クライアントが Web サーバーとのセキュリティで保護されたプライベート通信チャネルを確立できます。TLS は、認証の資格情報を渡すために不可欠な保護機能を提供するほか、機密情報の漏えいを防ぎます。
+既に説明したように、管理者は、エージェントを構成して、暗号化された接続のデータを監視することができます ("詳細な検査")。 TLS ([トランスポート層セキュリティ](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) は、インターネット上で現在最も一般的に使用されているプロトコルの&1; つです。 TLS で通信を暗号化することによって、クライアントが Web サーバーとのセキュリティで保護されたプライベート通信チャネルを確立できます。TLS は、認証の資格情報を渡すために不可欠な保護機能を提供するほか、機密情報の漏えいを防ぎます。
 
 TLS が提供するエンド ツー エンドのセキュリティで保護された暗号化チャネルは重要なセキュリティとプライバシーの保護を実現しますが、このプロトコルは、悪意のある目的や不正な目的に利用されることがあります。 そのため、TLS は "ユニバーサル ファイアウォール バイパス プロトコル" と呼ばれることもあります。 問題の原因は、アプリケーション層のデータが SSL で暗号化されているためにほとんどのファイアウォールで TLS の通信を検査できないことにあります。 この点を突いて攻撃を行う攻撃者は、最もインテリジェントなアプリケーション層ファイアウォールでさえも TLS には盲目的であり、ホスト間で TLS の通信を単に中継することしかできないことを確信して、TLS を利用して悪意のあるペイロードをユーザーに送りつけます。 エンド ユーザーは、TLS を利用して、企業のファイアウォールとプロキシ サーバーによって適用されるアクセス制御をバイパスすることがあります。具体的には、TLS を利用してパブリック プロキシに接続し、TLS 以外のプロトコルをトンネリングしてファイアウォールを通過させるという方法ですが、これは通常であればポリシーによってブロックされる操作です。
 
@@ -139,19 +143,19 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 ## <a name="sending-data-to-cloud-app-discovery"></a>Cloud App Discovery へのデータの送信
 メタデータは、エージェントによって収集された後、最大 1 分間、またはキャッシュ データのサイズが 5 MB に達するまで、コンピューターでキャッシュされます。 その後、圧縮され、セキュリティで保護された接続経由で Cloud App Discovery サービスに送信されます。
 
-エージェントが何らかの理由で Cloud App Discovery サービスと通信できない場合は、収集されたメタデータはローカル ファイル キャッシュに格納されます。このキャッシュには、コンピューター上の特権を持つユーザー (Administrators グループなど) のみがアクセスできます。 <br>
+エージェントが何らかの理由で Cloud App Discovery サービスと通信できない場合は、収集されたメタデータはローカル ファイル キャッシュに格納されます。このキャッシュには、コンピューター上の特権を持つユーザー (Administrators グループなど) のみがアクセスできます。  
 エージェントは、キャッシュしたメタデータが Cloud App Discovery サービスによって正常に受信されるまで、自動的に再送信を試みます。
 
 ## <a name="receiving-the-data-at-the-service-end"></a>サービス エンドでのデータの受信
-エージェントは、Cloud App Discovery サービスに対して、上述のコンピューター固有のクライアント認証証明書を使用して、暗号化されたチャネル経由で転送されたデータを認証します。 <br>
+エージェントは、Cloud App Discovery サービスに対して、上述のコンピューター固有のクライアント認証証明書を使用して、暗号化されたチャネル経由で転送されたデータを認証します。  
 Cloud App Discovery サービスの分析パイプラインは、分析パイプラインのすべての段階でメタデータを論理的に分割することで、メタデータを顧客ごとに個別に処理します。
 分析されたメタデータは、ポータルのさまざまなレポートで活用されます。
 
 未処理のメタデータと分析されたメタデータは、最大 180 日間保存されます。 さらに、お客様は、自分で選択した Azure BLOB ストレージ アカウントに、分析されたメタデータをキャプチャすることができます。
 これは、メタデータのオフライン分析や、データの保存期間の延長として役立ちます。
 
-## <a name="accessing-the-data-using-the-azure-portal"></a>Azure ポータルを使用するデータ アクセス
-収集されたメタデータのセキュリティ保護を確保するために、既定では、テナントのグローバル管理者のみが Azure ポータルで Cloud App Discovery 機能にアクセスできます。 <br>
+## <a name="accessing-the-data-using-the-azure-portal"></a>Azure Portal を使用するデータ アクセス
+収集されたメタデータのセキュリティ保護を確保するために、既定では、テナントのグローバル管理者のみが Azure Portal で Cloud App Discovery 機能にアクセスできます。  
 ただし管理者は、他のユーザーやグループにこのアクセスを委任できます。
 
 > [!NOTE]
@@ -159,13 +163,11 @@ Cloud App Discovery サービスの分析パイプラインは、分析パイプ
 > 
 > 
 
-<br>
+
 ポータルで、データにアクセスするすべてのユーザーは、Azure AD Premium ライセンスを持っている必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

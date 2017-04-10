@@ -1,5 +1,5 @@
-## リソース マネージャー トークンの取得
-Azure Active Directory では、Azure リソース マネージャーを使用してリソース上で実行するすべてのタスクを認証する必要があります。ここに示す例では、パスワード認証が使用されます。その他の手法については、「[Azure リソース マネージャー要求の認証][lnk-authenticate-arm]」を参照してください。
+## <a name="obtain-an-azure-resource-manager-token"></a>Azure Resource Manager トークンの取得
+Azure Active Directory では、Azure リソース マネージャーを使用してリソース上で実行するすべてのタスクを認証する必要があります。 ここに示す例では、パスワード認証が使用されます。その他の手法については、「[Authenticating Azure Resource Manager requests (Azure Resource Manager 要求の認証)][lnk-authenticate-arm]」を参照してください。
 
 1. Program.cs の **Main** メソッドに次のコードを追加し、アプリケーション ID とパスワードを利用して Azure AD からトークンを取得します。
    
@@ -37,4 +37,6 @@ Azure Active Directory では、Azure リソース マネージャーを使用�
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,13 @@
 ---
-title: How to create NSGs in ARM mode using the Azure portal | Microsoft Docs
-description: Learn how to create and deploy NSGs in ARM using the Azure portal
+title: "ネットワーク セキュリティ グループの作成 - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 5bc8fc2e-1e81-40e2-8231-0484cd5605cb
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,80 +15,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# <a name="how-to-manage-nsgs-using-the-azure-portal"></a>How to manage NSGs using the Azure portal
+# <a name="create-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループの作成
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-This article covers the Resource Manager deployment model. You can also [create NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md).
+この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [クラシック デプロイ モデルで NSG を作成](virtual-networks-create-nsg-classic-ps.md)することもできます。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-The sample PowerShell commands below expect a simple environment already created based on the scenario above. If you want to run the commands as they are displayed in this document, first build the test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal. The steps below use **RG-NSG** as the name of the resource group the template was deployed to.
+以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。 このドキュメントに表示されているコマンドを実行するには、まず [このテンプレート](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)をデプロイしてテスト環境を構築してから **[Azure にデプロイ]**をクリックし、必要に応じて既定のパラメーター値を置き換えてから、ポータルの指示に従います。 次の手順では、テンプレートのデプロイ先のリソース グループの名前として **RG-NSG** を使用します。
 
-## <a name="create-the-nsg-frontend-nsg"></a>Create the NSG-FrontEnd NSG
-To create the **NSG-FrontEnd** NSG as shown in the scenario above, follow the steps below.
+## <a name="create-the-nsg-frontend-nsg"></a>NSG-FrontEnd NSG を作成する
+上記のシナリオのように **NSG-FrontEnd** という名前の NSG を作成するには、次の手順を実行します。
 
-1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
-2. Click **Browse >** > **Network Security Groups**.
+1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+2. **[参照] > ** > **[ネットワーク セキュリティ グループ]** をクリックします。
    
-    ![Azure portal - NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
-3. In the **Network security groups** blade, click **Add**.
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
+3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
    
-    ![Azure portal - NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
-4. In the **Create network security group** blade, create an NSG named *NSG-FrontEnd* in the *RG-NSG* resource group, and then click **Create**.
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
+4. **[ネットワーク セキュリティ グループの作成]** ブレードで、*RG-NSG* リソース グループに *NSG FrontEnd* という名前の NSG を作成し、**[作成]** をクリックします。
    
-    ![Azure portal - NSGs](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
 
-## <a name="create-rules-in-an-existing-nsg"></a>Create rules in an existing NSG
-To create rules in an existing NSG from the Azure portal, follow the steps below.
+## <a name="create-rules-in-an-existing-nsg"></a>既存の NSG に規則を作成する
+Azure ポータルから既存の NSG に規則を作成するには、次の手順を実行します。
 
-1. Click **Browse >** > **Network security groups**.
-2. In the list of NSGs, click **NSG-FrontEnd** > **Inbound security rules**
+1. **[参照] > ** > **[ネットワーク セキュリティ グループ]** をクリックします。
+2. NSG の一覧で、 **NSG-FrontEnd** > **[受信セキュリティ規則]**
    
-    ![Azure portal - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
-3. In the list of **Inbound security rules**, click **Add**.
+    ![Azure ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
+3. **[受信セキュリティ規則]**をデプロイしてテスト環境を構築してから **[追加]**することもできます。
    
-    ![Azure portal - Add rule](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
-4. In the **Add inbound security rule** blade, create a rule named *web-rule* with priority of *200* allowing access via *TCP* to port *80* to any VM from any source, and then click **OK**. Notice that most of these settings are default values already.
+    ![Azure ポータル - 規則の追加](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
+4. **[受信セキュリティ規則の追加]** ブレードで、ポート *80* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *web-rule* という名前の規則を *200* の優先度で作成して、**[OK]** をクリックします。 これらの設定のほとんどは、既定値が設定されています。
    
-    ![Azure portal - Rule settings](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
-5. After a few seconds you will see the new rule in the NSG.
+    ![Azure ポータル - 規則の設定](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
+5. 数秒後に、NSG の新しい規則が表示されます。
    
-    ![Azure portal - New rule](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
-6. Repeat steps  to 6 to create an inbound rule named *rdp-rule* with a priority of *250* allowing access via *TCP* to port *3389* to any VM from any source.
+    ![Azure ポータル - 新しい規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
+6. 手順 6 までを繰り返し、ポート *3389* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *rdp-rule* という名前の受信規則を *250* の優先度で作成します。
 
-## <a name="associate-the-nsg-to-the-frontend-subnet"></a>Associate the NSG to the FrontEnd subnet
-1. Click **Browse >** > **Resource groups** > **RG-NSG**.
-2. In the **RG-NSG** blade, click **...** > **TestVNet**.
+## <a name="associate-the-nsg-to-the-frontend-subnet"></a>NSG を FrontEnd サブネットに関連付ける
+1. **[参照]** > **[リソース グループ]** > **[RG-NSG]** をクリックします。
+2. **[RG NSG]** ブレードで、**[...]** > **[TestVNet]** をクリックします。
    
-    ![Azure portal - TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
-3. In the **Settings** blade, click **Subnets** > **FrontEnd** > **Network security group** > **NSG-FrontEnd**.
+    ![Azure ポータル - TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
+3. **[設定]** ブレードで、**[サブネット]** > **[FrontEnd]** > **[ネットワーク セキュリティ グループ]** > **[NSG-FrontEnd]** をクリックします。
    
-    ![Azure portal - Subnet settings](./media/virtual-networks-create-nsg-arm-pportal/figure15.png)
-4. In the **FrontEnd** blade, click **Save**.
+    ![Azure ポータル - サブネット設定](./media/virtual-networks-create-nsg-arm-pportal/figure15.png)
+4. **[FrontEnd]** ブレードで、**[保存]** をクリックします。
    
-    ![Azure portal - Subnet settings](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
+    ![Azure ポータル - サブネット設定](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
 
-## <a name="create-the-nsg-backend-nsg"></a>Create the NSG-BackEnd NSG
-To create the **NSG-BackEnd** NSG and associate it to the **BackEnd** subnet, follow the steps below.
+## <a name="create-the-nsg-backend-nsg"></a>NSG-BackEnd NSG を作成する
+**NSG-BackEnd** NSG を作成し、**BackEnd** サブネットに関連付けるには、次の手順を実行します。
 
-1. Repeat the steps in [Create the NSG-FrontEnd NSG](#Create-the-NSG-FrontEnd-NSG) to create an NSG named *NSG-BackEnd*
-2. Repeat the steps in [Create rules in an existing NSG](#Create-rules-in-an-existing-NSG) to create the **inbound** rules in the table below.
+1. 「 [NSG-FrontEnd NSG を作成する](#Create-the-NSG-FrontEnd-NSG) 」の手順を繰り返し、 *NSG-BackEnd*
+2. 「 [既存の NSG に規則を作成する](#Create-rules-in-an-existing-NSG) 」の手順を繰り返し、次の表のように **受信** 規則を作成します。
    
-   | Inbound rule | Outbound rule |
+   | 受信規則 | 送信規則 |
    | --- | --- |
-   | ![Azure portal - inbound rule](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure portal - outbound rule](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
-3. Repeat the steps in [Associate the NSG to the FrontEnd subnet](#Associate-the-NSG-to-the-FrontEnd-subnet) to associate the **NSG-Backend** NSG to the **BackEnd** subnet.
+   | ![Azure ポータル - 受信規則](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure ポータル - 送信規則](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
+3. 「[NSG を FrontEnd サブネットに関連付ける](#Associate-the-NSG-to-the-FrontEnd-subnet)」の手順を繰り返し、**NSG-Backend** NSG を **BackEnd** サブネットに関連付けます。
 
-## <a name="next-steps"></a>Next Steps
-* Learn how to [manage existing NSGs](virtual-network-manage-nsg-arm-portal.md)
-* [Enable logging](virtual-network-nsg-manage-log.md) for NSGs.
-
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+* [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)
+* [ログを有効にします](virtual-network-nsg-manage-log.md) 。
 
 

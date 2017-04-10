@@ -1,32 +1,37 @@
 ---
-title: 増分スナップショットを使用した Azure Virtual Machines のバックアップと復元 | Microsoft Docs
-description: 増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。
+title: "増分スナップショットを使用した非管理 Azure VM ディスクのバックアップと復元 | Microsoft Docs"
+description: "増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。"
 services: storage
 documentationcenter: na
 author: aungoo-msft
 manager: tadb
 editor: tysonn
-
+ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: aungoo
+translationtype: Human Translation
+ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
+ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
+ms.lasthandoff: 02/08/2017
+
 
 ---
-# <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>Azure 仮想マシン ディスクを増分スナップショットでバックアップする
-## <a name="overview"></a>Overview
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
+## <a name="overview"></a>概要
 Azure Storage には、BLOB のスナップショットを作成する機能があります。 スナップショットは、特定の時点における BLOB の状態をキャプチャします。 この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存する方法について説明します。 この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。
 
 Azure Storage には、Azure 仮想マシン ディスクがページ BLOB として格納されます。 この記事のテーマは仮想マシン ディスクのバックアップ方法であるため、スナップショットという言葉は、ページ BLOB のコンテキストにおける意味合いを指しています。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)」を参照してください。
 
-## <a name="what-is-a-snapshot?"></a>スナップショットとは
+## <a name="what-is-a-snapshot"></a>スナップショットとは
 BLOB のスナップショットとは、ある時点でキャプチャされた BLOB の読み取り専用版です。 作成されたスナップショットは、読み取り、コピー、削除はできますが、変更はできません。 スナップショットを使用すると、BLOB をある時点での表示内容のままバックアップできます。 REST バージョン 2015-04-05 までは、スナップショット全体をコピーすることができました。 REST バージョン 2015-07-08 以降では、増分スナップショットをコピーすることもできます。
 
 ## <a name="full-snapshot-copy"></a>スナップショット全体のコピー
-スナップショットは別のストレージ アカウントに BLOB としてコピーすることができます。こうすることでスナップショットの作成元となった BLOB (ベース BLOB) のバックアップを保存できます。 逆に、スナップショットをそのベース BLOB に上書きコピーして、以前のバージョンの BLOB を復元することもできます。 2 つのストレージ アカウント間でスナップショットをコピーすると、そのスナップショットの作成元となったページ BLOB と同じだけの記憶域が消費されます。 したがって 2 つのストレージ アカウント間でスナップショット全体をコピーした場合、時間がかかるうえに、コピー先のストレージ アカウントで大量の領域が消費されることになります。
+スナップショットは別のストレージ アカウントに BLOB としてコピーすることができます。こうすることでスナップショットの作成元となった BLOB (ベース BLOB) のバックアップを保存できます。 逆に、スナップショットをそのベース BLOB に上書きコピーして、以前のバージョンの BLOB を復元することもできます。 2 つのストレージ アカウント間でスナップショットをコピーすると、そのスナップショットの作成元となったページ BLOB と同じだけの記憶域が消費されます。 したがって&2; つのストレージ アカウント間でスナップショット全体をコピーした場合、時間がかかるうえに、コピー先のストレージ アカウントで大量の領域が消費されることになります。
 
 > [!NOTE]
 > ベース BLOB を別の場所にコピーしても、その BLOB のスナップショットまではコピーされません。 同様に、ベース BLOB に上書きコピーしても、そのベース BLOB に関連付けられているスナップショットは影響を受けず、元のベース BLOB 由来として維持されます。
@@ -52,16 +57,16 @@ BLOB のスナップショットとは、ある時点でキャプチャされた
 Incremental Snapshot Copy を使用すると、以下の差分をストレージ アカウント間でコピーできます。
 
 * ベース BLOB とそのスナップショット
-* 同じベース BLOB から作成された 2 つのスナップショット
+* 同じベース BLOB から作成された&2; つのスナップショット
 
 このとき、次の条件を満たしている必要があります。
 
-* BLOB が 2016 年 1 月 1 日以降に作成されている。
+* BLOB が&2016; 年&1; 月&1; 日以降に作成されている。
 * 2 つのスナップショット間で [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) または [Copy Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx) により BLOB が上書きされていない。
 
 **注**: この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
 
-スナップショットを使用した独自のバックアップ方法を利用している場合、スナップショットを 2 つのストレージ アカウント間でコピーすると、ひどく時間がかかるうえに記憶領域が大量に消費されます。 バックアップ ページ BLOB には、連続するスナップショットの差分だけを書き込むことができます。そうすれば、バックアップ ストレージ アカウントにスナップショット全体をコピーする必要はありません。 そうすることでコピーにかかる時間とバックアップで消費される記憶域を大幅に減らすことができます。
+スナップショットを使用した独自のバックアップ方法を利用している場合、スナップショットを&2; つのストレージ アカウント間でコピーすると、ひどく時間がかかるうえに記憶領域が大量に消費されます。 バックアップ ページ BLOB には、連続するスナップショットの差分だけを書き込むことができます。そうすれば、バックアップ ストレージ アカウントにスナップショット全体をコピーする必要はありません。 そうすることでコピーにかかる時間とバックアップで消費される記憶域を大幅に減らすことができます。
 
 ### <a name="implementing-incremental-snapshot-copy"></a>増分スナップショットのコピーの実行
 増分スナップショットのコピーは、次の手順で実行できます。
@@ -69,7 +74,7 @@ Incremental Snapshot Copy を使用すると、以下の差分をストレージ
 * [Snapshot Blob](https://msdn.microsoft.com/library/azure/ee691971.aspx)を使用してベース BLOB のスナップショットを作成します。
 * [Copy Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx)を使って目的のバックアップ ストレージ アカウントにスナップショットをコピーします。 これが、バックアップ ページ BLOB になります。 このバックアップ ページ BLOB のスナップショットを作成し、バックアップ アカウントに格納します。
 * Snapshot Blob を使用してベース BLOB の別のスナップショットを作成します。
-* [GetPageRanges](https://msdn.microsoft.com/library/azure/ee691973.aspx) を使用して、ベース BLOB の最初のスナップショットと 2 つ目のスナップショットの差分を取得します。 新しいパラメーター **prevsnapshot** を使用して、差分の取得対象となるスナップショットの DateTime 値を指定します。 このパラメーターが存在する場合、REST 応答には、対象のスナップショットと以前のスナップショットとの間で変更 (ページの消去を含む) されたページだけが含まれます。
+* [GetPageRanges](https://msdn.microsoft.com/library/azure/ee691973.aspx) を使用して、ベース BLOB の最初のスナップショットと&2; つ目のスナップショットの差分を取得します。 新しいパラメーター **prevsnapshot** を使用して、差分の取得対象となるスナップショットの DateTime 値を指定します。 このパラメーターが存在する場合、REST 応答には、対象のスナップショットと以前のスナップショットとの間で変更 (ページの消去を含む) されたページだけが含まれます。
 * [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) を使用してこれらの変更をバックアップ ページ BLOB に適用します。
 * 最後に、バックアップ ページ BLOB のスナップショットを作成し、バックアップ ストレージ アカウントに格納します。
 
@@ -115,7 +120,5 @@ Azure VM のバックアップについて詳しくは、 [Azure での VM バ�
 
 * [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 * [VM のバックアップ インフラストラクチャの計画](../backup/backup-azure-vms-introduction.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

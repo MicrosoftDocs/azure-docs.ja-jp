@@ -1,31 +1,36 @@
 ---
-title: Azure Active Directory Identity Protection で検出される脆弱性 | Microsoft Docs
-description: Azure Active Directory Identity Protection で検出される脆弱性の概要
+title: "Azure Active Directory Identity Protection で検出される脆弱性 | Microsoft Docs"
+description: "Azure Active Directory Identity Protection で検出される脆弱性の概要"
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
+keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 01/24/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2e229cab7b8a498d3015183d438e2bc2465822aa
+ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
+
 
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
-<br><br>
+
+
 ![脆弱性](./media/active-directory-identityprotection-vulnerabilities/101.png "vulnerabilities")
-<br>
+
+
 
 次のセクションでは、Identity Protection で報告される脆弱性の概要を示します。
 
-## <a name="multifactor-authentication-registration-not-configured"></a>多要素認証の登録が構成されていない
+## <a name="multi-factor-authentication-registration-not-configured"></a>多要素認証の登録が構成されていない
 この脆弱性は、組織内の Azure Multi-Factor Authentication のデプロイの制御に役立ちます。 
 
 Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 のセキュリティ層を提供します。 シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の簡単な照合方法を通じて確実な認証を行うことができます。
@@ -55,6 +60,9 @@ Azure AD Privileged Identity Management を使用して、特権 ID と、Azure 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

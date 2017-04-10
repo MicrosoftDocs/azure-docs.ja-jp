@@ -1,13 +1,13 @@
 ---
-title: Linux VM の拡張機能を使用したテンプレートの作成 | Microsoft Docs
-description: Linux VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。
+title: "Linux VM の拡張機能を使用したテンプレートの作成 |Microsoft Docs"
+description: "Linux VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 322f8f0b-6697-4acb-b5f3-b3f58d28358b
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 42c2a12551db35f4cb3994179ba2e277145f2d9b
+
 
 ---
-# Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
+# <a name="authoring-azure-resource-manager-templates-with-linux-vm-extensions"></a>Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
 [!INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Azure CLI から次のコマンドを実行します。
@@ -37,10 +41,10 @@ Azure CLI から次のコマンドを実行します。
 > 
 > 
 
-## 拡張機能構成パラメーターのスキーマの識別
-拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
+## <a name="identifying-the-schema-for-the-extension-configuration-parameters"></a>拡張機能構成パラメーターのスキーマの識別
+拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。 それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
 
-Linux 拡張機能のサンプル構成については、[Linux 拡張機能のサンプル](virtual-machines-linux-extensions-configuration-samples.md)に関するドキュメントをクリックして参照してください。
+Linux 拡張機能のサンプル構成については、[Linux 拡張機能のサンプル](virtual-machines-linux-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するドキュメントをクリックして参照してください。
 
 VM の拡張機能を使用して完成したテンプレートを取得するには、以下を参照してください。
 
@@ -48,4 +52,9 @@ VM の拡張機能を使用して完成したテンプレートを取得する�
 
 テンプレートを作成したら、Azure CLI を使用してそのテンプレートをデプロイできます。
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,25 +1,29 @@
 ---
-title: Azure Data Catalog | Microsoft Docs
-description: この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。
+title: "Azure Data Catalog 用のキーボード ショートカット | Microsoft Docs"
+description: "この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/13/2016
+ms.date: 01/19/2017
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
+ms.openlocfilehash: 809b010fbbc0b5c1cbc2d5d5474374a4467defb4
+
 
 ---
-# Azure Data Catalog 用のキーボード ショートカット
-## Data Catalog データ ソース登録ツール用のキーボード ショートカット
-### 一般的なキーボード ショートカット
+# <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Data Catalog 用のキーボード ショートカット
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Data Catalog データ ソース登録ツール用のキーボード ショートカット
+### <a name="general-keyboard-shortcuts"></a>一般的なキーボード ショートカット
 | 操作 | 押すキー |
 | --- | --- |
 | ページ上の各コントロールにタブ移動する。 |Tab |
@@ -28,24 +32,24 @@ ms.author: spelluru
 | ページを復元または最小化する。 |Windows キー + ↓ |
 | ページのメニューを開く。 |Alt ＋ Space |
 
-### [認証] ページ
+### <a name="authentication-page"></a>[認証] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | サービスにサインインする。 |Alt + S |
 
-### [データ ソースの選択] ページ
+### <a name="data-source-selection-page"></a>[データ ソースの選択] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | 次のページに移動する (有効な場合)。 |Alt + N |
 | タイルにフォーカスがある場合、選択した種類を変更する。 |左方向、上方向、右方向、下方向キー |
 
-### [データ ソースの接続] ページ
+### <a name="data-source-connection-page"></a>[データ ソースの接続] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | 前のページに移動する (有効な場合)。 |Alt + P |
 | [接続] ボタンを選択する。 |Alt + C |
 
-### [接続コンテキスト] ページ
+### <a name="connection-context-page"></a>[接続コンテキスト] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | [登録] ボタン (有効な場合)。 |Alt + R |
@@ -53,22 +57,22 @@ ms.author: spelluru
 | [データ プロファイルを含める] チェック ボックス (使用可能な場合)。 |Alt + D |
 | 各リスト項目に移動する。 |上方向または下方向キー |
 | サーバーの階層で、ツリー ビューのノードを展開する。 |右方向キー |
-| **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する。 |Space |
+| **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する |Space |
 
-### [発行の進行状況] ページ
+### <a name="publish-progress-page"></a>[発行の進行状況] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | [キャンセル] ボタン |Alt + C |
 | [オブジェクトをさらに登録] ボタン |Alt + R |
 | [ポータルの表示] ボタン |Alt + V |
 
-### [発行の進行状況] ページ
+### <a name="publish-progress-page"></a>[発行の進行状況] ページ
 | 操作 | 押すキー |
 | --- | --- |
 | [保存] ボタン (有効な場合) |Alt + S |
 | [キャンセル] ボタン |Alt + C |
 
-## Data Catalog ポータル用のキーボード ショートカット
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Data Catalog ポータル用のキーボード ショートカット
 | 操作 | 押すキー |
 | --- | --- |
 | 移動する。 |TAB と SHIFT + TAB |
@@ -82,4 +86,9 @@ ms.author: spelluru
 | **[開く]** メニューを切り替える。 |Alt + O |
 | 資産がコンテナーの場合、コンテナーを探索する。 |ALT + L |
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Jan17_HO4-->
+
+

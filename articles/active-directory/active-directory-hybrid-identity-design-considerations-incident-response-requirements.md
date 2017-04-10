@@ -1,20 +1,23 @@
-
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - インシデント対応要件の決定 | Microsoft Docs
-description: 潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できるハイブリッド ID ソリューションの監視と報告の機能を決定します
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - インシデント対応要件の決定 | Microsoft Docs"
+description: "潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できるハイブリッド ID ソリューションの監視と報告の機能を決定します"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
+
 
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのインシデント対応要件の決定
@@ -63,6 +66,9 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

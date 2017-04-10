@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 01/20/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1e422d9d1ae36b8e8a84194020d2eef65b545d0
+ms.sourcegitcommit: 232e1d1640352be38720e19f713959e84243af72
+ms.openlocfilehash: 1cd2b9d819acd7d422698d3c14a9009a846973f7
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: b1e422d9d1ae36b8e8a84194020d2eef65b545d0
 
 Azure Virtual Machines は、Azure が提供するオンデマンドでスケーラブルなコンピューティング リソースのひとつです。 通常、コンピューティング環境のよりよい管理を必要とする場合には、仮想マシンを選択します。
 
-Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし仮想マシンのメンテナンス、つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。 [Azure の Linux 仮想マシンについて](virtual-machines-linux-about.md)も学習できます。
+Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし仮想マシンのメンテナンス、つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。 [Azure の Linux 仮想マシンについて](virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)も学習できます。
 
 この表では、Azureが提供するさまざまなオプションを比較することができます。
 
@@ -35,13 +35,13 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 [!INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
 ## <a name="next-steps"></a>次のステップ
-単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。 手順については、「 [Azure ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)」を参照してください。
+単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。 手順については、「 [Azure ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。 これらのツールの概要と手順へのリンクについては、「 [リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)」を参照してください。
-
-
+これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。 これらのツールの概要と手順へのリンクについては、「 [リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

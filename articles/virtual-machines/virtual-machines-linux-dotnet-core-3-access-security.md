@@ -1,26 +1,32 @@
 ---
-title: Azure Resource Manager テンプレートでのアクセスとセキュリティ | Microsoft Docs
-description: Azure Virtual Machines DotNet Core チュートリアル
+title: "Linux VM の Azure テンプレートでのアクセスとセキュリティ | Microsoft Docs"
+description: "Azure Virtual Machines DotNet Core チュートリアル"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 07e47189-680e-4102-a8d4-5a8eb9c00213
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/21/2016
+ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 2fd9fd50be79e8af239101147e5ae0a39eb2dc07
+ms.openlocfilehash: 7cef940b26003578a3b08c453ed4f91d3e617b2e
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのアクセスとセキュリティ
+# <a name="access-and-security-in-azure-resource-manager-templates-for-linux-vms"></a>Linux VM の Azure Resource Manager テンプレートでのアクセスとセキュリティ
+
 Azure でホストされるアプリケーションには、インターネットまたは Azure を使った VPN/ExpressRoute 接続経由でアクセスできることが必要になる場合があります。 ミュージック ストア アプリケーション サンプルでは、パブリック IP アドレスを使ってインターネットで Web サイトを利用できます。 アクセスを確立したら、アプリケーションへの接続と仮想マシン リソース自体へのアクセスをセキュリティで保護する必要があります。 このアクセス セキュリティは、ネットワーク セキュリティ グループで設定します。 
 
-このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストア アプリケーションをどのようにセキュリティで保護しているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。
+このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストア アプリケーションをどのようにセキュリティで保護しているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。 
 
 ## <a name="public-ip-address"></a>パブリック IP アドレス
 Azure リソースへのパブリック アクセスを提供するには、パブリック IP アドレス リソースを使うことができます。 パブリック IP アドレスは、静的または動的な IP アドレスで構成できます。 動的アドレスを使った場合は、仮想マシンを停止して割り当てを解除すると、アドレスが削除されます。 マシンをもう一度起動すると、別のパブリック IP アドレスが割り当てられます。 IP アドレスが変更されないようにするには、予約済み IP アドレスを使うことができます。 
@@ -29,7 +35,7 @@ Azure リソースへのパブリック アクセスを提供するには、パ�
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [パブリック IP アドレス](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L121)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/publicIPAddresses",
@@ -51,7 +57,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [パブリック IP アドレスとロード バランサーの関連付け](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208)) をご覧ください。
 
-```none
+```json
 "frontendIPConfigurations": [
   {
     "properties": {
@@ -75,7 +81,7 @@ Azure リソースへのアクセスを確立したら、このアクセスを�
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ネットワーク セキュリティ グループ](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L68)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-05-01-preview",
   "type": "Microsoft.Network/networkSecurityGroups",
@@ -110,7 +116,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ネットワーク セキュリティ グループと Virtual Network の関連付け](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L158)) をご覧ください。
 
-```none
+```json
 "subnets": [
   {
     "name": "[variables('subnetName')]",
@@ -132,8 +138,6 @@ Azure Portal では、ネットワーク セキュリティ グループは次�
 ## <a name="next-step"></a>次のステップ
 <hr>
 
-[手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-linux-dotnet-core-4-avalibility-scale.md)
-
-<!--HONumber=Oct16_HO2-->
+[手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 

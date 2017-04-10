@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
+ms.sourcegitcommit: cafe4f2d9ae9a79fd2e27b8734bda43bb774eeb2
+ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。
-Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリ][GitHub] サンプルで参照できます。
+Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
 
@@ -68,10 +68,11 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 1. Xamarin Studio で **[New Solution (新しいソリューション)]** をクリックし、**[Android App (Android アプリ)]** をクリックして、**[Next (次へ)]** をクリックします。
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+
 2. **アプリケーション名**と**識別子**を入力します。 サポートする**ターゲット プラットフォーム**をクリックし、**[Next (次へ)]**、**[Create (作成)]** の順にクリックします。
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     これにより、新しい Android プロジェクトが作成されます。
 
@@ -84,7 +85,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
    > 
    > 
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
 2. 必要に応じて、 **[Minimum Android version]** の API レベルを変更します。
 3. 必要に応じて、 **[Target Android version]** の API バージョンを変更します (API レベル 8 以上にする必要があります)。
 
@@ -101,8 +102,8 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 1. Android アプリケーションと通知ハブについて次の情報を収集します。
    
    * **GoogleProjectNumber**: このプロジェクト番号の値は、Google 開発者ポータルでアプリの概要から取得します。 この値は、以前ポータルでアプリを作成したときにメモしています。
-   * **Listen connection string**: [Azure クラシック ポータル]のダッシュボードで **[接続文字列の表示]** をクリックします。 この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
-   * **Hub name**: これは [Azure クラシック ポータル]から取得できるハブの名前です。 たとえば、 *mynotificationhub2*です。
+   * **Listen connection string**: [DefaultFullSharedAccessSignature]のダッシュボードで **[接続文字列の表示]** をクリックします。 この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
+   * **Hub name**: これは [DefaultFullSharedAccessSignature]から取得できるハブの名前です。 たとえば、 *mynotificationhub2*です。
      
      Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
      
@@ -343,16 +344,16 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 1. **[Tools (ツール)]** で **[Open Android Emulator Manager (Android エミュレーター マネージャーを開く)]** をクリックし、デバイスを選択してから **[Edit (編集)]** をクリックします。
    
-       ![][18]
+      ![][18]
 2. **[Target (ターゲット)]** で **[Google APIs (Google API)]** を選択し、**[OK]** をクリックします。
    
-       ![][19]
+      ![][19]
 3. 上部のツール バーで、 **[実行]**をクリックし、アプリを選択します。 これによりエミュレーターが起動し、アプリケーションが実行されます。
    
    アプリにより、GCM から *registrationId* が取得され、通知ハブに登録されます。
 
 ## <a name="send-notifications-from-your-backend"></a>バックエンドから通知を送信する
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、 [Azure クラシック ポータル] で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、 [DefaultFullSharedAccessSignature] で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
 
 ![][30]
 
@@ -371,7 +372,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 1. Visual C# の新しいコンソール アプリケーションを作成します。
    
-       ![][20]
+      ![][20]
 2. Visual Studio で、**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
    
     Visual Studio のパッケージ マネージャー コンソールが表示されます。
@@ -398,17 +399,17 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
          Console.ReadLine();
 7. F5 キーを押してアプリケーションを実行します。 アプリで通知を受信します。
    
-       ![][21]
+      ![][21]
 
 #### <a name="optional-send-notifications-by-using-a-mobile-service"></a>(省略可能) モバイル サービスを使用して通知を送信する
 1. 「 [Mobile Services の使用]」に従って、以下の操作を行います。
-2. [Azure クラシック ポータル]にサインインし、モバイル サービスを選択します。
+2. [DefaultFullSharedAccessSignature]にサインインし、モバイル サービスを選択します。
 3. 上部にある **[Scheduler]** タブを選択します。
    
-       ![][22]
+      ![][22]
 4. スケジュールされた新しいジョブを作成して名前を挿入し、 **[要求時]**をクリックします。
    
-       ![][23]
+      ![][23]
 5. ジョブが作成されたら、ジョブ名をクリックします。 上部のバーにある **[スクリプト]** タブをクリックします。
 6. スケジューラ関数内に次のスクリプトを挿入します。 必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。 **[保存]**をクリックします。
    
@@ -432,12 +433,12 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。 特定のユーザーをターゲットとするには、「 [Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。 対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 Notification Hubs の使用方法の詳細については、[Notification Hubs のガイダンス]に関するページと[Android 向けの Notification Hubs の手順]に関するページを参照してください。
 
 <!-- Anchors. -->
-[Google Cloud Messaging を有効にする]: #register
+[Enable Google Cloud Messaging]: #register
 [Configure your Notification Hub]: #configure-hub
-[Notification Hub にアプリを接続する]: #connecting-app
-[エミュレーターを使用してアプリケーションを実行する]: #run-app
-[バックエンドから通知を送信する]: #send
-[次のステップ]:#next-steps
+[Connecting your app to the Notification Hub]: #connecting-app
+[Run your app with the emulator]: #run-app
+[Send notifications from your back-end]: #send
+[Next steps]:#next-steps
 
 <!-- Images. -->
 
@@ -458,27 +459,27 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 
 <!-- URLs. -->
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
-[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-push-js
+[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Microsoft Azure Notification Hubs (Android アプリ)]: http://msdn.microsoft.com/library/dn282661.aspx
+[DefaultFullSharedAccessSignature]: https://manage.windowsazure.com/
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs のガイダンス]: http://msdn.microsoft.com/library/jj927170.aspx
+[Android 向けの Notification Hubs の手順]: http://msdn.microsoft.com/library/dn282661.aspx
 
 [Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
-[GCMClient コンポーネント ページ]: http://components.xamarin.com/view/GCMClient
-[Xamarin.NotificationHub GitHub ページ]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
-[Github]: http://go.microsoft.com/fwlink/p/?LinkId=331329
+[GCMClient Component page]: http://components.xamarin.com/view/GCMClient
+[Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
+[GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

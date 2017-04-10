@@ -1,25 +1,33 @@
 ---
-title: メディア アセットのダウンロード
-description: コンピューターへのアセットのダウンロードについて説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+title: "コンピューターへの Media Services 資産のダウンロード - Azure | Microsoft Docs"
+description: "コンピューターへのアセットのダウンロードについて説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/23/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 19f6ea37f892054ee5d7bf793a32364dff264058
+ms.lasthandoff: 03/14/2017
+
 
 ---
-# <a name="how-to:-deliver-an-asset-by-download"></a>方法: ダウンロードによってアセットを配信する
+# <a name="how-to-deliver-an-asset-by-download"></a>方法: ダウンロードによってアセットを配信する
 このトピックでは、Media Services にアップロードされたメディア アセットを配信するためのオプションについて説明します。 メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。 メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。 メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。 パフォーマンスとスケーラビリティを高めるために、Content Delivery Network (CDN) を使用してコンテンツを配信することもできます。
 
-この例では、メディア アセットを Media Services からローカル コンピューターにダウンロードする方法を紹介しています。 このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、 **OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。 この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
+この例では、メディア アセットを Media Services からローカル コンピューターにダウンロードする方法を紹介しています。 このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、 **OutputMediaAssets** コレクション (ジョブの実行の結果である&1; つまたは複数の出力メディア アセットのセット) にアクセスします。 この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
     // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
@@ -80,7 +88,5 @@ ms.author: juliako
 
 ## <a name="see-also"></a>関連項目
 [ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

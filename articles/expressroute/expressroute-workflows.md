@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute 回線の構成ワークフロー | Microsoft Docs
-description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。
+title: "ExpressRoute 回線の構成ワークフロー | Microsoft Docs"
+description: "このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 570a98aafca6babc5a7089880d4120c2a8f4a0d8
+ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
+
 
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
@@ -53,21 +57,24 @@ ms.author: cherylmc
 ### <a name="possible-states-of-an-expressroute-circuit"></a>ExpressRoute 回線の状態
 このセクションでは、ExpressRoute 回線の状態を一覧にまとめています。
 
-#### <a name="at-creation-time"></a>作成時
+**作成時**
+
 PowerShell コマンドレットを実行し、ExpressRoute 回線を作成すると、直後に ExpressRoute 回線の状態が以下のようになります。
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-#### <a name="when-connectivity-provider-is-in-the-process-of-provisioning-the-circuit"></a>接続プロバイダーが回線にプロビジョニングしているとき
+**接続プロバイダーが回線にプロビジョニングしているとき**
+
 サービス キーを接続プロバイダーに渡し、接続プロバイダーがプロビジョニングを開始すると、直後に ExpressRoute 回線の状態が以下のようになります。
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-#### <a name="when-connectivity-provider-has-completed-the-provisioning-process"></a>接続プロバイダーがプロビジョニングを完了したとき
+**接続プロバイダーがプロビジョニングを完了したとき**
+
 接続プロバイダーがプロビジョニングを完了すると、直後に ExpressRoute 回線の状態が以下のようになります。
 
     ServiceProviderProvisioningState : Provisioned
@@ -75,7 +82,8 @@ PowerShell コマンドレットを実行し、ExpressRoute 回線を作成す�
 
 回線は「プロビジョニング済み」で「有効」の状態でなければ使用できません。 レイヤー 2 のプロバイダーを使用している場合、この状態にあるときにのみ、回線のルーティングを構成できます。
 
-#### <a name="when-connectivity-provider-is-deprovisioning-the-circuit"></a>接続プロバイダーが回線をプロビジョニング解除しているとき
+**接続プロバイダーが回線をプロビジョニング解除しているとき**
+
 サービス プロバイダーに ExpressRoute 回線のプロビジョニング解除を要請した場合、サービス プロバイダーがプロビジョニング解除を完了すると、回線が以下の状態になります。
 
     ServiceProviderProvisioningState : NotProvisioned
@@ -108,6 +116,9 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

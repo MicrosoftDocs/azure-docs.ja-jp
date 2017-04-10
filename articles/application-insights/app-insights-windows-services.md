@@ -1,5 +1,5 @@
 ---
-title: "Windows サービスと worker ロールのための Application Insights | Microsoft Docs"
+title: "Windows サービスと worker ロールのための Azure Application Insights | Microsoft Docs"
 description: "Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aac35e524759d5f4356e9a9e386f658e9003d2ca
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: aac35e524759d5f4356e9a9e386f658e9003d2ca
 * [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 * Visual Studio 2013 以降
 
-## <a name="a-nameadda1-create-an-application-insights-resource"></a><a name="add"></a>1.Application Insights リソースの作成
+## <a name="add"></a>1.Application Insights リソースの作成
 [Azure ポータル](https://portal.azure.com/)にサインインし、Application Insights の新しいリソースを作成します。 アプリケーションの種類として ASP.NET を選択します。
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
@@ -46,7 +47,7 @@ Azure の [リソース](app-insights-resources-roles-access-control.md) は、�
 
 新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。 これで、データをリソースに送信できます。
 
-## <a name="a-namesdka2-install-the-sdk-in-your-application"></a><a name="sdk"></a>2.アプリケーションに SDK をインストールする
+## <a name="sdk"></a>2.アプリケーションに SDK をインストールする
 Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。 ASP.NET アプリの場合は簡単です。
 
 1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
@@ -82,17 +83,19 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
     `<InstrumentationKey>`*コピーしたインストルメンテーション キー* `</InstrumentationKey>`
 * ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]**に設定されていることを確認します。
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> プロジェクトの実行
+[複数のビルド構成でキーを切り替える](app-insights-separate-resources.md)場合は、コードでインストルメンテーション キーを設定すると便利です。 コードでキーを設定する場合は、`.config` ファイルで設定する必要がありません。
+
+## <a name="run"></a> プロジェクトの実行
 **F5** キーを使用してアプリケーションを実行します。さまざまなページを開いて、テレメトリを生成してみます。
 
 Visual Studio で、送信されたイベント数が表示されます。
 
 ![Event count in Visual Studio](./media/app-insights-windows-services/appinsights-09eventcount.png)
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> 利用統計情報を表示する
+## <a name="monitor"></a> 利用統計情報を表示する
 [Azure ポータル](https://portal.azure.com/) に戻り、Application Insights のリソースを参照します。
 
-概要グラフでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
+概要グラフでデータを探します。 最初、1 つまたは&2; つのポイントだけが表示されます。 次に例を示します。
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
 
@@ -126,12 +129,11 @@ Visual Studio で、送信されたイベント数が表示されます。
 > 
 > 
 
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
 ## <a name="next-steps"></a>次のステップ
 * [他のテレメトリを追加](app-insights-asp-net-more.md) します。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

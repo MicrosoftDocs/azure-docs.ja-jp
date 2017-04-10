@@ -1,186 +1,219 @@
 ---
-title: Configure an application gateway for SSL offload by using classic deployment| Microsoft Docs
-description: This article provides instructions to create an application gateway with SSL offload by using the Azure classic deployment model.
+title: "SSL オフロードの構成 - Azure Application Gateway - PowerShell クラシック | Microsoft Docs"
+description: "この記事では、Azure のクラシック デプロイ モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2016
+ms.date: 01/23/2017
 ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
+
 
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Configure an application gateway for SSL offload by using the classic deployment model
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する
+
 > [!div class="op_single_selector"]
-> -[Azure portal](application-gateway-ssl-portal.md)
-> -[Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> -[Azure Classic PowerShell](application-gateway-ssl.md)
-> 
-> 
+> * [Azure ポータル](application-gateway-ssl-portal.md)
+> * [Azure Resource Manager の PowerShell](application-gateway-ssl-arm.md)
+> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ssl.md)
 
-Azure Application Gateway can be configured to terminate the Secure Sockets Layer (SSL) session at the gateway to avoid costly SSL decryption tasks to happen at the web farm. SSL offload also simplifies the front-end server setup and management of the web application.
+Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
-## <a name="before-you-begin"></a>Before you begin
-1. Install the latest version of the Azure PowerShell cmdlets by using the Web Platform Installer. You can download and install the latest version from the **Windows PowerShell** section of the [Downloads page](https://azure.microsoft.com/downloads/).
-2. Verify that you have a working virtual network with a valid subnet. Make sure that no virtual machines or cloud deployments are using the subnet. The application gateway must be by itself in a virtual network subnet.
-3. The servers that you configure to use the application gateway must exist or have their endpoints created either in the virtual network or with a public IP/VIP assigned.
+## <a name="before-you-begin"></a>開始する前に
 
-To configure SSL offload on an application gateway, do the following steps in the order listed:
+1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。 **ダウンロード ページ** の [Windows PowerShell](https://azure.microsoft.com/downloads/)セクションから最新バージョンをダウンロードしてインストールできます。
+2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。 仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。 Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内にエンドポイントが作成されているか、割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
-1. [Create an application gateway](#create-an-application-gateway)
-2. [Upload SSL certificates](#upload-ssl-certificates)
-3. [Configure the gateway](#configure-the-gateway)
-4. [Set the gateway configuration](#set-the-gateway-configuration)
-5. [Start the gateway](#start-the-gateway)
-6. [Verify the gateway status](#verify-the-gateway-status)
+アプリケーション ゲートウェイで SSL オフロードを構成するには、次の手順を順番に実行します。
 
-## <a name="create-an-application-gateway"></a>Create an application gateway
-To create the gateway, use the **New-AzureApplicationGateway** cmdlet, replacing the values with your own. Billing for the gateway does not start at this point. Billing begins in a later step, when the gateway is successfully started.
+1. [アプリケーション ゲートウェイの作成](#create-an-application-gateway)
+2. [SSL 証明書のアップロード](#upload-ssl-certificates)
+3. [ゲートウェイの構成](#configure-the-gateway)
+4. [ゲートウェイ構成の設定](#set-the-gateway-configuration)
+5. [ゲートウェイの起動](#start-the-gateway)
+6. [ゲートウェイの状態の確認](#verify-the-gateway-status)
 
-    New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-To validate that the gateway was created, you can use the **Get-AzureApplicationGateway** cmdlet.
+ゲートウェイを作成するには、`New-AzureApplicationGateway` コマンドレットを使用して、値を独自の値に置き換えて使用します。 この時点ではゲートウェイの課金は開始されません。 課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-In the sample, *Description*, *InstanceCount*, and *GatewaySize* are optional parameters. The default value for *InstanceCount* is 2, with a maximum value of 10. The default value for *GatewaySize* is Medium. Small and Large are other available values. *VirtualIPs* and *DnsName* are shown as blank because the gateway has not started yet. These values are created once the gateway is in the running state.
+```powershell
+New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
+```
 
-    Get-AzureApplicationGateway AppGwTest
+ゲートウェイが作成されたことを確認するには、`Get-AzureApplicationGateway` コマンドレットを使用します。
 
-## <a name="upload-ssl-certificates"></a>Upload SSL certificates
-Use **Add-AzureApplicationGatewaySslCertificate** to upload the server certificate in *pfx* format to the application gateway. The certificate name is a user-chosen name and must be unique within the application gateway. This certificate is referred to by this name in all certificate management operations on the application gateway.
+サンプルでは、*Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。 *InstanceCount* の既定値は 2、最大値は 10 です。 *GatewaySize* の既定値は Medium です。 その他の値は Small および Large です。 ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
-This following sample shows the cmdlet, replace the values in the sample with your own.
+```powershell
+Get-AzureApplicationGateway AppGwTest
+```
 
-    Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
+## <a name="upload-ssl-certificates"></a>SSL 証明書のアップロード
 
-Next, validate the certificate upload. Use the **Get-AzureApplicationGatewayCertificate** cmdlet.
+`Add-AzureApplicationGatewaySslCertificate` を使用して、サーバー証明書を *pfx* 形式でアプリケーション ゲートウェイにアップロードします。 証明書の名前はユーザーが指定し、アプリケーション ゲートウェイ内で一意である必要があります。 この証明書はアプリケーション ゲートウェイ上のすべての証明書管理操作でこの名前で呼ばれます。
 
-This sample shows the cmdlet on the first line, followed by the output.
+サンプルのコマンドレットを次に示します。自分の環境に合わせてサンプル内の値を置き換えてください。
 
-    Get-AzureApplicationGatewaySslCertificate AppGwTest
+```powershell
+Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
+```
 
-    VERBOSE: 5:07:54 PM - Begin Operation: Get-AzureApplicationGatewaySslCertificate
-    VERBOSE: 5:07:55 PM - Completed Operation: Get-AzureApplicationGatewaySslCertificate
-    Name           : SslCert
-    SubjectName    : CN=gwcert.app.test.contoso.com
-    Thumbprint     : AF5ADD77E160A01A6......EE48D1A
-    ThumbprintAlgo : sha1RSA
-    State..........: Provisioned
+次に、証明書のアップロードを検証します。 `Get-AzureApplicationGatewayCertificate` コマンドレットを使用します。
+
+このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。
+
+```powershell
+Get-AzureApplicationGatewaySslCertificate AppGwTest
+```
+
+```
+VERBOSE: 5:07:54 PM - Begin Operation: Get-AzureApplicationGatewaySslCertificate
+VERBOSE: 5:07:55 PM - Completed Operation: Get-AzureApplicationGatewaySslCertificate
+Name           : SslCert
+SubjectName    : CN=gwcert.app.test.contoso.com
+Thumbprint     : AF5ADD77E160A01A6......EE48D1A
+ThumbprintAlgo : sha1RSA
+State..........: Provisioned
+```
 
 > [!NOTE]
-> The certificate password has to be between 4 to 12 characters, letters, or numbers. Special characters are not accepted.
-> 
-> 
+> 証明書のパスワードは、4 ～ 12 文字の英数字で指定する必要があります。 特殊文字は使用できません。
 
-## <a name="configure-the-gateway"></a>Configure the gateway
-An application gateway configuration consists of multiple values. The values can be tied together to construct the configuration.
+## <a name="configure-the-gateway"></a>ゲートウェイの構成
 
-The values are:
+アプリケーション ゲートウェイの構成は、複数の値で構成されます。 値を相互に関連付けて構成を作成します。
 
-* **Back-end server pool:** The list of IP addresses of the back-end servers. The IP addresses listed should either belong to the virtual network subnet or should be a public IP/VIP.
-* **Back-end server pool settings:** Every pool has settings like port, protocol, and cookie-based affinity. These settings are tied to a pool and are applied to all servers within the pool.
-* **Front-end port:** This port is the public port that is opened on the application gateway. Traffic hits this port, and then gets redirected to one of the back-end servers.
-* **Listener:** The listener has a front-end port, a protocol (Http or Https, these values are case-sensitive), and the SSL certificate name (if configuring SSL offload).
-* **Rule:** The rule binds the listener and the back-end server pool and defines which back-end server pool the traffic should be directed to when it hits a particular listener. Currently, only the *basic* rule is supported. The *basic* rule is round-robin load distribution.
+値は次のとおりです。
 
-**Additional configuration notes**
+* **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
+* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+* **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+* **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 現在、 *basic* ルールのみサポートされます。 *basic* ルールは、ラウンド ロビンの負荷分散です。
 
-For SSL certificates configuration, the protocol in **HttpListener** should change to *Https* (case sensitive). The **SslCert** element is added to **HttpListener** with the value set to the same name as used in the upload of preceding SSL certificates section. The front-end port should be updated to 443.
+**構成に関する追加の注意**
 
-**To enable cookie-based affinity**: An application gateway can be configured to ensure that a request from a client session is always directed to the same VM in the web farm. This scenario is done by injection of a session cookie that allows the gateway to direct traffic appropriately. To enable cookie-based affinity, set **CookieBasedAffinity** to *Enabled* in the **BackendHttpSettings** element.
+SSL 証明書の構成では、 **HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。 **SslCert** 要素は、前の SSL 証明書のアップロードに関するセクションで使用したものと同じ名前を値に設定して **HttpListener** に追加します。 フロントエンド ポートは 443 に更新する必要があります。
 
-You can construct your configuration either by creating a configuration object or by using a configuration XML file.
-To construct your configuration by using a configuration XML file, use the following sample:
+**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるように Application Gateway を構成できます。 このシナリオはセッション Cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。 Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
 
-**Configuration XML sample**
+構成は、構成オブジェクトを作成するか、構成 XML ファイルを使用して構築できます。
+構成 XML ファイルを使用して構成を構築するには、次のサンプルを使用します。
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
-        <FrontendIPConfigurations />
-        <FrontendPorts>
-            <FrontendPort>
-                <Name>FrontendPort1</Name>
-                <Port>443</Port>
-            </FrontendPort>
-        </FrontendPorts>
-        <BackendAddressPools>
-            <BackendAddressPool>
-                <Name>BackendPool1</Name>
-                <IPAddresses>
-                    <IPAddress>10.0.0.1</IPAddress>
-                    <IPAddress>10.0.0.2</IPAddress>
-                </IPAddresses>
-            </BackendAddressPool>
-        </BackendAddressPools>
-        <BackendHttpSettingsList>
-            <BackendHttpSettings>
-                <Name>BackendSetting1</Name>
-                <Port>80</Port>
-                <Protocol>Http</Protocol>
-                <CookieBasedAffinity>Enabled</CookieBasedAffinity>
-            </BackendHttpSettings>
-        </BackendHttpSettingsList>
-        <HttpListeners>
-            <HttpListener>
-                <Name>HTTPListener1</Name>
-                <FrontendPort>FrontendPort1</FrontendPort>
-                <Protocol>Https</Protocol>
-                <SslCert>GWCert</SslCert>
-            </HttpListener>
-        </HttpListeners>
-        <HttpLoadBalancingRules>
-            <HttpLoadBalancingRule>
-                <Name>HttpLBRule1</Name>
-                <Type>basic</Type>
-                <BackendHttpSettings>BackendSetting1</BackendHttpSettings>
-                <Listener>HTTPListener1</Listener>
-                <BackendAddressPool>BackendPool1</BackendAddressPool>
-            </HttpLoadBalancingRule>
-        </HttpLoadBalancingRules>
-    </ApplicationGatewayConfiguration>
+**構成 XML のサンプル**
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+    <FrontendIPConfigurations />
+    <FrontendPorts>
+        <FrontendPort>
+            <Name>FrontendPort1</Name>
+            <Port>443</Port>
+        </FrontendPort>
+    </FrontendPorts>
+    <BackendAddressPools>
+        <BackendAddressPool>
+            <Name>BackendPool1</Name>
+            <IPAddresses>
+                <IPAddress>10.0.0.1</IPAddress>
+                <IPAddress>10.0.0.2</IPAddress>
+            </IPAddresses>
+        </BackendAddressPool>
+    </BackendAddressPools>
+    <BackendHttpSettingsList>
+        <BackendHttpSettings>
+            <Name>BackendSetting1</Name>
+            <Port>80</Port>
+            <Protocol>Http</Protocol>
+            <CookieBasedAffinity>Enabled</CookieBasedAffinity>
+        </BackendHttpSettings>
+    </BackendHttpSettingsList>
+    <HttpListeners>
+        <HttpListener>
+            <Name>HTTPListener1</Name>
+            <FrontendPort>FrontendPort1</FrontendPort>
+            <Protocol>Https</Protocol>
+            <SslCert>GWCert</SslCert>
+        </HttpListener>
+    </HttpListeners>
+    <HttpLoadBalancingRules>
+        <HttpLoadBalancingRule>
+            <Name>HttpLBRule1</Name>
+            <Type>basic</Type>
+            <BackendHttpSettings>BackendSetting1</BackendHttpSettings>
+            <Listener>HTTPListener1</Listener>
+            <BackendAddressPool>BackendPool1</BackendAddressPool>
+        </HttpLoadBalancingRule>
+    </HttpLoadBalancingRules>
+</ApplicationGatewayConfiguration>
+```
 
-## <a name="set-the-gateway-configuration"></a>Set the gateway configuration
-Next, you set the application gateway. You can use the **Set-AzureApplicationGatewayConfig** cmdlet with either a configuration object or with a configuration XML file.
+## <a name="set-the-gateway-configuration"></a>ゲートウェイ構成の設定
 
-    Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
+次に、アプリケーション ゲートウェイを設定します。 構成オブジェクトまたは構成 XML ファイルのいずれの場合でも、`Set-AzureApplicationGatewayConfig` コマンドレットを使用できます。
 
-## <a name="start-the-gateway"></a>Start the gateway
-Once the gateway has been configured, use the **Start-AzureApplicationGateway** cmdlet to start the gateway. Billing for an application gateway begins after the gateway has been successfully started.
+```powershell
+Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
+```
 
-**Note:** The **Start-AzureApplicationGateway** cmdlet might take up to 15-20 minutes to finish.
+## <a name="start-the-gateway"></a>ゲートウェイの起動
 
-    Start-AzureApplicationGateway AppGwTest
+ゲートウェイを構成したら、 `Start-AzureApplicationGateway` コマンドレットを使用してゲートウェイを起動します。 Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
 
-## <a name="verify-the-gateway-status"></a>Verify the gateway status
-Use the **Get-AzureApplicationGateway** cmdlet to check the status of the gateway. If **Start-AzureApplicationGateway** succeeded in the previous step, *State* should be Running, and *VirtualIPs* and *DnsName* should have valid entries.
+> [!NOTE]
+> `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
+>
+>
 
-This sample shows an application gateway that is up, running, and is ready to take traffic.
+```powershell
+Start-AzureApplicationGateway AppGwTest
+```
 
-    Get-AzureApplicationGateway AppGwTest
+## <a name="verify-the-gateway-status"></a>ゲートウェイの状態の確認
 
-    Name          : AppGwTest2
-    Description   :
-    VnetName      : testvnet1
-    Subnets       : {Subnet-1}
-    InstanceCount : 2
-    GatewaySize   : Medium
-    State         : Running
-    VirtualIPs    : {23.96.22.241}
-    DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
+`Get-AzureApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。 前の手順で `Start-AzureApplicationGateway` が成功した場合、*State* は Running になり、*VirtualIPs* と *DnsName* に有効な値が入ります。
 
+このサンプルは、起動に成功し、実行中で、トラフィックを受け取る準備が完了しているアプリケーション ゲートウェイを示します。
 
-## <a name="next-steps"></a>Next steps
-If you want more information about load balancing options in general, see:
+```powershell
+Get-AzureApplicationGateway AppGwTest
+```
+
+```
+Name          : AppGwTest2
+Description   :
+VnetName      : testvnet1
+Subnets       : {Subnet-1}
+InstanceCount : 2
+GatewaySize   : Medium
+State         : Running
+VirtualIPs    : {23.96.22.241}
+DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
+```
+
+## <a name="next-steps"></a>次のステップ
+
+負荷分散のオプション全般の詳細については、次を参照してください。
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO4-->
 
 

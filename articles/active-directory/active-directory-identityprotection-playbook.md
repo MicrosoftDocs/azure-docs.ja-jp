@@ -1,20 +1,24 @@
 ---
-title: Azure Active Directory Identity Protection プレイブック | Microsoft Docs
-description: Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。
+title: "Azure Active Directory Identity Protection プレイブック | Microsoft Docs"
+description: "Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。"
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
+keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 11/11/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
+ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
+
 
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
@@ -32,7 +36,7 @@ ms.author: markvi
 
 他のリスク イベントは、安全な方法でシミュレートすることはできません。
 
-### <a name="signins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 このリスク イベントの種類は、匿名プロキシ IP アドレスとして識別されている IP アドレスからのサインインにユーザーが成功したことを示します。 このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される場合があります。
 
 **匿名 IP からサインインをシミュレートするには、次の手順を実行します**。
@@ -43,7 +47,7 @@ ms.author: markvi
 
 5 分以内に Identity Protection ダッシュボードにサインインが表示されます。 
 
-### <a name="signins-from-unfamiliar-locations"></a>未知の場所からのサインイン
+### <a name="sign-ins-from-unfamiliar-locations"></a>未知の場所からのサインイン
 未知の場所のリスクはリアルタイム サインイン評価メカニズムであり、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を決定します。 システムは、ユーザーの以前の IP、緯度/経度、および ASN を保存し、それを "既知の" 場所と見なします。 サインインの場所が既存の場所のいずれとも一致しない場合、そのサインインの場所は未知と見なされます。
 
 Azure Active Directory Identity Protection:  
@@ -108,7 +112,7 @@ Azure Active Directory Identity Protection:
     ![プレイブック](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
-## <a name="signin-risk"></a>サインイン リスク
+## <a name="sign-in-risk"></a>サインイン リスク
 **サインイン リスクをテストするには、次の手順を実行します。**
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com ](https://portal.azure.com) にサインインします。
@@ -126,13 +130,16 @@ Azure Active Directory Identity Protection:
 9. **[Save]**をクリックします。
 10. 未知の場所または匿名 IP のリスク イベントをシミュレートすることにより、リスクに基づく条件付きアクセスをテストできます。どちらも**中**リスク イベントと見なされるためです。
 
-<br>
+
 ![プレイブック](./media/active-directory-identityprotection-playbook/200.png "Playbook")
-<br>
+
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

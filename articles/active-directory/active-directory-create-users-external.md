@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
+ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
+ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -24,8 +25,8 @@ ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-users-create-external-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-create-users-external.md)
-> 
-> 
+>
+>
 
 この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。 組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、 [Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
 2. **[Active Directory]**を選択し、ディレクトリを開きます。
 3. **[ユーザー]** タブを選択し、コマンド バーの **[ユーザーの追加]** をクリックします。
 4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** で次のいずれかを選択します。
-   
+
    * **[別の Microsoft Azure AD ディレクトリのユーザー]** - 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加します。 別のディレクトリでユーザーを選択できるのは、そのディレクトリでもメンバーになっている場合のみです。
    * **[パートナー会社のユーザー]** - ディレクトリにパートナー会社のユーザーを招待して承認します ( [Azure Active Directory B2B コラボレーション](active-directory-b2b-what-is-azure-ad-b2b.md)に関するページを参照)。 [電子メール アドレスを指定して CSV ファイルをアップロードすること](active-directory-b2b-references-csv-file-format.md)が必要になります。
 5. ユーザーの **[プロファイル]** ページで、姓と名およびユーザー フレンドリ名を入力し、**[ロール]** ボックスの一覧からユーザー ロールを選択します。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。 ユーザーの **Multi-Factor Authentication を有効にする** かどうかを指定します。
@@ -42,11 +43,11 @@ ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
 
 > [!IMPORTANT]
 > 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
-> 
-> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com. を追加します。
-> * geoffgrisso@contoso.onmicrosoft.com. を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序が重要であり、元に戻すのが難しい場合があります。
-> 
-> 
+>
+> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com を追加します。
+> * geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。 この順序は重要であり、なかなか元に戻すことができない場合があります。
+>
+>
 
 オンプレミスの Active Directory サービスに ID が同期されているユーザーの情報を変更する場合、Azure クラシック ポータルでユーザー情報を変更することはできません。 このユーザー情報を変更するには、オンプレミスの Active Directory 管理ツールを使用してください。
 
@@ -62,8 +63,8 @@ ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
 
 > [!NOTE]
 > ディレクトリ内の外部ユーザーを無効にすることもできます。無効にすると、ディレクトリへのアクセスはブロックされます。
-> 
-> 
+>
+>
 
 ユーザーがホーム ディレクトリ内で削除されたか、または Microsoft アカウントが取り消されたとしても、外部ユーザーは追加先のディレクトリ内に引き続き残ります。 ただし、ディレクトリ内のユーザーはホーム ディレクトリでの認証や Microsoft アカウントを使った認証ができないため、リソースにアクセスできません。
 
@@ -79,16 +80,11 @@ ms.openlocfilehash: 3f2578288bcf15c6f64bba453f82751bb2d3d772
 * PowerBI では、現在、外部ユーザーによるアクセスはサポートされていません。
 * Office ポータルでは、外部ユーザーへのライセンス付与をサポートしていません。
 * Azure AD PowerShell では、外部ユーザーは自分のホーム ディレクトリにログインした状態であり、自分が外部ユーザーであるディレクトリを管理できません。
+* Dynamics CRM Outlook プラグインを構成するときに、外部ユーザーは、[CRM Online] を選択するのではなく、Dynamics CRM Online の URL を手動で入力することが必要になる場合があります。
 
 ## <a name="whats-next"></a>参照トピック
 * [Azure Active Directory に新しいユーザーを追加する](active-directory-create-users.md)
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 * [Manage groups in Azure AD](active-directory-manage-groups.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

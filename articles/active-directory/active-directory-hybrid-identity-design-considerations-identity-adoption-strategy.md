@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 導入戦略の定義 | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 導入戦略の定義 | Microsoft Docs"
+description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 47fb1724ac72df8b83012bcacdc435ea847547da
+
 
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
@@ -38,7 +42,7 @@ ms.author: billmath
 * **フェデレーション**: これらの ID は、オンプレミスとクラウドの両方に存在します。  Azure AD Connect を使用すると、これらのユーザーは作成されるか、既存の Azure AD アカウントと結合されます。  
 
 > [!NOTE]
-> 同期オプションの詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をお読みください。
+> 同期オプションの詳細については、「 [オンプレミス ID と Azure Active Directory の統合](connect/active-directory-aadconnect.md)」をお読みください。
 > 
 > 
 
@@ -106,7 +110,7 @@ ms.author: billmath
 ![](./media/hybrid-id-design-considerations/single-forest.png) 単一フォレストのシナリオ: 図 5 に示すように、大規模な組織でも小規模な組織でも、複数のフォレストを持つのがごく一般的です。
 
 > [!NOTE]
-> Azure AD Connect の同期を使用したオンプレミス AD や Azure AD のさまざまなトポロジの詳細については、記事「 [Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md)」をお読みください。
+> Azure AD Connect の同期を使用したオンプレミス AD や Azure AD のさまざまなトポロジの詳細については、記事「 [Azure AD Connect のトポロジ](connect/active-directory-aadconnect-topologies.md)」をお読みください。
 > 
 > 
 
@@ -126,7 +130,7 @@ ms.author: billmath
 * リンクされたメールボックスがある場合、サインインに使用される別のアカウントが異なるフォレストにある。
 
 > [!NOTE]
-> クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。 ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。 シングル サインオンの場合は、これを ImmutableId といいます。 [Azure AD Connect の設計概念](active-directory-aadconnect-design-concepts.md#sourceanchor) 」を参照してください。
+> クラウドとオンプレミスの両方に存在するオブジェクトは、一意の識別子を使用して "接続" されます。 ディレクトリ同期の場合は、この一意の識別子を SourceAnchor といいます。 シングル サインオンの場合は、これを ImmutableId といいます。 [Azure AD Connect の設計概念](connect/active-directory-aadconnect-design-concepts.md#sourceanchor) 」を参照してください。
 > 
 > 
 
@@ -176,7 +180,7 @@ ms.author: billmath
 | --- | --- | --- |
 | Microsoft アプリ |○ |○ |
 | アプリ ギャラリー内の SaaS アプリ |○ |○ |
-| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション |○ |○ |
+| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション  |○ |○ |
 | Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |× |○ |
 | VPN、RDG などのリモート アクセス |× |○ |
 
@@ -209,6 +213,9 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

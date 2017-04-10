@@ -1,20 +1,24 @@
 ---
-title: Microsoft Power BI Embedded - データ ソースへの接続
-description: Power BI Embedded、データ ソースへの接続
+title: "Microsoft Power BI Embedded - データ ソースへの接続"
+description: "Power BI Embedded、データ ソースへの接続"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 5c4b5e09ac5e336504be32533ad011aad102af75
+ms.openlocfilehash: fdc0d76741d5078978e1bfeadd156e84cac3a48a
+
 
 ---
 # <a name="connect-to-a-data-source"></a>データ ソースへの接続
@@ -28,6 +32,19 @@ ms.author: asaxton
 
 Power BI Embedded を使用して、クラウドのデータ ソースで DirectQuery を使用することができますが、現時点ではオンプレミスのデータ ソースを使用することはできません。
 
+> [!NOTE]
+> 現時点では、Power BI Embedded ではオンプレミスのデータ ゲートウェイはサポートされていません。 つまり、オンプレミスの データ ソースで DirectQuery を使用することはできません。
+
+## <a name="supported-data-sources"></a>サポートされるデータ ソース
+
+**DirectQuery**
+* Azure SQL データベース
+* Azure SQL Data Warehouse
+
+**インポート**
+
+Power BI Desktop 内で、使用可能なすべてのデータソースをインポートできます。 インポートしたデータは、Power BI Embedded 内では**更新できません**。 PBIX ファイルに対する変更を Power BI Embedded にアップロードする必要があります。 これは、使用可能なゲートウェイがないためです。 
+
 ## <a name="benefits-of-using-directquery"></a>DirectQuery を使用する利点
 **DirectQuery**を使用する場合、2 つの主な利点があります。
 
@@ -38,7 +55,7 @@ Power BI Embedded を使用して、クラウドのデータ ソースで Direct
    **DirectQuery**を使用する場合、いくつかの制限事項があります。
 
 * すべてのテーブルは 1 つのデータベースから取得する必要があります。
-* クエリが複雑すぎると、エラーが発生します。 エラーを解決するために、クエリをリファクタリングして複雑さを減らす必要があります。 複雑なクエリを使用する必要がある場合は、 **DirectQuery**を使用する代わりにデータをインポートする必要があります。
+* クエリが複雑すぎると、エラーが発生します。 エラーを解決するために、クエリをリファクタリングして複雑さを減らす必要があります。 複雑なクエリを使用する必要がある場合は、**DirectQuery** を使用する代わりにデータをインポートする必要があります。
 * リレーションシップのフィルター処理は、双方向ではなく、単一の方向に制限されます。
 * 列のデータ型を変更することはできません。
 * 既定では、メジャーで許可される DAX 式に制限が課されます。 「 [DirectQuery とメジャー](#measures)」を参照してください。
@@ -52,6 +69,11 @@ Power BI Embedded を使用して、クラウドのデータ ソースで Direct
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!--HONumber=Oct16_HO2-->
+ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

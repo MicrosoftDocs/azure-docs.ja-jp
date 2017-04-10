@@ -1,17 +1,30 @@
 ---
+title: "Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。"
+services: azure-resource-manager
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: azure-resource-manager
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 00db07b08a15b37c38e6c3a303e3e35cf16b0774
-ms.openlocfilehash: 8976abfecb246fa1f0d5183308f4d2cdf5d5f3dd
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 186bbc75211988f51dc91e2227472f6369b3bfdd
+ms.lasthandoff: 04/04/2017
 
 ---
 #<a name="azure-resource-manager-documentation"></a>Azure Resource Manager のドキュメント
 
-Azure Resource Manager により、アプリを繰り返しデプロイすることができ、リソースが必ず一貫した状態でデプロイされるようにできます。 1 つの宣言テンプレートに、アプリのインフラストラクチャと依存関係を定義します。 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure リソース マネージャーを使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 リソース マネージャーには、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
+Resource Manager を使用して、グループなどのソリューション リソースをデプロイ、監視、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソース グループを設定し、一貫性のある繰り返し可能なデプロイ用にテンプレートを作成する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/Azure-Resource-Manager/resource-group-overview">
+        <a href="/azure/azure-resource-manager/resource-group-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -29,7 +42,7 @@ Azure Resource Manager により、アプリを繰り返しデプロイするこ
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-resource-manager">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,17 +60,17 @@ Azure Resource Manager により、アプリを繰り返しデプロイするこ
         </a>
     </li>
     <li>
-        <a href="/azure/resource-manager-template-walkthrough/">
+        <a href="/azure/resource-manager-template-walkthrough">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager テンプレートの作成</h3>
+                        <h3>Azure Resource Manager の概要</h3>
                     </div>
                 </div>
             </div>
@@ -65,17 +78,17 @@ Azure Resource Manager により、アプリを繰り返しデプロイするこ
         </a>
     </li>
     <li>
-        <a href="/azure/resource-group-define-dependencies/">
+        <a href="/azure/resource-group-define-dependencies">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager テンプレートでの依存関係の作成</h3>
+                        <h3>Azure Resource Manager テンプレートでの依存関係の作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -83,17 +96,17 @@ Azure Resource Manager により、アプリを繰り返しデプロイするこ
         </a>
     </li>
     <li>
-        <a href="/azure/resource-group-create-multiple/">
+        <a href="/azure/resource-group-create-multiple">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure リソース マネージャーでリソースの複数のインスタンスを作成する</h3>
+                        <h3>Azure Resource Manager での複数のリソース インスタンスの概要</h3>
                     </div>
                 </div>
             </div>
@@ -103,40 +116,49 @@ Azure Resource Manager により、アプリを繰り返しデプロイするこ
 </ul>
 
 ---
-
-##<a name="reference"></a>リファレンス
-
-###<a name="powershell"></a>PowerShell
-[PowerShell コマンドレット](/powershell/azureps-cmdlets-docs/)
-
-###<a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure)
-
-###<a name="net"></a>.NET
-[Azure のリソースとリソース グループを .NET で管理する](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-
-###<a name="java"></a>Java
-[リソースの概要 - Java でリソースを管理する](https://azure.microsoft.com/en-us/documentation/samples/resources-java-manage-resource/)
-
-###<a name="nodejs"></a>Node.js
-[Azure のリソースとリソース グループを Node.js で管理する](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-node-resources-and-groups/)
-
-###<a name="python"></a>Python
-[Azure のリソースとリソース グループを Python で管理する](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-python-resources-and-groups/)
-
-###<a name="ruby"></a>Ruby
-[Azure のリソースとリソース グループを Ruby で管理する](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-ruby-resources-and-groups/)
-
----
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Resource Manager のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-<!--HONumber=Nov16_HO2-->
-
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources">PowerShell</a></p>
+                        <p><a href="/cli/azure/resource">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html">Python</a></p>
+                        <p><a href="/azure/templates/">テンプレートの形式</a></p>
+                        <p><a href="/resource-group-template-functions.md">テンプレート関数</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/resources/">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 

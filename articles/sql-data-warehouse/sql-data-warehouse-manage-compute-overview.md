@@ -1,120 +1,191 @@
 ---
-title: Manage compute power in Azure SQL Data Warehouse (Overview) | Microsoft Docs
-description: Performance scale out capabilities in Azure SQL Data Warehouse. Scale out by adjusting DWUs or pause and resume compute resources to save costs.
+title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (概要) | Microsoft Docs"
+description: "Azure SQL Data Warehouse のパフォーマンス スケールアウト機能。 DWU を調整してスケールアウトする方法や、コンピューティング リソースを一時停止および再開してコストを節約する方法を説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-
+author: hirokib
+manager: johnmac
+editor: 
+ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: barbkess
+ms.custom: manage
+ms.date: 03/22/2017
+ms.author: elbutter
+translationtype: Human Translation
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: f4a79413bc5e660504b4b6b48fcf496fb0f08ade
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Manage compute power in Azure SQL Data Warehouse (Overview)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
 > [!div class="op_single_selector"]
-> * [Overview](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
+> * [概要](sql-data-warehouse-manage-compute-overview.md)
+> * [ポータル](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
+> * [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
-> 
-> 
+>
+>
 
-The architecture of SQL Data Warehouse separates storage and compute, allowing each to scale independently. As a result, you can scale out performance while saving costs by only paying for performance when you need it. 
+SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 結果として、データの量とは無関係に、パフォーマンスの需要を満たすようにコンピューティングをスケーリングできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金][billed]は別々に行われます。 
 
-This overview describes the following performance scale-out capabilities of SQL Data Warehouse and gives recommendations on how and when to use them. 
+この概要では、SQL Data Warehouse でのスケールアウトのしくみについて説明するほか、SQL Data Warehouse の機能を一時停止、再開、およびスケーリングする方法について説明します。 [Data Warehouse ユニット (DWU)][data warehouse units (DWUs)] に関するページを参照して、DWU とパフォーマンスの関係を確認してください。 
 
-* Scale compute power by adjusting [data warehouse units (DWUs)][data warehouse units (DWUs)]
-* Pause or resume compute resources
+## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>SQL Data Warehouse でのコンピューティング管理操作のしくみ
+SQL Data Warehouse のアーキテクチャは、制御ノード、コンピューティング ノード、および 60 のディストリビューションに分散されたストレージ層で構成されます。 
 
-<a name="scale-performance-bk"></a>
+SQL Data Warehouse の通常のアクティブ セッション中、システムのヘッド ノードは、メタデータを管理し、分散されたクエリ オプティマイザーを格納します。 このヘッド ノードの下には、コンピューティング ノードとストレージ層があります。 DWU が 400 のシステムには、1 つのヘッド ノードと 4 つのコンピューティング ノードのほか、60 のディストリビューションから成るストレージ層があります。 
 
-## <a name="scale-performance"></a>Scale performance
-In SQL Data Warehouse, you can quickly scale performance out or back by increasing or decreasing compute resources of CPU, memory, and I/O bandwidth. To scale performance, all you need to do is adjust the number of [data warehouse units (DWUs)][data warehouse units (DWUs)] that SQL Data Warehouse allocates to your database. SQL Data Warehouse quickly makes the change and handles all the underlying changes to hardware or software.
+スケール操作または一時停止操作を実行すると、システムは、最初にすべての受信クエリを中止し、次にトランザクションをロールバックして一貫性のある状態を確保します。 スケール操作の場合、このトランザクションのロールバックが完了した後でのみスケーリングが行われます。 スケールアップ操作の場合、システムによって追加で必要な数のコンピューティング ノードがプロビジョニングされた後、それらのコンピューティング ノードをストレージ層に再接続する処理が開始されます。 スケールダウン操作の場合、不要なノードが解放された後、残りのコンピューティング ノードが自動的に適切な数のディストリビューションに再接続します。 一時停止操作では、すべてのコンピューティング ノードが解放され、さまざまなメタデータ操作が実行された後、最終的にシステムが安定した状態になります。
 
-Gone are the days where you need to research what type of processors, how much memory or what type of storage you need to have great performance in your data warehouse. By putting your Data Warehouse in the cloud, you no longer have to deal with low-level hardware issues. Instead, SQL Data Warehouse asks you this question: how fast do you want to analyze your data? 
+| DWU  | \#コンピューティング ノードの数 | \#ノードあたりのディストリビューションの数 |
+| ---- | ------------------ | ---------------------------- |
+| 100  | 1                  | 60                           |
+| 200  | 2                  | 30                           |
+| 300  | 3                  | 20                           |
+| 400  | 4                  | 15                           |
+| 500  | 5                  | 12                           |
+| 600  | 6                  | 10                           |
+| 1,000 | 10                 | 6                            |
+| 1200 | 12                 | 5                            |
+| 1500 | 15                 | 4                            |
+| 2000 | 20                 | 3                            |
+| 3000 | 30                 | 2                            |
+| 6000 | 60                 | 1                            |
 
-### <a name="how-do-i-scale-performance"></a>How do I scale performance?
-To elastically increase or decrease your compute power, simply change the [data warehouse units (DWUs)][data warehouse units (DWUs)] setting for your database. Performance will increase linearly as you add more DWU.  At higher DWU levels, you need to add more than 100 DWUs to notice a significant improvement in performance. To help you select meaningful jumps in DWUs, we offer the DWU levels that will give the best results.
+コンピューティングを管理するための 3 つの主要な機能は次のとおりです。
 
-To adjust DWUs, you can use any of these individual methods.
+1. 一時停止
+2. 再開
+3. スケール
 
-* [Scale compute power with Azure portal][Scale compute power with Azure portal]
-* [Scale compute power with PowerShell][Scale compute power with PowerShell]
-* [Scale compute power with REST APIs][Scale compute power with REST APIs]
-* [Scale compute power with TSQL][Scale compute power with TSQL]
+これらの各操作は、完了までに数分かかる場合があります。 スケーリング、一時停止、再開を自動的に行う場合は、別のアクションに進む前に特定の操作が完了していることを確認するロジックを実装することをお勧めします。 
 
-### <a name="how-many-dwus-should-i-use"></a>How many DWUs should I use?
-Performance in SQL Data Warehouse scales linearly, and changing from one compute scale to another (say from 100 DWUs to 2000 DWUs) happens in seconds. This gives you the flexibility to experiment with different DWU settings until you determine your scenario's best fit.
+さまざまなエンドポイントを通じてデータベースの状態を確認することで、このような操作の自動化を適切に実装できます。 ポータルでは、操作の完了通知とデータベースの現在の状態が提供されます。ただし、プログラムを使って状態をチェックすることはできません。 
 
-To understand what your ideal DWU value is, try scaling up and down, and running a few queries after loading your data. Since scaling is quick, you can try a number of different levels of performance in an hour or less. Do keep in mind, that SQL Data Warehouse is designed to process large amounts of data and to see its true capabilities for scaling, especially at the larger scales we offer, you'll want to use a large data set which approaches or exceeds 1 TB.
+>  [!NOTE]
+>
+>  コンピューティング管理機能はすべてのエンドポイントで使用できるわけではありません。
+>
+>  
 
-Recommendations for finding the best DWU for your workload:
+|              | 一時停止/再開 | スケール | データベース状態の確認 |
+| ------------ | ------------ | ----- | -------------------- |
+| Azure ポータル | はい          | はい   | **いいえ**               |
+| PowerShell   | はい          | あり   | はい                  |
+| REST API     | はい          | あり   | はい                  |
+| T-SQL        | **いいえ**       | はい   | はい                  |
 
-1. For a data warehouse in development, begin by selecting a small number of DWUs.  A good starting point is DW400 or DW200.
-2. Monitor your application performance, observing the number of DWUs selected compared to the performance you observe.
-3. Determine how much faster or slower performance should be for you to reach the optimum performance level for your requirements by assuming linear scale.
-4. Increase or decrease the number of DWUs in proportion to how much faster or slower you want your workload to perform. The service will respond quickly and adjust the compute resources to meet the new DWU requirements.
-5. Continue making adjustments until you reach an optimum performance level for your business requirements.
 
-### <a name="when-should-i-scale-dwus"></a>When should I scale DWUs?
-When you need faster results, increase your DWUs and pay for greater performance.  When you need less compute power, decrease your DWUs and pay only for what you need. 
 
-Recommendations for when to scale DWUs:
+<a name="scale-compute-bk"></a>
 
-1. If your application has a fluctuating workload, scale DWU levels up or down to accommodate peaks and low points. For example, if your workload typically peaks at the end of the month, plan to add more DWUs during those peak days, then scale down once the peak period is over.
-2. Before you perform a heavy data loading or transformation operation, scale up DWUs so that your data is available more quickly.
+## <a name="scale-compute"></a>コンピューティングのスケーリング
+
+SQL Data Warehouse のパフォーマンスは、CPU、メモリ、I/O 帯域幅などのコンピューティング リソースの抽象的な尺度である [Data Warehouse ユニット (DWU)][data warehouse units (DWUs)] で測定されます。 システムのパフォーマンスをスケーリングする必要のあるユーザーは、ポータル、T-SQL、REST API などのさまざまな手段を使用してパフォーマンスを向上させることができます。 
+
+### <a name="how-do-i-scale-compute"></a>コンピューティングをスケーリングする方法
+SQL Data Warehouse のコンピューティング能力を管理するには、DWU 設定を変更します。 パフォーマンスは、特定の操作のために DWU を追加するのに応じて[線形][linearly]に向上します。  Microsoft では、システムをスケールアップまたはスケールダウンしたときにパフォーマンスが顕著に変化するような DWU プランを提供しています。 
+
+DWU を調整するのには、これらの各方法をどれでも使用できます。
+
+* [Azure Portal を使用したコンピューティング能力のスケーリング][Scale compute power with Azure portal]
+* [PowerShell を使用したコンピューティング能力のスケーリング][Scale compute power with PowerShell]
+* [REST API を使用したコンピューティング能力のスケーリング][Scale compute power with REST APIs]
+* [TSQL を使用したコンピューティング能力のスケーリング][Scale compute power with TSQL]
+
+### <a name="how-many-dwus-should-i-use"></a>必要な DWU の数
+
+理想的な DWU 値を把握するには、データ読み込みの後で、拡大/縮小を行い、いくつかのクエリを実行してください。 スケーリングは簡単に行えるので、1 時間以内でさまざまなパフォーマンス レベルを試すことができます。 
+
+> [!Note] 
+> SQL Data Warehouse は、大量のデータを処理するように設計されています。 特に大規模な DWU での実際のスケーリング能力を確認する場合は、サイズが 1 TB に近いか 1 TB を超える大きなデータ セットを使用できます。
+
+ワークロードに最適な DWU を特定する際の推奨事項:
+
+1. 開発中のデータ ウェアハウスの場合は、DWU が小さなパフォーマンス レベルを選択することから始めます。  手始めとしては、DW400 または DW200 が適しています。
+2. アプリケーションのパフォーマンスを監視し、選択した DWU の数に対するパフォーマンスの変化を観察します。
+3. 線形スケールを想定して、要件に対して最適なパフォーマンス レベルに到達するために、パフォーマンスをどの程度上下する必要があるかを判別します。
+4. どのくらい速くまたは遅くワークロードを実行するかに応じて、DWU の数を増減します。 
+5. ビジネス要件に応じた最適なパフォーマンス レベルに到達するまで調整を行います。
+
+> [!NOTE]
+>
+> コンピューティング ノード間で作業を分割することができる場合、クエリのパフォーマンスを引き上げるには、並列処理を増やすしかありません。 スケーリングしてもパフォーマンスが変わらない場合は、パフォーマンス チューニングに関する記事を参照して、データの分散が不均等でないか、または大量のデータ移動が行われていないかを確認してください。 
+
+### <a name="when-should-i-scale-dwus"></a>DWU をスケーリングするタイミング
+DWU のスケーリングに伴い、次の重要なシナリオに変化が生じます。
+
+1. スキャン、集計、CTAS ステートメントのためのシステムのパフォーマンスの線形の変化
+2. PolyBase を使用して読み込むときのリーダーとライターの数の拡大
+3. 同時クエリと同時実行スロットの最大数
+
+DWU をスケーリングするタイミングを特定するための推奨事項:
+
+1. 大量データの読み込みまたは変換操作を実行する前に、データが短時間で使用可能になるように DWU をスケールアップします。
+2. 営業時間のピーク時は、より多くの同時実行クエリに対応できるようにスケーリングします。 
 
 <a name="pause-compute-bk"></a>
 
-## <a name="pause-compute"></a>Pause compute
+## <a name="pause-compute"></a>コンピューティングの一時停止
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-To pause a database, use any of these individual methods.
+データベースを一時停止するには、次のいずれかの方法を使用できます。
 
-* [Pause compute with Azure portal][Pause compute with Azure portal]
-* [Pause compute with PowerShell][Pause compute with PowerShell]
-* [Pause compute with REST APIs][Pause compute with REST APIs]
+* [Azure Portal を使用したコンピューティングの一時停止][Pause compute with Azure portal]
+* [PowerShell を使用したコンピューティングの一時停止][Pause compute with PowerShell]
+* [REST API を使用したコンピューティングの一時停止][Pause compute with REST APIs]
 
 <a name="resume-compute-bk"></a>
 
-## <a name="resume-compute"></a>Resume compute
+## <a name="resume-compute"></a>コンピューティングの再開
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-To resume a database, use any of these individual methods.
+データベースを再開するには、次のいずれかの方法を使用できます。
 
-* [Resume compute with Azure portal][Resume compute with Azure portal]
-* [Resume compute with PowerShell][Resume compute with PowerShell]
-* [Resume compute with REST APIs][Resume compute with REST APIs]
+* [Azure Portal を使用したコンピューティングの再開][Resume compute with Azure portal]
+* [PowerShell を使用したコンピューティングの再開][Resume compute with PowerShell]
+* [REST API を使用したコンピューティングの再開][Resume compute with REST APIs]
 
-## <a name="permissions"></a>Permissions
-Scaling the database will require the permissions described in [ALTER DATABASE][ALTER DATABASE].  Pause and Resume will require the [SQL DB Contributor][SQL DB Contributor] permission, specifically Microsoft.Sql/servers/databases/action.
+<a name="check-compute-bk"></a>
+
+## <a name="check-database-state"></a>データベース状態の確認 
+
+データベースを再開するには、次のいずれかの方法を使用できます。
+
+- [T-SQL を使用したデータベース状態の確認][Check database state with T-SQL]
+- [PowerShell を使用したデータベース状態の確認][Check database state with PowerShell]
+- [REST API を使用したデータベース状態の確認][Check database state with REST APIs]
+
+## <a name="permissions"></a>アクセス許可
+
+データベースをスケーリングするには、[ALTER DATABASE][ALTER DATABASE] に関するページで説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB の共同作成者][SQL DB Contributor]のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
 
 <a name="next-steps-bk"></a>
 
-## <a name="next-steps"></a>Next steps
-Please refer to the following articles to help you understand some additional key performance concepts:
+## <a name="next-steps"></a>次のステップ
+その他の主要なパフォーマンスの概念を理解するために、次の記事を参照してください。
 
-* [Workload and concurrency managment][Workload and concurrency managment]
-* [Table design overview][Table design overview]
-* [Table distribution][Table distribution]
-* [Table indexing][Table indexing]
-* [Table partitioning][Table partitioning]
-* [Table statistics][Table statistics]
-* [Best practices][Best practices]
+* [ワークロードと同時実行の管理][ワークロードと同時実行の管理]
+* [テーブル設計の概要][Table design overview]
+* [テーブルの分散][Table distribution]
+* [テーブルのインデックス作成][Table indexing]
+* [テーブルのパーティション分割][Table partitioning]
+* [テーブルの統計][Table statistics]
+* [ベスト プラクティス][Best practices]
 
 <!--Image reference-->
 
 <!--Article references-->
-[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
-
-[Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-bk
+[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
+[billed]: https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/
+[linearly]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
+[Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
 [Scale compute power with TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
@@ -129,13 +200,17 @@ Please refer to the following articles to help you understand some additional ke
 [Resume compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
 [Resume compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
-[Workload and concurrency managment]: ./sql-data-warehouse-develop-concurrency.md
+[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
+[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
+[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
+
+[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
 [Table design overview]: ./sql-data-warehouse-tables-overview.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
 [Table indexing]: ./sql-data-warehouse-tables-index.md
 [Table partitioning]: ./sql-data-warehouse-tables-partition.md
 [Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md 
+[Best practices]: ./sql-data-warehouse-best-practices.md
 [development overview]: ./sql-data-warehouse-overview-develop.md
 
 [SQL DB Contributor]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
@@ -145,9 +220,4 @@ Please refer to the following articles to help you understand some additional ke
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

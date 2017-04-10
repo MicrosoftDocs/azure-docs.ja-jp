@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory プレビューでのエンタープライズ アプリケーションのシングル サインオン管理 | Microsoft Docs
-description: Azure Active Directory を使用してエンタープライズ アプリケーションのシングル サインオンを管理する方法について説明します
+title: "Azure Active Directory プレビューでのエンタープライズ アプリケーションのシングル サインオン管理 | Microsoft Docs"
+description: "Azure Active Directory を使用してエンタープライズ アプリケーションのシングル サインオンを管理する方法について説明します"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/30/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
+
 
 ---
-# <a name="preview:-managing-single-sign-on-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する
+# <a name="preview-managing-single-sign-on-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-enterprise-apps-manage-sso.md)
 > * [Azure クラシック ポータル](active-directory-sso-integrate-saas-apps.md)
@@ -41,7 +45,7 @@ ms.author: asmalser
 ## <a name="single-sign-on-modes"></a>シングル サインオン モード
 **[シングル サインオン]** ブレードの先頭には **[モード]** メニューがあり、シングル サインオン モードを構成できます。 利用可能なオプションは、次のとおりです。
 
-* **[SAML-based sign on (SAML ベースのサインオン)]** - アプリケーションで Azure Active Directory と SAML 2.0 プロトコルを使用した完全なフェデレーション シングル サインオンがサポートされている場合、このオプションを使用できます。 この
+* **[SAML-based sign on (SAML ベースのサインオン)]** - アプリケーションで Azure Active Directory と SAML 2.0 プロトコルを使用した完全なフェデレーション シングル サインオンがサポートされている場合、このオプションを使用できます。
 * **[Password-based sign on (パスワードベースのサインオン)]** - Azure AD でこのアプリケーションのパスワード フォームの入力がサポートされている場合、このオプションを使用できます。
 * **[リンクされたサインオン]** - 以前は "既存のシングル サインオン" という名前でした。このオプションを使用すると、ユーザーの Azure AD アクセス パネルまたは Office 365 アプリケーション起動プログラムにこのアプリケーションへのリンクを配置できます。
 
@@ -100,6 +104,6 @@ ms.author: asmalser
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

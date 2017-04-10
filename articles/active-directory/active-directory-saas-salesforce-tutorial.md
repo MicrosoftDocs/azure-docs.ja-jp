@@ -1,22 +1,26 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Docs'
-description: Azure Active Directory で Salesforce を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。
+title: "チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Docs"
+description: "Azure Active Directory で Salesforce を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2016
-ms.author: asmalser-msft
+ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 27857431abd965fd4f65c61874f9ecfc1730a7e6
+
 
 ---
-# <a name="tutorial:-how-to-integrate-salesforce-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と Salesforce を統合する方法
+# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
 このチュートリアルでは、Azure Active Directory に Salesforce 環境を接続する方法を説明します。 Salesforce へのシングル サインオンを構成する方法、自動化されたユーザー プロビジョニングを有効にする方法、Salesforce へのアクセス権をユーザーに割り当てる方法などについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,19 +39,19 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
 ## <a name="video-tutorials"></a>ビデオ チュートリアル
 以下のビデオを使用して、このチュートリアルの手順に従います。
 
-**ビデオ チュートリアル第 1 部: シングル サインオンを有効にする方法**
+**ビデオ チュートリアル第&1; 部: シングル サインオンを有効にする方法**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-enable-Single-Sign-On-12/player]
 > 
 > 
 
-**ビデオ チュートリアル第 2 部: ユーザー プロビジョニングを自動化する方法**
+**ビデオ チュートリアル第&2; 部: ユーザー プロビジョニングを自動化する方法**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-automate-User-Provisioning-22/player]
 > 
 > 
 
-## <a name="step-1:-add-salesforce-to-your-directory"></a>手順 1. Salesforce をディレクトリに追加する
+## <a name="step-1-add-salesforce-to-your-directory"></a>手順 1. Salesforce をディレクトリに追加する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Select Active Directory from the left navigation pane.][0]
@@ -68,7 +72,7 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
    
     ![Azure AD の Salesforce の [クイック スタート] ページ][5]
 
-## <a name="step-2:-enable-single-sign-on"></a>手順 2. シングル サインオンを有効にする
+## <a name="step-2-enable-single-sign-on"></a>手順 2. シングル サインオンを有効にする
 1. シングル サインオンを構成する前に、Salesforce 環境用のカスタム ドメインを設定し、デプロイする必要があります。 その方法の詳細については、「 [ドメイン名の設定](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_setup.htm&language=en_US)」を参照してください。
 2. Azure AD の Salesforce の [クイック スタート] ページで、 **[シングル サインオンの構成]** ボタンをクリックします。
    
@@ -146,7 +150,7 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
     ![Type in your email address.][19]
 17. **[完了]** をクリックしてダイアログを閉じます。 構成をテストするには、「 [Salesforce にユーザーを割り当てる](#step-4-assign-users-to-salesforce)」というタイトルの以下のセクションを参照してください。
 
-## <a name="step-3:-enable-automated-user-provisioning"></a>手順 3. 自動化されたユーザー プロビジョニングを有効にする
+## <a name="step-3-enable-automated-user-provisioning"></a>手順 3. 自動化されたユーザー プロビジョニングを有効にする
 1. Azure AD の Salesforce の [クイック スタート] ページで、 **[ユーザー プロビジョニングの構成]** ボタンをクリックします。
    
     ![[ユーザー プロビジョニングの構成] ボタンをクリック][20]
@@ -175,7 +179,7 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
    
     ![お知らせを受け取るメール アドレスを入力][26]
 
-## <a name="step-4:-assign-users-to-salesforce"></a>手順 4. Salesforce にユーザーを割り当てる
+## <a name="step-4-assign-users-to-salesforce"></a>手順 4. Salesforce にユーザーを割り当てる
 1. 構成をテストするために、まずディレクトリに新しいテスト アカウントを作成します。
 2. Salesforce の [クイック スタート] ページで **[ユーザーの割り当て]** ボタンをクリックします。
    
@@ -184,10 +188,10 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
    
    * 自動化されたユーザー プロビジョニングを有効にしていない場合は、次のような確認メッセージが表示されます。
      
-        ![Confirm the assignment.][28]
+        ![割り当てを確認します。][28]
    * 自動化されたユーザー プロビジョニングを有効にしている場合は、ユーザーに必要な Salesforce プロファイルの種類の定義を求めるメッセージが表示されます。 新しくプロビジョニングされたユーザーは、数分後に Salesforce 環境に表示されます。
      
-        ![Confirm the assignment.][29]
+        ![割り当てを確認します。][29]
      
      > [!IMPORTANT]
      > Salesforce の**開発者**環境向けにプロビジョニングしている場合は、プロファイルごとに利用できるライセンスの数が限られます。 そのため、4,999 個のライセンスを利用できる **Chatter Free User** プロファイル向けにユーザーをプロビジョニングすることをお勧めします。
@@ -232,6 +236,6 @@ Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox �
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

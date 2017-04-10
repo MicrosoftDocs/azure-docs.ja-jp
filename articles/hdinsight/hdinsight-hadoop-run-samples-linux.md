@@ -1,34 +1,42 @@
 ---
-title: Linux ベースの HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs
-description: Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。
+title: "HDInsight での Hadoop MapReduce サンプルの実行 | Microsoft Docs"
+description: "HDInsight で MapReduce サンプルの使用を開始します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d94e633273ef298079673c100c6edbf95dc3c96d
+ms.lasthandoff: 03/25/2017
+
 
 ---
 # <a name="run-the-hadoop-samples-in-hdinsight"></a>HDInsight での Hadoop のサンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブの実行について理解するのに使用できる MapReduce のサンプル セットが用意されています。 このドキュメントでは、使用可能なサンプルと一部のサンプルの実行手順について説明します。
+HDInsight クラスターには、Hadoop MapReduce ジョブの実行について理解するのに使用できる MapReduce のサンプル セットが用意されています。 このドキュメントでは、使用可能なサンプルと一部のサンプルの実行手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+
+
 * **Linux ベースの HDInsight クラスター**: [Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)
-* **SSH クライアント**: HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
-  
-  * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
+* **An SSH クライアント**: 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="the-samples"></a>サンプル
 **場所**: サンプルは HDInsight クラスター上の **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar** にあります。
@@ -66,10 +74,8 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 > 
 
 ## <a name="how-to-run-the-samples"></a>サンプルの実行方法
-1. 次の記事の説明に従って、SSH を使用して HDInsight に接続します。
-   
-   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+1. SSH を使用して HDInsight に接続する。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 2. `username@#######:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
    
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -153,7 +159,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi-(π)"></a>Pi (π)
+## <a name="pi-"></a>Pi (π)
 pi サンプルでは統計的手法 (準モンテカルロ法) に基づいて Pi の値を計算します。 単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。 Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。 サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
 このサンプルの mapper は、単位正方形の内部にランダムに多数の点を生成し、円の内部にある点の数を計算します。
@@ -217,9 +223,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

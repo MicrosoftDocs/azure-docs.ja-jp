@@ -1,13 +1,13 @@
 ---
-title: Azure App Service Web Apps による Python の構成
-description: このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure App Service Web Apps に作成して構成する方法について説明します。
+title: "Azure App Service Web Apps による Python の構成"
+description: "このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure App Service Web Apps に作成して構成する方法について説明します。"
 services: app-service
 documentationcenter: python
 tags: python
 author: huguesv
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,32 +15,37 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
+translationtype: Human Translation
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c4fe19e608061c4b69f3856313ece87e9870bbf9
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# Azure App Service Web Apps による Python の構成
-このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に作成して構成する方法について説明します。
+# <a name="configuring-python-with-azure-app-service-web-apps"></a>Azure App Service Web Apps による Python の構成
+このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
 
 仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイメントの追加の機能を説明します。
 
-## Bottle、Django、Flask
-Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイメントを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
+## <a name="bottle-django-or-flask"></a>Bottle、Django、Flask
+Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。 Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイメントを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
 
 * [Bottle を使用した Web アプリの作成](web-sites-python-create-deploy-bottle-app.md)
 * [Django を使用した Web アプリの作成](web-sites-python-create-deploy-django-app.md)
 * [Flask を使用した Web アプリの作成](web-sites-python-create-deploy-flask-app.md)
 
-## Azure ポータルでの Web アプリの作成
+## <a name="web-app-creation-on-azure-portal"></a>Azure ポータルでの Web アプリの作成
 このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure ポータルにアクセスできることを前提としています。
 
-既存の Web アプリがない場合、[Azure ポータル](https://portal.azure.com)から自分で作成できます。左上隅の [新規] ボタンをクリックし、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
+既存の Web アプリがない場合、 [Azure ポータル](https://portal.azure.com)から自分で作成できます。  左上隅の [新規] ボタンをクリックし、**[Web + モバイル]** > **[Web アプリ]** をクリックします。
 
-## Git 発行
-「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
+## <a name="git-publishing"></a>Git 発行
+「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。 このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
 
-Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
+Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。 このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。 Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
 
-## アプリケーションの概要
-次のセクションでは、次のファイルが作成されます。これらは、Git リポジトリのルートに配置する必要があります。
+## <a name="application-overview"></a>アプリケーションの概要
+次のセクションでは、次のファイルが作成されます。 これらは、Git リポジトリのルートに配置する必要があります。
 
     app.py
     requirements.txt
@@ -49,8 +54,8 @@ Git 発行の設定が完了すると、Git リポジトリが作成されて We
     ptvs_virtualenv_proxy.py
 
 
-## WSGI ハンドラー
-WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定された Python の標準です。Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure App Service Web Apps に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
+## <a name="wsgi-handler"></a>WSGI ハンドラー
+WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定された Python の標準です。Web サーバーと Python 間のインターフェイスを定義します。 各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。 今日普及している Python Web フレームワークには WSGI が使用されています。 Web フレームワークに必要な機能は Azure App Service Web Apps に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
 
 次は、カスタム ハンドラーを定義する `app.py` の例です。
 
@@ -69,24 +74,24 @@ WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定され�
 
 `python app.py` を使用してこのアプリケーションをローカルで実行し、その後 Web ブラウザーで `http://localhost:5555` を参照できます。
 
-## 仮想環境
+## <a name="virtual-environment"></a>仮想環境
 上記の例のアプリは外部パッケージを必要としませんが、アプリケーションによっては外部パッケージが必要になる場合があります。
 
 外部のパッケージとの依存関係を管理するために、Azure の Git デプロイメントでは、仮想環境の作成がサポートされています。
 
-Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、`env` という名前の仮想環境が自動的に作成されます。これは、最初のデプロイメント、または選択した Python ランタイムを変更した後のデプロイメント時に発生します。
+Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、 `env`という名前の仮想環境が自動的に作成されます。 これは、最初のデプロイメント、または選択した Python ランタイムを変更した後のデプロイメント時に発生します。
 
 仮想開発環境をローカルで作成する場合、Git リポジトリには含めないでください。
 
-## パッケージの管理
-requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。これはデプロイメントごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
+## <a name="package-management"></a>パッケージの管理
+requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。 これはデプロイメントごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
 
 例 `requirements.txt`
 
     azure==0.8.4
 
 
-## Python バージョン
+## <a name="python-version"></a>Python バージョン
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 例 `runtime.txt`
@@ -94,14 +99,14 @@ requirements.txt 内のリストにあるパッケージが、pip を使用し�
     python-2.7
 
 
-## web.config
+## <a name="webconfig"></a>web.config
 サーバーによる要求の処理方法を指定するには、web.config ファイルを作成する必要があります。
 
 リポジトリに web.x.y.config ファイルがある場合は (ここでは x.y は選択した Python ランタイム)、Azure が適切なファイルを web.config として自動的にコピーします。
 
-次の例の web.config は、次のセクションで説明する仮想環境プロキシ スクリプトに依存します。これらの例は、上記の `app.py` の例で使用した WSGI ハンドラーによって動作します。
+次の例の web.config は、次のセクションで説明する仮想環境プロキシ スクリプトに依存します。  これらの例は、上記の `app.py` の例で使用した WSGI ハンドラーによって動作します。
 
-Python 2.7 用の`web.config` の例:
+Python 2.7 用の `web.config` の例:
 
     <?xml version="1.0"?>
     <configuration>
@@ -151,7 +156,7 @@ Python 2.7 用の`web.config` の例:
     </configuration>
 
 
-Python 3.4 用の`web.config` の例:
+Python 3.4 用の `web.config` の例:
 
     <?xml version="1.0"?>
     <configuration>
@@ -201,16 +206,16 @@ Python 3.4 用の`web.config` の例:
 
 パフォーマンスを向上させるために、静的ファイルは、Python コードを介さずに、Web サーバーによって直接処理されます。
 
-上記の例では、静的ファイルのディスク上の場所は URL の場所と一致する必要があります。つまり、`http://pythonapp.azurewebsites.net/static/site.css` への要求は、ディスクの `\static\site.css` にあるファイルを使用します。
+上記の例では、静的ファイルのディスク上の場所は URL の場所と一致する必要があります。 つまり、`http://pythonapp.azurewebsites.net/static/site.css` への要求は、ディスクの `\static\site.css` にあるファイルを使用します。
 
-`WSGI_ALT_VIRTUALENV_HANDLER` は WSGI ハンドラーを指定する場所です。上記の例では、ハンドラーはルート フォルダーの `app.py` の `wsgi_app` という名前の関数であるため、`app.wsgi_app` になります。
+`WSGI_ALT_VIRTUALENV_HANDLER` は WSGI ハンドラーを指定する場所です。 上記の例では、ハンドラーはルート フォルダーの `app.py` の `wsgi_app` という名前の関数であるため、`app.wsgi_app` になります。
 
 `PYTHONPATH` はカスタマイズ可能ですが、requirements.txt で指定することで、仮想環境にすべての依存関係をインストールする場合は、変更する必要はありません。
 
-## 仮想環境のプロキシ
-次のスクリプトは、WSGI ハンドラーの取得、仮想環境のアクティブ化、エラーの記録に使用されます。修正することなく、汎用的に使用できます。
+## <a name="virtual-environment-proxy"></a>仮想環境のプロキシ
+次のスクリプトは、WSGI ハンドラーの取得、仮想環境のアクティブ化、エラーの記録に使用されます。 修正することなく、汎用的に使用できます。
 
-`ptvs_virtualenv_proxy.py` の内容:
+`ptvs_virtualenv_proxy.py`の内容:
 
      # ############################################################################
      #
@@ -266,7 +271,7 @@ Python 3.4 用の`web.config` の例:
             except: 
                 log('ptvsd.enable_attach failed\n')
         except ImportError:
-            log('error importing ptvsd.\n');
+            log('error importing ptvsd.\n')
 
     def get_wsgi_handler(handler_name):
         if not handler_name:
@@ -336,24 +341,24 @@ Python 3.4 用の`web.config` の例:
         return handler
 
 
-## Git デプロイメントのカスタマイズ
+## <a name="customize-git-deployment"></a>Git デプロイメントのカスタマイズ
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-deployment.md)]
 
-## トラブルシューティング - パッケージのインストール
+## <a name="troubleshooting---package-installation"></a>トラブルシューティング - パッケージのインストール
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
-## トラブルシューティング - 仮想環境
+## <a name="troubleshooting---virtual-environment"></a>トラブルシューティング - 仮想環境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## 次のステップ
-詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="whats-changed"></a>変更内容
+* Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 
-<!---HONumber=AcomDC_0803_2016-->
+

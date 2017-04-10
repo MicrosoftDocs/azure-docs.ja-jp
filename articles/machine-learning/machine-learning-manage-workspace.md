@@ -1,26 +1,58 @@
 ---
-title: Machine Learning ワークスペースの管理 | Microsoft Docs
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
+title: "Machine Learning ワークスペースの管理 | Microsoft Docs"
+description: "Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/27/2017
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: 94800f51baf83311c33490cada5f991ff2101da9
+ms.lasthandoff: 03/02/2017
+
 
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの管理
+
 > [!NOTE]
-> この記事の手順は、Azure Machine Learning のクラシック Web サービスに関連しています。 Machine Learning Web サービス ポータルでの Web サービスの管理については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。
+> Machine Learning Web サービス ポータルでの Web サービスの管理については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。
 > 
 > 
+
+Machine Learning ワークスペースは、Azure Portal または Azure クラシック ポータルのどちらかで管理できます。
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="use-the-azure-portal"></a>Azure Portal の使用
+
+Azure Portal のワークスペースは次のとおりに管理します。
+
+1. Azure サブスクリプション管理者アカウントを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
+2. ページ上部の検索ボックスに、"machine learning workspaces" と入力して、**[Machine Learning ワークスペース]** を選択します。
+3. 管理するワークスペースをクリックします。
+
+標準のリソース管理情報と利用可能なオプションに加え、以下のことも可能です。
+
+- **[プロパティ]** の表示 - このページではワークスペースとリソースの情報が表示され、このワークスペースに接続されているサブスクリプションとリソース グループが変更できます。
+- **[ストレージの再同期]** - ワークスペースによってキーがストレージ アカウントに維持されます。 ストレージ アカウントによってキーが変更された場合は、**[キーの再同期]** をクリックして、ワークスペースでキーを同期できます。
+
+このワークスペースに関連付けられた Web サービスを管理するには、Machine Learning Web サービス ポータルを使用します。 詳細な情報については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。
+
+> [!NOTE]
+> New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーを共同作成者または管理者ロールに割り当てる必要があります。 
+> 
+>アクセス許可の設定の詳細については、「[Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー](../active-directory/role-based-access-control-manage-assignments.md)」をご覧ください。
+
+## <a name="use-the-azure-classic-portal"></a>Azure クラシック ポータルを使用する
 
 Azure クラシック ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
 
@@ -29,8 +61,6 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 * ワークスペースで作成した Web サービスを管理する
 * ワークスペースを削除する
 
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 また、[ダッシュボード] タブには、ワークスペースの使用状況の概要とワークスペース情報の要約が表示されます。  
 
 > [!TIP]
@@ -38,19 +68,19 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 > 
 > 
 
-ワークスペースを管理するには
+Azure クラシック ポータルのワークスペースは次のとおりに管理します。
 
 1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. Microsoft Azure サービス パネルで、 **[MACHINE LEARNING]**をクリックします。
 3. 管理するワークスペースをクリックします。
 
-ワークスペースのページには次の 3 つのタブがあります。
+ワークスペースのページには次の&3; つのタブがあります。
 
 * **[ダッシュボード]** - ワークスペースの使用状況と情報を表示します
 * **[構成]** - ワークスペースへのアクセスを管理します
 * **[Web サービス]** - このワークスペースから公開されている Web サービスを管理できます
 
-## <a name="to-monitor-how-the-workspace-is-being-used"></a>ワークスペースの使用方法を監視するには
+### <a name="to-monitor-how-the-workspace-is-being-used"></a>ワークスペースの使用方法を監視するには
 **[ダッシュボード]** タブをクリックします。
 
 ダッシュボードには、ワークスペースの全体的な使用状況と、ワークスペース情報の概要が表示されます。
@@ -64,7 +94,7 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 > 
 > 
 
-## <a name="to-grant-or-suspend-access-for-users"></a>ユーザーのアクセスを許可または一時停止するには
+### <a name="to-grant-or-suspend-access-for-users"></a>ユーザーのアクセスを許可または一時停止するには
 **[構成]** タブをクリックします。
 
 [構成] タブで次の操作を実行できます。
@@ -73,7 +103,7 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 
 Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、**[ダッシュボード]** タブで **[ML Studio にサインイン]** をクリックします (**[ML Studio にサインイン]** については、上記の注を参照してください)。 Machine Learning Studio でワークスペースが開きます。 ここで、**[設定]** タブの **[ユーザー]** をクリックします。 **[その他のユーザーの招待]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
 
-## <a name="to-manage-web-services-in-this-workspace"></a>このワークスペースの Web サービスを管理するには
+### <a name="to-manage-web-services-in-this-workspace"></a>このワークスペースの Web サービスを管理するには
 **[Web サービス]** タブをクリックします。
 
 このワークスペースから発行された Web サービスの一覧が表示されます。
@@ -106,12 +136,5 @@ Web サービス エンドポイントの名前をクリックして開きます
 * **説明** Web サービスの説明を入力することができます。 [説明] は必須フィールドです。
 * **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](machine-learning-web-services-logging.md)」をご覧ください。
 * **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
-
-[使用]: machine-learning-consume-web-services.md
-[Marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

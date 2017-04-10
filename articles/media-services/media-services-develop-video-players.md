@@ -1,25 +1,33 @@
 ---
-title: ビデオ プレーヤー アプリケーションの開発
-description: このトピックでは、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できるプレーヤー フレームワークとプラグインへのリンクを提供します。
+title: "ビデオ プレーヤー アプリケーションの開発"
+description: "このトピックでは、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できるプレーヤー フレームワークとプラグインへのリンクを提供します。"
 author: Juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 55e419fc-4c39-4902-9c62-f41cfcd86c6c
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/05/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b13861ce404b8c4215248a2498c5969fc19ad536
+ms.lasthandoff: 01/11/2017
+
 
 ---
 # <a name="develop-video-player-applications"></a>ビデオ プレーヤー アプリケーションの開発
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 このトピックでは、Azure Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる SDK とプレーヤー フレームワークへのリンクもご紹介します。
 
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+ 
 ## <a name="azure-media-player"></a>Azure Media Player
 [Azure Media Player](http://aka.ms/ampinfo) は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 デバイスやブラウザーでこれらの標準を使用できない場合、Azure Media Player は Flash や Silverlight をフォールバック テクノロジとして使用します。 使用する再生テクノロジにかかわらず、開発者は統一された JavaScript インターフェイスを使用して API にアクセスできます。 これにより、Azure Media Services で提供されるコンテンツを、さまざまなデバイスやブラウザーで追加作業なしで再生できるようになります。
 
@@ -67,7 +75,5 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み](media-services-embed-mpeg-dash-in-html5.md)
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
-
-<!--HONumber=Oct16_HO2-->
 
 

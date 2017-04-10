@@ -1,24 +1,24 @@
 ---
-title: "Docker Swarm を使用した Azure Container Service のコンテナー管理| Microsoft Docs"
-description: "Azure コンテナー サービスで Docker Swarm にコンテナーをデプロイする"
+title: "Docker API での Azure Swarm クラスターの管理 | Microsoft Docs"
+description: "Azure Container Service の Docker Swarm クラスターにコンテナーをデプロイします"
 services: container-service
 documentationcenter: 
-author: neilpeterson
-manager: timlt
+author: rgardler
+manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
 ms.assetid: af8f6fb2-13dc-429c-b82a-24a741168d42
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: timlt
+ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 99953be1a9d99cc1fdd5cd46522ccd262c09e25b
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: bd20dc4eb3948d08e3c2dd2ad2bb42d18df67796
 
 
 ---
@@ -56,7 +56,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 既定では、Load Balancer 用にポート 80、8080、443 が開放されています。 別のポートに接続する場合は、エージェント プール用に Azure Load Balancer でそのポートを開く必要があります。
 
 ## <a name="deploy-multiple-containers"></a>複数のコンテナーをデプロイする
-"docker run" を複数回実行して複数のコンテナーを起動した場合、 `docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。 次の例では、3 つのコンテナーが 3 つの Swarm エージェントに均等に配分されます。  
+"docker run" を複数回実行して複数のコンテナーを起動した場合、 `docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。 次の例では、3 つのコンテナーが&3; つの Swarm エージェントに均等に配分されます。  
 
 ```bash
 user@ubuntu:~$ docker ps
@@ -119,6 +119,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

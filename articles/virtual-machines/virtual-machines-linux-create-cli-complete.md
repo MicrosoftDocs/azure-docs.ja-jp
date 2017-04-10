@@ -1,482 +1,346 @@
-
 ---
-title: Azure CLI を使用した完全な Linux 環境の作成 | Microsoft Docs
-description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
+title: "Azure CLI 2.0 を使用した Linux 環境の作成 | Microsoft Docs"
+description: "Azure CLI 2.0 を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/23/2016
+ms.date: 03/07/2017
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: d4cff286de1abd492ce7276c300b50d71f06345b
+ms.openlocfilehash: f07a326aa2fcd659f69265001293c9ed332bb842
+ms.lasthandoff: 02/27/2017
+
 
 ---
-# Azure CLI を使用して、完全な Linux 環境を作成する
-この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。この記事を理解すると、より複雑なネットワークや環境に進むことができます。
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して完全な Linux 環境を作成する
+この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。 この記事では、Azure CLI 2.0 を使用して前述の環境を構築する方法について説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
-その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、より短時間でシステムを再構築することができます。環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
+その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。 システムがどのように構築されているかをいったん理解すると、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、より短時間でシステムを再構築することができます。 環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
 環境には以下を含みます。
 
-* 可用性セット内の 2 つの VM
+* 可用性セット内の&2; つの VM
 * ポート 80 の負荷分散規則が構成されたロード バランサー
 * 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
 ![基本的な環境の概要](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI](../xplat-cli-install.md) が必要です。JSON 解析ツールも必要です。この例では、[jq](https://stedolan.github.io/jq/) を使用します。
+## <a name="quick-commands"></a>クイック コマンド
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。
 
-## クイック コマンド
-次のクイック コマンドは、カスタム環境の構築に使用できます。環境構築を行うと各コマンドがどのように機能するかの詳細については、[詳細なチュートリアル](#detailed-walkthrough)を参照してください。
+次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
 
-リソース グループを作成します。
+このカスタム環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
-```bash
-azure group create TestRG -l westeurope
+最初に、[az group create](/cli/azure/group#create) でリソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` の場所に作成します。
+
+```azurecli
+az group create --name myResourceGroup --location westeurope
 ```
 
-JSON パーサーを使用して、リソース グループを確認します。
+この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
 
-```bash
-azure group show TestRG --json | jq '.'
+```azurecli
+az storage account create --resource-group myResourceGroup --location westeurope \
+  --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-ストレージ アカウントを作成します。
+[az network vnet create](/cli/azure/network/vnet#create) で仮想ネットワークを作成します。 次の例では、`myVnet` という名前の仮想ネットワークと `mySubnet` という名前のサブネットを作成します。
 
-```bash
-azure storage account create -g TestRG -l westeurope --kind Storage --sku-name GRS computeteststore
+```azurecli
+az network vnet create --resource-group myResourceGroup --location westeurope --name myVnet \
+  --address-prefix 192.168.0.0/16 --subnet-name mySubnet --subnet-prefix 192.168.1.0/24
 ```
 
-JSON パーサーを使用して、ストレージ アカウントを確認します。
+[az network public-ip create](/cli/azure/network/public-ip#create) でパブリック IP を作成します。 次の例では、DNS 名が `mypublicdns` で `myPublicIP` という名前のパブリック IP を作成します。 (DNS 名は一意である必要があるため、独自の一意の名前を入力してください。)
 
-```bash
-azure storage account show -g TestRG computeteststore --json | jq '.'
+```azurecli
+az network public-ip create --resource-group myResourceGroup --location westeurope \
+  --name myPublicIP --dns-name mypublicdns --allocation-method static --idle-timeout 4
 ```
 
-仮想ネットワークを作成します。
+[az network lb create](/cli/azure/network/lb#create) でロード バランサーを作成します。 次の例をご覧ください。
 
-```bash
-azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
+- `myLoadBalancer` という名前のロード バランサーを作成する
+- パブリック IP `myPublicIP` を関連付ける
+- `mySubnetPool` という名前のフロントエンド IP プールを作成する
+- `myBackEndPool` という名前のバックエンド IP プールを作成する
+
+```azurecli
+az network lb create --resource-group myResourceGroup --location westeurope \
+  --name myLoadBalancer --public-ip-address myPublicIP \
+  --frontend-ip-name myFrontEndPool --backend-pool-name myBackEndPool
 ```
 
-サブネットを作成します。
+[az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#create) で、ロード バランサーの SSH 受信ネットワーク アドレス変換 (NAT) 規則を作成します。 次の例では、2 つのロード バランサー規則 `myLoadBalancerRuleSSH1` と `myLoadBalancerRuleSSH2` を作成します。
 
-```bash
-azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
+```azurecli
+az network lb inbound-nat-rule create --resource-group myResourceGroup \
+  --lb-name myLoadBalancer --name myLoadBalancerRuleSSH1 --protocol tcp \
+  --frontend-port 4222 --backend-port 22 --frontend-ip-name myFrontEndPool
+az network lb inbound-nat-rule create --resource-group myResourceGroup \
+  --lb-name myLoadBalancer --name myLoadBalancerRuleSSH2 --protocol tcp \
+  --frontend-port 4223 --backend-port 22 --frontend-ip-name myFrontEndPool
 ```
 
-JSON パーサーを使用して、仮想ネットワークとサブネットを確認します。
+[az network lb probe create](/cli/azure/network/lb/probe#create) で、ロード バランサーの正常性プローブを作成します。 次の例では、`myHealthProbe` という名前の TCP プローブを作成します。
 
-```bash
-azure network vnet show TestRG TestVNet --json | jq '.'
+```azurecli
+az network lb probe create --resource-group myResourceGroup --lb-name myLoadBalancer \
+  --name myHealthProbe --protocol tcp --port 80 --interval 15 --threshold 4
 ```
 
-パブリック IP を作成します。
+[az network lb rule create](/cli/azure/network/lb/rule#create) で、ロード バランサーの Web 受信 NAT 規則を作成します。 次の例では、`myLoadBalancerRuleWeb` という名前のロード バランサー規則を作成し、それを `myHealthProbe` プローブに関連付けます。
 
-```bash
-azure network public-ip create -g TestRG -n TestLBPIP -l westeurope -d testlb -a static -i 4
+```azurecli
+az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalancer \
+  --name myLoadBalancerRuleWeb --protocol tcp --frontend-port 80 --backend-port 80 \
+  --frontend-ip-name myFrontEndPool --backend-pool-name myBackEndPool \
+  --probe-name myHealthProbe
 ```
 
-ロード バランサーを作成します。
+[az network lb show](/cli/azure/network/lb#show) で、ロード バランサー、IP プール、NAT 規則を確認します。
 
-```bash
-azure network lb create -g TestRG -n TestLB -l westeurope
+```azurecli
+az network lb show --resource-group myResourceGroup --name myLoadBalancer
 ```
 
-ロード バランサーのフロントエンド IP プールを作成して、パブリック IP を関連付けます。
+[az network nsg create](/cli/azure/network/nsg#create) で、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。
 
-```bash
-azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
+```azurecli
+az network nsg create --resource-group myResourceGroup --location westeurope \
+  --name myNetworkSecurityGroup
 ```
 
-ロード バランサーのバックエンド IP プールを作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#create) で、ネットワーク セキュリティ グループの&2; つの受信規則を追加します。 次の例では、2 つの規則 `myNetworkSecurityGroupRuleSSH` と `myNetworkSecurityGroupRuleHTTP` を作成します。
 
-```bash
-azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
+```azurecli
+az network nsg rule create --resource-group myResourceGroup \
+  --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRuleSSH \
+  --protocol tcp --direction inbound --priority 1000 --source-address-prefix '*' \
+  --source-port-range '*' --destination-address-prefix '*' --destination-port-range 22 \
+  --access allow
+az network nsg rule create --resource-group myResourceGroup \
+  --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRuleHTTP \
+  --protocol tcp --direction inbound --priority 1001 --source-address-prefix '*' \
+  --source-port-range '*' --destination-address-prefix '*' --destination-port-range 80 \
+  --access allow
 ```
 
-ロード バランサーの SSH 受信 NAT 規則を作成します。
+[az network nic create](/cli/azure/network/nic#create) で、最初のネットワーク インターフェイス カード (NIC) を作成します。 次の例では、`myNic1` という名前の NIC を作成し、それをロード バランサー `myLoadBalancer` と適切なプールに接続し、`myNetworkSecurityGroup` にも接続します。
 
-```bash
-azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
-azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
+```azurecli
+az network nic create --resource-group myResourceGroup --location westeurope --name myNic1 \
+  --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup \
+  --lb-name myLoadBalancer --lb-address-pools myBackEndPool \
+  --lb-inbound-nat-rules myLoadBalancerRuleSSH1
 ```
 
-ロード バランサーの Web 受信 NAT 規則を作成します。
+**az network nic create** で、2 つ目の NIC を作成します。 次の例では、`myNic2` という名前の NIC を作成します。
 
-```bash
-azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
-     -t TestFrontEndPool -o TestBackEndPool
+```azurecli
+az network nic create --resource-group myResourceGroup --location westeurope --name myNic2 \
+  --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup \
+  --lb-name myLoadBalancer --lb-address-pools myBackEndPool \
+  --lb-inbound-nat-rules myLoadBalancerRuleSSH2
 ```
 
-ロード バランサーの正常性プローブを作成します。
+[az vm availability-set create](/cli/azure/vm/availability-set#create) で、可用性セットを作成します。 次の例では、`myAvailabilitySet` という名前の可用性セットを作成します。
 
-```bash
-azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "tcp" -i 15 -c 4
+```azurecli
+az vm availability-set create --resource-group myResourceGroup --location westeurope \
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-JSON パーサーを使用したロード バランサー、IP プール、および NAT 規則を確認します。
+[az vm create](/cli/azure/vm#create) で、最初の Linux VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
 
-```bash
-azure network lb show -g TestRG -n TestLB --json | jq '.'
-```
-
-最初のネットワーク インターフェイス カード (NIC) を作成します。
-
-```bash
-azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
-    -d "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool" \
-    -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH"
-```
-
-2 つ目の NIC を作成します。
-
-```bash
-azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
-    -d "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool" \
-    -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH"
-```
-
-JSON パーサーを使用した NIC を確認します。
-
-```bash
-azure network nic show TestRG LB-NIC1 --json | jq '.'
-azure network nic show TestRG LB-NIC2 --json | jq '.'
-```
-
-NSG を作成します。
-
-```bash
-azure network nsg create -g TestRG -n TestNSG -l westeurope
-```
-
-NSG の受信規則を追加します。
-
-```bash
-azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
-    --destination-port-range 22 --access allow -g TestRG -a TestNSG -n SSHRule
-azure network nsg rule create --protocol tcp --direction inbound --priority 1001 \
-    --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
-```
-
-JSON パーサーを使用した NSG および受信規則を確認します。
-
-```bash
-azure network nsg show -g TestRG -n TestNSG --json | jq '.'
-```
-
-NSG を NIC にバインドします。
-
-```bash
-azure network nic set -g TestRG -n LB-NIC1 -o TestNSG
-azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
-```
-
-可用性セットを作成します。
-
-```bash
-azure availset create -g TestRG -n TestAvailSet -l westeurope
-```
-
-最初の Linux VM を作成します。
-
-```bash
-azure vm create \
-    --resource-group TestRG \
-    --name TestVM1 \
+```azurecli
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM1 \
     --location westeurope \
-    --os-type linux \
-    --availset-name TestAvailSet \
-    --nic-name LB-NIC1 \
-    --vnet-name TestVnet \
-    --vnet-subnet-name FrontEnd \
-    --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --availability-set myAvailabilitySet \
+    --nics myNic1 \
+    --image UbuntuLTS \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --admin-username azureuser
 ```
 
-2 つ目の Linux VM を作成します。
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
 
-```bash
-azure vm create \
-    --resource-group TestRG \
-    --name TestVM2 \
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+```
+
+**az vm create** で、2 つ目の Linux VM を作成します。 次の例では、`myVM2` という名前の VM を作成します。
+
+```azurecli
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM2 \
     --location westeurope \
-    --os-type linux \
-    --availset-name TestAvailSet \
-    --nic-name LB-NIC2 \
-    --vnet-name TestVnet \
-    --vnet-subnet-name FrontEnd \
-    --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --availability-set myAvailabilitySet \
+    --nics myNic2 \
+    --image UbuntuLTS \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --admin-username azureuser
 ```
 
-すべてが構築されたことを確認するのに JSON パーサーを使用します。
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
 
-```bash
-azure vm show -g TestRG -n TestVM1 --json | jq '.'
-azure vm show -g TestRG -n TestVM2 --json | jq '.'
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
+
+[az vm show](/cli/azure/vm#show) で、すべて正しく構築されたことを確認します。
+
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM1
+az vm show --resource-group myResourceGroup --name myVM2
 ```
 
-新しいインスタンスを簡単に再作成するためのテンプレートに構築した環境をエクスポートします。
+新しいインスタンスを簡単に再作成するため、[az group export](/cli/azure/group#export) でテンプレートに新しい環境をエクスポートします。
 
-```bash
-azure resource export TestRG
+```azurecli
+az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-## 詳細なチュートリアル
-次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
+## <a name="detailed-walkthrough"></a>詳細なチュートリアル
+次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。 これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
-## リソース グループの作成とデプロイ先の選択
-Azure リソース グループは、リソース デプロイの論理的な管理を可能にする構成情報とメタデータを含む論理的なデプロイ エンティティです。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/#login) で Azure アカウントにログインしていることを確認します。
 
-```bash
-azure group create TestRG westeurope
+次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
+
+## <a name="create-resource-groups-and-choose-deployment-locations"></a>リソース グループの作成とデプロイ先の選択
+Azure リソース グループは、リソース デプロイの論理的な管理を可能にする構成情報とメタデータを含む論理的なデプロイ エンティティです。 [az group create](/cli/azure/group#create) で、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` の場所に作成します。
+
+```azurecli
+az group create --name myResourceGroup --location westeurope
 ```
 
-出力:
+既定では、出力は、JSON (JavaScript Object Notation) にあります。 たとえば、一覧またはテーブルとして出力するには [az configure --output](/cli/azure/#configure) を使います。 出力形式で&1; 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例では、**az group create** コマンドからの JSON の出力を示します。
 
-```bash                        
-info:    Executing command group create
-+ Getting resource group TestRG
-+ Creating resource group TestRG
-info:    Created resource group TestRG
-data:    Id:                  /subscriptions/<yoursub>/resourceGroups/TestRG
-data:    Name:                TestRG
-data:    Location:            westeurope
-data:    Provisioning State:  Succeeded
-data:    Tags: null
-data:
-info:    group create command OK
-```
-
-## ストレージ アカウントの作成
-VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。リソース グループを作成したら、そのほぼ直後にストレージ アカウントを作成します。
-
-ここでは、`azure storage account create` コマンドを使用し、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。
-
-```bash
-azure storage account create \  
---location westeurope \
---resource-group TestRG \
---kind Storage --sku-name GRS \
-computeteststore
-```
-
-出力:
-
-```bash
-info:    Executing command storage account create
-+ Creating storage account
-info:    storage account create command OK
-ahmet•~/workspace/keygen» azure group show testrg
-info:    Executing command group show
-+ Listing resource groups
-+ Listing resources for the group
-data:    Id:                  /subscriptions/<guid>/resourceGroups/TestRG
-data:    Name:                TestRG
-data:    Location:            westeurope
-data:    Provisioning State:  Succeeded
-data:    Tags: null
-data:    Resources:
-data:
-data:      Id      : /subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/computeteststore
-data:      Name    : computeteststore
-data:      Type    : storageAccounts
-data:      Location: westeurope
-data:      Tags    :
-data:
-data:    Permissions:
-data:      Actions: *
-data:      NotActions:
-data:
-info:    group show command OK
-```
-
-`--json` Azure CLI オプションと [jq](https://stedolan.github.io/jq/) ツールで、`azure group show` コマンドを使ってリソース グループを調べます。(JSON を解析する**jsawk** または任意の言語ライブラリを使用します。)
-
-```bash
-azure group show TestRG --json | jq                                                                                      
-```
-
-
-出力:
-
-```bash
+```json                       
 {
-  "tags": {},
-  "id": "/subscriptions/<guid>/resourceGroups/TestRG",
-  "name": "TestRG",
-  "provisioningState": "Succeeded",
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup",
   "location": "westeurope",
+  "name": "myResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
   },
-  "resources": [
-    {
-      "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/computeteststore",
-      "name": "computeteststore",
-      "type": "storageAccounts",
-      "location": "westeurope",
-      "tags": null
-    }
-  ],
-  "permissions": [
-    {
-      "actions": [
-        "*"
-      ],
-      "notActions": []
-    }
-  ]
+  "tags": null
 }
 ```
 
-CLI を使用して、ストレージ アカウントを調査するためには、まず、次のコマンドのバリエーションでアカウント名とキーを設定する必要があります。次の例にあるストレージ アカウントの名前を選択したものに置き換えます。
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
 
-```
-AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show computeteststore --resource-group testrg --json | jq -r '.string')"
-```
+非管理対象ディスクを使用する場合は、VM ディスクおよび追加するすべてのデータ ディスク用に、ストレージ アカウントを作成する必要があります。
 
-その後、ストレージ情報は簡単に表示できるようになります。
+ここでは、[az storage account create](/cli/azure/storage/account#create) コマンドを使い、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
 
-```bash
-azure storage container list
-```
-
-出力:
-
-```bash
-info:    Executing command storage container list
-+ Getting storage containers
-data:    Name  Public-Access  Last-Modified
-data:    ----  -------------  -----------------------------
-data:    vhds  Off            Sun, 27 Sep 2015 19:03:54 GMT
-info:    storage container list command OK
-```
-
-## 仮想ネットワークとサブネットの作成
-次に、VM をインストールできるように、Azure で実行中の仮想ネットワークとサブネットを作成する必要があります。
-
-```bash
-azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
+```azurecli
+az storage account create --resource-group myResourceGroup --location westeurope \
+  --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
 出力:
 
-```bash
-info:    Executing command network vnet create
-+ Looking up virtual network "TestVNet"
-+ Creating virtual network "TestVNet"
-+ Loading virtual network state
-data:    Id                              : /subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-data:    Name                            : TestVNet
-data:    Type                            : Microsoft.Network/virtualNetworks
-data:    Location                        : westeurope
-data:    ProvisioningState               : Succeeded
-data:    Address prefixes:
-data:      192.168.0.0/16
-info:    network vnet create command OK
-```
-
-ここで、もう一度 `azure group show` の --json オプションと **jq** を使用して、リソースをどのように作成するかを見てみましょう。この段階で、`storageAccounts` リソースと `virtualNetworks` リソースが作成されています。
-
-```bash
-azure group show TestRG --json | jq '.'
-```
-
-出力:
-
-```bash
+```json
 {
-  "tags": {},
-  "id": "/subscriptions/<guid>/resourceGroups/TestRG",
-  "name": "TestRG",
-  "provisioningState": "Succeeded",
+  "accessTier": null,
+  "creationTime": "2016-12-07T17:59:50.090092+00:00",
+  "customDomain": null,
+  "encryption": null,
+  "id": "/subscriptions/guid/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
+  "kind": "Storage",
+  "lastGeoFailoverTime": null,
   "location": "westeurope",
-  "properties": {
-    "provisioningState": "Succeeded"
+  "name": "mystorageaccount",
+  "primaryEndpoints": {
+    "blob": "https://mystorageaccount.blob.core.windows.net/",
+    "file": "https://mystorageaccount.file.core.windows.net/",
+    "queue": "https://mystorageaccount.queue.core.windows.net/",
+    "table": "https://mystorageaccount.table.core.windows.net/"
   },
-  "resources": [
-    {
-      "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet",
-      "name": "TestVNet",
-      "type": "virtualNetworks",
-      "location": "westeurope",
-      "tags": null
-    },
-    {
-      "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/computeteststore",
-      "name": "computeteststore",
-      "type": "storageAccounts",
-      "location": "westeurope",
-      "tags": null
-    }
-  ],
-  "permissions": [
-    {
-      "actions": [
-        "*"
-      ],
-      "notActions": []
-    }
-  ]
+  "primaryLocation": "westeurope",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myresourcegroup",
+  "secondaryEndpoints": null,
+  "secondaryLocation": null,
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "Available",
+  "statusOfSecondary": null,
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts"
 }
 ```
 
-次に、VM のデプロイ先となるサブネットを `TestVnet` 仮想ネットワーク内に作成します。既に作成したリソース (`TestRG` リソース グループと `TestVNet` 仮想ネットワーク) と `azure network vnet subnet create` コマンドを使用します。以下の通り、サブネット名 `FrontEnd` とサブネットのアドレス プレフィックス `192.168.1.0/24` を追加します。
+CLI を使ってストレージ アカウントを調査するには、まず、アカウント名とキーを設定する必要があります。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) を使います。 次の例にあるストレージ アカウントの名前を選択したものに置き換えます。
 
 ```bash
-azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
+export AZURE_STORAGE_CONNECTION_STRING="$(az storage account show-connection-string --resource-group myResourceGroup --name mystorageaccount --query connectionString)"
+```
+
+次に、[az storage container list](/cli/azure/storage/container#list) でストレージ情報を表示できます。
+
+```azurecli
+az storage container list
 ```
 
 出力:
 
-```bash
-info:    Executing command network vnet subnet create
-+ Looking up the subnet "FrontEnd"
-+ Creating subnet "FrontEnd"
-+ Looking up the subnet "FrontEnd"
-data:    Id                              : /subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
-data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-data:    ProvisioningState               : Succeeded
-data:    Name                            : FrontEnd
-data:    Address prefix                  : 192.168.1.0/24
-data:
-info:    network vnet subnet create command OK
-```
-
-サブネットは論理的に仮想ネットワーク内に存在するため、サブネットの情報を探すには、若干異なるコマンドを使用します。使用するコマンドは `azure network vnet show` ですが、**jq** で JSON 出力を確認し続けます。
-
-```bash
-azure network vnet show TestRG TestVNet --json | jq '.'
-```
-
-出力:
-
-```bash
-{
-  "subnets": [
-    {
-      "ipConfigurations": [],
-      "addressPrefix": "192.168.1.0/24",
-      "provisioningState": "Succeeded",
-      "name": "FrontEnd",
-      "etag": "W/"974f3e2c-028e-4b35-832b-a4b16ad25eb6"",
-      "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
+```azurecli
+[
+  {
+    "metadata": null,
+    "name": "vhds",
+    "properties": {
+      "etag": "\"0x8D41F912D472F94\"",
+      "lastModified": "2016-12-08T17:39:35+00:00",
+      "lease": {
+        "duration": null,
+        "state": null,
+        "status": null
+      },
+      "leaseDuration": "infinite",
+      "leaseState": "leased",
+      "leaseStatus": "locked"
     }
-  ],
-  "tags": {},
+  }
+]
+```
+
+## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
+次に、VM を作成できるように、Azure で実行中の仮想ネットワークとサブネットを作成する必要があります。 次の例では、[az network vnet create](/cli/azure/network/vnet#create) を使って、`192.168.0.0/16` のアドレス プレフィックスを持つ `myVnet` という名前の仮想ネットワークと、`192.168.1.0/24` のサブネット アドレス プレフィックスを持つ `mySubnet` という名前のサブネットを作成します。
+
+```azurecli
+az network vnet create --resource-group myResourceGroup --location westeurope \
+  --name myVnet --address-prefix 192.168.0.0/16 \
+  --subnet-name mySubnet --subnet-prefix 192.168.1.0/24
+```
+
+出力には、仮想ネットワーク内で論理的に作成されるサブネットが表示されます。
+
+```json
+{
   "addressSpace": {
     "addressPrefixes": [
       "192.168.0.0/16"
@@ -485,656 +349,707 @@ azure network vnet show TestRG TestVNet --json | jq '.'
   "dhcpOptions": {
     "dnsServers": []
   },
+  "etag": "W/\"e95496fc-f417-426e-a4d8-c9e4d27fc2ee\"",
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet",
+  "location": "westeurope",
+  "name": "myVnet",
   "provisioningState": "Succeeded",
-  "etag": "W/"974f3e2c-028e-4b35-832b-a4b16ad25eb6"",
-  "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet",
-  "name": "TestVNet",
-  "location": "westeurope"
+  "resourceGroup": "myResourceGroup",
+  "resourceGuid": "ed62fd03-e9de-430b-84df-8a3b87cacdbb",
+  "subnets": [
+    {
+      "addressPrefix": "192.168.1.0/24",
+      "etag": "W/\"e95496fc-f417-426e-a4d8-c9e4d27fc2ee\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet",
+      "ipConfigurations": null,
+      "name": "mySubnet",
+      "networkSecurityGroup": null,
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "resourceNavigationLinks": null,
+      "routeTable": null
+    }
+  ],
+  "tags": {},
+  "type": "Microsoft.Network/virtualNetworks",
+  "virtualNetworkPeerings": null
 }
 ```
 
-## パブリック IP アドレス (PIP) の作成
-パブリック IP アドレス (PIP) を作成して、ロード バランサーに割り当てます。`azure network public-ip create` コマンドを使用して、インターネットから VM に接続できます。既定のアドレスは動的であるため、`-d testsubdomain` オプションを使用して、**cloudapp.azure.com** ドメインに名前付き DNS エントリを作成します。
 
-```bash
-azure network public-ip create -d testsubdomain TestRG TestPIP westeurope
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+パブリック IP アドレス (PIP) を作成して、ロード バランサーに割り当てます。 [az network public-ip create](/cli/azure/network/public-ip#create) コマンドを使って、インターネットから VM に接続できます。 既定のアドレスは動的であるため、`--domain-name-label` オプションを使って、**cloudapp.azure.com** ドメインに名前付き DNS エントリを作成します。 次の例では、DNS 名が `mypublicdns` で `myPublicIP` という名前のパブリック IP を作成します。 DNS 名は一意である必要があるため、独自の一意の DNS 名を指定します。
+
+```azurecli
+az network public-ip create --resource-group myResourceGroup --location westeurope \
+  --name myPublicIP --dns-name mypublicdns --allocation-method static --idle-timeout 4
 ```
 
 出力:
 
-```bash
-info:    Executing command network public-ip create
-+ Looking up the public ip "TestPIP"
-+ Creating public ip address "TestPIP"
-+ Looking up the public ip "TestPIP"
-data:    Id                              : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP
-data:    Name                            : TestPIP
-data:    Type                            : Microsoft.Network/publicIPAddresses
-data:    Location                        : westeurope
-data:    Provisioning state              : Succeeded
-data:    Allocation method               : Dynamic
-data:    Idle timeout                    : 4
-data:    Domain name label               : testsubdomain
-data:    FQDN                            : testsubdomain.westeurope.cloudapp.azure.com
-info:    network public-ip create command OK
-```
-
-パブリック IP アドレスは最上位のリソースでもあるため、`azure group show` を使用して確認できます。
-
-```bash
-azure group show TestRG --json | jq '.'
-```
-
-出力:
-
-```bash
+```json
 {
-"tags": {},
-"id": "/subscriptions/guid/resourceGroups/TestRG",
-"name": "TestRG",
-"provisioningState": "Succeeded",
-"location": "westeurope",
-"properties": {
-    "provisioningState": "Succeeded"
-},
-"resources": [
-    {
-    "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC",
-    "name": "TestNIC",
-    "type": "networkInterfaces",
-    "location": "westeurope",
-    "tags": null
+  "publicIp": {
+    "dnsSettings": {
+      "domainNameLabel": "mypublicdns",
+      "fqdn": "mypublicdns.westeurope.cloudapp.azure.com",
+      "reverseFqdn": ""
     },
-    {
-    "id": "/subscriptions/guid/resourceGroups/testrg/providers/Microsoft.Network/publicIPAddresses/testpip",
-    "name": "testpip",
-    "type": "publicIPAddresses",
-    "location": "westeurope",
-    "tags": null
-    },
-    {
-    "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet",
-    "name": "TestVNet",
-    "type": "virtualNetworks",
-    "location": "westeurope",
-    "tags": null
-    },
-    {
-    "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/computeteststore",
-    "name": "computeteststore",
-    "type": "storageAccounts",
-    "location": "westeurope",
-    "tags": null
-    }
-],
-"permissions": [
-    {
-    "actions": [
-        "*"
+    "idleTimeoutInMinutes": 4,
+    "ipAddress": "52.174.48.109",
+    "provisioningState": "Succeeded",
+    "publicIPAllocationMethod": "Static",
+    "resourceGuid": "78218510-ea54-42d7-b2c2-44773fc14af5"
+  }
+}
+```
+
+パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていません。 IP アドレスを取得するには、ロード バランサーが必要ですが、まだ作成されていません。
+
+## <a name="create-a-load-balancer-and-ip-pools"></a>ロード バランサーと IP プールの作成
+ロード バランサーを作成するときに複数の VM にトラフィックを分散できます。 メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。 次の例では、[az network lb create](/cli/azure/network/lb#create) を使って、`myLoadBalancer` という名前のロード バランサー、`myFrontEndPool` という名前のフロントエンド IP プールを作成し、`myPublicIP` リソースを接続します。
+
+```azurecli
+az network lb create --resource-group myResourceGroup --location westeurope \
+  --name myLoadBalancer --public-ip-address myPublicIP --frontend-ip-name myFrontEndPool
+```
+
+出力:
+
+```json
+{
+  "loadBalancer": {
+    "backendAddressPools": [
+      {
+        "etag": "W/\"7a05df7a-5ee2-4581-b411-4b6f048ab291\"",
+        "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myLoadBalancerbepool",
+        "name": "myLoadBalancerbepool",
+        "properties": {
+          "provisioningState": "Succeeded"
+        },
+        "resourceGroup": "myResourceGroup"
+      }
     ],
-    "notActions": []
+    "frontendIPConfigurations": [
+      {
+        "etag": "W/\"7a05df7a-5ee2-4581-b411-4b6f048ab291\"",
+        "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/frontendIPConfigurations/myFrontEndPool",
+        "name": "myFrontEndPool",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "provisioningState": "Succeeded",
+          "publicIPAddress": {
+            "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+            "resourceGroup": "myResourceGroup"
+          }
+        },
+        "resourceGroup": "myResourceGroup"
+      }
+    ],
+    "inboundNatPools": [],
+    "inboundNatRules": [],
+    "loadBalancingRules": [],
+    "outboundNatRules": [],
+    "probes": [],
+    "provisioningState": "Succeeded",
+    "resourceGuid": "f4879d84-5ae8-4e06-8b9b-1419baa875d9"
+  }
+}
+```
+
+以前に作成した `myPublicIP` を渡すために、`--public-ip-address` スイッチを使っている方法に注意してください。 パブリック IP アドレスをロード バランサーに割り当てることで、インターネット経由で VM に到達できるようになります。
+
+接続する VM の保存先として、バックエンド プールを使用します。 これにより、トラフィックは、VM にロード バランサーを経由できます。 [az network lb address-pool create](/cli/azure/network/lb/address-pool#create) で、バックエンド トラフィック用の IP プールを作成しましょう。 次の例では、`myBackEndPool` という名前のバックエンド プールを作成します。
+
+```azurecli
+az network lb address-pool create --resource-group myResourceGroup \
+  --lb-name myLoadBalancer --name myBackEndPool
+```
+
+出力の抜粋:
+
+```json
+  "backendAddressPools": [
+    {
+      "backendIpConfigurations": null,
+      "etag": "W/\"a61814bc-ce4c-4fb2-9d6a-5b1949078345\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myLoadBalancerbepool",
+      "loadBalancingRules": null,
+      "name": "myLoadBalancerbepool",
+      "outboundNatRule": null,
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup"
+    },
+    {
+      "backendIpConfigurations": null,
+      "etag": "W/\"a61814bc-ce4c-4fb2-9d6a-5b1949078345\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myBackEndPool",
+      "loadBalancingRules": null,
+      "name": "myBackEndPool",
+      "outboundNatRule": null,
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup"
     }
-]
-}
+  ],
+  "etag": "W/\"a61814bc-ce4c-4fb2-9d6a-5b1949078345\"",
 ```
 
-完全な `azure network public-ip show` コマンドを使用して、サブドメインの完全修飾ドメイン名 (FQDN) など、リソースの詳細を調査することができます。パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていません。IP アドレスを取得するには、ロード バランサーが必要ですが、まだ作成されていません。
 
-```bash
-azure network public-ip show TestRG TestPIP --json | jq '.'
+## <a name="create-load-balancer-nat-rules"></a>ロード バランサーの NAT 規則の作成
+トラフィックがロード バランサーを経由するようにするには、受信アクションまたは送信アクションを指定するネットワーク アドレス変換 (NAT) 規則を作成する必要があります。 使用するプロトコルを指定して、必要に応じて、外部ポートを内部ポートにマップします。 この環境では、SSH がロード バランサーを経由して VM に到達できるようにするいくつかの規則を [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#create) で作成しましょう。 VM の TCP ポート 22 (これは後で作成します) に送信する TCP ポート 4222 と 4223 を設定します。 次の例では、`myLoadBalancerRuleSSH1` という名前の規則を作成して、TCP ポート 4222 をポート 22 にマップします。
+
+```azurecli
+az network lb inbound-nat-rule create --resource-group myResourceGroup \
+  --lb-name myLoadBalancer --name myLoadBalancerRuleSSH1 --protocol tcp \
+  --frontend-port 4222 --backend-port 22 --frontend-ip-name myFrontEndPool
 ```
 
 出力:
 
-```bash
+```json
 {
-"tags": {},
-"publicIpAllocationMethod": "Dynamic",
-"dnsSettings": {
-    "domainNameLabel": "testsubdomain",
-    "fqdn": "testsubdomain.westeurope.cloudapp.azure.com"
-},
-"idleTimeoutInMinutes": 4,
-"provisioningState": "Succeeded",
-"etag": "W/"c63154b3-1130-49b9-a887-877d74d5ebc5"",
-"id": "/subscriptions/guid/resourceGroups/testrg/providers/Microsoft.Network/publicIPAddresses/testpip",
-"name": "testpip",
-"location": "westeurope"
-}
-```
-
-## ロード バランサーと IP プールの作成
-ロード バランサーを作成するときに複数の VM にトラフィックを分散できます。メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。
-
-次によってロード バランサーを作成します。
-
-```bash
-azure network lb create -g TestRG -n TestLB -l westeurope
-```
-
-```bash
-azure network lb create -g TestRG -n TestLB -l westeurope
-```
-
-出力:
-
-```bash
-info:    Executing command network lb create
-+ Looking up the load balancer "TestLB"
-+ Creating load balancer "TestLB"
-data:    Id                              : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB
-data:    Name                            : TestLB
-data:    Type                            : Microsoft.Network/loadBalancers
-data:    Location                        : westeurope
-data:    Provisioning state              : Succeeded
-info:    network lb create command OK
-```
-現在ロード バランサーは全く空であるため、いくつかの IP プールを作成しましょう。ロード バランサーには、フロントエンドに 1 つ、バックエンドに 1 つの 2 つの IP プールを作成します。フロントエンド IP プールは公開されます。以前に作成した PIP を割り当てる場所にもなります。接続する VM の保存先として、バックエンド プールを使用します。これにより、トラフィックは、VM にロード バランサーを経由できます。
-
-まず、フロント エンド IP プールを作成しましょう。
-
-```bash
-azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
-```
-
-出力:
-
-```bash
-info:    Executing command network lb frontend-ip create
-+ Looking up the load balancer "TestLB"
-+ Looking up the public ip "TestLBPIP"
-+ Updating load balancer "TestLB"
-data:    Name                            : TestFrontEndPool
-data:    Provisioning state              : Succeeded
-data:    Private IP allocation method    : Dynamic
-data:    Public IP address id            : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestLBPIP
-info:    network lb frontend-ip create command OK
-```
-
-以前に作成した TestLBPIP を渡すために、`--public-ip-name` スイッチを使用している方法に注意してください。パブリック IP アドレスをロード バランサーに割り当てることで、インターネット経由で VM に到達できるようになります。
-
-次に、今度はバック エンド トラフィック用に 2 つ目の IP プールを作成しましょう。
-
-```bash
-azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
-```
-
-出力:
-
-```bash
-info:    Executing command network lb address-pool create
-+ Looking up the load balancer "TestLB"
-+ Updating load balancer "TestLB"
-data:    Name                            : TestBackEndPool
-data:    Provisioning state              : Succeeded
-info:    network lb address-pool create command OK
-```
-
-`azure network lb show` によって JSON 出力を調べて、ロード バランサーの様子を確認できます。
-
-```bash
-azure network lb show TestRG TestLB --json | jq '.'
-```
-
-出力:
-
-```bash
-{
-  "etag": "W/"29c38649-77d6-43ff-ab8f-977536b0047c"",
+  "backendIpConfiguration": null,
+  "backendPort": 22,
+  "enableFloatingIp": false,
+  "etag": "W/\"72843cf8-b5fb-4655-9ac8-9cbbbbf1205a\"",
+  "frontendIpConfiguration": {
+    "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/frontendIPConfigurations/myFrontEndPool",
+    "resourceGroup": "myResourceGroup"
+  },
+  "frontendPort": 4222,
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1",
+  "idleTimeoutInMinutes": 4,
+  "name": "myLoadBalancerRuleSSH1",
+  "protocol": "Tcp",
   "provisioningState": "Succeeded",
-  "resourceGuid": "f1446acb-09ba-44d9-b8b6-849d9983dc09",
-  "outboundNatRules": [],
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+SSH に対する&2; つ目の NAT 規則について、手順を繰り返します。 次の例では、`myLoadBalancerRuleSSH2` という名前の規則を作成して、TCP ポート 4223 をポート 22 にマップします。
+
+```azurecli
+az network lb inbound-nat-rule create --resource-group myResourceGroup \
+  --lb-name myLoadBalancer --name myLoadBalancerRuleSSH2 --protocol tcp \
+  --frontend-port 4223 --backend-port 22 --frontend-ip-name myFrontEndPool
+```
+
+## <a name="create-a-load-balancer-health-probe"></a>ロード バランサーの正常性プローブの作成
+正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。 動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。 間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。 正常性プローブの詳細については、 [Load Balancer のプローブ](../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。 次の例では、[az network lb probe create](/cli/azure/network/lb/probe#create) を使って `myHealthProbe` という名前の TCP 正常性プローブを作成します。
+
+```azurecli
+az network lb probe create --resource-group myResourceGroup --lb-name myLoadBalancer \
+  --name myHealthProbe --protocol tcp --port 80 --interval 15 --threshold 4
+```
+
+出力:
+
+```json
+{
+  "etag": "W/\"757018f6-b70a-4651-b717-48b511d82ba0\"",
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/probes/myHealthProbe",
+  "intervalInSeconds": 15,
+  "loadBalancingRules": null,
+  "name": "myHealthProbe",
+  "numberOfProbes": 4,
+  "port": 80,
+  "protocol": "Tcp",
+  "provisioningState": "Succeeded",
+  "requestPath": null,
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+ここでは、正常性チェックの間隔を 15 秒に指定しました。 4 回のプローブ (1 分間) までは、ホストが機能していないとロード バランサーで判断されません。
+
+さらに、規則を IP プールに接続する Web トラフィック用の TCP ポート 80 の NAT 規則の作成します。 規則を個々の VM に接続するのではなく、IP プールに接続すると、IP プールの VM を追加または削除できます。 ロード バランサーは、トラフィックのフローを自動的に調整します。 次の例では、[az network lb rule create](/cli/azure/network/lb/rule#create) を使って、TCP ポート 80 をポート 80 にマップする `myLoadBalancerRuleWeb` という名前の規則を作成し、`myHealthProbe` という名前の正常性プローブを接続します。
+
+```azurecli
+az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalancer \
+  --name myLoadBalancerRuleWeb --protocol tcp --frontend-port 80 --backend-port 80 \
+  --frontend-ip-name myFrontEndPool --backend-pool-name myBackEndPool \
+  --probe-name myHealthProbe
+```
+
+出力:
+
+```json
+{
+  "backendAddressPool": {
+    "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myBackEndPool",
+    "resourceGroup": "myResourceGroup"
+  },
+  "backendPort": 80,
+  "enableFloatingIp": false,
+  "etag": "W/\"f0d77680-bf42-4d11-bfab-5d2c541bee56\"",
+  "frontendIpConfiguration": {
+    "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/frontendIPConfigurations/myFrontEndPool",
+    "resourceGroup": "myResourceGroup"
+  },
+  "frontendPort": 80,
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/loadBalancingRules/myLoadBalancerRuleWeb",
+  "idleTimeoutInMinutes": 4,
+  "loadDistribution": "Default",
+  "name": "myLoadBalancerRuleWeb",
+  "probe": {
+    "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/probes/myHealthProbe",
+    "resourceGroup": "myResourceGroup"
+  },
+  "protocol": "Tcp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+## <a name="verify-the-load-balancer"></a>ロード バランサーの確認
+ロード バランサーの構成を確認できました。 実行する手順を次に示します。
+
+1. ロード バランサーを作成します。
+2. フロントエンド IP プールを作成し、パブリック IP を割り当てます。
+3. VM が接続できるバックエンド IP プールを作成します。
+4. 管理用に VM への SSH 通信を許可する NAT 規則と Web アプリ用に TCP ポート 80 を許可する規則を作成します。
+5. VM を定期的にチェックする正常性プローブを追加します。 この正常性プローブで、機能しないまたはコンテンツを提供しない VM にユーザーがアクセスを試みなくてもよくなります。
+
+[az network lb show](/cli/azure/network/lb#show) で、ロード バランサーがどのように見えるようになったか確認しましょう。
+
+```azurecli
+az network lb show --resource-group myResourceGroup --name myLoadBalancer
+```
+
+出力:
+
+```json
+{
+  "backendAddressPools": [
+    {
+      "backendIpConfigurations": null,
+      "etag": "W/\"a0e313a1-6de1-48be-aeb6-df57188d708c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myLoadBalancerbepool",
+      "loadBalancingRules": null,
+      "name": "myLoadBalancerbepool",
+      "outboundNatRule": null,
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup"
+    },
+    {
+      "backendIpConfigurations": null,
+      "etag": "W/\"a0e313a1-6de1-48be-aeb6-df57188d708c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myBackEndPool",
+      "loadBalancingRules": null,
+      "name": "myBackEndPool",
+      "outboundNatRule": null,
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup"
+    }
+  ],
+  "etag": "W/\"a0e313a1-6de1-48be-aeb6-df57188d708c\"",
+  "frontendIpConfigurations": [
+    {
+      "etag": "W/\"a0e313a1-6de1-48be-aeb6-df57188d708c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/frontendIPConfigurations/LoadBalancerFrontEnd",
+      "inboundNatPools": null,
+      "inboundNatRules": null,
+      "loadBalancingRules": null,
+      "name": "LoadBalancerFrontEnd",
+      "outboundNatRules": null,
+      "privateIpAddress": null,
+      "privateIpAllocationMethod": "Dynamic",
+      "provisioningState": "Succeeded",
+      "publicIpAddress": {
+        "dnsSettings": null,
+        "etag": null,
+        "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/PublicIPmyLoadBalancer",
+        "idleTimeoutInMinutes": null,
+        "ipAddress": null,
+        "ipConfiguration": null,
+        "location": null,
+        "name": null,
+        "provisioningState": null,
+        "publicIpAddressVersion": null,
+        "publicIpAllocationMethod": null,
+        "resourceGroup": "myResourceGroup",
+        "resourceGuid": null,
+        "tags": null,
+        "type": null
+      },
+      "resourceGroup": "myResourceGroup",
+      "subnet": null
+    },
+    {
+      "etag": "W/\"a0e313a1-6de1-48be-aeb6-df57188d708c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/frontendIPConfigurations/myFrontEndPool",
+      "inboundNatPools": null,
+      "inboundNatRules": null,
+      "loadBalancingRules": null,
+      "name": "myFrontEndPool",
+      "outboundNatRules": null,
+      "privateIpAddress": null,
+      "privateIpAllocationMethod": "Dynamic",
+      "provisioningState": "Succeeded",
+      "publicIpAddress": {
+        "dnsSettings": null,
+        "etag": null,
+        "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+        "idleTimeoutInMinutes": null,
+        "ipAddress": null,
+        "ipConfiguration": null,
+        "location": null,
+        "name": null,
+        "provisioningState": null,
+        "publicIpAddressVersion": null,
+        "publicIpAllocationMethod": null,
+        "resourceGroup": "myResourceGroup",
+        "resourceGuid": null,
+        "tags": null,
+        "type": null
+      },
+      "resourceGroup": "myResourceGroup",
+      "subnet": null
+    }
+  ],
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer",
   "inboundNatPools": [],
   "inboundNatRules": [],
-  "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB",
-  "name": "TestLB",
-  "type": "Microsoft.Network/loadBalancers",
-  "location": "westeurope",
-  "frontendIPConfigurations": [
-    {
-      "etag": "W/"29c38649-77d6-43ff-ab8f-977536b0047c"",
-      "name": "TestFrontEndPool",
-      "provisioningState": "Succeeded",
-      "publicIPAddress": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestLBPIP"
-      },
-      "privateIPAllocationMethod": "Dynamic",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool"
-    }
-  ],
-  "backendAddressPools": [
-    {
-      "etag": "W/"29c38649-77d6-43ff-ab8f-977536b0047c"",
-      "name": "TestBackEndPool",
-      "provisioningState": "Succeeded",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool"
-    }
-  ],
   "loadBalancingRules": [],
-  "probes": []
-}
-```
-
-## ロード バランサーの NAT 規則の作成
-トラフィックがロード バランサーを経由するようにするには、受信アクションまたは送信アクションを指定する NAT 規則を作成する必要があります。使用するプロトコルを指定して、必要に応じて、外部ポートを内部ポートにマップします。この環境では、SSH がロード バランサーを経由して VM に到達できるようにするいくつかの規則を作成しましょう。VM の TCP ポート 22 (これは後で作成します) に送信する TCP ポート 4222 と 4223 を設定します。
-
-```bash
-azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
-```
-
-出力:
-
-```bash
-info:    Executing command network lb inbound-nat-rule create
-+ Looking up the load balancer "TestLB"
-warn:    Using default enable floating ip: false
-warn:    Using default idle timeout: 4
-warn:    Using default frontend IP configuration "TestFrontEndPool"
-+ Updating load balancer "TestLB"
-data:    Name                            : VM1-SSH
-data:    Provisioning state              : Succeeded
-data:    Protocol                        : Tcp
-data:    Frontend port                   : 4222
-data:    Backend port                    : 22
-data:    Enable floating IP              : false
-data:    Idle timeout in minutes         : 4
-data:    Frontend IP configuration id    : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool
-info:    network lb inbound-nat-rule create command OK
-```
-
-SSH に対する 2 つ目の NAT 規則について、手順を繰り返します。
-
-```bash
-azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
-```
-
-さらに、規則を IP プールに接続する TCP ポート 80 の NAT 規則の作成に進みましょう。規則を個々の VM に接続するのではなく、IP プールに接続すると、IP プールから VM を追加または削除するだけで対応できます。ロード バランサーは、トラフィックのフローを自動的に調整します。
-
-```bash
-azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
-     -t TestFrontEndPool -o TestBackEndPool
-```
-
-出力:
-
-```bash
-info:    Executing command network lb rule create
-+ Looking up the load balancer "TestLB"
-warn:    Using default idle timeout: 4
-warn:    Using default enable floating ip: false
-warn:    Using default load distribution: Default
-+ Updating load balancer "TestLB"
-data:    Name                            : WebRule
-data:    Provisioning state              : Succeeded
-data:    Protocol                        : Tcp
-data:    Frontend port                   : 80
-data:    Backend port                    : 80
-data:    Enable floating IP              : false
-data:    Load distribution               : Default
-data:    Idle timeout in minutes         : 4
-data:    Frontend IP configuration id    : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool
-data:    Backend address pool id         : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool
-info:    network lb rule create command OK
-```
-
-## ロード バランサーの正常性プローブの作成
-正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。正常性プローブの詳細については、[Load Balancer のプローブ](../load-balancer/load-balancer-custom-probe-overview.md)に関するページをご覧ください。
-
-```bash
-azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "tcp" -i 15 -c 4
-```
-
-出力:
-
-```bash
-info:    Executing command network lb probe create
-warn:    Using default probe port: 80
-+ Looking up the load balancer "TestLB"
-+ Updating load balancer "TestLB"
-data:    Name                            : HealthProbe
-data:    Provisioning state              : Succeeded
-data:    Protocol                        : Tcp
-data:    Port                            : 80
-data:    Interval in seconds             : 15
-data:    Number of probes                : 4
-info:    network lb probe create command OK
-```
-
-ここでは、正常性チェックの間隔を 15 秒に指定しました。4 回のプローブ (1 分間) までは、ホストが機能していないとロード バランサーで判断されません。
-
-## ロード バランサーの確認
-ロード バランサーの構成を確認できました。実行する手順を次に示します。
-
-1. 最初に、ロード バランサーを作成します。
-2. フロントエンド IP プールを作成し、パブリック IP が割り当てられます。
-3. 次に、VM が接続できるバックエンド IP プールを作成します。
-4. その後、管理用に VM への SSH 通信を許可する NAT 規則と Web アプリ用に TCP ポート 80 を許可する規則を作成します。
-5. 最後に、VM を定期的にチェックする正常性プローブを追加します。この正常性プローブで、機能しないまたはコンテンツを提供しない VM にユーザーがアクセスを試みなくてもよくなります。
-
-ロード バランサーがどのように見えるようになったか確認しましょう。
-
-```bash
-azure network lb show -g TestRG -n TestLB --json | jq '.'
-```
-
-出力:
-
-```bash
-{
-  "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-  "provisioningState": "Succeeded",
-  "resourceGuid": "f1446acb-09ba-44d9-b8b6-849d9983dc09",
+  "location": "westeurope",
+  "name": "myLoadBalancer",
   "outboundNatRules": [],
-  "inboundNatPools": [],
-  "inboundNatRules": [
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "VM1-SSH",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH",
-      "frontendIPConfiguration": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool"
-      },
-      "protocol": "Tcp",
-      "frontendPort": 4222,
-      "backendPort": 22,
-      "idleTimeoutInMinutes": 4,
-      "enableFloatingIP": false,
-      "provisioningState": "Succeeded"
-    },
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "VM2-SSH",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH",
-      "frontendIPConfiguration": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool"
-      },
-      "protocol": "Tcp",
-      "frontendPort": 4223,
-      "backendPort": 22,
-      "idleTimeoutInMinutes": 4,
-      "enableFloatingIP": false,
-      "provisioningState": "Succeeded"
-    }
-  ],
-  "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB",
-  "name": "TestLB",
-  "type": "Microsoft.Network/loadBalancers",
-  "location": "westeurope",
-  "frontendIPConfigurations": [
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "TestFrontEndPool",
-      "provisioningState": "Succeeded",
-      "publicIPAddress": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestLBPIP"
-      },
-      "privateIPAllocationMethod": "Dynamic",
-      "loadBalancingRules": [
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/loadBalancingRules/WebRule"
-        }
-      ],
-      "inboundNatRules": [
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH"
-        },
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH"
-        }
-      ],
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool"
-    }
-  ],
-  "backendAddressPools": [
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "TestBackEndPool",
-      "provisioningState": "Succeeded",
-      "loadBalancingRules": [
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/loadBalancingRules/WebRule"
-        }
-      ],
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool"
-    }
-  ],
-  "loadBalancingRules": [
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "WebRule",
-      "provisioningState": "Succeeded",
-      "enableFloatingIP": false,
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/loadBalancingRules/WebRule",
-      "frontendIPConfiguration": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/frontendIPConfigurations/TestFrontEndPool"
-      },
-      "backendAddressPool": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool"
-      },
-      "protocol": "Tcp",
-      "loadDistribution": "Default",
-      "frontendPort": 80,
-      "backendPort": 80,
-      "idleTimeoutInMinutes": 4
-    }
-  ],
-  "probes": [
-    {
-      "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "name": "HealthProbe",
-      "provisioningState": "Succeeded",
-      "numberOfProbes": 4,
-      "intervalInSeconds": 15,
-      "port": 80,
-      "protocol": "Tcp",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/probes/HealthProbe"
-    }
-  ]
-}
-```
-
-## Linux VM で使用する NIC の作成
- ルールを適用するため、NIC はプログラムで使用できます。複数でも可能になります。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けています。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
-
-```bash
-azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
-     -d /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool \
-     -e /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH
-```
-
-出力:
-
-```bash
-info:    Executing command network nic create
-+ Looking up the subnet "FrontEnd"
-+ Looking up the network interface "LB-NIC1"
-+ Creating network interface "LB-NIC1"
-data:    Id                              : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/LB-NIC1
-data:    Name                            : LB-NIC1
-data:    Type                            : Microsoft.Network/networkInterfaces
-data:    Location                        : westeurope
-data:    Provisioning state              : Succeeded
-data:    Enable IP forwarding            : false
-data:    IP configurations:
-data:      Name                          : Nic-IP-config
-data:      Provisioning state            : Succeeded
-data:      Private IP address            : 192.168.1.4
-data:      Private IP allocation method  : Dynamic
-data:      Subnet                        : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
-data:      Load balancer backend address pools:
-data:        Id                          : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool
-data:      Load balancer inbound NAT rules:
-data:        Id                          : /subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH
-data:
-info:    network nic create command OK
-```
-
-詳細を確認するには、直接リソースを調査します。リソースを確認するには、`azure network nic show` コマンドを使用します。
-
-```bash
-azure network nic show TestRG LB-NIC1 --json | jq '.'
-```
-
-出力:
-
-```bash
-{
-  "etag": "W/"fc1eaaa1-ee55-45bd-b847-5a08c7f4264a"",
+  "probes": [],
   "provisioningState": "Succeeded",
-  "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/LB-NIC1",
-  "name": "LB-NIC1",
-  "type": "Microsoft.Network/networkInterfaces",
-  "location": "westeurope",
-  "ipConfigurations": [
-    {
-      "etag": "W/"fc1eaaa1-ee55-45bd-b847-5a08c7f4264a"",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/LB-NIC1/ipConfigurations/Nic-IP-config",
-      "loadBalancerBackendAddressPools": [
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool"
-        }
-      ],
-      "loadBalancerInboundNatRules": [
-        {
-          "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH"
-        }
-      ],
-      "privateIPAddress": "192.168.1.4",
-      "privateIPAllocationMethod": "Dynamic",
-      "subnet": {
-        "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
-      },
-      "provisioningState": "Succeeded",
-      "name": "Nic-IP-config"
-    }
-  ],
-  "dnsSettings": {
-    "appliedDnsServers": [],
-    "dnsServers": []
-  },
-  "enableIPForwarding": false,
-  "resourceGuid": "a20258b8-6361-45f6-b1b4-27ffed28798c"
+  "resourceGroup": "myResourceGroup",
+  "resourceGuid": "b5815801-b53d-4c22-aafc-2a9064f90f3c",
+  "tags": {},
+  "type": "Microsoft.Network/loadBalancers"
 }
 ```
 
-次に、バックエンド IP プールにもう一度フックして、2 つ目の NIC を作成します。ここで 2 つ目の NAT 規則が SSH トラフィックを許可します。
+## <a name="create-a-network-security-group-and-rules"></a>ネットワーク セキュリティ グループと規則の作成
+ネットワーク セキュリティ グループと、NIC へのアクセスを統制する受信規則を作成します。 ネットワーク セキュリティ グループは、NIC またはサブネットに適用できます。 VM の送受信トラフィックのフローを制御するための規則を定義します。 次の例では、[az network nsg create](/cli/azure/network/nsg#create) を使って、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。
 
-```bash
-azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
-    -d  /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/backendAddressPools/TestBackEndPool \
-    -e /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH
+```azurecli
+az network nsg create --resource-group myResourceGroup --location westeurope \
+  --name myNetworkSecurityGroup
 ```
 
-## ネットワーク セキュリティ グループと規則の作成
-ここで、NSG と、NIC へのアクセスを統制する受信規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#create) で NSG の受信規則を追加して、(SSH をサポートするために) ポート 22 での受信接続を許可します。 次の例では、`myNetworkSecurityGroupRuleSSH` という名前の規則を作成して、ポート 22 で TCP を許可します。
 
-```bash
-azure network nsg create TestRG TestNSG westeurope
+```azurecli
+az network nsg rule create --resource-group myResourceGroup \
+  --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRuleSSH \
+  --protocol tcp --direction inbound --priority 1000 \
+  --source-address-prefix '*' --source-port-range '*' \
+  --destination-address-prefix '*' --destination-port-range 22 --access allow
 ```
 
-NSG の受信規則を追加して、(SSH をサポートするために) ポート 22 での受信接続を許可します。
+次に、NSG の受信規則を追加して、(Web トラフィックをサポートするために) ポート 80 での受信接続を許可します。 次の例では、`myNetworkSecurityGroupRuleHTTP` という名前の規則を作成して、ポート 80 で TCP を許可します。
 
-```bash
-azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
-    --destination-port-range 22 --access allow TestRG TestNSG SSHRule
-```
-
-```bash
-azure network nsg rule create --protocol tcp --direction inbound --priority 1001 \
-    --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
+```azurecli
+az network nsg rule create --resource-group myResourceGroup \
+  --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRuleHTTP \
+  --protocol tcp --direction inbound --priority 1001 \
+  --source-address-prefix '*' --source-port-range '*' \
+  --destination-address-prefix '*' --destination-port-range 80 --access allow
 ```
 
 > [!NOTE]
-> 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。この受信規則は、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。ポートを開くには、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れる必要があります。ポートは、通常動的です。
-> 
-> 
+> 受信規則は、受信ネットワーク接続のフィルターです。 この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。 この受信規則は、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。 ポートを開くには、`--source-port-range` を "\*" (既定値) のままにして、**任意の**要求ポートから受信要求を受け入れる必要があります。 ポートは、通常動的です。
 
-## NIC へのバインド
-NSG を NIC にバインドします。
+[az network nsg show](/cli/azure/network/nsg#show) で、ネットワーク セキュリティ グループと規則を調べます。
 
-```bash
-azure network nic set -g TestRG -n LB-NIC1 -o TestNSG
+```azurecli
+az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
 ```
 
-```bash
-azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
+出力:
+
+```json
+{
+  "defaultSecurityRules": [
+    {
+      "access": "Allow",
+      "description": "Allow inbound traffic from all VMs in VNET",
+      "destinationAddressPrefix": "VirtualNetwork",
+      "destinationPortRange": "*",
+      "direction": "Inbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowVnetInBound",
+      "name": "AllowVnetInBound",
+      "priority": 65000,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "VirtualNetwork",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow inbound traffic from azure load balancer",
+      "destinationAddressPrefix": "*",
+      "destinationPortRange": "*",
+      "direction": "Inbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowAzureLoadBalancerInBound",
+      "name": "AllowAzureLoadBalancerInBound",
+      "priority": 65001,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "AzureLoadBalancer",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Deny",
+      "description": "Deny all inbound traffic",
+      "destinationAddressPrefix": "*",
+      "destinationPortRange": "*",
+      "direction": "Inbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/DenyAllInBound",
+      "name": "DenyAllInBound",
+      "priority": 65500,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "*",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+      "destinationAddressPrefix": "VirtualNetwork",
+      "destinationPortRange": "*",
+      "direction": "Outbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowVnetOutBound",
+      "name": "AllowVnetOutBound",
+      "priority": 65000,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "VirtualNetwork",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow outbound traffic from all VMs to Internet",
+      "destinationAddressPrefix": "Internet",
+      "destinationPortRange": "*",
+      "direction": "Outbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowInternetOutBound",
+      "name": "AllowInternetOutBound",
+      "priority": 65001,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "*",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Deny",
+      "description": "Deny all outbound traffic",
+      "destinationAddressPrefix": "*",
+      "destinationPortRange": "*",
+      "direction": "Outbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/DenyAllOutBound",
+      "name": "DenyAllOutBound",
+      "priority": 65500,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "*",
+      "sourcePortRange": "*"
+    }
+  ],
+  "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup",
+  "location": "westeurope",
+  "name": "myNetworkSecurityGroup",
+  "networkInterfaces": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "resourceGuid": "79c2c293-ee3e-4616-bf9c-4741ff1f708a",
+  "securityRules": [
+    {
+      "access": "Allow",
+      "description": null,
+      "destinationAddressPrefix": "*",
+      "destinationPortRange": "22",
+      "direction": "Inbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/securityRules/myNetworkSecurityGroupRuleSSH",
+      "name": "myNetworkSecurityGroupRuleSSH",
+      "priority": 1000,
+      "protocol": "tcp",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "*",
+      "sourcePortRange": "*"
+    },
+    {
+      "access": "Allow",
+      "description": null,
+      "destinationAddressPrefix": "*",
+      "destinationPortRange": "80",
+      "direction": "Inbound",
+      "etag": "W/\"2b656589-f332-4ba4-92f3-afb3be5c192c\"",
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/securityRules/myNetworkSecurityGroupRuleHTTP",
+      "name": "myNetworkSecurityGroupRuleHTTP",
+      "priority": 1001,
+      "protocol": "tcp",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "myResourceGroup",
+      "sourceAddressPrefix": "*",
+      "sourcePortRange": "*"
+    }
+  ],
+  "subnets": null,
+  "tags": {},
+  "type": "Microsoft.Network/networkSecurityGroups"
+}
 ```
 
-## 可用性セットの作成
-可用性セットにより、障害ドメインおよびアップグレード ドメインに VM を分散できます。VM の可用性セットを作成しましょう。
+## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Linux VM で使用する NIC の作成
+ルールを適用するため、NIC はプログラムで使用できます。 複数でも可能になります。 次の [az network nic create](https://docs.microsoft.com/en-us/cli/azure/network/nic#create) コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックとネットワーク セキュリティ グループを許可する NAT 規則を関連付けています。
 
-```bash
-azure availset create -g TestRG -n TestAvailSet -l westeurope
+次の例では、`myNic1` という名前の NIC を作成します。
+
+```azurecli
+az network nic create --resource-group myResourceGroup --location westeurope --name myNic1 \
+  --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup \
+  --lb-name myLoadBalancer --lb-address-pools myBackEndPool \
+  --lb-inbound-nat-rules myLoadBalancerRuleSSH1
 ```
 
-障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。既定で、可用性セット内に構成された仮想マシンは、最大 3 つの障害ドメイン間で分散されます。つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
+出力:
 
-アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
+```json
+{
+  "newNIC": {
+    "dnsSettings": {
+      "appliedDnsServers": [],
+      "dnsServers": []
+    },
+    "enableIPForwarding": false,
+    "ipConfigurations": [
+      {
+        "etag": "W/\"a76b5c0d-14e1-4a99-afd4-5cd8ac0465ca\"",
+        "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic1/ipConfigurations/ipconfig1",
+        "name": "ipconfig1",
+        "properties": {
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/backendAddressPools/myBackEndPool",
+              "resourceGroup": "myResourceGroup"
+            }
+          ],
+          "loadBalancerInboundNatRules": [
+            {
+              "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1",
+              "resourceGroup": "myResourceGroup"
+            }
+          ],
+          "primary": true,
+          "privateIPAddress": "192.168.1.4",
+          "privateIPAllocationMethod": "Dynamic",
+          "provisioningState": "Succeeded",
+          "subnet": {
+            "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet",
+            "resourceGroup": "myResourceGroup"
+          }
+        },
+        "resourceGroup": "myResourceGroup"
+      }
+    ],
+    "networkSecurityGroup": {
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup",
+      "resourceGroup": "myResourceGroup"
+    },
+    "provisioningState": "Succeeded",
+    "resourceGuid": "838977cb-cf4b-4c4a-9a32-0ddec7dc818b"
+  }
+}
+```
 
-詳細については、「[VMの可用性管理](virtual-machines-linux-manage-availability.md)」を参照してください。
+次に、バックエンド IP プールにもう一度フックして、2 つ目の NIC を作成します。 ここでは、2 つ目の NAT 規則が SSH トラフィックを許可します。 次の例では、`myNic2` という名前の NIC を作成します。
 
-## Linux VM の作成
-これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md)に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。
+```azurecli
+az network nic create --resource-group myResourceGroup --location westeurope --name myNic2 \
+  --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup \
+  --lb-name myLoadBalancer --lb-address-pools myBackEndPool \
+  --lb-inbound-nat-rules myLoadBalancerRuleSSH2
+```
 
-コマンド `azure vm image list westeurope canonical | grep LTS` を使用してイメージを選択します。この例では、`canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` を使用します。最後のフィールドでは、今後常に直近に構築されたように `latest` を渡します(使用する文字列は `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` です)。
 
-この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キーのペアがない場合、作成することができます。
+## <a name="create-an-availability-set"></a>可用性セットの作成
+可用性セットにより、障害ドメインおよびアップグレード ドメインに VM を分散できます。 [az vm availability-set create](/cli/azure/vm/availability-set#create) で、VM の可用性セットを作成しましょう。 次の例では、`myAvailabilitySet` という名前の可用性セットを作成します。
 
-* 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
-* 手動では[自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md)を使用します。
+```azurecli
+az vm availability-set create --resource-group myResourceGroup --location westeurope \
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
+```
 
-また、VM を作成した後、SSH 接続を認証するのに--管理パスワード方法を使用できます。この方法は通常安全性が低いです。
+障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大&3; つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
 
-`azure vm create` コマンドにすべてのリソースと情報を指定して、VM を作成します。
+アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは&1; つのみです。 また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
 
-```bash
-azure vm create \            
-    --resource-group TestRG \
-    --name TestVM1 \
+詳細については、「 [VMの可用性管理](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+
+
+## <a name="create-the-linux-vms"></a>Linux VM の作成
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使ってそのイメージの情報を見つけます。
+
+認証に使う SSH キーも指定します。 SSH キーがない場合は、[こちらの手順](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に従って作成できます。 または、VM を作成した後で、`--admin-password` メソッドを使って SSH 接続を認証できます。 この方法は通常安全性が低いです。
+
+[az vm create](/cli/azure/vm#create) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
+
+```azurecli
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM1 \
     --location westeurope \
-    --os-type linux \
-    --availset-name TestAvailSet \
-    --nic-name LB-NIC1 \
-    --vnet-name TestVnet \
-    --vnet-subnet-name FrontEnd \
-    --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --availability-set myAvailabilitySet \
+    --nics myNic1 \
+    --image UbuntuLTS \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --admin-username azureuser
+```
+
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+```
+
+出力:
+
+```json
+{
+  "fqdn": "",
+  "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM1",
+  "macAddress": "",
+  "privateIpAddress": "",
+  "publicIpAddress": "",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+すぐに、既定の SSH キーを使用して VM に接続できるようになります。 ロード バランサー経由で渡されるため、適切なポートを指定することを確認します。 (最初の VM では、ポート 4222 を VM に転送する NAT 規則を設定します)
+
+```bash
+ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222 -i ~/.ssh/id_rsa.pub
 ```
 
 出力:
 
 ```bash
-info:    Executing command vm create
-+ Looking up the VM "TestVM1"
-info:    Verifying the public key SSH file: /home/ahmet/.ssh/id_rsa.pub
-info:    Using the VM Size "Standard_DS1"
-info:    The [OS, Data] Disk or image configuration requires storage account
-+ Looking up the storage account computeteststore
-+ Looking up the availability set "TestAvailSet"
-info:    Found an Availability set "TestAvailSet"
-+ Looking up the NIC "LB-NIC1"
-info:    Found an existing NIC "LB-NIC1"
-info:    Found an IP configuration with virtual network subnet id "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd" in the NIC "LB-NIC1"
-info:    This is an NIC without publicIP configured
-info:    The storage URI 'https://computeteststore.blob.core.windows.net/' will be used for boot diagnostics settings, and it can be overwritten by the parameter input of '--boot-diagnostics-storage-uri'.
-info:    vm create command OK
-```
-
-すぐに、既定の SSH キーを使用して VM に接続できるようになります。ロード バランサー経由で渡されるため、適切なポートを指定することを確認します。(最初の VM では、ポート 4222 を VM に転送する NAT 規則を設定します。)
-
-```bash
- ssh ops@testlb.westeurope.cloudapp.azure.com -p 4222
-```
-
-出力:
-
-```bash
-The authenticity of host '[testlb.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
+The authenticity of host '[mypublicdns.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
 ECDSA key fingerprint is 94:2d:d0:ce:6b:fb:7f:ad:5b:3c:78:93:75:82:12:f9.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[testlb.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) to the list of known hosts.
+Warning: Permanently added '[mypublicdns.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) to the list of known hosts.
 Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -1147,120 +1062,51 @@ Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 0 packages can be updated.
 0 updates are security updates.
 
-
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-To run a command as administrator (user "root"), use "sudo <command>".
-See "man sudo_root" for details.
-
-ops@TestVM1:~$
+ops@myVM1:~$
 ```
 
 同じように、2 つ目の VM を作成します。
 
-```bash
-azure vm create \            
-    --resource-group TestRG \
-    --name TestVM2 \
+```azurecli
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM2 \
     --location westeurope \
-    --os-type linux \
-    --availset-name TestAvailSet \
-    --nic-name LB-NIC2 \
-    --vnet-name TestVnet \
-    --vnet-subnet-name FrontEnd \
-    --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --availability-set myAvailabilitySet \
+    --nics myNic2 \
+    --image UbuntuLTS \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --admin-username azureuser
 ```
 
-ここで、`azure vm show testrg testvm` コマンドを使用して、これまでに作成したものを確認できます。この時点では、Azure のロード バランサーの背後で Ubuntu VM が実行中です。この VM には、所有する SSH キー ペアのみを使用してサインインできます (パスワードは無効になっているため)。nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
 
-```bash
-azure vm show TestRG TestVM1
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
+
+この時点では、Azure のロード バランサーの背後で Ubuntu VM が実行中です。この VM には、所有する SSH キー ペアのみを使用してサインインできます (パスワードは無効になっているため)。 nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
+
+
+## <a name="export-the-environment-as-a-template"></a>環境をテンプレートとしてエクスポートします。
+これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#export) を使って、リソース グループを次のようにエクスポートします。
+
+```azurecli
+az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-出力:
+このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、または VM を含むリソース名が表示されます。 前に示した **az group export** コマンドに `--include-parameter-default-value` パラメーターを追加するとテンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
 
-```bash
-info:    Executing command vm show
-+ Looking up the VM "TestVM1"
-+ Looking up the NIC "LB-NIC1"
-data:    Id                              :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/TestVM1
-data:    ProvisioningState               :Succeeded
-data:    Name                            :TestVM1
-data:    Location                        :westeurope
-data:    Type                            :Microsoft.Compute/virtualMachines
-data:
-data:    Hardware Profile:
-data:      Size                          :Standard_DS1
-data:
-data:    Storage Profile:
-data:      Image reference:
-data:        Publisher                   :canonical
-data:        Offer                       :UbuntuServer
-data:        Sku                         :16.04.0-LTS
-data:        Version                     :latest
-data:
-data:      OS Disk:
-data:        OSType                      :Linux
-data:        Name                        :clib45a8b650f4428a1-os-1471973896525
-data:        Caching                     :ReadWrite
-data:        CreateOption                :FromImage
-data:        Vhd:
-data:          Uri                       :https://computeteststore.blob.core.windows.net/vhds/clib45a8b650f4428a1-os-1471973896525.vhd
-data:
-data:    OS Profile:
-data:      Computer Name                 :TestVM1
-data:      User Name                     :ops
-data:      Linux Configuration:
-data:        Disable Password Auth       :true
-data:
-data:    Network Profile:
-data:      Network Interfaces:
-data:        Network Interface #1:
-data:          Primary                   :true
-data:          MAC Address               :00-0D-3A-24-D4-AA
-data:          Provisioning State        :Succeeded
-data:          Name                      :LB-NIC1
-data:          Location                  :westeurope
-data:
-data:    AvailabilitySet:
-data:      Id                            :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/TESTAVAILSET
-data:
-data:    Diagnostics Profile:
-data:      BootDiagnostics Enabled       :true
-data:      BootDiagnostics StorageUri    :https://computeteststore.blob.core.windows.net/
-data:
-data:      Diagnostics Instance View:
-info:    vm show command OK
+テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment#create) を使います。
 
+```azurecli
+az group deployment create --resource-group myNewResourceGroup \
+  --template-file myResourceGroup.json
 ```
 
+[テンプレートからデプロイする方法に関する詳細](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
-## 環境をテンプレートとしてエクスポートします。
-これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。この JSON テンプレートを参照することで全体の環境を構築します。[JSON テンプレートを手動で構築](../resource-group-authoring-templates.md) できます。または単純にJSON テンプレートを作成する既存の環境をエクスポートすることもできます。
+## <a name="next-steps"></a>次のステップ
+これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
-```bash
-azure group export TestRG
-```
-
-このコマンドで、現在の作業ディレクトリ内に `TestRG.json` ファイルが作成されます。このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、または VM を含むリソース名が表示されます。前に示した `azure group export` コマンドに `-p` または `--includeParameterDefaultValue` パラメーターを追加することでテンプレート ファイルにこれらの名前を入力できます。リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../resource-group-authoring-templates.md#parameters) します。
-
-テンプレートから環境を作成するには:
-
-```bash
-azure group deployment create -f TestRG.json -g NewRGFromTemplate
-```
-
-[テンプレートからデプロイする方法に関する詳細](../resource-group-template-deploy-cli.md) をご確認ください。段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
-
-## 次のステップ
-これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
-
-<!---HONumber=AcomDC_0914_2016-->

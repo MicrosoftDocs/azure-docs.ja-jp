@@ -1,17 +1,29 @@
 ---
+title: "Azure Redis Cache のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+services: redis-cache
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: redis-cache
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cd96f7ea32696ea920cd1622ae6d08692b4f8f4c
-ms.openlocfilehash: a244eaf8dff788354caab1c327a22cb5c5b423cf
+ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
+ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
 
 ---
 #<a name="redis-cache-documentation"></a>Redis Cache のドキュメント
 
-Azure Redis Cache は広く普及しているオープンソース Redis Cache を基盤にしています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Redis Cache に Azure 内の任意のアプリケーションからアクセスできます。 Azure Redis Cache によって、スループット向上と、一貫して短いデータ アクセスの待機時間による高速でスケーラブルな Azure アプリケーションが強化されます。
+アプリケーションに対してスループットが高く待機時間の短いデータ アクセスを提供する、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカー、Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure 上の任意のアプリケーションから Redis Cache を使用する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/redis-cache/cache-premium-tier-intro/">
+        <a href="/azure/redis-cache/cache-premium-tier-intro">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -52,7 +64,7 @@ Azure Redis Cache は広く普及しているオープンソース Redis Cache �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
+                            <img src="media/index/dotnet.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -64,7 +76,7 @@ Azure Redis Cache は広く普及しているオープンソース Redis Cache �
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache">
+        <a href="/azure/redis-cache/cache-web-app-howto">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,7 +94,7 @@ Azure Redis Cache は広く普及しているオープンソース Redis Cache �
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/documentdb-nodejs-get-started">
+        <a href="/azure/redis-cache/cache-nodejs-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -139,34 +151,54 @@ Azure Redis Cache は広く普及しているオープンソース Redis Cache �
 
 ---
 
-##<a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache">PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Azure CLI 2.0 (プレビュー)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
+                        <p><a href="http://redis.io/clients">Redis クライアント</a></p>
+                        <p><a href="http://redis.io/commands#">Redis コマンド</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-###<a name="azure-cli"></a>Azure CLI
-[Redis Cache と Azure CLI](/cli/azure/redis) 
-
-###<a name="net"></a>.NET 
-[Redis Cache に関する管理リファレンス API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Azure Java SDK](/java/api/)
-
-###<a name="rest"></a>REST () 
-[Redis Cache REST API リファレンス](/rest/api/)  
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-Redis Cache のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

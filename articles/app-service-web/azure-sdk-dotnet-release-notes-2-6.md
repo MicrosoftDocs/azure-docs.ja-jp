@@ -1,12 +1,12 @@
 ---
-title: Azure SDK for .NET 2.6 リリース ノート
-description: Azure SDK for .NET 2.6 リリース ノート
+title: "Azure SDK for .NET 2.6 リリース ノート"
+description: "Azure SDK for .NET 2.6 リリース ノート"
 services: app-service/web
 documentationcenter: .net
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: b45853d5-a2b8-4962-a22d-579cb36ae14c
 ms.service: app-service
 ms.devlang: multiple
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/17/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 01db792077bbb464400de1c00117d97443b4c2dc
+
 
 ---
-# <a name="azure-sdk-for-.net-2.6-release-notes"></a>Azure SDK for .NET 2.6 リリース ノート
+# <a name="azure-sdk-for-net-26-release-notes"></a>Azure SDK for .NET 2.6 リリース ノート
 このドキュメントには、Azure SDK for .NET 2.6 リリースのリリース ノートが含まれます。 
 
 Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NET Framework を手動でインストールした場合に、.NET 4.5.2 または .NET 4.6 をターゲットとするクラウド サービス アプリケーション (PaaS) を開発できます。 「 [Install .NET on a Cloud Service Role (クラウド サービス ロールに .NET をインストール)](http://go.microsoft.com/fwlink/?LinkID=309796)」を参照してください。
@@ -95,6 +99,9 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 ## <a name="see-also"></a>関連項目
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

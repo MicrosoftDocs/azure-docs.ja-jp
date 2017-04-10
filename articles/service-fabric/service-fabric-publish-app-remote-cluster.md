@@ -1,12 +1,12 @@
 ---
-title: Visual Studio を使用したリモート クラスターへのアプリの発行 | Microsoft Docs
-description: Visual Studio を使用してリモートの Service Fabric クラスターにアプリケーションを発行する方法について説明します。
+title: "Visual Studio を使用したリモート クラスターへのアプリの発行 |Microsoft Docs"
+description: "Visual Studio を使用してリモートの Service Fabric クラスターにアプリケーションを発行する方法について説明します。"
 services: service-fabric
 documentationcenter: na
 author: cawams
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: faecd892-eb54-4d9c-8023-c67442afb8e8
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e7bd4398503566684187831bde1e82f334a59f32
+
 
 ---
 # <a name="publish-an-application-to-a-remote-cluster-by-using-visual-studio"></a>Visual Studio を使用してリモート クラスターにアプリケーションを発行する
@@ -28,7 +32,7 @@ ms.author: cawa
 Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service Fabric クラスターへのアプリケーションの発行を反復可能な方法で簡単に実行できるうえに、スクリプト化することもできます。
 
 ## <a name="the-artifacts-required-for-publishing"></a>発行に必要なアーティファクトの概要
-### <a name="deploy-fabricapplication.ps1"></a>Deploy-FabricApplication.ps1
+### <a name="deploy-fabricapplicationps1"></a>Deploy-FabricApplication.ps1
 これは、Service Fabric アプリケーションを発行するためのパラメーターとして発行プロファイルのパスを使用する PowerShell スクリプトです。 このスクリプトはアプリケーションの一部であるため、アプリケーションに必要であれば修正できます。
 
 ### <a name="publish-profiles"></a>発行プロファイル
@@ -84,7 +88,7 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
    > 
 6. 必要な設定をすべて指定し終えたら、 **[発行]** をクリックし、選択した Service Fabric クラスターにアプリケーションを発行します。 指定した設定が、発行プロセスに適用されます。
 
-## <a name="publish-to-an-arbitrary-cluster-endpoint-(including-party-clusters)"></a>(パーティ クラスターを含む) 任意のクラスター エンドポイントに発行する
+## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>(パーティ クラスターを含む) 任意のクラスター エンドポイントに発行する
 Visual Studio の発行機能は、ご利用の Azure サブスクリプションの 1 つに関連付けられているリモート クラスターに発行するために最適化されています。 ただし、発行プロファイル XML を直接編集し、任意のエンドポイント (Service Fabric パーティ クラスターなど) に発行できます。 前述のように、**Local.xml** と **Cloud.xml** という 2 つの発行プロファイルが既定で提供されますが、別の環境向けに追加プロファイルを作成することもできます。 たとえば、パーティ クラスターに発行するために「 **Party.xml**」という名前のプロファイルを作成します。
 
 保護されていないクラスターに接続する場合、必要なものは、 `partycluster1.eastus.cloudapp.azure.com:19000`など、クラスター接続エンドポイントだけです。 その場合、発行プロファイルの接続エンドポイントは次のようになります。
@@ -112,6 +116,6 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

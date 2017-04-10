@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 4eee1b3f30c9e47983af5c1dfa60fe0deb8c2cc8
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
 この記事では、Microsoft Azure へのサインインに関する情報と、Azure サブスクリプションと Azure Active Directory (Azure AD) の関係など、関連する問題について説明します。
 
 ## <a name="accounts-that-you-can-use-to-sign-in"></a>サインインに使用できるアカウント
-サインインに使用できるアカウントから始めます。 Microsoft アカウント (旧称 Microsoft Live ID) と、Azure AD に格納されるアカウントである職場または学校アカウントの 2 種類があります。
+サインインに使用できるアカウントから始めます。 Microsoft アカウント (旧称 Microsoft Live ID) と、Azure AD に格納されるアカウントである職場または学校アカウントの&2; 種類があります。
 
 | Microsoft アカウント | Azure AD アカウント |
 | --- | --- |
@@ -39,21 +39,21 @@ ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
 
 > [!NOTE]
 > Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。 アカウントは、サービス管理者またはサブスクリプションの共同管理者である必要があります。
-> 
-> 
+>
+>
 
 ![][1]
 
 この Hotmail アドレスはコンシューマー アカウントであるため、サインインは Microsoft アカウント コンシューマー ID システムによって認証されます。 Azure AD の ID システムは、Microsoft アカウント システムによって行われた認証を信頼し、Azure サービスにアクセスするためのトークンを発行します。
 
 ## <a name="how-an-azure-subscription-is-related-to-azure-ad"></a>Azure サブスクリプションと Azure AD の関連性
-すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 サブスクリプションが信頼しているディレクトリは、[設定] タブで確認できます。 [サブスクリプションの設定を編集](active-directory-understanding-resource-access.md) して、信頼するディレクトリを変更できます。
+すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは&1; つのディレクトリだけを信頼します。 サブスクリプションが信頼しているディレクトリは、[設定] タブで確認できます。 [サブスクリプションの設定を編集](active-directory-understanding-resource-access.md) して、信頼するディレクトリを変更できます。
 
 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。 一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。
 
 同様に、サブスクリプション内の Azure AD 拡張機能は、Azure クラシック ポータルの他の拡張機能のように機能しません。 Azure クラシック ポータルの他の拡張機能は、 Azure サブスクリプションをその有効範囲としています。 Azure AD 拡張機能では、サブスクリプションに応じた表示の変化はありません。サインインしているユーザーに基づくディレクトリだけがサブスクリプションによって表示されます。
 
-すべてのユーザーにはそのユーザーを認証する 1 つのホーム ディレクトリがありますが、ユーザーは他のディレクトリのゲストになることもできます。 Azure AD 拡張機能では、ユーザー アカウントがメンバーとなっているディレクトリがすべて表示されます。 アカウントがメンバーではないディレクトリは表示されません。 ディレクトリは、Azure AD の職場または学校アカウントに対して、または Microsoft アカウント ユーザーに対して (Azure AD は Microsoft アカウント システムとフェデレーションされているため)、トークンを発行できます。
+すべてのユーザーにはそのユーザーを認証する&1; つのホーム ディレクトリがありますが、ユーザーは他のディレクトリのゲストになることもできます。 Azure AD 拡張機能では、ユーザー アカウントがメンバーとなっているディレクトリがすべて表示されます。 アカウントがメンバーではないディレクトリは表示されません。 ディレクトリは、Azure AD の職場または学校アカウントに対して、または Microsoft アカウント ユーザーに対して (Azure AD は Microsoft アカウント システムとフェデレーションされているため)、トークンを発行できます。
 
 次の図では、Contoso の職場アカウントを使用してサインアップした後の Michael Smith のサブスクリプションを示します。
 
@@ -68,7 +68,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 サブスクリプション管理者と同様、Azure AD 管理ロールには Microsoft アカウントか、職場または学校アカウントを使用できます。 Azure AD 管理ロールは、Office 365 や Microsoft Intune などの他のサービスによっても使用されます。 詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
 
-ここで重要なポイントは、Azure サブスクリプション管理者と Azure AD ディレクトリ管理者は 2 つの異なる概念であるということです。 Azure サブスクリプション管理者は、Azure のリソースを管理でき、Azure クラシック ポータルで Active Directory 拡張機能を表示できます (Azure クラシック ポータルは Azure のリソースであるため)。 ディレクトリ管理者は、ディレクトリ内のプロパティを管理できます。
+ここで重要なポイントは、Azure サブスクリプション管理者と Azure AD ディレクトリ管理者は&2; つの異なる概念であるということです。 Azure サブスクリプション管理者は、Azure のリソースを管理でき、Azure クラシック ポータルで Active Directory 拡張機能を表示できます (Azure クラシック ポータルは Azure のリソースであるため)。 ディレクトリ管理者は、ディレクトリ内のプロパティを管理できます。
 
 1 人のユーザーが両方のロールになることができますが、これは必須ではありません。 ユーザーをディレクトリ グローバル管理者ロールに割り当てることはできますが、Azure サブスクリプションのサービス管理者または共同管理者として割り当てることはできません。 サブスクリプションの管理者にならなければ、このユーザーは Azure クラシック ポータルにサインインできません。 ただし、そのユーザーは Azure AD PowerShell や Office 365 管理センターなどの他のツールを使用して、ディレクトリ管理タスクを実行できます。
 
@@ -92,7 +92,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。 使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。 このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。 サインアウトして、もう一度やり直してください。 サインインを妨げる可能性のあるエラーの詳細については、「 [Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/en-US/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
 
 ## <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Azure での Office 365 サブスクリプションのディレクトリの管理
-Azure にサインアップする前に Office 365 にサインアップしたものとします。 Office 365 サブスクリプションのディレクトリを Azure クラシック ポータルで管理することになりました。 その場合、Azure にサインアップしているかどうかに応じた 2 つの方法があります。
+Azure にサインアップする前に Office 365 にサインアップしたものとします。 Office 365 サブスクリプションのディレクトリを Azure クラシック ポータルで管理することになりました。 その場合、Azure にサインアップしているかどうかに応じた&2; つの方法があります。
 
 ### <a name="i-do-not-have-a-subscription-for-azure"></a>Azure のサブスクリプションがない場合
 この場合、必要なのは Office 365 へのサインインに使用している会社または学校のアカウントを使用して、 [にサインアップする](sign-up-organization.md)ことだけです。 Office 365 アカウントからの関連情報が、Azure のサインアップ フォームに事前に入力されます。 アカウントは、サブスクリプションのサービス管理者ロールに割り当てられます。  
@@ -104,8 +104,8 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 
 > [!NOTE]
 > この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。 ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、 **[既存のディレクトリの使用]** オプションは使用できません。
-> 
-> 
+>
+>
 
 1. Microsoft アカウントを使用して、Azure クラシック ポータルにサインインします。
 2. **[新規]** > **[App Services]** > **[Active Directory]** > **[ディレクトリ]** > **[カスタム作成]** をクリックします。
@@ -116,7 +116,7 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 7. Microsoft アカウントを使用して、Azure クラシック ポータルに再度サインインします。 両方のディレクトリが Active Directory 拡張機能に表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)
+* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)
 * Azure AD で役割を割り当てる方法の詳細については、「 [Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
@@ -128,6 +128,6 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

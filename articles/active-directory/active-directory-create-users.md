@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
 
 
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
+# <a name="add-new-users--or-users-with-microsoft-accounts-to-azure-active-directory"></a>新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
 ディレクトリに格納するユーザーを追加します。 この記事では、組織内の新しいユーザーを追加する方法と、Microsoft アカウントを持つユーザーを追加する方法について説明します。 Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法の詳細については、「 [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)」を参照してください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
 ## <a name="add-a-user"></a>ユーザーの追加
@@ -28,7 +28,7 @@ ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
 2. **[Active Directory]**を選択し、組織のディレクトリの名前を選択します。
 3. **[ユーザー]** タブを選択し、コマンド バーの **[ユーザーの追加]** をクリックします。
 4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** で次のいずれかを選択します。
-   
+
    * **[組織内の新しいユーザー]** - ディレクトリに新しいユーザー アカウントを追加します。
    * **[既存の Microsoft アカウントを持つユーザー]** - ディレクトリに既存の Microsoft コンシューマー アカウント (Outlook アカウントなど) を追加します。
 5. **[ユーザーの種類]**に応じて、ユーザー名 (新しいユーザーの場合) または電子メール アドレス (Microsoft アカウントを持つユーザーの場合) を入力します。
@@ -37,11 +37,11 @@ ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
 
 > [!IMPORTANT]
 > 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
-> 
-> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com. を追加します。
-> * geoffgrisso@contoso.onmicrosoft.com. を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序が重要であり、元に戻すのが難しい場合があります。
-> 
-> 
+>
+> * 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば、**最初に** geoffgrisso@contoso.onmicrosoft.com, を追加し、**その後に** geoffgrisso@contoso.com を追加します。
+> * geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。 この順序は重要であり、なかなか元に戻すことができない場合があります。
+>
+>
 
 ## <a name="change-user-information"></a>ユーザー情報を変更する
 ユーザーの属性は、オブジェクト ID を除いてすべて変更できます。
@@ -79,7 +79,7 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 * [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
-* [Azure AD でのグループの管理](active-directory-manage-groups.md)
+* [Manage groups in Azure AD](active-directory-manage-groups.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
@@ -87,6 +87,6 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

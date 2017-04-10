@@ -1,19 +1,24 @@
 ---
-title: Azure Active Directory Domain Services の概要 | Microsoft Docs
-description: Azure Active Directory Domain Services の概要
+title: "Azure Active Directory Domain Services の概要 | Microsoft Docs"
+description: "Azure Active Directory Domain Services の概要"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 03/06/2017
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c70e80c413d0637f956c43686df29b8073daaa3b
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
@@ -57,8 +62,8 @@ Litware Corporation では、ID 情報をオンプレミスのディレクトリ
 
 > [!NOTE]
 > **パスワード同期は、ハイブリッド組織が Azure AD ドメイン サービスを使用する際に必須となります**。 これは、Azure AD ドメイン サービスで提供される管理対象ドメインでは、NTLM または Kerberos 認証方法を使用してユーザーを認証する上で、それらのユーザーの資格情報が必要となることによる要件です。
-> 
-> 
+>
+>
 
 ![Litware Corporation 向けの Azure AD ドメイン サービス](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
@@ -78,7 +83,4 @@ Azure AD ドメイン サービスを使用することで、次の恩恵を享�
 * **統合化** – Azure AD ドメイン サービスは、Azure AD テナントと密接に統合されます。 このため、最新のアプリケーションと従来のディレクトリ対応アプリケーションの両方のニーズに対処する統合されたクラウド ベースのエンタープライズ ディレクトリとして Azure AD を使用できるようになります。
 * **互換** – Azure AD ドメイン サービスが Windows Server Active Directory の実績のあるエンタープライズ グレードのインフラストラクチャに組み込まれています。 そのため、アプリケーションは、Windows Server Active Directory の機能との互換性をより高いレベルで活用できます。 現時点では、Windows Server AD で使用できるすべての機能が Azure AD ドメイン サービスで利用できるわけではありません。 ただし、使用できる機能については、オンプレミスのインフラストラクチャで依存している、対応する Windows Server AD 機能と互換性があります。 LDAP、Kerberos、NTLM、グループ ポリシー、およびドメインへの参加といった各機能は、さまざまな Windows Server リリースでテストおよび改良された完成度の高いサービスを構成します。
 * **コスト効果** – Azure AD ドメイン サービスを使用すると、従来のディレクトリ対応アプリケーションをサポートする ID インフラストラクチャを管理することに関連して発生するインフラストラクチャおよび管理の負担を回避できます。 これらのアプリケーションを Azure インフラストラクチャ サービスに移行することで、運用コストの大幅節減を実現することができます。
-
-<!--HONumber=Oct16_HO2-->
-
 

@@ -1,13 +1,13 @@
 ---
-title: ネットワーク セキュリティ グループのトラブルシューティング - PowerShell | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
+title: "ネットワーク セキュリティ グループのトラブルシューティング - PowerShell | Microsoft Docs"
+description: "Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
+
 
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Azure PowerShell を使用したネットワーク セキュリティ グループのトラブルシューティング
@@ -40,7 +44,7 @@ VM の NIC に適用されると、有効なセキュリティ規則を NSG か�
 ## <a name="detailed-troubleshooting-steps"></a>詳細なトラブルシューティングの手順
 VM の NSG のトラブルシューティングを行うには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」の記事をご覧ください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の記事をご覧ください。
 2. 次のコマンドを入力すると、リソース グループ *RG1* の *VM1-NIC1* という名前の NIC に適用されているすべての NSG 規則が返されます。
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -194,6 +198,9 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Mobile Apps とは](app-service-mobile-value-prop.md)
 ## [App Service とは](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [動作のしくみ](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -22,7 +22,7 @@
 
 ## Web アプリの作成
 ### [.NET](../app-service-web/web-sites-dotnet-get-started.md)
-### [Node.JS](../app-service-web/app-service-web-nodejs-get-started.md)
+### [Node.js](../app-service-web/app-service-web-nodejs-get-started.md)
 ### [Python](../app-service-web/web-sites-python-ptvs-django-mysql.md)
 ### [Java](../app-service-web/web-sites-java-get-started.md)
 ### [Marketplace アプリ](../app-service-web/web-sites-php-web-site-gallery.md)
@@ -96,14 +96,14 @@
 #### [Azure Web ジョブ SDK とは](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Azure App Service に .NET Web ジョブを作成する](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Web ジョブ SDK を使用して Azure Queue Storage を操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Web ジョブ SDK で Azure Service Bus を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### App Service 環境
 #### [App Service 環境で Web アプリを作成する](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [内部 Load Balancer を使用する](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [内部ロード バランサーを使用する](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [デプロイする](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [App Service にデプロイする](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -120,7 +120,7 @@
 #### [App Service 環境内でのアプリのスケーリング](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 #### [App Service 環境内での自動スケール](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## [管理]
+## 管理
 ### [構成](../app-service-web/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -207,24 +207,33 @@
 ### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リファレンス
-## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
-## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [.NET バックエンド SDK](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [Node.js バックエンド SDK](https://azure.github.io/azure-mobile-apps-node/)
+## [Android クライアント SDK](https://azure.github.io/azure-mobile-apps-android-client/)
+## [iOS クライアント SDK](https://azure.github.io/azure-mobile-apps-ios-client/)
+## [JavaScript/Cordova クライアント SDK](https://azure.github.io/azure-mobile-apps-js-client/)
+## [Windows/Xamarin クライアント SDK](https://msdn.microsoft.com/library/azure/mt419521.aspx)
+
+# 関連項目
+## [GitHub リポジトリ](https://github.com/Azure/azure-mobile-apps)
+## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リソース
 ## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## サンプル
+### [フィールド エンジニア](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
+### [構造化データの同期](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
+### クイック スタートの完了
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
+#### [.NET バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
+#### [Node.JS バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

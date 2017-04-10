@@ -2,8 +2,8 @@
   
   * 冗長性と信頼性について
   * ステートフル アプリケーションとステートレス アプリケーション
-    * [ステートレスなアプリの構成](/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
-* App Service でのロード テスト アプリ
+    * [ステートレスなアプリの構成](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+* App Service でのロード テスト アプリ   
 * App Service のスケーリングのベスト プラクティス
   
   * ポートの消費と接続プール
@@ -14,4 +14,3 @@
   
   * [Traffic Manager を活用した、グローバルなスケールの実現](../articles/traffic-manager/traffic-manager-overview.md)
 
-<!---HONumber=AcomDC_0706_2016-->

@@ -1,12 +1,12 @@
 ---
-title: Send cross-platform notifications to users with Notification Hubs (ASP.NET)
-description: Learn how to use Notification Hubs templates to send, in a single request, a platform-agnostic notification that targets all platforms.
+title: "Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)"
+description: "Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。"
 services: notification-hubs
-documentationcenter: ''
+documentationcenter: 
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
@@ -14,20 +14,24 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0cc620324c75ed6ffee26fe442014d61673ba1e6
+
 
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Send cross-platform notifications to users with Notification Hubs
-In the previous tutorial [Notify users with Notification Hubs], you learned how to push notifications to all devices registered by a specific authenticated user. In that tutorial, multiple requests were required to send a notification to each supported client platform. Notification Hubs supports templates, which let you specify how a specific device wants to receive notifications. This simplifies sending cross-platform notifications. This topic demonstrates how to take advantage of templates to send, in a single request, a platform-agnostic notification that targets all platforms. For more detailed information about templates, see [Azure Notification Hubs Overview][Templates].
+# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>通知ハブによるユーザーへのクロスプラットフォーム通知の送信
+前のチュートリアル「[通知ハブによるユーザーへの通知]」では、認証された特定のユーザーにより登録されたすべてのデバイスにプッシュ通知を行う方法について説明しました。 そのチュートリアルでは、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。 通知ハブでは、テンプレートがサポートされています。テンプレートを使用すると、特定のデバイスが通知を受信する方法を指定できます。 これにより、クロスプラットフォーム通知の送信が簡単になります。 このトピックでは、テンプレートを活用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を示します。 テンプレートの詳細については、「[Notification Hubs の概要][テンプレート]」を参照してください。
 
 > [!NOTE]
-> Notification Hubs allows a device to register multiple templates with the same tag. In this case, an incoming message targeting that tag results in multiple notifications delivered to the device, one for each template. This enables you to display the same message in multiple visual notifications, such as both as a badge and as a toast notification in a Windows Store app.
+> Notification Hubs を使用すると、デバイスでは同じタグを持つ複数のテンプレートを登録できます。 この場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信されます (テンプレートごとに 1 つずつ)。 これにより、複数のビジュアル通知に同じメッセージを表示することが可能になります (Windows ストア アプリケーションでバッジおよびトースト通知の両方として表示するなど)。
 > 
 > 
 
-Complete the following steps to send cross-platform notifications using templates:
+次の手順を実行し、テンプレートを使用してクロスプラットフォーム通知を送信します。
 
-1. In the Solution Explorer in Visual Studio, expand the **Controllers** folder, then open the RegisterController.cs file.
-2. Locate the block of code in the **Post** method that creates a new registration replace the `switch` content with the following code:
+1. Visual Studio のソリューション エクスプローラーで、 **Controllers** フォルダーを展開し、RegisterController.cs ファイルを開きます。
+2. **Post** メソッドで新しい登録を作成するコード ブロックを見つけて、`switch` コンテンツを次のコードに置き換えます。
    
         switch (deviceUpdate.Platform)
         {
@@ -56,8 +60,8 @@ Complete the following steps to send cross-platform notifications using template
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
    
-    This code calls the platform-specific method to create a template registration instead of a native registration. Existing registrations need not be modified because template registrations derive from native registrations.
-3. In the **Notifications** controller, replace the **sendNotification** method with the following code:
+    このコードは、プラットフォーム固有のメソッドを呼び出して、ネイティブ登録の代わりにテンプレート登録を作成します。 テンプレート登録がネイティブ登録から派生している場合、既存の登録を変更する必要はありません。
+3. **Notifications** コントローラーで、**sendNotification** メソッドを次のコードに置き換えます。
    
         public async Task<HttpResponseMessage> Post()
         {
@@ -70,18 +74,18 @@ Complete the following steps to send cross-platform notifications using template
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    This code sends a notification to all platforms at the same time and without having to specify a native payload. Notification Hubs builds and delivers the correct payload to every device with the provided *tag* value, as specified in the registered templates.
-4. Re-publish your WebApi back-end project.
-5. Run the client app again and verify that registration succeeds.
-6. (Optional) Deploy the client app to a second device, then run the app.
+    このコードは、ネイティブ ペイロードを指定しなくても、すべてのプラットフォームに通知を同時に送信します。 Notification Hubs は、登録されたテンプレートでの指定内容に従って、提供された "*タグ*" 値を使用して適切なペイロードを作成して各デバイスに配信します。
+4. WebApi バックエンド プロジェクトを再発行します。
+5. もう一度クライアント アプリケーションを実行し、登録に成功したことを確認します。
+6. (省略可能) クライアント アプリケーションを 2 つ目のデバイスにデプロイし、アプリケーションを実行します。
    
-    Note that a notification is displayed on each device.
+    各デバイスに通知が表示される点に注目してください。
 
-## <a name="next-steps"></a>Next Steps
-Now that you have completed this tutorial, find out more about Notification Hubs and templates in these topics:
+## <a name="next-steps"></a>次のステップ
+このチュートリアルを完了したら、以下のトピックで通知ハブとテンプレートの詳細を参照してください。
 
-* **[Use Notification Hubs to send breaking news]** <br/>Demonstrates another scenario for using templates
-* **[Azure Notification Hubs Overview][Templates]**<br/>Overview topic has more detailed information on templates.
+* **[Notification Hubs を使用したニュース速報の送信]** <br/>別のテンプレート使用シナリオのデモンストレーションを行います。
+* **[Notification Hubs の概要][テンプレート]**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
 
 <!-- Anchors. -->
 
@@ -91,18 +95,18 @@ Now that you have completed this tutorial, find out more about Notification Hubs
 
 
 <!-- URLs. -->
-[Push to users ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Push to users Mobile Services]: /manage/services/notification-hubs/notify-users/
+[ASP.NET ユーザーへのプッシュ通知の送信]: /manage/services/notification-hubs/notify-users-aspnet
+[Mobile Services ユーザーへのプッシュ通知の送信]: /manage/services/notification-hubs/notify-users/
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
-[Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
-[Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[通知ハブによるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[テンプレート]: http://go.microsoft.com/fwlink/p/?LinkId=317339
+[方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,10 +1,9 @@
-AMS のラーニング パスについては、以下を参照してください。
+Azure Media Services のラーニング パスは、ここで参照できます。
 
-* [AMS のライブ ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [AMS のオンデマンド ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+* [Media Services のライブ ストリーミングのワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)に関する記事
+* [Media Services のオンデマンド ストリーミングのワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)に関する記事
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

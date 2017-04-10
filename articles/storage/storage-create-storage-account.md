@@ -1,10 +1,10 @@
 ---
 title: "Azure Portal でストレージ アカウントを作成、管理、削除する方法 | Microsoft Docs"
-description: "Azure ポータルで、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。"
+description: "Azure Portal で、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。"
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
+ms.date: 01/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d5b24b28f82c53b880e025dc43169aaad49e8434
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: eb9e9ca5082559ee0e30ea67bf53229d38f81589
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: d5b24b28f82c53b880e025dc43169aaad49e8434
 
 [!INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure ストレージ アカウントは、Azure Storage データ オブジェクトの格納およびアクセスのための一意の名前空間を提供します。 ストレージ アカウント内のすべてのオブジェクトは、グループとしてまとめて課金されます。 既定では、アカウントのデータはアカウント所有者だけが使用できます。
 
 [!INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
@@ -59,7 +60,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、**[新規]** -> **[データ + ストレージ]** -> **[ストレージ アカウント]** をクリックします。
+2. ハブ メニューで、**[新規]** -> **[ストレージ]** -> **[ストレージ アカウント]** の順にクリックします。
 3. ストレージ アカウントの名前を入力します。 Azure Storage 内のオブジェクトを指すためにストレージ アカウント名がどのように使用されるかについては、「 [ストレージ アカウント エンドポイント](#storage-account-endpoints) 」を参照してください。
    
    > [!NOTE]
@@ -68,7 +69,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
    > ストレージ アカウント名は Azure 内で一意である必要があります。 選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
    > 
    > 
-4. 使うデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。 **[リソース マネージャー]** が、推奨されるデプロイ モデルです。 詳細については、「 [リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
+4. 使うデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。 **[リソース マネージャー]** が、推奨されるデプロイ モデルです。 詳細については、「 [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
    
    > [!NOTE]
    > BLOB ストレージ アカウントを作成するには、Resource Manager デプロイ モデルを使用する必要があります。
@@ -99,7 +100,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 BLOB ストレージ アカウントでは、アクセス層を変更すると、料金の変更の他に、変更に対する課金が発生することがあります。 詳細については、 [BLOB ストレージ アカウントの価格と課金](storage-blob-storage-tiers.md#pricing-and-billing) に関するセクションを参照してください。
 
 ### <a name="manage-your-storage-access-keys"></a>ストレージ アクセス キーの管理
-ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
+ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 Azure によって&2; つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
 > [!NOTE]
 > ストレージ アクセス キーは、他の人と共有しないことをお勧めします。 アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *Shared Access Signature*が利用できます。 Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。 詳細については、「 [Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md) 」を参照してください。
@@ -110,7 +111,7 @@ BLOB ストレージ アカウントでは、アクセス層を変更すると�
 [Azure Portal](https://portal.azure.com) で、お使いのストレージ アカウントに移動し、**[すべての設定]**、**[アクセス キー]** の順にクリックすると、アカウントのアクセス キーを表示、コピー、再生成できます。 また、 **[アクセス キー]** ブレードには、コピーしてアプリケーションで使用できるプライマリ キーとセカンダリ キーを使用してあらかじめ構成された接続文字列も含まれています。
 
 #### <a name="regenerate-storage-access-keys"></a>ストレージ アクセス キーの再生成
-ストレージ接続のセキュリティを維持するために、ストレージ アカウントのアクセス キーを定期的に変更することをお勧めします。 アクセス キーは 2 つ割り当てられるため、一方のアクセス キーでストレージ アカウントに接続したまま、もう一方のアクセス キーを再生成できます。
+ストレージ接続のセキュリティを維持するために、ストレージ アカウントのアクセス キーを定期的に変更することをお勧めします。 アクセス キーは&2; つ割り当てられるため、一方のアクセス キーでストレージ アカウントに接続したまま、もう一方のアクセス キーを再生成できます。
 
 > [!WARNING]
 > アクセス キーを再生成すると、そのストレージ アカウントに依存する Azure のサービスと独自のアプリケーションに影響する場合があります。 アクセス キーを使用してストレージ アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
@@ -158,10 +159,5 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 * [Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 * [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

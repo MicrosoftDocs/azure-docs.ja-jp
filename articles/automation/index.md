@@ -1,13 +1,25 @@
 ---
+title: "Azure Automation のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "時間を節約し、普段の管理タスクの信頼性を向上するために、Automation を使用してプロセスと構成管理を自動化する方法について説明します。"
+services: automation
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: automation
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: d6f53d51a2ceb6d499209b874c79d3d3ccb1758f
-ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
+ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
+ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
 
 ---
 # <a name="automation-documentation"></a>Automation のドキュメント
 
-ユーザーは Azure Automation を使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。 時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。
+Automation を使用して、クラウド環境で実行される普段の管理タスクの信頼性を向上し、時間を節約する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +41,7 @@ ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=automation">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=automation">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -123,28 +135,52 @@ ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
 
 ---
 
-## <a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation">PowerShell</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation">クラシック PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt662285.aspx">REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt163781">クラシック REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-### <a name="net"></a>.NET
-[Azure に関する管理リファレンス API](/dotnet/api)
-
-### <a name="rest"></a>REST ()
-[Automation REST API リファレンス](https://msdn.microsoft.com/en-us/library/azure/mt662285)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
-        <div class="img"></div>
-        <div class="text">
-Automation のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

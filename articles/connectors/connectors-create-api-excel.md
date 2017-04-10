@@ -1,13 +1,13 @@
 ---
-title: Excel コネクタを追加する | Microsoft Docs
-description: Excel コネクタと REST API パラメーターの概要
-services: ''
-documentationcenter: ''
+title: "Excel コネクタを追加する | Microsoft Docs"
+description: "Excel コネクタと REST API パラメーターの概要"
+services: 
+documentationcenter: 
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 03af8652-9223-4348-9490-602872a680f0
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,13 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 5c585b988cc1989288e1e5953d1bdab6b5281707
+ms.openlocfilehash: aa8b95bd92d6bed60ba20ffd28e53d26930d7a31
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# Excel コネクタの使用
-現時点では Logic Apps に Excel コネクタはありません。
+# <a name="get-started-with-the-excel-connector"></a>Excel コネクタの使用
+現時点では Logic Apps に Excel コネクタはありません。 
 
-## Excel データを使用するには
-[OneDrive](connectors-create-api-onedrive.md) などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして Excel データを格納できます。この CSV ファイルは、[フラット ファイル コネクタ](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md)で使用することもできます。
+## <a name="to-use-excel-data"></a>Excel データを使用するには
+[OneDrive](connectors-create-api-onedrive.md)などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして Excel データを格納できます。 この CSV ファイルは、 [フラット ファイル コネクタ](../logic-apps/logic-apps-enterprise-integration-flatfile.md)で使用することもできます。
 
 <!---
 
@@ -208,9 +213,8 @@ Applies to version: 1.0.
 
 
 ## Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+[Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md)  
 
 
 -->
 
-<!---HONumber=AcomDC_0824_2016-->

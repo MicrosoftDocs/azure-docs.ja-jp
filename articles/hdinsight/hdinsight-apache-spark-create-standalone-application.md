@@ -1,79 +1,86 @@
 ---
-title: Create standalone scala applications to run on HDInsight Spark clusters | Microsoft Docs
-description: Learn how to create a standalone Spark application to run on HDInsight Spark clusters.
+title: "スタンドアロン Scala アプリケーションを作成して Azure Spark クラスターで実行する | Microsoft Docs"
+description: "スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: b2467a40-a340-4b80-bb00-f2c3339db57b
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 02/06/2017
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 153b1ea4ec3d326fb533817cdb74d3489135f7d9
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight-linux"></a>Create a standalone Scala application to run on Apache Spark cluster on HDInsight Linux
-This article provides step-by-step guidance on developing standalone Spark applications written in Scala using Maven with IntelliJ IDEA. The article uses Apache Maven as the build system and starts with an existing Maven archetype for Scala provided by IntelliJ IDEA.  At a high-level, creating a Scala application in IntelliJ IDEA will involve the following steps:
+# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>スタンドアロン Scala アプリケーションを作成して、HDInsight の Apache Spark クラスターで実行する
 
-* Use Maven as the build system.
-* Update Project Object Model (POM) file to resolve Spark module dependencies.
-* Write your application in Scala.
-* Generate a jar file that can be submitted to HDInsight Spark clusters.
-* Run the application on Spark cluster using Livy.
+この記事では、Maven と IntelliJ IDEA を使用して、スタンドアロン Spark アプリケーションを Scala で開発する手順を説明します。 この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  大まかには、IntelliJ IDEA で Scala アプリケーションを作成するには、次の手順が必要です。
+
+* ビルド システムとして Maven を使用します。
+* プロジェクト オブジェクト モデル (POM) ファイルを更新して、Spark モジュールの依存関係を解決します。
+* Scala でアプリケーションを作成します。
+* HDInsight Spark クラスターに送信できる jar ファイルを生成します。
+* Livy を使用して Spark クラスターでアプリケーションを実行します。
 
 > [!NOTE]
-> HDInsight also provides an IntelliJ IDEA plugin tool to ease the process of creating and submitting applications to an HDInsight Spark cluster on Linux. For more information, see [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark applications](hdinsight-apache-spark-intellij-tool-plugin.md).
+> HDInsight には、アプリケーションを作成して Linux の HDInsight Spark クラスターに送信するプロセスを容易にする IntelliJ IDEA プラグイン ツールも用意されています。 詳細については、 [IntelliJ IDEA 用の HDInsight Tools プラグインを使用した Spark Scala アプリケーションの作成と送信](hdinsight-apache-spark-intellij-tool-plugin.md)に関するページをご覧ください。
 > 
 > 
 
-**Prerequisites**
+**前提条件**
 
-* An Azure subscription. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* An Apache Spark cluster on HDInsight Linux. For instructions, see [Create Apache Spark clusters in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
-* Oracle Java Development kit. You can install it from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-* A Java IDE. This article uses IntelliJ IDEA 15.0.1. You can install it from [here](https://www.jetbrains.com/idea/download/).
+* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
+* Java IDE。 この記事では、IntelliJ IDEA 15.0.1 を使用します。 [ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 
-## <a name="install-scala-plugin-for-intellij-idea"></a>Install Scala plugin for IntelliJ IDEA
-If IntelliJ IDEA installation did not not prompt for enabling Scala plugin, launch IntelliJ IDEA and go through the following steps to install the plugin:
+## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA 用の Scala プラグインをインストールする
+IntelliJ IDEA のインストールで、Scala プラグインを有効にするように求めるメッセージが表示されなかった場合は、IntelliJ IDEA を起動し、次の手順を実行してプラグインをインストールします。
 
-1. Start IntelliJ IDEA and from welcome screen click **Configure** and then click **Plugins**.
+1. IntelliJ IDEA を起動し、[ようこそ] 画面で、**[Configure (構成)]** をクリックし、**[Plugins (プラグイン)]** をクリックします。
    
-    ![Enable scala plugin](./media/hdinsight-apache-spark-create-standalone-application/enable-scala-plugin.png)
-2. In the next screen, click **Install JetBrains plugin** from the lower left corner. In the **Browse JetBrains Plugins** dialog box that opens, search for Scala and then click **Install**.
+    ![Scala プラグインの有効化](./media/hdinsight-apache-spark-create-standalone-application/enable-scala-plugin.png)
+2. 次の画面の左下隅にある **[Install JetBrains plugin (JetBrains プラグインのインストール)]** をクリックします。 **[Browse JetBrains Plugins (JetBrains プラグインを参照)]** ダイアログ ボックスが開いたら、Scala を検索して、**[Install (インストール)]** をクリックします。
    
-    ![Install scala plugin](./media/hdinsight-apache-spark-create-standalone-application/install-scala-plugin.png)
-3. After the plugin installs successfully, click the **Restart IntelliJ IDEA button** to restart the IDE.
+    ![Scala プラグインのインストール](./media/hdinsight-apache-spark-create-standalone-application/install-scala-plugin.png)
+3. プラグインが正常にインストールされたら、 **[Restart IntelliJ IDEA (IntelliJ IDEA の再起動)]** ボタンをクリックして、IDE を再起動します。
 
-## <a name="create-a-standalone-scala-project"></a>Create a standalone Scala project
-1. Launch IntelliJ IDEA and create a new project. In the new project dialog box, make the following choices, and then click **Next**.
+## <a name="create-a-standalone-scala-project"></a>スタンドアロンの Scala プロジェクトを作成する
+1. IntelliJ IDEA を起動し、新しいプロジェクトを作成します。 [New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、 **[Next (次へ)]**をクリックします。
    
-    ![Create Maven project](./media/hdinsight-apache-spark-create-standalone-application/create-maven-project.png)
+    ![Maven プロジェクトの作成](./media/hdinsight-apache-spark-create-standalone-application/create-maven-project.png)
    
-   * Select **Maven** as the project type.
-   * Specify a **Project SDK**. Click New and navigate to the Java installation directory, typically `C:\Program Files\Java\jdk1.8.0_66`.
-   * Select the **Create from archetype** option.
-   * From the list of archetypes, select **org.scala-tools.archetypes:scala-archetype-simple**. This will create the right directory structure and download the required default dependencies to write Scala program.
-2. Provide relevant values for **GroupId**, **ArtifactId**, and **Version**. Click **Next**.
-3. In the next dialog box, where you specify Maven home directory and other user settings, accept the defaults and click **Next**.
-4. In the last dialog box, specify a project name and location and then click **Finish**.
-5. Delete the **MySpec.Scala** file at **src\test\scala\com\microsoft\spark\example**. You do not need this for the application.
-6. If required, rename the default source and test files. From the left pane in the IntelliJ IDEA, navigate to **src\main\scala\com.microsoft.spark.example**. Right-click **App.scala**, click **Refactor**, click Rename file, and in the dialog box, provide the new name for the application and then click **Refactor**.
+   * プロジェクトの種類として、 **[Maven]** を選択します。
+   * **[Project SDK (プロジェクトのSDK)]** を指定します。 [New (新規)] をクリックし、Java のインストール ディレクトリに移動します。通常は、`C:\Program Files\Java\jdk1.8.0_66` です。
+   * **[Create from archetype (アーキタイプからの作成)]** オプションを選択します。
+   * アーキタイプの一覧から、 **org.scala-tools.archetypes:scala-archetype-simple**を選択します。 これによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
+2. **[GroupId]**、**[ArtifactId]**、および **[Version]** に関連する値を指定します。 **[次へ]**をクリックします。
+3. 次のダイアログ ボックスでは (ここでは、Maven ホーム ディレクトリとその他のユーザー設定を指定)、既定の設定をそのまま使用し、 **[Next (次へ)]**をクリックします。
+4. 最後のダイアログ ボックスで、プロジェクト名と場所を指定し、 **[Finish (完了)]**をクリックします。
+5. **src\test\scala\com\microsoft\spark\example** にある **MySpec.Scala** ファイルを削除します。 これはアプリケーションに必要ありません。
+6. 必要な場合は、既定のソースおよびテスト ファイルの名前を変更します。 IntelliJ IDEA の左側のウィンドウで、**src\main\scala\com.microsoft.spark.example** に移動します。 **App.scala** を右クリックし、**[Refactor (リファクター)]** をクリックし、[Rename file (ファイル名の変更)] をクリックし、ダイアログ ボックスで、アプリケーションの新しい名前を指定して、**[Refactor (リファクター)]** をクリックします。
    
-    ![Rename files](./media/hdinsight-apache-spark-create-standalone-application/rename-scala-files.png)  
-7. In the subsequent steps, you will update the pom.xml to define the dependencies for the Spark Scala application. For those dependencies to be downloaded and resolved automatically, you must configure Maven accordingly.
+    ![ファイルの名前変更](./media/hdinsight-apache-spark-create-standalone-application/rename-scala-files.png)  
+7. 以降の手順では、pom.xml を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、適宜、Maven を構成する必要があります。
    
-    ![Configure Maven for automatic downloads](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
+    ![自動ダウンロードのための Maven の構成](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
    
-   1. From the **File** menu, click **Settings**.
-   2. In the **Settings** dialog box, navigate to **Build, Execution, Deployment** > **Build Tools** > **Maven** > **Importing**.
-   3. Select the option to **Import Maven projects automatically**.
-   4. Click **Apply**, and then click **OK**.
-8. Update the Scala source file to include your application code. Open and replace the existing sample code with the following code and save the changes. This code reads the data from the HVAC.csv (available on all HDInsight Spark clusters), retrieves the rows that only have one digit in the sixth column, and writes the output to **/HVACOut** under the default storage container for the cluster.
+   1. **[File (ファイル)]** メニューの **[Settings (設定)]** をクリックします。
+   2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイ)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
+   3. **[Import Maven projects automaticallyMaven (Maven プロジェクトを自動的にインポートする)]**オプションを選択します。
+   4. **[Apply (適用)]** をクリックし、**[OK]** をクリックします。
+8. 目的のアプリケーション コードを含むように、Scala ソース ファイルを更新します。 ファイルを開き、既存のサンプル コードを次のコードに置き換え、変更を保存します。 このコードでは、HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、6 番目の列に 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
    
         package com.microsoft.spark.example
    
@@ -96,14 +103,14 @@ If IntelliJ IDEA installation did not not prompt for enabling Scala plugin, laun
             rdd1.saveAsTextFile("wasbs:///HVACout")
           }
         }
-9. Update the pom.xml.
+9. pom.xml ファイルを更新します。
    
-   1. Within `<project>\<properties>` add the following:
+   1. `<project>\<properties>` に、以下を追加します。
       
           <scala.version>2.10.4</scala.version>
           <scala.compat.version>2.10.4</scala.compat.version>
           <scala.binary.version>2.10</scala.binary.version>
-   2. Within `<project>\<dependencies>` add the following:
+   2. `<project>\<dependencies>` に、以下を追加します。
       
            <dependency>
              <groupId>org.apache.spark</groupId>
@@ -111,60 +118,58 @@ If IntelliJ IDEA installation did not not prompt for enabling Scala plugin, laun
              <version>1.4.1</version>
            </dependency>
       
-      Save changes to pom.xml.
-10. Create the .jar file. IntelliJ IDEA enables creation of JAR as an artifact of a project. Perform the following steps.
+      Pom.xml に変更内容を保存します。
+10. jar ファイルを作成します。 IntelliJ IDEA では、JAR をプロジェクトのアーティファクトとして作成できます。 次の手順に従います。
     
-    1. From the **File** menu, click **Project Structure**.
-    2. In the **Project Structure** dialog box, click **Artifacts** and then click the plus symbol. From the pop-up dialog box, click **JAR**, and then click **From modules with dependencies**.
+    1. **[File (ファイル)]** メニューの **[Project Structure (プロジェクトの構造)]** をクリックします。
+    2. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスで、**[Artifacts (アーティファクト)]** をクリックし、プラス記号をクリックします。 ポップアップ ダイアログ ボックスで、**[JAR]** をクリックし、**[From modules with dependencie] \(依存関係を持つモジュールから)** をクリックします。
        
-        ![Create JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-1.png)
-    3. In the **Create JAR from Modules** dialog box, click the ellipsis (![ellipsis](./media/hdinsight-apache-spark-create-standalone-application/ellipsis.png) ) against the **Main Class**.
-    4. In the **Select Main Class** dialog box, select the class that appears by default and then click **OK**.
+        ![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/create-jar-1.png)
+    3. **[Create JAR from Modules (モジュールから JAR を作成)]** ダイアログ ボックスで、**[Main Class (メイン クラス)]** の省略記号 (![省略記号](./media/hdinsight-apache-spark-create-standalone-application/ellipsis.png)) をクリックします。
+    4. **[Select Main Class (メインクラスの選択)]** ダイアログ ボックスで、既定で表示されるクラスを選択し、**[OK]** をクリックします。
        
-        ![Create JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-2.png)
-    5. In the **Create JAR from Modules** dialog box, make sure that the option to **extract to the target JAR** is selected, and then click **OK**. This creates a single JAR with all dependencies.
+        ![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/create-jar-2.png)
+    5. **[Create JAR from Modules] \(モジュールから JAR を作成)** ダイアログ ボックスで、**[extract to the target JAR] \(ターゲット JAR に抽出する)** オプションが選択されていることを確認し、**[OK]** をクリックします。 これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
        
-        ![Create JAR](./media/hdinsight-apache-spark-create-standalone-application/create-jar-3.png)
-    6. The output layout tab lists all the jars that are included as part of the Maven project. You can select and delete the ones on which the Scala application has no direct dependency. For the application we are creating here, you can remove all but the last one (**SparkSimpleApp compile output**). Select the jars to delete and then click the **Delete** icon.
+        ![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/create-jar-3.png)
+    6. [Output Layout (出力レイアウト)] タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**SparkSimpleApp compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、 **[Delete (削除)]** アイコンをクリックします。
        
-        ![Create JAR](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
+        ![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
        
-        Make sure **Build on make** box is selected, which ensures that the jar is created every time the project is built or updated. Click **Apply** and then **OK**.
-    7. From the menu bar, click **Build**, and then click **Make Project**. You can also click **Build Artifacts** to create the jar. The output jar is created under **\out\artifacts**.
+        **[Build on make] \(作成時にビルド)** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply (適用)]**、**[OK]** の順にクリックします。
+    7. メニュー バーの **[Build (ビルド)]** をクリックし、**[Make Project (プロジェクトの作成)]** をクリックします。 **[Build Artifact (アーティファクトのビルド)]** をクリックして、jar を作成することもできます。 出力 jar が **\out\artifacts** の下に作成されます。
        
-        ![Create JAR](./media/hdinsight-apache-spark-create-standalone-application/output.png)
+        ![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/output.png)
 
-## <a name="run-the-application-on-the-spark-cluster"></a>Run the application on the Spark cluster
-To run the application on the cluster, you must do the following:
+## <a name="run-the-application-on-the-spark-cluster"></a>Spark クラスターでアプリケーションを実行する
+クラスターでアプリケーションを実行するには、次の手順を実行します。
 
-* **Copy the application jar to the Azure storage blob** associated with the cluster. You can use [**AzCopy**](../storage/storage-use-azcopy.md), a command line utility, to do so. There are a lot of other clients as well that you can use to upload data. You can find more about them at [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md).
-* **Use Livy to submit an application job remotely** to the Spark cluster. Spark clusters on HDInsight includes Livy that exposes REST endpoints to remotely submit Spark jobs. For more information, see [Submit Spark jobs remotely using Livy with Spark clusters on HDInsight](hdinsight-apache-spark-livy-rest-interface.md).
+* **Azure Storage BLOB にアプリケーション jar をコピーします** 。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+* **アプリケーション ジョブをLivy を使用してリモートで送信** します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、「[Submit Spark jobs remotely using Livy with Spark clusters on HDInsight (HDInsight の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する)](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-## <a name="<a-name="seealso"></a>see-also"></a><a name="seealso"></a>See also
-* [Overview: Apache Spark on Azure HDInsight](hdinsight-apache-spark-overview.md)
+## <a name="seealso"></a>関連項目
+* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
-### <a name="scenarios"></a>Scenarios
-* [Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: Use Spark in HDInsight for building real-time streaming applications](hdinsight-apache-spark-eventhub-streaming.md)
-* [Website log analysis using Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### <a name="scenarios"></a>シナリオ
+* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-### <a name="create-and-run-applications"></a>Create and run applications
-* [Run jobs remotely on a Spark cluster using Livy](hdinsight-apache-spark-livy-rest-interface.md)
+### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>Tools and extensions
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Use Zeppelin notebooks with a Spark cluster on HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
-* [Kernels available for Jupyter notebook in Spark cluster for HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Use external packages with Jupyter notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+### <a name="tools-and-extensions"></a>ツールと拡張機能
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Manage resources
-* [Manage resources for the Apache Spark cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md)
-
-<!--HONumber=Oct16_HO2-->
+### <a name="manage-resources"></a>リソースの管理
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
 

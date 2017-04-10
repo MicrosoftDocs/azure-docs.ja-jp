@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 0aee1c31876060777c32c768e0767a39de86cb2a
-ms.openlocfilehash: 1c543fd9e760d448c42529e9d3e2b94f6f6c6a41
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ac631c83bf57a52f9ab99feda74545a65fafb9fd
 
 
 ---
@@ -51,6 +51,6 @@ Changes to the offer are not immediately visible to the tenant. To see the chang
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,15 +1,16 @@
-# Overview
+# 概要
 ## [Azure Automation とは](automation-intro.md)
-## [Azure Automation のセキュリティ](automation-security-overview.md)
-
 # 作業開始
 ## [Runbook を作成する](automation-first-runbook-graphical.md)
 ## [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 ## [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
-
-
 # 方法
+## 認証の設定
+### [Azure Automation での認証](automation-security-overview.md)
+### [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)
+### [Azure サービス管理と Resource Manager](automation-sec-configure-aduser-account.md)
+### [Amazon Web Services](automation-sec-configure-aws-account.md)
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
 ### [Runbook を作成およびインポートする](automation-creating-importing-runbook.md)
@@ -22,23 +23,20 @@
 ### [ソース管理の統合](automation-source-control-integration.md)
 ## Runbook の自動化
 ### [Runbook を開始する](automation-starting-a-runbook.md)
-### [Web 呼び出しから Runbook を開始する](automation-webhooks.md)
-### [Runbook のスケジュール](automation-scheduling-a-runbook.md)
+### [webhook から Runbook を開始する](automation-webhooks.md)
 ### [データセンターでの Runbook の実行](automation-hybrid-runbook-worker.md)
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
+### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
+### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ## 構成管理のデプロイ (DSC)
-### [望ましい状態への構成 (DSC)](automation-dsc-overview.md)
+### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
 ### [管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 ### [DSC 構成のコンパイル](automation-dsc-compile.md)
 ### [Chocolatey を使用した継続的なデプロイ](automation-dsc-cd-chocolatey.md)
-## 認証の設定
-### [Azure サービス管理と Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
-### [Azure RunAs アカウント](automation-sec-configure-azure-runas-account.md)
 ## Automation 資産の管理
 ### [証明書](automation-certificates.md)
 ### [接続](automation-connections.md)
@@ -46,44 +44,41 @@
 ### [統合モジュール](automation-integration-modules.md)
 ### [スケジュール](automation-schedules.md)
 ### [変数](automation-variables.md)
+### [Azure PowerShell モジュールの更新](automation-update-azure-modules.md)
 ## シナリオの自動化
 ### [Runbook ギャラリー](automation-runbook-gallery.md)
-### [仮想マシンの起動/停止](automation-solution-startstopvm-graphical.md)
-### [PowerShell で仮想マシンを起動/停止する](automation-solution-startstopvm-psworkflow.md)
 ### [Amazon Web Service VM を作成する](automation-scenario-aws-deployment.md)
 ### [Azure VM アラートを修復する](automation-azure-vm-alert-integration.md)
 ### [JSON タグを使用して VM を起動/停止する](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
-
-## [監視](automation-manage-send-joblogs-log-analytics.md)
-
+### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
+### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
+## 解決方法
+### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
+### [更新管理](../operations-management-suite/oms-solution-update-management.md)
+## 監視
+### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
+### [Log Analytics から Azure Automation アカウントのリンクを解除する](automation-unlink-from-log-analytics.md)
 ## 移行
 ### [Orchestrator から移行する](automation-orchestrator-migration.md)
 ### [Automation アカウントを移動する](automation-migrate-account-subscription.md)
-
 ## トラブルシューティング
 ### [一般的なエラーのトラブルシューティング](automation-troubleshooting-automation-errors.md)
-### [Runbook ジョブが中断されました](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
+### [Hybrid Runbook Worker のトラブルシューティング](automation-troubleshooting-hybrid-runbook-worker.md)
 # リファレンス
-## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/dn690262)
-## [Resource Manager REST API](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [クラシック デプロイ Rest](https://msdn.microsoft.com/library/azure/mt163781)
-
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
+## [REST ()](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)
 # リソース
+## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation) 
-## [Azure Automation トレーニング](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=automation)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
+## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

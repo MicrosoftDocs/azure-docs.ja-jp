@@ -1,45 +1,50 @@
 ---
-title: Scala および Azure 上の Spark を使用したデータ サイエンス | Microsoft Docs
-description: Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。
+title: "Scala および Azure 上の Spark を使用したデータ サイエンス | Microsoft Docs"
+description: "Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a7c97153-583e-48fe-b301-365123db3780
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2016
+ms.date: 03/24/2017
 ms.author: bradsev;deguhath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 99f12dc1ea65d4b9be3249ea5d5c7452f5a8d72e
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# Scala および Azure 上の Spark を使用したデータ サイエンス
-この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。また、[データ サイエンス プロセス](http://aka.ms/datascienceprocess) (データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
+# <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
+この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
 
 * 回帰問題: タクシー営業でのチップ金額 (ドル) の予測
 * 二項分類: タクシー営業でチップが支払われるかどうか (1/0) の予測
 
-モデリング プロセスには、テスト データ セットでのトレーニングと評価、および適切な精度評価基準が必要です。この記事では、これらのモデルを Azure BLOB ストレージに保存する方法と、その予測パフォーマンスをスコア付けして評価する方法について説明します。また、より高度なトピックとして、クロス検証およびハイパーパラメーター スイープを使用してモデルを最適化する方法についても説明します。ここで使用しているデータは、GitHub で公開されている 2013 年の NYC タクシーの営業と料金のデータセットから抽出したサンプルです。
+モデリング プロセスには、テスト データ セットでのトレーニングと評価、および適切な精度評価基準が必要です。 この記事では、これらのモデルを Azure BLOB ストレージに保存する方法と、その予測パフォーマンスをスコア付けして評価する方法について説明します。 また、より高度なトピックとして、クロス検証およびハイパーパラメーター スイープを使用してモデルを最適化する方法についても説明します。 ここで使用しているデータは、GitHub で公開されている 2013 年の NYC タクシーの営業と料金のデータセットから抽出したサンプルです。
 
-[Scala](http://www.scala-lang.org/) は Java 仮想マシン ベースの言語であり、オブジェクト指向の概念と関数型言語の概念を統合したものです。クラウドでの分散処理に適したスケーラブルな言語であり、Azure Spark クラスターで実行されます。
+[Scala](http://www.scala-lang.org/)は Java 仮想マシン ベースの言語であり、オブジェクト指向の概念と関数型言語の概念を統合したものです。 クラウドでの分散処理に適したスケーラブルな言語であり、Azure Spark クラスターで実行されます。
 
-[Spark](http://spark.apache.org/) は、ビッグ データ分析アプリケーションのパフォーマンスを高めるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。[spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) パッケージでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、高レベルの API 一式が提供されます。[MLlib](http://spark.apache.org/mllib/) はスケーラブルな Spark の機械学習ライブラリであり、これにより分散環境でもモデリング機能を使用できます。
+[Spark](http://spark.apache.org/) は、ビッグ データ分析アプリケーションのパフォーマンスを高めるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) パッケージでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、高レベルの API 一式が提供されます。 [MLlib](http://spark.apache.org/mllib/) はスケーラブルな Spark の機械学習ライブラリであり、これにより分散環境でもモデリング機能を使用できます。
 
-[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
+[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。 Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。 この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。 各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
 
-この記事のセットアップ手順およびコードは、Azure HDInsight 3.4 Spark 1.6 向けのものです。ただし、この記事および [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) のコードは汎用的であり、あらゆる Spark クラスターで機能します。HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、この記事に記載されている内容と若干異なります。
+この記事のセットアップ手順およびコードは、Azure HDInsight 3.4 Spark 1.6 向けのものです。 ただし、この記事および [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) のコードは汎用的であり、あらゆる Spark クラスターで機能します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、この記事に記載されている内容と若干異なります。
 
 > [!NOTE]
-> Scala ではなく Python を使用してエンドツーエンドのデータ サイエンス プロセスのタスクを実行する方法については、[Azure HDInsight での Spark を使用したデータ サイエンス](machine-learning-data-science-spark-overview.md)に関する記事をご覧ください。
+> Scala ではなく Python を使用してエンドツーエンドのデータ サイエンス プロセスのタスクを実行する方法については、 [Azure HDInsight での Spark を使用したデータ サイエンス](machine-learning-data-science-spark-overview.md)に関する記事をご覧ください。
 > 
 > 
 
-## 前提条件
-* Azure サブスクリプションが必要です。Azure サブスクリプションがない場合は、[Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* 以下の手順を完了するために、Azure HDInsight 3.4 Spark 1.6 クラスターが必要です。クラスターの作成については、[Azure HDInsight での Apache Spark クラスターの作成](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。クラスターの種類とバージョンは、**[Select Cluster Type (クラスターの種類の選択)]** メニューから指定します。
+## <a name="prerequisites"></a>前提条件
+* Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、 [Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* 以下の手順を完了するために、Azure HDInsight 3.4 Spark 1.6 クラスターが必要です。 クラスターの作成については、 [Azure HDInsight での Apache Spark クラスターの作成](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。 クラスターの種類とバージョンは、 **[Select Cluster Type (クラスターの種類の選択)]** メニューから指定します。
 
 ![HDInsight クラスターの種類の構成](./media/machine-learning-data-science-process-scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -47,44 +52,44 @@ ms.author: bradsev;deguhath
 > 
 > 
 
-NYC タクシー営業データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」の関連するセクションをご覧ください。
+NYC タクシー営業データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「 [Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」の関連するセクションをご覧ください。  
 
-## Spark クラスターで Jupyter Notebook の Scala コードを実行する
-Jupyter Notebook は Azure ポータルから起動できます。ダッシュボードで Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。**[Cluster Dashboards (クラスター ダッシュボード)]**、**[Jupyter Notebook]** の順にクリックして、Spark クラスターに関連付けられている Notebook を開きます。
+## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark クラスターで Jupyter Notebook の Scala コードを実行する
+Jupyter Notebook は Azure ポータルから起動できます。 ダッシュボードで Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。 **[クラスター ダッシュボード]**、**[Jupyter Notebook]** の順にクリックして、Spark クラスターに関連付けられている Notebook を開きます。
 
 ![クラスター ダッシュボードと Jupyter Notebook](./media/machine-learning-data-science-process-scala-walkthrough/spark-jupyter-on-portal.png)
 
-Jupyter Notebook には、https://&lt;clustername&gt;.azurehdinsight.net/jupyter からアクセスすることもできます。*clustername* はクラスターの名前に置き換えてください。Jupyter Notebook にアクセスするには、管理者アカウントのパスワードが必要です。
+Jupyter Notebook には、https://&lt;クラスター名&gt;.azurehdinsight.net/jupyter でアクセスすることもできます。 *clustername* はクラスターの名前に置き換えてください。 Jupyter Notebook にアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![クラスター名による Jupyter Notebook へのアクセス](./media/machine-learning-data-science-process-scala-walkthrough/spark-jupyter-notebook.png)
 
-**[Scala]** を選択すると、PySpark API を使用したいくつかのパッケージ済みノートブックのサンプルが含まれるディレクトリが表示されます。[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) で、この記事の Spark に関する一連のトピックのコード サンプルが含まれる Exploration-Modeling-and-Scoring-using-Scala.ipynb ノートブックを入手できます。
+**[Scala]** を選択すると、PySpark API を使用したいくつかのパッケージ済みノートブックのサンプルが含まれるディレクトリが表示されます。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)で、この記事の Spark に関する一連のトピックのコード サンプルが含まれる Exploration-Modeling-and-Scoring-using-Scala.ipynb ノートブックを入手できます。
 
-Github から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。Jupyter のホーム ページで、**[Upload]** ボタンをクリックします。エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、**[開く]** をクリックします。Scala Notebook は次の URL で入手できます。
+Github から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、 **[Upload]** ボタンをクリックします。 エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]**をクリックします。 Scala Notebook は次の URL で入手できます。
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## セットアップ: プリセットの Spark および Hive コンテキスト、Spark マジック、Spark ライブラリ
-### プリセットの Spark および Hive コンテキスト
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>セットアップ: プリセットの Spark および Hive コンテキスト、Spark マジック、Spark ライブラリ
+### <a name="preset-spark-and-hive-contexts"></a>プリセットの Spark および Hive コンテキスト
     # SET THE START TIME
     import java.util.Calendar
     val beginningTime = Calendar.getInstance().getTime()
 
 
-Jupyter Notebook に付属する Spark カーネルには、プリセットのコンテキストが用意されています。開発中のアプリケーションを操作するのに、Spark コンテキストまたは Hive コンテキストを明示的に設定する必要はありません。プリセットのコンテキストは次のとおりです。
+Jupyter Notebook に付属する Spark カーネルには、プリセットのコンテキストが用意されています。 開発中のアプリケーションを操作するのに、Spark コンテキストまたは Hive コンテキストを明示的に設定する必要はありません。 プリセットのコンテキストは次のとおりです。
 
-* `sc`: SparkContext 向け
-* `sqlContext`: HiveContext 向け
+* `sc` : SparkContext 向け
+* `sqlContext` : HiveContext 向け
 
-### Spark マジック
-Spark カーネルには定義済みの "マジック" が用意されています。マジックは、`%%` で呼び出すことができる特殊なコマンドです。以下の各コード サンプルでは、こうしたコマンドのうちの 2 つを使用しています。
+### <a name="spark-magics"></a>Spark マジック
+Spark カーネルには定義済みの "マジック" が用意されています。マジックは、`%%` で呼び出すことができる特殊なコマンドです。 以下の各コード サンプルでは、こうしたコマンドのうちの 2 つを使用しています。
 
-* `%%local`: 後続行のコードをローカルで実行するように指定します。コードは有効な Scala コードである必要があります。
-* `%%sql -o <variable name>`: `sqlContext` に対して Hive クエリを実行します。`-o` パラメーターを渡すと、クエリの結果が Spark データ フレームとして `%%local` Scala コンテキストで永続化されます。
+* `%%local`: 後続行のコードをローカルで実行するように指定します。 コードは有効な Scala コードである必要があります。
+* `%%sql -o <variable name>`: `sqlContext` に対して Hive クエリを実行します。 `-o` パラメーターを渡すと、クエリの結果が Spark データ フレームとして `%%local` Scala コンテキストで永続化されます。
 
-Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定義済みの "マジック" (例: `%%local`) の詳細については、[HDInsight の HDInsight Spark Linux クラスターで Jupyter Notebook 向けに使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事をご覧ください。
+Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定義済みの "マジック" (例: `%%local`) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
 
-### ライブラリのインポート
+### <a name="import-libraries"></a>ライブラリのインポート
 次のコードを使用して、Spark や MLlib などの必要なライブラリをインポートします。
 
     # IMPORT SPARK AND JAVA LIBRARIES
@@ -121,8 +126,8 @@ Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定�
     val sqlContext = new SQLContext(sc)
 
 
-## データの取り込み
-データ サイエンス プロセスではまず、分析するデータを取り込みます。データは、データが保管されている外部のソースまたはシステムからデータ探索およびモデリング環境に読み込みます。この記事で取り込むデータは、タクシーの営業ファイルおよび料金ファイル (.tsv ファイルとして保存) を結合した 0.1% サンプルです。データ探索およびモデリング環境は Spark です。このセクションでは、次の一連のタスクを実行するコードを示します。
+## <a name="data-ingestion"></a>データの取り込み
+データ サイエンス プロセスではまず、分析するデータを取り込みます。 データは、データが保管されている外部のソースまたはシステムからデータ探索およびモデリング環境に読み込みます。 この記事で取り込むデータは、タクシーの営業ファイルおよび料金ファイル (.tsv ファイルとして保存) を結合した 0.1% サンプルです。 データ探索およびモデリング環境は Spark です。 このセクションでは、次の一連のタスクを実行するコードを示します。
 
 1. データおよびモデル ストレージのディレクトリ パスを設定する。
 2. 入力データセット (.tsv ファイルとして保存) を読み取る。
@@ -131,10 +136,10 @@ Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定�
 5. データを SQLContext に一時テーブルとして登録する。
 6. テーブルに対してクエリを実行し、結果をデータ フレームにインポートする。
 
-### Azure BLOB ストレージ内のストレージの場所のディレクトリ パスを設定する
-Spark は、Azure BLOB ストレージの読み取りおよび書き込みを行うことができます。Spark を使用して任意の既存データを処理してから、結果を BLOB ストレージに再び保存することができます。
+### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Azure BLOB ストレージ内のストレージの場所のディレクトリ パスを設定する
+Spark は、Azure BLOB ストレージの読み取りおよび書き込みを行うことができます。 Spark を使用して任意の既存データを処理してから、結果を BLOB ストレージに再び保存することができます。
 
-BLOB ストレージにモデルまたはファイルを保存するには、パスを適切に指定する必要があります。Spark クラスターに接続されている既定のコンテナーは、`wasb:///` で参照できます。他の場所は、`wasb://` で参照できます。
+BLOB ストレージにモデルまたはファイルを保存するには、パスを適切に指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 `wasb:///`で参照できます。 他の場所は、 `wasb://`で参照できます。
 
 次のコード サンプルでは、読み取る入力データの場所と、Spark クラスターに接続された、モデルの保存先となる BLOB ストレージのパスを指定しています。
 
@@ -148,7 +153,7 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
     val modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/";
 
 
-### データをインポートして RDD を作成し、スキーマに従ってデータ フレームを定義する
+### <a name="import-data-create-an-rdd-and-define-a-data-frame-according-to-the-schema"></a>データをインポートして RDD を作成し、スキーマに従ってデータ フレームを定義する
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -226,7 +231,7 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 
 セルの実行時間: 8 秒。
 
-### テーブルに対してクエリを実行し、結果をデータ フレームにインポートする
+### <a name="query-the-table-and-import-results-in-a-data-frame"></a>テーブルに対してクエリを実行し、結果をデータ フレームにインポートする
 次に、テーブルに対してクエリを実行して料金、乗客、チップのデータを取得し、破損したデータや範囲外のデータを除外して、複数の行を出力します。
 
     # QUERY THE DATA
@@ -245,36 +250,36 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 
 **出力:**
 
-| fare\_amount | passenger\_count | tip\_amount | tipped |
+| fare_amount | passenger_count | tip_amount | tipped |
 | --- | --- | --- | --- |
-|  13\.5 |1\.0 |2\.9 |1\.0 |
-|  16\.0 |2\.0 |3\.4 |1\.0 |
-|  10\.5 |2\.0 |1\.0 |1\.0 |
+|        13.5 |1.0 |2.9 |1.0 |
+|        16.0 |2.0 |3.4 |1.0 |
+|        10.5 |2.0 |1.0 |1.0 |
 
-## データの探索と視覚化
-データを Spark に取り込んだら、次に、探索と視覚化によってデータに関する理解を深めます。このセクションでは、SQL クエリを使用してタクシーのデータを調べます。次に、結果をデータ フレームにインポートし、Jupyter の自動視覚化機能を使用してターゲット変数と予想される特徴をプロットし、視覚化してチェックします。
+## <a name="data-exploration-and-visualization"></a>データの探索と視覚化
+データを Spark に取り込んだら、次に、探索と視覚化によってデータに関する理解を深めます。 このセクションでは、SQL クエリを使用してタクシーのデータを調べます。 次に、結果をデータ フレームにインポートし、Jupyter の自動視覚化機能を使用してターゲット変数と予想される特徴をプロットし、視覚化してチェックします。
 
-### ローカル マジックと SQL マジックを使用してデータをプロットする
-既定では、Jupyter Notebook から実行するコード スニペットの出力は、ワーカー ノードで永続化されるセッションのコンテキスト内で使用できます。計算を実行するたびに乗車データをワーカー ノードに保存する場合や、計算に必要なすべてのデータが Jupyter サーバー ノード (ヘッド ノード) でローカルで使用可能な場合は、`%%local`マジックを使用して Jupyter サーバー上でコード スニペットを実行できます。
+### <a name="use-local-and-sql-magic-to-plot-data"></a>ローカル マジックと SQL マジックを使用してデータをプロットする
+既定では、Jupyter Notebook から実行するコード スニペットの出力は、ワーカー ノードで永続化されるセッションのコンテキスト内で使用できます。 計算を実行するたびに乗車データをワーカー ノードに保存する場合や、計算に必要なすべてのデータが Jupyter サーバー ノード (ヘッド ノード) でローカルで使用可能な場合は、 `%%local` マジックを使用して Jupyter サーバー上でコード スニペットを実行できます。
 
-* **SQL マジック** (`%%sql`): HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。つまり、出力結果をローカルから使用できるようになります。
-* `%%local` **マジック**: `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+* **SQL マジック** (`%%sql`):  HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
+* `%%local` **マジック**:  `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
-### SQL を使用してデータを照会する
+### <a name="query-the-data-by-using-sql"></a>SQL を使用してデータを照会する
 このクエリでは、タクシーの営業について、料金、乗客数、チップの金額を取得します。
 
     # RUN THE SQL QUERY
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped FROM taxi_train WHERE passenger_count > 0 AND passenger_count < 7 AND fare_amount > 0 AND fare_amount < 200 AND payment_type in ('CSH', 'CRD') AND tip_amount > 0 AND tip_amount < 25
 
-次のコードでは、`%%local` マジックで sqlResults というローカル データ フレームを作成します。sqlResults は、matplotlib でのプロットに使用できます。
+次のコードでは、 `%%local` マジックで sqlResults というローカル データ フレームを作成します。 sqlResults は、matplotlib でのプロットに使用できます。
 
 > [!TIP]
-> この記事では、%%local マジックを何度も使用しています。データ セットが大きい場合は、サンプリングしてローカル メモリに収まるデータ フレームを作成してください。
+> この記事では、%%local マジックを何度も使用しています。 データ セットが大きい場合は、サンプリングしてローカル メモリに収まるデータ フレームを作成してください。
 > 
 > 
 
-### データをプロットする
+### <a name="plot-the-data"></a>データをプロットする
 データ フレームを Pandas データ フレームとしてローカル コンテキストに配置したら、Python コードを使用してプロットできます。
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
@@ -285,7 +290,7 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
     sqlResults
 
 
- コードの実行後、Spark カーネルによって SQL (HiveQL) クエリの出力が自動的に視覚化されます。視覚化は次の種類から選択できます。
+ コードの実行後、Spark カーネルによって SQL (HiveQL) クエリの出力が自動的に視覚化されます。 視覚化は次の種類から選択できます。
 
 * テーブル
 * 円グラフ
@@ -333,17 +338,17 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 
 ![料金別チップの金額](./media/machine-learning-data-science-process-scala-walkthrough/plot-tip-amount-by-fare-amount.png)
 
-## 特徴を作成および変換して、モデリング関数への入力用データを準備する
-Spark ML や MLlib のツリーベースのモデリング関数では、ビン分割、インデックス作成、ワンホット エンコード、ベクトル化などさまざまな手法を使用してターゲットと特徴を準備する必要があります。このセクションでは、次の手順について説明します。
+## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>特徴を作成および変換して、モデリング関数への入力用データを準備する
+Spark ML や MLlib のツリーベースのモデリング関数では、ビン分割、インデックス作成、ワンホット エンコード、ベクトル化などさまざまな手法を使用してターゲットと特徴を準備する必要があります。 このセクションでは、次の手順について説明します。
 
-1. 時間を乗車時間のバケットに**ビン分割**して新しい特徴を作成する。
-2. カテゴリの特徴に対して**インデックス作成とワンホット エンコード**を適用する。
-3. **データ セットのサンプリングを作成し、トレーニング用とテスト用に分ける**。
+1. 時間を乗車時間のバケットに **ビン分割** して新しい特徴を作成する。
+2. カテゴリの特徴に対して **インデックス作成とワンホット エンコード** を適用する。
+3. **データ セットのサンプリングを作成し、トレーニング用とテスト用に分ける** 。
 4. **トレーニング変数と特徴を指定し**、インデックス付きまたはワンホット エンコードされたトレーニング用およびテスト用の入力ラベル付きポイント耐障害性分散データセット (RDD) またはデータ フレームを作成する。
-5. 機械学習モデルの入力として使用する**特徴とターゲットの分類およびベクター化**を自動的に実行する。
+5. 機械学習モデルの入力として使用する **特徴とターゲットの分類およびベクター化** を自動的に実行する。
 
-### 時間を乗車時間のバケットにビン分割して新しい特徴を作成する
-次のコードでは、時間を乗車時間のバケットにビン分割して新しい特徴を作成する方法と、結果として生成されたデータ フレームをメモリにキャッシュする方法を示します。RDD とデータ フレームを繰り返し使用する場合、キャッシュを使用することで実行時間を短縮できます。そのため、以下の手順ではさまざまな段階で RDD とデータ フレームをキャッシュしています。
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>時間を乗車時間のバケットにビン分割して新しい特徴を作成する
+次のコードでは、時間を乗車時間のバケットにビン分割して新しい特徴を作成する方法と、結果として生成されたデータ フレームをメモリにキャッシュする方法を示します。 RDD とデータ フレームを繰り返し使用する場合、キャッシュを使用することで実行時間を短縮できます。 そのため、以下の手順ではさまざまな段階で RDD とデータ フレームをキャッシュしています。
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     val sqlStatement = """
@@ -363,14 +368,14 @@ Spark ML や MLlib のツリーベースのモデリング関数では、ビン�
     taxi_df_train_with_newFeatures.count()
 
 
-### カテゴリの特徴のインデックス作成とワンホット エンコードを実行する
-MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成するか、特徴をエンコードする方法について説明します。
+### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>カテゴリの特徴のインデックス作成とワンホット エンコードを実行する
+MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。 ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成するか、特徴をエンコードする方法について説明します。
 
-モデルの応じて、さまざまな方法でモデルのインデックス化またはエンコードを実行する必要があります。たとえば、ロジスティック回帰モデルと線形回帰モデルでは、ワンホット エンコードを行う必要があります。特徴に 3 つのカテゴリがある場合は、3 つの特徴列に展開できます。各列には、観測のカテゴリに応じて 0 または 1 が含まれます。MLlib には、ワンホット エンコードを実行する [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。このエンコードにより、特徴を数値化する必要があるアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
+モデルの応じて、さまざまな方法でモデルのインデックス化またはエンコードを実行する必要があります。 たとえば、ロジスティック回帰モデルと線形回帰モデルでは、ワンホット エンコードを行う必要があります。 特徴に 3 つのカテゴリがある場合は、3 つの特徴列に展開できます。 各列には、観測のカテゴリに応じて 0 または 1 が含まれます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、特徴を数値化する必要があるアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
-ここでは、例を示すために文字列である 4 つの変数だけを変換します。数値で表される他の変数 (weekday など) で、カテゴリ変数としてインデックスを作成することもできます。
+ここでは、例を示すために文字列である 4 つの変数だけを変換します。 数値で表される他の変数 (weekday など) で、カテゴリ変数としてインデックスを作成することもできます。
 
-インデックス作成には MLlib の `OneHotEncoder()` 関数を使用し、ワンホット エンコードには `StringIndexer()` 関数を使用します。カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
+インデックス作成には MLlib の `OneHotEncoder()` 関数を使用し、ワンホット エンコードには `StringIndexer()` 関数を使用します。 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -411,8 +416,8 @@ MLlib のモデリング関数と予測関数では、特徴のカテゴリ入�
 
 セルの実行時間: 4 秒。
 
-### データ セットのサンプリングを作成し、トレーニング用とテスト用に分ける
-次のコードでは、データのランダム サンプリングを作成します (この例では 25%)。この例のデータ セットのサイズでは、ランダム サンプリングを作成する必要はありませんが、必要に応じて独自の問題にランダム サンプリングを使用する方法がわかるように、この記事ではサンプリングの方法を示します。サンプル数が多い場合、ランダム サンプリングを作成することで、モデルのトレーニングにかかる時間を大幅に節約できます。次に、分類および回帰モデリングで使用するために、サンプルをトレーニング用 (この例では 75%) とテスト用 (この例では 25%) に分けます。
+### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>データ セットのサンプリングを作成し、トレーニング用とテスト用に分ける
+次のコードでは、データのランダム サンプリングを作成します (この例では 25%)。 この例のデータ セットのサイズでは、ランダム サンプリングを作成する必要はありませんが、必要に応じて独自の問題にランダム サンプリングを使用する方法がわかるように、この記事ではサンプリングの方法を示します。 サンプル数が多い場合、ランダム サンプリングを作成することで、モデルのトレーニングにかかる時間を大幅に節約できます。 次に、分類および回帰モデリングで使用するために、サンプルをトレーニング用 (この例では 75%) とテスト用 (この例では 25%) に分けます。
 
 ("rand" 列の) 各行には、トレーニング中にクロス検証のフォールドの選択に使用できる乱数 (0 ～ 1) を追加します。
 
@@ -450,10 +455,10 @@ MLlib のモデリング関数と予測関数では、特徴のカテゴリ入�
 
 セルの実行時間: 2 秒。
 
-### トレーニング変数と特徴を指定し、インデックス付きまたはワンホット エンコードされたトレーニング用およびテスト用の入力ラベル付きポイント RDD またはデータ フレームを作成する
-このセクションのコードでは、ラベル付きポイント データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。ラベル付きポイント オブジェクトは、MLlib のほとんどの機械学習アルゴリズムで入力データとして必要とされる方法でフォーマットされた RDD です。[ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)は、ラベル/応答に関連付けられたローカル ベクトル (密または疎) です。
+### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>トレーニング変数と特徴を指定し、インデックス付きまたはワンホット エンコードされたトレーニング用およびテスト用の入力ラベル付きポイント RDD またはデータ フレームを作成する
+このセクションのコードでは、ラベル付きポイント データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。 ラベル付きポイント オブジェクトは、MLlib のほとんどの機械学習アルゴリズムで入力データとして必要とされる方法でフォーマットされた RDD です。 [ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) は、ラベル/応答に関連付けられたローカル ベクトル (密または疎) です。
 
-次のコードでは、モデルのトレーニングに使用するターゲット (従属) 変数と特徴を指定します。指定後、インデックス付きまたはワンホット エンコードされたトレーニング用およびテスト用の入力ラベル付き RDD またはデータ フレームを作成します。
+次のコードでは、モデルのトレーニングに使用するターゲット (従属) 変数と特徴を指定します。 指定後、インデックス付きまたはワンホット エンコードされたトレーニング用およびテスト用の入力ラベル付き RDD またはデータ フレームを作成します。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -493,11 +498,11 @@ MLlib のモデリング関数と予測関数では、特徴のカテゴリ入�
 
 セルの実行時間: 4 秒。
 
-### 機械学習モデルの入力として使用する特徴とターゲットの分類およびベクター化を自動的に実行する
-Spark ML を使用して、ツリーベースのモデリング関数で使用するターゲットと特徴を分類します。コードでは次の 2 つのタスクを実行します。
+### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>機械学習モデルの入力として使用する特徴とターゲットの分類およびベクター化を自動的に実行する
+Spark ML を使用して、ツリーベースのモデリング関数で使用するターゲットと特徴を分類します。 コードでは次の 2 つのタスクを実行します。
 
 * しきい値として 0.5 を使用して、0 ～ 1 の各データ ポイントに値 0 または 1 を割り当てることで、分類の二項ターゲットを作成します。
-* 特徴を自動的に分類します。いずれかの特徴について異なる数値の数が 32 個未満の場合、その特徴は分類されます。
+* 特徴を自動的に分類します。 いずれかの特徴について異なる数値の数が 32 個未満の場合、その特徴は分類されます。
 
 これら 2 つのタスクのコードを次に示します。
 
@@ -530,21 +535,21 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 
 
 
-## 二項分類モデル: チップが支払われるかどうかを予測する
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二項分類モデル: チップが支払われるかどうかを予測する
 このセクションでは、チップが支払われるかどうかを予測する、次の 3 種類の二項分類モデルを作成します。
 
 * Spark ML の `LogisticRegression()` 関数を使用した**ロジスティック回帰モデル**
 * Spark ML の `RandomForestClassifier()` 関数を使用した**ランダム フォレスト分類モデル**
 * MLlib の `GradientBoostedTrees()` 関数を使用した**勾配ブースティング ツリー分類モデル**
 
-### ロジスティック回帰モデルを作成する
-次に、Spark ML の `LogisticRegression()` 関数を使用してロジスティック回帰モデルを作成します。次の一連の手順で、このモデルの構築コードを作成します。
+### <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
+次に、Spark ML の `LogisticRegression()` 関数を使用してロジスティック回帰モデルを作成します。 次の一連の手順で、このモデルの構築コードを作成します。
 
-1. 1 つのパラメーター セットを使用して**モデルをトレーニングする**
-2. メトリックを含むテスト データ セットで**モデルを評価する**
-3. 今後使用できるよう Blob ストレージに**モデルを保存する**
-4. テスト データと照らして**モデルにスコアを付ける**
-5. 受信者動作特性 (ROC) 曲線を使用して**結果をプロットする**
+1. **モデルをトレーニングする** 
+2. **モデルを評価する** 
+3. **モデルを保存する** 
+4. **モデルにスコアを付ける** 
+5. **結果をプロットする** 
 
 これらの手順のコードを次に示します。
 
@@ -634,7 +639,7 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 
 ![チップの有無に関する ROC 曲線](./media/machine-learning-data-science-process-scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
-### ランダム フォレスト分類モデルを作成する
+### <a name="create-a-random-forest-classification-model"></a>ランダム フォレスト分類モデルを作成する
 次に、Spark ML の `RandomForestClassifier()` 関数を使用してランダム フォレスト分類モデルを作成し、テスト データでモデルを評価します。
 
     # RECORD THE START TIME
@@ -667,7 +672,7 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 
 テスト データの ROC = 0.9847103571552683
 
-### GBT 分類モデルを作成する
+### <a name="create-a-gbt-classification-model"></a>GBT 分類モデルを作成する
 次に、MLib の `GradientBoostedTrees()` 関数を使用して GBT フォレスト分類モデルを作成し、テスト データでモデルを評価します。
 
     # TRAIN A GBT CLASSIFICATION MODEL BY USING MLLIB AND A LABELED POINT
@@ -723,13 +728,13 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 
 ROC 曲線下面積: 0.9846895479241554
 
-## 回帰モデル: チップの金額を予測する
+## <a name="regression-model-predict-tip-amount"></a>回帰モデル: チップの金額を予測する
 このセクションでは、チップの金額を予測する、次の 2 種類の回帰モデルを作成します。
 
-* Spark ML の `LinearRegression()` 関数を使用した**正規化線形回帰モデル**。このモデルは保存して、テスト データで評価します。
+* Spark ML の `LinearRegression()` 関数を使用した**正規化線形回帰モデル**。 このモデルは保存して、テスト データで評価します。
 * Spark ML の `GBTRegressor()` 関数を使用した**勾配ブースティング ツリー回帰モデル**。
 
-### 正規化線形回帰を作成する
+### <a name="create-a-regularized-linear-regression-model"></a>正規化線形回帰を作成する
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -819,10 +824,10 @@ ROC 曲線下面積: 0.9846895479241554
     # CLICK THE TYPE OF PLOT TO GENERATE (LINE, AREA, BAR, AND SO ON)
     sqlResults
 
-このコードでは、クエリの出力からローカル データ フレームを作成し、データをプロットします。`%%local` マジックで、matplotlib でのプロットに使用可能なローカル データフレーム (`sqlResults`) を作成します。
+このコードでは、クエリの出力からローカル データ フレームを作成し、データをプロットします。 `%%local` マジックで、matplotlib でのプロットに使用可能なローカル データフレーム (`sqlResults`) を作成します。
 
 > [!NOTE]
-> この Spark マジックは、この記事で何度も使用しています。データの量が大きい場合はサンプリングして、ローカル メモリに収まるデータフレームを作成する必要があります。
+> この Spark マジックは、この記事で何度も使用しています。 データの量が大きい場合はサンプリングして、ローカル メモリに収まるデータフレームを作成する必要があります。
 > 
 > 
 
@@ -848,10 +853,10 @@ Python matplotlib を使用してプロットを作成します。
 
 ![チップの金額: 実際の金額と予測金額](./media/machine-learning-data-science-process-scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
-### GBT 回帰モデルを作成する
+### <a name="create-a-gbt-regression-model"></a>GBT 回帰モデルを作成する
 次に、Spark ML の `GBTRegressor()` 関数を使用して GBT 回帰モデルを作成し、テスト データでモデルを評価します。
 
-[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。GBT は、回帰および分類に使用できます。カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。また、多クラス分類設定でも使用できます。
+[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は、回帰および分類に使用できます。 カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類設定でも使用できます。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -881,20 +886,20 @@ Python matplotlib を使用してプロットを作成します。
 
 テストの R-sqr = 0.7655383534596654
 
-## 最適化のための高度なモデリング ユーティリティ
-このセクションでは、開発者がモデルを最適化するために頻繁に用いる機械学習ユーティリティを使用します。具体的には、機械学習モデルの最適化は、パラメーター スイープとクロス検証を使用する 3 種類の方法で行うことができます。
+## <a name="advanced-modeling-utilities-for-optimization"></a>最適化のための高度なモデリング ユーティリティ
+このセクションでは、開発者がモデルを最適化するために頻繁に用いる機械学習ユーティリティを使用します。 具体的には、機械学習モデルの最適化は、パラメーター スイープとクロス検証を使用する 3 種類の方法で行うことができます。
 
 * データをトレーニング セットと検証セットに分け、トレーニング セットではハイパーパラメーター スイープを使用してモデルを最適化し、検証セットで評価を行う (線形回帰)
 * Spark ML の CrossValidator 関数を使用し、クロス検証とハイパーパラメーター スイープを使用してモデルを最適化する (二項分類)
 * 機械学習関数とパラメーター セットを利用するクロス検証とパラメーター スイープのカスタム コードを使用して、モデルを最適化する (線形回帰)
 
-**クロス検証** は、既知のデータ セットでトレーニングされたモデルが、トレーニングに使用されていないデータ セットの特徴の予測に対してどの程度汎用化されるかを評価する手法です。この手法のベースにある基本的な考え方は、既知のデータ セットでモデルをトレーニングし、それとは別のデータ セットで予測の精度をテストするというものです。一般的な実装では、データセットを *k* 個のフォールドに分割し、1 つを除くすべてのフォールドでラウンドロビン方式によりモデルをトレーニングします。
+**クロス検証** は、既知のデータ セットでトレーニングされたモデルが、トレーニングに使用されていないデータ セットの特徴の予測に対してどの程度汎用化されるかを評価する手法です。 この手法のベースにある基本的な考え方は、既知のデータ セットでモデルをトレーニングし、それとは別のデータ セットで予測の精度をテストするというものです。 一般的な実装では、データセットを *k*個のフォールドに分割し、1 つを除くすべてのフォールドでラウンドロビン方式によりモデルをトレーニングします。
 
-**ハイパーパラメーターの最適化**とは、学習アルゴリズムでどのようなハイパーパラメーターのセットを選択するかを検討することであり、一般的には、独立したデータ セットに対するアルゴリズムのパフォーマンスの測定を最適化する目的で行います。ハイパーパラメーターは、モデルのトレーニング手順とは別に指定する必要のある値です。ハイパーパラメーターに関する仮定は、モデルの柔軟性と精度に影響を及ぼします。たとえば、デシジョン ツリーには、必要なツリーの深さやリーフの数といったハイパーパラメーターがあります。サポート ベクター マシン (SVM) の場合は、誤分類ペナルティ項を設定する必要があります。
+**ハイパーパラメーターの最適化** とは、学習アルゴリズムでどのようなハイパーパラメーターのセットを選択するかを検討することであり、一般的には、独立したデータ セットに対するアルゴリズムのパフォーマンスの測定を最適化する目的で行います。 ハイパーパラメーターは、モデルのトレーニング手順とは別に指定する必要のある値です。 ハイパーパラメーターに関する仮定は、モデルの柔軟性と精度に影響を及ぼします。 たとえば、デシジョン ツリーには、必要なツリーの深さやリーフの数といったハイパーパラメーターがあります。 サポート ベクター マシン (SVM) の場合は、誤分類ペナルティ項を設定する必要があります。
 
-ハイパーパラメーターの最適化を実行する一般的な方法では、グリッド探索 (別名**パラメーター スイープ**) を使用します。グリッド探索では、学習アルゴリズムのハイパーパラメーター空間のうち、指定されたサブセットを対象としてしらみつぶしに値を探索します。クロス検証のパフォーマンス メトリックを使用すると、グリッド探索アルゴリズムによって生成される結果から最適なものを選別できます。クロス検証ハイパーパラメーター スイープを使用すると、トレーニング データに対してモデルがオーバーフィットされるなどの問題を抑えることができます。これにより、モデルをトレーニング データの抽出元のデータ セット全体に対して適用できるようになります。
+ハイパーパラメーターの最適化を実行する一般的な方法では、グリッド探索 (別名 **パラメーター スイープ**) を使用します。 グリッド探索では、学習アルゴリズムのハイパーパラメーター空間のうち、指定されたサブセットを対象としてしらみつぶしに値を探索します。 クロス検証のパフォーマンス メトリックを使用すると、グリッド探索アルゴリズムによって生成される結果から最適なものを選別できます。 クロス検証ハイパーパラメーター スイープを使用すると、トレーニング データに対してモデルがオーバーフィットされるなどの問題を抑えることができます。 これにより、モデルをトレーニング データの抽出元のデータ セット全体に対して適用できるようになります。
 
-### ハイパーパラメーター スイープを使用して線形回帰モデルを最適化する
+### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>ハイパーパラメーター スイープを使用して線形回帰モデルを最適化する
 次に、データをトレーニング セットと検証セットに分け、ハイパーパラメーター スイープを実行してトレーニング セットでモデルを最適化し、検証セットで評価します (線形回帰)。
 
     # RECORD THE START TIME
@@ -938,8 +943,8 @@ Python matplotlib を使用してプロットを作成します。
 
 テストの R-sqr = 0.6226484708501209
 
-### クロス検証とハイパーパラメーター スイープを使用して二項分類モデルを最適化する
-このセクションでは、クロス検証とハイパーパラメーター スイープを使用して二項分類モデルを最適化する方法を示します。これには、Spark ML の `CrossValidator` 関数を使用します。
+### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>クロス検証とハイパーパラメーター スイープを使用して二項分類モデルを最適化する
+このセクションでは、クロス検証とハイパーパラメーター スイープを使用して二項分類モデルを最適化する方法を示します。 これには、Spark ML の `CrossValidator` 関数を使用します。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -982,8 +987,8 @@ Python matplotlib を使用してプロットを作成します。
 
 セルの実行時間: 33 秒。
 
-### クロス検証とパラメーター スイープのカスタム コードを使用して線形回帰モデルを最適化する
-次に、カスタム コードを使用してモデルを最適化し、最高精度の基準を使用して最適なモデル パラメーターを特定します。その後、最終的なモデルを作成し、テスト データでモデルを評価して、BLOB ストレージにモデルを保存します。最後に、モデルを読み込み、テスト データをスコア付けして精度を評価します。
+### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>クロス検証とパラメーター スイープのカスタム コードを使用して線形回帰モデルを最適化する
+次に、カスタム コードを使用してモデルを最適化し、最高精度の基準を使用して最適なモデル パラメーターを特定します。 その後、最終的なモデルを作成し、テスト データでモデルを評価して、BLOB ストレージにモデルを保存します。 最後に、モデルを読み込み、テスト データをスコア付けして精度を評価します。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -1097,11 +1102,11 @@ Python matplotlib を使用してプロットを作成します。
 
 セルの実行時間: 61 秒。
 
-## Spark で構築した機械学習モデルの Scala での使用を自動化する
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、[Team Data Science Process](http://aka.ms/datascienceprocess) に関するページをご覧ください。
+## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark で構築した機械学習モデルの Scala での使用を自動化する
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
 
-シナリオごとの Team Data Science Process の手順を示したエンドツーエンドのチュートリアルについては、「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」に記載されています。これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。
+[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md) 」に記載されています。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。
 
-Scala コードを使用して、Spark で構築され Azure BLOB に保存されている機械学習モデルで新しいデータ セットを自動的に読み込んでスコア付けする手順については、「[Spark で構築した機械学習モデルのスコア付け](machine-learning-data-science-spark-model-consumption.md)」に記載されています。これらの資料の手順に従い、この記事の Scala コードを Python コードに置き換えるだけで使用を自動化できます。
+[Spark で構築した機械学習モデルのスコア付け](machine-learning-data-science-spark-model-consumption.md) 」に記載されています。 これらの資料の手順に従い、この記事の Scala コードを Python コードに置き換えるだけで使用を自動化できます。
 
-<!---HONumber=AcomDC_0921_2016-->
+

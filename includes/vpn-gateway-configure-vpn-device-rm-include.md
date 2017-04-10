@@ -1,14 +1,16 @@
+オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 さまざまな VPN デバイスが Azure での動作に対応しています。 VPN デバイスと構成設定については、[VPN デバイス](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 VPN デバイスを構成する前に、使用する VPN デバイスに関して、[デバイスの互換性に関する既知の問題](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)がないかどうかを確認してください。 VPN デバイスの具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。
 
-VPN デバイスを構成するには、オンプレミス VPN デバイスを構成するための、仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。 構成に関する具体的な情報についてはお使いのデバイスの製造元の情報を参照し、デバイスの構成を行ってください。 Azure で正しく動作する VPN デバイスの詳細については、「 [VPN デバイス](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) 」を参照してください。
+VPN デバイスを構成する際に、次の情報が必要になります。
 
-PowerShell を使用して仮想ネットワーク ゲートウェイのパブリック IP アドレスを検索するには、次のサンプルを使用します。
+- 仮想ネットワーク ゲートウェイの**パブリック IP アドレス**。
 
-    Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+    -  Azure Portal を使用してパブリック IP アドレスを調べるには、**[仮想ネットワーク ゲートウェイ]** に移動し、該当するゲートウェイの名前をクリックします。 
 
-仮想ネットワーク ゲートウェイのパブリック IP アドレスは、Azure ポータルを使用して表示することもできます。 **仮想ネットワーク ゲートウェイ**に移動し、ゲートウェイの名前をクリックします。
+    - PowerShell を使用して仮想ネットワーク ゲートウェイのパブリック IP アドレスを調べるには、次のコマンドを実際の値に置き換えて使用してください。
+
+            Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+- **共有キー**。 サイト間 VPN 接続を作成するときにも、これと同じ共有キーを指定します。 ここで紹介している例では、ごく基本的な共有キーを使用しています。 実際には、もっと複雑なキーを作成して使用してください。
 
 
-
-<!--HONumber=Nov16_HO2-->
 
 

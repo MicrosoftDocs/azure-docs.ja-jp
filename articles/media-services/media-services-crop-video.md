@@ -1,19 +1,23 @@
 ---
-title: ビデオをトリミングする方法 | Microsoft Docs
-description: この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。
+title: "Media Encoder Standard でビデオをトリミングする方法 - Azure | Microsoft Docs"
+description: "この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7628f674-2005-4531-8b61-d7a4f53e46ba
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/23/2017
 ms.author: anilmur;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 5be8472e242db6d17306ba086e4fe06e769018d7
+
 
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする
@@ -25,7 +29,7 @@ Media Encoder Standard (MES) をすると、入力ビデオをトリミングで
 
 MES でのトリミングは前処理段階であるため、エンコード プリセットのトリミング パラメーターは元の入力ビデオに適用されます。 エンコードは後処理段階です。幅/高さの設定は、元のビデオではなく *"前処理された"* ビデオに適用されます。 プリセットを設計するときに、(a) 元の入力ビデオに基づいてトリミング パラメーターを選択し、(b) トリミングされたビデオに基づいてエンコード設定を選択する必要があります。 エンコード設定とトリミングされたビデオが対応しないと、意図したとおりに出力されません。
 
-[次](media-services-advanced-encoding-with-mes.md#encoding_with_dotnet) のトピックは、MES でエンコード ジョブを作成する方法、およびエンコード タスクに対してカスタム プリセットを指定する方法を示しています。 
+[次](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) のトピックは、MES でエンコード ジョブを作成する方法、およびエンコード タスクに対してカスタム プリセットを指定する方法を示しています。 
 
 ## <a name="creating-a-custom-preset"></a>カスタム プリセットの作成
 図で示した例:
@@ -139,6 +143,8 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

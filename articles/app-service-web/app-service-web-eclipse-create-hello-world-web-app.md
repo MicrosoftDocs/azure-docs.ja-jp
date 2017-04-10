@@ -1,22 +1,26 @@
 ---
-title: Eclipse で Azure 用の Hello World Web アプリを作成する | Microsoft Docs
-description: このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成する方法について説明します。
+title: "Eclipse を使用した基本的な Azure Web アプリの作成 | Microsoft Docs"
+description: "このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成する方法について説明します。"
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 20d41e88-9eab-462e-8ee3-89da71e7a33f
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
-ms.author: robmcm
+ms.date: 12/22/2016
+ms.author: robmcm;asirveda
+translationtype: Human Translation
+ms.sourcegitcommit: 9bb0b5fa32cd6dabd6c41106db38a587b0a55eed
+ms.openlocfilehash: 18299966173f030f615049eaf11a55a1f71305a0
+
 
 ---
-# <a name="create-a-hello-world-web-app-for-azure-in-eclipse"></a>Eclipse で Azure 用の Hello World Web アプリを作成する
+# <a name="create-a-basic-azure-web-app-using-eclipse"></a>Eclipse を使用した基本的な Azure Web アプリの作成
 このチュートリアルでは、 [Azure Toolkit for Eclipse]を使用して、Web アプリとして基本的な Hello World アプリケーションを作成し、Azure にデプロイする方法について説明します。 簡潔にするために JSP の例を紹介していますが、Azure のデプロイに関する限り、基本的な Java サーブレットの場合も手順はほぼ同じです。
 
 このチュートリアルを完了し、作成したアプリケーションを Web ブラウザーで開くと、次の図のようになります。
@@ -26,9 +30,9 @@ ms.author: robmcm
 ## <a name="prerequisites"></a>前提条件
 * Java Developer Kit (JDK) v 1.8 以降。
 * Eclipse IDE for Java EE Developers Luna 以降。 <http://www.eclipse.org/downloads/> からダウンロードできます。
-* Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
+* Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション ([Apache Tomcat]、[Jetty] など)。
 * Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
-* Azure Toolkit for Eclipse。 詳細については、「 [Azure Toolkit for Eclipse のインストール]」を参照してください。
+* [Azure Toolkit for Eclipse]。 Azure Toolkit のインストールの詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 
 ## <a name="to-create-a-hello-world-application"></a>Hello World アプリケーションを作成するには
 最初に、Java プロジェクトを作成します。
@@ -72,7 +76,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
    
    1. **[New (新規)]**
       
-      ![[Deploy to Azure Web App Container (Azure Web アプリ コンテナーにデプロイ)] ダイアログ ボックス][15]
+       ![[Deploy to Azure Web App Container (Azure Web アプリ コンテナーにデプロイ)] ダイアログ ボックス][15]
    2. **[New Web App Container (新しい Web アプリ コンテナー)]** ダイアログ ボックスが表示されます。
       
        ![[New Web App Container (新しい Web アプリ コンテナー)] ダイアログ ボックス][07a]
@@ -111,7 +115,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
       * **[Location (場所)]** ドロップダウン メニューで、プランに適した Azure データ センターの場所を選択します。
       * **[Pricing Tier (価格レベル)]** ドロップダウン メニューで、プランに適した価格を選択します。 テスト目的の場合は、 **[Free]**を選択できます。
       * **[Instance Size (インスタンス サイズ)]** ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。 テスト目的の場合は、 **[Small]**を選択できます。
-   9. これらの手順をすべて完了すると、[New Web App Container](新しい Web アプリ コンテナー.md) ダイアログ ボックスは次の図のようになります。
+   9. これらの手順をすべて完了すると、[New Web App Container] \(新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
       
        ![[New Web App Container (新しい Web アプリ コンテナー)] ダイアログ ボックス][10]
    10. **[OK]** をクリックすると、新しい Web アプリ コンテナーの作成が完了します。
@@ -131,7 +135,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
     Web アプリを Azure にデプロイするプロセスは、わずか数秒で完了します。 アプリケーションの準備ができると、 **[Published (発行済み)]** in the **[Published (発行済み)]** というリンクが表示されます。 リンクをクリックすると、デプロイした Web アプリのホーム ページが表示されます。
 
 ## <a name="updating-your-web-app"></a>Web アプリの更新
-既存の実行中の Azure Web アプリを更新するプロセスは短時間で簡単です。更新には 2 つのオプションがあります。
+既存の実行中の Azure Web アプリを更新するプロセスは短時間で簡単です。更新には&2; つのオプションがあります。
 
 * 既存の Java Web アプリのデプロイを更新できます。
 * 同じ Web アプリ コンテナーに追加の Java アプリケーションを発行できます。
@@ -144,17 +148,17 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
 数秒後、**[Azure Activity Log (Azure アクティビティ ログ)]** ビューに更新されたデプロイが **[Published (発行済み)]** と表示され、Web ブラウザーで更新されたアプリケーションを確認できます。
 
-## <a name="stopping-an-existing-web-app"></a>既存の Web アプリを停止する
-既存の Azure Web アプリ コンテナー (コンテナー内にデプロイされているすべての Java アプリケーションを含む) を停止するには、 **[Azure Explorer]** ビューを使用できます。
+## <a name="starting-stopping-or-restarting-an-existing-web-app"></a>既存の Web アプリの起動、停止、再起動
+既存の Azure Web アプリ コンテナー (コンテナー内にデプロイされているすべての Java アプリケーションを含む) を起動または停止するには、 **[Azure Explorer]** (Azure Explorer) ビューを使用できます。
 
 **Azure 用エクスプローラー** ビューがまだ開いていない場合、Eclipse の **[ウィンドウ]** メニュー、**[Show View (ビューの表示)]**、**[Other (その他)]**、**[Azure]**、**[Azure Explorer (Azure 用エクスプローラー)]** の順にクリックして開きます。 まだログインしていない場合は、ログインするように求められます。
 
-**[Azure Explorer]** ビューが表示されたら、次の手順に従って Web アプリを停止します。 
+**[Azure Explorer]** (Azure Explorer) ビューが表示されたら、次の手順に従って Web アプリを起動また停止します。 
 
 1. **[Azure]** ノードを展開します。
 2. **[Web Apps (Web アプリ)]** ノードを展開します。 
 3. 目的の Web App を右クリックします。
-4. コンテキスト メニューが表示されたら、 **[Stop (停止)]**をクリックします。
+4. コンテキスト メニューが表示されたら、**[Start (起動)]****[Stop (停止)]**、または **[Restart (再起動)]** をクリックします。 メニュー項目はコンテキストに依存します。つまり、Web アプリが実行しているときは停止操作のみ、Web アプリが現在実行されていないときは起動操作のみを行うことができます。
    
     ![既存の Web アプリを停止する][13]
 
@@ -180,7 +184,7 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure Toolkit for IntelliJ]: ../azure-toolkit-for-intellij.md
-[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web-eclipse-create-hello-world-web-app.md
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ../azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ../azure-toolkit-for-intellij-installation.md
@@ -189,6 +193,8 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Web Apps の概要]: ./app-service-web-overview.md
+[Apache Tomcat]: http://tomcat.apache.org/
+[Jetty]: http://www.eclipse.org/jetty/
 
 <!-- IMG List -->
 
@@ -211,6 +217,6 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

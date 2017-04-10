@@ -1,24 +1,28 @@
 ---
-title: Azure でのリソース アクセスについて | Microsoft Docs
-description: このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。
+title: "Azure でのリソース アクセスについて | Microsoft Docs"
+description: "このトピックでは、完全な Azure Portal でのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。"
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+documentationcenter: 
+author: curtand
 manager: femila
-editor: ''
-
+ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: markusvi
+ms.date: 01/10/2017
+ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022
+ms.lasthandoff: 02/08/2017
+
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
 > [!NOTE]
-> このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。 Azure プレビュー ポータルで [ロール ベースのアクセス制御](role-based-access-control-configure.md) を使用して、Azure リソースをさらに細かく管理することもできます。
+> このトピックでは、完全な Azure Portal でのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。 Azure プレビュー ポータルで [ロール ベースのアクセス制御](role-based-access-control-configure.md) を使用して、Azure リソースをさらに細かく管理することもできます。
 > 
 > 
 
@@ -50,10 +54,10 @@ Azure クラシック ポータル内では、Microsoft アカウントを使用
 
 複数のディレクトリにまたがるサブスクリプションを使用しているユーザーは、サブスクリプション フィルターを使用して、Azure クラシック ポータルの現在のコンテキストを切り替えることができます。 内部的には、ディレクトリごとに異なるログインという結果になっていますが、この操作は、シングル サインオン (SSO) によってシームレスに実行されます。
 
-サブスクリプションのディレクトリ ビューが 1 つであるため、複数のサブスクリプション間でリソースを移動する、といった操作はさらに難しくなる可能性があります。 リソースの転送を実行するには、まず最初に **[設定]** の [サブスクリプション] ページから **[ディレクトリの編集]** コマンドを使って、同じディレクトリにサブスクリプションを関連付けます。
+サブスクリプションのディレクトリ ビューが&1; つであるため、複数のサブスクリプション間でリソースを移動する、といった操作はさらに難しくなる可能性があります。 リソースの転送を実行するには、まず最初に **[設定]** の [サブスクリプション] ページから **[ディレクトリの編集]** コマンドを使って、同じディレクトリにサブスクリプションを関連付けます。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)
+* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 * Azure AD でロールを割り当てる方法の詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](active-directory-assign-admin-roles.md)
 
@@ -62,9 +66,4 @@ Azure クラシック ポータル内では、Microsoft アカウントを使用
 [2]: ./media/active-directory-understanding-resource-access/IC707932.png
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

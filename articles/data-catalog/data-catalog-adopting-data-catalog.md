@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Catalog の導入 | Microsoft Docs"
+title: "Azure Data Catalog 導入のためのアプローチとプロセス | Microsoft Docs"
 description: "この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。"
 services: data-catalog
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/11/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
+ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
+ms.openlocfilehash: 646a7611f5680a4c08e9a5f5ff4e2a3e5631276f
 
 
 ---
-# <a name="adopting-azure-data-catalog"></a>Azure Data Catalog の導入
-この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の 3 点が重要になります。
+# <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
+この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の&3; 点が重要になります。
 
 ## <a name="introducing-the-azure-data-catalog"></a>Azure Data Catalog の概要
 仕事の世界で、どのようにデータ資産に関する専門情報を検索できる必要があるかに対して、ユーザーの期待が変わってきました。 今日、Yammer などのソーシャル メディア ツールを広い範囲のワークプレースで使用するため、広範なトピックにおけるサポートとアドバイスを素早く取得できることが期待されます。 **Azure Data Catalog** は、データ コンシューマーが利用可能なデータ ソースを検出し、領域の専門家によって提供される知識を得ることできる中央リポジトリのエンタープライズ データ資産に関する情報を、企業やチームが統合するために役立ちます。
@@ -34,7 +34,7 @@ ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
 **Azure Data Catalog** は Azure 内で完全に管理されたサービスで、セルフ サービスのデータ ソース検出を可能にする企業全体の情報 (メタデータ) カタログです。 Data Catalog を使用して、データ資産を登録および検出し、データ資産に注釈を付けたり接続したりします。 Data Catalog は、異なる情報資産を簡単に検索できるように管理し、ユーザーが検索するデータ資産を理解し、これらのデータ資産に接続できるようにして、洞察にかかる時間を減らし、組織の価値を高めるように設計されています。 詳細については、「 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)」を参照してください。
 
 ## <a name="azure-data-catalog-adoption-plan"></a>Azure Data Catalog の導入計画
-**Azure Data Catalog** の導入計画では、Data Catalog サービスを使用する利点をどのように利害関係者およびユーザーに伝達するか、およびサービスのユーザーに提供するトレーニングの種類について説明します。 Data Catalog を導入するための成功の鍵になる推進力の 1 つは、どのようにしてユーザーおよび利害関係者にサービスの価値を効率的に伝達するかということです。 初期導入計画の主な対象者は、サービスのユーザーです。 利害関係者からどれだけ購入されていたとしても、Data Catalog オファリングのユーザー (顧客) に使用されていなければ、導入が成功することはありません。 そのため、この記事は購入する利害関係者がいることを前提とし、Data Catalog のユーザー導入向けの計画を作成することに注目します。
+**Azure Data Catalog** の導入計画では、Data Catalog サービスを使用する利点をどのように利害関係者およびユーザーに伝達するか、およびサービスのユーザーに提供するトレーニングの種類について説明します。 Data Catalog を導入するための成功の鍵になる推進力の&1; つは、どのようにしてユーザーおよび利害関係者にサービスの価値を効率的に伝達するかということです。 初期導入計画の主な対象者は、サービスのユーザーです。 利害関係者からどれだけ購入されていたとしても、Data Catalog オファリングのユーザー (顧客) に使用されていなければ、導入が成功することはありません。 そのため、この記事は購入する利害関係者がいることを前提とし、Data Catalog のユーザー導入向けの計画を作成することに注目します。
 効果的な導入計画では、Data Catalog を使ってできることにユーザーを参加させることに成功し、それを実現するための情報とガイダンスをユーザーに提供します。 ユーザーのジョブを成功させるために役立てるには、ユーザーが Data Catalog の提供する価値を理解する必要があります。 ユーザーが、Data Catalog がデータを使ってより多くの結果を得るためにどのように役立つかを理解すると、Data Catalog を導入する価値が明確になります。 変更することは難しいため、変更の課題を考慮して、効果的に計画する必要があります。
 
 導入計画を使用すると、ユーザーが目標を成功および達成させるために、何が重要であるかを伝達することができます。 標準的な計画では、Data Catalog がどのようにユーザーの生活を容易にするかを説明します。次の項目が含まれています。
@@ -100,10 +100,10 @@ Data Catalog の一部のユース ケースを特定したら、共通シナリ
 
 **データ コンシューマー** は、ビジネスの問題を解決するために、データを使用する専門知識を持つユーザーです。 たとえば、Nancy はデータを分析する Adventure Works SQL Server のデータ ソースを使用するビジネス アナリストです。
 
-**Azure Data Catalog** が解決できるビジネスの問題の 1 つは、**データ プロデューサー**と**データ コンシューマー**をつなぐことです。 エンタープライズ データ ソースに関する情報の中央リポジトリとして提供することで、このユーザーをつなぎます。 Data Catalog を使用して、David は Adventure Works と SQL Server データ ソースを登録します。 クラウドソーシングを使用すると、このデータ ソースを検出するユーザーは、検出したデータを使用するだけでなく、データについての意見を共有することができます。 たとえば、Nancy はカタログを検索してデータ ソースを検出し、データに関する専門知識を共有します。  これで、組織の他のユーザーは、データ カタログを検索するだけで、共有された知識の恩恵を受けます。
+**Azure Data Catalog** が解決できるビジネスの問題の&1; つは、**データ プロデューサー**と**データ コンシューマー**をつなぐことです。 エンタープライズ データ ソースに関する情報の中央リポジトリとして提供することで、このユーザーをつなぎます。 Data Catalog を使用して、David は Adventure Works と SQL Server データ ソースを登録します。 クラウドソーシングを使用すると、このデータ ソースを検出するユーザーは、検出したデータを使用するだけでなく、データについての意見を共有することができます。 たとえば、Nancy はカタログを検索してデータ ソースを検出し、データに関する専門知識を共有します。  これで、組織の他のユーザーは、データ カタログを検索するだけで、共有された知識の恩恵を受けます。
 
-* データ ソースの登録に関する詳細については、「 [データ ソースの登録](data-catalog-get-started.md#exercise-2-registering-data-sources)」を参照してください。
-* データ ソースの検出に関する詳細については、「 [データ ソースの検索](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)」を参照してください。
+* データ ソースの登録に関する詳細については、「 [データ ソースの登録](data-catalog-get-started.md)」を参照してください。
+* データ ソースの検出に関する詳細については、「 [データ ソースの検索](data-catalog-get-started.md)」を参照してください。
 
 ### <a name="start-small-and-focused"></a>小規模から始めて集中する
 ほとんどのエンタープライズ パイロット プロジェクトでは、ビジネス ユーザーが Data Catalog の価値を迅速に確認できるように、重要なデータ ソースを含むカタログをシードする必要があります。 IT は、パイロット チームが興味を持つ可能性のある一般的なデータ ソースの識別から始めることをお勧めします。 SQL Server などのサポートされるデータ ソースでは、 **Azure Data Catalog** データ ソース登録ツールを使用することをお勧めします。 データ ソース登録ツールでは、SQL Server と Oracle データベース、SQL Server Reporting Services レポートを含む、広範囲にわたるデータ ソースを登録することができます。 現在のデータ ソースの完全な一覧については、「 [Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」を参照してください。
@@ -123,8 +123,8 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 
 > [!NOTE]
 > **Azure Data Catalog** API を使用して、Excel ブックを Data Catalog に移行するサンプル ツールを記述しています。 Data Catalog API とサンプル ツールの詳細については、[アドホック ブックのコード サンプルをダウンロード](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)のうえ、[Azure Data Catalog REST API](https://msdn.microsoft.com/library/azure/mt267593.aspx)ドキュメントを参照してください。
-> 
-> 
+>
+>
 
 パイロット プロジェクトの環境が整えば、Data Catalog の導入計画を実行します。
 
@@ -142,9 +142,9 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 パイロット チームが Data Catalog の使用に参加する前に、1 回目の会議を予定し、パイロット プロジェクトの期待値について検討して、最初のトレーニングを提供します。
 
 ### <a name="set-expectations"></a>期待値の設定
-例外と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の 1 つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも 1 つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md#exercise-2-registering-data-sources)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)に関するページを、それぞれ参照してください。
+例外と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の&1; つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも&1; つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md)に関するページを、それぞれ参照してください。
 
-定期的にチームと会議を行い、一部の注釈をレビューします。 データ ソースに関する適切な注釈は、中央の場所に意味のあるデータ ソースの洞察を提供するため、Data Catalog 導入の成功の核になります。 適切な注釈がなければ、データ ソースに関する知識は、企業全体にわたって分散して残ります。 「 [データ ソースに注釈を付ける方法](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)」を参照してください。
+定期的にチームと会議を行い、一部の注釈をレビューします。 データ ソースに関する適切な注釈は、中央の場所に意味のあるデータ ソースの洞察を提供するため、Data Catalog 導入の成功の核になります。 適切な注釈がなければ、データ ソースに関する知識は、企業全体にわたって分散して残ります。 「 [データ ソースに注釈を付ける方法](data-catalog-get-started.md)」を参照してください。
 
 また、当然ながら、プロジェクトの最終的なテストは、ユーザーが使用する必要のあるデータ ソースを検出および理解できるかどうかです。 パイロット ユーザーは、日常業務に使用するデータ ソースが関連していることを確認するために、カタログを定期的にテストする必要があります。 必要なデータ ソースが存在しない、または適切に注釈が付けられていない場合、追加のデータ ソースを登録するか、追加の注釈を指定するために、これはリマインダーとして機能する必要があります。 この実習はパイロットの作業に価値を加えるだけでなく、パイロットが完了した後に、他のチームに引き継がれる効果的な習慣も構築します。
 
@@ -162,14 +162,13 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 * [Azure Data Catalog の製品ページ](https://azure.microsoft.com/services/data-catalog/)
 * [Azure Data Catalog ドキュメント](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Azure Data Catalog の一般的なシナリオ](data-catalog-common-scenarios.md)
-* [データ ソースの登録](data-catalog-get-started.md#exercise-2-registering-data-sources)
-* [データ ソースの検索](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)
-* [データ ソースの注釈付け](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
-* [メタデータのクラウドソーシング](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
+* [データ ソースの登録](data-catalog-get-started.md)
+* [データ ソースの検索](data-catalog-get-started.md)
+* [データ ソースの注釈付け](data-catalog-get-started.md)
+* [メタデータのクラウドソーシング](data-catalog-get-started.md)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

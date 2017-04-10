@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
 
 
 ---
@@ -26,9 +26,9 @@ ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
 > 
 > 
 
-この記事では、Azure RemoteApp コレクションで個々のユーザーにアプリケーションを発行する方法について説明します。 これは Azure RemoteApp の新機能で、現時点では "プライベート プレビュー" 段階のため、選ばれた早期採用者のみが評価の目的で使用できます。
+この記事では、Azure RemoteApp コレクションで個々のユーザーにアプリケーションを発行する方法について説明します。 これは Azure RemoteApp の新機能で、現時点ではプライベート プレビュー段階のため、選ばれた早期採用者のみが評価の目的で使用できます。
 
-当初は、Azure RemoteApp により、アプリケーションを "発行する" 唯一の方法が実現しました。この方法では、管理者がイメージからアプリケーションを発行すると、そのアプリケーションがコレクション内のすべてのユーザーに表示されるようになりました。
+当初は、Azure RemoteApp により、アプリケーションを発行する唯一の方法が実現しました。この方法では、管理者がイメージからアプリケーションを発行すると、そのアプリケーションがコレクション内のすべてのユーザーに表示されるようになりました。
 
 一般的なシナリオでは、管理コストを削減するために、多くのアプリケーションを 1 つのイメージに含めて 1 つのコレクションをデプロイします。 多くの場合、必ずしもすべてのアプリケーションがすべてのユーザーに関連するとは限りません。そのため、管理者は、個々のユーザーにアプリケーションを発行し、ユーザーのアプリケーション フィードに不要なアプリケーションが表示されないようにすることができます。
 
@@ -36,8 +36,8 @@ ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
 
 1. コレクションは、次の 2 つのモードのいずれかに設定できます。
    
-   * 本来の "コレクション モード"。このモードでは、コレクション内のすべてのユーザーに、発行済みアプリケーションがすべて表示されます。 これは既定のモードです。
-   * 新しい "アプリケーション モード"。このモードでは、自身に明示的に割り当てられているアプリケーションのみが表示されます。
+   * 本来のコレクション モード。このモードでは、コレクション内のすべてのユーザーに、発行済みアプリケーションがすべて表示されます。 これは既定のモードです。
+   * 新しいアプリケーション モード。このモードでは、自身に明示的に割り当てられているアプリケーションのみが表示されます。
 2. 現時点では、アプリケーション モードを有効にできるのは、Azure RemoteApp PowerShell コマンドレットを使用した場合のみです。
    
    * アプリケーション モードに設定すると、コレクション内のユーザー割り当てを Azure ポータルを使用して管理することができません。 ユーザー割り当ては、PowerShell コマンドレットを使用して管理する必要があります。
@@ -49,7 +49,7 @@ ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Azure RemoteApp PowerShell コマンドレットを取得する方法
 新しいプレビュー機能を試すには、Azure PowerShell コマンドレットを使用する必要があります。 現在、Azure 管理ポータルを使用して新しいアプリケーション発行モードを有効にすることはできません。
 
-最初に、 [Azure PowerShell モジュール](../powershell-install-configure.md) がインストールされていることを確認します。
+最初に、 [Azure PowerShell モジュール](/powershell/azureps-cmdlets-docs) がインストールされていることを確認します。
 
 次に、PowerShell コンソールを管理者モードで起動し、次のコマンドレットを実行します。
 
@@ -106,6 +106,6 @@ AclLevel プロパティには、次の値が表示されます。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

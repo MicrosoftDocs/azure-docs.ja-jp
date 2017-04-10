@@ -1,19 +1,23 @@
 ---
-title: アカウント プロビジョニング通知 | Microsoft Docs
-description: アカウント プロビジョニング通知を有効にすることで、注意が必要なユーザー プロビジョニングに関連する問題を確実に知る方法について説明します。
+title: "アカウント プロビジョニング通知 | Microsoft Docs"
+description: "アカウント プロビジョニング通知を有効にすることで、注意が必要なユーザー プロビジョニングに関連する問題を確実に知る方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: a637aac7-f06b-48ef-a66d-639835a8edec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: markusvi
+ms.date: 04/06/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: e15f3740fbf7cd97002b0b7efda34e968db4fe3c
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="account-provisioning-notifications"></a>アカウント プロビジョニング通知
@@ -47,8 +51,4 @@ ms.author: markusvi
 <!--Image references-->
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
-
-
-<!--HONumber=Oct16_HO2-->
-
 

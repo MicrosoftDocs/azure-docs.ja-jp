@@ -1,7 +1,11 @@
 > [!div class="op_single_selector"]
-> * [Linux cluster](../articles/hdinsight/hdinsight-hadoop-run-samples-linux.md)
-> * [Windows cluster](../articles/hdinsight/hdinsight-run-samples.md)
+> * [Linux クラスター](../articles/hdinsight/hdinsight-hadoop-run-samples-linux.md)
+> * [Windows クラスター](../articles/hdinsight/hdinsight-run-samples.md)
 > 
 > 
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

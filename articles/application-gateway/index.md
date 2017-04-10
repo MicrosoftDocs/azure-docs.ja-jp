@@ -1,9 +1,26 @@
 ---
+title: "Azure Application Gateway のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウド アプリケーション配信コントローラーをデプロイする方法について説明します。 ドキュメントでは、Web フロントエンド用にアプリケーション レベルのルーティングと負荷分散を設定する方法を紹介します。"
+services: application-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Application Gateway Documentation
+ms.assetid: 
+ms.service: application-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 535364a9da46b137c4d32e1c3049a5be3496e5d2
+ms.lasthandoff: 03/15/2017
 
-Azure Application Gateway provides Application Deliver Controller (ADC) as a service.  It allows customers to optimize web farm productivity by offloading CPU-intensive SSL termination to the application geateway.  It is a dedicated virtual appliance for your application with scalability and high availability as well as a rich set of diagnostics and logging for better manageability.
+---
+# <a name="application-gateway-documentation"></a>Application Gateway のドキュメント
+
+サービスとしてのアプリケーション配信コントローラー (ADC) である Application Gateway をデプロイする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、スケーラブルな高可用性 Web フロントエンドを構築できるようにする、アプリケーション レベルのルーティングおよび負荷分散サービスを設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +34,7 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Application Gateway</h3>
+                        <h3>Application Gateway について</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +42,7 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-gateway">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-gateway">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +52,7 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Application Gateway Video Library</h3>
+                        <h3>Application Gateway のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +66,11 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Application Gateway with the Azure portal</h3>
+                        <h3>Azure Portal での Application Gateway の概要</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +84,11 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Application Gateway with PowerShell</h3>
+                        <h3>PowerShell を使用する Application Gateway の概要</h3>
                     </div>
                 </div>
             </div>
@@ -85,11 +102,11 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Application Gateway with an Azure Resource Manager template</h3>
+                        <h3>Resource Manager テンプレートを使用する Application Gateway の概要</h3>
                     </div>
                 </div>
             </div>
@@ -100,28 +117,51 @@ Azure Application Gateway provides Application Deliver Controller (ADC) as a ser
 
 ---
 
-##Reference
-
-###PowerShell
-[PowerShell Reference](/powershell/azureps-cmdlets-doc)
-
-###Azure CLI
-[Azure CLI](/cli/azure/network/application-gateway)
-
-###.NET
-[.NET API Reference](/dotnet/api)
-
-###Java
-[Java API Reference](/java/api)
-
-###REST
-[REST API Reference](https://msdn.microsoft.com/library/azure/mt684939.aspx)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Application Gateway Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.JS</a></p>
+                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways">Ruby</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API リファレンスに関するページ</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Classic REST API リファレンス</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>    
+
+
+

@@ -1,16 +1,16 @@
-## 概要
-[Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、既定の OS ドライブは 127 GB です。VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
+## <a name="overview"></a>概要
+[Azure Marketplace](https://azure.microsoft.com/marketplace/)からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、既定の OS ドライブは 127 GB です。 VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
 
 1. OS ドライブにコンポーネントをインストールするレガシ アプリケーションをサポートする場合。
 2. オンプレミスから OS ドライブの大きい物理 PC または仮想マシンを移行する場合。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、リソース マネージャー モデルの使用について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、リソース マネージャー モデルの使用について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 > 
 > 
 
-## OS ドライブのサイズ変更
-この記事では、[Azure Powershell](../articles/powershell-install-configure.md) のリソース マネージャー モジュールを使用して、OS ドライブのサイズを変更します。管理者モードで Powershell ISE または Powershell ウィンドウを開き、次の手順に従います。
+## <a name="resize-the-os-drive"></a>OS ドライブのサイズ変更
+この記事では、 [Azure Powershell](/powershell/azureps-cmdlets-docs)のリソース マネージャー モジュールを使用して、OS ドライブのサイズを変更します。 管理者モードで Powershell ISE または Powershell ウィンドウを開き、次の手順に従います。
 
 1. リソース管理モードで Microsoft Azure アカウントにサインインし、次のようにサブスクリプションを選択します。
    
@@ -42,10 +42,10 @@
    ```
    
    > [!WARNING]
-   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。許可される最大値は、1,023 GB です。
+   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 許可される最大値は、1,023 GB です。
    > 
    > 
-6. VM の更新には数秒かかる可能性があります。コマンドの実行が完了した後、VM を再起動します。
+6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了した後、VM を再起動します。
    
    ```Powershell
    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -53,8 +53,8 @@
 
 これで終了です。 VM に RDP で接続し、[コンピューターの管理] \(または [ディスクの管理]) を開いて、新しく割り当てた領域を使用してドライブを拡張します。
 
-## 概要
-この記事では、Powershell の Azure リソース マネージャー モジュールを使用して、IaaS 仮想マシンの OS ドライブを拡張しました。参考のために完全なスクリプトを以下に示します。
+## <a name="summary"></a>概要
+この記事では、Powershell の Azure リソース マネージャー モジュールを使用して、IaaS 仮想マシンの OS ドライブを拡張しました。 参考のために完全なスクリプトを以下に示します。
 
 ```Powershell
 Login-AzureRmAccount
@@ -68,8 +68,8 @@ Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## 次のステップ
-この記事では VM の OS ディスクの拡張に主に重点を置きましたが、作成したスクリプトは、コードを 1 行変更するだけで、VM に接続されたデータ ディスクの拡張にも使用できます。たとえば、VM に接続されている最初のデータ ディスクを拡張するには、```StorageProfile``` の ```OSDisk``` オブジェクトを ```DataDisks``` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
+## <a name="next-steps"></a>次のステップ
+この記事では VM の OS ディスクの拡張に主に重点を置きましたが、作成したスクリプトは、コードを 1 行変更するだけで、VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、```StorageProfile``` の ```OSDisk``` オブジェクトを ```DataDisks``` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -80,6 +80,5 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Azure リソース マネージャー VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md)を参照してください。
+Azure Resource Manager VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 
-<!----HONumber=AcomDC_0323_2016-->

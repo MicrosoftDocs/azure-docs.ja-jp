@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント
-description: Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。
+title: "Azure Mobile Engagement ユーザー インターフェイス - マイ アカウント"
+description: "Azure Mobile Engagement を利用してアカウント プロファイルとテスト デバイスを管理する方法について説明します。"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,40 +14,51 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
+ms.lasthandoff: 03/01/2017
+
 
 ---
-# アカウント プロファイルとテスト デバイスを管理する方法
-この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>アカウント プロファイルとテスト デバイスを管理する方法
+この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 
 
 **[マイ アカウント]** ページにアクセスするには、ページ上部のアカウントをクリックします。
 
-UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。これらの設定には、デバイス API からもアクセスできる項目が含まれています。
+UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。 これらの設定には、デバイス API からもアクセスできる項目が含まれています。
 
-![MyAccount1][7]
+![MyAccount1][7]  
 
-## プロファイル:
-アカウント設定を次のように表示または変更できます。[[ホーム]](mobile-engagement-user-interface-home.md) から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
+## <a name="profile"></a>プロファイル:
+アカウント設定を次のように表示または変更できます。 [[ホーム]](mobile-engagement-user-interface-home.md)から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
 
-![MyAccount2][8]
+![MyAccount2][8]  
 
-## デバイス:
-**リーチ**または**プッシュ** キャンペーンのテストに使用できるテスト デバイスのテスト デバイス ID を表示、追加、削除できます。各プラットフォーム用 (iOS、Android、Windows Phone など) のデバイスのデバイス ID を検索する方法のコンテキストは、[新しいデバイス] をクリックすると表示されます。
+## <a name="devices"></a>デバイス:
+**リーチ**または**プッシュ** キャンペーンのテストに使用できるテスト デバイスのテスト デバイス ID を表示、追加、削除できます。 各プラットフォーム用 (iOS、Android、Windows Phone など) のデバイスのデバイス ID を検索する方法のコンテキストは、[新しいデバイス] をクリックすると表示されます。 
 
-![MyAccount3][9]
+![MyAccount3][9]  
 
-プッシュ API またはデバイス API を使用するには、ユーザーの一意のデバイス ID (deviceid パラメーター) が必要です。これを取得するには、次の方法があります。
+プッシュ API またはデバイス API を使用するには、ユーザーの一意のデバイス ID (deviceid パラメーター) が必要です。 これを取得するには、次の方法があります。
 
 1. バックエンドからは、デバイス API の "Get" 機能を使用してデバイス ID の完全な一覧を取得できます。
-2. アプリからは、SDK を使用して取得できます。(Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
-3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。
-4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
-5. デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
+2. アプリからは、SDK を使用して取得できます。 (Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
+3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。
+   http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。 
+4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。
+   自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
+5. デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。
+   [UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。
+   [監視] で、このイベントをクリックします。
+   このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。
+   次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
    >(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
 
-## トラブルシューティング ガイド
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 * [トラブルシューティング ガイド - サービス][Link 24]
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [UI ドキュメント - ホーム][Link 13]
 
 <!--Image references-->
@@ -149,4 +160,3 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 
 
 
-<!---HONumber=AcomDC_0824_2016-->

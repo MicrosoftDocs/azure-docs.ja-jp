@@ -1,9 +1,25 @@
 ---
+title: "Azure API Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "API Management を使用して、API を安全かつ大規模に発行する方法について説明します。 ドキュメントでは、既存のバックエンド サービスの最新型 API ゲートウェイを作成する方法を紹介します。"
+services: api-management
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# API Management Documentation
+ms.assetid: 
+ms.service: api-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 5710f0aeb9af0f5d829c30d4b3e604c0a62afdb5
+ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
 
-API Management helps organizations publish APIs to external, partner and internal developers to unlock the potential of their data and services. Businesses everywhere are looking to extend their operations as a digital platform, creating new channels, finding new customers and driving deeper engagement with existing ones. API Management provides the core competencies to ensure a successful API program through developer engagement, business insights, analytics, security and protection.
+---
+# <a name="api-management-documentation"></a>API Management のドキュメント
+
+API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about API Management</h3>
+                        <h3>API Management について</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +41,7 @@ API Management helps organizations publish APIs to external, partner and interna
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=api-management">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=api-management">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +51,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>API Management Video Library</h3>
+                        <h3>API Management のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with API Management</h3>
+                        <h3>Get started with Azure API Management (Azure API Management の使用)</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +83,11 @@ API Management helps organizations publish APIs to external, partner and interna
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create APIs in Azure API Management</h3>
+                        <h3>Azure API Management での API 作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -82,22 +98,55 @@ API Management helps organizations publish APIs to external, partner and interna
 
 ---
 
-## Reference
-
-### PowerShell
-[API Management Resource Manager PowerShell cmdlet](/powershell/resourcemanager)
-
-
-### REST
-[API Management REST API Reference](/rest/api/apimanagement/)
-
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/api-management.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download API Management Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt613507">クラシック PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/apimanagement/">REST API</a></p>
+                        <p><a href="/rest/api/apimanagement/ApiManagementREST/API-Management-REST">REST API (オリジナル)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>その他</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn894081">ポリシー</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt697540">テンプレート</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+
+
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

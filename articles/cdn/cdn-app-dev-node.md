@@ -1,51 +1,55 @@
 ---
-title: Azure CDN SDK for Node.js の概要 | Microsoft Docs
-description: Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。
+title: "Azure CDN SDK for Node.js の概要 | Microsoft Docs"
+description: "Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。"
 services: cdn
 documentationcenter: nodejs
-author: camsoper
+author: zhangmanling
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: c4bb6a61-de3d-4f0c-9dca-202554c43dfa
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
+
 
 ---
-# Azure CDN 開発の概要
+# <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
 > * [Node.JS](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 
 
-CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) を使用して自動化できます。このチュートリアルでは、単純な Node.js コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。このチュートリアルは、Azure CDN SDK for Node.js のすべての側面を詳細に説明することを目的としていません。
+CDN プロファイルとエンドポイントの作成と管理は、 [Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) を使用して自動化できます。  このチュートリアルでは、単純な Node.js コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。  このチュートリアルは、Azure CDN SDK for Node.js のすべての側面を詳細に説明することを目的としていません。
 
-このチュートリアルに取り組む前に、[Node.js](http://www.nodejs.org) **4.x.x** 以降をインストールし、構成を済ませておく必要があります。Node.js アプリケーションの作成には、好きなテキスト エディターを使用してかまいません。このチュートリアルは [Visual Studio Code](https://code.visualstudio.com) を使って執筆されています。
+このチュートリアルに取り組む前に、 [Node.js](http://www.nodejs.org) **4.x.x** 以降をインストールし、構成を済ませておく必要があります。  Node.js アプリケーションの作成には、好きなテキスト エディターを使用してかまいません。  このチュートリアルは [Visual Studio Code](https://code.visualstudio.com)を使って執筆されています。  
 
 > [!TIP]
-> [このチュートリアルに沿って作成されたプロジェクト](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)は MSDN からダウンロードできます。
+> [このチュートリアルに沿って作成されたプロジェクト](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) は MSDN からダウンロードできます。
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
-## プロジェクトの作成と NPM の依存関係の追加
+## <a name="create-your-project-and-add-npm-dependencies"></a>プロジェクトの作成と NPM の依存関係の追加
 これまでの手順で、CDN プロファイルのリソース グループを作成し、そのグループ内の CDN プロファイルとエンドポイントを管理するための Azure AD アプリケーション アクセス許可を割り当てました。この段階で、アプリケーションの作成を開始できます。
 
-アプリケーションの保存先となるフォルダーを作成します。Node.js のツールが置かれているパスのコンソールから、この新しいフォルダーに移動して次のコマンドを実行し、プロジェクトを初期化します。
+アプリケーションの保存先となるフォルダーを作成します。  Node.js のツールが置かれているパスのコンソールから、この新しいフォルダーに移動して次のコマンドを実行し、プロジェクトを初期化します。
 
     npm init
 
-プロジェクトを初期化するための一連の指定項目が表示されます。このチュートリアルでは、**entry point** に *app.js* を使用します。その他の項目については、次のスクリーンショットを参照してください。
+プロジェクトを初期化するための一連の指定項目が表示されます。  このチュートリアルでは、 **entry point**に *app.js*を使用します。  その他の項目については、次のスクリーンショットを参照してください。
 
 ![NPM init output](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-プロジェクトが *packages.json* ファイルで初期化されました。このプロジェクトでは、NPM パッケージに含まれているいくつかの Azure ライブラリを使用します。使用するのは、Azure Client Runtime for Node.js (ms-rest-azure) と Azure CDN Client Library for Node.js (azure-arm-cd) です。それらを依存関係としてプロジェクトに追加しましょう。
+プロジェクトが *packages.json* ファイルで初期化されました。  このプロジェクトでは、NPM パッケージに含まれているいくつかの Azure ライブラリを使用します。  使用するのは、Azure Client Runtime for Node.js (ms-rest-azure) と Azure CDN Client Library for Node.js (azure-arm-cd) です。  それらを依存関係としてプロジェクトに追加しましょう。
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
@@ -59,7 +63,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
   "description": "Azure CDN Node.js tutorial project",
   "main": "app.js",
   "scripts": {
-    "test": "echo "Error: no test specified" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cam Soper",
   "license": "MIT",
@@ -70,9 +74,9 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 }
 ```
 
-最後にテキスト エディターを使用して空のテキスト ファイルを作成し、プロジェクト フォルダーのルートに *app.js* という名前で保存します。コードを記述する準備ができました。
+最後にテキスト エディターを使用して空のテキスト ファイルを作成し、プロジェクト フォルダーのルートに *app.js*という名前で保存します。  コードを記述する準備ができました。
 
-## ライブラリの読み込み、定数、認証、構造
+## <a name="requires-constants-authentication-and-structure"></a>ライブラリの読み込み、定数、認証、構造
 テキスト エディターで *app.js* を開き、プログラムの基本構造を記述していきましょう。
 
 1. まず NPM パッケージの "require" を次のように追加します。
@@ -81,7 +85,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 次に、メソッドで使用するいくつかの定数を定義します。以降の内容を追加してください。**&lt;山かっこ&gt;** などのプレースホルダーは、必要に応じて自分の環境に合わせて置き換えます。
+2. 次に、メソッドで使用するいくつかの定数を定義します。  以降の内容を追加してください。  **&lt;山かっこ&gt;** などのプレースホルダーは、必要に応じて自分の環境に合わせて置き換えます。
    
     ``` javascript
     //Tenant app constants
@@ -104,7 +108,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
     個別ユーザー認証を使用する場合は、この 2 行のコードが多少異なります。
    
    > [!IMPORTANT]
-   > このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。個々のユーザーの資格情報は気を付けて保護し、第三者に知られないようにしてください。
+   > このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。  個々のユーザーの資格情報は気を付けて保護し、第三者に知られないようにしてください。
    > 
    > 
    
@@ -114,8 +118,8 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    **&lt;山かっこ&gt;** 内の項目は、正しい情報に置き換えてください。`<redirect URI>` には、アプリケーションを Azure AD に登録するときに入力したリダイレクト URI を使用します。
-4. Node.js コンソール アプリケーションには、いくつかのコマンド ライン パラメーターがあります。少なくとも 1 つのパラメーターが渡されたことを検証しましょう。
+    **&lt;山かっこ&gt;** 内の項目は、正しい情報に置き換えてください。  `<redirect URI>`には、アプリケーションを Azure AD に登録するときに入力したリダイレクト URI を使用します。
+4. Node.js コンソール アプリケーションには、いくつかのコマンド ライン パラメーターがあります。  少なくとも 1 つのパラメーターが渡されたことを検証しましょう。
    
    ```javascript
    //Collect command-line parameters
@@ -155,7 +159,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
             process.exit(1);
     }
     ```
-6. プログラム内のいくつかの場所で、適切な数のパラメーターが渡されたことを確認しなければなりません。正しくないようであれば何らかのヒントを表示する必要があります。そのための関数を作成しましょう。
+6. プログラム内のいくつかの場所で、適切な数のパラメーターが渡されたことを確認しなければなりません。正しくないようであれば何らかのヒントを表示する必要があります。  そのための関数を作成しましょう。
    
    ```javascript
    function requireParms(parmCount) {
@@ -193,7 +197,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
        }
    }
    ```
-7. CDN 管理クライアントで使用する関数は非同期的に実行されるので、その完了時にコールバックするメソッドが必要となります。CDN 管理クライアントからの出力 (ある場合) を表示し、プログラムを適切に終了できるようにしましょう。
+7. CDN 管理クライアントで使用する関数は非同期的に実行されるので、その完了時にコールバックするメソッドが必要となります。  CDN 管理クライアントからの出力 (ある場合) を表示し、プログラムを適切に終了できるようにしましょう。
    
     ```javascript
     function callback(err, result, request, response) {
@@ -209,8 +213,8 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 これで、プログラムの基本的な構造が作成されました。次に、パラメーターに基づいて呼び出される関数を作成する必要があります。
 
-## CDN プロファイルとエンドポイントのリストの取得
-最初に、既存のプロファイルとエンドポイントをリストするコードを作成します。コード コメントは、各パラメーターの流れを把握しやすいように正しい構文を示しています。
+## <a name="list-cdn-profiles-and-endpoints"></a>CDN プロファイルとエンドポイントのリストの取得
+最初に、既存のプロファイルとエンドポイントをリストするコードを作成します。  コード コメントは、各パラメーターの流れを把握しやすいように正しい構文を示しています。
 
 ```javascript
 // list profiles
@@ -237,7 +241,7 @@ function cdnList(){
 }
 ```
 
-## CDN プロファイルとエンドポイントの作成
+## <a name="create-cdn-profiles-and-endpoints"></a>CDN プロファイルとエンドポイントの作成
 次に、プロファイルとエンドポイントを作成するための関数を作成します。
 
 ```javascript
@@ -289,7 +293,7 @@ function cdnCreateEndpoint() {
 }
 ```
 
-## エンドポイントの消去
+## <a name="purge-an-endpoint"></a>エンドポイントの消去
 エンドポイントが作成されたと仮定して、プログラムで実行する一般的なタスクの 1 つに、エンドポイントの内容を消去することがあります。
 
 ```javascript
@@ -302,7 +306,7 @@ function cdnPurge() {
 }
 ```
 
-## CDN プロファイルとエンドポイントの削除
+## <a name="delete-cdn-profiles-and-endpoints"></a>CDN プロファイルとエンドポイントの削除
 最後に、エンドポイントとプロファイルを削除する関数を追加します。
 
 ```javascript
@@ -331,11 +335,11 @@ function cdnDelete() {
 }
 ```
 
-## プログラムの実行
+## <a name="running-the-program"></a>プログラムの実行
 これで、使い慣れたデバッガーやコンソールを使用して Node.js プログラムを実行できる状態になりました。
 
 > [!TIP]
-> Visual Studio Code をデバッガーとして使用する場合、コマンド ライン パラメーターを渡すための設定を環境に対して行う必要があります。Visual Studio Code では、この設定を **launch.json** ファイルで行います。**args** という名前のプロパティを探して、パラメーターの一連の文字列値を追加します (例: `"args": ["list", "profiles"]`)。
+> Visual Studio Code をデバッガーとして使用する場合、コマンド ライン パラメーターを渡すための設定を環境に対して行う必要があります。  Visual Studio Code では、この設定を **launch.json** ファイルで行います。  **args** という名前のプロパティを探して、パラメーターの一連の文字列値を追加します (例: `"args": ["list", "profiles"]`)。
 > 
 > 
 
@@ -343,7 +347,7 @@ function cdnDelete() {
 
 ![List profiles](./media/cdn-app-dev-node/cdn-list-profiles.png)
 
-空の配列が返されました。リソース グループにはプロファイルがまったく存在しないので、これは正しい動作です。早速プロファイルを作成しましょう。
+空の配列が返されました。  リソース グループにはプロファイルがまったく存在しないので、これは正しい動作です。  早速プロファイルを作成しましょう。
 
 ![Create profile](./media/cdn-app-dev-node/cdn-create-profile.png)
 
@@ -355,13 +359,18 @@ function cdnDelete() {
 
 ![Delete profile](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
-## 次のステップ
-このチュートリアルの完成したプロジェクトを確認するには、[サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)してください。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルの完成したプロジェクトを確認するには、 [サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)してください。
 
-Azure CDN SDK for Node.js のリファレンスは、[こちら](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)でご覧いただけます。
+Azure CDN SDK for Node.js のリファレンスは、 [こちら](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)でご覧いただけます。
 
-Azure SDK for Node.js に関するその他のドキュメントについては、[詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
+Azure SDK for Node.js に関するその他のドキュメントについては、 [詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
 
 [PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,17 +1,21 @@
 
 | レベル: | 無料 | 基本 | 標準 |
 | --- | --- | --- | --- |
-| API 呼び出し |500 K |1\.5 M/ユニット |15 M/ユニット |
+| API 呼び出し |500 K |1.5 M/ユニット |15 M/ユニット |
 | アクティブなデバイス |500 |無制限 |無制限 |
 | スケール |該当なし |最大 6 ユニット |無制限のユニット |
 | プッシュ通知 |Notification Hubs の Free レベルが付属、最大で 1 M のプッシュ |Notification Hubs の Basic レベルが付属、最大で 10 M のプッシュ |Notification Hubs の Standard レベルが付属、最大で 10 M のプッシュ |
 | リアルタイムのメッセージング/<br/>Web ソケット |制限あり |350/モバイル サービス |無制限 |
 | オフライン同期 |制限あり |あり |あり |
 | スケジュールされたジョブ |制限あり |あり |あり |
-| SQL Database (必須)<br/>追加の容量には標準料金が適用される |20 MB が含まれる |20 MB が含まれる |20 MB が含まれる |
+| SQL Database (必須) <br/>追加の容量には標準料金が適用される |20 MB が含まれる |20 MB が含まれる |20 MB が含まれる |
 | CPU の使用率 |60 分/日 |無制限 |無制限 |
 | 送信データ転送 |1 日 (1 日のロール オーバー) 165 MB |あり |あり |
 
-これらの制限に関する詳細と価格の詳細については、「[Mobile Services 料金](https://azure.microsoft.com/pricing/details/mobile-services/)」を参照してください。
+これらの制限に関する詳細と価格の詳細については、「 [Mobile Services 料金](https://azure.microsoft.com/pricing/details/mobile-services/)」を参照してください。 
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

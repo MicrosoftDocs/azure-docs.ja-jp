@@ -1,8 +1,12 @@
 > [!div class="op_single_selector"]
-> * [Architectural Overview](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry.md)
-> * [Deep Dive into the Solution](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
-> * [PowerBI Dashboard Setup](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
+> * [アーキテクチャの概要](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry.md)
+> * [ソリューションの詳細情報](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
+> * [PowerBI ダッシュボードの設定](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 > 
 > 
 
-<!---HONumber=AcomDC_1203_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

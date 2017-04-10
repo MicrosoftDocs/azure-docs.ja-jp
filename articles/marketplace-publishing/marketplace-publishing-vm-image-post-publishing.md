@@ -1,12 +1,12 @@
 ---
-title: Managing your virtual machine image on the Azure Marketplace | Microsoft Docs
-description: Detailed guide on how to manage your virtual machine image on the Azure Marketplace after initial publication.
+title: "Azure Marketplace の仮想マシン イメージの管理 | Microsoft Docs"
+description: "最初に発行した後に Azure Marketplace の仮想マシン イメージを管理する方法についての詳細なガイドです。"
 services: Azure Marketplace
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,319 +14,326 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: ed2921750f93f344a4c3dbef31d9f523dedc0aae
+
 
 ---
-# <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Post-production guide for virtual machine offers in the Azure Marketplace
-This article explains how you can update a live Virtual Machine offer in the Azure Marketplace. It also guides you on the process of adding one or more new SKUs to an existing offer and remove a live Virtual Machine offer or SKU from the Azure Marketplace.
+# <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Azure Marketplace の仮想マシン プランの作成後ガイド
+この記事では、Azure Marketplace の発行済みの仮想マシン プランを更新する方法について説明します。 また、既存のプランに&1; つ以上の新しい SKU を追加するプロセスと、Azure Marketplace から発行済みの仮想マシン プランまたは SKU を削除するプロセスについて説明します。
 
-Once an offer/SKU is staged in the [Azure Portal](http://portal.azure.com), you cannot change the fields given below:
+一度 [Azure ポータル](http://portal.azure.com)にプラン/SKU がステージングされたら、以下のフィールドは変更できません。
 
-* **Offer Identifier:** [Publishing portal -> Virtual Machines -> Select your Offer -> VM Images tab -> Offer Identifier]
-* **SKU Identifier:** [Publishing portal -> Virtual Machines -> Select your Offer -> SKUs tab -> Add a SKU]
-* **Publisher Namespace:** [Publishing portal -> Virtual  Machines -> Walkthrough tab -> Tell Us About Your Company (Found Under “Step 2 Register Your Company”) -> Publisher Namespace -> Namespace]
+* **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [Offer Identifier (プラン識別子)]
+* **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
+* **Publisher Namespace:** [発行ポータル] > [Virtual Machines] > [チュートリアル] タブ > Tell Us About Your Company (会社情報を入力) \(「手順 2 会社を登録する」にあります) > [Publisher Namespace] > [名前空間]
 
-Once the offer/SKU is listed in the [Azure Marketplace](http://azure.microsoft.com/marketplace), you cannot change the fields given below:
+一度 [Azure Marketplace](http://azure.microsoft.com/marketplace)にプラン/SKU が表示されたら、以下のフィールドは変更できません。
 
-* **Offer Identifier:** [Publishing portal -> Virtual Machines ->  Select your Offer -> VM Images tab -> Offer Identifier]
-* **SKU Identifier:** [Publishing portal -> Virtual Machines -> Select your Offer -> SKUs tab -> Add a SKU]
-* **Publisher Namespace:** [Publishing portal -> Virtual Machines -> Walkthrough tab -> Tell Us About Your Company (Found Under Step 2 Register) Publisher Namespace -> Namespace]
-* **Ports** [Publishing portal -> Virtual Machines -> Select your Offer -> VM Images tab -> Open Ports]
-* **Pricing Change of listed SKU(s)**
-* **Billing Model Change of listed SKU(s)**
-* **Removal of billing regions of listed SKU(s)**
-* **Changing the data disk count of listed SKU(s)**
+* **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [Offer Identifier (プラン識別子)]
+* **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
+* **Publisher Namespace:** [発行ポータル] > [Virtual Machines] > [チュートリアル] タブ -> Tell Us About Your Company (会社情報を入力) \(「手順 2 登録する」にあります) > [Publisher Namespace] > [名前空間]
+* **ポート:** [発行ポータル] -> [Virtual Mashines] -> [プランの選択] -> [VM イメージ] タブ -> [ポートを開く]
+* **表示されている SKU の価格の変更**
+* **表示されている SKU の課金モデルの変更**
+* **表示されている SKU の課金リージョンの削除**
+* **表示されている SKU のデータ ディスク数の変更**
 
-## <a name="1.-how-to-update-the-technical-details-of-a-sku"></a>1. How to update the technical details of a SKU
-You can add a new version to the listed SKU and re-publish your offer by following the steps given below:
+## <a name="1-how-to-update-the-technical-details-of-a-sku"></a>1.SKU の技術的な詳細を更新する方法
+表示されている SKU に新しいバージョンを追加し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **VM IMAGES** tab.
-4. From the **SKUs** section of the **VM IMAGES** tab, locate the SKU that you want to update.
-5. After that, add a new version number of the SKU and click on the **"+"** button. The new version should be of X.Y.Z format where X, Y, Z are integers. Version changes should only be incremental.
-6. In the **OS VHD URL** box, add the shared access signature URI created for the operating system VHD and save the changes.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[VM イメージ]** タブをクリックします。
+4. **[SKUs (SKU)]** タブの **[VM イメージ]** セクションで、更新する SKU を探します。
+5. その後、SKU の新しいバージョン番号を追加し、 **[+]** をクリックします。 新しいバージョンは、X.Y.Z の形式である必要があります (X、Y、Z は整数)。 バージョンは、増分変更のみでなければなりません。
+6. **[OS VHD URL]** ボックスで、オペレーティング システム VHD に対して作成した Shared Access Signature URI を追加し、変更を保存します。
    
    > [!IMPORTANT]
-   > You cannot increment/decrement the data disk count of a listed SKU. You need to create a new SKU in this case. Please refer to the section [3. How to add a new SKU under a listed offer](#3-how-to-add-a-new-sku-under-a-live-offer) for detailed guidance.
+   > 表示されている SKU のデータ ディスク数をインクリメント/デクリメントすることはできません。 この場合、新しい SKU を作成する必要があります。 詳細なガイダンスについては、「[3. 表示されているプランに新しい SKU を追加する方法](#3-how-to-add-a-new-sku-under-a-live-offer)」を参照してください。
    > 
    > 
-7. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-8. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+7. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img01_07.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img01_07.png)
 
-## <a name="2.-how-to-update-the-non-technical-details-of-an-offer-or-a-sku"></a>2. How to update the non-technical details of an offer or a SKU
-You can update the non-technical (marketing, legal, support, categories) details of your live offer or SKU in the Azure Marketplace.
+## <a name="2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku"></a>2.プランまたは SKU の非技術的な詳細を更新する方法
+Azure Marketplace で発行済みのプランまたは SKU の非技術的な (マーケティング、法的情報、サポート、カテゴリの) 詳細を更新できます。
 
-### <a name="2.1-update-the-offer-description-and-logos"></a>2.1 Update the offer description and logos
-You can update the offer details and re-publish your offer by following the steps below:
+### <a name="21-update-the-offer-description-and-logos"></a>2.1 プランの説明とロゴの更新
+プランの詳細を更新し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **MARKETING** tab.
-4. Click on the **ENGLISH (US)** button.
-5. From the left hand side menu, click on the **DETAILS** tab. Under the *DESCRIPTION* section of the **DETAILS** tab you can update the offer title, offer summary, offer long summary and save the changes.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[マーケティング]** タブをクリックします。
+4. **[英語 (米国)]** をクリックします。
+5. 左側のメニューで、 **[詳細]** タブをクリックします。 **[詳細]** タブの *[説明]* セクションで、プランのタイトル、プランの概要、プランの長い概要を更新し、変更を保存できます。
    
    > [!NOTE]
-   > Please take care of the following while you are updating the SKU details.
-   > **Do not enter duplicate text under the offer description and the SKU description. Do not enter duplicate text under the SKU title and the offer long summary. Do not enter duplicate text under the SKU title and the offer summary.**
+   > SKU の詳細を更新する際は、次の点に注意してください。
+   > **プランと SKU の説明に、同じテキストを入力しないでください。SKU のタイトルとプランの長い概要に、同じテキストを入力しないでください。SKU のタイトルとプランの概要に、同じテキストを入力しないでください。**
    > 
    > 
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.1_05.png)
-6. Under the *LOGOS* section of the **DETAILS** tab, you can update the logos. However, ensure that the logos follow the [Azure Marketplace guidelines](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content) (refer to the section Step 1: Provide Marketplace marketing content -> Details-> Azure Marketplace Logo Guidelines).
-   
-   > [!NOTE]
-   > Hero icon is optional. You can choose not to upload a Hero icon. However, once Hero icon is uploaded, then there is no provision to delete it from the Publishing portal. In that case, you must follow the [Hero icon guidelines](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content) (refer to the section Step 1: Provide Marketplace marketing content -> Details-> Additional guidelines for the Hero logo banner).
-   > 
-   > 
-7. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md).
-8. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
-   
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.1_08.png)
-
-### <a name="2.2.-update-the-sku-description"></a>2.2. Update the SKU description
-You can update the SKU details and re-publish your offer by following the steps below:
-
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **MARKETING** tab.
-4. Click on the **ENGLISH (US)** button.
-5. From the left hand side menu, click on the **PLANS** tab. Under the *SKUs* section of the **PLANS** tab you can update the SKU title, SKU summary and SKU description details and save the changes.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.1_05.png)
+6. **[詳細]** タブの *[ロゴ]* セクションで、ロゴを更新できます。 ただし、ロゴが [Azure Marketplace のガイドライン](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content) (「手順 1: Marketplace のマーケティング コンテンツを指定する」の「詳細」の「Azure Marketplace のロゴのガイドライン」) に従っていることを確認してください。
    
    > [!NOTE]
-   > Please take care of the following while you are updating the SKU details. **Do not enter duplicate text under the offer description and the SKU description. Do not enter duplicate text under the SKU's title and the offer long summary. Do not enter duplicate text under the SKU Title and the offer summary.**
+   > Hero アイコンはオプションです。 Hero アイコンをアップロードしなくてもかまいません。 ただし、Hero アイコンをアップロード後に発行ポータルから削除するプロビジョニングがありません。 削除する場合は、[Hero アイコンのガイドライン](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content) (「手順 1: Marketplace のマーケティング コンテンツを指定する」の「詳細」の「Hero ロゴ バナーに関する追加のガイドライン」) に従う必要があります。
    > 
    > 
-6. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this link
-7. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+7. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)を参照してください。
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.2_07.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.1_08.png)
 
-### <a name="2.3-change-the-existing-links-or-add-new-links"></a>2.3 Change the existing links or add new links
-You can change the existing links or add new links and then re-publish your offer by following the steps below:
+### <a name="22-update-the-sku-description"></a>2.2. SKU の説明の更新
+SKU の詳細を更新し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **MARKETING** tab.
-4. Click on the **ENGLISH (US)** button.
-5. From the left hand side menu, click on the **LINKS** tab.
-6. If you want to add a new link, then under the *Links* section click on the **ADD LINK** button. The *“Add Link”* dialog box will open. In this dialog box, you can add the link Title and URL fields and save the changes. You can enter any link which contains information that may help the customers.
-7. If you want to update or delete an existing link, then select the appropriate link and click on the edit button or the delete button accordingly.
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[マーケティング]** タブをクリックします。
+4. **[英語 (米国)]** をクリックします。
+5. 左側のメニューで、 **[プラン]** タブをクリックします。 **[プラン]** タブの *[SKUs (SKU)]* セクションで、SKU のタイトル、SKU の概要、および SKU の説明の詳細を更新し、変更を保存できます。
    
    > [!NOTE]
-   > Please make sure that the links which you have entered in this section are working properly, as these links get validated during your production request process.
+   > SKU の詳細を更新する際は、次の点に注意してください。 **プランと SKU の説明に、同じテキストを入力しないでください。SKU のタイトルとプランの長い概要に、同じテキストを入力しないでください。SKU のタイトルとプランの概要に、同じテキストを入力しないでください。**
    > 
    > 
-8. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md).
-9. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+6. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらのリンクを参照してください。
+7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.3_09-01.png)
-   
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.3-2.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.2_07.png)
 
-### <a name="2.4-change-an-existing-sample-image-or-add-a-new-sample-image"></a>2.4 Change an existing sample image or add a new sample image
-You can change an existing sample images or add new sample images and then re-publish your offer by following the steps below:
+### <a name="23-change-the-existing-links-or-add-new-links"></a>2.3 既存のリンクの変更または新しいリンクの追加
+既存のリンクを変更するか、新しいリンクを追加し、プランを再発行するには、次の手順に従います。
+
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[マーケティング]** タブをクリックします。
+4. **[英語 (米国)]** をクリックします。
+5. 左側のメニューで、 **[リンク]** タブをクリックします。
+6. 新しいリンクを追加する場合は、[リンク] ** セクションで、 **[リンクの追加]** をクリックします。 [リンクの追加] ** ダイアログ ボックスが開きます。 このダイアログ ボックスでは、リンクのタイトル フィールドと URL フィールドを追加し、変更を保存できます。 お客様の役に立つ情報が含まれる任意のリンクを入力できます。
+7. 既存のリンクを更新または削除する場合は、適切なリンクを選択し、[編集] または [削除] を適宜クリックします。
+   
+   > [!NOTE]
+   > このセクションで入力したリンクは、本番要求の処理中に検証されるため、適切に動作することを確認してください。
+   > 
+   > 
+8. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)を参照してください。
+9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
+   
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.3_09-01.png)
+   
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.3-2.png)
+
+### <a name="24-change-an-existing-sample-image-or-add-a-new-sample-image"></a>2.4 既存のサンプル イメージの変更または新しいサンプル イメージの追加
+既存のサンプル イメージを変更するか、新しいサンプル イメージを追加し、プランを再発行するには、次の手順に従います。
 
 > [!NOTE]
-> Only one sample image is displayed in the [https://portal.azure.com](https://portal.azure.com).
+> [https://portal.azure.com](https://portal.azure.com)に表示されるサンプル イメージは&1; つだけです。
 > 
 > 
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **MARKETING** tab.
-4. Click on the **ENGLISH (US)** button.
-5. From the left hand side menu, click on the **SAMPLE IMAGES** tab.
-6. If you want to add a new sample image, then under the *Sample Images* section click on the **UPLOAD A NEW IMAGE** button and then save the changes.
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[マーケティング]** タブをクリックします。
+4. **[英語 (米国)]** をクリックします。
+5. 左側のメニューで、 **[SAMPLE IMAGES (サンプル イメージ)]** タブをクリックします。
+6. 新しいサンプル イメージを追加する場合は、[Sample Images (サンプル イメージ)] ** セクションで、 **[UPLOAD A NEW IMAGE (新しいイメージのアップロード)]** をクリックし、変更を保存します。
    
    > [!NOTE]
-   > Including a sample image is an optional step.
+   > サンプル イメージを含めるステップは、省略可能です。
    > 
    > 
-7. If you want to update or delete an existing sample image, then locate the appropriate sample image and then click on the **REPLACE IMAGE** button or the delete button accordingly.
-8. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md).
-9. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+7. 既存のサンプル イメージを更新または削除する場合は、適切なサンプル イメージを見つけ、 **[REPLACE IMAGE (イメージの置換)]** または [削除] ボタンを適宜クリックします。
+8. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)を参照してください。
+9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.4_09.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.4_09.png)
 
-### <a name="2.5-update-the-legal-content"></a>2.5 Update the legal content
-You can update the legal content and re-publish your offer by following the steps below:
+### <a name="25-update-the-legal-content"></a>2.5 法的情報コンテンツの更新
+法的情報コンテンツを更新し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **MARKETING** tab.
-4. Click on the **ENGLISH (US)** button.
-5. From the left hand side menu, click on the **LEGAL** tab. Under the *Legal* section you can update your policies/terms of use. Enter or paste the policies/terms in the *Terms of Use* textbox and save the changes.
-6. The character limit for the legal terms of use is 1,000,000 characters.
-7. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-8. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[マーケティング]** タブをクリックします。
+4. **[英語 (米国)]** をクリックします。
+5. 左側のメニューで、 **[LEGAL (法的情報)]** タブをクリックします。 [Legal (法的情報)] ** セクションで、ポリシーまたは使用条件を更新できます。 [使用条件] ** ボックスにポリシーまたは使用条件を入力するか、貼り付け、変更を保存します。
+6. 使用条項の文字制限は、1,000,000 文字です。
+7. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.5_08.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.5_08.png)
 
-### <a name="2.6-update-the-support-information"></a>2.6 Update the support information
-You can update the support information and re-publish your offer by following the steps below:
+### <a name="26-update-the-support-information"></a>2.6 サポート情報の更新
+サポート情報を更新し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **SUPPORT** tab.
-4. Under the *Engineering Contact* section of the **SUPPORT** tab you can update the contact details. These details are used for internal communication between the partner and Microsoft only.
-5. Under the *Customer Support* section of the **SUPPORT** tab you can update the Support contact details like **Name, Email, Phone** and **Support URL**. These details are used for internal communication between the partner and Microsoft only.
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[サポート]** タブをクリックします。
+4. *[サポート]* タブの **[Engineering Contact (エンジニアリング連絡先)]** セクションで、連絡先の詳細を更新できます。 これらの詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。
+5. **[サポート]** タブの *[カスタマー サポート]* セクションで、**名前、電子メール、電話番号**、**サポート URL** などのサポート連絡先の詳細を更新できます。 これらの詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。
    
    > [!NOTE]
-   > If you want to provide only email support, provide a dummy phone number under the **Customer Support** section. In this case, your provided email will be used instead.
+   > 電子メールによるサポートのみを提供する場合は、 **[カスタマー サポート]** セクションでダミーの電話番号を入力します。 そうすると、指定した電子メールが代わりに使用されます。
    > 
    > 
-6. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-7. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+6. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.6_07.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.6_07.png)
 
-### <a name="2.7-update-the-categories"></a>2.7 Update the categories
-You can update the categories section for your offer and re-publish your offer by following the steps below:
+### <a name="27-update-the-categories"></a>2.7 カテゴリの更新
+プランの [カテゴリ] セクションを更新し、プランを再発行するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com)
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click the **CATEGORIES** tab.
-4. Under the *Categories* section you can update the categories for your offer and save the changes. You can select up to five categories for the Azure Marketplace gallery.
-5. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-6. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+1. [発行ポータル](https://publish.windowsazure.com)
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[カテゴリ]** タブをクリックします。
+4. [カテゴリ] ** セクションで、プランのカテゴリを更新し、変更を保存できます。 Azure Marketplace ギャラリーのカテゴリを最大&5; つ選択できます。
+5. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+6. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
 
-## <a name="3.-how-to-add-a-new-sku-under-a-listed-offer"></a>3. How to add a new SKU under a listed offer
-You can add a new SKU under your live offer by following the steps given below:
+## <a name="3-how-to-add-a-new-sku-under-a-listed-offer"></a>手順&3;.表示されているプランに新しい SKU を追加する方法
+発行済みのプランに新しい SKU を追加するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click on the **SKUs** tab. After that click on the button **ADD A SKU**.  A new dialog box will open. Enter a SKU identifier in lower case. Check the checkbox for bring-your-own billing model(BYOL) if you want to publish the new SKU with BYOL billing model. Otherwise, uncheck the check box for BYOL. After that click on the tick mark in the dialog box to create a new SKU. If you did not opt for the BYOL billing model for the new SKU, then the billing model will be automatically set to Hourly for the new SKU. If you want to enable the 30days free trial for Hourly billing model, then click on the “One Month” option for “Is a free trial available?”. Otherwise select “NO TRIAL”. [Note: The option “Is a free trial available?” is only shown if you have NOT selected BYOL in the dialog box while creating the new SKU.]
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[SKUs (SKU)]** タブをクリックします。 その後、 **[ADD A SKU (SKU を追加)]**をクリックします。  新しいダイアログ ボックスが開きます。 SKU ID を小文字で入力します。 持ち込み課金モデル (BYOL) の新しい SKU を発行する場合は、BYOL 課金モデルのチェック ボックスをオンにします。 それ以外の場合は、BYOL のチェック ボックスをオフにします。 その後、ダイアログ ボックスのチェック マークをクリックして、新しい SKU を作成します。 新しい SKU に BYOL 課金モデルを選択しなかった場合は、新しい SKU の課金モデルは時間単位に自動的に設定されます。 時間単位課金モデルで 30 日間の無料試用版を有効にする場合は、Is a free trial available? (無料試用版の利用) の One Month (1 か月) オプションをクリックします。 それ以外の場合は、[NO TRIAL (試用版なし)] を選択します (注: Is a free trial available? (無料試用版の利用)] オプションは、新しい SKU を作成するときにダイアログ ボックスで BYOL を選択しなかった場合にのみ表示されます)。
    
    > [!IMPORTANT]
-   > The option “Hide this SKU from the Marketplace because it should always be bought via a solution template” should be marked as “YES” ONLY if you are approved for publishing a solution template offer in the Azure Marketplace. Otherwise, this option should always be marked as “NO”.
+   > [Hide this SKU from the Marketplace because it should always be bought via a solution template (この SKU は、常にソリューション テンプレートを介して購入する必要があるため、Marketplace に表示しない)] オプションは、Azure Marketplace でソリューション テンプレート プランの発行が承認されている場合にのみ、[はい] とマークします。 それ以外の場合は、このオプションを常に [いいえ] としてマークします。
    > 
    > 
-4. Now from the left hand side menu, click on the **VM IMAGES** tab and find out the new SKU which you have created.
-5. To set up the new SKU, refer to the STEP 5 of this [link](marketplace-publishing-vm-image-creation.md#5-obtain-certification-for-your-vm-image) for guidance.
-6. To add the marketing material for the new SKU, refer to the section Step 1: Provide Marketplace marketing content -> Details-> point numbers 2 to 5 of this [link](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content).
-7. To add the pricing information for the new SKU, refer to the section 2.1. Set your VM prices of this [link](marketplace-publishing-push-to-staging.md#step-2-set-your-prices)
-8. After making the changes, navigate to the **PUBLISH** tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-9. Once you have tested your offer in staging, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+4. 左側にあるメニューから、 **[VM イメージ]** タブをクリックし、作成した新しい SKU を確認します。
+5. 新しい SKU を設定する場合、ガイダンスについては、こちらの[リンク](marketplace-publishing-vm-image-creation.md#5-obtain-certification-for-your-vm-image)の手順 5 を参照してください。
+6. 新しい SKU のマーケティング資料を追加するには、こちらの[リンク](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content)の「手順 1: Marketplace のマーケティング コンテンツを指定する」の「詳細」の 2 ～ 5 を参照してください。
+7. 新しい SKU の価格情報を追加するには、セクション 2.1 を参照してください。 こちらの [リンク](marketplace-publishing-push-to-staging.md#step-2-set-your-prices)
+8. 変更を行った後、**[発行]** タブに移動し、**[PUSH TO STAGING (ステージングにプッシュ)]** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img03_09-02.png)
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img03_09-02.png)
 
-## <a name="4.-how-to-change-the-data-disk-count-for-a-listed-sku"></a>4. How to change the data disk count for a listed SKU
-You cannot increment/decrement the data disk count of a listed SKU. You need a create a new SKU in this case. Please refer to the section [3. How to add a new SKU under a live offer](#3-how-to-add-a-new-sku-under-a-live-offer) for detailed guidance.
+## <a name="4-how-to-change-the-data-disk-count-for-a-listed-sku"></a>4.表示されている SKU のデータ ディスク数を変更する方法
+表示されている SKU のデータ ディスク数をインクリメント/デクリメントすることはできません。 この場合、新しい SKU を作成する必要があります。 詳細なガイダンスについては、「[3. 発行済みのプランに新しい SKU を追加する方法](#3-how-to-add-a-new-sku-under-a-live-offer)」を参照してください。
 
-## <a name="5.-how-to-delete-a-listed-offer-from-the-azure-marketplace"></a>5.   How to delete a listed offer from the Azure Marketplace
-There are various aspects that need to be taken care of in case of a request to remove a live offer. Please follow the steps below to get guidance from the support team to remove a listed offer from the Azure Marketplace:
+## <a name="5----how-to-delete-a-listed-offer-from-the-azure-marketplace"></a>5.  表示されているプランを Azure Marketplace から削除する方法
+発行済みのプランの削除を要求する場合は、さまざまな注意事項があります。 表示されているプランを Azure Marketplace から削除するには、次の手順に従って、サポート チームからガイダンスを入手してください。
 
-1. Raise a support ticket using this [link](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=635993707583706681)
-2. Select Problem type as **“Managing offers”** and select Category as **“Modifying an offer and/or SKU already in production”**
-3. Submit the request
+1. こちらの[リンク](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=635993707583706681)を使用して、サポート チケットを作成します
+2. [問題の種類] で **[Managing offers (プランの管理)]** を選択し、[カテゴリ] で **[Modifying an offer and/or SKU already in production (既に運用中のプランまたは SKU の変更)]** を選択します
+3. 要求を送信します。
 
-The support team will guide you through the offer/SKU deletion process.
+サポート チームがプランまたは SKU の削除手順を説明します。
 
 > [!NOTE]
-> You can always delete the offer while it is in a Draft status (i.e., not in STAGING or PRODUCTION) by clicking on the **DISCARD DRAFT** button under the **HISTORY** tab.
+> ドラフト状態の (つまり、ステージングまたは運用中ではない) プランは、**[履歴]** タブの **[ドラフトの破棄]** をクリックすることで、いつでも削除できます。
 > 
 > 
 
-## <a name="6.-how-to-delete-a-listed-sku-from-the-azure-marketplace"></a>6. How to delete a listed SKU from the Azure Marketplace
-You can delete a listed SKU from the Azure Marketplace by following the steps given below:
+## <a name="6-how-to-delete-a-listed-sku-from-the-azure-marketplace"></a>6.表示されている SKU を Azure Marketplace から削除する方法
+表示されている SKU を Azure Marketplace から削除するには、次の手順に従います。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side pane, click on the **SKUS** tab.
-4. Select the SKU which you want to delete and click on the delete button against that SKU.
-5. Once done, navigate to the PUBLISH tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish the offer in the Azure Marketplace.
-6. Once the offer gets re-published in the Azure Marketplace, the SKU will be deleted from the Azure Marketplace and the Azure Portal.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のウィンドウで、 **[SKUs (SKU)]** タブをクリックします。
+4. 削除する SKU を選択し、その SKU の [削除] ボタンをクリックします。
+5. 完了したら、発行ポータルの [発行] タブに移動し、 **[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
+6. Azure Marketplace でプランが再発行されたら、SKU は、Azure Marketplace と Azure ポータルから削除されます。
 
-## <a name="7.-how-to-delete-the-current-version-of-a-listed-sku-from-the-azure-marketplace"></a>7. How to delete the current version of a listed SKU from the Azure Marketplace
-You can delete the current version of a listed SKU from the Azure Marketplace by following the steps given below. Once the process is complete, the SKU will be rolled back to its previous version.
+## <a name="7-how-to-delete-the-current-version-of-a-listed-sku-from-the-azure-marketplace"></a>7.表示されている SKU の現在のバージョンを Azure Marketplace から削除する方法
+表示されている SKU の現在のバージョンを Azure Marketplace から削除するには、次の手順に従います。 プロセスが完了したら、SKU は、以前のバージョンにロールバックされます。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side pane, click on the **VM IMAGES** tab.
-4. Select the SKU whose current version you want to delete and click on the delete button against that version.
-5. Once done, navigate to the **PUBLISH** tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish the offer in the Azure Marketplace.
-6. Once the offer gets re-published in the Azure Marketplace, the current version of the listed SKU will be deleted from the Azure Marketplace and the Azure Portal. The SKU will be rolled back to its previous version.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のウィンドウで、 **[VM イメージ]** タブをクリックします。
+4. 現在のバージョンを削除する SKU を選択し、その バージョンの [削除] ボタンをクリックします。
+5. 完了したら、発行ポータルの **[発行]** タブに移動し、**[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
+6. Azure Marketplace でプランが再発行されたら、SKU の現在のバージョンは、Azure Marketplace と Azure ポータルから削除されます。 SKU は、以前のバージョンにロールバックされます。
 
-## <a name="8.-how-to-revert-listing-price-to-production-values"></a>8. How to revert listing price to production values
-I have changed the pricing of a listed SKU (or I have removed the billing regions of a listed SKU). Since it is not supported in the Azure Marketplace, I want to revert my changes to the production values. How do I achieve that?
+## <a name="8-how-to-revert-listing-price-to-production-values"></a>8.表示価格を運用時の値に戻す方法
+表示されている SKU の価格を変更しました (または、表示されている SKU の課金リージョンを削除しました)。 これは Azure Marketplace でサポートされていないため、変更を運用時の値に戻す必要があります。 どうすればよいですか。
 
-Please follow the steps given below:
+次の手順に従ってください。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click the **PRICING** tab.
-4. Under the Pricing tab, select a region whose pricing you want to reset.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[価格]** タブをクリックします。
+4. [価格] タブで、価格をリセットするリージョンを選択します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-04.png)
-5. In case of SKUs with hourly billing model, reset the prices for all the cores as they are in the production for the selected region. For SKUs with BYOL billing model, make the SKU available in the region by checking the checkbox against the SKU under the section EXTERNALLY-LICENSED (BYOL) SKU AVAILABILITY (see the screenshot below).
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-04.png)
+5. 時間単位の課金モデルが指定されている SKU の場合、その SKU は、選択したリージョンの運用環境にあるため、すべてのコアの価格をリセットします。 BYOL 課金モデルが指定されている SKU の場合は、[EXTERNALLY-LICENSED (BYOL) SKU AVAILABILITY (外部でライセンスされた (BYOL) SKU の可用性)] の SKU のチェック ボックスをオンにして、そのリージョンで SKU を使用できるようにします (次のスクリーンショットを参照)。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-05.png)
-6. Now click the button **AUTOPRICE OTHER MARKETS BASED ON PRICES IN UNITED STATES**.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-05.png)
+6. **[AUTOPRICE OTHER MARKETS BASED ON PRICES IN UNITED STATES (米国の価格に基づいて他の市場の価格を自動的に設定する)]**をクリックします。
    
    > [!NOTE]
-   > The button’s label may be different depending on the region which you have selected. Since we have selected United States while creating this document, so the button is labeled as “Auto price other markets based on prices in United States” in the screenshot below.
+   > ボタンのラベルは、選択したリージョンによって異なる場合があります。 このドキュメントを作成するときに米国を選択したため、次のスクリーンショットのボタンのラベルは、[Auto price other markets based on prices in United States (米国の価格に基づいて他の市場の価格を自動的に設定する)] です。
    > 
    > 
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-06.png)
-7. The auto price wizard will open. The first page displays the selection for base market. Make your section and move to the next page by clicking on the **“->”** button.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-06.png)
+7. 自動料金設定ウィザードが開きます。 最初のページには、基本市場用の選択肢が表示されています。 必要に応じて選択し、**[->]** をクリックして、次のページに進みます。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-07.png)
-8. Option for selecting the cores and plans will be displayed on the page 2. Select the desired plans and the cores and click “->” button.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-07.png)
+8. 2 ページ目には、コアとプランを選択するためのオプションが表示されます。 必要なプランとコアを選択し、[->] をクリックします。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-08.png)
-9. Page 3 displays the markets/regions. Click the Toggle All button to select all regions or manually check the boxes for region. Click on the “->” button to move to the next page.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-08.png)
+9. 3 ページ目には、市場/リージョンが表示されます。 [Toggle All (すべて切り替える)] をクリックして、すべてのリージョンを選択するか、リージョンのボックスを手動でオンにします。 [->] をクリックして、次にページに進みます。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-09.png)
-10. Page 4 displays the exchange rates. Click on the finish button to complete the steps. The wizard will reset the pricing according to your selection.
-11. Now navigate to the pricing tab and click the “VIEW SUMMARY AND CHANGES” button.
-    Select “Draft” in the “View Version” section and “Production” in “Compare with” section (see the screenshot below). If you see no pricing difference, it implies pricing has been reverted to the production values successfully.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-09.png)
+10. 4 ページ目には、為替レートが表示されます。 [完了] をクリックして、手順を完了します。 選択内容に従って価格がリセットリセットされます。
+11. [価格] タブに移動し、[VIEW SUMMARY AND CHANGES (概要と変更を表示)] をクリックします。
+    [View Version (バージョンの表示)] セクションの [Draft (ドラフト)] と、[比較] セクションの [Production (運用)] を選択します (次のスクリーンショットを参照)。 価格に違いがない場合は、価格が運用時の値に適切に戻っていることを意味します。
     
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img08-11.png)
-12. After making the changes, navigate to the PUBLISH tab and click on the button **PUSH TO STAGING**. For detailed guidance on testing your offer in the staging environment please refer to this [link](marketplace-publishing-vm-image-test-in-staging.md)
-13. Once you have tested your offer in staging, navigate to the PUBLISH tab in the Publishing portal and click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img08-11.png)
+12. 変更を行った後、[発行] タブに移動し、 **[PUSH TO STAGING (ステージングにプッシュ)]**をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、こちらの [リンク](marketplace-publishing-vm-image-test-in-staging.md)
+13. ステージング環境でプランをテストしたら、発行ポータルの [発行] タブに移動し、 **[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
 
-## <a name="9.-how-to-revert-billing-model-to-production-values"></a>9. How to revert billing model to production values
-I have changed the billing model of a listed SKU. Since it is not supported in the Azure Marketplace, I want to revert my changes to the production values. How do I achieve that?
+## <a name="9-how-to-revert-billing-model-to-production-values"></a>9.課金モデルを運用時の運用時の値に戻す方法
+表示されている SKU の課金モデルを変更しました。 これは Azure Marketplace でサポートされていないため、変更を運用時の値に戻す必要があります。 どうすればよいですか。
 
-Please follow the steps below:
+次の手順に従ってください。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click the **SKUS** tab.
-4. Click EDIT button to revert the billing model. A window will open. Check or uncheck the checkbox **‘Billing and licensing is done externally from Azure (aka Bring Your Own License)’** accordingly.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[SKUs (SKU)]** タブをクリックします。
+4. 課金モデルを元に戻すには、[編集] ボタンをクリックします。 ウィンドウが開きます。 状況に応じて、 **[Billing and licensing is done externally from Azure (Azure 外部のライセンス (ライセンス持ち込み) を使用して課金を行う)]** をオンまたはオフにします。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
-5. Once done please refer to the answer of the question 8 in this document to revert back the pricing.
-6. After that navigate to the **PUBLISH** tab in the Publishing portal and push the offer to staging to test it. Once you are done with testing the offer, then click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
+5. 完了したら、このドキュメントの質問 8 の回答を確認して、価格を元に戻してください。
+6. 発行ポータルの **[発行]** タブに移動し、プランをステージングにプッシュして、テストします。 プランをテストしたら、 **[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
 
-## <a name="10.-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value"></a>10. How to revert visibility setting of a listed SKU to the production value
-Please follow the steps below:
+## <a name="10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value"></a>10.表示されている SKU の可視性の設定を運用時の値に戻す方法
+次の手順に従ってください。
 
-1. Login to the [Publishing portal](https://publish.windowsazure.com).
-2. Navigate to the **VIRTUAL MACHINES** tab and select your offer.
-3. From the left hand side menu, click the **SKUS** tab.
-4. Select your SKU and revert the visibility setting of the SKU to the production value.
+1. [発行ポータル](https://publish.windowsazure.com)にログインします。
+2. **[Virtual Machines]** タブに移動し、プランを選択します。
+3. 左側のメニューで、 **[SKUs (SKU)]** タブをクリックします。
+4. SKU を選択し、SKU の可視性の設定を運用時の値に戻します。
    
-    ![drawing](media/marketplace-publishing-vm-image-post-publishing/img10-04.png)
-5. Once you are done with the changes, then click on the button **REQUEST APPROVAL TO PUSH TO PRODUCTION** to re-publish your offer in the Azure Marketplace.
+    ![図](media/marketplace-publishing-vm-image-post-publishing/img10-04.png)
+5. 変更が完了したら、 **[REQUEST APPROVAL TO PUSH TO PRODUCTION (本番にプッシュするための承認を要求)]** をクリックして、Azure Marketplace でプランを再発行します。
 
-## <a name="see-also"></a>See Also
-* [Getting Started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
-* [Understanding seller insights reporting](marketplace-publishing-report-seller-insights.md)
-* [Understanding payout reporting](marketplace-publishing-report-payout.md)
-* [How to change your Cloud Solution Provider reseller incentive](marketplace-publishing-csp-incentive.md)
-* [Troubleshooting common publishing problems in the Marketplace](marketplace-publishing-support-common-issues.md)
-* [Get support as a publisher](marketplace-publishing-get-publisher-support.md)
-* [Creating a VM image on-premises](marketplace-publishing-vm-image-creation-on-premise.md)
-* [Create a virtual machine running Windows in the Azure preview portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## <a name="see-also"></a>関連項目
+* [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
+* [Understanding seller insights reporting (Seller Insights レポートを理解する)](marketplace-publishing-report-seller-insights.md)
+* [Understanding Payout reporting (支払いレポートを理解する)](marketplace-publishing-report-payout.md)
+* [How to change your Cloud Solution Provider reseller incentive (Cloud Solution Provider のリセラー インセンティブを変更する方法)](marketplace-publishing-csp-incentive.md)
+* [Troubleshooting Common Publishing Problems in the Marketplace (Marketplace での発行に関してよくある問題のトラブルシューティング)](marketplace-publishing-support-common-issues.md)
+* [Get support as a publisher (発行元としてサポートを受ける)](marketplace-publishing-get-publisher-support.md)
+* [Creating a VM Image on-premise (オンプレミスでの VM イメージの作成)](marketplace-publishing-vm-image-creation-on-premise.md)
+* [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

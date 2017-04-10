@@ -1,7 +1,7 @@
 [こちら][namespace-how-to]の説明に従って、Service Bus 名前空間を既に作成していることを確認してください。
 
 1. [Azure Portal][azure-portal] にログオンします。
-2. ポータルの左のナビゲーション ウィンドウで、 **[Service Bus]**をクリックします。
+2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[More Services (その他のサービス)]** をクリックします)。
 3. キューを作成する名前空間を選択します。 この例では、 **nstest1**です。
    
     ![キューを作成する][createqueue1]
@@ -21,6 +21,6 @@
 [azure-portal]: https://portal.azure.com
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

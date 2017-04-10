@@ -1,23 +1,28 @@
 ---
-title: DocumentDB コネクタ用 Power BI チュートリアル | Microsoft Docs
-description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、DocumentDB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
-keywords: power bi チュートリアル, データの視覚化, power bi コネクタ
+title: "DocumentDB コネクタ用 Power BI チュートリアル | Microsoft Docs"
+description: "この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、DocumentDB および Power BI コネクタを使用してデータを視覚化する方法を説明します。"
+keywords: "power bi チュートリアル, データの視覚化, power bi コネクタ"
 services: documentdb
-author: h0n
+author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
-ms.author: hawong
+ms.date: 02/14/2016
+ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
+ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
+ms.lasthandoff: 02/15/2017
+
 
 ---
-# <a name="power-bi-tutorial-for-documentdb:-visualize-data-using-the-power-bi-connector"></a>DocumentDB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
+# <a name="power-bi-tutorial-for-documentdb-visualize-data-using-the-power-bi-connector"></a>DocumentDB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 DocumentDB コネクタ経由で DocumentDB アカウントに接続できるようになりました。   
 
 この Power BI チュートリアルでは、Power BI Desktop で DocumentDB アカウントに接続し、ナビゲーターを使用してデータを抽出するコレクションに移動して、Power BI Desktop クエリ エディターで JSON データを表形式に変換し、レポートを作成して PowerBI.com に発行する手順について説明します。
@@ -42,24 +47,24 @@ ms.author: hawong
 
 PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro の詳細については、 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)を参照してください。
 
-## <a name="let's-get-started"></a>作業を開始する
+## <a name="lets-get-started"></a>作業を開始する
 このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。  火山データは DocumentDB アカウントに格納されており、JSON ドキュメントは次のようになっています。
 
     {
         "Volcano Name": "Rainier",
-        "Country": "United States",
-        "Region": "US-Washington",
-        "Location": {
+           "Country": "United States",
+          "Region": "US-Washington",
+          "Location": {
             "type": "Point",
             "coordinates": [
-            -121.758,
-            46.87
+              -121.758,
+              46.87
             ]
-        },
-        "Elevation": 4392,
-        "Type": "Stratovolcano",
-        "Status": "Dendrochronology",
-        "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
+          },
+          "Elevation": 4392,
+          "Type": "Stratovolcano",
+          "Status": "Dendrochronology",
+          "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
 DocumentDB アカウントから火山データを取得し、次のような対話型の Power BI レポートでデータを視覚化する必要があります。
@@ -84,7 +89,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
     データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。  代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
    
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。  キーは、Azure ポータルの **[[読み取り専用キー]](documentdb-manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `RcEBrRI2xVnlWheejXncHId6QRcKdCGQSW6uSUEgroYBWVnujW3YWvgiG2ePZ0P0TppsrMgscoxsO7cf6mOpcA==` になります)。 アカウント キーを入力し、 **[接続]**をクリックします。
+7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。  キーは、Azure ポータルの **[[読み取り専用キー]](documentdb-manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` になります)。 アカウント キーを入力し、 **[接続]**をクリックします。
    
     レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure ポータルの [[キー]](documentdb-manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
    
@@ -146,7 +151,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 レポート ビューには以下が表示されます。
 
 1. **[フィールド]** ウィンドウ。ここには、レポートに使用できるフィールドと共にデータ モデルの一覧が表示されます。
-2. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
+2. **[視覚エフェクト]** ウィンドウ。 レポートに&1; つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
 3. **[レポート]** キャンバス。ここでは、レポート用の視覚エフェクトを作成します。
 4. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
 
@@ -171,7 +176,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
    
     ![Power BI への発行が成功しました! Power BI でチュートリアルを開く](./media/documentdb-powerbi-visualize/power_bi_connector_open_in_powerbi.png)
 
-## <a name="create-a-dashboard-in-powerbi.com"></a>PowerBI.com でのダッシュボードの作成
+## <a name="create-a-dashboard-in-powerbicom"></a>PowerBI.com でのダッシュボードの作成
 レポートが用意できたので、PowerBI.com で共有しましょう。
 
 レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、**PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
@@ -186,8 +191,8 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 ダッシュボードを作成する前に、レポートをその場で変更することもできます。 ただし、変更は Power BI Desktop で実行し、変更後のレポートを PowerBI.com にもう一度発行することをお勧めします。
 
-## <a name="refresh-data-in-powerbi.com"></a>PowerBI.com でのデータの更新
-データの更新方法には、アドホック更新とスケジュールされている更新の 2 つの方法があります。
+## <a name="refresh-data-in-powerbicom"></a>PowerBI.com でのデータの更新
+データの更新方法には、アドホック更新とスケジュールされている更新の&2; つの方法があります。
 
 アドホック更新を実行するには、**[データセット]** (PowerBITutorial など) の近くの省略記号 (...) をクリックします。 **[Refresh Now (今すぐ更新)]** を含む操作の一覧が表示されます。 データを更新するには、**[Refresh Now (今すぐ更新)]** をクリックします。
 
@@ -208,7 +213,5 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 ## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * DocumentDB の詳細については、「 [DocumentDB のドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)」ランディング ページを参照してください。
-
-<!--HONumber=Oct16_HO2-->
 
 

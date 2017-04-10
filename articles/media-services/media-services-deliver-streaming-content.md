@@ -1,12 +1,12 @@
 ---
-title: .NET を使用した Azure Media Services コンテンツの発行
-description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+title: ".NET を使用した Azure Media Services コンテンツの発行"
+description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 author: juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: c53b1f83-4cb1-4b09-840f-9c145b7d6f8d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
+ms.lasthandoff: 03/14/2017
+
 
 ---
-# .NET を使用した Azure Media Services コンテンツの発行
+# <a name="publish-azure-media-services-content-using-net"></a>.NET を使用した Azure Media Services コンテンツの発行
 > [!div class="op_single_selector"]
 > * [REST ()](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -24,30 +29,34 @@ ms.author: juliako
 > 
 > 
 
-## Overview
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。
+## <a name="overview"></a>概要
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。 [アセットをエンコードする](media-services-encode-asset.md) トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。 
 
 > [!NOTE]
-> コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ([こちら](media-services-dotnet-configure-asset-delivery-policy.md)のトピックをご覧ください)。
+> コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ( [こちらの](media-services-dotnet-configure-asset-delivery-policy.md) トピックをご覧ください)。 
 > 
 > 
 
-また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
+また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。 また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。 
 
-## オンデマンド ストリーミング ロケーターを作成する
+## <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
 
 1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
 2. オンデマンド ストリーミング ロケーターを作成します。
-3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。
+3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。 
    
-   プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。
-4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。
+   プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。  
+4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
 
-### Media Services .NET SDK を使用する
-ストリーミング URL を構築する
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
+### <a name="use-media-services-net-sdk"></a>Media Services .NET SDK を使用する
+ストリーミング URL を構築する 
 
     private static void BuildStreamingURLs(IAsset asset)
     {
@@ -97,11 +106,11 @@ ms.author: juliako
 
 
 > [!NOTE]
-> SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。
+> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
 > 
 > 
 
-プログレッシブ ダウンロード URL を作成します。
+プログレッシブ ダウンロード URL を作成します。 
 
     private static void BuildProgressiveDownloadURLs(IAsset asset)
     {
@@ -140,7 +149,7 @@ ms.author: juliako
 
     . . . 
 
-### Media Services .NET SDK Extensions の使用
+### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK Extensions の使用
 次のコードでは、ロケーターを作成してアダプティブのスムーズ ストリーミング、HLS、MPEG-DASH URL を生成する.NET SDK Extensions のメソッドを呼び出します。
 
     // Create a loctor.
@@ -160,13 +169,14 @@ ms.author: juliako
     Console.WriteLine(mpegDashUri);
 
 
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 関連項目
-[資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="see-also"></a>関連項目
+[資産をダウンロードする](media-services-deliver-asset-download.md)
+[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+

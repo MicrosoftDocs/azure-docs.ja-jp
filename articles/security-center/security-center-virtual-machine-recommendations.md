@@ -1,19 +1,23 @@
 ---
-title: Azure Security Center での仮想マシンの保護 | Microsoft Docs
-description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の仮想マシンを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
+title: "Azure Security Center での仮想マシンの保護 | Microsoft Docs"
+description: "このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の仮想マシンを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: ''
-
+editor: 
+ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2016
+ms.date: 01/07/2017
 ms.author: terrylan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c048263ab1ae453a10f0471ae33a122e21151d94
+
 
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Azure Security Center での仮想マシンの保護
@@ -49,6 +53,9 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics の起動と開始 | Microsoft Docs"
-description: "Log Analytics は、Microsoft Operations Management Suite (OMS) からほんの数分で起動して開始できます。"
+title: "Azure Log Analytics ワークスペースを使って作業を開始する | Microsoft Docs"
+description: "Log Analytics のワークスペースは、わずか数分で導入して使い始めることができます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 508716de-72d3-4c06-9218-1ede631f23a6
 ms.service: log-analytics
@@ -12,142 +12,143 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2f8defce183e61825d9df3397ea1082dbdb4b11a
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="get-started-with-log-analytics"></a>Log Analytics の起動と開始
-Log Analytics は、Microsoft Operations Management Suite (OMS) からほんの数分で起動して開始できます。 OMS ワークスペース (アカウントに類似) を作成するには、2 つの方法があります。
+# <a name="get-started-with-a-log-analytics-workspace"></a>Log Analytics ワークスペースを使って作業を開始する
+Azure Log Analytics は、IT インフラから運用に関する詳細情報を収集して評価できるサービスで、短時間で導入して使い始めることができます。 この記事で説明されている内容に従って、収集したデータの調査、分析、操作を "*無料で*" 簡単に始めることができます。
 
-* Microsoft Operations Management Suite の Web サイト
-* Microsoft Azure サブスクリプション
+この記事では、Log Analytics の入門編として、サービスの使用を開始できるよう Azure への最小限のデプロイを行う手順について簡単に説明します。 Azure の管理データが保存された論理的なコンテナーを、ワークスペースと呼びます。 情報を確認し、評価を完了した後は、評価に使用したワークスペースを削除できます。 この記事はチュートリアルであるため、ビジネス要件、計画、アーキテクチャのガイダンスには触れていません。
 
-無料の OMS ワークスペースは、OMS の Web サイトで作成できます。 または、Microsoft Azure サブスクリプションを使用して OMS ワークスペースを作成できます。 機能的にはどちらのワークスペースもほぼ同じですが、無料の OMS ワークスペースの場合、OMS サービスに送信できるデータ量が 1 日 500 MB までとなります。 Azure サブスクリプションを使用する場合、そのサブスクリプションを使用して他の Azure サービスにもアクセスできます。 ワークスペースは、作成方法に関係なく、Microsoft アカウントまたは組織アカウントのいずれかを使用して作成します。
+>[!NOTE]
+>Microsoft Azure Government Cloud を使用している場合は、この記事の代わりに [Azure Government 監視 + 管理に関するドキュメント](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)を参照してください。
 
-プロセスは次のようになります。
+ワークスペースの使用を開始するプロセスの概要は、次のようになります。
 
-![ダイアグラムのオンボード](./media/log-analytics-get-started/oms-onboard-diagram.png)
+![プロセス図](./media/log-analytics-get-started/onboard-oms.png)
 
-## <a name="log-analytics-prerequisites-and-deployment-considerations"></a>Log Analytics の前提条件とデプロイに関する考慮事項
-* Log Analytics の機能をすべて利用するには、有料の Microsoft Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。 または、 [Operations Management Suite](http://microsoft.com/oms) の Web サイトで **[無料で試す]**をクリックして、無料の OMS アカウントを作成します。
-* OMS ワークスペース。
-* データを収集する各 Windows コンピューターで、Windows Server 2008 SP1 以降が実行されている必要があります。
-* [ファイアウォール](log-analytics-proxy-firewall.md) 経由のアクセス。
-* コンピューターがインターネットに接続できない場合、サーバーから OMS にトラフィックを転送するための [OMS Log Analytics フォワーダー](https://blogs.technet.microsoft.com/msoms/2016/03/17/oms-log-analytics-forwarder) (ゲートウェイ) サーバー。
-* Operations Manager を使用する場合、Log Analytics は Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降をサポートします。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。 OMS との統合方法を調べます。
-* コンピューターがインターネットに直接アクセスできるかどうかを調べます。 コンピューターがインターネットに直接アクセスできない場合は、OMS Web サービス サイトにアクセスするためのゲートウェイ サーバーが必要です。 すべてのアクセスは HTTPS で行われます。
-* OMS にデータを送信するテクノロジとサーバーを調べます。 たとえば、ドメイン コント ローラー、SQL Server などです。
-* OMS と Azure のユーザーに権限を付与します。
-* データ使用量に懸念がある場合は、他のソリューションを追加する前に、各ソリューションを個別にデプロイし、パフォーマンスへの影響をテストします。
-* ソリューションと機能を Log Analytics に追加する際に、データ使用量とパフォーマンスを確認します。 これには、イベントの収集、ログの収集、パフォーマンス データの収集などが含まれます。データ使用量やパフォーマンスへの影響が特定されるまでは、収集量を最小限にすることをお勧めします。
-* Windows エージェントも Operations Manager を使用して管理されていないことを確認します。Windows エージェントも管理されている場合、重複データが発生します。 これは、Azure 診断が有効になっている Azure ベース エージェントにも当てはまります。
-* エージェントをインストールした後で、エージェントが正しく動作していることを確認します。 エージェントが正しく動作していない場合、グループ ポリシーを使用して Cryptography API: Next Generation (CNG) キー分離が無効にされていないことを確認してください。
-* 一部の Log Analytics ソリューションには、これ以外にも要件があります。
+## <a name="1-create-an-azure-account-and-sign-in"></a>1 Azure アカウントを作成してサインインする
 
-## <a name="sign-up-in-3-steps-using-the-operations-management-suite"></a>Operations Management Suite を使用した 3 ステップでのサインアップ手順
-1. [Operations Management Suite](http://microsoft.com/oms) の Web サイトに進み、 **[無料試用版]**をクリックします。 Outlook.com などの Microsoft アカウント、または Office 365 または他の Microsoft サービスで使用する会社またはや教育機関の組織アカウントを使用してサインインします。
-2. 一意のワークスペース名を指定します。 ワークスペースは、管理データを保存する論理的なコンテナーです。 ワークスペースのデータはそれに限定されたデータなので、これでは、組織のチームごとにデータを分割できるようになります。 電子メール アドレスとデータを格納する領域を指定します。  
-    ![ワークスペースを作成し、サブスクリプションをリンクする](./media/log-analytics-get-started/oms-onboard-create-workspace-link01.png)
-3. 次いで、新しい Azure サブスクリプションを作成するか、既存の Azure サブスクリプションにリンクします。 無料評価版を使用して実行するには、 **[後で]**をクリックします。  
-   ![ワークスペースを作成し、サブスクリプションをリンクする](./media/log-analytics-get-started/oms-onboard-create-workspace-link02.png)
+まだ Azure アカウントを持っていない場合は、Log Analytics を使用するために作成する必要があります。 すべての Azure サービスにアクセスできる、30 日間有効な[無料アカウント](https://azure.microsoft.com/free/)を作成できます。
 
-これで Operations Management Suite ポータルを使用開始する準備が整いました。
+### <a name="to-create-a-free-account-and-sign-in"></a>無料アカウントを作成してサインインするには
+1. 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」の手順に従います。
+2. [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
 
-Operations Management Suite で作成したワークスペースを設定して、ワークスペースに既存の Azure アカウントをリンクする方法の詳細については、「 [Log Analytics へのアクセスを管理する](log-analytics-manage-access.md)」を参照してください。
+## <a name="2-create-a-workspace"></a>2 ワークスペースを作成する
 
-## <a name="sign-up-quickly-using-microsoft-azure"></a>Microsoft Azure を使用した迅速なサインアップ
-1. [Azure ポータル](https://portal.azure.com) に移動してサインインし、サービスの一覧から **Log Analytics (OMS)**を選択します。  
-    ![Azure Portal](./media/log-analytics-get-started/oms-onboard-azure-portal.png)
-2. **[追加]**をクリックし、次の項目について選択します。
-   * **[OMS ワークスペース]** の名前
+次の手順に従って、ワークスペースを作成します。
+
+1. Azure Portal の Marketplace のサービスの一覧で「*Log Analytics*」を検索し、**[Log Analytics]** を選択します。  
+    ![Azure ポータル](./media/log-analytics-get-started/log-analytics-portal.png)
+2. **[作成]**をクリックし、次の項目について選択します。
+   * **OMS ワークスペース** - ワークスペースの名前を入力します。
    * **[サブスクリプション]** - 複数のサブスクリプションがある場合は、新しいワークスペースに関連付けるサブスクリプションを 1 つ選択します。
    * **[リソース グループ]**
    * **場所**
    * **[価格レベル]**  
        ![簡易作成](./media/log-analytics-get-started/oms-onboard-quick-create.png)
-3. **[作成]** をクリックすると、Azure ポータルにワークスペースの詳細が表示されます。       
-    ![ワークスペースの詳細](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
-4. **[OMS Portal]** (OMS ポータル) のリンクをクリックすると、Operations Management Suite の Web サイトに新しく作成したワークスペースが表示されます。
+3. **[OK]** をクリックするとワークスペースの一覧が表示されます。
+4. ワークスペースを選択すると、その詳細が Azure Portal に表示されます。       
+    ![workspace details](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
-これで Operations Management Suite ポータルの使用を開始する準備が整いました。
+## <a name="3-add-solutions-and-solution-offerings"></a>3 ソリューションとソリューション オファリングを追加する
 
-Operations Management Suite で作成したワークスペースを設定して、既存のワークスペースを Azure サブスクリプションとリンクする方法の詳細については、「 [Log Analytics へのアクセスを管理する](log-analytics-manage-access.md)」を参照してください。
+次に、管理ソリューションとソリューション オファリングを追加します。 管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。 ソリューション オファリングとは、複数の管理ソリューションを組み合わせたものです。
 
-## <a name="get-started-with-the-operations-management-suite-portal"></a>Operations Management Suite ポータルの起動と開始
-ソリューションを選択し、管理するサーバーに接続するには、 **[設定]** タイルをクリックし、このセクションの次の手順に従います。  
+ワークスペースにソリューションを追加すると、エージェントを使用してワークスペースに接続されたコンピューターからさまざまな種類のデータを収集できます。 エージェントのオンボードについては後ほど説明します。
 
-![作業を開始する](./media/log-analytics-get-started/oms-onboard-get-started.png)  
+### <a name="to-add-solutions-and-solution-offerings"></a>ソリューションとソリューション オファリングを追加するには
 
-1. **ソリューションの追加** - インストールしたソリューションを表示します。  
-    ![ソリューション](./media/log-analytics-get-started/oms-onboard-solutions.png)  
-    ソリューションをさらに追加するために **[ギャラリーへ移動]** をクリックします。  
-    ![ソリューション](./media/log-analytics-get-started/oms-onboard-solutions02.png)  
-    ソリューションを選択して **[追加]** をクリックします。
-2. **ソースの接続** - サーバー環境に接続してデータを収集する方法を選択します。
-   
-   * エージェントをインストールして、任意の Windows サーバーまたはクライアントに直接接続します。
-   * Linux サーバーを OMS Agent for Linux と接続します。
-   * Windows または Linux の VM 拡張機能の Azure 診断に構成されている Azure のストレージ アカウントを使用します。
-   * System Center Operations Manager を使用して、管理グループまたは Operations Manager デプロイメント全体をアタッチします。
-   * Windows テレメトリを有効にして Upgrade Analytics を使用します。
-       ![接続されたソース](./media/log-analytics-get-started/oms-onboard-data-sources.png)    
-3. **データの収集** - 少なくとも 1 つのデータ ソースを構成し、ワークスペースにデータを入力します。 完了したら、**[保存]** をクリックします。    
-   
-    ![データの収集](./media/log-analytics-get-started/oms-onboard-logs.png)    
+1. Azure Portal で **[新規]** をクリックし、**[Marketplace を検索]** ボックスに「**Activity Log Analytics**」と入力し、Enter キーを押します。
+2. [すべて] ブレードで、**[Activity Log Analytics (アクティビティ ログ分析)]**、**[作成]** の順にクリックします。  
+    ![アクティビティ ログ分析](./media/log-analytics-get-started/activity-log-analytics.png)  
+3. "*管理ソリューション名*" のブレードで、管理ソリューションに関連付けるワークスペースを選択します。
+4. **[作成]**をクリックします。  
+    ![ソリューションのワークスペース](./media/log-analytics-get-started/solution-workspace.png)  
+5. 手順 1 ～ 4 を繰り返して、次のサービス オファリングを追加します。
+    - [Antimalware Assessment (マルウェア対策評価)] ソリューションと [Security and Audit (セキュリティと監査)] ソリューションが含まれた **[Security & Compliance (セキュリティとコンプライアンス)]** サービス オファリング。
+    - [Automation Hybrid Worker (Automation ハイブリッド worker)] ソリューション、[Change Tracking (変更の追跡)] ソリューション、および [System Update Assessment (システムの更新の評価)] \(別名 Update Management [更新管理]) ソリューションが含まれた **[Automation & Control (オートメーションと制御)]** サービス オファリング。 ソリューション オファリングを追加する際に Automation アカウントを作成する必要があります。  
+        ![Automation アカウント](./media/log-analytics-get-started/automation-account.png)  
+6. ワークスペースに追加した管理ソリューションを表示するには、**[Log Analytics]** > **[サブスクリプション]** > ***ワークスペース名*** > **[概要]** の順に選択します。 追加した管理ソリューションのタイルが表示されます。  
+    >[!NOTE]
+    >まだエージェントをワークスペースに接続していないため、追加したソリューションのデータは表示されません。  
 
-## <a name="optionally-connect-servers-directly-to-the-operations-management-suite-by-installing-an-agent"></a>必要に応じて、エージェントをインストールして、サーバーを直接 Operations Management Suite に接続します。
-次の例は、Windows エージェントをインストールする方法を示しています。
+    ![データが表示されていないソリューション タイル](./media/log-analytics-get-started/solutions-no-data.png)
 
-1. **[設定]** タイル、**[接続されたソース]** タブ、追加するソースの種類のタブを順にクリックします。その後、エージェントをダウンロードするか、エージェントを有効にする方法について確認します。 たとえば、**[Windows エージェントのダウンロード (64 ビット)]** をクリックします。 Windows エージェントは、Windows Server 2008 SP 1 以降または Windows 7 SP1 以降にのみインストールできます。
-2. エージェントを 1 つ以上のサーバーにインストールします。 エージェントは 1 つずつインストールすることも、 [カスタム スクリプト](log-analytics-windows-agents.md)を使用した自動化された方法または所持している既存のソフトウェア配布ソリューションを使用する方法でインストールすることもできます。
-3. 使用許諾契約書に同意しインストール フォルダーを選択したら、**[Connect the agent to Azure Log Analytics (OMS) (Azure Log Analytics (OMS) にエージェントを接続する)]** を選択します。   
-    ![エージェントの設定](./media/log-analytics-get-started/oms-onboard-agent.png)
-4. 次のページでは、ワークスペースの ID とワークスペース キーを求められます。 エージェント ファイルをダウンロードした画面に、ワークスペース ID とキーが表示されます。  
-    ![エージェント キー](./media/log-analytics-get-started/oms-onboard-mma-keys.png)  
-   
-    ![サーバーをアタッチする](./media/log-analytics-get-started/oms-onboard-key.png)
-5. 必要に応じて、プロキシ サーバーを設定し、認証情報を指定するには、インストール中に **[詳細設定]** をクリックします。 **[次へ]** ボタンをクリックして、ワークスペースの情報画面に戻ります。
-6. **[次へ]** をクリックし、ワークスペース ID およびキーを検証します。 エラーが検出された場合は、 **[戻る]** で修正できます。 ワークスペース ID とキーが検証されたら、 **[インストール]** をクリックして、エージェントのインストールを完了します。
-7. [コントロール パネル] で [Microsoft Monitoring Agent]、[Azure Log Analytics (OMS)] タブの順にクリックします。 エージェントが Operations Management Suite サービスと通信している際には、緑のチェック マーク アイコンが表示されます。 初期状態で、これには 5 ～ 10 分かかります。
+## <a name="4-create-a-vm-and-onboard-an-agent"></a>4 VM を作成し、エージェントをオンボードする
 
-> [!NOTE]
-> Operations Management Suite に直接接続されているサーバーの容量管理および構成の査定ソリューションは現在はサポートされていません。
-> 
-> 
+次に、Azure にシンプルな仮想マシンを作成します。 VM を作成したら、OMS エージェントをオンボードして有効にします。 エージェントを有効にすると、VM からのデータ収集が開始され、Log Analytics にデータが送信されます。
 
-エージェントを System Center Operations Manager 2012 SP1 以降に接続することもできます。 これを行うには、 **[エージェントを System Center Operations Manager に接続する]**を選択します。 このオプションを選択すると、追加のハードウェアなしに、または管理グループをロードせずに、サービスにデータを送信できます。
+### <a name="to-create-a-virtual-machine"></a>仮想マシンを作成するには
 
-Operations Management Suite にエージェントを接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」を参照してください。
+- 「[Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」に記載された手順に従って、新しい仮想マシンを作成します。
 
-## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>オプションでの System Center Operations Manager を使用したサーバーの接続
-1. Operations Manager コンソールで、 **[管理]**をクリックします。
-2. **[オペレーション インサイト]** ノードを展開して、**[オペレーション インサイトの接続]** を選択します。
-   
-   > [!NOTE]
-   > 使用している SCOM の更新プログラム ロールアップによって、*System Center Advisor*、*Operational Insights*、*Operations Management Suite* のいずれかのノードが表示されます。
-   > 
-   > 
-3. 右上の **[Operational Insights に登録する]** リンクをクリックして、指示に従います。
-4. 登録ウィザードを完了したら、 **[コンピューター/グループの追加]** リンクをクリックします。
-5. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 Log Analytics に追加するコンピューターまたはグループを選択し、**[追加]**、**[OK]** の順にクリックします。 Operations Management Suite ポータルの **[使用状況]** タイルに移動すると、OMS サービスがデータを受信していることを確認できます。 データは 5 ～ 10 分で表示されます。
+### <a name="connect-the-virtual-machine-to-log-analytics"></a>仮想マシンを Log Analytics に接続するには
 
-Operations Manager を Operations Management Suite に接続する方法の詳細については、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
+- 「[Azure 仮想マシンを Log Analytics に接続する](log-analytics-azure-vm-extension.md)」に記載された手順に従って、Azure Portal で VM を Log Analytics に接続します。
 
-## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>オプションで Microsoft Azure でクラウド サービスのデータを分析する
-Operations Management Suite では、Azure Cloud Services の診断を有効にすることで、クラウド サービスや仮想マシンのイベントおよび IIS ログを迅速に検索できます。 また、Microsoft Monitoring Agent をインストールすることによって、Azure Virtual Machines の情報を追加で得ることもできます。 Operations Management Suite を使用するように Azure 環境を構成する方法の詳細については、「 [Azure Storage を Log Analytics に接続する](log-analytics-azure-storage.md)」を参照してください。
+## <a name="5-view-and-act-on-data"></a>5 データを表示して操作する
+
+前の手順で、Activity Log Analytics ソリューション、Security & Compliance サービス オファリング、および Automation & Control サービス オファリングを有効にしました。 続いては、ソリューションによって収集されたデータとログ検索の結果を確認します。
+
+まず、ソリューションの内部から表示されるデータを確認します。 次に、ログ検索機能でアクセスするログ検索の結果を確認します。 ユーザーはログの検索を通じて、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較することができます。 詳細については、「[Log Analytics におけるログの検索](log-analytics-log-searches.md)」を参照してください。 最後に、Azure Portal の外部にある OMS ポータルでデータを操作します。
+
+### <a name="to-view-antimalware-data"></a>マルウェア対策に関するデータを表示するには
+
+1. Azure Portal で**[Log Analytics]** > ***対象のワークスペース***に移動します。
+2. ワークスペースのブレードで、**[全般]** にある **[概要]** をクリックします。  
+    ![概要](./media/log-analytics-get-started/overview.png)
+3. **[Antimalware Assessment (マルウェア対策評価)]** タイルをクリックします。 この例では、あるコンピューターに Windows Defender がインストールされているものの、定義ファイルが最新でないことがわかります。  
+    ![マルウェア対策](./media/log-analytics-get-started/solution-antimalware.png)
+4. この例の場合は、**[保護の状態]** の **[Signature out of date (古い定義ファイル)]** をクリックすると、[ログ検索] 画面が開き、定義ファイルが更新されていないコンピューターに関する詳細情報が表示されます。 この例では、コンピューターの名前が *getstarted* となっています。 定義ファイルが更新されていないコンピューターが複数ある場合は、ログ検索の結果にすべて表示されます。  
+    ![更新されていないマルウェア対策](./media/log-analytics-get-started/antimalware-search.png)
+
+### <a name="to-view-security-and-audit-data"></a>セキュリティと監査に関するデータを表示するには
+
+1. ワークスペースのブレードで、**[全般]** にある **[概要]** をクリックします。  
+2. **[Security and Audit (セキュリティと監査)]** タイルをクリックします。 この例では、注目すべき問題が 2 つあることがわかります。1 つは重要な更新プログラムが適用されていないコンピューターが 1 台あること、もう 2 つは保護が不十分なコンピューターが 1 台あることです。  
+    ![セキュリティと監査](./media/log-analytics-get-started/security-audit.png)
+3. この例の場合は、**[Notable Issues (注目すべき問題)]** の **[Computers missing critical updates (重要な更新プログラムが適用されていないコンピューター)]** をクリックすると、[ログ検索] 画面が開き、重要な更新プログラムが適用されていないコンピューターに関する詳細情報が表示されます。 この例では、重要な更新プログラムが適用されていないコンピューターが 1 台ある以外に、他の更新プログラムが適用されていないコンピューターが 63 台あります。  
+    ![セキュリティと監査に関するログ検索](./media/log-analytics-get-started/security-audit-log-search.png)
+
+### <a name="to-view-and-act-on-system-update-data"></a>システム更新に関するデータを表示して操作するには
+
+1. ワークスペースのブレードで、**[全般]** にある **[概要]** をクリックします。  
+2. **[System Update Assessment (システムの更新の評価)]** タイルをクリックします。 この例では、*getstarted* という名前の Windows コンピューターに重要な更新プログラムを適用する必要があることと、定義ファイルの更新が必要なコンピューターが 1 台あることがわかります。  
+    ![システムの更新](./media/log-analytics-get-started/system-updates.png)
+3. この例では、**[Missing Updates (更新プログラムが適用されていない)]** の **[重要な更新プログラム]** をクリックすると、[ログ検索] 画面が開き、重要な更新プログラムが適用されていないコンピューターに関する詳細情報が表示されます。 この例では、更新プログラムが適用されていないコンピューターが 1 台と、必要な更新が適用されていないコンピューターが 1 台あることがわかります。  
+    ![システムの更新に関するログ検索](./media/log-analytics-get-started/system-updates-log-search.png)
+4. [Operations Management Suite](http://microsoft.com/oms) の Web サイトにアクセスし、Azure アカウントを使用してサインインします。 サインインすると、Azure Portal で表示されるのと同様のソリューション情報が表示されます。  
+    ![OMS ポータル](./media/log-analytics-get-started/oms-portal.png)
+5. **[Update Management (更新管理)]** タイルをクリックします。
+6. [Update Management (更新管理)] ダッシュボードに、Azure Portal で表示されるシステム更新に関する情報と同様の情報が表示されます。 ただし、**[Manage Update Deployments (更新プログラムのデプロイの管理)]** タイルは、新たに追加されたタイルです。 ただし、**[Manage Update Deployments (更新プログラムのデプロイの管理)]** タイルは新たに追加されたタイルです。  
+    ![[Update Management (更新管理)] タイル](./media/log-analytics-get-started/update-management.png)
+7. **[Update Deployments (更新プログラムのデプロイ)]** ページで、**[追加]** をクリックすると、*更新実行*が作成されます。  
+    ![Update Deployments (更新プログラムの展開)](./media/log-analytics-get-started/update-management-update-deployments.png)
+8.  **[New Update Deployment (新しい更新プログラムのデプロイ)]** ページで、更新プログラムのデプロイの名前を入力し、更新するコンピューター (この例では、*getstarted*) を選択して、スケジュールを選択した後、**[保存]** をクリックします。  
+    ![新しいデプロイ](./media/log-analytics-get-started/new-deployment.png)  
+    更新プログラムのデプロイを保存すると、スケジュール設定された更新が表示されます。  
+    ![スケジュール設定された更新](./media/log-analytics-get-started/scheduled-update.png)  
+    更新実行が完了すると、状態が **[完了]** と表示されます。
+    ![完了した更新](./media/log-analytics-get-started/completed-update.png)
+9. 更新実行が終わると、実行が正常に行われたかどうかが表示され、適用された更新プログラムの詳細を確認できます。
+
+## <a name="after-evaluation"></a>評価の終了後
+
+このチュートリアルでは、仮想マシンにエージェントをインストールし、短時間で作業を開始しました。 ここで実施した手順は、単純なものでした。 一方で、規模の大きい組織や企業には、たいてい、複雑なオンプレミスの IT インフラストラクチャがあります。 そのような複雑な環境からデータを収集する際には、このチュートリアルで取り上げた内容よりも詳細な計画と追加の作業が必要になります。 この情報については、以下の「次のステップ」セクションに記載された役立つ記事へのリンクを使用して確認してください。
+
+このチュートリアルで作成したワークスペースは、必要に応じて削除できます。
 
 ## <a name="next-steps"></a>次のステップ
+* [Windows エージェント](log-analytics-windows-agents.md)を Log Analytics に接続する方法を確認してください。
+* [Operations Manager エージェント](log-analytics-om-agents.md)を Log Analytics に接続する方法を確認してください。
 * [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
-* カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -1,19 +1,24 @@
 ---
-title: Service Bus キューの使用方法 (PHP) | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。
-services: service-bus
+title: "Service Bus キューの使用方法 (PHP) | Microsoft Docs"
+description: "Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。"
+services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/18/2017
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 23be0f9cbfb37fe3f5b30ec67595d67f0568a527
+ms.openlocfilehash: c5db806969a6e018596c1ff0a0861423df19b61c
+ms.lasthandoff: 01/31/2017
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
@@ -39,17 +44,17 @@ Microsoft Azure BLOB Service にアクセスする PHP アプリケーション�
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus キュー API を使用するには、次の操作を行います。
 
-1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照します。
+1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
-次の例では、オートローダー ファイルをインクルードし、 **ServicesBuilder** クラスを参照する方法を示しています。
+次の例では、オートローダー ファイルをインクルードし、`ServicesBuilder` クラスを参照する方法を示しています。
 
 > [!NOTE]
 > この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。 ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
 > 
 > 
 
-```
+```php
 require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
@@ -63,18 +68,18 @@ Service Bus クライアントをインスタンス化するには、まず次�
 Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
 ```
 
-ここで **Endpoint** の一般的な形式は `[yourNamespace].servicebus.windows.net` です。
+ここで、`Endpoint` の一般的な形式は `[yourNamespace].servicebus.windows.net` です。
 
-いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。 そのための方法は次のとおりです。
+いずれかの Azure サービス クライアントを作成するには、`ServicesBuilder` クラスを使用する必要があります。 そのための方法は次のとおりです。
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-  * 既定では 1 つの外部ソース (環境変数) のみがサポートされています。
-  * **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
+  * 既定では&1; つの外部ソース (環境変数) のみがサポートされています。
+  * `ConnectionStringSource` クラスを拡張して新しいソースを追加できます。
 
 ここで概説している例では、接続文字列を直接渡します。
 
-```
+```php
 require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
@@ -84,12 +89,12 @@ $connectionString = "Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer]
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 ```
 
-## <a name="how-to:-create-a-queue"></a>方法: キューを作成する
-Service Bus キューの管理処理は **ServiceBusRestProxy** クラスを使用して実行できます。 **ServiceBusRestProxy** オブジェクトを作成するには、**ServicesBuilder::createServiceBusService** ファクトリ メソッドに、管理処理用のトークン アクセス許可をカプセル化した適切な接続文字列を渡します。
+## <a name="how-to-create-a-queue"></a>方法: キューを作成する
+`ServiceBusRestProxy` クラスを使用して Service Bus キューに対する管理操作を実行できます。 `ServicesBuilder::createServiceBusService` ファクトリ メソッドを介して、`ServiceBusRestProxy` オブジェクトがトークン アクセス許可をカプセル化してそれを管理する適切な接続文字列とともに構築されます。
 
-次の例では、**ServiceBusRestProxy** をインスタンス化し、**ServiceBusRestProxy->createQueue** を呼び出して、`MySBNamespace` サービス名前空間内で `myqueue` という名前のキューを作成する方法を示しています。
+次の例では、`ServiceBusRestProxy` をインスタンス化し、`ServiceBusRestProxy->createQueue` を呼び出して、`MySBNamespace` サービス名前空間内で `myqueue` という名前のキューを作成する方法を示しています。
 
-```
+```php
 require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
@@ -99,7 +104,7 @@ use WindowsAzure\ServiceBus\Models\QueueInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     $queueInfo = new QueueInfo("myqueue");
 
     // Create queue.
@@ -120,10 +125,10 @@ catch(ServiceException $e){
 > 
 > 
 
-## <a name="how-to:-send-messages-to-a-queue"></a>方法: キューにメッセージを送信する
-メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusRestProxy->sendQueueMessage** メソッドを呼び出します。 次のコードでは、上のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
+## <a name="how-to-send-messages-to-a-queue"></a>方法: キューにメッセージを送信する
+メッセージを Service Bus キューに送信するには、アプリケーションで `ServiceBusRestProxy->sendQueueMessage` メソッドを呼び出します。 次のコードでは、上のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
 
-```
+```php
 require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
@@ -133,7 +138,7 @@ use WindowsAzure\ServiceBus\Models\BrokeredMessage;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Create message.
     $message = new BrokeredMessage();
     $message->setBody("my message");
@@ -151,20 +156,20 @@ catch(ServiceException $e){
 }
 ```
 
-Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、**BrokeredMessage** クラスのインスタンスになります。 **BrokeredMessage** オブジェクトには (**getLabel**、**getTimeToLive**、**setLabel**、**setTimeToLive** など) 一連の標準メソッド、カスタム アプリケーション固有プロパティを保有するためのプロパティ、任意のアプリケーション データの本体があります。
+Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][BrokeredMessage] クラスのインスタンスになります。 [BrokeredMessage][BrokeredMessage] オブジェクトには、アプリケーションに特有のカスタム プロパティの保持に使用する標準的なプロパティやメソッド、および任意のアプリケーション データの本体が含まれています。
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー&1; つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>キューからメッセージを受信する方法
-キューからメッセージを受信する最良の方法は **ServiceBusRestProxy->receiveQueueMessage** メソッドを使用することです。 メッセージは 2 つの異なるモード (**ReceiveAndDelete** (既定) と **PeekLock**) で受信できます。
+キューからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveQueueMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) の&2; つの異なるモードで受信できます。 **PeekLock** が既定値です。
 
-**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信が&1; 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを **ServiceBusRestProxy->deleteMessage** に渡して受信処理の第 2 段階を完了します。 Service Bus が **deleteMessage** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
+既定の [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、メッセージの受信処理が&2; 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを `ServiceBusRestProxy->deleteMessage` に渡すことで受信処理の第&2; 段階を完了します。 Service Bus が `deleteMessage` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-次の例では、**PeekLock** モード (既定ではないモード) を使用したメッセージの受信および処理の方法を示しています。
+次の例は、[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モード (既定のモード) を使用したメッセージの受信および処理の方法を示しています。
 
-```
+```php
 require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
@@ -174,7 +179,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try {
+try    {
     // Set the receive mode to PeekLock (default is ReceiveAndDelete).
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
@@ -202,25 +207,21 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to:-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、受信したメッセージについて (**deleteMessage** メソッドの代わりに) **unlockMessage** メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージについて (`deleteMessage` メソッドの代わりに) `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
 キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**deleteMessage** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は "**1 回以上の処理**" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの **getMessageId** メソッドを使用して対処します。このプロパティは、配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][]」をご覧ください。
+これで、Service Bus キューの基本を学習できました。詳しくは、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関する記事をご覧ください。
 
-詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
+詳しくは、[PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)もご覧ください。
 
-[キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
+[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

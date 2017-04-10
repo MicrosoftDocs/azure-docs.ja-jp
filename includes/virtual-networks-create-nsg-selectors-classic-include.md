@@ -1,7 +1,7 @@
 > [!div class="op_single_selector"]
-> * [PowerShell](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)
-> * [Azure CLI](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)
-> 
-> 
-
-<!---HONumber=AcomDC_0323_2016-->
+> * [ポータル](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+> * [PowerShell](../articles/virtual-network/virtual-networks-create-nsg-arm-ps.md)
+> * [Azure CLI](../articles/virtual-network/virtual-networks-create-nsg-arm-cli.md)
+> * [ARM テンプレート](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md)
+> * [PowerShell (クラシック)](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)
+> * [Azure CLI (クラシック)](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)

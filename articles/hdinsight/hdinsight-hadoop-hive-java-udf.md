@@ -1,40 +1,45 @@
 ---
-title: HDInsight で Hive と Java のユーザー定義関数 (UDF) を使用する | Microsoft Docs
-description: HDInsight で Hive から Java ユーザー定義関数 (UDF) を作成して使用する方法について説明します。
+title: "HDInsight で Hive と Java のユーザー定義関数 (UDF) を使用する | Microsoft Docs"
+description: "HDInsight で Hive から Java ユーザー定義関数 (UDF) を作成して使用する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c593bca61f8f1cc7c81e4744409f8b4a2c23df64
+ms.lasthandoff: 03/25/2017
+
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
 Hive は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。 Hive では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。 このドキュメントでは、Hive から Java UDF を使用する方法を説明します。
 
 ## <a name="requirements"></a>必要条件
-* Azure サブスクリプション
+
 * HDInsight クラスター (Windows ベースまたは Linux ベース)
   
-  > [!NOTE]
-  > このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
-  > 
-  > 
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  
+  このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
+
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 以降 (または同等の OpenJDK など)
 * [Apache Maven](http://maven.apache.org/)
 * テキスト エディターまたは Java IDE
   
   > [!IMPORTANT]
-  > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「 [トラブルシューティング](#troubleshooting) 」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
-  > 
-  > 
+  > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
 
 ## <a name="create-an-example-udf"></a>UDF のサンプルを作成する
 1. コマンド ラインで、次の手順を使用して新しい Maven プロジェクトを作成します。
@@ -42,7 +47,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
    > [!NOTE]
-   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「 `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
+   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「`mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
    > 
    > 
    
@@ -155,20 +160,18 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
    
         mvn compile package
    
-    これで、UDF がビルドされ、 __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__にパッケージ化されます。
+    これで、UDF がビルドされ、 **exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar**にパッケージ化されます。
 2. `scp` コマンドを使用して、ファイルを HDInsight クラスターにコピーします。
    
         scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
    
     **myuser** をクラスターの SSH ユーザー アカウントに置き換えます。 **mycluster** をクラスター名に置き換えます。 SSH アカウントをセキュリティで保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
-3. SSH を使用したクラスターへの接続 
+3. SSH を使用してクラスターに接続します。 
    
         ssh myuser@mycluster-ssh.azurehdinsight.net
    
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
-   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 4. SSH セッションで jar ファイルを HDInsight ストレージにコピーします。
    
         hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -208,7 +211,5 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
-
-<!--HONumber=Oct16_HO2-->
 
 

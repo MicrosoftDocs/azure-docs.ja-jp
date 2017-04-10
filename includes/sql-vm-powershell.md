@@ -1,9 +1,9 @@
 
 ## <a name="start-your-powershell-session"></a>PowerShell セッションの開始
-まず、最新の [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md)」をご覧ください。
+まず、最新の [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 > [!NOTE]
-> このトピックの例では、[Azure Resource Manager デプロイメント モデル](../articles/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
+> このトピックの例では、[Azure Resource Manager デプロイメント モデル](../articles/azure-resource-manager/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
 > 
 > 
 
@@ -17,6 +17,6 @@
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

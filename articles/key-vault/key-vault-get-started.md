@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e30f98d541d0e6a79fab0e9b12619a2072e9ec70
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 115a718977906b3e647b628017f7ab46a588d7f2
 
 
 ---
@@ -41,7 +41,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 このチュートリアルを完了するには、以下が必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* Azure PowerShell **1.1.0 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。 Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。 たとえば、 `Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。 バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.98\).aspx)」を参照してください。 
+* Azure PowerShell **1.1.0 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。 Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。 たとえば、 `Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。 バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.98\).aspx)」を参照してください。 
 * このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。 サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/en-us/download/details.aspx?id=45343)から入手できます。 手順については、付属の Readme ファイルをご覧ください。
 
 このチュートリアルは、Azure PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。 詳細については、 [Windows PowerShell の概要](https://technet.microsoft.com/library/hh857337.aspx)に関するページを参照してください。
@@ -56,7 +56,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 
 また、次のチュートリアルをお読みになり、Azure PowerShell での Azure リソース マネージャーについて詳しく理解してください。
 
-* [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+* [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
 * [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
 ## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>サブスクリプションへの接続
@@ -76,7 +76,7 @@ Azure の特定のインスタンス (たとえば Azure Government) を使用�
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Azure PowerShell の詳細については、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
+Azure PowerShell の詳細については、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 ## <a name="a-idresourceacreate-a-new-resource-group"></a><a id="resource"></a>新しいリソース グループを作成する
 Azure リソース マネージャーを使用すると、すべての関連するリソースが 1 つのリソース グループ内に作成されます。 このチュートリアルでは、 **ContosoResourceGroup** という名前の新しいリソース グループを作成します。
@@ -237,6 +237,6 @@ Azure Key Vault の Azure PowerShell コマンドレットの最新の一覧に�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

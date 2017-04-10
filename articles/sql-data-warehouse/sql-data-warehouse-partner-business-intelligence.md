@@ -1,44 +1,50 @@
 ---
-title: SQL Data Warehouse Business Intelligence partners | Microsoft Docs
-description: Lists of third-party business intelligence partners with solutions that support SQL Data Warehouse.
+title: "SQL Data Warehouse ビジネス インテリジェンス パートナー | Microsoft Docs"
+description: "SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 1d9cdbd0-76c0-4b87-8a80-e792b73ffe10
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: partners
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
+ms.lasthandoff: 12/08/2016
+
 
 ---
-# <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse business intelligence partners
-To create your end-to-end data warehouse solution, choose from a wide variety of industry-leading tools.  This article highlights Microsoft partner companies with business intelligence (BI) solutions supporting Azure SQL Data Warehouse.
+# <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
+エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートするビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
 
-## <a name="our-business-intelligence-partners"></a>Our business intelligence partners
-| Partner | Description | Links | Videos |
+## <a name="our-business-intelligence-partners"></a>ビジネス インテリジェンス パートナー
+| パートナー | Description | リンク | ビデオ |
 | --- | --- | --- | --- |
-| ![Birst][1] |**Birst**<br>Birst is a global leader in Cloud BI and Analytics. Enterprises can create a trusted source of data within the context of each key business user. Then, business users throughout the organization can report and analyze information with world-class BI tools. |[Marketplace][birst_marketplace]<br>[Website][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
-| ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data enables fast-cycle analysis across disparate data stored in SQL Data Warehouse. ClearStory’s integrated Spark-based platform and analytics application speed data access and harmonization of disparate data sets. They enable fast, collaborative exploration that empowers business users to be self-reliant to gain insights. |[Website][clearstory_website]<br>[Datasheet][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
-| ![Dell Statistica][3] |**Dell Statistica**<br>Dell Statistica is an advanced analytics platform that allows organizations to make predictions about the future, optimize processes, reduce costs and increase revenue.  Dell Statistica simplifies big data analytics, streamlines implementation & deployment, extracts actionable insights from text, and empowers your business. |[Marketplace][dell_statistica_marketplace]<br>[Website][dell_statistica_website]<br>[Datasheet][dell_statistica_datasheet]<br>[Twitter][dell_statistica_twitter]<br>[YouTube][dell_statistica_youtube] |[![Statistica video](./media/sql-data-warehouse-partner-business-intelligence/dell_statistica_video.jpg)](https://www.youtube.com/watch?v=0b8sPW2UHrU) |
-| ![Dundas][4] |**Dundas BI**<br>Dundas Data Visualization is a leading, global provider of Business Intelligence and Data Visualization software.  Dundas dashboards, reporting, and visual data analytics provide seamless integration into business applications, enabling better decisions and faster insights. |[Marketplace][dundas_bi_marketplace]<br>[Website][dundas_bi_website]<br>[Datasheet][dundas_bi_datasheet]<br>[Twitter][dundas_bi_twitter]<br>[YouTube][dundas_bi_youtube] |[![dundas video](./media/sql-data-warehouse-partner-business-intelligence/dundas_bi_video.jpg)](https://www.youtube.com/watch?v=TEbc3_e7o60) |
-| ![Jinfonet][5] |**JReport**<br>JReport is an embeddable BI solution for the enterprise. The solution empowers users to create reports, dashboards, and data analysis on cloud, big data, and transactional data sources. By visualizing data, you can perform your own reporting and data discovery for agile, on-the-fly decision making. |[Website][jinfonet_website]<br>[Datasheet][jinfonet_datasheet]<br>[Twitter][jinfonet_twitter]<br>[YouTube][jinfonet_youtube] |[![jreport video](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_video.jpg)](https://www.youtube.com/watch?v=KYqh8TuMpds) |
-| ![LogiAnalytics][6] |**Logi Analytics**<br>Together, Logi Analytics and Azure SQL Data Warehouse enables your organization to collect, analyze, and immediately act on the largest and most diverse data sets in the world. |[Marketplace][logianalytics_marketplace]<br>[Website][logianalytics_website]<br>[Datasheet][logianalytics_datasheet]<br>[Twitter][logianalytics_twitter]<br>[YouTube][logianalytics_youtube] |[![logianalytics video](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_video.jpg)](https://www.youtube.com/watch?v=7U0Sfi3Ndpk) |
-| ![Looker][7] |**Looker BI**<br>Looker gives everyone in your company the ability to explore and understand the data that drives your business. Looker also gives the data analyst a flexible and reusable modeling layer to control and curate that data.  Companies have fundamentally transformed their culture using Looker as the catalyst. |[Marketplace][looker_marketplace]<br>[Website][looker_website]<br>[Datasheet][looker_datasheet]<br>[Twitter][looker_twitter]<br>[YouTube][looker_youtube] |[![looker video](./media/sql-data-warehouse-partner-business-intelligence/looker_video.jpg)](https://www.youtube.com/watch?v=WwO4ADK8ZfA) |
-| ![Qlik][8] |**Qlik Sense Enterprise**<br>Drive insight discovery with the data visualization app that anyone can use. With Qlik Sense, everyone in your organization can easily create flexible, interactive visualizations and make meaningful decisions. |[Website][qlik_website]<br>[Twitter][qlik_twitter]<br>[YouTube][qlik_youtube] |[![qlikview video](./media/sql-data-warehouse-partner-business-intelligence/qlik_video2.jpg)](https://www.youtube.com/watch?v=VJEDFE-07Hg) |
-| ![SiSense][9] |**SiSense**<br>SiSense is a full-stack Business Intelligence software that comes with tools that a business needs to analyze and visualize data: a high-performance analytical database, the ability to join multiple sources, simple data extraction (ETL), and web-based data visualization. Start to analyze and visualize large data sets with SiSense BI and Analytics today. |[Marketplace][sisense_marketplace]<br>[Website][sisense_website]<br>[Datasheet][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense video](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
-| ![Tableau][10] |**Tableau**<br>Tableau’s self-service analytics help anyone see and understand their data, across many kinds of data from flat files to databases. Tableau has a native, optimized connector to Microsoft Azure SQL Data Warehouse that supports both live data and in-memory analytics. |[Marketplace][tableau_marketplace]<br>[Website][tableau_website]<br>[Datasheet][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![tableau video](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
-| ![Targit][11] |**Targit**<br>Targit Decision Suite provides BI and Analytics platform that delivers real-time dashboards, self-service analytics, user-friendly reporting, stunning mobile capabilities, and simple data-discovery technology in a single, cohesive solution. Targit gives companies the courage to act. |[Marketplace][targit_marketplace]<br>[Website][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit video](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin is a top rated Cloud BI vendor for ad-hoc Reporting and Dashboards by BARC; The BI Survey. Connect to Azure SQL Data Warehouse, then create and share beautiful reports and dashboards with award winning collaborative BI and location intelligence features. |[Marketplace][yellowfin_marketplace]<br>[Website][yellowfin_website]<br>[Datasheet][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin video](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![Birst][1] |**Birst**<br>Birst は、クラウド BI および分析における世界的リーダーです。 主要なビジネス ユーザーごとの状況に応じて、信頼できるデータ ソースを作成できます。 次に、組織全体のビジネス ユーザーが、世界最高クラスの BI ツールを使用して情報をレポートおよび分析できます。 |[Marketplace][birst_marketplace]<br>[Web サイト][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
+| ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data は、SQL Data Warehouse に格納されている各種データ全体にわたる高速サイクル分析を実現します。 ClearStory の Spark ベース プラットフォームと分析アプリケーションにより、多種多様なデータ セットへのアクセスと協調が高速化されます。 また、高速で調和的な探索が実現されるため、ビジネス ユーザーは他のユーザーに頼らずに知見を得ることができます。 |[Web サイト][clearstory_website]<br>[データシート][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
+| ![Dell Statistica][3] |**Dell Statistica**<br>Dell Statistica は、将来予測、プロセス最適化、コスト削減、および収益向上を組織にもたらす詳細な分析プラットフォームです。  Dell Statistica は、ビッグ データ分析を簡略化し、実装とデプロイを効率化します。また、次の行動につながる洞察をテキストから抽出し、ビジネスを支援します。 |[Marketplace][dell_statistica_marketplace]<br>[Web サイト][dell_statistica_website]<br>[データシート][dell_statistica_datasheet]<br>[Twitter][dell_statistica_twitter]<br>[YouTube][dell_statistica_youtube] |[![Statistica ビデオ](./media/sql-data-warehouse-partner-business-intelligence/dell_statistica_video.jpg)](https://www.youtube.com/watch?v=0b8sPW2UHrU) |
+| ![Dundas][4] |**Dundas BI**<br>Dundas Data Visualization は、ビジネス インテリジェンスおよびデータ可視化ソフトウェアの世界的な一流プロバイダーです。  Dundas のダッシュボード、レポート作成、およびビジュアル データ分析により、ビジネス アプリケーションがシームレスに統合されることで、適切な決断とすばやい分析が可能になります。 |[Marketplace][dundas_bi_marketplace]<br>[Web サイト][dundas_bi_website]<br>[データシート][dundas_bi_datasheet]<br>[Twitter][dundas_bi_twitter]<br>[YouTube][dundas_bi_youtube] |[![dundas ビデオ](./media/sql-data-warehouse-partner-business-intelligence/dundas_bi_video.jpg)](https://www.youtube.com/watch?v=TEbc3_e7o60) |
+| ![Jinfonet][5] |**JReport**<br>JReport は、企業向けの組み込み可能な BI ソリューションです。 このソリューションでは、クラウド、ビッグ データ、およびトランザクション データ ソースに関するレポート、ダッシュボード、データ分析でユーザーを支援します。 データを視覚化することにより、独自のレポート作成とデータ探索を実行して、機敏で継続的な意思決定を実現できます。 |[Web サイト][jinfonet_website]<br>[データシート][jinfonet_datasheet]<br>[Twitter][jinfonet_twitter]<br>[YouTube][jinfonet_youtube] |[![jreport ビデオ](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_video.jpg)](https://www.youtube.com/watch?v=KYqh8TuMpds) |
+| ![LogiAnalytics][6] |**Logi Analytics**<br>Logi Analytics と Azure SQL Data Warehouse が連携することで、世界で最も大規模かつ多様なデータ セットの収集、分析、および即時操作が可能になります。 |[Marketplace][logianalytics_marketplace]<br>[Web サイト][logianalytics_website]<br>[データシート][logianalytics_datasheet]<br>[Twitter][logianalytics_twitter]<br>[YouTube][logianalytics_youtube] |[![logianalytics ビデオ](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_video.jpg)](https://www.youtube.com/watch?v=7U0Sfi3Ndpk) |
+| ![Looker][7] |**Looker BI**<br>Looker は社内のすべてのユーザーがビジネスの推進に利用できるデータを探索して理解する機能を提供します。 さらに、Looker は、データ アナリストがそのデータを管理監督するための柔軟で再利用可能なモデリング レイヤーも提供します。  Looker を触媒として使用することによって、企業のカルチャが根本的に変革されます。 |[Marketplace][looker_marketplace]<br>[Web サイト][looker_website]<br>[データシート][looker_datasheet]<br>[Twitter][looker_twitter]<br>[YouTube][looker_youtube] |[![looker ビデオ](./media/sql-data-warehouse-partner-business-intelligence/looker_video.jpg)](https://www.youtube.com/watch?v=WwO4ADK8ZfA) |
+| ![Qlik][8] |**Qlik Sense Enterprise**<br>すべてのユーザーが使用できるこのデータ視覚化アプリで洞察を探索します。 Qlik Sense を使用すると、組織内のすべてのユーザーは柔軟な対話型の視覚化を簡単に作成して、意味のある意思決定を行うことができます。 |[Web サイト][qlik_website]<br>[Twitter][qlik_twitter]<br>[YouTube][qlik_youtube] |[![qlikview ビデオ](./media/sql-data-warehouse-partner-business-intelligence/qlik_video2.jpg)](https://www.youtube.com/watch?v=VJEDFE-07Hg) |
+| ![SiSense][9] |**SiSense**<br>SiSense は、高パフォーマンスの分析データベース、複数のソースの結合機能、シンプルなデータの抽出 (ETL)、Web ベースのデータ視覚化など、企業がデータを分析して視覚化にする際に必要なツールが含まれた、完全装備のビジネス インテリジェンス ソフトウェアです。 SiSense BI と Analytics を使用して、今すぐ大規模なデータ セットの分析と視覚化を開始できます。 |[Marketplace][sisense_marketplace]<br>[Web サイト][sisense_website]<br>[データシート][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense ビデオ](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
+| ![Tableau][10] |**Tableau**<br>Tableau のセルフ サービス分析では、フラット ファイルからデータベースに至るまで、さまざまな種類のデータをだれでもが視覚化して理解できるようにします。 Tableau には、Microsoft Azure SQL Data Warehouse への、最適化されたネイティブのコネクタが備わっており、ライブ データ分析とメモリ内分析の両方がサポートされます。 |[Marketplace][tableau_marketplace]<br>[Web サイト][tableau_website]<br>[データシート][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![tableau ビデオ](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
+| ![Targit][11] |**Targit**<br>Targit Decision Suite の BI および分析プラットフォームでは、リアルタイム ダッシュボード、セルフ サービス分析、わかりやすいレポート作成機能、魅力的なモバイル機能、簡単なデータ検出テクノロジが、単一のまとまりのあるソリューションとして提供されます。 Targit は、行動を起こす勇気を企業にもたらします。 |[Marketplace][targit_marketplace]<br>[Web サイト][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit ビデオ](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
+| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin は、BARC の「The BI Survey」においてアドホック レポート作成とダッシュボードの一流ベンダーとして評価されているクラウド BI ベンダーです。 Azure SQL Data Warehouse に接続すると、受賞歴のあるコラボレーション BI 機能とロケーション インテリジェンス機能を備えた美しいレポートとダッシュボードが作成されて共有できるようになります。 |[Marketplace][yellowfin_marketplace]<br>[Web サイト][yellowfin_website]<br>[データシート][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin ビデオ](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
-## <a name="next-steps"></a>Next Steps
-To learn more about some of our other partners, see [Data Integration partners][di_partners] and [Data Management partners][dm_partners].
+## <a name="next-steps"></a>次のステップ
+その他のパートナーの詳細については、[データ統合パートナー][di_partners]に関するページと[データ管理パートナー][dm_partners]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png
@@ -146,9 +152,4 @@ To learn more about some of our other partners, see [Data Integration partners][
 [tableau_twitter]:https://twitter.com/tableau
 [targit_twitter]:https://twitter.com/TARGIT
 [yellowfin_twitter]:https://twitter.com/YellowfinBI
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

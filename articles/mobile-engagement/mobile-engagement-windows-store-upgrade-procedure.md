@@ -1,12 +1,12 @@
 ---
-title: Windows ユニバーサル アプリ SDK のアップグレード手順
-description: Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK のアップグレード手順
+title: "Windows ユニバーサル アプリ SDK のアップグレード手順"
+description: "Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK のアップグレード手順"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,43 +14,48 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c7b3441892484cf54e2055e9153858171d738e85
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# Windows ユニバーサル アプリ SDK のアップグレード手順
+# <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Windows ユニバーサル アプリ SDK のアップグレード手順
 既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
-SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。 たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
-## 3\.3.0 から 3.4.0 に移行
-### テスト ログ
-SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+## <a name="from-330-to-340"></a>3.3.0 から 3.4.0 に移行
+### <a name="test-logs"></a>テスト ログ
+SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。 これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-### リソース
-Reach オーバーレイの機能を強化しました。これは SDK NuGet パッケージのリソースの一部です。
+### <a name="resources"></a>リソース
+Reach オーバーレイの機能を強化しました。 これは SDK NuGet パッケージのリソースの一部です。
 
 新しいバージョンの SDK にアップグレードする際、リソースのオーバーレイ フォルダーにある既存ファイルを保持するかどうかを選択できます。
 
-* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。
-* 新しいオーバーレイに更新する場合、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources から新しいオーバーレイ フォルダーを取得できます)。
+* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。 
+* 新しいオーバーレイに更新する場合、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources から新しいオーバーレイ フォルダーを取得できます)。
 
 > [!WARNING]
 > 新しいオーバーレイを使用すると、以前のバージョンに対して行ったすべてのカスタマイズが上書きされます。
 > 
 > 
 
-## 3\.2.0 から 3.3.0 に移行
-### リソース
-この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
+## <a name="from-320-to-330"></a>3.2.0 から 3.3.0 に移行
+### <a name="resources"></a>リソース
+この手順では、カスタマイズされたリソースが問題になります。 SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
 
-## 3\.1.0 から 3.2.0 に移行
-### リソース
-この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
+## <a name="from-310-to-320"></a>3.1.0 から 3.2.0 に移行
+### <a name="resources"></a>リソース
+この手順では、カスタマイズされたリソースが問題になります。 SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
 
-### Web ビュー統合 を使用しないでください。
-今回のバージョンで、さまざまなデバイス フォーム ファクターに合わせた改善が導入されました。Web ビューの統合が次のようになっていることを確認してください。
+### <a name="webview-integration"></a>Web ビュー統合 を使用しないでください。
+今回のバージョンで、さまざまなデバイス フォーム ファクターに合わせた改善が導入されました。 Web ビューの統合が次のようになっていることを確認してください。
 
 XAML の page ():
 
@@ -164,33 +169,33 @@ XAML の page ():
             }
     }
 
-## 2\.0.0 から 3.0.0 に移行
-### リソース
-この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
+## <a name="from-200-to-300"></a>2.0.0 から 3.0.0 に移行
+### <a name="resources"></a>リソース
+この手順では、カスタマイズされたリソースが問題になります。 SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
 
-## 1\.1.1 から 2.0.0 に移行
-Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
+## <a name="from-111-to-200"></a>1.1.1 から 2.0.0 に移行
+Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。 
 
 > [!IMPORTANT]
-> Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
+> Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。 アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
 > 
 > 
 
 以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.1.1 に移行し、次の手順を適用してください。
 
-### NuGet パッケージ
+### <a name="nuget-package"></a>NuGet パッケージ
 **Capptain.WindowsPhone** を **MicrosoftAzure.MobileEngagement** Nuget パッケージに置き換えます。
 
-### Mobile Engagement の適用
-SDK は `Engagement` という用語を使用します。この変更を一致させるためにプロジェクトをアップグレードする必要があります。
+### <a name="applying-mobile-engagement"></a>Mobile Engagement の適用
+SDK は `Engagement`という用語を使用します。 この変更を一致させるためにプロジェクトをアップグレードする必要があります。
 
-現在の Capptain NuGet パッケージをアンインストールする必要があります。[Capptain Resources] フォルダー内のすべての変更が削除されることを検討します。これらのファイルを保持する場合は、コピーを作成します。
+現在の Capptain NuGet パッケージをアンインストールする必要があります。 [Capptain Resources] フォルダー内のすべての変更が削除されることを検討します。 これらのファイルを保持する場合は、コピーを作成します。
 
-そのあと、新しい Microsoft Azure Engagement NuGet パッケージをプロジェクトにインストールします。 [NuGet の Web サイト] またはここのインデックスで直接検索できます。この操作は、Engagement によって使用されるすべてのリソース ファイルを置換し、プロジェクトの参照に新しい Engagement の DLL を追加します。
+そのあと、新しい Microsoft Azure エンゲージメント NuGet パッケージをプロジェクトにインストールします。 [NuGetの Web サイト] または ここのインデックスで直接検索できます。 この操作は、エンゲージメントによって使用されるすべてのリソース ファイルを置換し、プロジェクトの参照に新しいエンゲージメントの DLL を追加します。
 
-Capptain DLL の参照を削除して、プロジェクトの参照をクリーンアップする必要があります。これを実行しない場合は、Capptain のバージョンが競合してエラーが発生します。
+Capptain DLL の参照を削除して、プロジェクトの参照をクリーンアップする必要があります。 これを実行しない場合は、Capptain のバージョンが競合してエラーが発生します。
 
-Capptain リソースをカスタマイズした場合、古いファイルの内容をコピーし、新しい Engagement ファイルに貼り付けます。xaml と cs ファイルの両方を更新する必要があることにご注意ください。
+Capptain リソースをカスタマイズした場合、古いファイルの内容をコピーし、新しい Engagement ファイルに貼り付けます。 xaml と cs ファイルの両方を更新する必要があることにご注意ください。
 
 これらの手順が完了したら、新しい Engagement の参照で古い Capptain の参照を置き換える必要があります。
 
@@ -247,7 +252,7 @@ Capptain リソースをカスタマイズした場合、古いファイルの�
 4. オーバーレイ ページの変更
    
    > [!IMPORTANT]
-   > オーバーレイも変更します。その新しい名前空間は `Microsoft.Azure.Engagement.Overlay` です。xaml と cs ファイルの両方で使用する必要があります。さらに、`CapptainGrid` は `EngagementGrid` と名前が付けられ、`capptain_notification_content` と `capptain_announcement_content` は `engagement_notification_content` と `engagement_announcement_content` と名前が付けられます。
+   > オーバーレイも変更します。 その新しい名前空間は `Microsoft.Azure.Engagement.Overlay`です。 xaml と cs ファイルの両方で使用する必要があります。 さらに、`CapptainGrid` は `EngagementGrid` と名前が付けられ、`capptain_notification_content` と `capptain_announcement_content` は `engagement_notification_content` と `engagement_announcement_content` と名前が付けられます。
    > 
    > 
    
@@ -266,14 +271,14 @@ Capptain リソースをカスタマイズした場合、古いファイルの�
         </engagement:EngagementPageOverlay>
 5. Capptain 画像や HTML ファイルなどその他のリソースについては、"Engagement" を使用して名前が変更されていることにもご注意ください。
 
-### プロジェクトの宣言
+### <a name="project-declaration"></a>プロジェクトの宣言
 Package.appxmanifest で `File Type Associations` が次から更新されています。
 
-* capptain\_reach\_content to engagement\_reach\_content
-* capptain\_log\_file to engagement\_log\_file
+* capptain\_reach\_content から engagement\_reach\_content へ
+* capptain\_log\_file から engagement\_log\_file へ
 
-### アプリケーション ID / SDK キー
-Engagement は、接続文字列を使用します。Mobile Engagement でアプリケーション ID と SDK キーを指定する必要はありません。指定する必要があるのは接続文字列のみです。接続文字列は、EngagementConfiguration ファイルで設定できます。
+### <a name="application-id--sdk-key"></a>アプリケーション ID / SDK キー
+Engagement は、接続文字列を使用します。 Mobile Engagement でアプリケーション ID と SDK キーを指定する必要はありません。指定する必要があるのは接続文字列のみです。 接続文字列は、EngagementConfiguration ファイルで設定できます。
 
 Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで設定できます。
 
@@ -292,8 +297,8 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
 
-### 項目名の変更
-*capptain* という名前の項目はすべて *engagement* という名前に変更されています。同様に、*Capptain* は *Engagement* に変更されています。
+### <a name="items-name-change"></a>項目名の変更
+*capptain* という名前の項目はすべて *engagement* という名前に変更されています。 同様に、*Capptain* は *Engagement* に変更されています。
 
 一般的に使用される Capptain 項目の例:
 
@@ -305,4 +310,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 名前の変更はオーバーライドされたメソッドにも影響することにご注意ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+

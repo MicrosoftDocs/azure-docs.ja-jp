@@ -1,34 +1,41 @@
 ---
-title: HDInsight での Hadoop Oozie の使用 | Microsoft Docs
-description: ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
+title: "HDInsight での Hadoop Oozie の使用 | Microsoft Docs"
+description: "ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 02/22/2017
 ms.author: jgao
+ROBOTS: NOINDEX
+translationtype: Human Translation
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
+ms.lasthandoff: 12/08/2016
+
 
 ---
-# HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
+# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-HDInsight で Apache Oozie を使用して、ワークフローを定義する方法と実行する方法について説明します。Oozie コーディネーターについては、「[HDInsight での時間ベースの Hadoop Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]」を参照してください。Azure Data Factory については、「[Data Factory で Pig および Hive を使用する][azure-data-factory-pig-hive]」を参照してください。
+HDInsight で Apache Oozie を使用して、ワークフローを定義する方法と実行する方法について説明します。 Oozie コーディネーターについては、「[HDInsight での時間ベースの Hadoop Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]」を参照してください。 Azure Data Factory については、「[Data Factory で Pig および Hive を使用する][azure-data-factory-pig-hive]」を参照してください。
 
-Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
+Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
 このチュートリアルの手順に従って実装するワークフローには次の 2 つのアクションが含まれます。
 
 ![ワークフロー図][img-workflow-diagram]
 
-1. Hive アクションは、HiveQL スクリプトを実行して、log4j ファイルのログ レベル タイプごとの出現回数をカウントします。各 log4j ファイルは、タイプと重要度を表す [LOG LEVEL] フィールドを含むフィールド行で構成されています。以下に例を示します。
+1. Hive アクションは、HiveQL スクリプトを実行して、log4j ファイルのログ レベル タイプごとの出現回数をカウントします。 各 log4j ファイルは、タイプと重要度を表す [LOG LEVEL] フィールドを含むフィールド行で構成されています。以下に例を示します。
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -44,25 +51,25 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
         [TRACE] 816
         [WARN]  4
    
-    Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
-2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL 出力をエクスポートします。Sqoop の詳細については、「[HDInsight での Hadoop Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
+    Hive の詳細については、[HDInsight での Hive の使用][hdinsight-use-hive]に関するページを参照してください。
+2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL 出力をエクスポートします。 Sqoop の詳細については、「[HDInsight での Hadoop Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
 
 > [!NOTE]
 > HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 > 
 > 
 
-### 前提条件
+### <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure PowerShell を実行できるワークステーション**。
+* **Azure PowerShell を実行できるワークステーション**。 
   
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-  
-    Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
 
-## Oozie ワークフローと関連 HiveQL スクリプトを定義する
-Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。既定のワークフロー ファイル名は *workflow.xml* です。このチュートリアルで使用するワークフロー ファイルを次に示します。
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+  
+
+## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
+Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。 既定のワークフロー ファイル名は *workflow.xml*です。 このチュートリアルで使用するワークフロー ファイルを次に示します。
 
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
@@ -119,15 +126,15 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
         <end name="end"/>
     </workflow-app>
 
-ワークフローでは 2 つのアクションが定義されています。start-to アクションは *RunHiveScript* です。このアクションが正常に実行された場合、次のアクションは *RunSqoopExport* です。
+ワークフローでは 2 つのアクションが定義されています。 start-to アクションは *RunHiveScript*です。 このアクションが正常に実行された場合、次のアクションは *RunSqoopExport*です。
 
-RunHiveScript には、変数がいくつかあります。その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
+RunHiveScript には、変数がいくつかあります。 その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
 <table border = "1">
 <tr><th>ワークフローの変数</th><th>Description</th></tr>
-<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システム アドレス (たとえば、<i>wasbs://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
-<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>既定値</strong>を使用します。</td></tr>
+<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
+<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
+<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
 </table>
 
 <table border = "1">
@@ -141,20 +148,20 @@ RunHiveScript には、変数がいくつかあります。その値は、Azure 
 <tr><th>Sqoop アクションの変数</th><th>Description</th></tr>
 <tr><td>${sqlDatabaseConnectionString}</td><td>Azure SQL データベースの接続文字列を指定します。</td></tr>
 <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブルを指定します。</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 </table>
 
-Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight バージョン 2.1 の場合) を参照してください。
+Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
-ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
+ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。 このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
 
     DROP TABLE ${hiveTableName};
     CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-1. **DROP TABLE ステートメント**は、log4j Hive テーブルが存在する場合、削除します。
-2. **CREATE TABLE ステートメント**は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。フィールド区切り記号はコンマ (,) です。既定の行区切り記号は "\\n" です。Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
-3. **INSERT OVERWRITE ステートメント**は、log4j Hive テーブルの各ログ レベル タイプの出現回数をカウントし、その出力を Azure Storage の BLOB に保存します。
+1. **DROP TABLE ステートメント** は、log4j Hive テーブルが存在する場合、削除します。
+2. **CREATE TABLE ステートメント** は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。 フィールド区切り記号はコンマ (,) です。 既定の行区切り記号は "\n" です。 Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
+3. **INSERT OVERWRITE ステートメント** は、log4j Hive テーブルの各ログ レベル タイプの出現回数をカウントし、その出力を Azure Storage の BLOB に保存します。
 
 スクリプトでは 3 つの変数が使用されています。
 
@@ -164,18 +171,18 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-ワークフロー ファイルと HiveQL ファイルは、どちらも BLOB コンテナーに格納されます。このチュートリアルで後ほど使用する PowerShell スクリプトでは、両方のファイルを既定のストレージ アカウントにコピーします。
+ワークフロー ファイルと HiveQL ファイルは、どちらも BLOB コンテナーに格納されます。  このチュートリアルで後ほど使用する PowerShell スクリプトでは、両方のファイルを既定のストレージ アカウントにコピーします。 
 
-## PowerShell を使用して Oozie ジョブを送信する
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+## <a name="submit-oozie-jobs-using-powershell"></a>PowerShell を使用して Oozie ジョブを送信する
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。 **Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。 Oozie Web サービス API は、HTTP REST JSON API です。 Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 このセクションの PowerShell スクリプトでは、次の手順を実行します。
 
 1. Azure に接続します。
-2. Azure リソース グループを作成します。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
-3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。これらは、ワークフローで Sqoop アクションによって使用されます。
+2. Azure リソース グループを作成します。 詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
+3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 これらは、ワークフローで Sqoop アクションによって使用されます。
    
-    テーブル名は *log4jLogCount* です。
+    テーブル名は *log4jLogCount*です。
 4. Oozie ジョブの実行に使用する HDInsight クラスターを作成します。
    
     クラスターを確認するには、Azure ポータルまたは Azure PowerShell を使用します。
@@ -190,7 +197,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
    
     OOzie ジョブの結果を確認するには、Visual Studio または他のツールを使用して Azure SQL Database に接続します。
 
-このスクリプトを次に示します。スクリプトは、Windows PowerShell ISE から実行できます。構成する必要があるのは、最初の 7 つの変数だけです。
+このスクリプトを次に示します。  スクリプトは、Windows PowerShell ISE から実行できます。 構成する必要があるのは、最初の 7 つの変数だけです。
 
     #region - provide the following values
 
@@ -503,7 +510,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
     <property>
         <name>sqlDatabaseConnectionString</name>
-        <value>";$sqlDatabaseConnectionString";</value>
+        <value>&quot;$sqlDatabaseConnectionString&quot;</value>
     </property>
 
     <property>
@@ -611,12 +618,12 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
     $conn.close()
 
-## 次のステップ
-このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。詳細については、次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での時間ベースの Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
 * [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
-* [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
+* [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
 * [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
 * [HDInsight の Hadoop での Sqoop の使用][hdinsight-use-sqoop]
@@ -630,7 +637,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [azure-data-factory-pig-hive]: ../data-factory/data-factory-data-transformation-activities.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
-[hdinsight-versions]: hdinsight-component-versioning.md
+[hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
@@ -659,16 +666,15 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/ja-JP/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/en-us/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [img-workflow-diagram]: ./media/hdinsight-use-oozie/HDI.UseOozie.Workflow.Diagram.png
-[img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png
+[img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png  
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0914_2016-->

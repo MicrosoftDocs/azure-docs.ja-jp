@@ -1,22 +1,26 @@
 ---
-title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
-description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
+title: "Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs"
+description: "このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/07/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
+ms.openlocfilehash: e5f643d444fb2bf00aa91083f5d09962372e0dbb
+
 
 ---
-# <a name="azure-ad-connect:-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
 
 * 簡単設定: ウィザードにより多くの権限が必要になりますが、個別にユーザーを作成したりアクセス許可を構成しなくても構成を簡単にセットアップできます。
@@ -25,11 +29,13 @@ Azure AD Connect インストール ウィザードには次の 2 つの別の�
 ## <a name="related-documentation"></a>関連ドキュメント
 「[オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をまだお読みでない方のために、次の表に関連トピックへのリンクを示します。
 
-| トピック |
+|トピック |リンク|  
 | --- | --- |
-| 簡単設定を使用したインストール |
-| カスタマイズした設定を使用したインストール |
-| DirSync からのアップグレード |
+|Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|Express 設定を使用したインストール | [Azure AD Connect の高速インストール](./active-directory-aadconnect-get-started-express.md)|
+|カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./active-directory-aadconnect-get-started-custom.md)|
+|DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+|インストール後に | [インストールの確認とライセンスの割り当て ](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>簡単設定を使用したインストール
 簡単設定では、オンプレミスの Active Directory を Azure AD Connect に必要なアクセス許可で構成できるように、インストール ウィザードで AD DS エンタープライズ管理者の資格情報が求められます。 DirSync からアップグレードする場合は、AD DS エンタープライズ管理者の資格情報を使用して、DirSync で使用されるアカウントのパスワードをリセットします。 Azure AD グローバル管理者の資格情報も必要になります。
@@ -80,9 +86,9 @@ Azure AD Connect をインストールした場合、**[ディレクトリの接
 | 機能 | アクセス許可 |
 | --- | --- |
 | パスワードの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
-| Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
+| Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)」に記載された属性への書き込みアクセス許可。 |
-| デバイスの書き戻し |「[デバイスの書き戻し](../active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
+| デバイスの書き戻し |「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
 | グループの書き戻し |配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。 |
 
 ## <a name="upgrade"></a>アップグレード
@@ -125,8 +131,11 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 ![AD アカウント ロール](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccountrole.png)
 
 ## <a name="next-steps"></a>次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
+「 [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

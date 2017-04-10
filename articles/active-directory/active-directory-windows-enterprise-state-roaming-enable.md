@@ -1,20 +1,26 @@
----
-title: Azure Active Directory の Enterprise State Roaming を有効にする | Microsoft Docs
-description: Windows デバイスの Enterprise State Roaming の設定に関してよく寄せられる質問について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。
-services: active-directory
-keywords: Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法
-documentationcenter: ''
-author: femila
-manager: swadhwa
-editor: curtand
 
+---
+title: "Azure Active Directory の Enterprise State Roaming を有効にする | Microsoft Docs"
+description: "Windows デバイスの Enterprise State Roaming の設定に関してよく寄せられる質問について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。"
+services: active-directory
+keywords: "Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法"
+documentationcenter: 
+author: tanning
+manager: femila
+editor: curtand
+ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 03/08/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 0628dafc9cc4cb05e678f741d913e00116013459
+ms.openlocfilehash: 435f801b254a6c423a6ec3e96037ade62e14af29
+ms.lasthandoff: 01/05/2017
+
 
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
@@ -70,7 +76,5 @@ Azure との間で Enterprise State Roaming を介して同期されるデータ
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-
-<!--HONumber=Oct16_HO2-->
-
+* [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 

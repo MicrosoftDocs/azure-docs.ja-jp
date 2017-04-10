@@ -1,9 +1,13 @@
 > [!div class="op_single_selector"]
-> * [Sample data](../articles/machine-learning/machine-learning-data-science-sample-data.md)
-> * [Sample data in Azure blob storage](../articles/machine-learning/machine-learning-data-science-sample-data-blob.md)
-> * [Sample data in SQL Server on Azure](../articles/machine-learning/machine-learning-data-science-sample-data-sql-server.md)
-> * [Sample data in Azure HDInsight Hive tables](../articles/machine-learning/machine-learning-data-science-sample-data-hive.md)
+> * [サンプル データ](../articles/machine-learning/machine-learning-data-science-sample-data.md)
+> * [Azure Blob Storage のデータのサンプリング](../articles/machine-learning/machine-learning-data-science-sample-data-blob.md)
+> * [Azure の SQL Server 内のデータのサンプリング](../articles/machine-learning/machine-learning-data-science-sample-data-sql-server.md)
+> * [Azure HDInsight Hive テーブル内のデータのサンプリング](../articles/machine-learning/machine-learning-data-science-sample-data-hive.md)
 > 
 > 
 
-<!---HONumber=Oct15_HO4-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

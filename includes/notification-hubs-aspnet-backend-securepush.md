@@ -1,6 +1,6 @@
-## Web API プロジェクト
-1. Visual Studio で、**ユーザーへの通知**チュートリアルで作成した **AppBackend** プロジェクトを開きます。
-2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。これらの値は [Azure クラシック ポータル](http://manage.windowsazure.com)から取得できます。ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
+## <a name="webapi-project"></a>Web API プロジェクト
+1. Visual Studio で、**ユーザーへの通知**に関するチュートリアルで作成した **AppBackend** プロジェクトを開きます。
+2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。 必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。 これらの値は [Azure クラシック ポータル](http://manage.windowsazure.com)から取得できます。 ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。 完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. NotificationsController.cs の **NotificationsController** クラス定義内のコードを次のコードで置き換えます。このコンポーネントは、デバイスが安全に通知を取得する方法を実装します。また、(このチュートリアルでは) 自分のデバイスへの安全なプッシュをトリガーする方法も提供します。通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
+1. NotificationsController.cs の **NotificationsController** クラス定義内のコードを次のコードで置き換えます。 このコンポーネントは、デバイスが安全に通知を取得する方法を実装します。また、(このチュートリアルでは) 自分のデバイスへの安全なプッシュをトリガーする方法も提供します。 通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
    
        public NotificationsController()
        {
@@ -66,18 +66,22 @@
            await Notifications.Instance.Hub.SendNotificationAsync(rawNotificationToBeSent, usernameTag);
    
            // apns
-           await Notifications.Instance.Hub.SendAppleNativeNotificationAsync("{"aps": {"content-available": 1}, "secureId": "" + secureNotificationInTheBackend.Id.ToString() + ""}", usernameTag);
+           await Notifications.Instance.Hub.SendAppleNativeNotificationAsync("{\"aps\": {\"content-available\": 1}, \"secureId\": \"" + secureNotificationInTheBackend.Id.ToString() + "\"}", usernameTag);
    
            // gcm
-           await Notifications.Instance.Hub.SendGcmNativeNotificationAsync("{"data": {"secureId": "" + secureNotificationInTheBackend.Id.ToString() + ""}}", usernameTag);
+           await Notifications.Instance.Hub.SendGcmNativeNotificationAsync("{\"data\": {\"secureId\": \"" + secureNotificationInTheBackend.Id.ToString() + "\"}}", usernameTag);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
-`Post` メソッドは、トースト通知を送信しません。通知 ID のみを含み、慎重な扱いを要するコンテンツは含まない直接通知を送信します。また、通知ハブで資格情報を構成していないプラットフォームの送信操作は必ずコメント アウトしてください。そうしないと、エラーになります。
+`Post` メソッドは、トースト通知を送信しません。 通知 ID のみを含み、慎重な扱いを要するコンテンツは含まない直接通知を送信します。 また、通知ハブで資格情報を構成していないプラットフォームの送信操作は必ずコメント アウトしてください。そうしないと、エラーになります。
 
-1. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-2. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を*バックエンド エンドポイント*として参照します。**[発行]** をクリックします。
+1. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
+2. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。 後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
 
-<!---HONumber=AcomDC_1210_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

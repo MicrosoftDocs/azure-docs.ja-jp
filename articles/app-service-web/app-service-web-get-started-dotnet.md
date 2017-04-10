@@ -1,6 +1,6 @@
 ---
-title: "初めての .NET Web アプリを Azure に 5 分でデプロイする | Microsoft Docs"
-description: "サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。 実際の開発を速やかに開始し、すぐに成果を確認できます。"
+title: "初めての ASP.NET Web アプリを Azure に&5; 分で作成する | Microsoft Docs"
+description: "サンプル ASP.NET アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -12,100 +12,73 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 03/17/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05f686407efd3057a9cf41b4688df86033042ce3
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a428e183e7535c7745e214332f8e449b4a8bf22c
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="deploy-your-first-net-web-app-to-azure-in-five-minutes"></a>初めての .NET Web アプリを Azure に 5 分でデプロイする
-このチュートリアルでは、シンプルな .NET Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
-App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
+# <a name="create-your-first-aspnet-web-app-in-azure-in-five-minutes"></a>初めての ASP.NET Web アプリを Azure に&5; 分で作成する
 
-このチュートリアルの内容は次のとおりです。 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-* Azure App Service で Web アプリを作成する。
-* サンプルの ASP.NET コードをデプロイする。
-* 運用環境でライブ実行されているコードを確認する。
-* [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法で Web アプリを更新する。
+このクイック スタートを読むと、初めての ASP.NET Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) に数分でデプロイできるようになります。
 
-## <a name="prerequisites"></a>前提条件
-* [Git](http://www.git-scm.com/downloads)。
-* [Azure CLI](../xplat-cli-install.md)。
-* Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A261C142F)するか [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
 
-> [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
-> 
-> 
+## <a name="log-in-to-azure"></a>Azure へのログイン
+`az login` を実行し、画面の指示に従って Azure にログインします。
+   
+```azurecli
+az login
+```
 
-## <a name="deploy-an-net-web-app"></a>.NET Web アプリをデプロイする
-1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `azure --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
-   
-    ![Test installation of CLI tools for your first web app in Azure](./media/app-service-web-get-started/1-test-tools.png)
-   
-    ツールをインストールしていない場合は、「 [前提条件](#Prerequisites) 」のダウンロード リンクを参照してください。
-2. 次のようにして、Azure にログインします。
-   
-        azure login
-   
-    ヘルプ メッセージに従って、ログイン プロセスを続行します。
-   
-    ![Log in to Azure to create your first web app](./media/app-service-web-get-started/3-azure-login.png)
-3. Azure CLI を ASM モードに変更し、App Service のデプロイ ユーザーを設定します。 後で、資格情報を使用してコードをデプロイします。
-   
-        azure config mode asm
-        azure site deployment user set --username <username> --pass <password>
-4. 作業ディレクトリ (`CD`) に移動し、サンプル アプリを複製します。
-   
-        git clone https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git
-5. サンプル アプリのリポジトリに移動します。 
-   
-        cd app-service-web-dotnet-get-started
-6. 一意のアプリ名と、前に構成したデプロイ ユーザーを使用して、Azure で App Service のアプリ リソースを作成します。 メッセージが表示されたら、必要なリージョンの番号を指定します。
-   
-        azure site create <app_name> --git --gitusername <username>
-   
-    ![Create the Azure resource for your first web app in Azure](./media/app-service-web-get-started-languages/dotnet-site-create.png)
-   
-    これでアプリが Azure で作成されました。 また、現在のディレクトリが Git として初期化され、この新しい App Service アプリに Git リモートとして接続されています。
-    アプリの URL (http://&lt;アプリの名前>.azurewebsites.net) を参照すると、既定の美しい HTML ページが表示されますが、ここでは用意したコードを実際に使用しましょう。
-7. Git でコードをプッシュする場合と同様に、サンプル コードを Azure アプリにデプロイします。 メッセージが表示されたら、前に構成したパスワードを入力します。
-   
-        git push azure master
-   
-    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/dotnet-git-push.png)
-   
-    `git push` を実行すると、Azure にコードが配置されるだけでなく、必要なパッケージが復元され、ASP.NET バイナリがビルドされます。 
+## <a name="create-a-resource-group"></a>リソース グループの作成   
+[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 ここには、Web アプリとその SQL Database バックエンドなど、まとめて管理するすべての Azure リソースを置くことができます。
 
-これで、Azure App Service にアプリがデプロイされました。
+```azurecli
+az group create --location "West Europe" --name myResourceGroup
+```
 
-## <a name="see-your-app-running-live"></a>アプリがライブ実行されるのを確認する
-Azure で実稼働しているアプリを確認するには、リポジトリ内の任意のディレクトリから次のコマンドを実行します。
+`---location` に使用できる値を確認するには、Azure CLI コマンド `az appservice list-locations` を使用してください。
 
-    azure site browse
+## <a name="create-an-app-service-plan"></a>App Service プランを作成する
+"Free" [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を作成します。 
 
-## <a name="make-updates-to-your-app"></a>アプリを更新する
-Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。 これは、初めてコードをデプロイしたときと同様に行います。 たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
+```azurecli
+az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
+```
 
-    git add .
-    git commit -m "<your_message>"
-    git push azure master
+## <a name="create-a-web-app"></a>Web アプリを作成する
+`<app_name>` に一意の名前を指定して Web アプリを作成します。
 
+```azurecli
+az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
+```
+
+## <a name="deploy-sample-application"></a>サンプル アプリケーションをデプロイする
+サンプル ASP.NET アプリを GitHub からデプロイします。
+
+```azurecli
+az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
+--repo-url "https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git" --branch master --manual-integration 
+```
+
+## <a name="browse-to-web-app"></a>Web アプリを確認する
+Azure でアプリがライブ実行されるのを確認するには、次のコマンドを実行します。
+
+```azurecli
+az appservice web browse --name <app_name> --resource-group myResourceGroup
+```
+
+初めての ASP.NET Web アプリを Azure App Services でライブ実行することができました。
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>次のステップ
-Visual Studio で .NET Web アプリを作成して開発し、Azure に直接デプロイする方法については、「 [Visual Studio を使用した Azure App Service への ASP.NET Web アプリのデプロイ](web-sites-dotnet-get-started.md)」を参照してください。
 
-または、最初の Web アプリを活用します。 次に例を示します。
-
-* [Azure にコードをデプロイする他の方法](web-sites-deploy.md)を試してみます。 たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
-* Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。 「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Web アプリの CLI スクリプト](app-service-cli-samples.md) サンプルに目を通します。
 

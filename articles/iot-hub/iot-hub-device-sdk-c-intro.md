@@ -1,225 +1,300 @@
 ---
-title: C 用 Azure IoT デバイス SDK の使用 | Microsoft Docs
-description: C 用 Azure IoT デバイス SDK のサンプル コードについて説明し、操作を開始します。
+title: "C 用 Azure IoT device SDK | Microsoft Docs"
+description: "C 用 Azure IoT device SDK を使用し、IoT Hub と通信するデバイス アプリを作成する方法について説明します。"
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: olivierbloch
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: e448b061-6bdd-470a-a527-15ec03cca7b9
 ms.service: iot-hub
 ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 03/20/2017
 ms.author: obloch
+translationtype: Human Translation
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: fde51fec722bf3e4c4ca232a758deadd2d670715
+ms.lasthandoff: 03/23/2017
+
 
 ---
-# C 用 Azure IoT デバイス SDK の概要
-**Azure IoT デバイス SDK** は、**Azure IoT Hub** サービスとのイベントの送信とメッセージの受信のプロセスを簡略化するために設計された一連のライブラリです。SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、**C 用 Azure IoT device SDK** について説明します。
+# <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
-C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。これにより、さまざまなプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境で操作する場合に適しています。
+**Azure IoT device SDK** は、**Azure IoT Hub** サービスとのメッセージの送受信プロセスを簡略化するために設計された一連のライブラリです。 SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、 **C 用 Azure IoT device SDK**について説明します。
 
-この SDK は幅広いプラットフォームでテストされています (詳細は、「[プラットフォームと互換性の一覧](iot-hub-tested-configurations.md)」を参照してください)。この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされるプラットフォーム全体でまったく同じであることに留意してください。
+C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。 この機能により、複数のプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境でライブラリを操作しやすくなります。
 
-この記事では、C 用 Azure IoT デバイス SDK のアーキテクチャについて紹介します。また、デバイスのライブラリを初期化する方法、IoT Hub にイベントを送信する方法や IoT Hub からメッセージを受信する方法の例を示します。この記事の情報は、SDK を使用し始めるにあたり十分な内容ですが、ライブラリに関する追加情報を入手できる場所も紹介します。
+この SDK は幅広いプラットフォームでテストされています (詳細は、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsuite.com/)に関するページを参照してください)。 この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされるプラットフォーム全体で同じです。
 
-> > [!NOTE]
-> > この記事には SDK の C ライブラリの*デバイス管理*機能を使用する方法についての情報は含まれません。デバイス管理機能を使用する方法については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要](iot-hub-device-management-library.md)」を参照してください。
-> > 
-> > 
-> 
-> 
+この記事では、C 用 Azure IoT device SDK のアーキテクチャについて紹介します。また、デバイスのライブラリを初期化する方法、IoT Hub にデータを送信する方法、IoT Hub からメッセージを受信する方法を示します。 この記事の情報は、SDK を使用し始めるにあたり十分な内容ですが、ライブラリに関する追加情報を入手できる場所も紹介します。
 
-## SDK のアーキテクチャ
-[Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリでは **C 用 Azure IoT device SDK** が入手でき、[C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)のページでは API の詳細を確認できます。
+## <a name="sdk-architecture"></a>SDK のアーキテクチャ
+
+[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)に関するページで確認できます。
 
 最新バージョンのライブラリは、このリポジトリの **master** ブランチにあります。
 
   ![](media/iot-hub-device-sdk-c-intro/01-MasterBranch.PNG)
 
-このリポジトリには、Azure IoT デバイス SDK のファミリ全体が含まれています。ただし、この記事では、**c** フォルダーにある *C 用* Azure IoT device SDK を取り扱います。
-
-  ![](media/iot-hub-device-sdk-c-intro/02-CFolder.PNG)
-
-* SDK の中心となる実装は **iothub\_client** フォルダー内にあり、このフォルダーには SDK (**IoTHubClient** ライブラリ) 内の最下位の API 層の実装が格納されています。**IoTHubClient** ライブラリには、IoT Hub にメッセージを送信するだけでなく IoT Hub からメッセージを受信するために、未加工メッセージングを実装する API が含まれています。このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが (最終的には以下のシリアライザー サンプルを使用)、IoT Hub と通信するためのその他の詳細は自動で処理されます。
-* **serializer** フォルダーには、クライアント ライブラリを使用して Azure IoT Hub に送信する前にデータをシリアル化する方法を示す、ヘルパー関数とサンプルが含まれています。シリアライザーの使用は必須ではなく、利便性のためだけに提供されていることに注意してください。**serializer** ライブラリを使用する場合は、まず、IoT Hub から受信するメッセージだけでなく IoT Hub に送信するイベントを指定するモデルを定義します。いったんモデルを定義すれば、SDK が提供する API にアクセスして、シリアル化の詳細を気にすることなく、イベントやメッセージを簡単に処理できます。ライブラリは、いくつかのプロトコル (AMQP, MQTT) を使用してトランスポートを実装するその他のオープン ソース ライブラリに依存しています。
+* SDK の中心となる実装は **iothub\_client** フォルダー内にあり、このフォルダーには SDK 内の最下位の API 層の実装 (**IoTHubClient**) が格納されています。 **IoTHubClient** ライブラリには、IoT Hub とのメッセージの送受信のために、未加工メッセージングを実装する API が含まれています。 このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが、IoT Hub と通信するためのその他の詳細は自動で処理されます。
+* **serializer** フォルダーには、クライアント ライブラリを使用して Azure IoT Hub に送信する前にデータをシリアル化する方法を示す、ヘルパー関数とサンプルが含まれています。 シリアライザーの使用は必須ではなく、利便性のために提供されています。 **serializer** ライブラリを使用するには、IoT Hub に送信するデータと IoT Hub から受信するメッセージを指定するモデルを定義します。 いったんモデルを定義すれば、SDK が提供する API にアクセスして、シリアル化の詳細を気にすることなく、デバイスからクラウド、クラウドからデバイスへのメッセージを簡単に処理できます。 ライブラリは、MQTT や AMQP などのプロトコルを使用してトランスポートを実装するその他のオープン ソース ライブラリに依存しています。
 * **IoTHubClient** ライブラリは、次に示すその他のオープン ソース ライブラリに依存しています。
   * [Azure C 共有ユーティリティ](https://github.com/Azure/azure-c-shared-utility) ライブラリ。複数の Azure 関連 C SDK で必要となる基本タスク (文字列、リストの操作、IO など) に共通する機能を提供します。
-  * [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) ライブラリ。リソース制約デバイス用に最適化された AMQP のクライアント側の実装です。
-  * [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) ライブラリ。MQTT プロトコルを実装する汎用ライブラリで、リソース制約デバイス用に最適化されています。
+  * [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) ライブラリ。リソースに制約のあるデバイス用に最適化された AMQP のクライアント側の実装です。
+  * [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) ライブラリ。MQTT プロトコルを実装する汎用ライブラリで、リソースに制約のあるデバイス用に最適化されています。
 
-これらはすべて、サンプル コードを確認した方が簡単に理解できます。次のセクションでは、SDK に含まれているいくつかのサンプル アプリケーションについて説明します。API の動作のしくみの概要だけでなく、SDK のアーキテクチャの層のさまざまな機能を理解するうえで役立つ内容です。
+これらのライブラリの使用については、サンプル コードを確認した方が簡単に理解できます。 次のセクションでは、SDK に含まれているいくつかのサンプル アプリケーションについて説明します。 このチュートリアルは、SDK のアーキテクチャの層のさまざまな機能や、API の動作のしくみの概要を理解するうえで役立ちます。
 
-## サンプルを実行する前に
-C 用 Azure IoT device SDK のサンプルを実行する前に、インスタンスがない場合は、Azure サブスクリプションでサービスのインスタンスを作成し、次の 2 つのタスクを完了する必要があります。
+## <a name="before-you-run-the-samples"></a>サンプルを実行する前に
+
+C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブスクリプションで [IoT Hub サービスのインスタンスを作成](iot-hub-create-through-portal.md)する必要があります。 そのうえで、次のタスクを実行してください。
 
 * 開発環境を準備する
 * デバイスの資格情報を取得する
 
-Azure サブスクリプションで Azure IoT Hub のインスタンスを作成する必要がある場合は、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md)の手順に従ってください。
+### <a name="prepare-your-development-environment"></a>開発環境を準備する
 
-SDK に含まれている [readme ファイル](https://github.com/Azure/azure-iot-sdks/tree/master/c)には、開発環境の準備とデバイスの資格情報の取得についての手順が記載されています。次のセクションで、これらの手順について追加でコメントしています。
+パッケージは一般的なプラットフォーム (Windows 用 NuGet、Debian と Ubuntu 用 apt_get など) に提供され、利用可能な場合にサンプルはこれらのパッケージを使用します。 場合によっては、デバイス向けに、またはデバイス上で SDK をコンパイルする必要があります。 SDK をコンパイルする必要がある場合は、GitHub リポジトリで「[Prepare your development environment (開発環境の準備)](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」を参照してください。
 
-### 開発環境の準備
-パッケージは一部のプラットフォーム (Windows 用 NuGet、Debian と Ubuntu 用 apt\_get など) に提供され、利用可能な場合にサンプルはこれらのパッケージを使用しますが、次の手順では、コードから直接ライブラリとサンプルをビルドする方法について詳しく説明します。
+サンプル アプリケーション コードを取得するには、GitHub から SDK のコピーをダウンロードします。 [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-c)の **master** ブランチからソースのコピーを入手します。
 
-最初に、GitHub から SDK のコピーを入手して、ソースを作成する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)の **master** ブランチからソースのコピーを入手します。
 
-ソースのコピーをダウンロードしたら、SDK の記事「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)」で説明されている手順を完了する必要があります。
+### <a name="obtain-the-device-credentials"></a>デバイスの資格情報を取得する
 
-ここでは、準備ガイドで説明されている手順を完了するのに役立ついくつかのヒントを紹介します。
+これでサンプル ソース コートが手に入ったので、次にデバイスの資格情報のセットを取得します。 デバイスを IoT ハブにアクセスできるようにするには、まず、そのデバイスを IoT Hub ID レジストリに追加する必要があります。 デバイスを追加すると、そのデバイスから IoT ハブに接続するために必要な、デバイスの資格情報のセットが得られます。 次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は**デバイスの接続文字列**の形式であると想定しています。
 
-* **CMake** ユーティリティをインストールするとき、**すべてのユーザー**の PATH システム環境変数に **CMake** を追加するオプションを選択します (**現在のユーザー**に追加しても効果は同じです)。
-  
-  ![](media/iot-hub-device-sdk-c-intro/08-CMake.PNG)
-* **開発者コマンド プロンプト for VS2015** を開く前に、Git コマンド ライン ツールをインストールします。これらのツールをインストールするには、次の手順を実行します。
-  
-  1. **Visual Studio 2015** セットアップ プログラムを起動します (または **[プログラムと機能]** コントロール パネルの **[Microsoft Visual Studio 2015]** を選択して **[変更]** をクリックします)。
-  2. インストーラーで **[Git for Windows]** 機能が選択されていることを確認します。ただし、IDE 統合機能を使用するために、**[Visual Studio 向け GitHub 拡張]** オプションもオンにすることができます。
-     
-        ![](media/iot-hub-device-sdk-c-intro/10-GitTools.PNG)
-  3. セットアップ ウィザードを実行してツールをインストールします。
-  4. Git ツールの **bin** ディレクトリを **PATH** システム環境変数に追加します。Windows では、次のようになります。
-     
-        ![](media/iot-hub-device-sdk-c-intro/11-GitToolsPath.PNG)
+IoT ハブの管理に役立つオープン ソース ツールがいくつかあります。
 
-「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)」ページで説明されているすべての手順を完了すると、サンプル アプリケーションをコンパイルする準備ができます。
+* [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
+* [iothub-explorer](https://github.com/azure/iothub-explorer) と呼ばれるクロスプラットフォームの node.js CLI ツール。
 
-### デバイスの資格情報の取得
-これで開発環境がセットアップできましたので、次にデバイスの資格情報のセットを取得します。デバイスを IoT Hub にアクセスできるようにするには、まず、そのデバイスを IoT Hub デバイス レジストリに追加する必要があります。デバイスを追加すると、そのデバイスを IoT Hub に接続するために必要な、デバイスの資格情報のセットが得られます。次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は**デバイスの接続文字列**の形式であると想定されています。
+このチュートリアルでは、グラフィカル *デバイス エクスプローラー* ツールを使います。 CLI ツールを使いたい場合は、*iothub-explorer* を使ってもかまいません。
 
-SDK のオープン ソース リポジトリで提供されるツールがいくつかあり、IoT Hub を管理するために役立ちます。その 1 つは、デバイス エクスプローラーと呼ばれる Windows アプリケーションです。もう 1 つは、iothub-explorer と呼ばれる node.js ベースのクロス プラットフォーム CLI ツールです。これらのツールの詳細については、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md)を参照してください。
+デバイス エクスプローラー ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。 デバイス エクスプローラー ツールを使用してデバイスを追加すると、デバイス用の接続文字列が表示されます。 この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
-この記事では、Windows のサンプルの実行を説明するときに、デバイス エクスプ ローラー ツールを使用しています。ただし、CLI ツールを使用する場合は、iothub-explorer を使用することもできます。
+デバイス エクスプローラー ツールに慣れていない方のために、次の手順で、デバイス エクスプローラー ツールを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer) ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。デバイス エクスプローラーを使用してデバイスを追加すると、対応する接続文字列が表示されます。この接続文字列は、サンプル アプリケーションを実行するために必要です。
-
-このプロセスにまだ詳しくない方のために、次の手順で、デバイス エクスプローラーを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
-
-デバイス エクスプローラー ツールの Windows インストーラーは、[SDK リリース ページ](https://github.com/Azure/azure-iot-sdks/releases)にあります。ただし、**Visual Studio 2015** で **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)** を開いてソリューションをビルドすることにより、コードから直接ツールを実行することもできます。
+デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)」を参照してください。
 
 プログラムを実行すると、次のインターフェイスが表示されます。
 
   ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
 
-**IoT Hub の接続文字列**を最初のフィールドに入力し、**[Update (更新)]** をクリックします。これにより、IoT Hub と通信できるようにツールが構成されます。
+**IoT Hub の接続文字列**を最初のフィールドに入力し、**[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。
 
-IoT Hub の接続文字列を構成したら、**[Management (管理)]** タブをクリックします。
+IoT Hub の接続文字列を構成したら、**[管理]** タブをクリックします。
 
   ![](media/iot-hub-device-sdk-c-intro/04-ManagementTab.PNG)
 
-ここで、IoT Hub に登録されたデバイスを管理します。
+このタブで、IoT Hub に登録されたデバイスを管理します。
 
-**[作成]** をクリックしてデバイスを作成することができます。ダイアログ ボックスが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。ここで必要なのは、**[Device ID (デバイス ID)]** を入力して、**[Create (作成)]** をクリックすることだけです。
+**[作成]** をクリックしてデバイスを作成します。 ダイアログが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。 **デバイス ID** を入力し、**[作成]** をクリックします。
 
   ![](media/iot-hub-device-sdk-c-intro/05-CreateDevice.PNG)
 
-デバイスを作成したら、今作成したデバイスを含めたすべての登録済みデバイスで、デバイスの一覧が更新されます。新しいデバイスを右クリックすると、次のメニューが表示されます。
+デバイスが作成されたら、デバイスの一覧が更新され、今作成したデバイスを含むすべての登録済みデバイスが表示されます。 新しいデバイスを右クリックすると、次のメニューが表示されます。
 
   ![](media/iot-hub-device-sdk-c-intro/06-RightClickDevice.PNG)
 
-**[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** オプションを選択すると、デバイスの接続文字列がクリップボードにコピーされます。接続文字列のコピーを保存しておきます。次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
+**[Copy connection string for selected device (選択したデバイスの接続文字列のコピー)]** を選択すると、デバイスの接続文字列がクリップボードにコピーされます。 デバイス接続文字列のコピーを保存しておきます。 次のセクションで説明するサンプル アプリケーションを実行するときにこれが必要になります。
 
-前の手順が完了すると、コードを実行する準備が整います。どちらのサンプルにも、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。たとえば、**iothub\_client\_sample\_amqp** アプリケーションの対応する行は次のとおりです。
+前の手順が完了すると、コードを実行する準備が整います。 どちらのサンプルにも、メインのソース ファイルの上部に、接続文字列を入力するための定数が使用されています。 たとえば、**iothub\_client\_sample\_mqtt** アプリケーションの対応する行は次のとおりです。
 
-```
+```c
 static const char* connectionString = "[device connection string]";
 ```
 
-ここに使用しているデバイスの接続文字列を入力し、ソリューションを再コンパイルすると、サンプルを実行することができます。
+## <a name="use-the-iothubclient-library"></a>IoTHubClient ライブラリを使用する
 
-## IoTHubClient
-azure-iot-sdks リポジトリ内の **iothub\_client** フォルダーに **samples** フォルダーがあり、**iothub\_client\_sample\_amqp** というアプリケーションが格納されています。
+[azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) リポジトリ内の **iothub\_client** フォルダーに **samples** フォルダーがあり、**iothub\_client\_sample\_mqtt** というアプリケーションが格納されています。
 
-**iothub\_client\_sample\_ampq** アプリケーションの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
+**iothub\_client\_sample\_mqtt** アプリケーションの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
 
-  ![](media/iot-hub-device-sdk-c-intro/12-iothub-client-sample-amqp.PNG)
+  ![](media/iot-hub-device-sdk-c-intro/12-iothub-client-sample-mqtt.PNG)
 
-このソリューションには単一のプロジェクトが含まれています。このソリューションには 4 つの NuGet パッケージがインストールされていることに注意してください。
+> [!NOTE]
+> このプロジェクトを Visual Studio 2017 で開く場合は、画面の表示を受け入れてプロジェクトのターゲットを最新バージョンに変更します。
+
+このソリューションには単一のプロジェクトが含まれています。 このソリューションには 4 つの NuGet パッケージがインストールされています。
 
 * Microsoft.Azure.C.SharedUtility
-* Microsoft.Azure.IoTHub.AmqpTransport
+* Microsoft.Azure.IoTHub.MqttTransport
 * Microsoft.Azure.IoTHub.IoTHubClient
-* Microsoft.Azure.uamqp
+* Microsoft.Azure.umqtt
 
-SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを含める必要があります (HTTP と MQTT にも同等のパッケージが存在します)。サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
+SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルでは MQTT プロトコルを使用するため、**Microsoft.Azure.umqtt** パッケージと **Microsoft.Azure.IoTHub.MqttTransport** パッケージを含める必要があります (AMQP と HTTP にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
-サンプル アプリケーションの実装は、**iothub\_client\_sample\_amqp.c** ソース ファイル内にあります。
+サンプル アプリケーションの実装は、**iothub\_client\_sample\_mqtt.c** ソース ファイル内にあります。
 
-このサンプル アプリケーションを使用して、**IoTHubClient** ライブラリの使用に必要な内容を説明します。
+次の手順では、このサンプル アプリケーションを使用して、**IoTHubClient** ライブラリの使用に必要な内容を説明します。
 
-### ライブラリの初期化
+### <a name="initialize-the-library"></a>ライブラリを初期化する
+
 > [!NOTE]
-> ライブラリの使用を開始する前に、プラットフォーム固有の初期化の実行が必要になる場合があります。たとえば、Linux 上で AMQPS を使用する計画がある場合は、OpenSSL ライブラリを初期化する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)のサンプルはクライアントの起動時にユーティリティ関数 **platform\_init** を呼び出し、終了する前に **platform\_deinit** 関数を呼び出します。これらの関数は、platform.h ヘッダー ファイルで宣言されます。ターゲットとするプラットフォームについて[リポジトリ](https://github.com/Azure/azure-iot-sdks)でこれらの関数の定義を確認し、クライアントにいずれかのプラットフォーム初期化コードを含める必要があるかどうかを判断する必要があります。
-> 
-> 
+> ライブラリの使用を開始する前に、プラットフォーム固有の初期化の実行が必要になる場合があります。 たとえば、Linux 上で AMQP を使用する計画がある場合は、OpenSSL ライブラリを初期化する必要があります。 [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-c)のサンプルはクライアントの起動時にユーティリティ関数 **platform\_init** を呼び出し、終了する前に **platform\_deinit** 関数を呼び出します。 これらの関数は、platform.h ヘッダー ファイルで宣言されます。 ターゲットとするプラットフォームについて[リポジトリ](https://github.com/Azure/azure-iot-sdk-c)でこれらの関数の定義を確認し、クライアントにいずれかのプラットフォーム固有の初期化コードを含める必要があるかどうかを判断する必要があります。
 
 ライブラリで作業を開始するには、最初に、IoT Hub クライアントのハンドルを割り当てる必要があります。
 
+```c
+if ((iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol)) == NULL)
+{
+    (void)printf("ERROR: iotHubClientHandle is NULL!\r\n");
+}
+else
+{
+    ...
 ```
-IOTHUB_CLIENT_HANDLE iotHubClientHandle;
-iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
-```
 
-この関数 (デバイス エクスプローラーから取得したもの) にデバイスの接続文字列のコピーを渡していることに注意してください。また、使用するプロトコルを指定します。この例では AMQP を使用しますが、MQTT と HTTP も使用できます。
+デバイス エクスプローラー ツールから取得したデバイスの接続文字列のコピーをこの関数に渡します。 また、使用する通信プロトコルを指定します。 この例では MQTT を使用しますが、AMQP と HTTP も使用できます。
 
-有効な **IOTHUB\_CLIENT\_HANDLE** がある場合、最初にその API を呼び出して、IoT Hub とのイベントの送信とメッセージの受信を実行することができます。次で確認します。
+有効な **IOTHUB\_CLIENT\_HANDLE** がある場合は、その API の呼び出しを開始して、IoT Hub との間でメッセージを送受信できます。
 
-### イベントの送信
-IoT Hub にイベントを送信するには、次の手順を実行する必要があります。
+### <a name="send-messages"></a>メッセージを送信する
+
+このサンプル アプリケーションによって、メッセージを IoT ハブに送信するループがセットアップされます。 次のスニペットが必要です。
+
+- メッセージを作成する。
+- プロパティをメッセージに追加する。
+- メッセージを送信する。
 
 まず、次のようにメッセージを作成します。
 
-```
-EVENT_INSTANCE message;
-sprintf_s(msgText, sizeof(msgText), "Message_%d_From_IoTHubClient_Over_AMQP", i);
-message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText);
+```c
+size_t iterator = 0;
+do
+{
+    if (iterator < MESSAGE_COUNT)
+    {
+        sprintf_s(msgText, sizeof(msgText), "{\"deviceId\":\"myFirstDevice\",\"windSpeed\":%.2f}", avgWindSpeed + (rand() % 4 + 2));
+        if ((messages[iterator].messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText))) == NULL)
+        {
+            (void)printf("ERROR: iotHubMessageHandle is NULL!\r\n");
+        }
+        else
+        {
+            messages[iterator].messageTrackingId = iterator;
+            MAP_HANDLE propMap = IoTHubMessage_Properties(messages[iterator].messageHandle);
+            (void)sprintf_s(propText, sizeof(propText), "PropMsg_%zu", iterator);
+            if (Map_AddOrUpdate(propMap, "PropName", propText) != MAP_OK)
+            {
+                (void)printf("ERROR: Map_AddOrUpdate Failed!\r\n");
+            }
+
+            if (IoTHubClient_LL_SendEventAsync(iotHubClientHandle, messages[iterator].messageHandle, SendConfirmationCallback, &messages[iterator]) != IOTHUB_CLIENT_OK)
+            {
+                (void)printf("ERROR: IoTHubClient_LL_SendEventAsync..........FAILED!\r\n");
+            }
+            else
+            {
+                (void)printf("IoTHubClient_LL_SendEventAsync accepted message [%d] for transmission to IoT Hub.\r\n", (int)iterator);
+            }
+        }
+    }
+    IoTHubClient_LL_DoWork(iotHubClientHandle);
+    ThreadAPI_Sleep(1);
+
+    iterator++;
+} while (g_continueRunning);
 ```
 
-次に、次のようにメッセージを送信します。
+メッセージを送信するたびに、データが送信されるときに呼び出されるコールバック関数への参照を指定します。 この例では、コールバック関数は **SendConfirmationCallback** です。 次のスニペットは、このコールバック関数を示しています。
 
-```
-IoTHubClient_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message);
-```
-
-メッセージを送信するたびに、データが送信されるときに呼び出されるコールバック関数への参照を指定します。
-
-```
+```c
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
     EVENT_INSTANCE* eventInstance = (EVENT_INSTANCE*)userContextCallback;
-    (void)printf("Confirmation[%d] received for message tracking id = %d with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
     /* Some device specific action code goes here... */
     callbackCounter++;
     IoTHubMessage_Destroy(eventInstance->messageHandle);
 }
 ```
 
-メッセージの処理が終了したときに呼び出される **IoTHubMessage\_Destroy** 関数に注意してください。この呼び出しを行って、メッセージを作成したときに割り当てられたリソースを解放する必要があります。
+メッセージの処理が終了したときに呼び出される **IoTHubMessage\_Destroy** 関数に注意してください。 この関数は、メッセージを作成したときに割り当てられたリソースを解放します。
 
-### メッセージの受信
-メッセージの受信は非同期操作です。最初に、デバイスがメッセージを受信したときに呼び出されるコールバックを登録します。
+### <a name="receive-messages"></a>メッセージを受信する
 
+メッセージの受信は非同期操作です。 最初に、デバイスがメッセージを受信したときに呼び出すコールバックを登録します。
+
+```c
+if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext) != IOTHUB_CLIENT_OK)
+{
+    (void)printf("ERROR: IoTHubClient_LL_SetMessageCallback..........FAILED!\r\n");
+}
+else
+{
+    (void)printf("IoTHubClient_LL_SetMessageCallback...successful.\r\n");
+...
 ```
-int receiveContext = 0;
-IoTHubClient_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext);
-```
 
-最後のパラメーターは任意のものを指す void ポインターです。このサンプルのポインターは整数を指していますが、より複雑なデータ構造を指すこともできます。これにより、このコールバック関数を、この関数の呼び出し元と共有した状態で操作できます。
+最後のパラメーターは任意のものを指す void ポインターです。 このサンプルのポインターは整数を指していますが、より複雑なデータ構造を指すこともできます。 このパラメーターにより、このコールバック関数を、この関数の呼び出し元と共有した状態で操作できます。
 
-デバイスがメッセージを受信すると、登録済みのコールバック関数が呼び出されます。
+デバイスがメッセージを受信すると、登録済みのコールバック関数が呼び出されます。 このコールバック関数は次のものを受信します。
 
-```
+* メッセージのメッセージ ID と関連付け ID。
+* メッセージのコンテンツ。
+* メッセージの任意のカスタム プロパティ。
+
+```c
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     int* counter = (int*)userContextCallback;
     const char* buffer;
     size_t size;
-    if (IoTHubMessage_GetByteArray(message, (const unsigned char**)&buffer, &size) == IOTHUB_MESSAGE_OK)
+    MAP_HANDLE mapProperties;
+    const char* messageId;
+    const char* correlationId;
+
+    // Message properties
+    if ((messageId = IoTHubMessage_GetMessageId(message)) == NULL)
     {
-        (void)printf("Received Message [%d] with Data: <<<%.*s>>> & Size=%d\r\n", *counter, (int)size, buffer, (int)size);
+        messageId = "<null>";
+    }
+
+    if ((correlationId = IoTHubMessage_GetCorrelationId(message)) == NULL)
+    {
+        correlationId = "<null>";
+    }
+
+    // Message content
+    if (IoTHubMessage_GetByteArray(message, (const unsigned char**)&buffer, &size) != IOTHUB_MESSAGE_OK)
+    {
+        (void)printf("unable to retrieve the message data\r\n");
+    }
+    else
+    {
+        (void)printf("Received Message [%d]\r\n Message ID: %s\r\n Correlation ID: %s\r\n Data: <<<%.*s>>> & Size=%d\r\n", *counter, messageId, correlationId, (int)size, buffer, (int)size);
+        // If we receive the work 'quit' then we stop running
+        if (size == (strlen("quit") * sizeof(char)) && memcmp(buffer, "quit", size) == 0)
+        {
+            g_continueRunning = false;
+        }
+    }
+
+    // Retrieve properties from the message
+    mapProperties = IoTHubMessage_Properties(message);
+    if (mapProperties != NULL)
+    {
+        const char*const* keys;
+        const char*const* values;
+        size_t propertyCount = 0;
+        if (Map_GetInternals(mapProperties, &keys, &values, &propertyCount) == MAP_OK)
+        {
+            if (propertyCount > 0)
+            {
+                size_t index;
+
+                printf(" Message Properties:\r\n");
+                for (index = 0; index < propertyCount; index++)
+                {
+                    (void)printf("\tKey: %s Value: %s\r\n", keys[index], values[index]);
+                }
+                (void)printf("\r\n");
+            }
+        }
     }
 
     /* Some device specific action code goes here... */
@@ -228,66 +303,92 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-**IoTHubMessage\_GetByteArray** 関数を使用してメッセージを取得する点に注意してください。この例では文字列です。
+**IoTHubMessage\_GetByteArray** 関数を使用してメッセージを取得します。この例では文字列です。
 
-### ライブラリの初期化解除
-イベントの送信とメッセージの受信を完了すると、次の方法で IoT ライブラリの初期化を解除することができます。これを行うには、次の関数呼び出しを発行します。
+### <a name="uninitialize-the-library"></a>ライブラリの初期化を解除する
+
+イベントの送信とメッセージの受信が完了すると、IoT ライブラリの初期化を解除することができます。 これを行うには、次の関数呼び出しを発行します。
 
 ```
-IoTHubClient_Destroy(iotHubClientHandle);
+IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-これにより、以前に割り当てられていたリソースが、**IoTHubClient\_CreateFromConnectionString** 関数によって解放されます。
+この呼び出しにより、以前に割り当てられていたリソースが、**IoTHubClient\_CreateFromConnectionString** 関数によって解放されます。
 
-ご覧のように、**IoTHubClient** ライブラリを使用すると、簡単にイベントの送信とメッセージの受信を実行できます。使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
+ご覧のように、**IoTHubClient** ライブラリを使用すると、簡単にメッセージを送受信できます。 使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
 
-**IoTHubClient** ライブラリでは、デバイスから IoT Hub に送信されるイベントをシリアル化する方法を正確に制御することもできます。これが利点になる場合もありますが、この実装の詳細が関心の対象にならない場合もあります。その場合は、次のセクションで説明する **serializer** ライブラリの使用を検討することができます。
+**IoTHubClient** ライブラリでは、デバイスから IoT Hub に送信されるデータをシリアル化する方法を正確に制御することもできます。 この制御のレベルが利点になる場合もありますが、こうした実装の詳細が不要な場合もあります。 その場合は、次のセクションで説明する **serializer** ライブラリの使用を検討してください。
 
-## シリアライザー
-概念的には、**serializer** ライブラリは、SDK の **IoTHubClient** ライブラリの上位に位置します。IoT Hub との基礎になる通信で **IoTHubClient** ライブラリを使用しますが、モデリング機能が追加されるため、開発者がメッセージのシリアル化を処理する負担が削減されます。このライブラリの動作のわかりやすい例を示します。
+## <a name="use-the-serializer-library"></a>serializer ライブラリを使用する
 
-azure-iot-sdks リポジトリ内の **serializer** フォルダー内には **samples** フォルダーがあり、**simplesample\_amqp** というアプリケーションが格納されています。このサンプルの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
+概念的には、**serializer** ライブラリは、SDK の **IoTHubClient** ライブラリの上位に位置します。 IoT Hub との基礎になる通信で **IoTHubClient** ライブラリを使用しますが、モデリング機能が追加されるため、開発者がメッセージのシリアル化を処理する負担が削減されます。 このライブラリの動作のわかりやすい例を示します。
 
-  ![](media/iot-hub-device-sdk-c-intro/14-simplesample_amqp.PNG)
+[azure-iot-sdk-c リポジトリ](https://github.com/Azure/azure-iot-sdk-c)内の **serializer** フォルダー内には **samples** フォルダーがあり、**simplesample\_mqtt** というアプリケーションが格納されています。 このサンプルの Windows バージョンには、次の Visual Studio のソリューションが含まれます。
+
+  ![](media/iot-hub-device-sdk-c-intro/14-simplesample_mqtt.PNG)
+
+> [!NOTE]
+> このプロジェクトを Visual Studio 2017 で開く場合は、画面の表示を受け入れてプロジェクトのターゲットを最新バージョンに変更します。
 
 前のサンプルと同様、このソリューションにも、いくつかの NuGet パッケージが含まれています。
 
 * Microsoft.Azure.C.SharedUtility
-* Microsoft.Azure.IoTHub.AmqpTransport
+* Microsoft.Azure.IoTHub.MqttTransport
 * Microsoft.Azure.IoTHub.IoTHubClient
 * Microsoft.Azure.IoTHub.Serializer
-* Microsoft.Azure.uamqp
+* Microsoft.Azure.umqtt
 
-ほとんどのパッケージは前のサンプルにも含まれていましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。これは、**serializer** ライブラリを使用するときに必要です。
+ほとんどのパッケージは前のサンプルにも含まれていましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。 このパッケージは、**serializer** ライブラリを使用するときに必要です。
 
-サンプル アプリケーションの実装は **simplesample\_amqp.c** ファイル内にあります。
+サンプル アプリケーションの実装は **simplesample\_mqtt.c** ファイル内にあります。
 
 次のセクションで、このサンプルの主要な部分について説明します。
 
-### ライブラリの初期化
-**serializer** ライブラリの使用を開始するには、初期化 API を呼び出す必要があります。
+### <a name="initialize-the-library"></a>ライブラリを初期化する
 
+**serializer** ライブラリの使用を開始するには、初期化 API を呼び出します。
+
+```c
+if (serializer_init(NULL) != SERIALIZER_OK)
+{
+    (void)printf("Failed on serializer_init\r\n");
+}
+else
+{
+    IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol);
+    srand((unsigned int)time(NULL));
+    int avgWindSpeed = 10;
+
+    if (iotHubClientHandle == NULL)
+    {
+        (void)printf("Failed on IoTHubClient_LL_Create\r\n");
+    }
+    else
+    {
+        ContosoAnemometer* myWeather = CREATE_MODEL_INSTANCE(WeatherStation, ContosoAnemometer);
+        if (myWeather == NULL)
+        {
+            (void)printf("Failed on CREATE_MODEL_INSTANCE\r\n");
+        }
+        else
+        {
+...
 ```
-serializer_init(NULL);
 
-IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
+**serializer\_init** 関数の呼び出しは 1 回だけの呼び出しであり、基になるライブラリを初期化します。 次に、**IoTHubClient\_LL\_CreateFromConnectionString** 関数を呼び出します。これは、**IoTHubClient** サンプルに含まれる API と同じものです。 この呼び出しにより、デバイスの接続文字列が設定されます (この呼び出しは、使用するプロトコルを選択する場所でもあります)。 このサンプルでは、トランスポートとして MQTT を使用していますが、AMQP または HTTP を使用することもできます。
 
-ContosoAnemometer* myWeather = CREATE_MODEL_INSTANCE(WeatherStation, ContosoAnemometer);
-```
+最後に、**CREATE\_MODEL\_INSTANCE** 関数を呼び出します。 **WeatherStation** はモデルの名前空間で、**ContosoAnemometer** はモデルの名前です。 モデルのインスタンスが作成されたら、そのモデルを使用して、メッセージの送受信を開始することができます。 ただし、モデルがどのようなものかを理解する必要があります。
 
-**serializer\_init** 関数の呼び出しは、基になるライブラリを初期化するために 1 回だけ行われます。次に、**IoTHubClient\_CreateFromConnectionString** 関数を呼び出します。これは、**IoTHubClient** サンプルに含まれる API と同じものです。この呼び出しにより、デバイスに接続文字列が設定されます (使用するプロトコルを選択する場所でもあります)。このサンプルでは、トランスポートとして AMQP を使用していますが、HTTP を使用することもできます。
+### <a name="define-the-model"></a>モデルを定義する
 
-最後に、**CREATE\_MODEL\_INSTANCE** 関数を呼び出します。**WeatherStation** はモデルの名前空間で、**ContosoAnemometer** はモデルの名前です。モデルのインスタンスを作成したら、そのモデルを使用して、イベントの送信とメッセージの受信を開始することができます。ただし、モデルがどのようなものかを理解する必要があります。
+**serializer** ライブラリ内のモデルは、デバイスから IoT Hub に送信できるメッセージと、モデリング言語で "*アクション*" と呼ばれる、デバイスで受信できるメッセージを定義します。 **simplesample\_mqtt** サンプル アプリケーションと同様に、一連の C マクロを使用してモデルを定義します。
 
-### モデルの定義
-**serializer** ライブラリ内のモデルは、デバイスから IoT Hub に送信できるイベントと、モデリング言語で*アクション*と呼ばれる、デバイスが受信できるメッセージを定義します。**simplesample\_amqp** サンプル アプリケーションと同様に、一連の C マクロを使用してモデルを定義します。
-
-```
+```c
 BEGIN_NAMESPACE(WeatherStation);
 
 DECLARE_MODEL(ContosoAnemometer,
 WITH_DATA(ascii_char_ptr, DeviceId),
-WITH_DATA(double, WindSpeed),
+WITH_DATA(int, WindSpeed),
 WITH_ACTION(TurnFanOn),
 WITH_ACTION(TurnFanOff),
 WITH_ACTION(SetAirResistance, int, Position)
@@ -296,44 +397,51 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-**BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。この 2 つのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
+**BEGIN\_NAMESPACE** と **END\_NAMESPACE** の両方のマクロは、モデルの名前空間を引数として取得します。 これらのマクロの間には、モデルの定義とモデルが使用するデータ構造があることが想定されます。
 
-この例では、**ContosoAnemometer** という単一のモデルがあります。このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** の 2 つのイベントを定義します。さらに、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、**SetAirResistance** の 3 つのアクション (メッセージ) を定義します。各イベントには型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
+この例では、 **ContosoAnemometer**という単一のモデルがあります。 このモデルは、デバイスが IoT Hub に送信できる、**DeviceId** と **WindSpeed** という 2 つのデータを定義します。 さらに、デバイスが受信できる、**TurnFanOn**、**TurnFanOff**、**SetAirResistance** の 3 つのアクション (メッセージ) を定義します。 各データ要素には型があり、各アクションには名前 (また、必要に応じて一連のパラメーター) があります。
 
-モデルで定義されたイベントとアクションは、IoT Hub へのイベントの送信とデバイスに送信されるメッセージへの応答に使用できる API へのアクセスを定義します。これは例を使用すると理解しやすくなります。
+モデルで定義されたデータとアクションは、IoT Hub へのメッセージの送信とデバイスに送信されたメッセージへの応答に使用できる API へのアクセスを定義します。 このモデルの使用については、例を通じて理解するのが一番です。
 
-### イベントの送信
-このモデルは、IoT Hub に送信できるイベントを定義します。この例では、**WITH\_DATA** マクロを使用して定義した 2 つのイベントのうちいずれかを意味します。たとえば、**WindSpeed** イベントを IoT Hub に送信する場合は、そのためにいくつかの手順を実行する必要があります。最初に、送信するデータを設定します。
+### <a name="send-messages"></a>メッセージを送信する
 
+このモデルは、IoT Hub に送信できるデータを定義します。 この例では、**WITH_DATA** マクロを使用して定義した 2 つのデータ項目のどちらかを意味します。 **DeviceId** 値と **WindSpeed** 値を IoT ハブに送信するのに必要な手順はいくつかあります。 最初に、送信するデータを設定します。
+
+```c
+myWeather->DeviceId = "myFirstDevice";
+myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
 ```
-myWeather->WindSpeed = 15;
-```
 
-先ほど定義したモデルを使うと、**構造体**のメンバーを設定することで送信するデータを設定できます。次に、送信するイベントをシリアル化します。
+前に定義したモデルでは、**struct** のメンバーを設定して値を設定できます。 次に、送信するメッセージをシリアル化します。
 
-```
+```c
 unsigned char* destination;
 size_t destinationSize;
-
-SERIALIZE(&destination, &destinationSize, myWeather->WindSpeed);
+if (SERIALIZE(&destination, &destinationSize, myWeather->DeviceId, myWeather->WindSpeed) != CODEFIRST_OK)
+{
+    (void)printf("Failed to serialize\r\n");
+}
+else
+{
+    sendMessage(iotHubClientHandle, destination, destinationSize);
+    free(destination);
+}
 ```
 
-このコードは、イベントをシリアル化して、(**送信先**によって参照される) バッファーに格納します。最後に、次のコードで、イベントを IoT Hub に送信します。
+このコードは、デバイスからクラウドへのデータをシリアル化して、(**送信先**によって参照される) バッファーに格納します。 次に、**sendMessage** 関数を呼び出して、メッセージを IoT Hub に送信します。
 
-```
-sendMessage(iotHubClientHandle, destination, destinationSize);
-```
-
-これは、シリアル化されたイベントを IoT Hub に送信するサンプル アプリケーションのヘルパー関数です。
-
-```
-static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
+```c
+static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
 {
     static unsigned int messageTrackingId;
     IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromByteArray(buffer, size);
-    if (messageHandle != NULL)
+    if (messageHandle == NULL)
     {
-        if (IoTHubClient_SendEventAsync(iotHubClientHandle, messageHandle, sendCallback, (void*)(uintptr_t)messageTrackingId) != IOTHUB_CLIENT_OK)
+        printf("unable to create a new IoTHubMessage\r\n");
+    }
+    else
+    {
+        if (IoTHubClient_LL_SendEventAsync(iotHubClientHandle, messageHandle, sendCallback, (void*)(uintptr_t)messageTrackingId) != IOTHUB_CLIENT_OK)
         {
             printf("failed to hand over the message to IoTHubClient");
         }
@@ -341,43 +449,47 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
         {
             printf("IoTHubClient accepted the message for delivery\r\n");
         }
-
         IoTHubMessage_Destroy(messageHandle);
     }
-    free((void*)buffer);
     messageTrackingId++;
 }
 ```
 
-このコードは、**iothub\_client\_sample\_amqp** アプリケーションでバイト配列からメッセージを作成し、**IoTHubClient\_SendEventAsync** を使用して IoT Hub に送信したときのコードによく似ています。その後で必要なのは、以前に割り当てたメッセージ ハンドルとシリアル化されたデータ バッファーの解放のみです。
 
-**IoTHubClient\_SendEventAsync** の最後から 2 番目のパラメーターは、データが正常に送信されたときに呼び出されるコールバック関数の参照です。コールバック関数の例を次に示します。
+**IoTHubClient\_LL\_SendEventAsync** の最後から 2 番目のパラメーターは、データが正常に送信されたときに呼び出されるコールバック関数の参照です。 サンプル内のコールバック関数は次のとおりです。
 
-```
+```c
 void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
-    int messageTrackingId = (intptr_t)userContextCallback;
+    unsigned int messageTrackingId = (unsigned int)(uintptr_t)userContextCallback;
 
-    (void)printf("Message Id: %d Received.\r\n", messageTrackingId);
+    (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
 
     (void)printf("Result Call Back Called! Result is: %s \r\n", ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 ```
 
-2 番目のパラメーターは、ユーザー コンテキストを指すポインターであり、**IoTHubClient\_SendEventAsync** に渡したポインターと同じものです。ここでは、このコンテキストは単純なカウンターですが、任意の内容にすることができます。
+2 番目のパラメーターは、ユーザー コンテキストを指すポインターであり、**IoTHubClient\_LL\_SendEventAsync** に渡したポインターと同じものです。 ここでは、このコンテキストは単純なカウンターですが、任意の内容にすることができます。
 
-イベントの送信に必要なものは以上です。残りは、メッセージを受信する方法の説明のみです。
+デバイスからクラウドへのメッセージの送信に必要なものは以上です。 残りは、メッセージを受信する方法の説明のみです。
 
-### メッセージの受信
-メッセージの受信は、**IoTHubClient** ライブラリでメッセージが動作するしくみと同様です。まず、メッセージのコールバック関数を登録します。
+### <a name="receive-messages"></a>メッセージを受信する
 
-```
-IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
+メッセージの受信は、 **IoTHubClient** ライブラリでメッセージが動作するしくみと同様です。 まず、メッセージのコールバック関数を登録します。
+
+```c
+if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
+{
+    printf("unable to IoTHubClient_SetMessageCallback\r\n");
+}
+else
+{
+...
 ```
 
 そのうえで、メッセージを受信したときに呼び出されるコールバック関数を記述します。
 
-```
+```c
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -386,7 +498,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
     if (IoTHubMessage_GetByteArray(message, &buffer, &size) != IOTHUB_MESSAGE_OK)
     {
         printf("unable to IoTHubMessage_GetByteArray\r\n");
-        result = EXECUTE_COMMAND_ERROR;
+        result = IOTHUBMESSAGE_ABANDONED;
     }
     else
     {
@@ -395,11 +507,11 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
         if (temp == NULL)
         {
             printf("failed to malloc\r\n");
-            result = EXECUTE_COMMAND_ERROR;
+            result = IOTHUBMESSAGE_ABANDONED;
         }
         else
         {
-            memcpy(temp, buffer, size);
+            (void)memcpy(temp, buffer, size);
             temp[size] = '\0';
             EXECUTE_COMMAND_RESULT executeCommandResult = EXECUTE_COMMAND(userContextCallback, temp);
             result =
@@ -413,17 +525,17 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-このコードは定型句であるため、すべてのソリューションで同じになります。この関数は、メッセージを受信し、**EXECUTE\_COMMAND** を呼び出して、適切な関数へのルーティングを処理します。この時点で呼び出す関数は、モデルのアクションの定義によって異なります。
+このコードは定型句であるため、すべてのソリューションで同じになります。 この関数は、メッセージを受信し、**EXECUTE\_COMMAND** を呼び出して、適切な関数へのルーティングを処理します。 この時点で呼び出す関数は、モデルのアクションの定義によって異なります。
 
-モデルのアクションを定義するとき、対応するメッセージをデバイスが受信するときに呼び出される関数を実装する必要があります。たとえば、モデルで次のアクションが定義されているとします。
+モデルのアクションを定義するとき、対応するメッセージをデバイスが受信するときに呼び出される関数を実装する必要があります。 たとえば、モデルで次のアクションが定義されているとします。
 
-```
+```c
 WITH_ACTION(SetAirResistance, int, Position)
 ```
 
-この場合、次のシグネチャを持つ関数を定義する必要があります。
+この場合、次のシグネチャを持つ関数を定義します。
 
-```
+```c
 EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {
     (void)device;
@@ -432,45 +544,39 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 }
 ```
 
-関数の名前はモデル内のアクションの名前に一致し、関数のパラメーターはアクションに対して指定されたパラメーターに一致することに注意してください。最初のパラメーターは常に必要であり、モデルのインスタンスへのポインターが含まれます。
+関数の名前はモデル内のアクションの名前に一致し、関数のパラメーターはアクションに対して指定されたパラメーターに一致することに注意してください。 最初のパラメーターは常に必要であり、モデルのインスタンスへのポインターが含まれます。
 
-デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。したがって、**IoTHubMessage** の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
+デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。 したがって、 **IoTHubMessage**の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
 
-### ライブラリの初期化解除
-データの送信とメッセージの受信を完了すると、次の方法で IoT ライブラリの初期化を解除することができます。
+### <a name="uninitialize-the-library"></a>ライブラリの初期化を解除する
 
-```
+データの送信とメッセージの受信が完了すると、次の方法で IoT ライブラリの初期化を解除することができます。
+
+```c
+...
         DESTROY_MODEL_INSTANCE(myWeather);
     }
-    IoTHubClient_Destroy(iotHubClientHandle);
+    IoTHubClient_LL_Destroy(iotHubClientHandle);
 }
 serializer_deinit();
 ```
 
-この 3 つの各関数は、前に説明した 3 つの初期化関数に対応しています。これらの API を呼び出すと、以前に割り当てたリソースが確実に解放されます。
+この 3 つの各関数は、前に説明した 3 つの初期化関数に対応しています。 これらの API を呼び出すと、以前に割り当てたリソースが確実に解放されます。
 
-## 次のステップ
-この記事では、**C 用 Azure IoT device SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。次の記事では、[IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
+## <a name="next-steps"></a>次のステップ
 
-**C 用 Azure IoT device SDK** のデバイス管理機能を使用する方法については、[C 用の Azure IoT Hub デバイス管理ライブラリの概要](iot-hub-device-management-library.md)に関するページを参照してください。
+この記事では、**C 用 Azure IoT device SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。 次の記事では、 [IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
 
-IoT Hub の開発に関する詳細については、[IoT Hub SDK][lnk-sdks] を参照してください
+IoT Hub の開発に関する詳細については、「[Azure IoT SDKs (Azure IoT SDK)][lnk-sdks]」を参照してください。
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [ソリューションの設計][lnk-design]
-* [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
-* [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
-* [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+* [IoT Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 [lnk-file upload]: iot-hub-csharp-csharp-file-upload.md
 [lnk-create-hub]: iot-hub-rm-template-powershell.md
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-sdks-summary.md
+[lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-design]: iot-hub-guidance.md
-[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-[lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0907_2016-->

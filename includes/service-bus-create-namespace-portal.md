@@ -1,4 +1,10 @@
-1. [Azure Portal][Azure Portal] にログオンします。
+## <a name="create-a-service-namespace"></a>サービス名前空間の作成
+
+Azure の Service Bus キューを使用するには、最初に名前空間を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 
+
+名前空間を作成するには:
+
+1. [Azure Portal][Azure portal] にログオンします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[新規]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
 3. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
 4. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic、Standard、Premium) を選択します。
@@ -19,15 +25,15 @@
    
     ![connection-string][connection-string]
 
+5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
+
 <!--Image references-->
 
 [create-namespace]: ./media/service-bus-create-namespace-portal/create-namespace.png
 [connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
+[Azure portal]: https://portal.azure.com
 
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure Portal]: https://portal.azure.com
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

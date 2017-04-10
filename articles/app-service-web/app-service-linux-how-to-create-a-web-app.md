@@ -1,60 +1,62 @@
 ---
-title: How to Create a Web App with App Service on Linux | Microsoft Docs
-description: Web app creation workflow for App Service on Linux.
-keywords: azure app service, web app, linux, oss
+title: "Linux で実行されている Azure Web アプリの作成 | Microsoft Docs"
+description: "App Service on Linux の Web アプリ作成ワークフローについて説明します。"
+keywords: "Azure App Service, Web アプリ, Linux, OSS"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: naziml
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 3a71d10a-a0fe-4d28-af95-03b2860057d5
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
+translationtype: Human Translation
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: 19a42a8dc9a4026d93c10dd209e84d4e14b8f00a
+ms.lasthandoff: 02/17/2017
+
 
 ---
-# <a name="create-a-web-app-with-app-service-on-linux"></a>Create a Web App with App Service on Linux
-## <a name="using-the-management-portal-to-create-your-web-app"></a>Using the Management Portal to create your web app
-You can start creating your Web App on Linux from the [management portal](https://portal.azure.com) as shown in the image below.
+# <a name="create-an-azure-web-app-running-on-linux"></a>Linux で実行されている Azure Web アプリの作成
+## <a name="use-the-azure-portal-to-create-your-web-app"></a>Azure Portal を使用した Web アプリの作成
+Linux での Web アプリの作成は、次の図のとおり [Azure Portal](https://portal.azure.com) から開始することができます。
 
-![][1]
+![Azure Portal を使用した Web アプリの作成の開始][1]
 
-Once you select the option below, you will be shown the Create blade as shown in the image below. 
+次に、次の図のように **[作成] ブレード**が開きます。
 
-![][2]
+![[作成] ブレード][2]
 
-* Give your web app a name.
-* Choose an existing Resource Group or create a new one. (See regions available in the [limitations section](app-service-linux-intro.md)).
-* Choose an existing app service plan or create a new one (See app service plan notes in the [limitations section](app-service-linux-intro.md)). 
-* Choose the application stack you intend to use. You will get to choose between several versions of Node.js and PHP. 
+1. Web アプリに名前を付けます。
+2. 既存のリソース グループを選択するか、新しいリソース グループを作成します  (「[limitations (制限)](app-service-linux-intro.md)」セクションで、使用可能なリージョンを確認してください)。
+3. 既存の Azure App Service プランを選択するか、新しいプランを作成します  (「[limitations (制限)](app-service-linux-intro.md)」セクションで、App Service プランの注意事項を確認してください)。
+4. 使用するアプリケーション スタックを選択します。 Node.js、PHP、.Net Core、Ruby のいくつかのバージョンから選択できます。
 
-Once you have the app created, you can change the application stack from the application settings as shown in the image below.
+アプリを作成した後は、次の図のように、[アプリケーションの設定] からアプリケーション スタックを変更できます。
 
-![][3]
+![アプリケーションの設定][3]
 
-## <a name="deploying-your-web-app"></a>Deploying your web app
-Choosing "deployment options" from the management portal gives you the option to use local a Git repository or a GitHub repository to deploy your application. The instructions thereafter are similarly to a non-Linux web app and you can follow the instructions in either our [local Git deployment](app-service-deploy-local-git.md) or our [continuous deployment](app-service-continuous-deployment.md) article for GitHub.
+## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
+管理ポータルから **[デプロイ オプション]** を選択することで、ローカル Git または GitHub リポジトリを使用してアプリケーションをデプロイできるようになります。 残りの手順は、Linux 以外の Web アプリの手順と同じです。 [ローカル Git のデプロイ](app-service-deploy-local-git.md)に関する記事または[継続的なデプロイ](app-service-continuous-deployment.md)に関する記事の手順に従って、アプリをデプロイすることができます。
 
-You can also use FTP to upload your application to your site. You can get the FTP endpoint for your web app from the diagnostics logs section as shown in the image below.
+サイトへのアプリケーションのアップロードには FTP を使用することもできます。 次の図のように、Web アプリ用の FTP エンドポイントは [診断ログ] セクションから取得できます。
 
-![][4]
+![[診断ログ]][4]
 
-## <a name="next-steps"></a>Next Steps
-* [What is App Service on Linux?](app-service-linux-intro.md)
-* [Using PM2 Configuration for Node.js in Web Apps on Linux](app-service-linux-using-nodejs-pm2.md)
+## <a name="next-steps"></a>次のステップ
+* [App Service on Linux とは](app-service-linux-intro.md)
+* [Web Apps on Linux での Node.js 向け PM2 構成の使用](app-service-linux-using-nodejs-pm2.md)
+* [Azure App Service Web Apps on Linux での Ruby の使用](app-service-linux-using-ruby.md)
+* [Azure App Service Web Apps on Linux のFAQ](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-how-to-create-a-web-app/top-level-create.png
 [2]: ./media/app-service-linux-how-to-create-a-web-app/create-blade.png
 [3]: ./media/app-service-linux-how-to-create-a-web-app/application-settings-change-stack.png
 [4]: ./media/app-service-linux-how-to-create-a-web-app/diagnostic-logs-ftp.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

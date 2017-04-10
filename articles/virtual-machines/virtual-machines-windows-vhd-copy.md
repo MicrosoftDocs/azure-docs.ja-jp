@@ -1,95 +1,102 @@
 ---
-title: Create a copy of a VM in Azure | Microsoft Docs
-description: Learn how to create a copy of the VHD of a Windows VM running in Azure, in the Resource Manager deployment model.
+title: "特殊化された VM のコピーを Azure で作成する | Microsoft Docs"
+description: "Resource Manager デプロイメント モデルで、Azure で実行されている特殊な Windows VM のコピーを作成する方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: ce7e6cd3-6a4a-4fab-bf66-52f699b1398a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/22/2017
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 9d3b8d0e9c13443cf29adb8c94cb817063110ae3
+ms.lasthandoff: 03/23/2017
+
 
 ---
-# <a name="create-a-copy-windows-vm-running-in-azure"></a>Create a copy Windows VM running in Azure
-This article shows you how to use the AZCopy tool to create a copy of the VHD from a Windows VM that is running in Azure. You can copy a VHD from either a generalized VM or a specialized VM.
+# <a name="create-a-copy-of-a-specialized-windows-vm-running-in-azure"></a>Azure で実行されている特殊な Windows VM のコピーを作成する
+この記事では、AZCopy ツールを使用して、Azure で実行されている特殊な Windows VM から VHD のコピーを作成する方法について説明します。 その後、VHD のコピーを使用して新しい VM を作成することができます。 
 
-If you want to upload a VHD from an on-premises VM, like one created using Hyper-V, the see [Upload a Windows VHD from an on-premises VM to Azure](virtual-machines-windows-upload-image.md).
+* 一般化された VM をコピーする場合は、[既存の一般化された Azure VM から VM イメージを作成する方法](virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
+* オンプレミスの VM から VHD をアップロードする場合は、「[Upload a Windows VHD from an on-premises VM to Azure (オンプレミスの VM から Azure への Windows VHD のアップロード)](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-## <a name="before-you-begin"></a>Before you begin
-Make sure that you:
+## <a name="before-you-begin"></a>開始する前に
+次のことを確認してください。
 
-* Have information about the **source and destination storage accounts**. For the source VM, you need to storage account and container names. Usually, the container name will be **vhds**. You also need to have a destination storage account. If you don't already have one, you can create one using either the portal (**More Services** > Storage accounts > Add or using the [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) cmdlet. 
-* Have Azure [PowerShell 1.0](../powershell-install-configure.md) (or later) installed.
-* Have downloaded and installed the [AzCopy tool](../storage/storage-use-azcopy.md). 
-* In some cases, you might want to [generalize the VM before creating a copy](virtual-machines-windows-generalize-vhd.md). Generalized a VM removes of your personal account information using a Windows tool called Sysprep. 
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[その他のサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、作成できます。 
+* Azure [PowerShell 1.0](/powershell/azureps-cmdlets-docs) (以降) がインストールされていること。
+* [AzCopy ツール](../storage/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
-## <a name="deallocate-the-vm"></a>Deallocate the VM
-Deallocate the VM, which frees up the VHD to be copied. 
+## <a name="deallocate-the-vm"></a>VM の割り当てを解除する
+VM の割り当てを解除して、コピーする VHD を解放します。 
 
-* **Portal**: Click **Virtual machines** > **myVM** > Stop
-* **Powershell**: `Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM` deallocates the VM named **myVM** in resource group **myResourceGroup**.
+* **Portal**: **[仮想マシン]** > **[myVM]** > [停止] の順にクリックします。
+* **Powershell**: `Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM` は、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM の割り当てを解除します。
 
-The **Status** for the VM in the Azure portal changes from **Stopped** to **Stopped (deallocated)**.
+Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
 
-## <a name="get-the-storage-account-urls"></a>Get the storage account URLs
-You need the URLs of the source and destination storage accounts. The URLs look like: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. If you already know the storage account and container name, you can just replace the information between the brackets to create your URL. 
+## <a name="get-the-storage-account-urls"></a>ストレージ アカウントの URL を取得する
+コピー元とコピー先のストレージ アカウントの URL が必要です。 URL は `https://<storageaccount>.blob.core.windows.net/<containerName>/` のようになります。 ストレージ アカウント名とコンテナー名が既にわかっている場合は、かっこで囲まれた情報を置き換えるだけで、URL を作成できます。 
 
-You can use the Azure portal or Azure Powershell to get the URL:
+Azure Portal または Azure PowerShell を使用して URL を取得できます。
 
-* **Portal**: Click **More services** > **Storage accounts** > <storage account> **Blobs** and your source VHD file is probably in the **vhds** container. Click **Properties** for the container, and copy the text labeled **URL**. You'll need the URLs of both the source and destination containers. 
-* **Powershell**: `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` gets the information for VM named **myVM** in the resource group **myResourceGroup**. In the results, look in the **Storage profile** section for the **Vhd Uri**. The first part of the Uri is the URL to the container and the last part is the OS VHD name for the VM.
+* **Portal**: **[その他のサービス]** > **[ストレージ アカウント]** > <storage account> の **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
+* **Powershell**: `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` は、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
 
-## <a name="get-the-storage-access-keys"></a>Get the storage access keys
-Find the access keys for the source and destination storage accounts. For more information about access keys, see [About Azure storage accounts](../storage/storage-create-storage-account.md).
+## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
+コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
-* **Portal**: Click **More services** > **Storage accounts** > <storage account> **All Settings** > **Access keys**. Copy the key labeled as **key1**.
-* **Powershell**: `Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup` gets the storage key for the storage account **mystorageaccount** in the resource group **myResourceGroup**. Copy the key labeled as **key1**.
+* **Portal**: **[その他のサービス]** > **[ストレージ アカウント]** > <storage account> の **[すべての設定]** > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
+* **Powershell**: `Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup` は、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1**としてラベル付されているキーをコピーします。
 
-## <a name="copy-the-vhd"></a>Copy the VHD
-You can copy files between storage accounts using AzCopy. For the destination container, if the specified container doesn't exist, it will be created for you. 
+## <a name="copy-the-vhd"></a>VHD をコピーする
+AzCopy を使用して、ストレージ アカウント間でファイルをコピーすることができます。 コピー先のコンテナーについては、指定されたコンテナーが存在しない場合に作成されます。 
 
-To use AzCopy, open a command prompt on your local machine and navigate to the folder where AzCopy is installed. It will be similar to *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*. 
+AzCopy を使用するには、ローカル コンピューターでコマンド ウィンドウを開き、AzCopy がインストールされているフォルダーに移動します。 これは、*C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy* のようになります。 
 
-To copy all of the files within a container, you use the **/S** switch. This can be used to copy the OS VHD and all of the data disks if they are in the same container. This example shows how to copy all of the files in the container **mysourcecontainer** in storage account **mysourcestorageaccount** to the container **mydestinationcontainer** in the **mydestinationstorageaccount** storage account. Replace the names of the storage accounts and containers with your own. Replace `<sourceStorageAccountKey1>` and `<destinationStorageAccountKey1>` with your own keys.
-
-```
-    AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer /Dest:https://mydestinationatorageaccount.blob.core.windows.net/mydestinationcontainer /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
-```
-
-If you only want to copy a specific VHD in a container with multiple files, you can also specify the file name using the /Pattern switch. In this example, only the file named **myFileName.vhd** will be copied.
+コンテナー内のすべてのファイルをコピーするには、**/S** スイッチを使用します。 OS VHD とすべてのデータ ディスクが同じコンテナーにある場合は、これを使用してそれらをコピーできます。 この例では、**mysourcestorageaccount** ストレージ アカウントのコンテナー **mysourcecontainer** 内にあるすべてのファイルを、**mydestinationstorageaccount** ストレージ アカウントのコンテナー **mydestinationcontainer** にコピーする方法を示します。 ストレージ アカウントとコンテナーの名前は、実際の名前に置き換えてください。 `<sourceStorageAccountKey1>` と `<destinationStorageAccountKey1>` は、実際のキーに置き換えてください。
 
 ```
-    AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer /Dest:https://mydestinationatorageaccount.blob.core.windows.net/mydestinationcontainer /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /Pattern:myFileName.vhd
+AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
+    /Dest:https://mydestinationatorageaccount.blob.core.windows.net/mydestinationcontainer `
+    /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
+```
+
+複数のファイルが含まれているコンテナー内にある特定の VHD のみをコピーする場合は、/Pattern スイッチを使用してファイル名を指定することもできます。 この例では、**myFileName.vhd** という名前のファイルのみがコピーされます。
+
+```
+AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
+  /Dest:https://mydestinationatorageaccount.blob.core.windows.net/mydestinationcontainer `
+  /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> `
+  /Pattern:myFileName.vhd
 ```
 
 
-When it is finished, you will get a message that looks something like:
+完了すると、次のようなメッセージが表示されます。
 
 ```
-  Finished 2 of total 2 file(s).
-  [2016/10/07 17:37:41] Transfer summary:
-  -----------------
-  Total files transferred: 2
-  Transfer successfully:   2
-  Transfer skipped:        0
-  Transfer failed:         0
-  Elapsed time:            00.00:13:07
+Finished 2 of total 2 file(s).
+[2016/10/07 17:37:41] Transfer summary:
+-----------------
+Total files transferred: 2
+Transfer successfully:   2
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:13:07
 ```
 
-## <a name="troubleshooting"></a>Troubleshooting
-* When you use AZCopy, if you see the error "Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature." and you are using Key 2 or the secondary storage key, try using the primary or 1st storage key.
+## <a name="troubleshooting"></a>トラブルシューティング
+* AZCopy の使用時に、[サーバーが要求の認証に失敗しました] というエラーが発生した場合は、Authorization ヘッダーの値が署名を含む正しい形式であることを確認します。 Key 2 (セカンダリ ストレージ キー) を使用している場合は、プライマリ ストレージ キー (最初のストレージ キー) を使ってみてください。
 
-## <a name="next-steps"></a>Next steps
-* If you copied a **specialized** VM, you can create a new VM by [attaching the copy of the VHD to a VM as an OS disk](virtual-machines-windows-create-vm-specialized.md).
-* If you copied a **generalized** VM, you can [create a new VM from the generalized VHD image](virtual-machines-windows-create-vm-generalized.md).
-
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+* [VHD のコピーを OS ディスクとして VM に接続する](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことで、新しい VM を作成できます。
 
 

@@ -5,4 +5,8 @@
 * [Azure Active Directory とアプリケーションの統合](../articles/active-directory/active-directory-integrating-applications.md)
 * [Article Index for Application Management in Azure Active Directory](../articles/active-directory/active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Dec16_HO5-->
+
+

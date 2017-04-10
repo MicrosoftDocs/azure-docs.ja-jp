@@ -1,54 +1,48 @@
 ---
-title: SQL Database のバックアップについての説明 | Microsoft Docs
-description: SQL Database 組み込みデータベース バックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点に復元したり、データベースを地理的リージョン内の新しいデータベースにコピーしたりすることができます (最大 35 日)。
+title: "Azure SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs"
+description: "SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。"
 services: sql-database
-documentationcenter: ''
-author: CarlRabeler
+documentationcenter: 
+author: anosov1960
 manager: jhubbard
-editor: monicar
-
+editor: 
+ms.assetid: 3ee3d49d-16fa-47cf-a3ab-7b22aa491a8d
 ms.service: sql-database
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
-ms.author: carlrab
+ms.date: 11/02/2016
+ms.author: sashan
+translationtype: Human Translation
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 8323aa27c93c1c460b31f7f7c822644f5eee929a
+ms.lasthandoff: 03/28/2017
+
 
 ---
 # <a name="learn-about-sql-database-backups"></a>SQL Database バックアップについての詳細情報
-SQL Database は 5 分おきにローカル データベースをバックアップし、Azure 読み取りアクセス Geo 冗長ストレージ (RA-GRS) を利用してデータベース バックアップの一部を別の地理的領域にコピーします。 バックアップは**自動的に行われ、追加料金は発生しません**。 ローカル データベースのバックアップを使用すると、同じサーバーの[ある時点にデータベースを復元](sql-database-point-in-time-restore-portal.md)できます。 Geo 冗長バックアップを使用すると、[異なる地理的領域にデータベースを復元できます](sql-database-geo-restore-portal.md)。  
 
-> [!NOTE]
-> ローカル バックアップと Geo 冗長バックアップはいずれも自動的に行われます。 ユーザー側の操作は必要ありません。追加料金は発生しません。 
-> 
-> 
-
-次の図では、SQL Database が米国東部リージョンで実行されています。 5 分おきにデータベースが作成され、Azure 読み取りアクセス Geo 冗長ストレージ (RA-GRS) にローカル保存されます。 Azure により、データベース バックアップが米国西部リージョンのペアになるデータ センターにコピーされます。
-
-![地理リストア](./media/sql-database-geo-restore/geo-restore-1.png)
-
-<!--## What is <feature>?" -->
+SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 独自のストレージ コンテナーにバックアップを保持したい場合は、長期的なバックアップの保持ポリシーを構成できます。 詳細については、[長期保存](sql-database-long-term-retention.md)に関する記事をご覧ください。
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
-<!-- 
-First sentence begins with "The <feature> is ..." followed by a definition of the feature. Provide a 1-2 paragraph intro to explain what the feature is, how it works, and the importance of the feature for solving business problems.
--->
-SQL Database のバックアップは、特定の時点のデータベースの状態に関する情報を格納したファイルです。 SQL Database は SQL Server 技術を利用し、ローカルの[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは 5 分おきに行われます。データベースをホストする同じサーバーにポイントインタイム リストアを実行できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
-> [!NOTE]
-> SQL Database はローカル データベース バックアップと Geo 冗長バックアップの両方を自動的に作成します。 ユーザー側の操作は必要ありません。 追加料金は発生しません。
-> 
-> 
+SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
-データベース バックアップを利用してできること:
 
-* リテンション期間内の特定の時点にデータベースを復元します。 データベースのバックアップを使用すると、データベースを特定の時点に復元したり、削除されたデータベースを削除時の状態に復元したりできます。また、データベースを他の地理的リージョンに復元することもできます。 復元するには、「[データベース バックアップからデータベースを復元する](sql-database-recovery-using-backups.md)」を参照してください。
-* 同じか別のリージョンにある SQL サーバーにデータベースをコピーします。 このコピーは、現在の SQL Database とトランザクション上の一貫性を保ちます。 コピーするには、「[データベース コピー](sql-database-copy.md)」を参照してください。
-* バックアップのリテンション期間を超えてデータベース バックアップをアーカイブします。 アーカイブするには、[SQL Database を BACPAC ファイルにエクスポート](sql-database-export.md)します。 BACPAC を長期的なストレージにアーカイブし、リテンション期間を超えて保管できます。 または、BACPAC を使用して、オンプレミスまたは Azure の仮想マシン (VM) の SQL サーバーにデータベースのコピーを転送できます。
+これらのバックアップを使用して、以下を行うことができます。
 
-## <a name="backups-have-geographical-redundancy"></a>バックアップには地理的冗長性があります
-SQL Database は [Azure Storage レプリケーション](../storage/storage-redundancy.md)を利用し、データベースを別の地理的場所にバックアップします。 Geo 冗長ストレージを提供するために、SQL Database は[読み取りアクセス Geo 冗長ストレージ (RA-GRS)](../storage/storage-redundancy.md#read-access-geo-redundant-storage) アカウントにローカル データベース バックアップ ファイルを保存します。 Azure は、バックアップ ファイルを[ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートします。 この geo レプリケーションにより、プライマリ データベース リージョンからデータベースのバックアップにアクセスできない場合でもデータベースを復元できます。 
+* リテンション期間内の特定の時点にデータベースを復元します。 この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されます。
+* 削除したデータベースを、削除された時点または保有期間内の任意の時点に復元します。 削除されたデータベースは、元のデータベースが作成されたサーバーと同じサーバーにのみ復元できます。
+* 別の地理的リージョンにデータベースを復元します。 これにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。 
+* Azure Recovery Services コンテナーに格納されている特定のバックアップからデータベースを復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
+* 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+
+> [!TIP]
+> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
+>
+
 
 > [!NOTE]
 > Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
@@ -59,12 +53,15 @@ SQL Database は [Azure Storage レプリケーション](../storage/storage-red
 SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 データベースのサイズがプロビジョニングされたバックアップ ストレージを超える場合は、Azure サポートに連絡してリテンション期間を短縮できます。 もう 1 つのオプションとして、標準の読み取りアクセス geo 冗長ストレージ (RA-GRS) の料金で課金される追加のバックアップ ストレージに対して料金を支払うこともできます。 
 
 ## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
-完全データベース バックアップが毎週作成され、差分データベース バックアップは 1 時間に 1 回作成されます。また、トランザクション ログのバックアップは 5 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースの完全バックアップと[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら決定されます。 
+完全データベース バックアップは毎週作成され、差分データベース バックアップは通常、数時間に 1 回作成されます。また、トランザクション ログのバックアップは通常 5 - 10 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 
+
+バックアップ ストレージの geo レプリケーションは、Azure Storage のレプリケーション スケジュールに基づいて発生します。
 
 ## <a name="how-long-do-you-keep-my-backups"></a>バックアップはどのくらいの期間保存されますか。
 各 SQL Database バックアップには、データベースの[サービス レベル](sql-database-service-tiers.md)に基づくリテンション期間が指定されます。 データベースのリテンション期間:
 
-* Basic サービス レベルの場合、7 日間です。
+
+* Basic サービスレベルの場合、7 日間です。
 * Standard サービス レベルの場合、35 日間です。
 * Premium サービス レベルの場合、35 日間です。
 
@@ -79,9 +76,20 @@ Basic サービス レベルから Standard または Premium にデータベー
 > 
 > 
 
+## <a name="how-to-extend-the-backup-retention-period"></a>バックアップの保有期間を延長するにはどうすればよいですか。
+アプリケーションで、バックアップがより長期間使用可能である必要がある場合、個別のデータベースの長期的バックアップ保持ポリシー (LTR ポリシー) を構成することによって、組み込みの保有期間を延長できます。 これにより、組み込みの保有期間を 35 日から 10 年に延長できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+
+Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが自動的にユーザー独自の Azure Backup サービス コンテナーにコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。  期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、サービス コンテナーによって自動的に削除されます。  そのため、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 復元の API は、資格情報コンテナーが SQL Database と同じサブスクリプションにある限り、資格情報コンテナーに格納されているバックアップをサポートします。 Azure Portal または PowerShell を使用してこれらのバックアップにアクセスできます。
+
+> [!TIP]
+> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
+>
+
 ## <a name="next-steps"></a>次のステップ
-データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 データベース バックアップがビジネス戦略に適しているか確認するには、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
-<!---HONumber=Oct16_HO2-->
-
+- データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 その他の Azure SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure Portal を使用して特定の時点に復元する方法については、[Azure Portal を使用したデータベースのポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)に関するページをご覧ください。
+- PowerShell を使用して特定の時点に復元する方法については、[PowerShell を使用したデータベースのポイントインタイム リストア](scripts/sql-database-restore-database-powershell.md)に関するページをご覧ください。
+- Azure Portal を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[Azure Portal を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-portal.md)に関する記事を参照してください。
+- PowerShell を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[PowerShell を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-powershell.md)に関する記事を参照してください。
 

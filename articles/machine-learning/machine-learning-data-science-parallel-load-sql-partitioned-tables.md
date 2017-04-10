@@ -1,37 +1,39 @@
 ---
-title: SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Docs
-description: SQL パーティション テーブルを使用した並列の一括データ インポート
+title: "Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化 | Microsoft Docs"
+description: "SQL パーティション テーブルを使用した並列の一括データ インポート"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/29/2017
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
+
 
 ---
-# SQL パーティション テーブルを使用した並列の一括データ インポート
-このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。
+# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
+このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
 
-## 新しいデータベースとファイル グループのセットの作成
-* [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (データベースが存在しない場合)
-* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加する
-  
-  注: 新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
-* 1 つまたは複数のファイル (必要に応じて) を各データベース ファイル グループに追加する
+## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
+* [新しいデータベースを作成します](https://technet.microsoft.com/library/ms176061.aspx) (まだ存在しない場合)。
+* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイルグループを追加します。新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用して行います。
+* 1 つまたは複数のファイル (必要に応じて) を各データベース ファイルグループに追加します。
   
   > [!NOTE]
   > このパーティションのデータを保持するターゲット ファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
   > 
   > 
 
-次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
+次の例では、それぞれに&1; つの物理ファイルが含まれている、プライマリとログ グループ以外に&3; つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -52,8 +54,8 @@ ms.author: bradsev
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## パーティション テーブルを作成する
-データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマップされる、パーティション分割されたテーブルを作成します。パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されているように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
+## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成する
+データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマップされる、パーティション分割されたテーブルを作成します。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されているように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
 
 **パーティション テーブルを作成するには、以下の操作を行う必要があります。**
 
@@ -72,7 +74,7 @@ ms.author: bradsev
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  ヒント: 関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
+  関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -86,14 +88,14 @@ ms.author: bradsev
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-詳細については、「[パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
+詳細については、「 [パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
 
-## 個別のパーティション テーブルごとにデータを一括インポートする
-* BCP、BULK INSERT、[SQL Server 移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。ここで示されている例では BCP による方法を使用します。
-* [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK\_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
+## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>個別のパーティション テーブルごとにデータを一括インポートする
+* BCP、BULK INSERT、 [SQL Server 移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。 ここで示されている例では BCP による方法を使用します。
+* [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「 [1 時間未満で 1 TB を読み込む](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 
@@ -128,13 +130,13 @@ ms.author: bradsev
     # BCP example using Windows authentication
     $ScriptBlock1 = {
        param($dbname, $tbname, $basename, $fmtfile, $indir, $logdir, $num)
-       bcp ($dbname + ".." + $tbname) in ($indir + "" + $basename + "_" + $num + ".csv") -o ($logdir + "" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -T -b 2500 -t "," -r \n
+       bcp ($dbname + ".." + $tbname) in ($indir + "\" + $basename + "_" + $num + ".csv") -o ($logdir + "\" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -T -b 2500 -t "," -r \n
     }
 
     # BCP example using SQL authentication
     $ScriptBlock2 = {
        param($dbname, $tbname, $basename, $fmtfile, $indir, $logdir, $num, $sqlusr, $server, $pass)
-       bcp ($dbname + ".." + $tbname) in ($indir + "" + $basename + "_" + $num + ".csv") -o ($logdir + "" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -U $sqlusr -S $server -P $pass -b 2500 -t "," -r \n
+       bcp ($dbname + ".." + $tbname) in ($indir + "\" + $basename + "_" + $num + ".csv") -o ($logdir + "\" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -U $sqlusr -S $server -P $pass -b 2500 -t "," -r \n
     }
 
     # Background processing of all partitions
@@ -159,7 +161,7 @@ ms.author: bradsev
     date
 
 
-## インデックスを作成して結合およびクエリのパフォーマンスを最適化する
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>インデックスを作成して結合およびクエリのパフォーマンスを最適化する
 * 複数のテーブルからモデリング用のデータを抽出する場合、結合のパフォーマンスを向上させるには、結合キーのインデックスを作成します。
 * パーティションごとに同じファイル グループをターゲットとする (クラスター化または非クラスター化された) [インデックスを作成](https://technet.microsoft.com/library/ms188783.aspx)します。たとえば、以下のようにします。
   
@@ -171,11 +173,16 @@ ms.author: bradsev
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > データを一括インポートする前に、インデックスを作成することもできます。一括インポートする前にインデックスを作成すると、データの読み込みが低下します。
+  > データを一括インポートする前に、インデックスを作成することもできます。 一括インポートする前にインデックスを作成すると、データの読み込みが低下します。
   > 
   > 
 
-## 実行中の Advanced Analytics Process and Technology の例
-パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>実行中の Advanced Analytics Process and Technology の例
+パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「 [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Jan17_HO5-->
+
+

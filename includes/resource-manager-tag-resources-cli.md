@@ -1,71 +1,88 @@
-To add a tag to a resource group, use **azure group set**. If the resource group does not have any existing tags, pass in the tag.
+リソース グループにタグを追加するには、**azure group set** を使用します。 リソース グループにタグがない場合には、追加するタグを渡します。
 
-    azure group set -n tag-demo-group -t Dept=Finance
+```azurecli
+azure group set -n tag-demo-group -t Dept=Finance
+```
 
-Tags are updated as a whole. If you want to add a tag to a resource group that has existing tags, pass all the tags. 
+タグは全体として更新されます。 タグが既に存在するリソース グループにタグを追加する場合には、タグをすべて渡します。 
 
-    azure group set -n tag-demo-group -t Dept=Finance;Environment=Production;Project=Upgrade
+```azurecli
+azure group set -n tag-demo-group -t Dept=Finance;Environment=Production;Project=Upgrade
+```
 
-Tags are not inherited by resources in a resource group. To add a tag to a resource, use **azure resource set**. You must pass the API version number for the resource type that you are adding the tag to. If you need to retrieve the API version, use the following command with the resource provider for the type you are setting:
+リソース グループ内のリソースがタグを継承することはありません。 リソースにタグを追加するには、**azure resource set** を使用します。 タグの追加先となるリソースの種類について、API のバージョン番号を渡します。 API のバージョンを取得する必要がある場合には、設定しようとしているリソースの種類のリソース プロバイダーで以下のコマンドを使用します。
 
-    azure provider show -n Microsoft.Storage --json
+```azurecli
+azure provider show -n Microsoft.Storage --json
+```
 
-In the results, look for the resource type you want.
+結果で、タグの追加先のリソースの種類を探します。
 
-    "resourceTypes": [
-    {
-      "resourceType": "storageAccounts",
-      ...
-      "apiVersions": [
-        "2016-01-01",
-        "2015-06-15",
-        "2015-05-01-preview"
-      ]
-    }
-    ...
+```azurecli
+"resourceTypes": [
+{
+  "resourceType": "storageAccounts",
+  ...
+  "apiVersions": [
+    "2016-01-01",
+    "2015-06-15",
+    "2015-05-01-preview"
+  ]
+}
+...
+```
 
-Now, provide that API version, resource group name, resource name, resource type, and tag value as parameters.
+以上が終わったら、API のバージョン、リソース グループ名、リソース名、リソースの種類、タグ値をパラメーターとして指定します。
 
-    azure resource set -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -t Dept=Finance -o 2016-01-01
+```azurecli
+azure resource set -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -t Dept=Finance -o 2016-01-01
+```
 
-Tags exist directly on resources and resource groups. To see the existing tags, simply get a resource group and its resources with **azure group show**.
+タグはリソースやリソース グループ上に直接存在します。 既存のタグを表示するには、 **azure group show** を使用してリソース グループとそのリソースを取得します。
 
-    azure group show -n tag-demo-group --json
+```azurecli
+azure group show -n tag-demo-group --json
+```
 
-Which returns metadata about the resource group, including any tags applied to it.
+これにより、リソース グループに関するメタデータが、適用されているすべてのタグと共に返されます。
 
-    {
-      "id": "/subscriptions/4705409c-9372-42f0-914c-64a504530837/resourceGroups/tag-demo-group",
-      "name": "tag-demo-group",
-      "properties": {
-        "provisioningState": "Succeeded"
-      },
-      "location": "southcentralus",
-      "tags": {
-        "Dept": "Finance",
-        "Environment": "Production",
-        "Project": "Upgrade"
-      },
-      ...
+```azurecli
+{
+  "id": "/subscriptions/4705409c-9372-42f0-914c-64a504530837/resourceGroups/tag-demo-group",
+  "name": "tag-demo-group",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "location": "southcentralus",
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Project": "Upgrade"
+  },
+  ...
+}
+```
 
-You view the tags for a particular resource by using **azure resource show**.
+特定のリソースのタグを表示するには、 **azure resource show**を使用します。
 
-    azure resource show -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -o 2016-01-01 --json
+```azurecli
+azure resource show -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -o 2016-01-01 --json
+```
 
-To retrieve all the resources with a tag value, use:
+タグ値が設定されているすべてのリソースを取得するには、以下を使用します。
 
-    azure resource list -t Dept=Finance --json
+```azurecli
+azure resource list -t Dept=Finance --json
+```
 
-To retrieve all the resource groups with a tag value, use:
+タグ値が設定されているすべてのリソース グループを取得するには、以下を使用します。
 
-    azure group list -t Dept=Finance
+```azurecli
+azure group list -t Dept=Finance
+```
 
-You can view the existing tags in your subscription with the following command:
+サブスクリプション内の既存のタグを表示するには、以下のコマンドを使用します。
 
-    azure tag list
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+```azurecli
+azure tag list
+```

@@ -1,20 +1,26 @@
 ---
-title: Beeline による HDInsight (Hadoop) での Hive の使用 | Microsoft Docs
-description: SSH を使用して HDInsight で Hadoop クラスターに接続し、Beeline を使用して Hive クエリを対話的に実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。
+title: "Beeline による HDInsight (Hadoop) での Hive の使用 | Microsoft Docs"
+description: "SSH を使用して HDInsight で Hadoop クラスターに接続し、Beeline を使用して Hive クエリを対話的に実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/10/2016
+ms.date: 01/17/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b015e3d99c72c1840a31bacee5d9655fa9f48da7
+ms.lasthandoff: 03/25/2017
+
 
 ---
 # <a name="use-hive-with-hadoop-in-hdinsight-with-beeline"></a>Beeline による HDInsight での Hive と Hadoop の使用
@@ -24,16 +30,18 @@ ms.author: larryfr
 
 > [!NOTE]
 > Beeline は Hive への接続に JDBC を使用します。 Hive の JDBC 使用に関する詳細については、「 [Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
-> 
-> 
 
-## <a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a name="<a-id="ssh"></a>connect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+## <a id="ssh"></a>SSH を使用した接続
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -44,14 +52,9 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は** 、パスワードの入力を求められます。
 
-HDInsight での SSH の使用に関する詳細については、「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
+SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
-### <a name="putty-(windows-based-clients)"></a>PuTTY (Windows ベースのクライアント)
-Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
-
-PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
-
-## <a name="<a-id="beeline"></a>use-the-beeline-command"></a><a id="beeline"></a>Beeline コマンドを使用する
+## <a id="beeline"></a>Beeline コマンドを使用する
 1. 接続したら、次のコマンドを使用して Beeline を開始します。
    
         beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -115,31 +118,33 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
      > 
      
      このコマンドの出力は次のように表示されます。
+
+     ```
+     INFO  : Tez session hasn't been created yet. Opening session
+     INFO  :
      
-       INFO  : Tez session hasn't been created yet. Opening session
-       INFO  :
+     INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
      
-       INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
-     
-       INFO  : Map 1: -/-      Reducer 2: 0/1
-       INFO  : Map 1: 0/1      Reducer 2: 0/1
-       INFO  : Map 1: 0/1      Reducer 2: 0/1
-       INFO  : Map 1: 0/1      Reducer 2: 0/1
-       INFO  : Map 1: 0/1      Reducer 2: 0/1
-       INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-       INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-       INFO  : Map 1: 1/1      Reducer 2: 0/1
-       INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
-       INFO  : Map 1: 1/1      Reducer 2: 1/1
-       +----------+--------+--+
-       |   sev    | count  |
-       +----------+--------+--+
-       | [ERROR]  | 3      |
-       +----------+--------+--+
-       1 row selected (47.351 seconds)
+     INFO  : Map 1: -/-      Reducer 2: 0/1
+     INFO  : Map 1: 0/1      Reducer 2: 0/1
+     INFO  : Map 1: 0/1      Reducer 2: 0/1
+     INFO  : Map 1: 0/1      Reducer 2: 0/1
+     INFO  : Map 1: 0/1      Reducer 2: 0/1
+     INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+     INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+     INFO  : Map 1: 1/1      Reducer 2: 0/1
+     INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
+     INFO  : Map 1: 1/1      Reducer 2: 1/1
+     +----------+--------+--+
+     |   sev    | count  |
+     +----------+--------+--+
+     | [ERROR]  | 3      |
+     +----------+--------+--+
+     1 row selected (47.351 seconds)
+     ```
 5. Beeline を終了するには、 `!quit`を使用します。
 
-## <a name="<a-id="file"></a>run-a-hiveql-file"></a><a id="file"></a>HiveQL ファイルを実行する
+## <a id="file"></a>HiveQL ファイルを実行する
 Beeline を使用し、HiveQL ステートメントを含むファイルを実行することもできます。 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
 1. 次のコマンドを使用し、「 **query.hql**」という名前の新しいファイルを作成します。
@@ -160,7 +165,7 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
      > 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
      > 
      > 
-3. ファイルを保存するには、**Ctrl** キーを押しながら **X** キーを押し、**Y** キー、**Enter** キーの順に押します。
+3. ファイルを保存するには、**Ctrl** + **_X** キーを押し、**Y** キー、**Enter** キーの順に押します。
 4. 次を使用し、Beeline でファイルを実行します。 **HOSTNAME** を以前にヘッド ノードで取得した名前に置き換え、**PASSWORD** を管理者アカウントのパスワードに置き換えます。
    
         beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
@@ -195,7 +200,7 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
 
 パラメーター/URI は、ヘッドノード上で直接実行する場合や、クラスター内のエッジ ノードから実行する場合とは異なることに注意してください。 これは、ポート 443 経由でトラフィックをルーティングするパブリックのゲートウェイを使用して、インターネットからクラスターに接続するためです。 また、他のいくつかのサービスはポート 443 のパブリックのゲートウェイを通じて公開されるため、直接接続する場合と URI が異なります。 インターネットから接続するときには、パスワードを入力してセッションを認証する必要もあります。
 
-## <a name="<a-id="summary"></a><a-id="nextsteps"></a>next-steps"></a><a id="summary"></a><a id="nextsteps"></a>次の手順
+## <a id="summary"></a><a id="nextsteps"></a>次の手順
 このように、Beeline コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行できます。
 
 HDInsight での Hive に関する全般的な情報
@@ -237,10 +242,5 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

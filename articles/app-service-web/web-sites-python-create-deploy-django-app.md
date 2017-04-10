@@ -5,7 +5,7 @@ services: app-service\web
 documentationcenter: python
 tags: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 9be1a05a-9460-49ae-94fb-9798f82c11cf
 ms.service: app-service-web
@@ -16,8 +16,9 @@ ms.topic: hero-article
 ms.date: 02/19/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c6679cf7a6b059ee7c28e1754c54afa6414d633a
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -29,7 +30,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -112,10 +113,10 @@ Python と Git は既にインストールされていると思いますが、Py
 
 IIS 構成ファイル。 デプロイ スクリプトは適切な web.x.y.config を使用して web.config としてコピーします。
 
-### <a name="optional-files-customizing-deployment"></a>オプションのファイル - デプロイのカスタマイズ
+### <a name="optional-files---customizing-deployment"></a>オプションのファイル - デプロイのカスタマイズ
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
-### <a name="optional-files-python-runtime"></a>オプションのファイル - Python ランタイム
+### <a name="optional-files---python-runtime"></a>オプションのファイル - Python ランタイム
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>サーバー上の追加のファイル
@@ -135,7 +136,7 @@ Python 仮想環境。 互換性のある仮想環境がまだ Web アプリ上�
 * Windows、コマンド ラインを使用
 * Mac/Linux、コマンド ラインを使用
 
-## <a name="web-app-development-windows-python-tools-for-visual-studio"></a>Web アプリの開発 - Windows - Python Tools for Visual Studio
+## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Web アプリの開発 - Windows - Python Tools for Visual Studio
 ### <a name="clone-the-repository"></a>リポジトリの複製
 最初に、Azure ポータルで提供される URL を使用して、リポジトリを複製します。 詳細については、「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
@@ -201,7 +202,7 @@ Visual Studio にはデプロイの進捗状況は表示されません。 出�
 
 Azure URL を参照して、変更内容を表示します。
 
-## <a name="web-app-development-windows-command-line"></a>Web アプリの開発 - Windows - コマンド ライン
+## <a name="web-app-development---windows---command-line"></a>Web アプリの開発 - Windows - コマンド ライン
 ### <a name="clone-the-repository"></a>リポジトリの複製
 最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。 詳細については、「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
@@ -281,7 +282,7 @@ requirements.txt が更新されていることを確認します。
 
 Azure URL を参照して、変更内容を表示します。
 
-## <a name="web-app-development-maclinux-command-line"></a>Web アプリの開発 - Mac と Linux - コマンド ライン
+## <a name="web-app-development---maclinux---command-line"></a>Web アプリの開発 - Mac と Linux - コマンド ライン
 ### <a name="clone-the-repository"></a>リポジトリの複製
 最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。 詳細については、「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
@@ -365,13 +366,13 @@ requirements.txt が更新されていることを確認します。
 
 Azure URL を参照して、変更内容を表示します。
 
-## <a name="troubleshooting-package-installation"></a>トラブルシューティング - パッケージのインストール
+## <a name="troubleshooting---package-installation"></a>トラブルシューティング - パッケージのインストール
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
-## <a name="troubleshooting-virtual-environment"></a>トラブルシューティング - 仮想環境
+## <a name="troubleshooting---virtual-environment"></a>トラブルシューティング - 仮想環境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="troubleshooting-static-files"></a>トラブルシューティング - 静的ファイル
+## <a name="troubleshooting---static-files"></a>トラブルシューティング - 静的ファイル
 Django には静的ファイルの収集に関する概念が設定されています。 それにより、すべての静的ファイルを元の場所から取得し、単一のフォルダーにそのファイルをコピーします。 このアプリケーションの場合、 `/static`にコピーされます。
 
 これが実行されるのは、静的ファイルがさまざまな Django「アプリ」から取得されるためです。 たとえば、Django 管理インターフェイスの静的ファイルは、仮想環境の Django ライブラリ サブフォルダーにあります。 このアプリケーションで定義する静的ファイルは `/app/static`にあります。 複数の Django「アプリ」を使用する場合は、静的ファイルを複数の場所に配置することになります。
@@ -392,7 +393,7 @@ Django アプリケーションで静的なファイルの収集をスキップ�
 
 `\static` フォルダーを `.gitignore` から削除し、Git リポジトリに追加します。
 
-## <a name="troubleshooting-settings"></a>トラブルシューティング - 設定
+## <a name="troubleshooting---settings"></a>トラブルシューティング - 設定
 `DjangoWebProject/settings.py`ではアプリケーションのさまざまな設定を変更できます。
 
 開発者が便利なように、デバッグ モードが有効になっています。 ローカルで実行すると、静的ファイルを収集しなくても、イメージやその他の静的コンテンツを表示できるというメリットもあります。
@@ -464,9 +465,4 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 [Visual Studio]: http://www.visualstudio.com/
 [Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Django のドキュメント]: https://www.djangoproject.com/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

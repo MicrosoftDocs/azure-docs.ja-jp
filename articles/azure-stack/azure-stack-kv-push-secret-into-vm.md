@@ -1,10 +1,10 @@
 ---
-title: Deploy a VM with a certificate using Azure Stack Key Vault  | Microsoft Docs
+title: Deploy a VM with a securely stored certificate on Azure Stack  | Microsoft Docs
 description: Learn how deploy a VM and inject a certificate from Azure Stack Key Vault
 services: azure-stack
 documentationcenter: 
-author: rlfmendes
-manager: natmack
+author: SnehaGunda
+manager: byronr
 editor: 
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
@@ -12,15 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
-ms.author: ricardom
+ms.date: 03/15/2017
+ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a5bca8564f69434cfb3cbe74021609c6696b46e
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 498f4d82fa7d27b743e33f18e901cbaf6e93373c
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="create-vms-and-include-certificates-retrieved-from-key-vault"></a>Create VMs and include certificates retrieved from Key Vault
+
+> [!NOTE]
+> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+
 In Azure Stack, VMs are deployed through Azure Resource Manager, and you can now store certificates in Azure Stack Key Vault. Then Azure Stack (Microsoft.Compute resource provider to be specific) pushes them into your VMs when the VMs are deployed. Certificates can be used in many scenarios, including SSL, encryption, and certificate based authentication.
 
 By using this method, you can keep the certificate safe. It's now not in the VM image, or in the application's configuration files or some other unsafe location. By setting appropriate access policy for the key vault, you can also control who gets access to your certificate. Another benefit is that you can manage all your certificates in one place in Azure Stack Key Vault.
@@ -44,10 +49,23 @@ This sample script creates a key vault, and then stores a certificate stored in 
 
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-    $fileContentBytes = get-content \$fileName -Encoding Byte
+    $fileContentBytes = get-content $fileName -Encoding Byte
 
-    $fileContentEncoded =
-[System.Convert\]::ToBase64String(\$fileContentBytes) $jsonObject = @" { "data": "\$filecontentencoded", "dataType" :"pfx", "password": "\$certPassword" } @$jsonObjectBytes = [System.Text.Encoding\]::UTF8.GetBytes(\$jsonObject) $jsonEncoded = \[System.Convert\]::ToBase64String(\$jsonObjectBytes) Switch-AzureMode -Name AzureResourceManager New-AzureResourceGroup -Name \$resourceGroup -Location \$location New-AzureKeyVault -VaultName \$vaultName -ResourceGroupName $resourceGroup -Location \$location -sku standard -EnabledForDeployment $secret = ConvertTo-SecureString -String \$jsonEncoded -AsPlainText -Force Set-AzureKeyVaultSecret -VaultName \$vaultName -Name \$secretName -SecretValue \$secret
+    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+    $jsonObject = @"
+    {
+    "data": "$filecontentencoded",
+    "dataType" :"pfx",
+    "password": "$certPassword"
+    }
+    @$jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+    Switch-AzureMode -Name AzureResourceManager
+    New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName
+    $resourceGroup -Location $location -sku standard -EnabledForDeployment
+    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+    Set-AzureKeyVaultSecret -VaultName $vaultName -Name $secretName -SecretValue $secret
 
 The first part of the script reads the .pfx file, and then stores it as a JSON object with the file content base64 encoded. Then the JSON object is also base64 encoded.
 
@@ -112,9 +130,9 @@ Here's sample output from the preceding script:
     https://contosovault.vault.azure.net:443/secrets/servicecert
                       /e3391a126b65414f93f6f9806743a1f7
 
-Now we are ready to deploy a VM template. Note the URI of the secret from the output (as highlighted in the preceding output in green).
+Now we are ready to deploy a VM template. Note the URI of the secret from the output.
 
-You'll need a template located here. The parameters of special interest (besides the usual VM parameters) are the vault name, the vault resource group, and the secret URI. Of course, you can also download it from GitHub and modify as needed.
+You'll need a template located [here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows). The parameters of special interest (besides the usual VM parameters) are the vault name, the vault resource group, and the secret URI. Of course, you can also download it from GitHub and modify as needed.
 
 When this VM is deployed, Azure injects the certificate into the VM.
 On Windows, certificates in the .pfx file are added with the private key not exportable. The certificate is added to the LocalMachine certificate location, with the certificate store that the user provided. On Linux, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file, and &lt;UppercaseThumbprint&gt;.prv for the private key.
@@ -140,10 +158,5 @@ As an added benefit, you now have one convenient place in Key Vault to manage al
 [Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
 
 [Allow an application to access Key Vault](azure-stack-kv-sample-app.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

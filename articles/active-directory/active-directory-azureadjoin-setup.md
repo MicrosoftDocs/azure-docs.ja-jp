@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aaa52cdecc09adb3b7ca53e0c0283d4203b21810
+ms.sourcegitcommit: 0480c4f89b6036897bc8d7eff81b56262ea8806c
+ms.openlocfilehash: e4e0fa77552c4df2ea5bb9ddae916e7c661824d1
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure AD にユーザーを手動で作成して管理する方法について�
 5. **[デバイス]** セクションに移動します。
 6. **[デバイス]** タブで、次のように設定します。  
    * **[ユーザーごとのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。  ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
-   * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。 Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関するページをご覧ください。
+   * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために&2; つ目の認証要素を提供する必要があります。 Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関するページをご覧ください。
    * **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。
    * **[Azure AD 参加済みデバイスの追加の管理者]**: Azure AD Premium または Enterprise Mobility Suite (EMS) では、デバイスに対するローカル管理者権限が許可されるユーザーを選択できます。 全体管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。
 
@@ -44,7 +45,7 @@ Azure AD にユーザーを手動で作成して管理する方法について�
 
 ユーザーの Azure AD 参加を設定すると、ユーザーは、会社のデバイスまたは個人のデバイスから Azure AD に接続できます。
 
-Azure AD 参加をユーザーが設定できるようにする 3 つのシナリオを次に示します。
+Azure AD 参加をユーザーが設定できるようにする&3; つのシナリオを次に示します。
 
 * ユーザーが会社所有のデバイスを直接 Azure AD に参加させる。
 * ユーザーが、会社所有のデバイスをオンプレミスの Active Directory にドメイン参加させ、Azure AD に拡張する。
@@ -56,10 +57,5 @@ Azure AD 参加をユーザーが設定できるようにする 3 つのシナ�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

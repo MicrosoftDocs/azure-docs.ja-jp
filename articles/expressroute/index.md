@@ -1,14 +1,31 @@
 ---
+title: "Azure ExpressRoute のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "オンプレミス インフラストラクチャまたは共用施設から Microsoft クラウド サービスへのプライベート ExpressRoute 接続を構成および管理する方法について説明します。"
+services: expressroute
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: expressroute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 8a169425aa6e99b1a710f5ca56a76445fb1e09bc
+ms.openlocfilehash: 0d06677f6f3815e8ebb35d13f906481350069d4c
+ms.lasthandoff: 03/01/2017
+
 ---
-#ExpressRoute Documentation
 
-Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a dedicated private connection facilitated by a connectivity provider. Connectivity can be from an any-to-any (IP VPN) network, a point-to-point Ethernet network, or a virtual cross-connection through a connectivity provider at a co-location facility.
+#<a name="expressroute-documentation"></a>ExpressRoute のドキュメント
 
+ExpressRoute を使用して、オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスへの高速なプライベート接続を設定する方法について説明します。 チュートリアルや REST API などのドキュメントは、ExpressRoute 回線の構成と管理に役立ちます。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/expressroute/express-route-introduction">
+        <a href="/azure/expressroute/expressroute-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -18,7 +35,7 @@ Azure ExpressRoute lets you extend your on-premises networks into the Microsoft 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn About Express Route</h3>
+                        <h3>ExpressRoute の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +53,7 @@ Azure ExpressRoute lets you extend your on-premises networks into the Microsoft 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Express Route Video Library</h3>
+                        <h3>Azure ExpressRoute のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +71,7 @@ Azure ExpressRoute lets you extend your on-premises networks into the Microsoft 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with ExpressRoute</h3>
+                        <h3>ExpressRoute の概要</h3>
                     </div>
                 </div>
             </div>
@@ -65,21 +82,34 @@ Azure ExpressRoute lets you extend your on-premises networks into the Microsoft 
 
 ---
 
-##Reference
-
-###PowerShell
-[Azure PowerShell reference](/powershell/azureps-cmdlets-docs)
-
-###REST
-[ExpressRoute REST API Reference](https://msdn.microsoft.com/library/mt586720)
-
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download ExpressRoute Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API リファレンスに関するページ</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn606310">Classic REST API リファレンス</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+

@@ -1,11 +1,10 @@
 ---
-title: "インターネットに接続するクラシック デプロイメント モデルのロード バランサー (クラウド サービス用) の作成の開始 | Microsoft Docs"
+title: "Azure Cloud Services 用のインターネットに接続するロード バランサーの作成 | Microsoft Docs"
 description: "インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
@@ -13,53 +12,57 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 171d5cd41d900b83c22e1db4bc514471a3d4b556
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 1ceaafebcaebecb04314c7da62c69b2e9b5ba39a
+ms.lasthandoff: 01/24/2017
 
 ---
 
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
 
-[!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [Azure クラシック ポータル](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
+> * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-cli.md)についても説明します。
+> [!IMPORTANT]
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの&2; 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 クラウド サービスはロード バランサーで自動的に構成され、サービス モデルを使用してカスタマイズできます。
 
 ## <a name="create-a-load-balancer-using-the-service-definition-file"></a>サービス定義ファイルを使用してロード バランサーを作成します。
 
-Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。 クラウド サービスのエンドポイントの設定は、 [servicedefinition](https://msdn.microsoft.com/library/azure/gg557553.aspx).csdef で行われます。
+Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。 クラウド サービスのエンドポイントの設定は、[サービス定義](https://msdn.microsoft.com/library/azure/gg557553.aspx) .csdef ファイルで行われます。
 
 次の例は、クラウド デプロイメントの servicedefinition.csdef ファイルを構成する方法を示しています。
 
-クラウド デプロイメントによって生成された .csdef ファイルのスニペット内を確認すると、外部エンドポイントがポート 10000、10001、10002 の HTTP ポートを使用するように構成されていることがわかります。
+クラウド デプロイによって生成された .csdef ファイルのスニペット内を確認すると、外部エンドポイントがポート 10000、10001、10002 の HTTP ポートを使用するように構成されていることがわかります。
 
 ```xml
-    <ServiceDefinition name=“Tenant“>
-       <WorkerRole name=“FERole” vmsize=“Small“>
-    <Endpoints>
-        <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
-        <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
-        <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
+<ServiceDefinition name=“Tenant“>
+    <WorkerRole name=“FERole” vmsize=“Small“>
+<Endpoints>
+    <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
+    <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
+    <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
 
-        <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
+    <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
 
-        <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
-           <AllocatePublicPortFrom>
-              <FixedPortRange min=“10110” max=“10120“  />
-           </AllocatePublicPortFrom>
-        </InstanceInputEndpoint>
-        <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
-    </Endpoints>
-      </WorkerRole>
-    </ServiceDefinition>
+    <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
+        <AllocatePublicPortFrom>
+            <FixedPortRange min=“10110” max=“10120“  />
+        </AllocatePublicPortFrom>
+    </InstanceInputEndpoint>
+    <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
+</Endpoints>
+    </WorkerRole>
+</ServiceDefinition>
 ```
 
 ## <a name="check-load-balancer-health-status-for-cloud-services"></a>クラウド サービスのロード バランサーの正常性状態を確認する
@@ -67,12 +70,12 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 次に、正常性プローブの例を示します。
 
 ```xml
-    <LoadBalancerProbes>
-        <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
-    </LoadBalancerProbes>
+<LoadBalancerProbes>
+    <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
+</LoadBalancerProbes>
 ```
 
-ロード バランサーは、エンドポイントの情報とプローブの情報を結合して、サービスの正常性のクエリに使用する URL を http://{VM の DIP}:80/Probe.aspx という形式で作成します。
+ロード バランサーは、エンドポイントの情報とプローブの情報を結合して、サービスの正常性のクエリに使用する URL を `http://{DIP of VM}:80/Probe.aspx` という形式で作成します。
 
 サービスは同じ IP アドレスからの定期的なプローブを検出します。 これは、仮想マシンを実行しているノードのホストから送信される正常性プローブ要求です。 サービスは、サービスが正常であると仮定するロード バランサーの状態コード HTTP 200 で応答する必要があります。 その他の HTTP 状態コード (503 など) は、仮想マシンをローテーションから直接除外します。
 
@@ -87,10 +90,5 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

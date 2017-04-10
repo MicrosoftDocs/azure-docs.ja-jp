@@ -1,54 +1,59 @@
 ---
-title: DocumentDB のスケールとパフォーマンスのテスト | Microsoft Docs
-description: Azure DocumentDB のスケールとパフォーマンスのテストを行う方法について説明します。
-keywords: パフォーマンス テスト
+title: "DocumentDB のスケールとパフォーマンスのテスト | Microsoft Docs"
+description: "Azure DocumentDB のスケールとパフォーマンスのテストを行う方法について説明します。"
+keywords: "パフォーマンス テスト"
 services: documentdb
 author: arramac
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2016
+ms.date: 01/19/2017
 ms.author: arramac
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 86bd591c26a58200dab9872e07e6e8bdf2522df9
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# Azure DocumentDB のパフォーマンスとスケールのテスト
-パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。
+# <a name="performance-and-scale-testing-with-azure-documentdb"></a>Azure DocumentDB のパフォーマンスとスケールのテスト
+パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく関係しており、パフォーマンス テストの重要な構成要素となっています。 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は、拡張の柔軟性とパフォーマンスの確実性を目指した専用設計になっているため、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
 
-DocumentDB のワークロードに対するパフォーマンス テストを検討している開発者や、ハイパフォーマンス アプリケーション用のデータベースとして DocumentDB の評価を担当する開発者の方は、この記事をご参考ください。データベースのパフォーマンス テストに主眼を置いた内容となっていますが、運用環境のアプリケーションに該当するベスト プラクティスも含まれています。
+DocumentDB のワークロードに対するパフォーマンス テストを検討している開発者や、ハイパフォーマンス アプリケーション用のデータベースとして DocumentDB の評価を担当する開発者の方は、この記事をご参考ください。 データベースのパフォーマンス テストに主眼を置いた内容となっていますが、運用環境のアプリケーションに該当するベスト プラクティスも含まれています。
 
-この記事を読むと、次の質問に回答できるようになります。
+この記事を読むと、次の質問に回答できるようになります。   
 
-* Azure DocumentDB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。
+* Azure DocumentDB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。 
 * 開発中のクライアント アプリケーションで Azure DocumentDB から高水準のスループットを引き出すにはどうすればよいか。
 
-最初に、[DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。
+最初に、[DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
 
 > [!NOTE]
-> このアプリケーションの目的は、クライアント マシンの数が少ない場合に DocumentDB のパフォーマンスを高めるためのベスト プラクティスを示すことです。サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
+> このアプリケーションの目的は、クライアント マシンの数が少ない場合に DocumentDB のパフォーマンスを高めるためのベスト プラクティスを示すことです。 サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
 > 
 > 
 
-DocumentDB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、[DocumentDB のパフォーマンスに関するヒント](documentdb-performance-tips.md)に関する記事を参照してください。
+DocumentDB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、 [DocumentDB のパフォーマンスに関するヒント](documentdb-performance-tips.md)に関する記事を参照してください。
 
-## パフォーマンス テスト アプリケーションの実行
-まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
+## <a name="run-the-performance-testing-application"></a>パフォーマンス テスト アプリケーションの実行
+まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。 ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1:** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、Github リポジトリをフォークします。
+**手順 1:** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
 
 **手順 2:** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
 > [!NOTE]
-> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。DocumentDB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。 DocumentDB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
 > 
 > 
 
-**手順 3:** コマンド ラインからコンソール アプリをコンパイルして実行します。次のような出力結果が表示されます。
+**手順 3:** コマンド ラインからコンソール アプリをコンパイルして実行します。 次のような出力結果が表示されます。
 
     Summary:
     ---------------------------------------------------------------------
@@ -94,12 +99,12 @@ DocumentDB のパフォーマンスを向上させるためのクライアント
     DocumentDBBenchmark completed successfully.
 
 
-**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。この手順について不明な点がある場合は、askdocdb@microsoft.com にメールをご送信いただくか、サポート チケットを申請してください。
+**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。 この手順について不明な点がある場合は、askdocdb@microsoft.com にメールをお送りいただくか、[Azure Portal](https://portal.azure.com) からサポート チケットを申請してください。
 
-アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
+アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
-## 次のステップ
-この記事では、.NET コンソール アプリを使用して DocumentDB でパフォーマンスとスケールのテストを実行する方法を説明しました。DocumentDB の操作について詳しくは、以下のリンクを参照してください。
+## <a name="next-steps"></a>次のステップ
+この記事では、.NET コンソール アプリを使用して DocumentDB でパフォーマンスとスケールのテストを実行する方法を説明しました。 DocumentDB の操作について詳しくは、以下のリンクを参照してください。
 
 * [DocumentDB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [DocumentDB のパフォーマンスを向上させるクライアント構成オプション](documentdb-performance-tips.md)
@@ -109,4 +114,4 @@ DocumentDB のパフォーマンスを向上させるためのクライアント
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
-<!---HONumber=AcomDC_0907_2016-->
+

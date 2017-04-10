@@ -12,18 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-a-java-web-app-in-azure-app-service"></a>Azure App Service での Java Web アプリの作成
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-このチュートリアルでは、[Azure Portal] を使用して [Azure App Service で Java Web アプリ]を作成する方法について説明します。 Azure ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
+このチュートリアルでは、[Azure ポータル] を使用して [Azure App Service で Java Web アプリ]を作成する方法について説明します。 Azure ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
 
 > [!NOTE]
 > このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする]か、[無料試用版にサインアップ]してください。
@@ -37,7 +38,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 
 1. アプリを作成して **アプリケーション設定**を構成する。
    
-    App Service では、複数のバージョンの Tomcat と Jetty が既定の構成で提供されています。 ホストするアプリケーションが組み込みバージョンの Web コンテナーで動作するようであれば、この方法で Web コンテナーをセットアップするのが最も簡単で、Web コンテナーに war ファイルをアップロードするだけなら最適です。 この方法では、Azure ポータルでアプリを作成した後、アプリの **[アプリケーション設定]** ブレードに移動して、お使いの Java のバージョンと目的の Java Web コンテナーを選びます。 このメソッドを使用する場合は、プログラム ファイルから Java と Web コンテナーの両方が実行されます。 その他のメソッドは、Web コンテナーと場合によっては JVM をディスク領域に配置します。 このモデルを使用する場合、ファイル システムのこの部分のファイルを編集するためのアクセス権はありません。 つまり、*server.xml* ファイルを構成したり、*/lib* フォルダーにライブラリ ファイルを配置したりすることはできません。 詳細については、このチュートリアルの後半の「 [Java Web アプリの作成と構成](#appsettings) 」セクションを参照してください。
+    App Service では、複数のバージョンの Tomcat と Jetty が既定の構成で提供されています。 ホストするアプリケーションが組み込みバージョンの Web コンテナーで動作するようであれば、この方法で Web コンテナーをセットアップするのが最も簡単で、Web コンテナーに war ファイルをアップロードするだけなら最適です。 この方法では、Azure ポータルでアプリを作成した後、アプリの **[アプリケーション設定]** ブレードに移動して、お使いの Java のバージョンと目的の Java Web コンテナーを選びます。 このメソッドを使用する場合は、プログラム ファイルから Java と Web コンテナーの両方が実行されます。 その他のメソッドは、Web コンテナーと場合によっては JVM をディスク領域に配置します。 このモデルを使用する場合、ファイル システムのこの部分のファイルを編集するためのアクセス権はありません。 つまり、*server.xml* ファイルを構成したり、*/lib* フォルダーにライブラリ ファイルを配置したりすることはできません。 詳細については、このチュートリアルの後半の「 [Java Web アプリの作成と構成](#portal) 」セクションを参照してください。
 2. Azure Marketplace からテンプレートを使用する。
    
     Azure Marketplace には、Java Web アプリを自動的に作成して Tomcat または Jetty Web コンテナーで管理するテンプレートが含まれています。 テンプレートによって作成される Web コンテナーは、構成可能です。 詳細については、このチュートリアルの「 [Azure Marketplace にある Java テンプレートの使用](#marketplace) 」セクションを参照してください。
@@ -64,7 +65,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
     Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 4. **リソース グループ** を選択するか、新しく作成します。
    
-    リソース グループの詳細については、「 [Azure ポータルを使用した Azure リソースの管理]」を参照してください。
+    リソース グループの詳細については、「[Azure Resource Manager の概要]」を参照してください。
 5. **App Service プラン/場所** を選択するか、新しく作成します。
    
     App Service プランの詳細については、 [Azure App Service プランの概要]に関するページを参照してください。
@@ -92,7 +93,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 ## <a name="a-namemarketplacea-use-a-java-template-from-the-azure-marketplace"></a><a name="marketplace"></a> Azure Marketplace にある Java テンプレートの使用
 このセクションでは、Azure Marketplace を使用して Java Web アプリを作成する方法について説明します。 Java ベースのモバイル アプリや API アプリを作成する場合にも、同様の一般的なフローを利用できます。 
 
-1.  [Azure App Service で Java Web アプリ]
+1. [Azure ポータル]にサインインします。
 2. **[新規] > [Marketplace]** の順にクリックします。
    
     ![New Marketplace][newmarketplace]
@@ -103,15 +104,15 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 5. 検索結果で、Java アプリケーション サーバーをクリックします。
    
     ![Web Mobile Jetty][webmobilejetty]
-6. 最初の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[作成]** をクリックします。
+6. 最初の **[Apache Tomcat]** ブレードまたは **Jetty** ブレードで、**[作成]** をクリックします。
    
     ![Jetty Portal Blade][jettyblade]
-7. 次の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
+7. 次の **[Apache Tomcat]** ブレードまたは **Jetty** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
    
     Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 8. **リソース グループ** を選択するか、新しく作成します。
    
-    リソース グループの詳細については、「 [Azure ポータルを使用した Azure リソースの管理]」を参照してください。
+    リソース グループの詳細については、「[Azure Resource Manager の概要]」を参照してください。
 9. **App Service プラン/場所** を選択するか、新しく作成します。
    
     App Service プランの詳細については、 [Azure App Service プランの概要]に関するページを参照してください。
@@ -119,7 +120,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
     
     ![Jetty Portal Create][jettyportalcreate2]
     
-    短時間 (通常は 1 分未満) で、新しい Web アプリの作成が完了します。
+    短時間 (通常は&1; 分未満) で、新しい Web アプリの作成が完了します。
 11. **[Web アプリ]、{作成した新しい Web アプリ}** の順にクリックします。
 12. **[URL]** をクリックして新しいサイトを参照します。
     
@@ -144,13 +145,13 @@ Azure での Java アプリケーションの開発の詳細については、 [
 
 [Java Web アプリへのアプリケーションまたは Web ページの追加]: ./web-sites-java-add-app.md
 [Azure App Service プランの概要]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
-[Visual Studio サブスクライバー特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[Azure ポータル]: https://portal.azure.com/
+[Visual Studio サブスクライバーの特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
+[App Service の試用]: https://azure.microsoft.com/try/app-service/
 [Azure App Service で Java Web アプリ]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java デベロッパー センター]: /develop/java/
-[Azure ポータルを使用した Azure リソースの管理]: ../azure-portal/resource-group-portal.md
+[Azure Resource Manager の概要]: ../azure-resource-manager/resource-group-overview.md
 [Azure へのカスタム Java Web アプリのアップロード]: ./web-sites-java-custom-upload.md
 
 <!-- IMG List -->
@@ -166,9 +167,4 @@ Azure での Java アプリケーションの開発の詳細については、 [
 [jettyurl]: ./media/web-sites-java-get-started/jettyurl.png
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

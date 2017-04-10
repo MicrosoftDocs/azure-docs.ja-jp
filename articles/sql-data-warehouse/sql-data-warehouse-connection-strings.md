@@ -1,12 +1,12 @@
 ---
-title: SQL Data Warehouse のドライバー | Microsoft Docs
-description: SQL Data Warehouse の接続文字列と ドライバー
+title: "SQL Data Warehouse のドライバー | Microsoft Docs"
+description: "SQL Data Warehouse の接続文字列と ドライバー"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 5c91f423-b550-4734-8094-c7f2c418ac8d
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 99be9d9b840e3d8cfbb24a76fc3dc8d5e041f63d
+
 
 ---
 # <a name="drivers-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のドライバー
@@ -45,7 +49,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>次のステップ
-Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、 [Visual Studio を使用したクエリ][Visual Studio を使用したクエリ]に関するページをご覧ください。
+Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、[「Visual Studio を使用したクエリ」][Visual Studio を使用したクエリ]をご覧ください。
 
 <!--Image references-->
 
@@ -62,6 +66,6 @@ Visual Studio またはその他のアプリケーションを使用してデー
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

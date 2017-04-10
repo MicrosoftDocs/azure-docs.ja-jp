@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
 この手順では、サブスクリプションの承認が不要な無料評価版の成果物を作成します。
 
 > [!NOTE]
-> 既に構成済みの成果物をこのチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーの構成][呼び出しレート制限ポリシーとクォータ ポリシーの構成]」に進み、無料試用版の成果物の代わりに独自の成果物を使用してチュートリアルに従ってください。
+> 既に成果物を構成済みで、このチュートリアルで使用する場合は、「[呼び出しレート制限ポリシーとクォータ ポリシーを構成するには][Configure call rate limit and quota policies]」に進み、無料試用版の成果物の代わりに独自の成果物を使用して、そこで説明されているチュートリアルに従ってください。
 > 
 > 
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-> API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][Azure API Management での最初の API の管理]」の [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][Manage your first API in Azure API Management]」チュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 > 
 > 
 
@@ -67,7 +67,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 **Administrators** グループのユーザーには、既定で、新しい成果物が表示されます。 ここでは、 **Developers** グループを追加します。 **[無料試用版]** をクリックし、**[表示]** タブをクリックします。
 
-> API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。 成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。 詳細については、[Azure API Management でグループを作成および使用する方法][Azure API Management でグループを作成および使用する方法]に関する記事をご覧ください。
+> API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。 成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。 詳細については、[Azure API Management でグループを作成して使用する方法][How to create and use groups in Azure API Management]に関するページを参照してください。
 > 
 > 
 
@@ -78,7 +78,7 @@ API Management の成果物は、保護することも開くこともできま�
 ## <a name="add-api"> </a>成果物に API を追加するには
 このチュートリアル ステップでは、新しい無料試用版の成果物に Echo API を追加します。
 
-> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 詳細については、「[Azure API Management での最初の API の管理][Azure API Management での最初の API の管理]」をご覧ください。
+> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 詳細については、「[Azure API Management での最初の API の管理][Manage your first API in Azure API Management]」を参照してください。
 > 
 > 
 
@@ -113,44 +113,58 @@ API Management の成果物は、保護することも開くこともできま�
 
 **inbound** ポリシー要素にカーソルを置いたら、**[サブスクリプション別の呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
-    <rate-limit calls="number" renewal-period="seconds">
-    <api name="name" calls="number">
-    <operation name="name" calls="number" />
-    </api>
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+<api name="name" calls="number">
+<operation name="name" calls="number" />
+</api>
+</rate-limit>
+```
 
 **[サブスクリプション別の呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。 このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
 
-    <rate-limit calls="number" renewal-period="seconds">
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+</rate-limit>
+```
 
 この無料試用版の成果物で許容される呼び出しレートは 1 分間に最大 10 回です。**calls** 属性の値には「**10**」、**renewal-period** 属性の値には「**60**」と入力します。
 
-    <rate-limit calls="10" renewal-period="60">
-    </rate-limit>
+```xml
+<rate-limit calls="10" renewal-period="60">
+</rate-limit>
+```
 
 **[サブスクリプション別の使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**[サブスクリプション別の使用量クォータの設定]** の左側の矢印をクリックします。
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    <api name="name" calls="number" bandwidth="kilobytes">
-    <operation name="name" calls="number" bandwidth="kilobytes" />
-    </api>
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+<api name="name" calls="number" bandwidth="kilobytes">
+<operation name="name" calls="number" bandwidth="kilobytes" />
+</api>
+</quota>
+```
 
 このポリシーも成果物レベルで適用するためのものなので、**api** と **operation** の name 要素は削除してください。その例を次に示します。
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+</quota>
+```
 
 クォータは、一定時間あたりの呼び出し回数、帯域幅、またはその両方を基準にすることができます。 このチュートリアルでは、帯域幅に基づくスロットルは行いません。**bandwidth** 属性は削除してください。
 
-    <quota calls="number" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" renewal-period="seconds">
+</quota>
+```
 
 この無料試用版の成果物には、呼び出し回数を 1 週間あたり 200 回とするクォータを割り当てます。 **calls** 属性の値として「**200**」を指定し、**renewal-period** 属性の値として「**604800**」を指定してください。
 
-    <quota calls="200" renewal-period="604800">
-    </quota>
+```xml
+<quota calls="200" renewal-period="604800">
+</quota>
+```
 
 > ポリシーの間隔は秒単位で指定します。 1 週間の秒数は、日数 (7) に 1 日の時間数 (24)、1 時間の分数 (60)、1 分間の秒数 (60) を掛けて求めることができます (7 * 24 * 60 * 60 = 604800)。
 > 
@@ -158,21 +172,23 @@ API Management の成果物は、保護することも開くこともできま�
 
 完成したポリシーは、次のようになります。
 
-    <policies>
-        <inbound>
-            <rate-limit calls="10" renewal-period="60">
-            </rate-limit>
-            <quota calls="200" renewal-period="604800">
-            </quota>
-            <base />
-
-    </inbound>
-    <outbound>
-
+```xml
+<policies>
+    <inbound>
+        <rate-limit calls="10" renewal-period="60">
+        </rate-limit>
+        <quota calls="200" renewal-period="604800">
+        </quota>
         <base />
 
-        </outbound>
-    </policies>
+</inbound>
+<outbound>
+
+    <base />
+
+    </outbound>
+</policies>
+```
 
 必要なポリシーの構成が完成したら、 **[保存]**をクリックします。
 
@@ -286,30 +302,30 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[API に操作を追加する方法]: api-management-howto-add-operations.md
-[成果物を追加して発行する方法]: api-management-howto-add-products.md
-[監視と分析]: ../api-management-monitoring.md
-[成果物への API の追加]: api-management-howto-add-products.md#add-apis
-[成果物の発行]: api-management-howto-add-products.md#publish-product
-[API Management インスタンスの作成]: api-management-get-started.md
-[Azure API Management でグループを作成して使用する方法]: api-management-howto-create-groups.md
-[成果物のサブスクライバーの表示]: api-management-howto-add-products.md#view-subscribers
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
-[次のステップ]: #next-steps
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: ../api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Manage your first API in Azure API Management]: api-management-get-started.md
+[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Next steps]: #next-steps
 
-[成果物の作成]: #create-product
-[呼び出しレート制限ポリシーとクォータ ポリシーの構成]: #policies
-[成果物への API の追加]: #add-api
-[成果物の発行]: #publish-product
-[成果物のサブスクリプションを開発者アカウントに追加する]: #subscribe-account
-[操作の呼び出しとレート制限のテスト]: #test-rate-limit
+[Create a product]: #create-product
+[Configure call rate limit and quota policies]: #policies
+[Add an API to the product]: #add-api
+[Publish the product]: #publish-product
+[Subscribe a developer account to the product]: #subscribe-account
+[Call an operation and test the rate limit]: #test-rate-limit
 
-[呼び出しレートを制限する]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

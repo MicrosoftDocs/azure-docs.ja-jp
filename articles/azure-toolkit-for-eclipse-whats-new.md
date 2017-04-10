@@ -1,19 +1,23 @@
 ---
-title: Azure Toolkit for Eclipse の新機能
-description: Azure Toolkit for Eclipse の最新の機能について説明します。
-services: ''
+title: "Azure Toolkit for Eclipse の新機能"
+description: "Azure Toolkit for Eclipse の最新の機能について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 16b066ea-aae7-4c30-9a12-fa0c3711b93e
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm;asirveda;martinsawicki
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 80f25488b6573579d980880cb4aaadf7fc59c5e7
+
 
 ---
 # <a name="whats-new-in-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の新機能
@@ -317,7 +321,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
-[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
+[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
@@ -358,6 +362,6 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

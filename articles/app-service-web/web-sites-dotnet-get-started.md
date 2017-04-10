@@ -1,10 +1,10 @@
 ---
-title: "Visual Studio を使用した Azure App Service への ASP.NET アプリのデプロイ | Microsoft Docs"
+title: "Visual Studio を使用した Azure への ASP.NET アプリのデプロイ | Microsoft Docs"
 description: "Visual Studio を使用して ASP.NET Web プロジェクトを Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
 services: app-service\web
 documentationcenter: .net
-author: tdykstra
-manager: wpickett
+author: cephalin
+manager: erikre
 editor: 
 ms.assetid: 69759e3c-384c-4afb-9278-db6724f6cb74
 ms.service: app-service-web
@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 07/22/2016
-ms.author: rachelap
+ms.date: 12/16/2016
+ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 93107d19e1814b30d69fc12c92b544d9760bda6a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -45,11 +46,11 @@ Azure SDK for .NET のインストールに必要な時間は別にして、こ�
 
 ## <a name="prerequisites"></a>前提条件
 * このチュートリアルは、ASP.NET MVC と Visual Studio での作業経験があることを前提としています。 概要説明が必要な場合は、「 [Getting Started with ASP.NET MVC 5 (ASP.NET MVC 5 での作業の開始)](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)」を参照してください。
-* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
+* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
   
-    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>開発環境の設定
+## <a name="setupdevenv"></a>開発環境の設定
 このチュートリアルは、Visual Studio 2015 と [Azure SDK for .NET](../dotnet-sdk.md) 2.9 以降向けに書かれています。 
 
 * [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio 2015 をまだインストールしていない場合は、SDK によってインストールされます。
@@ -61,8 +62,8 @@ Azure SDK for .NET のインストールに必要な時間は別にして、こ�
 
 Visual Studio 2013 を持っていて、それを使用する場合は、 [最新の Azure SDK for Visual Studio 2013 をダウンロード](http://go.microsoft.com/fwlink/?LinkID=324322)することができます。 一部の画面は画像と異なる場合があります。
 
-## <a name="configure-a-new-web-project"></a>新しい Web プロジェクトの構成
-次の手順では、Visual Studio で Web プロジェクトを作成し、Azure App Service で Web アプリケーションを作成します。 チュートリアルのこのセクションでは、新しい Web プロジェクトを構成します。 
+## <a name="create-a-web-application"></a>Web アプリケーションの作成
+次の手順では、Visual Studio で Web アプリケーション プロジェクトを作成し、Azure App Service で Web アプリを作成します。 チュートリアルのこのセクションでは、新しい Web プロジェクトを構成します。 
 
 1. Visual Studio 2015 を開きます。
 2. **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックします。
@@ -87,9 +88,9 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
     ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
    
     このように設定すると、Visual Studio によってこの Web プロジェクトの Azure Web アプリが自動的に作成されます。
-10.  **[OK]**
+10. **[OK]**
 
-## <a name="configure-azure-resources-for-a-new-web-app"></a>新しい Web アプリの Azure リソースの構成
+## <a name="create-the-azure-resources"></a>Azure リソースの作成
 ここでは、作成する Azure リソースについて、Visual Studio に指示します。
 
 1. **[App Service の作成]** ダイアログで **[アカウントの追加]** をクリックし、Azure サブスクリプションの管理に使用するアカウントの ID とパスワードで Azure にサインインします。
@@ -128,14 +129,14 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
 8. **[App Service プランの構成]** ダイアログで、**[OK]** をクリックします。
 9. **[App Service の作成]** ダイアログ ボックスで、**[作成]** をクリックします。
 
-## <a name="visual-studio-creates-the-project-and-web-app"></a>Visual Studio によってプロジェクトと Web アプリが作成される
+## <a name="inspect-the-azure-resources-in-visual-studio"></a>Visual Studio での Azure リソースの確認
 ごく短時間で (通常は 1 分未満)、Visual Studio によって Web プロジェクトと Web アプリが作成されます。  
 
 **[ソリューション エクスプローラー]** ウィンドウには、新しいプロジェクトのファイルとフォルダーが表示されます
 
 ![[ソリューション エクスプローラー]](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-**[Azure App Service アクティビティ]** ウィンドウには、Web アプリが作成されたことが表示されます。
+**[Azure App Service のアクティビティ]** ウィンドウでは、Azure に App Service リソースが作成されたことが示されます。 ここでリンクをクリックすると、新しいプロジェクトの発行をすぐに開始できます。 ただし後ほど、このチュートリアルでは、いつでもファイルを発行できる方法を説明します。
 
 ![[Azure App Service アクティビティ] ウィンドウで作成された Web アプリ](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
@@ -143,8 +144,8 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
 
 ![Cloud Explorer で作成された Web アプリ](./media/web-sites-dotnet-get-started/siteinse.png)
 
-## <a name="deploy-the-web-project-to-the-azure-web-app"></a>Azure Web アプリに Web プロジェクトをデプロイする
-このセクションでは、Web アプリに Web プロジェクトをデプロイします。
+## <a name="deploy-the-web-project-to-azure"></a>Azure への Web プロジェクトのデプロイ
+このセクションでは、Azure App Service で作成した Web アプリのリソースに Web プロジェクトをデプロイします。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** を選択します。
    
@@ -152,7 +153,10 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
    
     数秒で、 **Web の発行** ウィザードが表示されます。 このウィザードは、新しい Web アプリに Web プロジェクトをデプロイするための設定が含まれる *発行プロファイル* に対して開かれます。
    
-    発行プロファイルにはデプロイ用のユーザー名とパスワードが含まれています。  これらの資格情報は自動的に生成されているので、入力の必要はありません。 パスワードは、 `Properties\PublishProfiles` フォルダー内のユーザー固有の隠しファイルで暗号化されています。
+    > [!TIP] 
+    > 発行プロファイルにはデプロイ用のユーザー名とパスワードが含まれています。  これらの資格情報は自動的に生成されているので、入力の必要はありません。 パスワードは、 `Properties\PublishProfiles` フォルダー内のユーザー固有の隠しファイルで暗号化されています。
+    >
+    >
 2. **Web の発行**ウィザードの **[接続]** タブで、**[次へ]** をクリックします。
    
     ![Web の発行ウィザードの [接続] タブで [次へ] をクリック](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
@@ -186,8 +190,6 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
 ## <a name="troubleshooting"></a>トラブルシューティング
 このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。 そのための最も簡単な方法は、 [Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)することです。 最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
 
-企業ネットワークを使用しており、ファイアウォールを介して Azure App Service にデプロイしようとしている場合は、Web デプロイのためにポート 443 と 8172 を開いてください。 これらのポートを開くことができない場合は、次の「次のステップ」セクションで、その他のデプロイ オプションについて確認してください。
-
 ASP.NET Web アプリが Azure App Service で動作するようになったら、トラブルシューティングを容易にする Visual Studio の機能についてさらに学習できます。 ログ記録、リモート デバッグなどの詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -213,12 +215,7 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
   * [Azure の Web サイトでの HTTPS の有効化](web-sites-configure-ssl-certificate.md)
 * Web アプリを含むリソース グループと、関連するすべての Azure リソースは、作業が完了したら削除します。
   
-    Azure ポータルでリソース グループを操作する方法については、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。   
+    Azure ポータルでリソース グループを操作する方法については、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」を参照してください。   
 * App Service で ASP.NET Web アプリを作成するその他の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Create and deploy an ASP.NET web app in Azure App Service (Azure App Service で ASP.NET Web アプリを作成およびデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)」と「[Create and deploy a mobile app in Azure App Service (Azure App Service でモバイル アプリを作成してデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service)」を参照してください。 HealthClinic.biz のデモに関連する他のクイック スタートについては、「 [Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

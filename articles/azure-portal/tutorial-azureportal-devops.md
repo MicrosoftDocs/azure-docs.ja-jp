@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3ef77cc1b3b13a1603f1ca7c6d4a000b69453e0
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: eec7d1402bdea4e5433c473dd713eed23aa80464
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -62,7 +63,7 @@ Azure プラットフォームには、柔軟性の高い DevOps ワークフロ
 9. プロジェクトと分岐を選択してから、[OK] をクリックします。 デプロイの通知が表示されるようになります。
    
    ![image9][image9]
-10. GitHub に戻り、ソース管理リポジトリと Azure を統合するために作成された webhook を確認します。 Azure ポータルでは、いくつかの簡単な手順のみで GitHub との統合を行えます。
+10. GitHub に戻り、ソース管理リポジトリと Azure を統合するために作成された webhook を確認します。 Azure Portal では、いくつかの簡単な手順のみで GitHub との統合が可能です。
     
     ![image10][image10]
 11. 継続的なデプロイを実際に試すために、すぐにコンテンツをリポジトリに追加してみます。 単純な例では、サンプル テキスト ファイルを GitHub リポジトリに追加します。 App Service では、.NET、Ruby、Python、またはその他の種類のアプリケーションを自由に使用できます。 テキスト ファイル、ASP.NET MVC、Java、または Ruby のアプリケーションを好みのリポジトリに追加してかまいません。
@@ -265,7 +266,7 @@ Azure には、実行中のアプリケーションを監視し、トラブル�
 * Azure Resource Manager は、Azure プラットフォームで DevOps を有効にする場合に重要です。  詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 * Azure App Service のデプロイの詳細については、「 [Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)
 
-[Image1]: ./media/tutorial-azureportal-devops/image1.png
+[image1]: ./media/tutorial-azureportal-devops/image1.png
 [image2]: ./media/tutorial-azureportal-devops/image2.png
 [image3]: ./media/tutorial-azureportal-devops/image3.png
 [image4]: ./media/tutorial-azureportal-devops/image4.png
@@ -334,9 +335,4 @@ Azure には、実行中のアプリケーションを監視し、トラブル�
 [image67]: ./media/tutorial-azureportal-devops/image67.png
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

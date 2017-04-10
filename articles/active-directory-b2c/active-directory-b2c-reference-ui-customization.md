@@ -1,23 +1,27 @@
 ---
-title: 'Azure Active Directory B2C: ユーザー インターフェイス (UI) のカスタマイズ | Microsoft Docs'
-description: Azure Active Directory B2C のユーザー インターフェイス (UI) カスタマイズ機能についてのトピック
+title: "Azure Active Directory B2C: ユーザー インターフェイス (UI) のカスタマイズ | Microsoft Docs"
+description: "Azure Active Directory B2C のユーザー インターフェイス (UI) カスタマイズ機能についてのトピック"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: swkrish
 manager: mbaldwin
 editor: bryanla
-
+ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 01/26/2017
 ms.author: swkrish
+translationtype: Human Translation
+ms.sourcegitcommit: 74b077f6f09d53c9232e5b209a5dd811364ee3f5
+ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
+
 
 ---
-# Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
-コンシューマー向けのアプリケーションでは、ユーザー エクスペリエンスが最も重要です。ユーザー エクスペリエンスは、単に悪くないだけのアプリケーションと優れたアプリケーションを分けるものであると同時に、コンシューマーがアクティブ ユーザーにとどまるか、それともコンシューマーから真のエンゲージメントを獲得できるかを分けるものでもあるからです。Azure Active Directory (Azure AD) B2C では、コンシューマーのサインアップ ページ、サインイン ページ (*下記の注参照*)、プロファイルの編集ページ、およびパスワード リセット ページをピクセル単位で正確に制御してカスタマイズすることができます。
+# <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
+コンシューマー向けのアプリケーションでは、ユーザー エクスペリエンスが最も重要です。 ユーザー エクスペリエンスは、単に悪くないだけのアプリケーションと優れたアプリケーションを分けるものであると同時に、コンシューマーがアクティブ ユーザーにとどまるか、それともコンシューマーから真のエンゲージメントを獲得できるかを分けるものでもあるからです。 Azure Active Directory (Azure AD) B2C では、コンシューマーのサインアップ ページ、サインイン ページ (*下記の注参照*)、プロファイルの編集ページ、およびパスワード リセット ページをピクセル単位で正確に制御してカスタマイズすることができます。
 
 > [!NOTE]
 > ローカル アカウントのサインイン ページ、それに付随するパスワード リセット ページ、および確認メールのカスタマイズには、現在、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)のみ使用できます。この記事で説明するメカニズムは使用できません。
@@ -31,27 +35,27 @@ ms.author: swkrish
 * ページの種類ごとの基本的な UI 要素。
 * この機能を実行するときのベスト プラクティス。
 
-## ページ UI カスタマイズ機能
-ページ UI カスタマイズ機能を使用すると、コンシューマーのサインアップ ページ、サインイン ページ、パスワードのリセット ページ、およびプロファイルの編集ページの外観を、([ポリシー](active-directory-b2c-reference-policies.md)を構成することによって) カスタマイズできます。Azure AD B2C で提供されるページとアプリケーションの間を移動する際に、コンシューマーにシームレスなユーザー エクスペリエンスを実現します。
+## <a name="the-page-ui-customization-feature"></a>ページ UI カスタマイズ機能
+ページ UI カスタマイズ機能を使用すると、コンシューマーのサインアップ ページ、サインイン ページ、パスワードのリセット ページ、およびプロファイルの編集ページの外観を、( [ポリシー](active-directory-b2c-reference-policies.md)を構成することによって) カスタマイズできます。 Azure AD B2C で提供されるページとアプリケーションの間を移動する際に、コンシューマーにシームレスなユーザー エクスペリエンスを実現します。
 
 その他のサービスでは、UI オプションは制限されていたり、API 経由での利用に限られていたりするのに対し、Azure AD B2C では、ページの UI のカスタマイズに最新の (わかりやすい) 手法を使用しています。
 
-しくみは次のとおりです。Azure AD B2C はコンシューマーのブラウザーでコードを実行すると共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の手法を使用して、ポリシーで指定した URL からコンテンツをロードします。URL はページごとに別々に指定することができます。Azure AD B2C の UI 要素と URL からロードしたコンテンツをマージし、コンシューマーにページを表示する作業は、コードが担当します。必要なのは、以下の手順を実行することだけです。
+しくみは次のとおりです。Azure AD B2C はコンシューマーのブラウザーでコードを実行すると共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の手法を使用して、ポリシーで指定した URL からコンテンツをロードします。 URL はページごとに別々に指定することができます。 Azure AD B2C の UI 要素と URL からロードしたコンテンツをマージし、コンシューマーにページを表示する作業は、コードが担当します。 必要なのは、以下の手順を実行することだけです。
 
-1. 適切な形式の HTML5 コンテンツを作成し、`<body>` 内に `<div id="api"></div>` 要素 (空の要素である必要があります) を配置します。この要素は、Azure AD B2C コンテンツを挿入する位置をマークします。
-2. (CORS が許可されている) HTTPS エンドポイントでコンテンツをホストします。
+1. 適切な形式の HTML5 コンテンツを作成し、`<body>` 内に `<div id="api"></div>` 要素 (空の要素である必要があります) を配置します。 この要素は、Azure AD B2C コンテンツを挿入する位置をマークします。
+2. (CORS が許可されている) HTTPS エンドポイントでコンテンツをホストします。 CORS を構成するときに、GET と OPTIONS の両方の要求メソッドを有効にする必要があります。
 3. Azure AD B2C によって挿入された UI 要素のスタイルを設定します。
 
-## UI カスタマイズ機能を試す
+## <a name="test-out-the-ui-customization-feature"></a>UI カスタマイズ機能を試す
 サンプルの HTML と CSS のコンテンツを使用して UI カスタマイズ機能を試すことができるように、[単純なヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)が用意されています。そのツールを使用して、Azure Blob Storage 上にサンプル コンテンツをアップロードして構成します。
 
 > [!NOTE]
-> Web サーバー、CDN、AWS S3、ファイル共有システムなど、任意の場所で UI コンテンツをホストすることができます。(CORS が許可されている) 公開 HTTPS エンドポイントでコンテンツがホストされている限り、問題ありません。ここでは、説明のためだけに、Azure Blob Storage を使用しています。
+> Web サーバー、CDN、AWS S3、ファイル共有システムなど、任意の場所で UI コンテンツをホストすることができます。(CORS が許可されている) 公開 HTTPS エンドポイントでコンテンツがホストされている限り、問題ありません。 ここでは、説明のためだけに、Azure Blob Storage を使用しています。
 > 
 > 
 
-### テスト用の最も基本的な HTML コンテンツ
-この機能のテストに使用できる最も基本的な HTML コンテンツを以下に示します。既に説明したのと同じヘルパー ツールを使用して、このコンテンツを Azure Blob Storage にアップロードして構成します。その後、各ページの基本的な非定型ボタンとフォーム フィールドが表示されて機能していることを確認できます。
+### <a name="the-most-basic-html-content-for-testing"></a>テスト用の最も基本的な HTML コンテンツ
+この機能のテストに使用できる最も基本的な HTML コンテンツを以下に示します。 既に説明したのと同じヘルパー ツールを使用して、このコンテンツを Azure Blob Storage にアップロードして構成します。 その後、各ページの基本的な非定型ボタンとフォーム フィールドが表示されて機能していることを確認できます。
 
 ```HTML
 
@@ -67,11 +71,11 @@ ms.author: swkrish
 
 ```
 
-## ページの種類ごとの基本的な UI 要素
-以降のセクションで、Azure AD B2C が、コンテンツ内に配置された `<div id="api"></div>` 要素にマージする HTML5 フラグメントの例を示します。**これらのフラグメントは HTML5 のコンテンツに挿入しないでください。** Azure AD B2C サービスによって、実行時に挿入されます。独自のスタイル シートをデザインするには、次の例を使用してください。
+## <a name="the-core-ui-elements-in-each-type-of-page"></a>ページの種類ごとの基本的な UI 要素
+以降のセクションで、Azure AD B2C が、コンテンツ内に配置された `<div id="api"></div>` 要素にマージする HTML5 フラグメントの例を示します。 **これらのフラグメントは HTML5 のコンテンツに挿入しないでください。** Azure AD B2C サービスによって、実行時に挿入されます。 独自のスタイル シートをデザインするには、次の例を使用してください。
 
-### "ID プロバイダーの選択ページ" に挿入される Azure AD B2C コンテンツ
-このページには、サインアップ時やサインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。この一覧には、Facebook や Google+ などのソーシャル ID プロバイダーとローカル アカウント (電子メール アドレスやユーザー名を使用するもの) の両方が含まれます。
+### <a name="azure-ad-b2c-content-inserted-into-the-identity-provider-selection-page"></a>"ID プロバイダーの選択ページ" に挿入される Azure AD B2C コンテンツ
+このページには、サインアップ時やサインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 この一覧には、Facebook や Google+ などのソーシャル ID プロバイダーとローカル アカウント (電子メール アドレスやユーザー名を使用するもの) の両方が含まれます。
 
 ```HTML
 
@@ -97,8 +101,8 @@ ms.author: swkrish
 
 ```
 
-### "ローカル アカウントのサインアップ ページ" に挿入される Azure AD B2C コンテンツ
-このページには、ユーザーが電子メールアドレスやユーザー名を使ったローカル アカウントにサインアップするときに入力が必要になるサインアップ フォームが含まれます。このフォームには、テキスト入力ボックス、パスワード入力ボックス、ラジオ ボタン、単一選択ドロップダウン ボックス、複数選択チェック ボックスなどのさまざまな入力コントロールを含めることができます。
+### <a name="azure-ad-b2c-content-inserted-into-the-local-account-sign-up-page"></a>"ローカル アカウントのサインアップ ページ" に挿入される Azure AD B2C コンテンツ
+このページには、ユーザーが電子メールアドレスやユーザー名を使ったローカル アカウントにサインアップするときに入力が必要になるサインアップ フォームが含まれます。 このフォームには、テキスト入力ボックス、パスワード入力ボックス、ラジオ ボタン、単一選択ドロップダウン ボックス、複数選択チェック ボックスなどのさまざまな入力コントロールを含めることができます。
 
 ```HTML
 
@@ -146,14 +150,14 @@ ms.author: swkrish
                     <div class="attrEntry">
                         <div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
                         <label>Enter password</label>
-                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ "; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
+                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
                     <div class="attrEntry">
                         <div class="helpText"> This information is required</div>
                         <label>Reenter password</label>
-                        <input id="reenterPassword" class="textInput" type="password" placeholder="Reenter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title=" " required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Reenter password');" class="tiny">What is this?</a>
+                        <input id="reenterPassword" class="textInput" type="password" placeholder="Reenter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title=" " required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Reenter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
@@ -213,10 +217,10 @@ ms.author: swkrish
 
 ```
 
-### "ソーシャル アカウントのサインアップ ページ" に挿入される Azure AD B2C コンテンツ
-このページには、Facebook や Google+ などのソーシャル ID プロバイダーから提供された既存のアカウントを使用してサインアップするときに、コンシューマーが入力する必要のあるサインアップ フォームが含まれます。このページは、パスワード入力フィールドを除いて、ローカル アカウントのサインアップ ページ (前のセクションを参照) とほぼ同じです。
+### <a name="azure-ad-b2c-content-inserted-into-the-social-account-sign-up-page"></a>"ソーシャル アカウントのサインアップ ページ" に挿入される Azure AD B2C コンテンツ
+このページには、Facebook や Google+ などのソーシャル ID プロバイダーから提供された既存のアカウントを使用してサインアップするときに、コンシューマーが入力する必要のあるサインアップ フォームが含まれます。 このページは、パスワード入力フィールドを除いて、ローカル アカウントのサインアップ ページ (前のセクションを参照) とほぼ同じです。
 
-### "統合されたサインアップまたはサインイン ページ" に挿入される Azure AD B2C コンテンツ
+### <a name="azure-ad-b2c-content-inserted-into-the-unified-sign-up-or-sign-in-page"></a>"統合されたサインアップまたはサインイン ページ" に挿入される Azure AD B2C コンテンツ
 このページは、コンシューマーのサインアップとサインインの両方を処理します。コンシューマーは、Facebook や Google+ などのソーシャル ID プロバイダーを使用することも、ローカル アカウントを使用することもできます。
 
 ```HTML
@@ -270,7 +274,7 @@ ms.author: swkrish
 
 ```
 
-### "多要素認証ページ" に挿入される Azure AD B2C コンテンツ
+### <a name="azure-ad-b2c-content-inserted-into-the-multi-factor-authentication-page"></a>"多要素認証ページ" に挿入される Azure AD B2C コンテンツ
 このページでは、ユーザーがサインアップやサインインをするときに、電話番号を (文字や音声を使用して) 確認することができます。
 
 ```HTML
@@ -315,7 +319,7 @@ ms.author: swkrish
 
 ```
 
-### "エラー ページ" に挿入される Azure AD B2C コンテンツ
+### <a name="azure-ad-b2c-content-inserted-into-the-error-page"></a>"エラー ページ" に挿入される Azure AD B2C コンテンツ
 ```HTML
 
 <div id="api" class="error-page-content" data-name="GlobalException">
@@ -331,20 +335,20 @@ ms.author: swkrish
 
 ```
 
-## 独自のコンテンツを構築する際の注意点
+## <a name="things-to-remember-when-building-your-own-content"></a>独自のコンテンツを構築する際の注意点
 ページの UI カスタマイズ機能を使用する場合には、以下のベスト プラクティスを確認してください。
 
-* Azure AD B2C の既定のコンテンツをコピーしたり、変更したりしないでください。HTML5 コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
-* サインイン、サインアップ、およびプロファイルの編集ポリシーによって処理されるすべてのページ (エラー ページを除く) では、指定したスタイル シートが、これらのページの <head> フラグメントに追加される既定のスタイル シートより優先される必要があります。サインアップまたはサインイン ポリシーとパスワードのリセット ポリシーによって処理されるすべてのページと、すべてのポリシーのエラー ページでは、すべてのスタイルを自分で指定する必要があります。
-* セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。必要なものの多くは既に用意されているはずです。必要なものがない場合は、[ユーザーの声](http://feedback.azure.com/forums/169401-azure-active-directory)を使用して新しい機能を要望してください。
+* Azure AD B2C の既定のコンテンツをコピーしたり、変更したりしないでください。 HTML5 コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
+* サインイン、サインアップ、およびプロファイルの編集ポリシーによって処理されるすべてのページ (エラー ページを除く) では、指定したスタイル シートが、これらのページの <head> フラグメントに追加される既定のスタイル シートより優先される必要があります。 サインアップまたはサインイン ポリシーとパスワードのリセット ポリシーによって処理されるすべてのページと、すべてのポリシーのエラー ページでは、すべてのスタイルを自分で指定する必要があります。
+* セキュリティ上の理由から、コンテンツに JavaScript を含めることはできません。 必要なものの多くは既に用意されているはずです。 必要なものがない場合は、 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) を使用して新しい機能を要望してください。
 * サポートされているブラウザーのバージョン:
-  * Internet Explorer 11
-  * Internet Explorer 10
-  * Internet Explorer 9 (制限あり)
-  * Internet Explorer 8 (制限あり)
-  * Google Chrome 43.0
-  * Google Chrome 42.0
-  * Mozilla Firefox 38.0
-  * Mozilla Firefox 37.0
+  * Internet Explorer 11、10、Edge
+  * Internet Explorer 9、8 の制限付きサポート
+  * Google Chrome 42.0 以降
+  * Mozilla Firefox 38.0 以降
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Feb17_HO2-->
+
+

@@ -1,10 +1,10 @@
 ---
-title: "Storage の概要 | Microsoft Docs"
+title: "Azure Storage の概要 | Microsoft Docs"
 description: "Microsoft がクラウドで提供するオンライン データ ストレージ、Azure Storage の概要を紹介。 アプリケーションで可用性に最も優れたクラウド ストレージ ソリューションを使用する方法について説明します。"
 services: storage
 documentationcenter: 
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
 ms.service: storage
@@ -12,15 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
-ms.author: tamram
+ms.date: 02/24/2017
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73bd16f44f0848c74ce3edd5042900525e4811db
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
+
 ## <a name="overview"></a>概要
 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。 この記事では、開発者、IT 技術者、およびビジネスの意思決定者が下記の内容について学習できます。
 
@@ -30,7 +32,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 * 冗長性およびレプリケーションによって Azure Storage データを永続的にする方法
 * Azure Storage アプリケーションを初めて構築する場合に役立つ詳細情報
 
-Azure Storage の使用を今すぐ開始するための情報については、「 [Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)」をご覧ください。
+Azure Storage の使用を今すぐ開始するための情報については、「 [Azure Storage を&5; 分で使い始める](storage-getting-started-guide.md)」をご覧ください。
 
 Azure Storage の使用に必要なツール、ライブラリ、およびその他のリソースの詳細については、下記「 [次のステップ](#next-steps) 」をご覧ください。
 
@@ -75,9 +77,9 @@ Azure ストレージ アカウントは、Azure Storage のサービスにア�
 * クラウド アプリケーションの構成データ
 * ログやその他の大きなデータセットなどのビッグ データ
 
-すべての BLOB は、コンテナーに編成されます。 コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。 ストレージ アカウントの容量の上限である 500 TB (テラバイト) を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。  
+すべての BLOB は、コンテナーに編成されます。 コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。 ストレージ アカウントの容量の上限である 500 TB (テラバイト) を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
 
-BLOB ストレージが提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (ディスク) の 3 種類があります。
+BLOB ストレージが提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (ディスク) の&3; 種類があります。
 
 * ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。
 * 追加 BLOB はブロック BLOB に似ていますが、追加操作用に最適化されています。 追加 BLOB は、新しいブロックを最後に追加することによってのみ更新できます。 追加 BLOB は、新しいデータが BLOB の最後のみに書き込まれる必要がある、ログ記録のようなシナリオに適しています。
@@ -88,7 +90,7 @@ BLOB ストレージが提供する BLOB には、ブロック BLOB、追加 BLO
 ## <a name="table-storage"></a>テーブル ストレージ
 最新のアプリケーションの多くは、前の世代のソフトウェアよりも、拡張性と柔軟性に優れたデータ ストアを必要とします。 Table Storage は、高度な可用性と拡張性を備え、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は、Microsoft の NoSQL のキーまたは属性ストアですが、従来のリレーショナル データベースと異なり、スキーマなしの設計です。 スキーマなしのデータ ストアでは、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage は使いやすいため、開発者はアプリケーションを迅速に作成できます。 あらゆる種類のデータに、高速かつ経済的にアクセスできます。  Table Storage は、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
-Table Storage は、キー属性ストアであるため、テーブル内のすべての値に型指定されたプロパティ名が付いて保存されます。 このプロパティ名は、フィルタリングや、選択条件の指定に使用できます。 1 つのエンティティは、一連のプロパティとその値で構成されます。 Table Storage はスキーマがないため、同じテーブル内の 2 つのエンティティが異なるコレクションのプロパティを持つことができ、それらのプロパティに異なる型を使用できます。
+Table Storage は、キー属性ストアであるため、テーブル内のすべての値に型指定されたプロパティ名が付いて保存されます。 このプロパティ名は、フィルタリングや、選択条件の指定に使用できます。 1 つのエンティティは、一連のプロパティとその値で構成されます。 Table Storage はスキーマがないため、同じテーブル内の&2; つのエンティティが異なるコレクションのプロパティを持つことができ、それらのプロパティに異なる型を使用できます。
 
 Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。  ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
@@ -113,7 +115,7 @@ File Storage 共有は標準の SMB ファイル共有であるため、Azure �
 ## <a name="access-to-blob-table-queue-and-file-resources"></a>BLOB、テーブル、キュー、ファイルのリソースへのアクセス
 既定では、ストレージ アカウント所有者のみが、ストレージ アカウント内のリソースにアクセスできます。 データのセキュリティを保護するため、アカウント内のリソースに対するすべての要求を認証する必要があります。 認証は、共有キー モデルに依存します。 BLOB を構成して、匿名認証をサポートすることもできます。
 
-ストレージ アカウントには、認証に使用される 2 つのプライベート アクセス キーが作成時に割り当てられます。 2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
+ストレージ アカウントには、認証に使用される&2; つのプライベート アクセス キーが作成時に割り当てられます。 2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
 
 ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、共有アクセス署名 を作成できます。 Shared Access Signature (SAS) は、URL に追加できるトークンであり、ストレージ リソースへのアクセスの委任を可能にするトークンです。 トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。 2015 年 4 月 5 日のバージョン以降、Azure Storage では、サービス SAS とアカウント SAS という 2 種類の Shared Access Signature をサポートします。
 
@@ -128,32 +130,32 @@ Shared Access Signature の詳細については、「 [Using Shared Access Sign
 ## <a name="replication-for-durability-and-high-availability"></a>レプリケーションによる持続性と高可用性
 Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常にレプリケートされています。 レプリケーションによりデータは同じデータ センター内か、2 番目のデータ センターにコピーされます。このコピー先は、選んだレプリケーション オプションによって変わります。 レプリケーションにより、データが保護され、一時的なハードウェアの障害が発生した際にアプリケーションのアップタイムが維持されます。 2 番目のデータ センターにデータがレプリケートされると、1 次拠点での重大なエラーに対してデータを保護することもできます。
 
-レプリケーションにより、障害が発生しても、ストレージ アカウントは[ストレージのサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) を満たすことができます。 Azure Storage の持続性と可用性の保証については、SLA をご覧ください。 
+レプリケーションにより、障害が発生しても、ストレージ アカウントは[ストレージのサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) を満たすことができます。 Azure Storage の持続性と可用性の保証については、SLA をご覧ください。
 
-ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。  
+ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
 
-* **ローカル冗長ストレージ (LRS)。**  ローカル冗長ストレージでは、データのコピーが 3 つ保持されます。 LRS は、1 つのリージョンの 1 つのデータ センター内で 3 回複製されます。 LRS では、データは通常のハードウェア障害から保護されますが、1 つのデータ センターの障害からは保護されません。  
-  
+* **ローカル冗長ストレージ (LRS)。** ローカル冗長ストレージでは、データのコピーが&amp;3; つ保持されます。 LRS は、1 つのリージョンの&1; つのデータ センター内で&3; 回複製されます。 LRS では、データは通常のハードウェア障害から保護されますが、1 つのデータ センターの障害からは保護されません。
+
     LRS は割引料金で提供されます。 持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
-* **ゾーン冗長ストレージ (ZRS)。**  ゾーン冗長ストレージでは、データのコピーが 3 つ保持されます。 ZRS は、1 つまたは 2 つのリージョン内の 2 ～ 3 つの施設で 3 回複製され、LRS よりも高い持続性を実現します。 ZRS では、1 つのリージョン内のデータの持続性が確保されます。  
-  
-    ZRS は LRS よりも高い持続性を実現しますが、持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。  
-  
+* **ゾーン冗長ストレージ (ZRS)。** ゾーン冗長ストレージでは、データのコピーが&amp;3; つ保持されます。 ZRS は、1 つまたは&2; つのリージョン内の&2; ～&3; つの施設で&3; 回複製され、LRS よりも高い持続性を実現します。 ZRS では、1 つのリージョン内のデータの持続性が確保されます。
+
+    ZRS は LRS よりも高い持続性を実現しますが、持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
+
   > [!NOTE]
   > ZRS は現在、ブロック BLOB のみで使用でき、2014-02-14 以降のバージョンでのみサポートされています。
-  > 
+  >
   > ストレージ アカウントを作成し、ZRS を選択すると、他の種類のレプリケーションを使用するように変換することはできません (その逆の変換もできません)。
-  > 
-  > 
-* **geo 冗長ストレージ (GRS)**。 GRS では、データのコピーが 6 つ保持されます。 GRS を使用すると、データがプライマリ リージョン内で 3 回複製され、プライマリ リージョンから数百マイル離れたセカンダリ リージョンでも 3 回複製されます。そのため、最も優れたレベルの持続性が実現されます。 プライマリ リージョンで障害が発生すると、Azure Storage はセカンダリ リージョンにフェールオーバーします。 GRS では、2 つのリージョン内のデータの持続性が確保されます。
-  
+  >
+  >
+* **geo 冗長ストレージ (GRS)**。 GRS では、データのコピーが&6; つ保持されます。 GRS を使用すると、データがプライマリ リージョン内で&3; 回複製され、プライマリ リージョンから数百マイル離れたセカンダリ リージョンでも&3; 回複製されます。そのため、最も優れたレベルの持続性が実現されます。 プライマリ リージョンで障害が発生すると、Azure Storage はセカンダリ リージョンにフェールオーバーします。 GRS では、2 つのリージョン内のデータの持続性が確保されます。
+
     リージョンのプライマリとセカンダリのペアについては、「 [Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
-* **読み取りアクセス geo 冗長ストレージ (RA-GRS)**。 読み取りアクセス geo 冗長ストレージは、地理的に離れた 2 次拠点にデータをレプリケートし、2 次拠点にあるデータへの読み取りアクセスも提供します。 読み取りアクセス geo 冗長ストレージでは、1 つの場所が使用不可能になった場合に、1 次拠点または 2 次拠点からデータにアクセスできます。 読み取りアクセス geo 冗長ストレージは、ストレージ アカウントの作成時に、そのアカウントの既定のオプションとなっています。 
-  
+* **読み取りアクセス geo 冗長ストレージ (RA-GRS)**。 読み取りアクセス geo 冗長ストレージは、地理的に離れた&2; 次拠点にデータをレプリケートし、2 次拠点にあるデータへの読み取りアクセスも提供します。 読み取りアクセス geo 冗長ストレージでは、1 つの場所が使用不可能になった場合に、1 次拠点または&2; 次拠点からデータにアクセスできます。 読み取りアクセス geo 冗長ストレージは、ストレージ アカウントの作成時に、そのアカウントの既定のオプションとなっています。
+
   > [!IMPORTANT]
   > アカウントを作成したときに ZRS を指定した場合を除き、ストレージ アカウントを作成した後、データのレプリケート方法を変更することはできます。 ただし、LRS から GRS、または RA-GRS に切り替えると、一時的に追加のデータ転送コストが生じる可能性があります。
-  > 
-  > 
+  >
+  >
 
 ストレージ レプリケーション オプションの詳細については、「 [Azure Storage のレプリケーション](storage-redundancy.md) 」を参照してください。
 
@@ -178,21 +180,21 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [Storage サービス REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [.NET、Windows Phone、Windows ランタイム用ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
-* [Java/Android 用ストレージ クライアント ライブラリ](/develop/java/)
+* [Java/Android 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/java/)
 * [Node.js 用ストレージ クライアント ライブラリ](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [PHP 用ストレージ クライアント ライブラリ](/develop/php/)
-* [Ruby 用ストレージ クライアント ライブラリ](/develop/ruby/)
-* [Python 用ストレージ クライアント ライブラリ](/develop/python/)
+* [PHP 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/php/)
+* [Ruby 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/ruby/)
+* [Python 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/python/)
 * [PowerShell 1.0 用ストレージ コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage 管理サービス
-* [Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [.NET 用 Storage Resource Provider クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+* [Storage Resource Provider REST API リファレンス](/rest/api/storagerp/)
+* [.NET 用 Storage Resource Provider クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)
+* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](/powershell/storage/)
 * [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
-### <a name="azure-storage-data-movement-services"></a>Azure Storage データ管理サービス
-* [Storage Import/Export Service REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+### <a name="azure-storage-data-movement-services"></a>Azure Storage データ移動サービス
+* [Storage Import/Export Service REST API](storage-import-export-service.md)
 * [.NET 用 Storage Data Movement クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
@@ -200,7 +202,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [Azure Storage クライアント ツール](storage-explorers.md)
 * [Azure SDK とツール](https://azure.microsoft.com/tools/)
 * [Azure ストレージ エミュレーター](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [AzCopy コマンド ライン ユーティリティ](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>次のステップ
@@ -208,6 +210,8 @@ Azure Storage についてさらに学習するには、次のリソースを参
 
 ### <a name="documentation"></a>ドキュメント
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
+* [ストレージ アカウントの作成](storage-create-storage-account.md)
+* [Azure Storage を&5; 分で使い始める](storage-getting-started-guide.md)
 
 ### <a name="for-administrators"></a>管理者向け
 * [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
@@ -245,10 +249,4 @@ Azure Storage についてさらに学習するには、次のリソースを参
 * [Python から Table ストレージを使用する方法](storage-python-how-to-use-table-storage.md)
 * [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 * [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

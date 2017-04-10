@@ -1,48 +1,39 @@
 ---
-title: Azure SQL Database のアクティブ geo レプリケーション
-description: アクティブ Geo レプリケーションにより、任意の Azure データ センターでデータベースのレプリカを 4 つ設定できます。
+title: "Azure SQL Database のアクティブ geo レプリケーション"
+description: "アクティブ Geo レプリケーションにより、任意の Azure データ センターでデータベースのレプリカを 4 つ設定できます。"
 services: sql-database
 documentationcenter: na
-author: stevestein
+author: anosov1960
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 2a29f657-82fb-4283-9a83-e14a144bfd93
 ms.service: sql-database
+ms.custom: business continuity
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/26/2016
-ms.author: sstein
+ms.author: sashan
+translationtype: Human Translation
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
+ms.lasthandoff: 03/28/2017
+
 
 ---
-# <a name="overview:-sql-database-active-geo-replication"></a>概要: Azure SQL Database のアクティブ geo レプリケーション
-アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。
+# <a name="overview-sql-database-active-geo-replication"></a>概要: Azure SQL Database のアクティブ geo レプリケーション
+アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 アクティブ geo レプリケーションは、同じサブスクリプション内のデータベース間である必要があります。
 
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。 2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
-> 
-> 
+>  
 
  [Azure Portal](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md)、または [REST API - データベースの作成または更新](https://msdn.microsoft.com/library/azure/mt163685.aspx)を使用して、アクティブ geo レプリケーションを構成できます。
 
-> [!div class="op_single_selector"]
-> * [構成: Azure Portal](sql-database-geo-replication-portal.md)
-> * [構成: PowerShell](sql-database-geo-replication-powershell.md)
-> * [構成: T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
-
 何らかの理由でプライマリ データベースにエラーが発生したか、単にプライマリ データベースをオフラインにする必要がある場合、任意のセカンダリ データベースに *フェールオーバー* させることができます。 セカンダリ データベースの 1 つに対してフェールオーバーがアクティブな場合、その他すべてのセカンダリ データベースは新しいプライマリ データベースに自動的にリンクします。
 
-[Azure Portal](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 計画されたフェールオーバー](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)、または[REST API - 計画されていないフェールオーバー](https://msdn.microsoft.com/library/azure/mt582027.aspx)を使用して、セカンダリにフェールオーバーできます。
-
-> [!div class="op_single_selector"]
-> * [フェールオーバー: Azure ポータル](sql-database-geo-replication-failover-portal.md)
-> * [フェールオーバー: PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [フェールオーバー: T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
+[Azure Portal](sql-database-geo-replication-failover-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 計画されたフェールオーバー](https://msdn.microsoft.com/library/mt575007.aspx)、または[REST API - 計画されていないフェールオーバー](https://msdn.microsoft.com/library/mt582027.aspx)を使用して、セカンダリにフェールオーバーできます。
 
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
@@ -73,7 +64,7 @@ ms.author: sstein
 > 
 > 
 
-* **エラスティック プール データベースのアクティブ geo レプリケーション**: エラスティック データベース プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。 セカンダリ データベースは、別の Elastic Database プールで指定できます。 通常のデータベースの場合、サービス階層が同じであれば、セカンダリが Elastic Database プールになったり、その逆になったりすることができます。 
+* **エラスティック プール データベースのアクティブ geo レプリケーション**: エラスティック プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。 セカンダリ データベースは、別のエラスティック プールに属していてもかまいません。 通常のデータベースの場合、サービス階層が同じであれば、セカンダリがエラスティック プールになったり、その逆になったりすることができます。 
 * **セカンダリ データベースの構成可能なパフォーマンス レベル**: セカンダリ データベースは、プライマリよりも下位のパフォーマンス レベルで作成することができます。 プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 このオプションは、データベース書き込みアクティビティが高いアプリケーションにはお勧めできません。レプリケーション遅延が増大する可能性があり、フェールオーバー後に深刻なデータ損失のリスクが高くなるためです。 さらに、フェールオーバー後に、新しいプライマリがより高いパフォーマンス レベルにアップグレードされるまで、アプリケーションのパフォーマンスに影響が生じます。 Azure Portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小パフォーマンス レベルを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 ログ IO データは、[sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) または [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) データベース ビューを使用しても取得できます。  SQL Database のパフォーマンス レベルの詳細については、[SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)に関するページをご覧ください。 
 * **ユーザー制御のフェールオーバーとフェールバック**: アプリケーションまたはユーザーによって、セカンダリ データベースをプライマリ ロールにいつでも明示的に切り替えることができます。 実際のシステム停止時には、"計画されていない" オプションを使用して、セカンダリをプライマリにすぐに昇格させる必要があります。 障害が発生したプライマリが回復して、再び使用可能になると、回復したプライマリは自動的にセカンダリとしてマークされ、新しいプライマリによって最新の状態になります。 レプリケーションは非同期であるため、最新の変更をセカンダリにレプリケートする前に、プライマリに障害が発生した場合、計画されていないフェールオーバー時に少量のデータの失われる可能性があります。 複数のセカンダリを持つプライマリがフェールオーバーすると、システムは自動的にレプリケーション関係を再構成して、いかなるユーザー介入も必要とすることなく、残りのセカンダリを新しく昇格されたプライマリにリンクします。 フェールオーバーの原因となった障害が解決されたら、アプリケーションをプライマリ リージョンに復帰させることが望ましい場合があります。 そうするには、"計画" オプションを使用してフェールオーバー コマンドを呼び出す必要があります。 
 * **資格情報とファイアウォール規則の同期を保つ**: geo レプリケートされたデータベースには、[データベースのファイアウォール規則](sql-database-firewall-configure.md)の使用をお勧めします。この規則は、データベースと共にレプリケートされ、すべてのセカンダリ データベースのファイアウォールの規則がプライマリと同じになります。 このアプローチにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実かつ常に同じユーザー資格情報を持つようにして、フェールオーバー時に、ログインとパスワードの不一致による中断を防ぐことができます。 [Azure Active Directory](../active-directory/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
@@ -97,7 +88,7 @@ ms.author: sstein
 * **Azure Resource Manager API とロール ベース セキュリティ**: アクティブ geo レプリケーションには、管理のための [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 一式 ([Azure Resource Manager ベースの PowerShell コマンドレット](sql-database-geo-replication-powershell.md)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、 [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
 
 > [!NOTE]
-> アクティブ geo レプリケーションの多くの新機能は [Azure Resource Manager](../resource-group-overview.md) ベースの [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) と [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用する場合のみサポートされます。 (クラシック) REST API (https://msdn.microsoft.com/library/azure/dn505719.aspx) と [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)では、下位互換性がサポートされているため、Azure Resource Manager ベースの API の使用が推奨されています。 
+> アクティブ geo レプリケーションの多くの新機能は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ベースの [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) と [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用する場合のみサポートされます。 [(クラシック) REST API](https://msdn.microsoft.com/library/azure/dn505719.aspx) と [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)では、下位互換性がサポートされているため、Azure Resource Manager ベースの API の使用が推奨されています。 
 > 
 > 
 
@@ -116,10 +107,10 @@ ms.author: sstein
 ### <a name="powershell"></a>PowerShell
 | コマンドレット | 説明 |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx) |1 つまたは複数のデータベースを取得します。 |
+| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) |1 つまたは複数のデータベースを取得します。 |
 | [New-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt619393.aspx) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
-| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt603457.aspx) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
+| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
 | [Get-AzureRmSqlDatabaseReplicationLink](https://msdn.microsoft.com/library/mt619330.aspx) |Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
 |  | |
 
@@ -128,7 +119,7 @@ ms.author: sstein
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx) |復元操作中にステータスを返します。 |
-| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) |geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。 |
+| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://msdn.microsoft.com/library/azure/mt575007.aspx) |geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。 |
 | [Set Secondary Database as Primary (計画されていないフェールオーバー)](https://msdn.microsoft.com/library/azure/mt582027.aspx) |セカンダリ データベースに強制的にフェールオーバーして、セカンダリをプライマリに設定します。 |
 | [Get Replication Links](https://msdn.microsoft.com/library/azure/mt600929.aspx) |geo レプリケーション パートナーシップで指定された SQL データベースのすべてのレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
 | [Get Replication Link](https://msdn.microsoft.com/library/azure/mt600778.aspx) |geo レプリケーション パートナーシップで指定された SQL データベースの特定のレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
@@ -140,7 +131,5 @@ ms.author: sstein
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 * 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 * 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
-
-<!--HONumber=Oct16_HO2-->
 
 

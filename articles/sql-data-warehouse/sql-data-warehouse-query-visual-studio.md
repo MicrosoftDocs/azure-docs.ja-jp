@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Data Warehouse に対するクエリ (Visual Studio) | Microsoft Docs"
+title: "Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs"
 description: "Visual Studio で SQL Data Warehouse に対してクエリを実行します。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
+ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
+ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
 
 
 ---
-# <a name="query-azure-sql-data-warehouse-visual-studio"></a>Azure SQL Data Warehouse に対するクエリ (Visual Studio)
+# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -84,7 +84,7 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][SQL Data Warehouse の認証]に関するページを参照してください。
 
 <!--Arcticles-->
-[Azure SQL Data Warehouse への接続]: sql-data-warehouse-connect-overview.md
+[SQL Data Warehouse への接続]: sql-data-warehouse-connect-overview.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 [Visual Studio と SSDT のインストール]: sql-data-warehouse-install-visual-studio.md
 [SQL Data Warehouse の認証]: sql-data-warehouse-authentication.md
@@ -105,6 +105,6 @@ Azure Active Directory 認証を使用するために環境を構成する方法
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

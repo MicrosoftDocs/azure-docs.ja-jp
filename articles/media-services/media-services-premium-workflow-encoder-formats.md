@@ -1,19 +1,23 @@
 ---
-title: メディア エンコーダー プレミアム ワークフローの形式とコーデック | Microsoft Docs
-description: このトピックでは、メディア エンコーダー プレミアム ワークフローの形式とコーデックについて説明します。
+title: "メディア エンコーダー プレミアム ワークフローの形式とコーデック | Microsoft Docs"
+description: "このトピックでは、メディア エンコーダー プレミアム ワークフローの形式とコーデックについて説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erik43
-editor: ''
-
+editor: 
+ms.assetid: b197fce8-3b9b-4189-8d08-486810c0426f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/27/2017
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: ef5db062ac320995ff8bfa64f38c89d860957868
+ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
+
 
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
@@ -32,10 +36,10 @@ ms.author: juliako;anilmur
 
 **メディア エンコーダー プレミアム ワークフロー** では、 [この](#closed_captioning) セクションで説明されているクローズド キャプションがサポートされています。 
 
-## <a name="<a-id="input_formats"></a>media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
+## <a name="a-idinputformatsamedia-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
 次のセクションに、このメディア プロセッサの入力としてサポートされたコーデックとファイル形式の一覧を示します。
 
-### <a name="input-container/file-formats"></a>入力コンテナー/ファイル形式
+### <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 * Adobe® Flash® F4V
 * MXF/SMPTE 377M
 * GXF
@@ -64,10 +68,10 @@ ms.author: juliako;anilmur
 * Windows Media オーディオ
 * WAV/PCM
 
-## <a name="<a-id="output_format"></a>media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
+## <a name="a-idoutputformatamedia-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
 次のセクションに、このメディア プロセッサからの出力としてサポートされたコーデックとファイル形式の一覧を示します。
 
-### <a name="output-container/file-formats"></a>出力コンテナー/ファイル形式
+### <a name="output-containerfile-formats"></a>出力コンテナー/ファイル形式
 * Adobe® Flash® F4V
 * MXF (OP1a、XDCAM および AS02)
 * DPP (AS11 を含む)
@@ -96,12 +100,15 @@ ms.author: juliako;anilmur
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media オーディオ
 
-## <a name="<a-id="closed_captioning"></a>support-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
+>[!NOTE]
+>Dolby® Digital (AC3) にエンコードする場合、出力は、ISO MP4 ファイルにのみ書き込むことができます。
+
+## <a name="a-idclosedcaptioningasupport-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
 取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
 1. SCC ファイル
 2. SMPTE-TT ファイル
-3. CEA 608/CEA 708 – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
+3. CEA&608;/CEA&708; – ユーザー データ (H.264 基本ストリームの SEI メッセージ、ATSC/53、SCTE20) として送信、または MXF/GXF ファイルでの補助データとして送信
 4. STL サブタイトル ファイル
 
 出力時は、次のオプションを使用できます。
@@ -124,6 +131,9 @@ ms.author: juliako;anilmur
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO4-->
 
 

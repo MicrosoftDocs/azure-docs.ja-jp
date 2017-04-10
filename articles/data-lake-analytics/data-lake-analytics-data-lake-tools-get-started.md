@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
-ms.author: edmaca
+ms.date: 03/17/2017
+ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="tutorial-develop-usql-scripts-using-data-lake-tools-for-visual-studio"></a>チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
+# <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Data Lake Tools for Visual Studio をインストールし、それを使用して U-SQL スクリプトを作成およびテストする方法を説明します。
@@ -28,19 +29,19 @@ Data Lake Tools for Visual Studio をインストールし、それを使用し�
 U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析するための拡張性に優れた言語です。 詳細については、 [U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2015、Visual Studio 2013 Update 4、Visual Studio 2012 のいずれか。サポートされるエディションは Enterprise (Ultimate/Premium)、Professional、Community です。Express エディションはサポートされません。現在、Visual Studio "15" はサポートされておらず、実現に向けて取り組んでいます。 **
+* **Visual Studio 2015 Update 3、Visual Studio 2013 Update 4、Visual Studio 2012。サポートされるエディションは Enterprise (Ultimate/Premium)、Professional、Community です。Express エディションはサポートされません。Visual Studio 2017 は現在、サポートされていません。**
 * **Microsoft Azure SDK for .NET Version 2.7.1 以降**。  [Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。
 
     Data Lake Tools for Visual Studio をインストールすると、サーバー エクスプローラーの "Azure" ノードに "Data Lake Analytics" ノードが表示されます (サーバー エクスプローラーを表示するには Ctrl + Alt + S を押します)。
-* **「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションを進めます**。
 
-  * [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
-  * [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
+* **Data Lake Analytics アカウントとサンプル データ** Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートしていません。 そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使ってアカウントを作成する必要があります。
+参考までに、Data Lake Analytics サービスを作成し、ソース データ ファイルをアップロードするための PowerShell スクリプトについては、「[付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
 
-    参考までに、Data Lake Analytic サービスを作成し、ソース データ ファイルをアップロードするための PowerShell サンプル スクリプトについては、「 [付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
+    このほか、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の&2; つのセクションに示した方法でも、アカウントを作成して手動でデータをアップロードできます。
 
-    Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。 そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。 Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。 Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
+    1. [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)
+    2. [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#prepare-source-data)
 
 ## <a name="connect-to-azure"></a>Azure への接続
 **Data Lake Analytics に接続するには**
@@ -72,7 +73,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 4. ファイルをアップロードするフォルダーを参照します。
 5. 空白部分を右クリックし、 **[アップロード]**をクリックします。
 
-## <a name="develop-usql-scripts"></a>U-SQL スクリプトの開発
+## <a name="develop-u-sql-scripts"></a>U-SQL スクリプトの開発
 Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 
 **Data Lake Analytics ジョブを作成して送信するには**
@@ -129,7 +130,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
        カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。 現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
    * **列の*展開**
 
-       * の右側をクリックすると、" ** の下に青い線 *" が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
+       * の右側をクリックすると、" ** の下に青い線*" が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
        ![Data Lake Visual Studio ツールでの * の展開](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        **[列の展開]**をクリックすると、* が列名に置き換えられます。
@@ -146,7 +147,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
        スクリプトの作成中に、Data Lake Tools for Visual Studio は式を自動的にインデントできます。 この機能は既定では無効になっているので、ユーザーは [U-SQL] -> [オプションと設定] -> [スイッチ] -> [スマート インデントを有効にする] をオンにして有効にする必要があります。
    * **定義に移動してすべての参照を検索**
 
-       行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。 [すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
+       行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動]\ (F12) をクリックすると、その定義に移動できます。 [すべての参照の検索]\ (Shift + F12) をクリックすると、すべての参照が表示されます。
    * **Azure パスの挿入**
 
        Azure のファイル パスを憶えていてスクリプトを作成するときに手動で入力しなくても、Data Lake Tools for Visual Studio では、エディターを右クリックして [Azure パスの挿入] をクリックするだけで簡単に挿入できます。 [Azure BLOB ブラウザー] ダイアログでファイルに移動します。 **[OK]**をクリックします。 ファイル パスがコードに挿入されます。
@@ -166,7 +167,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 
    * [ジョブの概要]。 現在のジョブの概要情報が表示されます (状態、進行状況、実行時間、ランタイムの名前、送信者など)。   
    * [ジョブの詳細]。 このジョブに関する詳細情報が表示されます (スクリプト、リソース、頂点実行ビューなど)。
-   * [ジョブ グラフ]。 ジョブの情報 (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット) が 4 つのグラフで視覚的に提供されます。
+   * [ジョブ グラフ]。 ジョブの情報 (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット) が&4; つのグラフで視覚的に提供されます。
    * [メタデータ操作]。 すべてのメタデータ操作が表示されます。
    * [状態の履歴]。
    * [診断]。 Data Lake Tools for Visual Studio がジョブの実行を自動的に診断します。 エラーやパフォーマンスの問題がジョブにある場合、アラートが表示されます。 詳細についてはジョブの診断 (リンクは TBD) を参照してください。
@@ -195,69 +196,12 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 ### <a name="heat-map"></a>ヒート マップ
 Data Lake Tools for Visual Studio にはユーザーが選択できるカラー オーバーレイがあり、各ステージの進行状況、データ I/O、実行時間、I/O スループットがジョブ ビューに表示されます。 これにより、ジョブのプロパティの潜在的な問題と分布が直接かつ直観的にわかります。 ドロップダウン リストから表示するデータ ソースを選択できます。  
 
-## <a name="run-usql-locally"></a>U-SQL のローカル実行
-Visual Studio で U-SQL をローカル実行し、次のことができます。
+## <a name="run-u-sql-locally"></a>U-SQL のローカル実行
 
-* C# アセンブリと共に U-SQL スクリプトをローカル実行します。
-* ローカルで C# アセンブリをデバッグします。
-* Azure Data Lake Analytics サービスの場合と同様に、サーバー エクスプローラーでローカルのデータベース、アセンブリ、スキーマ、テーブルの作成、削除、表示を実行します。
+Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この&2; つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。 
 
-*ローカル* アカウントが Visual Studio に表示されます。インストーラーにより、*C:\LocalRunRoot* に *DataRoot* フォルダーが作成されます。 DataRoot フォルダーが使用されます。
+* [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
 
-* テーブル、DB、TVF など、メタデータを保存します。
-* 特定のスクリプトの場合: 入力/出力パスで相対パスが参照される場合、DataRoot が検索されます (入力の場合は、スクリプトのパスも)。
-* アセンブリを登録し、相対パスを利用しようとすると、DataRoot フォルダーは参照されません (詳細については、「ローカル実行時にアセンブリを使用する」を参照してください)。
-
-次のビデオでは、U-SQL ローカル実行機能を説明しています。
-
-> [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/USQL-LocalRun/player]
->
->
-
-### <a name="known-issues-and-limitations"></a>既知の問題と制限
-* ローカル アカウントに対し、サーバー エクスプローラーでテーブル/DB などを作成できません。
-* 相対パスが参照されている場合:
-
-  * スクリプト入力で (EXTRACT * FROM “/path/abc”) - DataRoot パスとスクリプト パスの両方が検索されます。
-  * スクリプト出力で (OUTPUT TO “path/abc”): DataRoot パスが出力フォルダーとして使用されます。
-  * アセンブリ登録で (CREATE ASSEMBLY xyz FROM “/path/abc”): スクリプト パスが検索されます。DataRoot パスではありません。
-  * 登録された TVF/View または他のメタデータ エンティティで: DataRoot パスが検索されます。スクリプト パスではありません。
-
-    Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
-
-### <a name="test-usql-scripts-locally"></a>U-SQL スクリプトのローカル テスト
-U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」をご覧ください。 U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[(ローカル)]** を選択し、**[送信]** をクリックします。 正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
-
-![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
-
-スクリプトを右クリックし、コンテキスト メニューの **[ローカル プラン実行]** をクリックするか、**CTRL + F5** キーを押してローカル実行をトリガーします。
-
-### <a name="use-assemblies-in-local-run"></a>ローカル実行でアセンブリを使用する
-カスタマイズされた C# ファイルを実行する方法は 2 つあります。
-
-* 分離コード ファイルにアセンブリを記述します。アセンブリは自動的に登録され、スクリプトが完了すると削除されます。
-* C# アセンブリ プロジェクトを作成し、下のようなスクリプトを利用し、ローカル アカウントに出力 dll を登録します。 パスは、DataRoot フォルダーではなく、スクリプトに相対となることに注意してください。
-
-![U-SQL ローカル実行でアセンブリを使用する](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
-
-### <a name="debug-scripts-and-c-assemblies-locally"></a>スクリプトと C# アセンブリをローカルでデバッグする
-Azure Data Lake Analytics サービスに提出し、登録しなくても C# アセンブリをデバッグできます。 分離コード ファイルと参照 C# プロジェクトの両方にブレークポイントを設定できます。
-
-**分離コード ファイルのローカル コードをデバッグするには**
-
-1. 分離コード ファイルにブレークポイントを設定します。
-2. **F5** キーを押して、スクリプトをローカルでデバッグします。
-
-次の手順は、Visual Studio 2015 でのみ機能します。 以前の Visual Studio では、pdb ファイルを手動で追加する必要があります。
-
-**参照先の C# プロジェクトのローカル コードをデバッグするには**
-
-1. C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
-2. U-SQL ステートメントを使用して dll を登録します。
-
-     CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-3. C# コードにブレークポイントを設定します。
-4. **F5** キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。  
 
 ## <a name="see-also"></a>関連項目
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下をご覧ください。
@@ -267,6 +211,8 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 * [.NET SDK で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
 * [U-SQL ジョブのデバッグ](data-lake-analytics-debug-u-sql-jobs.md)
 
+Data Lake Tools for Visual Studio Code については、「[Use the Azure Data Lake Tools for Visual Studio Code (Azure Data Lake Tools for Visual Studio Code の使用)](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
+
 開発に関するその他のトピックも参照してください。
 
 * [Analyze weblogs using Data Lake Analytics (Data Lake Analytics を使用したウェブログの分析)](data-lake-analytics-analyze-weblogs.md)
@@ -274,7 +220,7 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 * [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## <a name="appxa-powershell-sample-for-preparing-the-tutorial"></a>付録 A: チュートリアルの準備のための PowerShell サンプル
+## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>付録 A: チュートリアルの準備のための PowerShell サンプル
 次の PowerShell スクリプトを使用すると、Azure Data Lake Analytics アカウントとソース データが準備されるため、「 [U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts)」までスキップできます。
 
     #region - used for creating Azure service names
@@ -344,9 +290,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Write-Host "List the source data ..."  -ForegroundColor Green
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

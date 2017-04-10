@@ -1,113 +1,131 @@
 ---
-title: 非対話型認証 .NET HDInsight アプリケーションを作成する | Microsoft Docs
-description: 非対話型認証 .NET HDInsight アプリケーションを作成する方法について説明します。
+title: "非対話型認証 .NET HDInsight アプリケーションを作成する | Microsoft Docs"
+description: "非対話型認証 .NET HDInsight アプリケーションを作成する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/22/2017
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: a423975e8a091183154217678706817694f3e346
+ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
+ms.lasthandoff: 12/21/2016
+
 
 ---
-# 非対話型認証 .NET HDInsight アプリケーションを作成する
-アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、.NET Azure HDInsight アプリケーションを実行できます。対話型アプリケーションの例については、「[HDInsight .NET SDK を使用して Hive/Pig/Sqoop ジョブを送信する](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)」を参照してください。この記事では、Azure HDInsight に接続し、Hive ジョブを送信する非対話型認証 .NET アプリケーションを作成する方法について説明します。
+# <a name="create-non-interactive-authentication-net-hdinsight-applications"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
+アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、.NET Azure HDInsight アプリケーションを実行できます。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」を参照してください。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。
 
-.NET アプリケーションには、以下が必要です。
+非対話型 .NET アプリケーションでは、以下が必要です。
 
-* Azure サブスクリプションのテナント ID
-* Azure Directory アプリケーションのクライアント ID
-* Azure Directory アプリケーションのシークレット キー
+* Azure サブスクリプションのテナント ID (別名: ディレクトリ ID)。 「[Get tenant ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」 (テナント ID を取得する) を参照してください。
+* Azure Directory アプリケーションのクライアント ID。 「[Active Directory アプリケーションを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-active-directory-application)」と「[Get an application ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーション ID を取得する) を参照してください。
+* Azure Directory アプリケーションのシークレット キー。 「[Get application authentication key](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」 (アプリケーションの認証キーを取得する) を参照してください。
 
-メイン プロセスには、次の手順が含まれます。
+## <a name="prerequisites"></a>前提条件
+* HDInsight クラスター。 [使用に関するチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)を参照してください。
 
-1. Azure Directory アプリケーションを作成します。
-2. AD アプリケーションにロールを割り当てます。
-3. クライアント アプリケーションを実行します。
 
-## 前提条件
-* HDInsight クラスター。[入門のチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)に記載されている手順を参照して作成できます。
 
-## Azure Directory アプリケーションを作成する
-Active Directory アプリケーションを作成すると、アプリケーションとサービス プリンシパルの両方が作成されます。このアプリケーションは、アプリケーションの ID を使用して実行できます。
-
-現時点では、新しい Active Directory アプリケーションを作成するには、Azure クラシック ポータルを使用する必要があります。この機能は、今後のリリースで、Azure ポータルに追加されます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure Resource Manager でのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」を参照してください。
-
-**Azure Directory アプリケーションを作成するには**
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側のペインで **[Active Directory]** を選択します。
-   
-   ![Azure クラシック ポータルの Active Directory](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\active-directory.png)
-3. 新しいアプリケーションを作成するために使用するディレクトリを選択します。既存のディレクトリを選択する必要があります。
-4. 上部の **[アプリケーション]** をクリックすると、既存のアプリケーション一覧が表示されます。
-5. 下部の **[追加]** をクリックし、新しいアプリケーションを追加します。
-6. **[名前]** を入力し、**[Web アプリケーションや Web API]** を選択して、**[次へ]** をクリックします。
-   
-   ![新しい Azure Active Directory アプリケーション](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\hdinsight-add-ad-application.png)
-7. **[サインオン URL]** と **[アプリケーション ID/URI]** を入力します。**[サインオン URL]** には、アプリケーションについて説明する web サイトの URI を指定します。Web サイトの存在は検証されません。[アプリケーション ID/URI] には、アプリケーションを識別する URI を指定します。次に、**[完了]** をクリックします。アプリケーションが作成されるまでしばらく待ちます。アプリケーションが作成されると、ポータルに新しいアプリケーションの [概要] ページが表示されます。ポータルを閉じないでください。
-   
-   ![新しい Azure Active Directory アプリケーションのプロパティ](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\hdinsight-add-ad-application-properties.png)
-
-**アプリケーション クライアント ID とシークレット キーを取得するには**
-
-1. 新しく作成した AD アプリケーション ページから、上部メニューの **[構成]** をクリックします。
-2. **[クライアント ID]** をコピーします。この ID は .NET アプリケーションで必要になります。
-3. **[キー]** の **[時間の選択]** ドロップダウンをクリックし、**[1 年]** または **[2 年]** を選択します。構成を保存するまで、キー値は表示されません。
-4. ページの下部にある **[保存]** をクリックします。シークレット キーが表示されたら、キーをコピーします。この ID は .NET アプリケーションで必要になります。
-
-## AD アプリケーションをロールに割り当てる
-アクションを実行するアクセス許可を付与するには、[ロール](../active-directory/role-based-access-built-in-roles.md)にアプリケーションを割り当てる必要があります。スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。このチュートリアルでは、リソース グループ レベルでスコープを設定します。Azure クラシック ポータルはリソース グループをサポートしていないので、この部分は Azure ポータルで実行する必要があります。
+## <a name="assign-ad-application-to-role"></a>AD アプリケーションをロールに割り当てる
+アクションを実行するアクセス許可を付与するには、 [ロール](../active-directory/role-based-access-built-in-roles.md) にアプリケーションを割り当てる必要があります。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。 このチュートリアルでは、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 **AD アプリケーションに所有者ロールを追加するには**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のウィンドウの **[リソース グループ]** をクリックします。
-3. HDInsight クラスター (このチュートリアルの後半で Hive クエリを実行するクラスター) を含むリソース グループをクリックします。リソース グループ数が多すぎる場合は、フィルターを使用することができます。
-4. クラスター ブレードから **[アクセス]** をクリックします。
-   
-   ![雲と雷のアイコン = クイック スタート](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)
+3. HDInsight クラスター (このチュートリアルの後半で Hive クエリを実行するクラスター) を含むリソース グループをクリックします。 リソース グループ数が多すぎる場合は、フィルターを使用することができます。
+4. リソース グループ メニューから **[アクセス制御 (IAM)]**を選択します。
 5. **[ユーザー]** ブレードから **[追加]** をクリックします。
-6. 指示に従って、前の手順で作成した AD アプリケーションに**所有者**ロールを追加します。正常に完了し、所有者ロールで [ユーザー] ブレードを見ると、そのアプリケーションが表示されます。
+6. 指示に従って、前の手順で作成した AD アプリケーションに **所有者** ロールを追加します。 正常に完了し、所有者ロールで [ユーザー] ブレードを見ると、そのアプリケーションが表示されます。
 
-## HDInsight クライアント アプリケーションを開発する
-[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)に関するページの指示に従って、C# .NET コンソール アプリケーションを作成します。次に、GetTokenCloudCredentials メソッドを次のように置き換えます。
+## <a name="develop-hdinsight-client-application"></a>HDInsight クライアント アプリケーションを開発する
 
-    public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
-    {
-        var authFactory = new AuthenticationFactory();
+1. C# コンソール アプリケーションを作成します。
+2. 次の Nuget パッケージを追加します。
 
-        var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+        Install-Package Microsoft.Azure.Common.Authentication -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight -Pre
+        Install-Package Microsoft.Azure.Management.Resources -Pre
 
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+3. 次のサンプル コードを使用します。
 
-        var accessToken =
-            authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never)
-                .AccessToken;
+        using System;
+        using System.Security;
+        using Microsoft.Azure;
+        using Microsoft.Azure.Common.Authentication;
+        using Microsoft.Azure.Common.Authentication.Factories;
+        using Microsoft.Azure.Common.Authentication.Models;
+        using Microsoft.Azure.Management.Resources;
+        using Microsoft.Azure.Management.HDInsight;
+        
+        namespace CreateHDICluster
+        {
+            internal class Program
+            {
+                private static HDInsightManagementClient _hdiManagementClient;
+        
+                private static Guid SubscriptionId = new Guid("<Enter Your Azure Subscription ID>");
+                private static string tenantID = "<Enter Your Tenant ID (A.K.A. Directory ID)>";
+                private static string applicationID = "<Enter Your Application ID>";
+                private static string secretKey = "<Enter the Application Secret Key>";
+        
+                private static void Main(string[] args)
+                {
+                    var key = new SecureString();
+                    foreach (char c in secretKey) { key.AppendChar(c); }
 
-        return new TokenCloudCredentials(accessToken);
-    }
+                    var tokenCreds = GetTokenCloudCredentials(tenantID, applicationID, key);
+                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+        
+                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+                    resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+        
+                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
+        
+                    var results = _hdiManagementClient.Clusters.List();
+                    foreach (var name in results.Clusters)
+                    {
+                        Console.WriteLine("Cluster Name: " + name.Name);
+                        Console.WriteLine("\t Cluster type: " + name.Properties.ClusterDefinition.ClusterType);
+                        Console.WriteLine("\t Cluster location: " + name.Location);
+                        Console.WriteLine("\t Cluster version: " + name.Properties.ClusterVersion);
+                    }
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
 
-PowerShell 経由でテナント ID を取得するには:
+                /// Get the access token for a service principal and provided key                
+                public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
+                {
+                    var authFactory = new AuthenticationFactory();
+                    var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                    var accessToken =
+                        authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
+        
+                    return new TokenCloudCredentials(accessToken);
+                }
+        
+                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(SubscriptionCloudCredentials creds, Guid subId)
+                {
+                    return new TokenCloudCredentials(subId.ToString(), ((TokenCloudCredentials)creds).Token);
+                }
+            }
+        }
 
-    Get-AzureRmSubscription
-
-または、次の Azure CLI を使います。
-
-    azure account show --json
-
-
-## 関連項目
-* [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)
-* [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
+## <a name="next-steps"></a>次のステップ
+* [ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0914_2016-->

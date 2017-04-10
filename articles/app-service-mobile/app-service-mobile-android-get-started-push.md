@@ -1,71 +1,85 @@
 ---
-title: Azure Mobile Apps を使用して Android アプリにプッシュ通知を追加する
-description: Azure Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。
+title: "Mobile Apps を使用した Android アプリへのプッシュ通知の追加 | Microsoft Docs"
+description: "Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: android
-manager: erikre
-editor: ''
-author: RickSaling
-
+manager: adrianha
+editor: 
+author: ysxu
+ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 07/21/2016
-ms.author: ricksal
+ms.date: 10/12/2016
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
+ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
+ms.lasthandoff: 12/13/2016
+
 
 ---
-# プッシュ通知を Android アプリに追加する
+# <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## 概要
-このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+## <a name="overview"></a>概要
+このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。
 
-## 前提条件
-このチュートリアルを完了するには、以下が必要です。
+ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージを追加する必要があります。 詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
-* 確認済みの電子メール アドレスがある [Google アカウント](http://go.microsoft.com/fwlink/p/?LinkId=268302)
-* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) (Node.js バックエンド プロジェクトには不要)
-* [クイック スタート チュートリアル](app-service-mobile-android-get-started.md)を完了していること。
+## <a name="prerequisites"></a>前提条件
+以下のものが必要になります。
 
-## <a name="create-hub"></a>通知ハブを作成する
-[!INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
+* プロジェクトのバックエンドに応じた IDE:
 
-## Google Cloud Messaging を有効にする
-[!INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
+  * アプリに Node.js バックエンドがある場合は [Android Studio](https://developer.android.com/sdk/index.html)。
+  * アプリに Microsoft .NET バックエンドがある場合は [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) 以降。
+* Firebase Cloud Messaging 用に Android 2.3 以降、Google Repository リビジョン 27 以降、Google Play Services 9.0.2 以降。
+* [Android クイック スタート]を完了すること。
 
-## プッシュ要求を送信するように Mobile App バックエンドを構成する
-[!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
+## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Firebase Cloud Messaging をサポートするプロジェクトを作成する
+[!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a id="update-service"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+## <a name="configure-a-notification-hub"></a>通知ハブを構成する
+[!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
+
+## <a name="configure-azure-to-send-push-notifications"></a>プッシュ通知を送信するように Azure を構成する
+[!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
+
+## <a name="enable-push-notifications-for-the-server-project"></a>サーバー プロジェクトのプッシュ通知を有効にする
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
-## アプリケーションにプッシュ通知を追加する
-Android アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。
+## <a name="add-push-notifications-to-your-app"></a>アプリケーションにプッシュ通知を追加する
+このセクションでは、クライアントの Android アプリをプッシュ通知を処理するように更新します。
 
-### Android SDK バージョンの検証
+### <a name="verify-android-sdk-version"></a>Android SDK バージョンの検証
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
+次の手順は、Google Play サービスをインストールすることです。 Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
-古いデバイスを使用している場合は、[Google Play Services SDK のセットアップに関するページ]を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
+古いデバイスを使用してテストしている場合は、[Google Play Services SDK のセットアップ]に関するページを参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
-### プロジェクトへの Google Play Services の追加
-[!INCLUDE [Play サービスの追加](../../includes/app-service-mobile-add-google-play-services.md)]
+### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
+[!INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
 
-### コードの追加
+### <a name="add-code"></a>コードの追加
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
-## 発行されたモバイル サービスに対してアプリケーションをテストする
+## <a name="test-the-app-against-the-published-mobile-service"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
-## <a id="more"></a>詳細
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」に記載されています。
+## <a name="next-steps"></a>次のステップ
+これでこのチュートリアルは終了です。次のいずれかのチュートリアルに進むことを検討してください。
+
+* [Android アプリに認証を追加する](app-service-mobile-android-get-started-users.md)。
+  サポートされている ID プロバイダーを使用して、Android で todolist クイック スタート プロジェクトに認証を追加する方法について説明します。
+* [Android アプリのオフライン同期を有効にする](app-service-mobile-android-get-started-offline-data.md)。
+  Mobile Apps バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-[Google Play Services SDK のセットアップに関するページ]: https://developers.google.com/android/guides/setup
+[Google Play Services SDK のセットアップ]:https://developers.google.com/android/guides/setup
 
-<!---HONumber=AcomDC_0727_2016-->

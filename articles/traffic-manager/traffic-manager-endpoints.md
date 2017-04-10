@@ -3,8 +3,8 @@ title: "Azure Traffic Manager でのエンドポイントの管理 | Microsoft D
 description: "この記事では、Azure Traffic Manager からエンドポイントの追加、削除、有効化、無効化する方法について説明します。"
 services: traffic-manager
 documentationcenter: 
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: tysonn
 ms.assetid: 038270d1-28ba-4078-9c5d-37fc5d683be6
 ms.service: traffic-manager
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/17/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cbdd48397319cb840b05570ba90093ff8f6887b0
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 22729a7164b8998e92147e418ce96ff9b09896b9
 
 ---
 
@@ -80,6 +80,6 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

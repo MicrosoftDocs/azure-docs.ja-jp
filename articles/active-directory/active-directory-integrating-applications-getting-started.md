@@ -1,26 +1,31 @@
 ---
-title: Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド | Microsoft Docs
-description: この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。
+title: "Azure AD とアプリの統合の概要 | Microsoft Docs"
+description: "この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: ihenkel
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
+ms.date: 01/23/2017
 ms.author: inhenk
+translationtype: Human Translation
+ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
+ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
+ms.lasthandoff: 02/03/2017
+
 
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>Overview
 このトピックは、アプリケーションを Azure Active Directory (AD) と統合するためのロードマップを示すことを目的としています。 以下の各セクションには、詳細なトピックの要点が記載されており、このファースト ステップ ガイドのどの部分が自分に必要かを特定できるようになっています。  リンク先のページで各トピックの詳細を参照できます。
 
-## <a name="before-you-begin,-take-inventory"></a>開始する前にインベントリを取得する
+## <a name="before-you-begin-take-inventory"></a>開始する前にインベントリを取得する
 アプリケーションと Azure AD の統合に急いで着手する前に、現在地と目的地を知ることが重要です。  次の質問は、Azure AD のアプリケーション統合プロジェクトについて考える際に役立つように設計されています。
 
 ### <a name="application-inventory"></a>アプリケーション インベントリ
@@ -87,7 +92,5 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 ## <a name="see-also"></a>関連項目
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

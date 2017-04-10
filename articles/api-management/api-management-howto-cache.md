@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8cdb37fceb7b598c92b7b3cd41655c87c74e639
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: d4ba7c276b0ad8539cfbad9b9a6afe193af3a0b8
 
 
 ---
@@ -31,13 +31,13 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。 API Management サービス インスタンスをまだ作成していない場合は、[Azure API Management の使用][Azure API Management の使用]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。 まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 
 ## <a name="configure-caching"> </a>キャッシュ用の操作の構成
 このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
 > [!NOTE]
-> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 詳細については、[Azure API Management の使用][Azure API Management の使用]に関する記事をご覧ください。
+> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 詳細については、[Azure API Management の概要][Get started with Azure API Management]に関する記事を参照してください。
 > 
 > 
 
@@ -80,20 +80,22 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 この操作のポリシー定義には、前のステップで **[キャッシュ]** タブを使用して確認したキャッシュ構成を定義するポリシーが含まれています。
 
-    <policies>
-        <inbound>
-            <base />
-            <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-                <vary-by-header>Accept</vary-by-header>
-                <vary-by-header>Accept-Charset</vary-by-header>
-            </cache-lookup>
-            <rewrite-uri template="/resource" />
-        </inbound>
-        <outbound>
-            <base />
-            <cache-store caching-mode="cache-on" duration="3600" />
-        </outbound>
-    </policies>
+```xml
+<policies>
+    <inbound>
+        <base />
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+            <vary-by-header>Accept</vary-by-header>
+            <vary-by-header>Accept-Charset</vary-by-header>
+        </cache-lookup>
+        <rewrite-uri template="/resource" />
+    </inbound>
+    <outbound>
+        <base />
+        <cache-store caching-mode="cache-on" duration="3600" />
+    </outbound>
+</policies>
+```
 
 > [!NOTE]
 > ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
@@ -138,7 +140,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 応答内の **sampleheader** の値が **value2** になっていることに注目してください。 操作の結果はクエリ文字列によってキー付けされているため、以前のキャッシュに格納された応答は返されません。
 
 ## <a name="next-steps"> </a>次のステップ
-* キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management ポリシー リファレンス]の[キャッシュ ポリシー][キャッシュ ポリシー]をご覧ください。
+* キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management policy reference]の[キャッシュ ポリシー][Caching policies]に関するページを参照してください。
 * ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
@@ -153,25 +155,25 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[API に操作を追加する方法]: api-management-howto-add-operations.md
-[成果物を追加して発行する方法]: api-management-howto-add-products.md
-[監視と分析]: api-management-monitoring.md
-[成果物への API の追加]: api-management-howto-add-products.md#add-apis
-[成果物の発行]: api-management-howto-add-products.md#publish-product
-[API Management インスタンスの作成]: api-management-get-started.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
 
-[API Management ポリシー リファレンス]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[キャッシュ ポリシー]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
+[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[キャッシュ用の操作の構成]: #configure-caching
-[キャッシュ ポリシーの確認]: #caching-policies
-[操作の呼び出しとキャッシュのテスト]: #test-operation
-[次のステップ]: #next-steps
+[Configure an operation for caching]: #configure-caching
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
+[Next steps]: #next-steps
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -70,7 +70,7 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
 
 これで、通知ハブが Firebase Cloud Messaging と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
@@ -131,7 +131,7 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
    
    * **SenderId**: [Firebase Console](https://firebase.google.com/console/) でプロジェクト設定の **[Cloud Messaging]** タブから先ほど取得した送信者 ID。
    * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
-   * **HubName**: [Azure ポータル]のハブ ブレードに表示される通知ハブの名前を使用します。
+   * **HubName**: [Azure Portal]のハブ ブレードに表示される通知ハブの名前を使用します。
      
      `NotificationSettings` のコードは次のとおりです。
      
@@ -676,7 +676,7 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[[アクセス ポリシー]]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 
 

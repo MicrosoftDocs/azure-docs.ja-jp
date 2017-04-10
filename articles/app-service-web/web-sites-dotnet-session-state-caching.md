@@ -4,7 +4,7 @@ description: "Azure Cache Service を使用して ASP.NET のセッション状�
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
-manager: wpickett
+manager: erikre
 editor: none
 ms.assetid: 4f98d289-2698-464d-85cd-99ec40fad1f2
 ms.service: app-service-web
@@ -15,15 +15,16 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ac0fde19d61a9c3a9f54b42982c7096434cb965
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a682e51bfaed9056b170c3e9473180ca210557b9
+ms.lasthandoff: 01/20/2017
 
 
 ---
 # <a name="session-state-with-azure-redis-cache-in-azure-app-service"></a>Azure App Service での Azure Redis Cache のセッション状態の使用
 このトピックでは、Azure Redis Cache Service を使用してセッション状態をサポートする方法について説明します。
 
-ASP.NET Web アプリケーションでセッション状態を使用している場合は、外部セッション状態プロバイダー (Redis Cache Service または SQL Server セッション状態プロバイダー) を構成する必要があります。 セッション状態を使用し、外部プロバイダーを使用しない場合は、Web アプリケーションの 1 つのインスタンスに制限されます。 Redis Cache Service は、最も高速で最も簡単に実現できるキャッシュ サービスです。
+ASP.NET Web アプリケーションでセッション状態を使用している場合は、外部セッション状態プロバイダー (Redis Cache Service または SQL Server セッション状態プロバイダー) を構成する必要があります。 セッション状態を使用し、外部プロバイダーを使用しない場合は、Web アプリケーションの&1; つのインスタンスに制限されます。 Redis Cache Service は、最も高速で最も簡単に実現できるキャッシュ サービスです。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -86,10 +87,10 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
        strValue = (string)objValue;    
 
 Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。 詳細については、「 [MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)」を参照してください。
-ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][ASP.NET セッション状態の概要]」を参照してください。
+ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][ASP.NET Session State Overview]」を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -98,8 +99,8 @@ ASP.NET セッション状態の使用方法の詳細については、「[ASP.N
   
   *著者 [Rick Anderson](https://twitter.com/RickAndMSFT)*
 
-[最新バージョンのインストール]: http://www.windowsazure.com/downloads/?sdk=net  
-[ASP.NET セッション状態の概要]: http://msdn.microsoft.com/library/ms178581.aspx
+[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+[ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
 [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
 [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
@@ -109,10 +110,5 @@ ASP.NET セッション状態の使用方法の詳細については、「[ASP.N
 [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
 [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
 [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

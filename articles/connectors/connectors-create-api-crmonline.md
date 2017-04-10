@@ -1,246 +1,301 @@
 ---
-title: Dynamics CRM Online コネクタを Logic Apps に追加する | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。Dynamics CRM Online 接続プロバイダーは、Dynamics CRM Online でエンティティを操作するための API を提供します。
+title: "Dynamics 365 (オンライン) コネクタを Azure Logic Apps に追加する | Microsoft Docs"
+description: "Azure App Service を使用してロジック アプリを作成します。 Dynamics 365 (オンライン) 接続プロバイダーは、Dynamics 365 (オンライン) 上のエンティティを操作する API を提供します。"
 services: logic-apps
-documentationcenter: ''
-author: MandiOhlinger
-manager: erikre
-editor: ''
-tags: connectors
-
+cloud: Azure Stack
+documentationcenter: 
+author: Mattp123
+manager: anneta
+ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
 ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/15/2016
-ms.author: mandia
+ms.date: 02/10/2017
+ms.author: matp
+translationtype: Human Translation
+ms.sourcegitcommit: fa426f474f4efd4023da5dfd9954dacf96f635ab
+ms.openlocfilehash: 99d5379ad1e6965dd9ed88de456cc850d7e40d5a
+ms.lasthandoff: 02/14/2017
+
 
 ---
-# Dynamics CRM Online コネクタの概要
-Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online では、次の操作を実行できます。
+# <a name="create-a-logic-app-with-the-dynamics-365-connector"></a>Dynamics 365 コネクタを使用したロジック アプリの作成
 
-* CRM Online から取得したデータに基づいてビジネス フローを構築できます。
-* レコードの削除、エンティティの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、CRM で項目を更新するときに、Office 365 を使用して電子メールを送信できます。
+Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、新しいレコードを作成するフロー、項目を更新するフロー、レコードのリストを返すフローなど、便利なビジネス フローを作成できます。 Dynamics 365 コネクタにより、次のことが可能になります。
 
-このトピックでは、ロジック アプリ内で Dynamics CRM Online コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
+* Dynamics 365 (オンライン) から取得したデータに基づいてビジネス フローを構築できます。
+* 応答を取得し、出力を他のアクションで使用できるようにするアクションを使用できます。 たとえば、Dynamics 365 (オンライン) で項目が更新されときに、Office 365 を使用して電子メールを送信できます。
 
-> [!NOTE]
-> 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
-> 
-> 
+このトピックでは、Dynamics 365 で新しい潜在顧客が作成されるたびに、Dynamics 365 でタスクを作成するロジック アプリを作成する方法について説明します。
 
-Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
+## <a name="prerequisites"></a>前提条件
+* Azure アカウント。
+* Dynamics 365 (オンライン) アカウント。
 
-## Dynamics CRM Online に接続する
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Dynamics に接続するには、まず Dynamics CRM Online への "*接続*" が必要になります。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Dynamics の場合は、Dynamics CRM Online アカウントの資格情報を入力して接続を作成します。
+## <a name="walkthrough-create-a-task-whenever-a-new-lead-is-created-in-dynamics-365"></a>チュートリアル: Dynamics 365 で新しい潜在顧客が作成されるたびにタスクを作成する
+1.    [Azure にサインイン](https://portal.azure.com)します。
+2.    **検索**ボックスに「*Logic Apps*」と入力し、Enter キーを押します。
+3.    Logic Apps サービス エリアで **[追加]** をクリックします。
 
-### 接続の作成
-> [!INCLUDE [Dynamics CRM Online 接続プロバイダーへの接続を作成する手順](../../includes/connectors-create-api-crmonline.md)]
-> 
-> 
+  ![LogicApp の追加](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-## トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+4.    **[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** の各フィールドに、ロジック アプリ オブジェクトの作成に必要な値を入力し、**[作成]** をクリックします。
 
-1. ロジック アプリで「dynamics」と入力して、トリガーの一覧を取得します。
-   
-    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-2. **[Dynamics CRM Online - When a record is created (Dynamics CRM Online - レコードが作成されたとき)]** を選択します。接続が既に存在する場合は、ドロップダウン リストから組織とエンティティを選択します。
-   
-    ![](./media/connectors-create-api-crmonline/select-organization.png)
-   
-    サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
-   
-   > [!NOTE]
-   > この例では、レコードが作成されたときにロジック アプリが実行されます。このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。たとえば、Office 365 の "*電子メールを送信する*" アクションを追加します。これにより、新しいレコードが追加されると電子メールが送信されます。
-   > 
-   > 
-3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。
-   
-    ![](./media/connectors-create-api-crmonline/edit-properties.png)
-4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+5.    新しいロジック アプリを選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[更新]** をクリックします。
 
-## アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+6.    [開発ツール] の **[ロジック アプリ デザイナー]** をクリックし、使用可能なテンプレートの一覧で **[空の LogicApp]** をクリックします。
 
-1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
-   
-    ![](./media/connectors-create-api-crmonline/add-action.png)
-2. **[アクションの追加]** を選択します。
-3. テキスト ボックスに「dynamics」と入力して、使用可能なすべてのアクションの一覧を取得します。
-   
-    ![](./media/connectors-create-api-crmonline/dynamics-actions.png)
-4. この例では、**[Dynamics CRM Online - Update a record (Dynamics CRM Online - レコードを更新する)]** を選択します。接続が既に存在する場合は、**[組織名]**、**[エンティティ名]**、およびその他のプロパティを指定します。
-   
-    ![](./media/connectors-create-api-crmonline/sample-action.png)
-   
-    接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
-   
-   > [!NOTE]
-   > この例では、CRM Online の既存のレコードを更新します。別のトリガーからの出力を使用して、レコードを更新できます。たとえば、SharePoint の "*既存の項目が変更されたとき*" トリガーを追加します。次に、CRM Online の "*レコードを更新する*" アクションを追加します。このアクションは、SharePoint フィールドを使用して CRM Online 内の既存のレコードを更新します。
-   > 
-   > 
-5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+7.    「*Dynamics 365*」と入力します。 Dynamics 365 トリガーの一覧で、**[Dynamics 365 - レコードが作成されたとき]** をクリックします。
 
-## 技術的な詳細
-## トリガー
+8.    Dynamics 365 へのサインインを求められたら、すぐにサインインします。
+
+9.    トリガーの詳細で次の情報を入力します。
+
+  * **[組織名]**:  ロジック アプリでリッスンする Dynamics 365 インスタンスを選択します。
+
+  * **[エンティティ名]**:  リッスンするエンティティを選択します。このエンティティは、ロジック アプリを起動するためのトリガーとして機能します。 このチュートリアルでは、**[潜在顧客]** を選択しています。
+
+  * **[項目を確認する頻度]**:  これらの値により、ロジック アプリがトリガーに関連する更新を確認する頻度を設定します。 既定の設定では、3 分ごとに更新が確認されます。
+
+    * **[頻度]**:  秒単位、分単位、時間単位、または日単位を選択します。
+
+    * **[間隔]**:  秒数、分数、時間数、または日数を示す数値を入力します。この時間が経過すると、次の確認が行われます。
+
+    ![ロジック アプリのトリガーの詳細](./media/connectors-create-api-crmonline/trigger-details.png)
+
+10.    **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
+
+11.    「*Dynamics 365*」と入力し、一覧で **[Dynamics 365 - 新しいレコードの作成]** をクリックします。
+
+12.    次の情報を入力します。
+  * **[組織名]**:  フローでレコードを作成する Dynamics 365 インスタンスを選択します。 イベントをトリガーするインスタンスと同じインスタンスを選択しないでください。
+  * **[エンティティ名]**:  イベントがトリガーされたときにレコードを作成するエンティティを選択します。 このチュートリアルでは、**[タスク]** を選択しています。
+
+13.    [件名] ボックスが表示されます。 ボックスをクリックすると、動的コンテンツ ウィンドウが表示されます。このウィンドウで、次のフィールドのいずれかを選択できます。
+  * **[姓]**:  このフィールドを選択すると、タスク レコードが作成されたときに、タスクの [件名] フィールドに潜在顧客の姓が挿入されます。
+  * **[トピック]**:  このフィールドを選択すると、タスク レコードが作成されたときに、タスクの [件名] フィールドに潜在顧客の [トピック] フィールドが挿入されます。
+**[トピック]** をクリックして **[件名]** ボックスに追加します。
+
+  ![ロジック アプリの [新しいレコードの作成] の詳細](./media/connectors-create-api-crmonline/create-record-details.png)
+
+14.    ロジック アプリ デザイナーのツール バーの **[保存]** をクリックします。
+
+  ![ロジック アプリ デザイナーのツール バーの [保存]](./media/connectors-create-api-crmonline/designer-toolbar-save.png)
+
+15.    ロジック アプリを起動するには、**[実行]** をクリックします。
+
+  ![ロジック アプリ デザイナーのツール バーの [保存]](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+
+16. Dynamics 365 for Sales で潜在顧客レコードを作成し、フローの動作を確認します。
+
+## <a name="using-advanced-options"></a>詳細オプションの使用
+ロジック アプリにステップを追加するときに、**[詳細オプションの表示]** をクリックすると、フィルター クエリや並べ替えクエリを追加して、ステップでデータをフィルター処理する方法を制御できます。
+
+たとえば、フィルター クエリを使用してアクティブなアカウントだけを取得し、アカウント名で並べ替えることができます。 これを行うには、OData フィルター クエリ **statuscode eq 1** を入力し、動的コンテンツ ウィンドウで **[アカウント名]** を選択します。 詳細については、MSDN の「[$filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1)」および「[$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2)」をご覧ください。
+
+  ![LogicApp の詳細オプション](./media/connectors-create-api-crmonline/advanced-options.png)
+
+### <a name="best-practices-when-using-advanced-options"></a>詳細オプションを使用する際のベスト プラクティス
+フィールドに値を追加するときは、値を入力するか、表示された動的コンテンツから値を選択するかに関係なく、フィールドの種類と一致する必要があることに注意してください。
+
+フィールドの種類  |使用方法  |参照先  |名前  |データ型  
+---------|---------|---------|---------|---------
+テキスト フィールド|テキスト フィールドには、1 行のテキスト、またはテキスト型のフィールドである動的コンテンツを追加する必要があります。 たとえば、[カテゴリ] フィールド、[サブカテゴリ] フィールドなどがあります。|[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |カテゴリ |1 行のテキスト。       
+整数フィールド | 一部のフィールドには、整数、または整数型フィールドである動的コンテンツを追加する必要があります。 たとえば、[達成率]、[期間] などがあります。 |[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |percentcomplete |整数         
+日付フィールド | 一部のフィールドには、/mm/dd/yyyy 形式で入力した日付、または date 型フィールドである動的コンテンツを追加する必要があります。 たとえば、[作成日]、[開始日]、[実際の開始日]、[前回の保留時間]、[実際の終了日]、[期限] などがあります。 | [設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [タスク] > [フィールド] |createdon |日付と時刻         
+レコード ID と参照タイプの両方を必要とするフィールド |別のエンティティ レコードを参照する一部のフィールドには、レコード ID と参照タイプの両方を追加する必要があります。 |[設定] > [カスタマイズ] > [システムのカスタマイズ] > [エンティティ] > [アカウント] > [フィールド]  | accountid   | 主キー
+
+### <a name="more-examples-of-fields-that-require-both-a-record-id-and-lookup-type"></a>レコード ID と参照タイプの両方を必要とするフィールドのその他の例
+ここでは、前の表を拡張して、動的コンテンツ リストから選択した値では機能しないフィールドの例を示します。 代わりに、これらのフィールドには、PowerApps でフィールドに入力されたレコード ID と参照タイプの両方が必要です。  
+*  [所有者] と [所有者の種類]。 [所有者] フィールドには、有効なユーザーまたはチーム レコード ID を入力する必要があります。 [所有者の種類] には、**systemusers** または **teams** を指定する必要があります。
+* [顧客] と [顧客の種類]。 [顧客] フィールドには、有効なアカウントまたは連絡先レコード ID を入力する必要があります。 [顧客の種類] には、**accounts** または **contacts** を指定する必要があります。
+* [関連] と [関連の種類]。 [関連] フィールドには、有効なレコード ID (アカウント レコード ID や連絡先レコード ID など) を入力する必要があります。 [関連の種類] には、レコードの参照タイプ (**accounts** や **contacts** など) を指定する必要があります。
+
+次のタスク作成アクションの例では、タスクの [関連] フィールドにレコード ID を追加して、この ID に対応するアカウント レコードを追加します。
+
+  ![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid-type-account.png)
+
+また、この例では、ユーザーのレコード ID に基づいて特定のユーザーにタスクを割り当てます。
+  ![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid-type-user.png)
+
+レコード ID の検索方法については、次の「*レコード ID の検索*」をご覧ください。
+
+## <a name="find-the-record-id"></a>レコード ID の検索
+1. レコード (アカウント レコードなど) を開きます。
+
+2. 操作ツール バーの **[ポップ アウト]** ![レコードのポップアウト](./media/connectors-create-api-crmonline/popout-record.png) をクリックします。
+または、操作ツール バーの **[リンクを電子メールで送信]** をクリックして、既定の電子メール プログラムに完全な URL をコピーします。
+
+3. レコード ID は、URL のエンコード文字 %7b と %7d の間に表示されます。
+
+  ![フローの recordId とタイプのアカウント](./media/connectors-create-api-crmonline/recordid.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+ロジック アプリの失敗したステップのトラブルシューティングを行うには、イベントの状態の詳細を表示します。
+
+1. Logic Apps エリアでロジック アプリをクリックし、**[概要]** をクリックします。 ロジック アプリの実行状態を示す [概要] エリアが表示されます。 失敗した実行がある場合は、詳細を表示する失敗したイベントをクリックします。
+
+  ![LogicApp のトラブルシューティングの手順 1](./media/connectors-create-api-crmonline/tshoot1.png)
+
+2. 失敗したステップをクリックして展開します。
+
+  ![LogicApp のトラブルシューティングの手順 2](./media/connectors-create-api-crmonline/tshoot2.png)
+
+3. エラーの原因のトラブルシューティングに役立つ、ステップの詳細が表示されます。
+
+    ![LogicApp のトラブルシューティングの手順 2](./media/connectors-create-api-crmonline/tshoot3.png)
+
+ロジック アプリのトラブルシューティングの詳細については、「[ロジック アプリの障害の診断](../logic-apps/logic-apps-diagnosing-failures.md)」をご覧ください。
+
+## <a name="technical-details"></a>技術的な詳細
+## <a name="triggers"></a>トリガー
 | トリガー | Description |
 | --- | --- |
-| [レコードが作成されたとき](connectors-create-api-crmonline.md#when-a-record-is-created) |CRM のオブジェクトが作成されたときにフローをトリガーします。 |
-| [レコードが更新されたとき](connectors-create-api-crmonline.md#when-a-record-is-updated) |CRM のオブジェクトが変更されたときにフローをトリガーします。 |
-| [レコードが削除されたとき](connectors-create-api-crmonline.md#when-a-record-is-deleted) |CRM のオブジェクトが削除されたときにフローをトリガーします。 |
+| レコードが作成されたとき |Dynamics 365 でオブジェクトが作成されたときにフローをトリガーします。 |
+| レコードが更新されたとき |Dynamics 365 でオブジェクトが変更されたときにフローをトリガーします。 |
+| レコードが削除されたとき |Dynamics 365 でオブジェクトが削除されたときにフローをトリガーします。 |
 
-## アクション
+## <a name="actions"></a>アクション
 | アクション | Description |
 | --- | --- |
-| [レコードを一覧表示する](connectors-create-api-crmonline.md#list-records) |この操作では、エンティティのレコードを取得します。 |
-| [新しいレコードを作成する](connectors-create-api-crmonline.md#create-a-new-record) |この操作では、エンティティの新しいレコードを作成します。 |
-| [レコードを取得する](connectors-create-api-crmonline.md#get-record) |この操作では、エンティティの指定されたレコードを取得します。 |
-| [レコードを削除する](connectors-create-api-crmonline.md#delete-a-record) |この操作では、エンティティのコレクションからレコードを削除します。 |
-| [レコードを更新する](connectors-create-api-crmonline.md#update-a-record) |この操作では、エンティティの既存のレコードを更新します。 |
+| レコードを一覧表示する |この操作では、エンティティのレコードを取得します。 |
+| 新しいレコードを作成する |この操作では、エンティティの新しいレコードを作成します。 |
+| レコードを取得する |この操作では、エンティティの指定されたレコードを取得します。 |
+| レコードを削除する |この操作では、エンティティのコレクションからレコードを削除します。 |
+| レコードを更新する |この操作では、エンティティの既存のレコードを更新します。 |
 
-### トリガーとアクションの詳細
+### <a name="trigger-and-action-details"></a>トリガーとアクションの詳細
 このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
 
-#### レコードが作成されたとき
-CRM のオブジェクトが作成されたときにフローをトリガーします。
+#### <a name="when-a-record-is-created"></a>レコードが作成されたとき
+Dynamics 365 でオブジェクトが作成されたときにフローをトリガーします。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
-| $skip |Skip Count (スキップ数) |スキップするエントリの数 (既定値 = 0) |
-| $top |Maximum Get Count (最大取得数) |取得するエントリの最大数 (既定 = 256) |
 | $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
 | $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 ItemsList
 
 | プロパティ名 | データ型 |
 | --- | --- |
 | 値 |array |
 
-#### レコードが更新されたとき
-CRM のオブジェクトが変更されたときにフローをトリガーします。
+#### <a name="when-a-record-is-updated"></a>レコードが更新されたとき
+Dynamics 365 でオブジェクトが変更されたときにフローをトリガーします。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
-| $skip |Skip Count (スキップ数) |スキップするエントリの数 (既定値 = 0) |
-| $top |Maximum Get Count (最大取得数) |取得するエントリの最大数 (既定 = 256) |
-| $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
-| $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 ItemsList
 
 | プロパティ名 | データ型 |
 | --- | --- |
 | 値 |array |
 
-#### レコードが削除されたとき
-CRM のオブジェクトが削除されたときにフローをトリガーします。
+#### <a name="when-a-record-is-deleted"></a>レコードが削除されたとき
+Dynamics 365 でオブジェクトが削除されたときにフローをトリガーします。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
-| $skip |Skip Count (スキップ数) |スキップするエントリの数 (既定値 = 0) |
-| $top |Maximum Get Count (最大取得数) |取得するエントリの最大数 (既定 = 256) |
-| $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
-| $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
+
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 ItemsList
 
 | プロパティ名 | データ型 |
 | --- | --- |
 | 値 |array |
 
-#### レコードを一覧表示する
+#### <a name="list-records"></a>レコードを一覧表示する
 この操作では、エンティティのレコードを取得します。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
-| $skip |Skip Count (スキップ数) |スキップするエントリの数 (既定値 = 0) |
-| $top |Maximum Get Count (最大取得数) |取得するエントリの最大数 (既定 = 256) |
 | $filter |Filter Query (フィルター クエリ) |返されるエントリを制限する ODATA filter クエリ |
 | $orderby |Order By (並べ替え) |エントリの順序を指定する ODATA orderBy クエリ |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 ItemsList
 
 | プロパティ名 | データ型 |
 | --- | --- |
 | 値 |array |
 
-#### 新しいレコードを作成する
+#### <a name="create-a-new-record"></a>新しいレコードを作成する
 この操作では、エンティティの新しいレコードを作成します。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 なし。
 
-#### レコードを取得する
+#### <a name="get-record"></a>レコードを取得する
 この操作では、エンティティの指定されたレコードを取得します。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
 | id* |項目識別子 |レコードの識別子を指定します。 |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 なし。
 
-#### レコードを削除する
+#### <a name="delete-a-record"></a>レコードを削除する
 この操作では、エンティティのコレクションからレコードを削除します。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
 | id* |項目識別子 |レコードの識別子を指定します。 |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-#### レコードを更新する
+#### <a name="update-a-record"></a>レコードを更新する
 この操作では、エンティティの既存のレコードを更新します。
 
 | プロパティ名 | 表示名 | Description |
 | --- | --- | --- |
-| dataset* |組織名 |Contoso などの CRM 組織の名前 |
+| dataset* |組織名 |Contoso などの Dynamics 365 組織の名前 |
 | table* |エンティティ名 |エンティティの名前 |
 | id* |レコード識別子 |レコードの識別子を指定します。 |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### 出力の詳細
+##### <a name="output-details"></a>出力の詳細
 なし。
 
-## HTTP 応答
-アクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+## <a name="http-responses"></a>HTTP 応答
+アクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。
 
 | Name | 説明 |
 | --- | --- |
@@ -250,10 +305,9 @@ ItemsList
 | 401 |権限がありません |
 | 403 |許可されていません |
 | 404 |見つかりません |
-| 500 |内部サーバー エラー。不明なエラーが発生しました。 |
+| 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
 | default |操作に失敗しました。 |
 
-## 次のステップ
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+## <a name="next-steps"></a>次のステップ
+[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-<!---HONumber=AcomDC_0817_2016-->

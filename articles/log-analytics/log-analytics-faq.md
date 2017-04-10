@@ -1,19 +1,24 @@
 ---
-title: Log Analytics についてよく寄せられる質問 | Microsoft Docs
-description: Log Analytics サービスについてよく寄せられる質問とその回答
+title: "Log Analytics についてよく寄せられる質問 | Microsoft Docs"
+description: "Azure Log Analytics サービスについてよく寄せられる質問とその回答"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/17/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: 4695669dc20b4b4b90ccdaf4db06df2cfcba2167
+ms.lasthandoff: 02/21/2017
+
 
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
@@ -45,7 +50,7 @@ A: いいえ。 Log Analytics では大量のデータが処理され、格納�
 ## <a name="configuration"></a>構成
 **Q.Azure 診断 (WAD) からの読み取りに使用されるテーブル/BLOB コンテナー名は変更できますか?**  
 
-A.  いいえ。現在のところは変更できませんが、今後のリリースで予定されています。
+A.    いいえ。現在のところは変更できませんが、今後のリリースで予定されています。
 
 **Q.OMS サービスにはどの IP アドレスが使用されていますか?ファイアウォールが OMS サービスへのトラフィックのみを許可していることはどうやって確認できますか?**  
 
@@ -59,7 +64,7 @@ A.いいえ。 各種の ExpressRoute トラフィックについては、[Expre
 
 Log Analytics へのトラフィックには、パブリックピアリング ExpressRoute 回路が使用されます。
 
-**Q.既存の Log Analytics ワークスペースを別の Log Analytics ワークスペース/Azure サブスクリプションに移行する場合、シンプルで簡単な方法はありますか?**   当社の Azure サブスクリプションでテストとトライアルを行い、運用に移行しているお客様の OMS ワークスペースが複数あり、お客様の Azure/OMS サブスクリプションに移行したいと予定しています。  
+**Q.既存の Log Analytics ワークスペースを別の Log Analytics ワークスペース/Azure サブスクリプションに移行する場合、シンプルで簡単な方法はありますか?**  当社の Azure サブスクリプションでテストとトライアルを行い、運用に移行しているお客様の OMS ワークスペースが複数あり、お客様の Azure/OMS サブスクリプションに移行したいと予定しています。  
 
 A.いいえ。 `Move-AzureRmResource` コマンドレットは、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することができます。 詳細については、「[Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
 
@@ -86,9 +91,16 @@ A: エージェントが OMS と通信できることを確認するには、[�
 A: SCOM で、OMS 管理対象一覧からコンピューターを削除します。 削除すると、そのエージェントの SCOM 経由の通信はすべて停止されます。 OMS に直接接続されているエージェントの場合、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、OMS との通信を停止できます。
 **[Azure Log Analytics (OMS)]**に表示されているすべてのワークスペースを削除します。
 
+**Q: Azure サブスクリプション間でワークスペースを移動しようとするとエラーになるのはなぜですか?**
+
+A: ソリューションを追加すると、ワークスペースがある Azure サブスクリプションにリソースが作成されます。
+
+通常、サブスクリプションを追加するのは、*Azure サブスクリプション*の管理者か共同作成者です。 OMS ポータルで管理者または共同作成者であることに加え、Azure Portal でも Azure サブスクリプションの管理者または共同作成者である必要があります。
+
+
 ## <a name="agent-data"></a>エージェント データ
 **Q.エージェント経由で Log Analytics に送信できるデータ量はどのくらいですか?顧客ごとのデータ量の上限はありますか?**  
-A.いいえ。 無料プランには、1 つのワークスペースにつき 1 日 500 MB という上限があります。 Standard プランと Premium プランの場合、アップロードされるデータ量に上限はありません。 OMS の Log Analytics はクラウド サービスであり、お客様から送信されるデータ量が 1 日に TB (テラバイト) 単位であったとしても、そのデータ量に合わせて自動的にスケールアップされるように設計されています。
+A.いいえ。 無料プランには、1 つのワークスペースにつき 1 日 500 MB という上限があります。 Standard プランと Premium プランの場合、アップロードされるデータ量に上限はありません。 OMS の Log Analytics はクラウド サービスであり、お客様から送信されるデータ量が&1; 日に TB (テラバイト) 単位であったとしても、そのデータ量に合わせて自動的にスケールアップされるように設計されています。
 
 Log Analytics エージェントは、小さなフットプリントで、一部の基本的なデータ圧縮を実行できるように設計されました。 エージェントに対して実行したテストとその感想についてブログに書かれているお客様もいらっしゃいます。 データ量は、お客様が有効にしているソリューションによって変わります。 データ量の詳細とソリューションごとの明細については、OMS の概要ページの **[使用状況]** タイルを参照してください。
 
@@ -117,7 +129,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-
-<!--HONumber=Oct16_HO2-->
-
 

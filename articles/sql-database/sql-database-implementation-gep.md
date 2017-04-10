@@ -1,19 +1,25 @@
 ---
-title: Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs
-description: SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。
+title: "Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs"
+description: "SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
+ms.custom: customer implementations
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 5730556f4d5af04481c771c8a70f003d6cd2917c
+ms.lasthandoff: 01/13/2017
+
 
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>GEP 社のグローバルな事業展開と効率性向上を Azure が支援
@@ -60,7 +66,7 @@ SMART by GEP アプリケーションの中枢となるのが、企業向け調�
 
 Azure SQL Database に搭載されたフォールト トレランス機能により、オンプレミスでコストを気にしつつ設計するよりも優れた障害復旧機能が自動的に提供されます。 GEP は、Azure SQL Database のアクティブ geo レプリケーション機能、および異なる地理的リージョンにあり、オンラインのままにすることができる、読み取り可能な複数のアクティブなセカンダリ レプリカ (Always On 可用性グループ) を組み合わせて、高可用性のペアを形成しています。 SMART by GEP のデータをリージョンにわたってレプリケートすることで、特定のリージョン全体で障害が発生した場合にも、目標回復ポイント (RPO) および目標復旧時間 (RTO) を最小限に抑えつつ、顧客のデータを容易に復旧できます。
 
-SMART by GEP を利用する各顧客には、オンライン トランザクション処理 (OLTP) 、および経費とレポート分析などの分析用に 1 つずつ、Azure SQL Database インスタンスが提供されます。 Azure SQL Database のエラスティック データベース プールにより、GEP は世界中の数千のデータベースを容易に管理し、予測不可能なデータベース リソースの需要に対応することができます。 エラスティック プールが提供する手段により、プロビジョニングの過不足なく、顧客のデータベースを必要に応じて拡張/縮小するとともに、コストの制御も実現します。 また、PaaS サービスの Azure では、すべて自動アップグレードで Azure SQL Database の新機能を入手できます。
+SMART by GEP を利用する各顧客には、オンライン トランザクション処理 (OLTP) 、および経費とレポート分析などの分析用に&1; つずつ、Azure SQL Database インスタンスが提供されます。 Azure SQL Database のエラスティック プールにより、GEP は世界中の数千のデータベースを容易に管理し、予測困難なデータベース リソースの需要に対応できます。 エラスティック プールが提供する手段により、プロビジョニングの過不足なく、顧客のデータベースを必要に応じて拡張/縮小するとともに、コストの制御も実現します。 また、PaaS サービスの Azure では、すべて自動アップグレードで Azure SQL Database の新機能を入手できます。
 
 ## <a name="unstructured-and-semi-structured-data"></a>非構造化データと半構造化データ
 一方、SMART by GEP の顧客の中には、厳密に構造化されたストレージを必要としないケースもあります。 このような種類のデータには、Azure Blob Storage、Azure Table Storage、および Azure Redis Cache が使用されます。 Azure Blob Storage には、SMART by GEP ユーザーがアプリケーションにアップロードした添付ファイルがすべて格納されます。 またここには、SMART by GEP により静的コンテンツ (カスケード スタイル シート (CSS) や JavaScript ファイルなど) が格納されています。
@@ -70,7 +76,7 @@ SMART by GEP を利用する各顧客には、オンライン トランザクシ
 ## <a name="authentication-and-routing"></a>認証とルーティング
 Azure Access Control Service (ACS) は、SMART by GEP ユーザーに、ソフトウェアのサインインのさまざまなオプションを提供します。 Azure ACS は、SAML (Security Assertion Markup Language) を使用して認証データをやり取りするいずれの ID プロバイダー (Active Directory Domain Services、Ping Identity、OneLogin、SiteMinder など) ともフェデレーションを行うことができます。 これは、ユーザーの資格情報の保存や顧客のパスワード ポリシーの管理を心配せずに、シングル サインオン (SSO) を実装する上で役立ちます。
 
-顧客は 1 度サインインすれば SMART by GEP 内の正しいビジネス リソースにアクセスできます。 顧客のモバイル端末やブラウザー セッションからの要求のリダイレクトおよび負荷分散には、Azure Traffic Manager が使用されています。
+顧客は&1; 度サインインすれば SMART by GEP 内の正しいビジネス リソースにアクセスできます。 顧客のモバイル端末やブラウザー セッションからの要求のリダイレクトおよび負荷分散には、Azure Traffic Manager が使用されています。
 
 ## <a name="other-azure-services"></a>他の Azure サービス
 GEP では、SMART by GEP が顧客のニーズに速やかに対応できるよう、Azure のその他のサービスも多数利用しています。 アプリケーションのプレゼンテーションおよびセキュリティで保護されたビジネス ロジックのサービスのホストには、Azure クラウド サービス (Web ロールと worker ロール) が使用されています。 クラウド サービスでは、IT 部門の関与を必要とせずに、開発者がコードとしてのインフラストラクチャ (IAC) の管理を行い、SMART by GEP の新しいアプリケーションをオンプレミス型データセンターに比べ短期間でデプロイすることが可能です。 GEP の開発者はクラウド サービスのステージング環境を使用して、現在の運用環境には影響を与えずに、新しいリリースをテストできます。 テスト完了後は Azure の VIP スワップ機能を使用して、1 分以内にステージング コードを運用スロットに移動することで、デプロイのダウンタイムを削減できます。
@@ -88,7 +94,7 @@ SMART by GEP が日々生成する数千ものトランザクション メール
 > 
 
 ## <a name="expand-customer-satisfaction-without-expanding-it"></a>顧客満足度を向上し、IT の拡大が不要
-オンプレミス型データセンターから Azure に移行し、SMART by GEP を Azure プラットフォーム上で一から構築することで、GEP はインフラストラクチャや IT 人員を拡大する必要がなく、スケーラビリティと柔軟性を向上させることができました。 実際、GEP では、IT リソースの追加を 5 年以上行っていません。 Azure の利便性に優れた PaaS モデルにより、GEP はベンダー サポートおよび運用管理のコストを削減することができました。 その結果、ソフトウェア開発にリソースを投入でき、さらに、クラウドでの開発により、GEP の開発者は IT 部門との調整に時間を費やしたり、オンプレミスでのライセンス要件に悩まされることなく、新しいアイデアを速やかにテストすることが可能になりました。 Azure SQL Database は、GEP が顧客に常に最高のサービスとパフォーマンスを提供する上で大きく貢献しています。
+オンプレミス型データセンターから Azure に移行し、SMART by GEP を Azure プラットフォーム上で一から構築することで、GEP はインフラストラクチャや IT 人員を拡大する必要がなく、スケーラビリティと柔軟性を向上させることができました。 実際、GEP では、IT リソースの追加を&5; 年以上行っていません。 Azure の利便性に優れた PaaS モデルにより、GEP はベンダー サポートおよび運用管理のコストを削減することができました。 その結果、ソフトウェア開発にリソースを投入でき、さらに、クラウドでの開発により、GEP の開発者は IT 部門との調整に時間を費やしたり、オンプレミスでのライセンス要件に悩まされることなく、新しいアイデアを速やかにテストすることが可能になりました。 Azure SQL Database は、GEP が顧客に常に最高のサービスとパフォーマンスを提供する上で大きく貢献しています。
 
 ## <a name="more-information"></a>詳細情報
 * GEP ホーム ページ: [GEP](http://www.gep.com)
@@ -98,7 +104,5 @@ SMART by GEP が日々生成する数千ものトランザクション メール
 * GEP アーキテクト アソシエイト ディレクター Huzaifa Matawala
 * GEP エンジニアリング マネージャー Sathyan Narasingh
 * GEP データベース アーキテクト Deepa Velukutty
-
-<!--HONumber=Oct16_HO2-->
 
 

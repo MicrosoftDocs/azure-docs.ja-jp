@@ -1,19 +1,24 @@
 ---
-title: Service Fabric アプリケーションのアップグレード チュートリアル | Microsoft Docs
-description: この記事では、Visual Studio による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
+title: "Service Fabric アプリのアップグレード チュートリアル | Microsoft Docs"
+description: "この記事では、Visual Studio による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2016
+ms.date: 03/02/2017
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9fc53417c40225c87d3849cbe51712849e5cc93a
+ms.lasthandoff: 03/03/2017
+
 
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのアップグレード チュートリアル
@@ -27,7 +32,7 @@ ms.author: subramar
 
 Azure Service Fabric では、変更されたサービスのみをアップグレードし、アップグレード プロセス全体を通じてそのアプリケーションの正常性を監視することで、クラウド アプリケーションのアップグレードのプロセスを簡略化します。 また、問題が発生した場合は、アプリケーションが自動的に以前のバージョンにロールバックされます。 Service Fabric アプリケーションのアップグレードは、"*ゼロ ダウンタイム*"です。アプリケーションをダウンタイムなしでアップグレードできます。 このチュートリアルでは、Visual Studio からローリング アップグレードを行う方法について説明します。
 
-## <a name="step-1:-build-and-publish-the-visual-objects-sample"></a>手順 1: ビジュアル オブジェクト サンプルのビルドと発行
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>手順 1: ビジュアル オブジェクト サンプルのビルドと発行
 まず、GitHub から [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Actors/VisualObjects) アプリケーションをダウンロードします。 次に、**VisualObjects** アプリケーション プロジェクトを右クリックし、[Service Fabric] メニュー項目の **[発行]** コマンドを選択して、アプリケーションをビルドし、発行します。
 
 ![Context menu for a Service Fabric application][image1]
@@ -38,7 +43,7 @@ Azure Service Fabric では、変更されたサービスのみをアップグ�
 
 これで、ダイアログ ボックスの **[発行]** をクリックできるようになりました。 [クラスターおよびアプリケーションを表示する Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)を使用できます。 Visual Objects アプリケーションには、ブラウザーのアドレス バーに「 [http://localhost:8082/visualobjects/](http://localhost:8082/visualobjects/) 」と入力すると移動できる Web サービスがあります。  画面上を動く 10 個のフローティング ビジュアル オブジェクトが表示されます。
 
-## <a name="step-2:-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
+## <a name="step-2-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことに気付くかもしれません。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。
 
 VisualObjects ソリューション内の VisualObjects.ActorService プロジェクトを選択し、**VisualObjectActor.cs** ファイルを開きます。 そのファイル内で `MoveObject` メソッドに移動して、`visualObject.Move(false)` をコメント アウトし、`visualObject.Move(true)` をコメント解除します。 このコードによって、サービスのアップグレード後、オブジェクトが回転します。  **これで、ソリューションを (リビルドではなく) ビルドできるようになりました**。これによって、変更したプロジェクトがビルドされます。 *[すべてリビルド]* を選択した場合は、すべてのプロジェクトのバージョンを更新する必要があります。
@@ -55,10 +60,10 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 
 変更を保存し、 **[アプリケーションのアップグレード]** ボックスをオンにします。
 
-## <a name="step-3:-upgrade-your-application"></a>手順 3: アプリケーションのアップグレード
+## <a name="step-3--upgrade-your-application"></a>手順 3: アプリケーションのアップグレード
 [アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に詳しくなって、アップグレードのさまざまなパラメーター、タイムアウト、および適用できる正常性条件に対する理解を深めます。 このチュートリアルでは、サービスの正常性評価の条件は、既定値 (監視なしのモード) に設定されています。 この設定を構成するには、 **[アップグレードの設定の構成]** を選択し、必要に応じてパラメーターを変更します。
 
-アプリケーションのアップグレードを開始する準備がすべて完了しました。開始するには **[発行]** を選択します。 このオプションによりアプリケーションがバージョン 2.0.0 にアップグレードされ、オブジェクトが回転するようになります。 Service Fabric では更新ドメインが 1 つずつアップグレードされます (オブジェクトがいくつか最初に更新された後、他のオブジェクトが続きます)。サービスは、アップグレード中も利用できます。 サービスへのアクセスをチェックするには、クライアント (ブラウザー) を使用します。  
+アプリケーションのアップグレードを開始する準備がすべて完了しました。開始するには **[発行]** を選択します。 このオプションによりアプリケーションがバージョン 2.0.0 にアップグレードされ、オブジェクトが回転するようになります。 Service Fabric では更新ドメインが&1; つずつアップグレードされます (オブジェクトがいくつか最初に更新された後、他のオブジェクトが続きます)。サービスは、アップグレード中も利用できます。 サービスへのアクセスをチェックするには、クライアント (ブラウザー) を使用します。  
 
 アプリケーションのアップグレードが進むと、Service Fabric Explorer で、アプリケーションの下にある **[Upgrades in Progress (進行中のアップグレード)]** タブを使用して監視できます。
 
@@ -81,9 +86,4 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

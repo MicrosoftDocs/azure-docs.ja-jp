@@ -1,23 +1,28 @@
 ---
-title: データ資産を管理する方法 | Microsoft Docs
-description: この記事では、Azure Data Catalog に登録されたデータ資産の可視性と所有権を制御する方法について重点的に説明しています。
+title: "Azure Data Catalog のデータ資産を管理する方法 | Microsoft Docs"
+description: "この記事では、Azure Data Catalog に登録されたデータ資産の可視性と所有権を制御する方法について重点的に説明しています。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
+ms.openlocfilehash: 45a7b2df88a2edf2bccdfc9d2aaea932f2096f24
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# <a name="how-to-manage-data-assets"></a>データ資産を管理する方法
+# <a name="how-to-manage-data-assets-in-azure-data-catalog"></a>Azure Data Catalog のデータ資産を管理する方法
 ## <a name="introduction"></a>はじめに
 **Azure Data Catalog** が果たす機能はデータ ソースの検出です。分析や意思決定を行うユーザーが、必要とするデータ ソースを容易に検出し、把握できるようにする働きがあります。 この検出機能が最も高い利便性を発揮するのは、すべてのユーザーが、利用できる最大範囲のデータ ソースを探し出し、把握できたときです。 その点を考慮して、Data Catalog の既定の動作は、登録されているすべてのデータ ソースをカタログの全ユーザーが見える状態にし、全ユーザーが検出できるように設定されています。
 
@@ -27,8 +32,8 @@ Data Catalog のユーザーにデータ自体へのアクセス権は与えら�
 
 > [!NOTE]
 > この記事で説明されている機能は、Azure Data Catalog の Standard Edition でのみ利用できます。 所有権を取得してデータ資産の可視性を制限する機能は、Free Edition では利用できません。
-> 
-> 
+>
+>
 
 ## <a name="managing-ownership-of-data-assets"></a>データ資産の所有権の管理
 既定では、Data Catalog に登録されているデータ資産には所有権が設定されていません。カタログにアクセスする権限を持ったすべてのユーザーが、それらの資産を検出したり資産に注釈を付けたりすることができます。 ユーザーは、未所有となっているデータ資産の所有権を取得したうえで、その資産の可視性を制限できます。
@@ -37,8 +42,8 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 
 > [!NOTE]
 > Data Catalog 内の所有権は、そのカタログに保存されているメタデータにのみ作用します。 基になるデータ ソースに対する権限は一切付与されません。
-> 
-> 
+>
+>
 
 ### <a name="taking-ownership"></a>所有権の取得
 データ資産の所有権は、Data Catalog ポータルから [所有権の取得] オプションを選択することによって取得できます。 未所有となっているデータ資産の所有権を取得するために特別な権限は必要はありません。未所有のデータ資産の所有権は、すべてのユーザーが取得できます。
@@ -47,9 +52,9 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 データ資産に既に所有権が設定されている場合、そのままではユーザーが所有権を取得できません。既存の所有者がそのユーザーを共同所有者として追加する必要があります。 すべての所有者は、ユーザーまたはセキュリティ グループを共同所有者として追加できます。
 
 > [!NOTE]
-> データ資産に所有権を設定する場合、所有者は少なくとも 2 人割り当てることをお勧めします。
-> 
-> 
+> データ資産に所有権を設定する場合、所有者は少なくとも&2; 人割り当てることをお勧めします。
+>
+>
 
 ### <a name="removing-owners"></a>所有者の削除
 資産の所有者はだれでも共同所有者を追加できます。同様に、資産の所有者はだれでも共同所有者を削除できます。
@@ -61,15 +66,12 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 
 > [!NOTE]
 > 資産の所有権と可視性の権限は、個々のユーザーにではなく、できるだけセキュリティ グループに割り当てるようにしてください。
-> 
-> 
+>
+>
 
 ## <a name="catalog-administrators"></a>カタログの管理者
 Data Catalog の管理者は、暗黙的にカタログ内の全資産の共同所有者に割り当てられます。 資産の所有者が、Data Catalog 管理者から可視性を削除することはできません。また管理者は、カタログ内のすべてのデータ資産の所有権と可視性を管理できます。
 
 ## <a name="summary"></a>概要
 メタデータとデータ資産の検出に関して Data Catalog にはクラウドソーシング型のモデルが採用されており、すべてのカタログ ユーザーがデータに寄与し、またデータを検出することができます。 特定のデータ資産の使用や可視性を制限する所有権機能と管理機能は、Data Catalog の Standard Edition で利用できます。
-
-<!--HONumber=Oct16_HO2-->
-
 

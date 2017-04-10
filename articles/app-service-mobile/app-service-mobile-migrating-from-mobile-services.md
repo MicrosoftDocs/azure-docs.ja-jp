@@ -1,79 +1,83 @@
 ---
-title: Mobile Services から App Service モバイル アプリへの移行
-description: Mobile Services アプリケーションを App Service モバイル アプリに簡単に移行する方法について説明します。
+title: "Mobile Services から App Service モバイル アプリへの移行"
+description: "Mobile Services アプリケーションを App Service モバイル アプリに簡単に移行する方法について説明します。"
 services: app-service\mobile
-documentationcenter: ''
+documentationcenter: 
 author: adrianhall
-manager: dwrede
-editor: ''
-
+manager: adrianha
+editor: 
+ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2016
-ms.author: adrianhall
+ms.date: 10/03/2016
+ms.author: adrianha
+translationtype: Human Translation
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: d5bceb8dd53850f0f11be05be2d5e5d3fbd01c5d
+ms.lasthandoff: 03/01/2017
+
 
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
-[Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
+[Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
 
 ## <a name="what-does-migration-do"></a>移行がサイトにもたらすもの
-Azure Mobile Service を移行すれば、コードを変更することなくモバイル サービスを [Azure App Service] アプリに変えることができます。Notification Hubs、SQL データ接続、認証設定、スケジュールされたジョブ、ドメイン名は変更されません。Azure Mobile Service を利用しているモバイル クライアントは通常どおりの動作を続けます。サービスは Azure App Service に移行されると再起動します。
+Azure Mobile Service を移行すれば、コードを変更せずにモバイル サービスを [Azure App Service] アプリに変えることができます。  Notification Hubs、SQL データ接続、認証設定、スケジュールされたジョブ、ドメイン名は変更されません。  Azure Mobile Service を利用しているモバイル クライアントは通常どおりの動作を続けます。  サービスは Azure App Service に移行されると再起動します。
 
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
 ## <a name="why-migrate"></a>サイトを移行する理由
 Microsoft では、次のような Azure App Service の機能を最大限に活用できるように Azure Mobile Service の移行を推奨しています。
 
-* [WebJobs] や [custom domain names] などの新しいホスト機能。
-* [ハイブリッド接続]に加えて、[VNet] を使用したオンプレミス リソースへの接続
-* New Relic または [Application Insights] による監視とトラブルシューティング。
+* [Web ジョブ] や [custom domain names] などの新しいホスト機能。
+* [ハイブリッド接続]に加えて、[VNet] を使用したオンプレミス リソースへの接続。
+* New Relic または [Application Insights]による監視とトラブルシューティング。
 * [ステージング スロット]、ロールバック、本稼動テストなど、組み込み DevOps ツール。
 * [自動スケール]、負荷分散、[パフォーマンス監視]。
 
 Azure App Service の利点の詳細については、[Mobile Services と App Service の比較]に関するトピックを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-サイトに対する大規模な作業に着手する前に、SQL データベースと[モバイル サービス スクリプトをバックアップする]必要があります。
-
-実稼働サイトを移行する前に移行プロセスをテストする場合、新しい [Azure リージョン]で実稼働の Azure モバイル サービスを複製し (データ ソースのコピーを含む完全な複製)、新しい URL に対して移行をテストします。また、移行されたサイトを適切にテストするには、テスト サイトを指すテスト クライアント実装が必要になります。
+サイトに対する大規模な作業に着手する前に、SQL データベースとモバイル サービス スクリプトをバックアップする必要があります。
 
 ## <a name="migrating-site"></a>サイトを移行する
 この移行プロセスでは、単一の Azure リージョン内のすべてのサイトを移行します。
 
 サイトを移行するには:
 
-1. [Azure クラシック ポータル]にログオンします。
+1. [Azure クラシック ポータル]にログインします。
 2. 移行するリージョン内のモバイル サービスを選択します。
 3. **[App Service に移行する]** ボタンをクリックします。
    
    ![[移行] ボタン][0]
 4. [App Service に移行する] ダイアログを読みます。
-5. ボックスにモバイル サービスの名前を入力します。たとえば、ドメイン名が「contoso.azure-mobile.net」の場合、ボックスに「*contoso*」と入力します。
+5. ボックスにモバイル サービスの名前を入力します。  たとえば、ドメイン名が "contoso.azure-mobile.net" の場合、ボックスに「*contoso*」と入力します。
 6. チェック マーク ボタンをクリックします。
 
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
+アクティビティ モニターでの移行の状態を監視します。 Azure クラシック ポータルで、サイトが一覧に "*移行中*" として表示されます。
 
   ![移行アクティビティ モニター][1]
 
-移行するモバイル サービスごとに移行には 3 分から 15 分かかります。サイトは移行の間も利用できますが、移行プロセスの終了時に再起動されます。再起動プロセスの間、サイトは数秒間利用できなくなります。
+移行するモバイル サービスごとに移行には 3 分から 15 分かかります。  移行中も、サイトは引き続き利用できます。
+サイトは移行プロセスの最後に再起動されます。  再起動プロセスの間、サイトは数秒間利用できなくなります。
 
 ## <a name="finalizing-migration"></a>移行の最終処理
-移行プロセスの終わりとして、モバイル クライアントからサイトをテストしてください。モバイル クライアントを変更せず、あらゆる共通クライアント アクションを実行できることを確認します。さらに、価格レベルの変更など、移行のために行った変更を必要に応じて戻せることを確認してください。
+移行プロセスの終わりに、モバイル クライアントからサイトをテストします。  モバイル クライアントを変更せず、あらゆる共通クライアント アクションを実行できることを確認します。  
 
 ### <a name="update-app-service-tier"></a>適切な App Service 価格レベルを選択する
 Azure App Service に移行した後は、価格設定がより自由になります。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. [設定] メニューの **[App Service プラン]** をクリックします。
 5. **[価格レベル]** タイルをクリックします。
-6. 要件に合うタイルをクリックし、**[選択]** をクリックします。利用できる価格レベルを表示するには、**[すべて表示]** をクリックする必要があります。
+6. 要件に合うタイルをクリックし、**[選択]** をクリックします。  利用できる価格レベルを表示するには、**[すべて表示]** をクリックする必要があります。
 
-出発点としては以下が推奨されます。
+最初は以下のレベルを推奨します。
 
 | モバイル サービス価格レベル | App Service 価格レベル |
 |:--- |:--- |
@@ -81,89 +85,89 @@ Azure App Service に移行した後は、価格設定がより自由になり�
 | 基本 |B1 Basic |
 | 標準 |S1 Standard |
 
-自分のアプリケーションに適した価格レベルを自由に選択できます。App Service の価格に関する詳細については、「[App Service 価格]」を参照してください。
+自分のアプリケーションに適した価格レベルを自由に選択できます。  App Service の価格に関する詳細については、「 [App Service 価格] 」を参照してください。
 
 > [!TIP]
-> App Service Standard 層では、[ステージング スロット]、自動バックアップ、自動スケールなど、さまざまな機能にアクセスできます。この機会に新しい機能をお試しください。
+> App Service Standard レベルでは、[ステージング スロット]、自動バックアップ、自動スケールなど、さまざまな機能にアクセスできます。  この機会に新しい機能をお試しください。
 > 
 > 
 
 ### <a name="review-migration-scheduler-jobs"></a>移行された Scheduler Jobs の確認
-Scheduler Jobs は移行後約 30 分経過するまで表示されません。スケジュールされたジョブはすべて引き続きバック グラウンドで実行されます。スケジュールされたジョブを表示するには:
+Scheduler Jobs は移行後約 30 分経過するまで表示されません。  スケジュールされたジョブは、引き続きバックグラウンドで実行されます。
+再度表示できるようになった後で、スケジュールされたジョブを表示するには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[参照]** を選択し、*[フィルター]* ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
 
-移行後に利用できる無料スケジューラ ジョブの数は限られています。使用状況と [Azure Scheduler プラン]を確認してください。
+移行後に利用できる無料スケジューラ ジョブの数は限られています。  使用状況と [Azure Scheduler プラン]を確認してください。
 
 ### <a name="configure-cors"></a>必要に応じて CORS を構成する
-クロス オリジン リソース共有は、Web サイトが異なるドメインの Web API にアクセスする手法です。Azure Mobile Services に Web サイトが関連付けられている場合、移行の一環として CORS を構成する必要があります。Azure Mobile Services へのアクセスをモバイル デバイスに限定していた場合、特別な場合を除き、CORS を構成する必要はありません。
+クロス オリジン リソース共有は、Web サイトが異なるドメインの Web API にアクセスする手法です。  使用している Azure Mobile Services に Web サイトが関連付けられている場合、移行の一環として CORS を構成する必要があります。  Azure Mobile Services へのアクセスをモバイル デバイスに限定していた場合、特別な場合を除き、CORS を構成する必要はありません。
 
-移行した CORS 設定は **MS\_CrossDomainWhitelist** アプリ設定として利用できます。App Service の CORS 機能をサイトに移行するには:
+移行した CORS 設定は **MS_CrossDomainWhitelist** アプリ設定として利用できます。  App Service の CORS 機能をサイトに移行するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. API メニューの **[CORS]** をクリックします。
-5. 許可されたオリジンをボックスに 1 つずつ入力し、Enter を押します。
+5. 許可されたオリジンをボックスに&1; つずつ入力し、Enter を押します。
 6. 許可されたオリジンの一覧が正しければ、[保存] ボタンをクリックします。
 
-この作業は任意ですが、管理しやすくなります。
-
 > [!TIP]
-> Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> Azure App Service を使用する利点の&1; つは、同じサイトで Web サイトとモバイル サービスを実行できることです。  詳細については、「[次のステップ](#next-steps)」を参照してください。
 > 
 > 
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
-Azure App Service に移行すると、サイトの発行プロファイルが変更されます。Visual Studio 内からサイトを発行する場合、新しい発行プロファイルが必要になります。新しい発行プロファイルをダウンロードするには、次の手順に従います。
+Azure App Service に移行すると、サイトの発行プロファイルが変更されます。  Visual Studio 内からサイトを発行する場合、新しい発行プロファイルが必要になります。  新しい発行プロファイルをダウンロードするには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. **[発行プロファイルの取得]** をクリックします。
 
-PublishSettings ファイルがコンピューターにダウンロードされます。通常、ファイル名は *サイト名*.PublishSettings です。これで、発行設定を既存のプロジェクトにインポートできます。
+PublishSettings ファイルがコンピューターにダウンロードされます。  通常、ファイル名は <*サイト名*>.PublishSettings です。  以下の手順で、発行設定を既存のプロジェクトにインポートします。
 
 1. Visual Studio を開き、Azure Mobile Service プロジェクトを開きます。
-2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行...]** をクリックします。
-3. **[インポート]** をクリックします。
-4. **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。**[OK]** をクリックします。
+2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** を選択します。
+3. **[インポート]**をクリックします。
+4. **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。  **[OK]**
 5. **[接続の検証]** をクリックして、発行設定が機能していることを確認します。
 6. **[発行]** をクリックして、サイトを発行します。
 
 ## <a name="working-with-your-site"></a>サイトの移行後の操作
-まず、[Azure ポータル]の移行後で、新しい App Service を操作します。以下は、[Azure クラシック ポータル]で実行していた特定の操作とそれに対応する App Service 操作に関する注記です。
+移行後に [Azure Portal] で新しい App Service を操作します。  以下は、 [Azure クラシック ポータル]で実行していた特定の操作とそれに対応する App Service 操作に関する注記です。
 
 ### <a name="publishing-your-site"></a>移行したサイトをダウンロードし、公開する
-サイトは git または ftp 経由で利用可能であり、WebDeploy、TFS、Mercurial、GitHub、FTP など、さまざまなメカニズムで再公開できます。デプロイメント資格情報はサイトの残りの部分で移行されます。デプロイメント資格情報を設定しなかった場合、または資格情報を覚えていない場合はリセットできます。
+サイトは git または ftp 経由で利用可能であり、WebDeploy、TFS、Mercurial、GitHub、FTP など、さまざまなメカニズムで再公開できます。  デプロイメント資格情報はサイトの残りの部分で移行されます。  デプロイメント資格情報を設定しなかった場合、または資格情報を覚えていない場合はリセットできます。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. [公開] メニューの **[デプロイメント資格情報]** をクリックします。
 5. ボックスに新しいデプロイメント資格情報を入力し、[保存] ボタンをクリックします。
 
-これらの資格情報を利用し、git でサイトの複製を作成したり、GitHub、TFS、Mercurial から自動化デプロイを設定したりできます。詳細については、「[Azure App Service のデプロイに関するドキュメント]」を参照してください。
+これらの資格情報を利用し、git でサイトの複製を作成したり、GitHub、TFS、Mercurial から自動化デプロイを設定したりできます。  詳細については、「 [Azure App Service のデプロイに関するドキュメント]」を参照してください。
 
 ### <a name="appsettings"></a>アプリケーションの設定
-移行したモバイル サービスのほとんどの設定は [アプリケーション設定] から利用できます。アプリ設定の一覧は [Azure ポータル]から取得できます。アプリケーションの設定を表示または変更するには:
+移行したモバイル サービスのほとんどの設定は [アプリケーション設定] から利用できます。  アプリ設定の一覧は [Azure Portal] から取得できます。
+アプリケーションの設定を表示または変更するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
-4. [全般] メニューで、**[アプリケーション設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
+4. [全般] メニューの **[アプリケーション設定]** をクリックします。
 5. [アプリケーション設定] セクションまでスクロールし、アプリ設定を見つけます。
-6. アプリ設定の値をクリックし、値を編集します。**[保存]** をクリックして値を保存します。
+6. アプリ設定の値をクリックし、値を編集します。  **[保存]** をクリックして値を保存します。
 
 複数のアプリ設定を同時に更新できます。
 
 > [!TIP]
-> 同じ値を含むアプリケーション設定が 2 つあります。たとえば、*ApplicationKey* と *MS\_ApplicationKey* の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> 同じ値を含むアプリケーション設定が&2; つあります。  たとえば、*ApplicationKey* と *MS\_ApplicationKey* の&2; つがあります。  両方のアプリケーション設定を同時に更新します。
 > 
 > 
 
 ### <a name="authentication"></a>認証
-すべての認証設定は、移行したサイトでアプリケーション設定として利用できます。認証設定を更新するには、適切なアプリケーション設定を変更する必要があります。次の表は、ご利用の認証プロバイダーに適したアプリケーションの設定をまとめたものです。
+すべての認証設定は、移行したサイトでアプリケーション設定として利用できます。  認証設定を更新するには、適切なアプリケーション設定を変更する必要があります。  次の表は、ご利用の認証プロバイダーに適したアプリケーションの設定をまとめたものです。
 
 | プロバイダー | クライアント ID | クライアント シークレット | その他の設定 |
 |:--- |:--- |:--- |:--- |
@@ -178,19 +182,19 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 > [!WARNING]
 > **[設定] メニューの認証メカニズムは使用しないでください。**
 > 
-> Azure App Service の *[認証/承認]* 設定メニューに別個の「コードなし」認証/承認システムがあり、[設定] メニューに (廃止) *[モバイル認証]* オプションがあります。これらのオプションと移行した Azure モバイル サービスとの間には互換性がありません。[サイトをアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)し、Azure App Service 認証を最大限に活用できます。
+> Azure App Service の *[認証/承認]* 設定メニューに別個の "コードなし" 認証/承認システムがあり、[設定] メニューに (非推奨の) *[モバイル認証]* オプションがあります。  これらのオプションと移行した Azure モバイル サービスとの間には互換性がありません。  [サイトをアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md) し、Azure App Service 認証を最大限に活用できます。
 > 
 > 
 
 ### <a name="easytables"></a>データ
-Mobile Services の *[データ]* タブは Azure ポータルでは *[テーブルの簡単操作]* に取って代わられました。テーブルの簡単操作にアクセスするには:
+Mobile Services の *[データ]* タブは Azure Portal では *[テーブルの簡単操作]* に取って代わられました。  テーブルの簡単操作にアクセスするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. [モバイル] メニューの **[テーブルの簡単操作]** をクリックします。
 
-**[追加]** ボタンをクリックして新しいテーブルを追加したり、テーブル名をクリックして既存のテーブルにアクセスしたりできます。このブレードからは次のようなさまざまな操作を実行できます。
+**[追加]** ボタンをクリックして新しいテーブルを追加したり、テーブル名をクリックして既存のテーブルにアクセスしたりできます。  このブレードからは次のようなさまざまな操作を実行できます。
 
 * テーブルのアクセス許可を変更する
 * 操作スクリプトを編集する
@@ -200,80 +204,81 @@ Mobile Services の *[データ]* タブは Azure ポータルでは *[テーブ
 * テーブルの特定の行を削除する
 
 ### <a name="easyapis"></a>API
-Mobile Services の *[API]* タブは Azure ポータルでは *[API の簡単操作]* に取って代わられました。API の簡単操作にアクセスするには:
+Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]* に取って代わられました。  API の簡単操作にアクセスするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. [モバイル] メニューの **[API の簡単操作]** をクリックします。
 
-移行した API はブレードに一覧表示されます。このブレードから新しい API を追加することもできます。特定の API を管理するには、API をクリックします。新しいブレードから、アクセス許可を調整したり、API のスクリプトを編集したりできます。
+移行した API は既にブレードに一覧表示されています。  このブレードから API を追加することもできます。  特定の API を管理するには、その API をクリックします。
+新しいブレードから、アクセス許可を調整したり、API のスクリプトを編集したりできます。
 
 ### <a name="on-demand-jobs"></a>スケジューラ ジョブ
-スケジューラ ジョブはすべて、[スケジューラ ジョブ コレクション] セクションから利用できます。スケジューラ ジョブにアクセスするには、次の手順に従います。
+スケジューラ ジョブはすべて、[スケジューラ ジョブ コレクション] セクションから利用できます。  スケジューラ ジョブにアクセスするには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[参照]** を選択し、*[フィルター]* ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
-3. サイトのジョブ コレクションを選択します。ジョブ コレクションには、*サイト名*-Jobs という名前が付けられます。
-4. **[設定]** をクリックします。
+3. サイトのジョブ コレクションを選択します。  <*サイト名*>-Jobs という名前が付けられます。
+4. **[設定]**をクリックします。
 5. [管理] の **[スケジューラ ジョブ]** をクリックします。
 
-スケジュールされたジョブは、移行前に指定した頻度で表示されます。オンデマンド ジョブは無効になります。オンデマンド ジョブを実行するには、次の手順に従います。
+スケジュールされたジョブは、移行前に指定した頻度で表示されます。  オンデマンド ジョブは無効になります。  オンデマンド ジョブを実行するには、次の手順に従います。
 
 1. 実行するジョブを選択します。
 2. 必要に応じて、**[有効にする]** をクリックしてジョブを有効にします。
 3. **[設定]**、**[スケジュール]** の順にクリックします。
 4. 定期的なアイテムとして **[1 回]** を選択し、**[保存]** をクリックします。
 
-オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration` にあります。すべてのオンデマンド ジョブを [WebJobs] に変更することが推奨されます。新しいスケジューラ ジョブは、[WebJobs] として作成してください。
+オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration`にあります。  すべてのオンデマンド ジョブを [Web ジョブ]または[関数]に変更することが推奨されます。  新しいスケジューラ ジョブは、[Web ジョブ]または[関数]として記述してください。
 
 ### <a name="notification-hubs"></a>Notification Hubs
-Mobile Services では、プッシュ通信に Notification Hubs が使用されます。次のアプリケーション設定を使用して、移行後、モバイル サービスに通知ハブをリンクします。
+Mobile Services では、プッシュ通信に Notification Hubs が使用されます。  次のアプリケーション設定を使用して、移行後、モバイル サービスに通知ハブをリンクします。
 
 | アプリケーション設定 | 説明 |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |通知ハブの名前空間 |
 | **MS\_NotificationHubName** |通知ハブの名前 |
 | **MS\_NotificationHubConnectionString** |通知ハブの接続文字列 |
-| **MS\_NamespaceName** |MS\_PushEntityNamespace のエイリアス |
+| **MS\_NamespaceName** |MS_PushEntityNamespace のエイリアス |
 
-通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
+通知ハブは [Azure Portal] 経由で管理されます。  Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
-1. [Azure ポータル]にログインします。
-2. **[参照]** > **[Notification Hubs]** の順に選択します。
+1. [Azure Portal]にログインします。
+2. **[参照]****[通知ハブ]** の順に選択します。
 3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [!NOTE]
-> 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
+> 通知ハブが "Mixed" 型の場合は表示されません。  「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。  [Mixed 名前空間を変換]してから、次に進みます。  変換が完了すると、通知ハブが [Azure Portal] に表示されます。
 > 
 > 
 
-詳細については、[Notification Hubs] ドキュメントを確認してください。
+詳細については、 [Notification Hubs] ドキュメントを確認してください。
 
 > [!TIP]
-> [Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+> [Azure Portal] の Notification Hubs 管理機能はまだプレビュー段階です。  [Azure クラシック ポータル] で引き続きすべての Notification Hubs を管理できます。
 > 
 > 
 
 ### <a name="legacy-push"></a>従来のプッシュ設定
-Notification Hubs での導入前にモバイル サービスでプッシュを構成した場合、使われているのは_従来のプッシュ_です。プッシュを使用しており、構成に通知ハブが表示されていない場合は、_従来のプッシュ_が使われているものと思われます。この機能は、その他すべての機能と共に移行されますが、引き続き利用できます。ただし、移行の完了後すぐに Notification Hubs にアップグレードすることをお勧めします。
+Notification Hubs での導入前にモバイル サービスでプッシュを構成した場合、使われているのは "*従来のプッシュ*" です。  プッシュを使用しており、構成に通知ハブが表示されていない場合は、"*従来のプッシュ*" が使われているものと思われます。  この機能は、他のすべての機能と共に移行されます。  ただし、移行の完了後すぐに Notification Hubs にアップグレードすることをお勧めします。
 
-それまでの間、従来のプッシュ設定はすべて [アプリ設定] で利用できます (大きな例外は APNs 証明書)。APNs 証明書は、サイトで適切なファイルを置き換えることで置き換え可能です。それには、Azure App Service 向けのいずれかのデプロイ オプションを使います。
+それまでの間、従来のプッシュ設定はすべて [アプリ設定] で利用できます (大きな例外は APNs 証明書)。  APNS 証明書を更新します。そのためには、ファイル システムで適切なファイルを置き換えます。
 
 ### <a name="app-settings"></a>その他のアプリ設定
-次の追加アプリ設定はモバイル サービスから移行され、*[設定]* > *[アプリ設定]* にあります。
+次の追加アプリ設定はモバイル サービスから移行され、 *[設定]* > *App [設定]*にあります。
 
 | アプリケーション設定 | 説明 |
 |:--- |:--- |
 | **MS\_MobileServiceName** |アプリの名前 |
-| **MS\_MobileServiceDomainSuffix** |ドメインの接頭辞 (例: azure-mobile.net) |
+| **MS\_MobileServiceDomainSuffix** |ドメインのプレフィックス。 つまり  azure-mobile.net |
 | **MS\_ApplicationKey** |アプリケーション キー |
 | **MS\_MasterKey** |アプリ マスター キー |
 
-アプリケーション キーとマスター キーは、元のモバイル サービスのアプリケーション キーと同じになる必要があります。具体的に言うと、アプリケーション キーはモバイル クライアントのモバイル API の利用を検証するために送信されます。
+アプリケーション キーとマスター キーは、元のモバイル サービスのアプリケーション キーと同じになる必要があります。  具体的に言うと、アプリケーション キーはモバイル クライアントのモバイル API の利用を検証するために送信されます。
 
 ### <a name="cliequivalents"></a>対応するコマンド ライン
-*azure モバイル* コマンドを利用して Azure Mobile Services サイトを管理することができなくなります。多くの関数が *azure サイト* コマンドに取って代わられました。下の表を利用し、共通コマンドに対応するものを探してください。
+*azure モバイル* コマンドを利用して Azure Mobile Services サイトを管理することができなくなります。  多くの関数が *azure サイト* コマンドに取って代わられました。  下の表を利用し、一般的なコマンドに対応するものを探してください。
 
 | *Azure Mobile* コマンド | 対応する *Azure サイト* コマンド |
 |:--- |:--- |
@@ -296,36 +301,37 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 | mobile appsetting delete *name* *key* |site appsetting delete *key* *name* |
 | mobile appsetting show *name* *key* |site appsetting delete *key* *name* |
 
-適切なアプリケーション設定を更新し、認証またはプッシュ通信を更新します。ファイルを編集し、ftp または git を使用してサイトを公開します。
+適切なアプリケーション設定を更新し、認証またはプッシュ通信を更新します。
+ファイルを編集し、ftp または git を使用してサイトを公開します。
 
 ### <a name="diagnostics"></a>診断とログ
-通常、診断ログは Azure App Service で無効になっています。診断ログを有効にするには:
+通常、診断ログは Azure App Service で無効になっています。  診断ログを有効にするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。
 4. [機能] メニューで **[診断ログ]** を選択します。
 5. **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** のログの **[オン]** をクリックします。
 6. Web サーバーのログの **[ファイル システム]** をクリックします。
-7. **[保存]** をクリックします。
+7. **[保存]**
 
 ログを表示するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. **[ツール]** ボタンをクリックします。
 4. [監視] メニューの **[ログ ストリーム]** を選択します。
 
-生成されたログはウィンドウにストリーム配信されます。ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。詳細については、[ログ]に関するドキュメントを参照してください。
+ログは、生成されるとウィンドウに表示されます。  ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。 詳細については、[ログ]に関するドキュメントを参照してください。
 
 ## <a name="known-issues"></a>既知の問題
-### 移行したモバイル アプリの複製を削除すると、サイトが停止する
-Azure PowerShell を使用して、移行したモバイル サービスを複製し、その後複製を削除すると、運用サービスの DNS エントリが削除されます。その結果、インターネットからサイトにアクセスできなくなります。
+### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>移行したモバイル アプリの複製を削除すると、サイトが停止する
+Azure PowerShell を使用して、移行したモバイル サービスを複製し、その後複製を削除すると、運用サービスの DNS エントリが削除されます。  サイトは、インターネットからアクセスできなくなります。  
 
-解決策: Microsoft ではこの問題に取り組んでいます。サイトを複製する必要がある場合は、ポータルを使用してください。
+解決方法: サイトを複製する必要がある場合は、ポータルを使用してください。
 
-### web.config の変更が機能しない
-ASP.NET サイトがある場合、`Web.config` ファイルの変更は機能しません。Azure App Service は、Mobile Services ランタイムをサポートするために適切な `Web.config` ファイルを起動時に作成します。XML 変換ファイルを使用することで特定の設定 (カスタム ヘッダーなど) をオーバーライドできます。呼び出される `applicationHost.xdt` でファイルを作成します。このファイルは Azure Service の `D:\home\site` ディレクトリに格納されます。これは、カスタム デプロイ スクリプトで、または直接 Kudu を使用して、実現できます。ドキュメントの例を以下に示します。
+### <a name="changing-webconfig-does-not-work"></a>Web.config の変更が機能しない
+ASP.NET サイトがある場合、`Web.config` ファイルの変更は適用されません。  Azure App Service は、Mobile Services ランタイムをサポートするために適切な `Web.config` ファイルを起動時に作成します。  XML 変換ファイルを使用することで特定の設定 (カスタム ヘッダーなど) をオーバーライドできます。  呼び出される `applicationHost.xdt` でファイルを作成します。このファイルは Azure Service の `D:\home\site` ディレクトリに格納されます。  カスタム デプロイ スクリプトで、または直接 Kudu を使用して、`applicationHost.xdt` ファイルをアップロードします。  次にドキュメントの例を示します。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -346,21 +352,21 @@ ASP.NET サイトがある場合、`Web.config` ファイルの変更は機能�
 
 詳細については、GitHub の「[XDT Transform Samples (XDT 変換サンプル)]」を参照してください。
 
-### 移行された Mobile Services を Traffic Manager に追加できない
-Traffic Manager プロファイルを作成するとき、移行された Mobile Services をプロファイルに直接選択できません。"外部エンドポイント" を使用する必要があります。外部エンドポイントは、PowerShell でしか追加できません。詳細については、[Traffic Manager のチュートリアル](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)を参照してください。
+### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>移行された Mobile Services を Traffic Manager に追加できない
+Traffic Manager プロファイルを作成するとき、移行されたモバイル サービスをプロファイルに直接選択することはできません。  "外部エンドポイント" を使用してください。  外部エンドポイントは、PowerShell でしか追加できません。  詳細については、[Traffic Manager のチュートリアル](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーションが App Service に移行され、活用できる機能がさらに増えました。
 
-* デプロイメント [ステージング スロット]では、変更をサイトに公開し、A/B テストを実行できます。
-* [WebJobs] は、オンデマンドでスケジュールしたジョブの代わりを提供します。
-* GitHub、TFS、Mercurial にサイトをリンクし、サイトを[連続的にデプロイ]できます。
+* デプロイメント [ステージング スロット] では、変更をサイトに公開し、A/B テストを実行できます。
+* [Web ジョブ] は、オンデマンドでスケジュールしたジョブの代わりを提供します。
+* GitHub、TFS、Mercurial にサイトをリンクし、サイトを [連続的にデプロイ] できます。
 * [Application Insights] を利用し、サイトを監視できます。
 * 同じコードから Web サイトと Mobile API にサービスを提供します。
 
 ### <a name="upgrading-your-site"></a>Azure Mobile Apps SDK に Mobile Services サイトをアップグレードする
-* Node.js ベースのサーバー プロジェクトの場合、新しい [Mobile Apps Node.js SDK] は多くの新機能を提供します。たとえば、ローカルで開発やデバッグを行い、0.10 より後のバージョンの Node.js を使用し、Express.js ミドルウェアでカスタマイズを行うことができます。
-* .NET ベースのサーバー プロジェクトの場合、新しい [Mobile Apps SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/)は、NuGet の依存関係に関してより高い柔軟性を備え、新しい App Service 認証機能をサポートし、MVC を含むすべての ASP.NET プロジェクトを作成します。アップグレードの詳細については、「[既存の .NET Mobile Service の App Service へのアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)」を参照してください。
+* Node.js ベースのサーバー プロジェクトの場合、新しい [Mobile Apps Node.js SDK] はいくつかの新機能を提供します。 たとえば、ローカルで開発やデバッグを行い、0.10 より後のバージョンの Node.js を使用し、Express.js ミドルウェアでカスタマイズを行うことができます。
+* .NET ベースのサーバー プロジェクトでは、新しい [Mobile Apps SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/)は、NuGet の依存関係に関してより高い柔軟性を備えています。  これらのパッケージは、新しい App Service 認証をサポートし、任意の ASP.NET プロジェクトを作成できます。 アップグレードの詳細については、「 [既存の .NET Mobile Service の App Service へのアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)」を参照してください。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-migrating-from-mobile-services/migrate-to-app-service-button.PNG
@@ -368,21 +374,21 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service の価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
-[Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/regions/
+[Azure Portal]: https://portal.azure.com
+[Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service-web/app-service-continuous-deployment.md
-[Mixed 名前空間を変換する]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Mixed 名前空間を変換]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
-[Azure App Service は一般公開されており]: /blog/announcing-general-availability-of-app-service-mobile-apps/
+[Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [ログ]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
@@ -390,10 +396,9 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [パフォーマンス監視]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[モバイル サービス スクリプトをバックアップする]: ../mobile-services/mobile-services-disaster-recovery.md
 [ステージング スロット]: ../app-service-web/web-sites-staged-publishing.md
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
-[WebJobs]: ../app-service-web/websites-webjobs-resources.md
+[Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
+[関数]: ../azure-functions/functions-overview.md
 
-<!---HONumber=AcomDC_0907_2016-->

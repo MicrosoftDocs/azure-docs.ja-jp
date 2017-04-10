@@ -1,12 +1,12 @@
 ---
-title: Azure Notification Hubs - Diagnosis Guidelines
-description: Guidelines on how to diagnose common issues with Azure Notification Hubs.
+title: "Azure Notification Hubs - 診断ガイドライン"
+description: "Azure Notification Hubs に関する一般的な問題を診断する方法のガイドラインです。"
 services: notification-hubs
 documentationcenter: Mobile
 author: ysxu
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
@@ -14,144 +14,149 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b0b067f02f02f722534238891f7412153635df80
+ms.lasthandoff: 12/08/2016
+
 
 ---
-# <a name="azure-notification-hubs---diagnosis-guidelines"></a>Azure Notification Hubs - Diagnosis guidelines
+# <a name="azure-notification-hubs---diagnosis-guidelines"></a>Azure Notification Hubs - 診断ガイドライン
 ## <a name="overview"></a>Overview
-One of the most common questions we hear from Azure Notification Hubs customers is how to figure out why they don’t see a notification sent from their application backend appear on the client device - where and why notifications were dropped and how to fix this. In this article we will go through the various reasons why notifications may get dropped or do not end up on the devices. We will also look through ways in which you can analyze and figure out the root cause. 
+Azure Notification Hubs ユーザーから最もよく寄せられる質問の 1 つは、アプリケーション バックエンドから送信された通知がクライアント デバイスに表示されない理由を解明する方法です。具体的には、通知が破棄された場所とその原因、およびこの問題を解決する方法があります。 この記事では、通知が破棄されたり、デバイスに届かなかったりするさまざまな理由を説明します。 また、根本的な原因を分析して解明する方法も紹介します。 
 
-First of all, it is critical to understand how Azure Notification Hubs pushes out notifications to the devices.
+まず重要なのが、Azure Notification Hubs がデバイスに通知をプッシュする方法を理解することです。
 ![][0]
 
-In a typical send notification flow, the message is sent from the **application backend** to **Azure Notification Hub (NH)** which in turn does some processing on all the registrations taking into account the configured tags & tag expressions to determine "targets" i.e. all the registrations that need to receive the push notification. These registrations can span across any or all of our supported platforms - iOS, Google, Windows, Windows Phone, Kindle and Baidu for China Android. Once the targets are established, NH then pushes out notifications, split across multiple batch of registrations, to the device platform specific **Push Notification Service (PNS)** - e.g. APNS for Apple, GCM for Google etc. NH authenticates with the respective PNS based on the credentials you set in the Azure Classic Portal on the Configure Notification Hub page. The PNS then forwards the notifications to the respective **client devices**. This is the platform recommended way to deliver push notifications and note that the final leg of notification delivery takes place between the platform PNS and the device. Therefore we have four major components - *client*, *application backend*, *Azure Notification Hubs (NH)* and *Push Notification Services (PNS)* and any of these may cause notifications getting dropped. More details on this architecture is available on [Notification Hubs Overview].
+一般的な通知の送信フローでは、メッセージは**アプリケーション バックエンド**から **Azure Notification Hubs** に送信されます。Notification Hubs では、すべての登録に対して、構成されているタグとタグ式を考慮して処理を行い、「ターゲット」、つまりプッシュ通知を受信する必要があるすべての登録を特定します。 これらの登録は、iOS、Google、Windows、Windows Phone、Kindle、Baidu for China Android など、サポートされているプラットフォームのいずれかまたはすべてにわたる可能性があります。 ターゲットが確立されると、次に Notification Hubs は、登録の複数のバッチに分割された通知をデバイス プラットフォーム固有の **Push Notification サービス (PNS)** (例: Apple の APNS、Google の GCM など) にプッシュします。Notification Hubs は、Azure クラシック ポータルの [Notification Hubs の構成] ページで設定した資格情報に基づいて、各 PNS への認証を実行します。 その後、PNS は通知を各**クライアント デバイス**に転送します。 これは、プッシュ通知を配信するためにプラットフォームで推奨されている方法です。通知の配信の最終段階はプラットフォームの PNS とデバイスの間で実行される点に注目してください。 そのため、"*クライアント*"、"*アプリケーション バックエンド*"、"*Azure Notification Hubs (NH)*"、および "*プッシュ通知サービス (PNS)*" の 4 つの主要なコンポーネントがあり、そのいずれも、通知の脱落の原因となる可能性があります。 このアーキテクチャの詳細については、「[Notification Hubs の概要]」を参照してください。
 
-Failure to deliver notifications may happen during the initial test/staging phase which may indicate a configuration issue or it may happen in production where either all or some of the notifications may be getting dropped indicating some deeper application or messaging pattern issue. In the section, below we will look at various dropped notifications scenarios ranging from common to the rarer kind, some of which you may find obvious and some others not so much. 
+初期のテストまたはステージング段階の期間中に通知の配信が失敗する場合は、構成の問題が発生している可能性があります。また、運用環境ですべてまたは一部の通知が破棄される場合は、より深刻なアプリケーションの問題やメッセージング パターンの問題が発生している可能性があります。 以下のセクションでは、一般的なシナリオから比較的珍しいケースまで、さまざまな通知の破棄シナリオについて説明します。中には自明だと思われる原因もありますが、意外と気付かないものも含まれています。 
 
-## <a name="azure-notifications-hub-mis-configuration"></a>Azure Notifications Hub mis-configuration
-Azure Notification Hubs needs to authenticate itself in the context of the developer's application to be able to successfully send notifications to the respective PNS. This is made possible by the developer creating a developer account with the respective platform (Google, Apple, Windows etc) and then registering their application where they get credentials which need to be configured in the portal under Notification Hubs configuration section. If no notifications are making through, first step should be to ensure that the correct credentials are configured in the Notification Hub matching them with the application created under their platform specific developer account. You will find our [Getting Started Tutorials] useful to go over this process in a step by step manner. Here are some common mis-configurations:
+## <a name="azure-notifications-hub-mis-configuration"></a>Azure Notification Hubs の構成ミス
+各 PNS に通知を正常に送信できるようにするためには、Azure Notification Hubs を開発者のアプリケーションのコンテキストで認証する必要があります。 これを実行するには、開発者が各プラットフォーム (Google、Apple、Windows など) に開発者アカウントを作成してから、資格情報を取得するアプリケーションを登録します。この資格情報は、ポータルの [Notification Hubs の構成] セクションで構成する必要があります。 通知が届かない場合、まずはプラットフォーム固有の開発者アカウントで作成されたアプリケーションと一致する正しい資格情報が Notification Hubs で構成されていることを確認する必要があります。 このプロセスを手順ごとに確認するには、「[Notification Hubs の使用]」を参照してください。 一般的な構成ミスの一部を以下に示します。
 
-1. **General**
+1. **全般**
    
-    a) Make sure that your notification hub name (without typos) is the same:
+    a) Notification Hubs の名前にタイプミスがなく、以下と一致することを確認します。
    
-   * Where you are registering from the client, 
-   * Where you are sending notifications from the backend,  
-   * Where you have configured the PNS credentials and 
-   * Whose SAS credentials you have configured on the client and the backend. 
+   * クライアントから登録する場所 
+   * バックエンドから通知を送信する場所  
+   * PNS の資格情報を構成した場所 
+   * クライアントとバックエンドで構成した SAS 資格情報を持つユーザー 
      
-     b) Make sure that you are using the correct SAS configuration strings on the client and the application backend. As a rule of thumb, you must be using the **DefaultListenSharedAccessSignature** on the client and **DefaultFullSharedAccessSignature** on the application backend (which gives permission to be able to send notification to the NH)
-2. **Apple Push Notification Service (APNS) configuration**
+     b) クライアントとアプリケーション バックエンドで正しい SAS 構成文字列を使用していることを確認します。 原則として、クライアントでは **DefaultListenSharedAccessSignature**、アプリケーションのバックエンドでは **DefaultFullSharedAccessSignature** を使用する必要があります (これにより、Notification Hubs に通知を送信できるようになります)。
+2. **Apple Push Notification Service (APNS) の構成**
    
-    You must maintain two different hubs - one for production and another for testing purpose. This means uploading the certificate you are going to use in sandbox environment to a separate hub and the certificate you are going to use in production to a separate hub. Do not try to upload different types of certificates to the same hub as it may cause notification failures down the line. If you do find yourself in a position where you have inadvertently uploaded different types of certificate to the same hub, it is recommended to delete the hub and start fresh. If for some reason, you are not able to delete the hub then at the very least, you must delete all the existing registrations from the hub. 
-3. **Google Cloud Messaging (GCM) configuration** 
+    運用環境とテスト用に 2 つの異なるハブを維持する必要があります。 つまり、サンドボックス環境で使用する証明書と運用環境で使用する証明書をそれぞれ別のハブにアップロードする必要があります。 後から通知エラーが発生する可能性があるため、異なる種類の証明書を同じハブにアップロードしないでください。 誤って異なる種類の証明書を同じハブに既にアップロードしている場合は、ハブを削除し、新たに開始することをお勧めします。 何らかの理由でハブを削除できない場合は、少なくとも、既存のすべての登録をハブから削除する必要があります。 
+3. **Google Cloud Messaging (GCM) の構成** 
    
-    a) Make sure that you are enabling "Google Cloud Messaging for Android" under your cloud project. 
+    a) クラウド プロジェクトで [Google Cloud Messaging for Android] を有効にしていることを確認します。 
    
     ![][2]
    
-    b) Make sure that you create a "Server Key" while obtaining the credentials which NH will use to authenticate with GCM. 
+    b) GCM への認証を実行するために Notification Hubs が使用する資格情報を取得するときに、「サーバー キー」を作成します。 
    
     ![][3]
    
-    c) Make sure that you have configured "Project ID" on the client which is an entirely numerical entity that you can obtain from the dashboard:
+    c) クライアントで「プロジェクト ID」を構成していることを確認します。プロジェクト ID はすべて数値で構成されるエンティティで、ダッシュボードから取得することができます。
    
     ![][1]
 
-## <a name="application-issues"></a>Application issues
-1) **Tags/ Tag expressions**
+## <a name="application-issues"></a>アプリケーションの問題
+1) **タグ/タグ式**
 
-If you are using tags or tag expressions to segment your audience, it is always possible that when you are sending the notification, there is no target being found based on the tags/tag expressions you are specifying in your send call. It is best to review your registrations to ensure that there are tags which match when you send notification and then verify the notification receipt only from the clients with those registrations. E.g. if all your registrations with NH were done with say tag "Politics" and you are sending a notification with tag "Sports", it will not be sent to any device. A complex case could involve tag expressions where you only registered with "Tag A" OR "Tag B" but while sending notifications, you are targeting "Tag A && Tag B". In the self-diagnose tips section below, there are ways in which you can review your registrations along with the tags they have. 
+対象ユーザーのセグメント化にタグまたはタグ式を使用している場合は、通知を送信するときに、送信呼び出しで指定したタグまたはタグ式に基づくターゲットが見つからない可能性が常にあります。 登録を確認して、通知を送信するときに一致するタグがあることを確認し、それらが登録されているクライアントから受信した通知のみを検証することをお勧めします。 例: Notification Hubs へのすべての登録に「Politics」というタグを使用していて、「Sports」というタグを含む通知を送信した場合、この通知はデバイスに送信されません。 複雑なケースでは、「Tag A」OR「Tag B」というタグ式のみを登録したにもかかわらず、「Tag A && Tag B」を対象として通知を送信するといった例が挙げられます。 以下の「自己診断のヒント」のセクションでは、登録およびそれに含まれるタグを確認できる方法について説明しています。 
 
-2) **Template issues**
+2) **テンプレートの問題**
 
-If you are using templates then ensure that you are following the guidelines described at [Template guidance]. 
+テンプレートを使用している場合は、「 [テンプレート]」に記載されているガイドラインに従っていることを確認してください。 
 
-3) **Invalid registrations**
+3) **無効な登録**
 
-Assuming the Notification Hub was configured correctly and any tags/tag expressions were used correctly resulting in the find of valid targets to which the notifications need to be sent, NH fires off several processing batches in parallel - each batch sending messages to a set of registrations. 
+Notification Hubs が正しく構成されており、タグまたはタグ式が正しく使用されていて、通知を送信する必要のある有効なターゲットが見つかった場合、Notification Hubs は複数の処理のバッチを並行して開始し、各バッチが一連の登録にメッセージを送信します。 
 
 > [!NOTE]
-> Since we do the processing in parallel, we don’t guarantee the order in which the notifications will be delivered. 
+> 並行して処理を行うため、通知が配信される順序は保証されません。 
 > 
 > 
 
-Now Azure Notifications Hub is optimized for an "at-most once" message delivery model. This means that we attempt a de-duplication so that no notifications are delivered more than once to a device. To ensure this we look through the registrations and make sure that only one message is sent per device identifier before actually sending the message to the PNS. As each batch is sent to the PNS, which in turn is accepting and validating the registrations, it is possible that the PNS detects an error with one or more of the registrations in a batch, returns an error to Azure NH and stops processing thereby dropping that batch completely. This is especially true with APNS which uses a TCP stream protocol. Although we are optimized for at-most once delivery, in this case we remove the faulting registration from our database and then retry notification delivery for the rest of the devices in that batch.
+現行の Azure Notification Hubs は、「最大 1 回の」メッセージ配信モデルに合わせて最適化されています。 つまり、デバイスに同じ通知が複数回配信されないように、重複の除去を行います。 これを確実に実行するために、実際にメッセージを PNS に送信する前に、登録全体を確認し、各デバイス ID にメッセージが 1 回のみ送信されることを確認しています。 各バッチが PNS へ送信され、登録の承認と検証が行われるときに、PNS によってバッチの 1 つまたは複数の登録でエラーが検出され、Azure Notification Hubs にエラーが返されて処理が停止し、そのバッチが完全に破棄される可能性があります。 これは、TCP ストリーム プロトコルを使用する　APNS に特に当てはまります。 最大 1 回の配信に最適化しているものの、この場合は、失敗している登録をデータベースから削除したうえで、そのバッチに残っているデバイスを対象に通知の配信を再試行します。
 
-You can get error information for the failed delivery attempt against a registration using the Azure Notification Hubs REST APIs: [Per Message Telemetry: Get Notification Message Telemetry](https://msdn.microsoft.com/library/azure/mt608135.aspx) and [PNS Feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). See the [SendRESTExample](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample) for example code.
+登録デバイスに対して試行された配信が失敗したときのエラー情報は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://msdn.microsoft.com/library/azure/mt608135.aspx)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」を参照してください。 サンプル コードについては、「[SendRESTExample](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample)」を参照してください。
 
-## <a name="pns-issues"></a>PNS issues
-Once the notification message has been received by the respective PNS then it is its responsibility to deliver the notification to the device. Azure Notification Hubs is out of the picture here and has no control on when or if the notification is going to be delivered to the device. Since the platform notification services are pretty robust, notifications do tend to reach the devices in a few seconds from the PNS. If the PNS however is throttling then Azure Notification Hubs does apply an exponential back off strategy and if the PNS remains unreachable for 30 min then we have a policy in place to expire and drop those messages permanently. 
+## <a name="pns-issues"></a>PNS の問題
+各 PNS が通知メッセージを受信した後は、デバイスに通知を配信する責任は PNS にあります。 このとき、Azure Notification Hubs は無関係であり、通知がデバイスに配信されるタイミングや、配信されるかどうかを制御することはできません。 プラットフォーム通知サービスは非常に堅牢なため、通常は PNS からデバイスに数秒で通知が送信されます。 ただし、PNS でスロットルが発生している場合、Azure Notification Hubs は指数バックオフ戦略を適用します。PNS に 30 分間送信できなかった場合は、ポリシーによって、メッセージを有効期限切れにして完全に削除します。 
 
-If a PNS attempts to deliver a notification but the device is offline, the notification is stored by the PNS for a limited period of time, and delivered to the device when it becomes available. Only one recent notification for a particular app is stored. If multiple notifications are sent while the device is offline, each new notification causes the prior notification to be discarded. This behavior of keeping only the newest notification is referred to as coalescing notifications in APNS and collapsing in GCM (which uses a collapsing key). If the device remains offline for a long time, any notifications that were being stored for it are discarded. Source - [APNS guidance] & [GCM guidance]
+PNS が通知を配信しようとしてデバイスがオフラインである場合、通知は PNS によって一定期間保存され、デバイスにアクセス可能になったときに配信されます。 保存されるのは、特定のアプリにつき 1 つの最新の通知のみです。 デバイスがオフラインの間に複数の通知が送信された場合、新しい通知が配信されるたびに以前の通知が破棄されます。 この最新の通知のみを維持する動作は、APNS では結合通知と呼ばれ、GCM では折りたたみと呼ばれます (これには、折りたたみキーを使用します)。 デバイスが長時間オフラインのままである場合、保存されている通知は破棄されます (出典: [APNS のガイダンス]および &  [GCM のガイダンス])。
 
-With Azure Notification Hubs - you can pass a coalescing key via an HTTP header using the generic `SendNotification` API (e.g. for .NET SDK – `SendNotificationAsync`) which also takes HTTP headers which are passed as is to the respective PNS. 
+Azure Notification Hubs では、汎用 `SendNotification` API (例: .NET SDK では `SendNotificationAsync`) により、HTTP ヘッダーを使用して結合キーを渡すことができます。この API に HTTP ヘッダーを指定し、各 PNS にそのまま渡します。 
 
-## <a name="self-diagnose-tips"></a>Self-diagnose tips
-Here we will examine the various avenues to diagnose and root cause any Notification Hub issues:
+## <a name="self-diagnose-tips"></a>自己診断のヒント
+このセクションでは、Notification Hubs の問題を診断し、根本原因を究明するためのさまざまな手段を説明します。
 
-### <a name="verify-credentials"></a>Verify credentials
-1. **PNS developer portal**
+### <a name="verify-credentials"></a>資格情報の確認
+1. **PNS 開発者ポータル**
    
-    Verify them at the respective PNS developer portal (APNS, GCM, WNS etc) using our [Getting Started Tutorials].
-2. **Azure Classic portal**
+    「 [Notification Hubs の使用]」を参照して、各 PNS 開発者ポータル (APNS、GCM、WNS など) で資格情報を確認します。
+2. **Azure クラシック ポータル**
    
-    Go to the Configure tab to review and match the credentials with those obtained from the PNS developer portal. 
+    [構成] タブに移動して、資格情報を確認し、PNS 開発者ポータルから取得した資格情報と照合します。 
    
     ![][4]
 
-### <a name="verify-registrations"></a>Verify registrations
+### <a name="verify-registrations"></a>登録の確認
 1. **Visual Studio**
    
-    If you use Visual Studio for development then you can connect to Microsoft Azure and view and manage a bunch of Azure services including Notifications Hub from "Server Explorer". This is primarily useful for your dev/test environment. 
+    開発に Visual Studio を使用している場合は、Microsoft Azure に接続し、[サーバー エクスプローラー] から Notification Hubs を含む多数の Azure サービスを表示、管理することができます。 これは、特に開発/テスト環境で便利です。 
    
     ![][9]
    
-    You can view and manage all the registrations in your hub which are nicely categorized for platform, native or template registration, any tags, PNS identifier, registration id and the expiration date. You can also edit a registration on the fly - which is useful say if you want to edit any tags. 
+    ハブのすべての登録を表示、管理でき、プラットフォーム、ネイティブまたはテンプレートの登録、タグ、PNS 識別子、登録 ID、有効期限ごとに見やすく分類されています。 また、その場で登録を編集することもできます。これは、タグを編集する場合などに便利です。 
    
     ![][8]
    
    > [!NOTE]
-   > Visual Studio functionality to edit registrations should only be used during dev/test with limited number of registrations. If there arises a need to fix your registrations in bulk, consider using the Export/Import registration functionality described here - [Export/Import Registrations](https://msdn.microsoft.com/library/dn790624.aspx)
+   > Visual Studio の登録を編集する機能は、登録の数が限られている開発/テスト期間中にのみ使用してください。 登録を一括で修正する必要が生じた場合は、「 [登録のエクスポート/インポート](https://msdn.microsoft.com/library/dn790624.aspx)
    > 
    > 
-2. **Service Bus explorer**
+2. **Service Bus エクスプローラー**
    
-    Many customers use ServiceBus explorer described here - [ServiceBus Explorer] for viewing and managing their notification hub. It is an open source project available from code.microsoft.com - [ServiceBus Explorer code]
+    多くのお客様は、Notification Hubs を表示/管理するために、こちらで説明されている「 [ServiceBus エクスプローラー] 」を使用しています。 これは、code.microsoft.com で提供しているオープン ソース プロジェクトです ( [ServiceBus エクスプローラーのコード]
 
-### <a name="verify-message-notifications"></a>Verify message notifications
-1. **Azure Classic Portal**
+### <a name="verify-message-notifications"></a>メッセージ通知の確認
+1. **Azure クラシック ポータル**
    
-    You can go to the "Debug" tab to send test notifications to your clients without needing any service backend up and running. 
+    [デバッグ] タブから、サービス バックエンドを稼働させることなく、クライアントにテスト通知を送信することができます。 
    
     ![][7]
 2. **Visual Studio**
    
-    You can also send test notifications from the comforts of Visual Studio:
+    Visual Studio から簡単にテスト通知を送信することもできます。
    
     ![][10]
    
-    You can read more on the Visual Studio Notification Hub Azure explorer functionality here - 
+    Visual Studio の Azure Notification Hubs エクスプローラーの機能の詳細については、以下を参照してください。 
    
-   * [VS Server Explorer Overview]
-   * [VS Server Explorer Blog post - 1]
-   * [VS Server Explorer Blog post - 2]
+   * [VS サーバー エクスプローラーの概要]
+   * [VS サーバー エクスプローラーに関するブログ記事 - 1]
+   * [VS サーバー エクスプローラーに関するブログ記事 - 2]
 
-### <a name="debug-failed-notifications/-review-notification-outcome"></a>Debug failed notifications/ Review notification outcome
-**EnableTestSend property**
+### <a name="debug-failed-notifications-review-notification-outcome"></a>失敗した通知のデバッグ/通知の出力の確認
+**EnableTestSend プロパティ**
 
-When you send a notification via Notification Hubs, initially it just gets queued up for NH to do processing to figure out all its targets and then eventually NH sends it to the PNS. This means that when you are using REST API or any of the client SDK, the successful return of your send call only means that the message has been successfully queued up with Notification Hub. It doesn’t give an insight into what happened when NH eventually got to send the message to PNS. If your notification is not arriving at the client device, there is a possibility that when NH tried to deliver the message to PNS, there was an error e.g. the payload size exceeded the maximum allowed by the PNS or the credentials configured in NH are invalid etc. To get an insight into the PNS errors, we have introduced a property called [EnableTestSend feature]. This property is automatically enabled when you send test messages from the portal or Visual Studio client and therefore allows you to see detailed debugging information. You can use this via APIs taking the example of the .NET SDK where it is available now and will be added to all client SDKs eventually. To use this with the REST call, simply append a querystring parameter called "test" at the end of your send call e.g. 
+Notification Hubs を使用して通知を送信する場合、通知はまず単にキューに追加され、Notification Hubs がすべてのターゲットを特定する処理を実行してから、最終的に Notification Hubs によって PNS に送信されます。 そのため、REST API やクライアント SDK を使用していて送信呼び出しが正常に返されても、Notification Hubs でメッセージが正常にキューに追加されたということでしかありません。 Notification Hubs が最終的に PNS にメッセージを送信したときに何が起こったのかを確認することはできません。 クライアント デバイスに通知が届かない場合は、Notification Hubs が PNS にメッセージを配信しようとしたときに、エラー (ペイロードのサイズが PNS で許容されている上限を超えている、Notification Hubs で構成されている資格情報が無効である、など) が発生した可能性があります。PNS エラーを確認できるように、[EnableTestSend feature] というプロパティが導入されました。 このプロパティは、ポータルまたは Visual Studio クライアントからテスト メッセージを送信するときに自動的に有効にされ、詳細なデバッグ情報を表示することができます。 これは、現在 .NET SDK などの API で利用可能で、将来的にすべてのクライアント SDK に追加される予定です。 これを REST 呼び出しで使用するには、送信呼び出しの最後に「test」というクエリ文字列パラメーターを追加します。以下がその例です。 
 
     https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 
-*Example (.NET SDK)*
+*例 (.NET SDK)*
 
-Suppose you are using .NET SDK to send a native toast notification:
+たとえば、.NET SDK を使用して、ネイティブのトースト通知を送信するとします。
 
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName);
     var result = await hub.SendWindowsNativeNotificationAsync(toast);
     Console.WriteLine(result.State);
 
-`result.State` will simply state `Enqueued` at the end of the execution without any insight into what happened to your push. Now you can use the `EnableTestSend` boolean property while initializing the `NotificationHubClient` and can get detailed status about the PNS errors encountered while sending the notification. The send call here will take additional time to return because it is only returning after NH has delivered the notification to PNS to determine the outcome. 
+`result.State`result.State では、実行の最後に単に `Enqueued` が返され、プッシュに何が起こったのかを確認することはできません。 `NotificationHubClient` の初期化中にブール型の `EnableTestSend` プロパティを使用すれば、通知の送信中に発生した PNS エラーに関する詳細なステータスを取得できます。 このときの送信呼び出しは、Notification Hubs が PNS に通知を配信し、結果が確認された後に返されるため、通常よりも時間がかかります。 
 
     bool enableTestSend = true;
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName, enableTestSend);
@@ -164,46 +169,46 @@ Suppose you are using .NET SDK to send a native toast notification:
         Console.WriteLine(result.ApplicationPlatform + "\n" + result.RegistrationId + "\n" + result.Outcome);
     }
 
-*Sample Output*
+*サンプル出力*
 
     DetailedStateAvailable
     windows
     7619785862101227384-7840974832647865618-3
     The Token obtained from the Token Provider is wrong
 
-This message indicates either invalid credentials are configured in the notification hub or an issue with the registrations on the hub and the recommended course would be to delete this registration and let the client recreate it before sending the message. 
+このメッセージは、Notification Hubs で無効な資格情報が構成されているか、Notification Hubs の登録に問題であることを示しています。この登録を削除して、メッセージを送信する前にクライアントに再作成させることをお勧めします。 
 
 > [!NOTE]
-> Note that the use of this property is heavily throttled and so you must only use this in dev/test environment with limited set of registrations. We only send debug notifications to 10 devices. We also have a limit of processing debug sends to be 10 per minute. 
+> このプロパティを使用すると大幅なスロットルが発生するため、登録数の限られた開発/テスト環境でのみ使用してください。 デバッグ通知は 10 のデバイスのみに送信されます。 また、1 分あたりに処理できるデバッグ送信は 10 件に制限されています。 
 > 
 > 
 
-### <a name="review-telemetry"></a>Review telemetry
-1. **Use Azure Classic Portal**
+### <a name="review-telemetry"></a>統計情報の確認
+1. **Azure クラシック ポータルの使用**
    
-    The portal enables you to get a quick overview of all the activity on your Notification Hub. 
+    ポータルでは、Notification Hubs のすべてのアクティビティの概要を簡単に確認できます。 
    
-    a) From the "dashboard" tab you can view an aggregated view of the registrations, notifications as well as errors per platform. 
+    a) [ダッシュボード] タブでは、登録、通知、プラットフォーム別のエラーの集計データを表示できます。 
    
     ![][5]
    
-    b) You can also add many other platform specific metrics from the "Monitor" tab to take a deeper look particularly at any PNS specific errors returned when NH tries to send the notification to the PNS. 
+    b) また、[モニター] タブからその他多数のプラットフォーム固有のメトリックを追加して、Notification Hubs が PNS に通知を送信しようとしたときに返された PNS 固有のエラーの詳細を確認することもできます。 
    
     ![][6]
    
-    c) You should start with reviewing the **Incoming Messages**, **Registration Operations**, **Successful Notifications** and then go to per platform tab to review the PNS specific errors. 
+    c) PNS 固有のエラーを確認するには、まず**受信メッセージ**、**登録操作**、**正常に送信された通知**を確認してから、プラットフォーム別のタブを確認します。 
    
-    d) If you have the notification hub misconfigured with the authentication settings then you will see PNS Authentication Error. This is a good indication to check the PNS credentials. 
+    d) Notification Hubs で認証設定が正しく構成されていない場合は、PNS 認証エラーが表示されます。 この場合は、PNS の資格情報を確認してください。 
 
-2) **Programmatic access**
+2) **プログラムによるアクセス**
 
-More details here - 
+詳細については、以下を参照してください。 
 
-* [Programmatic Telemetry Access]
-* [Telemetry Access via APIs sample] 
+* [プログラムによる統計情報へのアクセス]
+* [API サンプルを使用した統計情報へのアクセス] 
 
 > [!NOTE]
-> Several telemetry related features like **Export/Import Registrations**, **Telemetry Access via APIs** etc are only available in Standard tier. If you attempt to use these features if you are in Free or Basic tier then you will get exception message to this effect while using the SDK and an HTTP 403 (Forbidden) when using them directly from the REST APIs. Make sure that you have moved up to Standard tier via Azure Classic Portal.  
+> **登録のエクスポート/インポート**や **API による統計情報へのアクセス**といった一部のテレメトリ関連機能は Standard レベルでのみ利用可能です。 Free または Basic レベルでこれらの機能を使用しようとすると、SDK を使用している場合はこの効果に対する例外メッセージが表示され、REST API から直接使用している場合は HTTP 403 (Forbidden) が表示されます。 Azure クラシック ポータルから Standard レベルに移行してください。  
 > 
 > 
 
@@ -221,24 +226,19 @@ More details here -
 [10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
 
 <!-- LINKS -->
-[Notification Hubs Overview]: notification-hubs-push-notification-overview.md
-[Getting Started Tutorials]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Template guidance]: https://msdn.microsoft.com/library/dn530748.aspx 
-[APNS guidance]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW4
-[GCM guidance]: http://developer.android.com/google/gcm/adv.html
+[Notification Hubs の概要]: notification-hubs-push-notification-overview.md
+[Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[テンプレート]: https://msdn.microsoft.com/library/dn530748.aspx 
+[APNS のガイダンス]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW4
+[GCM のガイダンス]: http://developer.android.com/google/gcm/adv.html
 [Export/Import Registrations]: http://msdn.microsoft.com/library/dn790624.aspx
-[ServiceBus Explorer]: http://msdn.microsoft.com/library/dn530751.aspx
-[ServiceBus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[VS Server Explorer Overview]: http://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx 
-[VS Server Explorer Blog post - 1]: http://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs 
-[VS Server Explorer Blog post - 2]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/ 
+[ServiceBus エクスプローラー]: http://msdn.microsoft.com/library/dn530751.aspx
+[ServiceBus エクスプローラーのコード]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
+[VS サーバー エクスプローラーの概要]: http://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx 
+[VS サーバー エクスプローラーに関するブログ記事 - 1]: http://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs 
+[VS サーバー エクスプローラーに関するブログ記事 - 2]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/ 
 [EnableTestSend feature]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx
-[Programmatic Telemetry Access]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[Telemetry Access via APIs sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
-
-
-
-
-<!--HONumber=Oct16_HO2-->
+[プログラムによる統計情報へのアクセス]: http://msdn.microsoft.com/library/azure/dn458823.aspx
+[API サンプルを使用した統計情報へのアクセス]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 
 

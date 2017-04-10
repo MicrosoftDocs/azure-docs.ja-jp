@@ -25,7 +25,7 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 テーブルとプロパティの名前付け規則については、「 [Understanding the Table Service Data Model (Table サービス データ モデルの概要)](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 [Table1]: ./media/storage-table-concepts-include/table1.png
-[OData.org の Web サイト の Web サイト]: http://www.odata.org/
+[OData.org]: http://www.odata.org/
 
 
 <!--HONumber=Nov16_HO2-->

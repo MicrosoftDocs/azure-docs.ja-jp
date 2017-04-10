@@ -1,34 +1,38 @@
 ---
-title: REST API を使用して Azure Mobile Engagement サービス API にアクセスする
-description: Mobile Engagement REST API を使用して Azure Mobile Engagement サービス API にアクセスする方法について説明します
+title: "REST API を使用して Azure Mobile Engagement サービス API にアクセスする"
+description: "Mobile Engagement REST API を使用して Azure Mobile Engagement サービス API にアクセスする方法について説明します"
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: e8df4897-55ee-45df-b41e-ff187e3d9d12
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/07/2016
+ms.date: 10/05/2016
 ms.author: wesmc;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: 512276d151833ab5c65b663d8f2af43153e1d55b
+
 
 ---
-# REST を使用して Azure Mobile Engagement サービス API にアクセスする
-Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、[Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) が提供されます。このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成してアクティブ化し、一連のデバイスにプッシュします。
+# <a name="using-rest-to-access-azure-mobile-engagement-service-apis"></a>REST を使用して Azure Mobile Engagement サービス API にアクセスする
+Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、[Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) が提供されます。このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成してアクティブ化し、一連のデバイスにプッシュします。 
 
-REST API を直接使用したくない場合は、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。Swagger ファイルから SDK を生成するには、[AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。このラッパーを使用して同様のサンプルについて確認するには、「[サービス API の .NET SDK のサンプル](mobile-engagement-dotnet-sdk-service-api.md)」を参照してください。
+REST API を直接使用したくない場合は、任意の言語の SDK を生成するツールと共に使用できる、 [Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) も提供しています。 Swagger ファイルから SDK を生成するには、 [AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。 C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。 このラッパーを使用して同様のサンプルについて確認するには、「 [サービス API の .NET SDK のサンプル](mobile-engagement-dotnet-sdk-service-api.md)
 
-このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成およびアクティブ化します。
+このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成およびアクティブ化します。 
 
-## user\_name AppInfo を Mobile Engagement アプリに追加する
-このサンプルには、Mobile Engagement アプリに追加された app-info タグが必要です。アプリの Engagement ポータルで、[**設定**]、[**タグ (app-info)**]、[**新しいタグ (app-info)**] の順にクリックして、タグを追加できます。**user\_name** という名前の新しいタグを、**文字列**型として追加します。
+## <a name="adding-a-username-appinfo-to-the-mobile-engagement-app"></a>user_name AppInfo を Mobile Engagement アプリに追加する
+このサンプルには、Mobile Engagement アプリに追加された app-info タグが必要です。 アプリの Engagement ポータルで、**[設定]** > **[タグ (app-info)]** > **[新しいタグ (app-info)]** の順にクリックして、タグを追加できます。 **user_name** という名前の新しいタグを、**文字列**型として追加します。
 
 ![](./media/mobile-engagement-dotnet-rest-service-api/user-name-app-info.png)
 
-「[Windows ユニバーサル アプリの Azure Mobile Engagement の概要](mobile-engagement-windows-store-dotnet-get-started.md)」に従った場合、次のコードのような app-info タグを送信するには、単に `MainPage` クラスの `OnNavigatedTo()` をオーバーライドして、**user\_name** タグの送信をテストできます。
+「[Windows ユニバーサル アプリの Azure Mobile Engagement の概要](mobile-engagement-windows-store-dotnet-get-started.md)」に従った場合、次のコードのような app-info タグを送信するには、単に `MainPage` クラスの `OnNavigatedTo()` をオーバーライドして、**user_name** タグの送信をテストできます。
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -43,17 +47,17 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
 
 
 
-## サービス API アプリを作成する
-1. まず、このサンプルを使用するには、4 つの認証パラメーターが必要になります。そのパラメーターは、**SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** です。これらの認証パラメーターを取得するには、[認証](mobile-engagement-api-authentication.md#authentication)チュートリアルの *1 回限りのセットアップ (スクリプトを使用)* セクションで示される、PowerShell スクリプトのアプローチを使用することをお勧めします。
-2. 単純な Windows コンソール アプリを使用して、新しいアナウンス キャンペーンを作成およびアクティブ化するための REST サービス API の操作を説明します。そのため、Visual Studio を開き、新しい**コンソール アプリケーション**を作成します。
-3. 次に、**Newtonsoft.Json** NuGet パッケージをプロジェクトにします。
+## <a name="creating-the-service-api-app"></a>サービス API アプリを作成する
+1. まず、このサンプルを使用するには、4 つの認証パラメーターが必要になります。 そのパラメーターは、**SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** です。 これらの認証パラメーターを取得するには、 *認証* チュートリアルの [1 回限りのセットアップ (スクリプトを使用)](mobile-engagement-api-authentication.md#authentication) セクションで示される、PowerShell スクリプトのアプローチを使用することをお勧めします。 
+2. 単純な Windows コンソール アプリを使用して、新しいアナウンス キャンペーンを作成およびアクティブ化するための REST サービス API の操作を説明します。 そのため、Visual Studio を開き、新しい **コンソール アプリケーション**を作成します。   
+3. 次に、 **Newtonsoft.Json** NuGet パッケージをプロジェクトにします。
 4. `Program.cs` ファイルで、次の名前空間に次の `using` ステートメントを追加します。
    
         using System.IO;
         using System.Net;
         using Newtonsoft.Json.Linq;
         using Newtonsoft.Json;
-5. 次に、`Program` クラスで次の定数を定義する必要があります。これらは、認証およびアナウンス キャンペーンを作成している Mobile Engagement アプリと対話するために使用されます。
+5. 次に、 `Program` クラスで次の定数を定義する必要があります。 これらは、認証およびアナウンス キャンペーンを作成している Mobile Engagement アプリと対話するために使用されます。
 
         // Parameters needed for authentication of API calls.
         // These are returned from the PowerShell script in the authentication tutorial. 
@@ -67,7 +71,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         static String Token = null;
 
         // This is the Azure Resource group concept for grouping together resources 
-        // See: https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-portal/
+        // See: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
         static String ResourceGroup = "MobileEngagement";
 
         // For Mobile Engagement operations
@@ -86,7 +90,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         static List<String> deviceList = new List<String>();
 
 
-1. 次の 2 つのメソッドを `Program` クラスに追加します。これらは、REST API を実行して、コンソールに応答を表示するために使用されます。
+1. 次の 2 つのメソッドを `Program` クラスに追加します。 これらは、REST API を実行して、コンソールに応答を表示するために使用されます。
    
         private static async Task<HttpWebResponse> ExecuteREST(string httpMethod, string uri, string authToken, WebHeaderCollection headers = null, string body = null, string contentType = "application/json")
         {
@@ -182,11 +186,11 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
             Console.WriteLine("*** Failed to get authorization token. Check your parameters for API calls.\n");
             return;
         }
-2. これで、[キャンペーンの作成](https://msdn.microsoft.com/library/azure/mt683742.aspx)の REST API を使用して新しいリーチ キャンペーンを作成できる、有効な認証トークンができました。新しいキャンペーンは、タイトルとメッセージを持つ、単純な**時間指定なし**と**通知のみ**のアナウンス キャンペーンになります。次のスクリーン ショットで示されるように、手動のプッシュ キャンペーンになります。つまり、このキャンペーンは、API を使用してのみプッシュされます。
+2. これで、 [キャンペーンの作成](https://msdn.microsoft.com/library/azure/mt683742.aspx) の REST API を使用して新しいリーチ キャンペーンを作成できる、有効な認証トークンができました。 新しいキャンペーンは、タイトルとメッセージを持つ、単純な**時間指定なし**と & **通知のみ**のアナウンス キャンペーンになります。 次のスクリーン ショットで示されるように、手動のプッシュ キャンペーンになります。 つまり、このキャンペーンは、API を使用してのみプッシュされます。
 
     ![](./media/mobile-engagement-dotnet-rest-service-api/manual-push.png)
 
-    次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンを作成します。
+    次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンを作成します。 
 
         //*****************************************************************************
         //*** Create a campaign to send a notification using the user-name app-info ***
@@ -196,13 +200,13 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
                "resourcegroups/" + ResourceGroup + "/providers/Microsoft.MobileEngagement/appcollections/" +
                Collection + "/apps/" + AppName + "/campaigns/announcements?api-version=2014-12-01";
 
-        String campaignRequestBody = "{ "name": "BirthdayCoupon", " +
-                                        ""type": "only_notif", " +
-                                        ""deliveryTime": "any", " +
-                                        ""notificationType": "popup", " +
-                                        ""pushMode":"manual", " +
-                                        ""notificationTitle": "Happy Birthday ${user_name}", " +
-                                        ""notificationMessage": "Take extra 10% off on your orders today!"}";
+        String campaignRequestBody = "{ \"name\": \"BirthdayCoupon\", " +
+                                        "\"type\": \"only_notif\", " +
+                                        "\"deliveryTime\": \"any\", " +
+                                        "\"notificationType\": \"popup\", " +
+                                        "\"pushMode\":\"manual\", " +
+                                        "\"notificationTitle\": \"Happy Birthday ${user_name}\", " +
+                                        "\"notificationMessage\": \"Take extra 10% off on your orders today!\"}";
 
         Console.WriteLine("Creating new campaign...\n");
         HttpWebResponse newCampaignResponse = ExecuteREST("POST", newCampaignMethodUrl, Token, null, campaignRequestBody).Result;
@@ -226,9 +230,9 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         }
 
 
-1. このキャンペーンを任意のデバイスにプッシュできるようにするには、キャンペーンをアクティブ化する必要があります。`NewCampaignID` 変数で、新しいキャンペーンの ID を保存しました。これを URI パス パラメーターとして使用して、[キャンペーンのアクティブ化](https://msdn.microsoft.com/library/azure/mt683745.aspx)の REST API を使用し、キャンペーンをアクティブ化します。これは、API を使用して手動でプッシュされるだけにもかかわらず、キャンペーンの状態は**スケジュール済み**に変更されます。
+1. このキャンペーンを任意のデバイスにプッシュできるようにするには、キャンペーンをアクティブ化する必要があります。 `NewCampaignID` 変数で、新しいキャンペーンの ID を保存しました。 これを URI パス パラメーターとして使用して、 [キャンペーンのアクティブ化](https://msdn.microsoft.com/library/azure/mt683745.aspx) の REST API を使用し、キャンペーンをアクティブ化します。 これは、API を使用して手動でプッシュされるだけにもかかわらず、キャンペーンの状態は **スケジュール済み** に変更されます。
    
-    次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンをアクティブ化します。
+    次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンをアクティブ化します。 
    
         //******************************************
         //*** Activate the new birthday campaign ***
@@ -258,7 +262,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
             Console.WriteLine("*** Failed to activate birthday campaign.\n");
             return;
         }
-2. キャンペーンをプッシュするには、通知を受信するユーザーのデバイス ID を提供する必要があります。[デバイスをクエリする](https://msdn.microsoft.com/library/azure/mt683826.aspx) REST API を使用して、すべてのデバイス ID を取得します。デバイス ID が **user\_name** appInfo と関連付けられている場合は、一覧に各デバイス ID を追加します。
+2. キャンペーンをプッシュするには、通知を受信するユーザーのデバイス ID を提供する必要があります。 [デバイスをクエリする](https://msdn.microsoft.com/library/azure/mt683826.aspx) REST API を使用して、すべてのデバイス ID を取得します。 デバイス ID が **user_name** appInfo と関連付けられている場合は、一覧に各デバイス ID を追加します。
    
    次のコードを `Main` メソッドに追加して、すべてのデバイス ID を取得し、deviceList を入力します。
    
@@ -301,7 +305,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
            Console.WriteLine("*** Failed to get devices.\n");
            return;
        }
-3. 最後に、[キャンペーンのプッシュ](https://msdn.microsoft.com/library/azure/mt683734.aspx)の REST API を使用して、一覧にあるすべてのデバイス ID にキャンペーンをプッシュします。これは**アプリ内**通知です。そのため、ユーザーが受信できるように、アプリケーションがデバイス上で実行されている必要があります。
+3. 最後に、 [キャンペーンのプッシュ](https://msdn.microsoft.com/library/azure/mt683734.aspx) の REST API を使用して、一覧にあるすべてのデバイス ID にキャンペーンをプッシュします。 これは **アプリ内** 通知です。 そのため、ユーザーが受信できるように、アプリケーションがデバイス上で実行されている必要があります。
    
    次のコードを `Main` メソッドに追加して、deviceList にあるデバイスにキャンペーンをプッシュします。
    
@@ -315,7 +319,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
                   "/push?api-version=2014-12-01";
    
        Console.WriteLine("Triggering push for new campaign (ID : " + NewCampaignID + ")...\n");
-       String deviceIds = "{"deviceIds":" + JsonConvert.SerializeObject(deviceList) + "}";
+       String deviceIds = "{\"deviceIds\":" + JsonConvert.SerializeObject(deviceList) + "}";
        Console.WriteLine("\n" + deviceIds + "\n");
        HttpWebResponse pushDevicesResponse = ExecuteREST("POST", pushCampaignUrl, Token, null, deviceIds).Result;
        Stream pushDevicesStream = pushDevicesResponse.GetResponseStream();
@@ -333,7 +337,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
        {
            Console.WriteLine("*** Failed to push campaign to the device list.\n");
        }
-4. コンソール アプリを構築して実行します。出力は次のようになります。
+4. コンソール アプリを構築して実行します。 出力は次のようになります。
 
         C:\Users\Wesley\AzME_Service_API_Rest\test.exe
 
@@ -425,8 +429,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         user_name    : Wesley
 
         Triggering push for new campaign (ID : 24)...
-
-
+        
         {"deviceIds":["1d6208b8f281203ecb49431e2e5ce6b3","302486644890e26045884ee5aa0619ec"]}
 
         HTTP Status 200 : OK
@@ -442,4 +445,8 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

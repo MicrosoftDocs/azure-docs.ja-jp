@@ -1,12 +1,12 @@
 ---
-title: Select rows to migrate by using a filter function (Stretch Database) | Microsoft Docs
-description: Learn how to select rows to migrate by using a filter function.
+title: "Stretch Database で移行する行を選ぶ - Azure | Microsoft Docs"
+description: "移行する行の選択にフィルター関数を使用する方法について説明します。"
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: f5ef79d9-68ef-4394-a057-d7aac5706b72
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,57 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: fc27cd6e25de8e5c3e6b50a0d887755f70d634fd
+
 
 ---
-# <a name="select-rows-to-migrate-by-using-a-filter-function-(stretch-database)"></a>Select rows to migrate by using a filter function (Stretch Database)
-If you store cold data in a separate table, you can configure Stretch Database to migrate the entire table. If your table contains both hot and cold data, on the other hand, you can specify a filter function to select the rows to migrate. The filter predicate is an inline table\-valued function. This topic describes how to write an inline table\-valued function to select rows to migrate.
+# <a name="select-rows-to-migrate-by-using-a-filter-function-stretch-database"></a>移行する行の選択にフィルター関数を使用する (Stretch Database)
+別個のテーブルにコールド データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。 その一方で、テーブルにホット データとコールド データ両方のデータが含まれている場合、移行する行を選択するフィルター関数を指定できます。 フィルター述語は、インライン テーブル値関数です。 このトピックでは、移行する行を選ぶインライン テーブル値関数を記述する方法について説明します。
 
 > [!NOTE]
-> If you provide a filter function that performs poorly, data migration also performs poorly. Stretch Database applies the filter function to the table by using the CROSS APPLY operator.
-> 
-> 
+> 指定したフィルター関数のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。 Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター関数を適用します。
+>
+>
 
-If you don't specify a filter function, the entire table is migrated.
+フィルター関数を指定しない場合、テーブル全体が移行されます。
 
-When you run the Enable Database for Stretch Wizard, you can migrate an entire table or you can specify a simple filter function in the wizard. If you want to use a different type of filter function to select rows to migrate, do one of the following things.
+[Stretch Database を有効にする] ウィザードを実行する際に、テーブル全体を移行することも、ウィザードで単純なフィルター関数を指定することもできます。 別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
-* Exit the wizard and run the ALTER TABLE statement to enable Stretch for the table and to specify a filter function.
-* Run the ALTER TABLE statement to specify a filter function after you exit the wizard.
+* ウィザードを終了して ALTER TABLE ステートメントを実行し、テーブルの Stretch を有効にしてフィルター関数を指定する。
+* ウィザードを終了してから、ALTER TABLE ステートメントを実行してフィルター関数を指定する。
 
-The ALTER TABLE syntax for adding a function is described later in this topic.
+関数を追加するための ALTER TABLE の構文については、このトピックの後の方で説明しています。
 
-## <a name="basic-requirements-for-the-filter-function"></a>Basic requirements for the filter function
-The inline table\-valued function required for a Stretch Database filter predicate looks like the following example.
+## <a name="basic-requirements-for-the-filter-function"></a>フィルター関数の基本的な要件
+Stretch Database フィルター述語に必要なインライン テーブル値関数は次の例のようになります。
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datatype1, @column2 datatype2 [, ...n])
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE <predicate>
 ```
-The parameters for the function have to be identifiers for columns from the table.
+関数のパラメーターはテーブルの列の識別子となる必要があります。
 
-Schema binding is required to prevent columns that are used by the filter function from being dropped or altered.
+フィルター関数で使用される列が削除または変更されるの回避するには、スキーマ バインディングが必要になります。
 
-### <a name="return-value"></a>Return value
-If the function returns a non\-empty result, the row is eligible to be migrated. Otherwise \- that is, if the function doesn't return a result \- the row is not eligible to be migrated.
+### <a name="return-value"></a>戻り値
+関数が空ではない結果を返す場合、行は移行の対象となります。 それ以外の場合、つまり結果が返されない場合、行は移行の対象となりません。
 
-### <a name="conditions"></a>Conditions
-The &lt;*predicate*&gt; can consist of one condition, or of multiple conditions joined with the AND logical operator.
+### <a name="conditions"></a>条件
+&lt;*述語*&gt;は&1; つの条件か AND 論理演算子で結合された複数の条件で構成されます。
 
 ```
 <predicate> ::= <condition> [ AND <condition> ] [ ...n ]
 ```
-Each condition in turn can consist of one primitive condition, or of multiple primitive conditions joined with the OR logical operator.
+各条件は&1; つのプリミティブ条件か OR 論理演算子で結合された複数のプリミティブ条件で構成されます。
 
 ```
 <condition> ::= <primitive_condition> [ OR <primitive_condition> ] [ ...n ]
 ```
 
-### <a name="primitive-conditions"></a>Primitive conditions
-A primitive condition can do one of the following comparisons.
+### <a name="primitive-conditions"></a>プリミティブ条件
+プリミティブ条件は次のいずれかの比較を実行できます。
 
 ```
 <primitive_condition> ::=
@@ -75,46 +79,46 @@ A primitive condition can do one of the following comparisons.
 }
 ```
 
-* Compare a function parameter to a constant expression. For example, `@column1 < 1000`.
-  
-  Here's an example that checks whether the value of a *date* column is &lt; 1/1/2016.
-  
+* 関数パラメーターと定数式を比較します。 たとえば、「 `@column1 < 1000`」のように入力します。
+
+  次の例では、*date* 列の値が &lt; 1/1/2016 であるかどうかが確認されます。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 < CONVERT(datetime, '1/1/2016', 101)
   GO
-  
+
   ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(date),
       MIGRATION_STATE = OUTBOUND
   ) )
   ```
-* Apply the IS NULL or IS NOT NULL operator to a function parameter.
-* Use the IN operator to compare a function parameter to a list of constant values.
-  
-  Here's an example that checks whether the value of a *shipment\_status*  column is `IN (N'Completed', N'Returned', N'Cancelled')`.
-  
+* IS NULL または IS NOT NULL 演算子を関数パラメーターに適用します。
+* IN 演算子を使用し、関数パラメーターと定数値の一覧を比較します。
+
+  次の例では、*shipment\_status* 列の値が `IN (N'Completed', N'Returned', N'Cancelled')` であるかどうかが確認されます。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate(@column1 nvarchar(15))
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 IN (N'Completed', N'Returned', N'Cancelled')
   GO
-  
+
   ALTER TABLE table1 SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(shipment_status),
       MIGRATION_STATE = OUTBOUND
   ) )
   ```
 
-### <a name="comparison-operators"></a>Comparison operators
-The following comparison operators are supported.
+### <a name="comparison-operators"></a>比較演算子
+次の比較演算子がサポートされます。
 
 `<, <=, >, >=, =, <>, !=, !<, !>`
 
@@ -122,21 +126,21 @@ The following comparison operators are supported.
 <comparison_operator> ::= { < | <= | > | >= | = | <> | != | !< | !> }
 ```
 
-### <a name="constant-expressions"></a>Constant expressions
-The constants that you use in a filter function can be any deterministic expression that can be evaluated when you define the function. Constant expressions can contain the following things.
+### <a name="constant-expressions"></a>定数式
+フィルター関数で使用する定数は、関数の定義時に評価可能なあらゆる決定論的式にすることができます。 定数式には次を含めることができます。
 
-* Literals. For example, `N’abc’, 123`.
-* Algebraic expressions. For example, `123 + 456`.
-* Deterministic functions. For example, `SQRT(900)`.
-* Deterministic conversions that use CAST or CONVERT. For example, `CONVERT(datetime, '1/1/2016', 101)`.
+* リテラル。 たとえば、「 `N’abc’, 123`」のように入力します。
+* 代数式。 たとえば、「 `123 + 456`」のように入力します。
+* 確定関数。 たとえば、「 `SQRT(900)`」のように入力します。
+* CAST または CONVERT を使用する確定的変換。 たとえば、「 `CONVERT(datetime, '1/1/2016', 101)`」のように入力します。
 
-### <a name="other-expressions"></a>Other expressions
-You can use the BETWEEN and NOT BETWEEN operators if the resulting function conforms to the rules described here after you replace the BETWEEN and NOT BETWEEN operators with the equivalent AND and OR expressions.
+### <a name="other-expressions"></a>その他の式
+BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、結果的に生成される関数がここで説明するルールに準拠する場合、BETWEEN 演算子と NOT BETWEEN 演算子を利用できます。
 
-You can't use subqueries or non\-deterministic functions such as RAND() or GETDATE().
+サブクエリや RAND() または GETDATE() のような非決定性の関数は使うことができません。
 
-## <a name="add-a-filter-function-to-a-table"></a>Add a filter function to a table
-Add a filter function to a table by running the **ALTER TABLE** statement and specifying an existing inline table\-valued function as the value of the **FILTER\_PREDICATE** parameter. For example:
+## <a name="add-a-filter-function-to-a-table"></a>フィルター関数をテーブルに追加する
+テーブルにフィルター関数を追加するには、**ALTER TABLE** ステートメントを実行し、**FILTER\_PREDICATE** パラメーターの値として既存のインライン テーブル値関数を指定します。 次に例を示します。
 
 ```tsql
 ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
@@ -144,22 +148,22 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
     MIGRATION_STATE = <desired_migration_state>
 ) )
 ```
-After you bind the function to the table as a predicate, the following things are true.
+関数を述語としてテーブルにバインドすると、次のようになります。
 
-* The next time data migration occurs, only the rows for which the function returns a non\-empty value are migrated.
-* The columns used by the function are schema bound. You can't alter these columns as long as a table is using the function as its filter predicate.
+* 次のデータ移行時に、関数が空ではない値を返す行のみが移行されます。
+* 関数で使用される列にスキーマがバインドされます。 テーブルでそのフィルター述語として関数が使用されている限り、これらの列は変更できません。
 
-You can't drop the inline table\-valued function as long as a table is using the function as its filter predicate.
+テーブルでそのフィルター述語として関数が使用されている限り、インライン テーブル値関数は削除できません。
 
 > [!NOTE]
-> To improve the performance of the filter function, create an index on the columns used by the function.
-> 
-> 
+> フィルター関数のパフォーマンスを向上させるには、関数で使用される列にインデックスを作成します。
+>
+>
 
-### <a name="passing-column-names-to-the-filter-function"></a>Passing column names to the filter function
-When you assign a filter function to a table, specify the column names passed to the filter function with a one-part name. If you specify a three-part name when you pass the column names, subsequent queries against the Stretch\-enabled table will fail.
+### <a name="passing-column-names-to-the-filter-function"></a>フィルター関数に列名を渡す
+テーブルにフィルター関数を割り当てる場合は、フィルター関数に渡す列名を&1; 部構成の名前で指定します。 列名を渡す際に&3; 部構成の名前を指定すると、Stretch が有効なテーブルに対するその後のクエリが失敗します。
 
-For example, if you specify a three-part column name as shown in the following example, the statement will run successfully, but subsequent queries against the table will fail.
+たとえば、次の例に示すような&3; 部構成の名前を指定すると、ステートメントは正常に実行されますが、テーブルに対するその後のクエリが失敗します。
 
 ```tsql
 ALTER TABLE SensorTelemetry
@@ -169,7 +173,7 @@ ALTER TABLE SensorTelemetry
   )
 ```
 
-Instead, specify the filter function with a one-part column name as shown in the following example.
+代わりに、次の例に示すような&1; 部構成の名前のフィルター関数を指定 します。
 
 ```tsql
 ALTER TABLE SensorTelemetry
@@ -179,19 +183,19 @@ ALTER TABLE SensorTelemetry
   )
 ```
 
-## <a name="<a-name="addafterwiz"></a>add-a-filter-function-after-running-the-wizard"></a><a name="addafterwiz"></a>Add a filter function after running the Wizard
-If you want use a function that you can't create in the **Enable Database for Stretch** Wizard, you can run the ALTER TABLE statement to specify a function after you exit the wizard. Before you can apply a function, however, you have to stop the data migration that's already in progress and bring back migrated data. (For more info about why this is necessary, see [Replace an existing filter function](#replacePredicate).  
+## <a name="a-nameaddafterwizaadd-a-filter-function-after-running-the-wizard"></a><a name="addafterwiz"></a>ウィザードの実行後にフィルター関数を追加する
+**[Stretch Database を有効にする]** ウィザードで作成できない関数を使用する場合は、ウィザードを終了してから ALTER TABLE ステートメントを実行して関数を指定します。 ただし、この場合は、関数を適用する前に、既に進行中のデータ移行を停止して、移行されたデータを元に戻す必要があります。 この操作が必要な理由の詳細については、「 [既存のフィルター関数を置き換える](#replacePredicate)」を参照してください。  
 
-1. Reverse the direction of migration and bring back the data already migrated. You can't cancel this operation after it starts. You also incur costs on Azure for outbound data transfers \(egress\). For more info, see [How Azure pricing works](https://azure.microsoft.com/pricing/details/data-transfers/).  
-   
+1. 移行の方向を逆にして、既に移行されたデータを元に戻します。 開始後にこの操作をキャンセルすることはできません。 また、Azure での送信データ転送 \(送信\) の料金が発生します。 詳細については、 [Azure の料金体系](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。  
+
     ```tsql  
     ALTER TABLE <table name>  
          SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = INBOUND ) ) ;   
     ```  
-2. Wait for migration to finish. You can check the status in **Stretch Database Monitor** from SQL Server Management Studio, or you can query the **sys.dm_db_rda_migration_status** view. For more info, see [Monitor and troubleshoot data migration](sql-server-stretch-database-monitor.md) or [sys.dm_db_rda_migration_status](https://msdn.microsoft.com/library/dn935017.aspx).  
-3. Create the filter function that you want to apply to the table.  
-4. Add the function to the table and restart data migration to Azure.  
-   
+2. データ移行が完了するまで待ちます。 SQL Server Management Studio から **Stretch Database Monitor** でデータ移行の状態を確認するか、もしくは **sys.dm_db_rda_migration_status** ビューをクエリします。 詳細については、[データ移行の監視とトラブルシューティング](sql-server-stretch-database-monitor.md)に関する記事または [sys.dm_db_rda_migration_status](https://msdn.microsoft.com/library/dn935017.aspx) に関する記事をご覧ください。  
+3. テーブルに適用するフィルター関数を作成します。  
+4. テーブルに関数を追加して、Azure へのデータ移行を再開します。  
+
     ```tsql  
     ALTER TABLE <table name>  
         SET ( REMOTE_DATA_ARCHIVE  
@@ -202,8 +206,8 @@ If you want use a function that you can't create in the **Enable Database for St
         );   
     ```  
 
-## <a name="filter-rows-by-date"></a>Filter rows by date
-The following example migrates rows where the **date** column contains a value earlier than January 1, 2016.
+## <a name="filter-rows-by-date"></a>日付で行をフィルター処理する
+次の例では、 **date** 列に 2016 年 1 月 1 日より前の値を含む行が移行されます。
 
 ```tsql
 -- Filter by date
@@ -216,8 +220,8 @@ AS
 GO
 ```
 
-## <a name="filter-rows-by-the-value-in-a-status-column"></a>Filter rows by the value in a status column
-The following example migrates rows where the **status** column contains one of the specified values.
+## <a name="filter-rows-by-the-value-in-a-status-column"></a>status 列の値で行をフィルター処理する
+次の例では、 **status** 列に指定した値のいずれかを含む行が移行されます。
 
 ```tsql
 -- Filter by status column
@@ -230,13 +234,13 @@ AS
 GO
 ```
 
-## <a name="filter-rows-by-using-a-sliding-window"></a>Filter rows by using a sliding window
-To filter rows by using a sliding window, keep in mind the following requirements for the filter function.
+## <a name="filter-rows-by-using-a-sliding-window"></a>スライディング ウィンドウを使用して行をフィルター処理する
+スライディング ウィンドウを使用して行をフィルター処理する場合は、フィルター関数の以下の要件を考慮してください。
 
-* The function has to be deterministic. Therefore you can't create a function that automatically recalculates the sliding window as time passes.
-* The function uses schema binding. Therefore you can't simply update the function "in place" every day by calling **ALTER FUNCTION** to move the sliding window.
+* 関数は確定的である必要があります。 このため、スライディング ウィンドウを時間の経過に伴い自動的に再計算する関数は作成できません。
+* 関数はスキーマ バインドを使用します。 このため、スライディング ウィンドウを移動するのに、 **ALTER FUNCTION** を呼び出して "所定の場所にある" 関数を毎日更新することはできません。
 
-Start with a filter function like the following example, which migrates rows where the **systemEndTime** column contains a value earlier than January 1, 2016.
+次に示すフィルター関数の例では、 **systemEndTime** 列に 2016 年 1 月 1 日より前の値を含む行が移行されます。
 
 ```tsql
 CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160101(@systemEndTime datetime2)
@@ -247,7 +251,7 @@ RETURN SELECT 1 AS is_eligible
   WHERE @systemEndTime < CONVERT(datetime2, '2016-01-01T00:00:00', 101) ;
 ```
 
-Apply the filter function to the table.
+テーブルにフィルター関数を適用します。
 
 ```tsql
 ALTER TABLE <table name>
@@ -261,11 +265,11 @@ SET (
 ;
 ```
 
-When you want to update the sliding window, do the following things.
+スライディング ウィンドウを更新するには、次のようにします。
 
-1. Create a new function that specifies the new sliding window. The following example selects dates earlier than January 2, 2016, instead of January 1, 2016.
-2. Replace the previous filter function with the new one by calling **ALTER TABLE**, as shown in the following example.
-3. Optionally, drop the previous filter function that you're no longer using by calling **DROP FUNCTION**. (This step is not shown in the example.)
+1. 新しいスライディング ウィンドウを指定する新しい関数を作成します。 次の例では、2016 年 1 月 1 日ではなく、2016 年 1 月 2 日より前の日付を選択します。
+2. 次の例に示すように、 **ALTER TABLE**を呼び出して、以前のフィルター関数を新しい関数に置き換えます。
+3. 必要に応じて、**DROP FUNCTION** を呼び出して不要になった前のフィルター関数を削除します  (この手順は例に含まれていません)。
 
 ```tsql
 BEGIN TRAN
@@ -292,236 +296,236 @@ GO
 COMMIT ;
 ```
 
-## <a name="more-examples-of-valid-filter-functions"></a>More examples of valid filter functions
-* The following example combines two primitive conditions by using the AND logical operator.
-  
+## <a name="more-examples-of-valid-filter-functions"></a>有効なフィルター関数のその他の例
+* 次の例では、AND 論理演算子を使用して&2; つのプリミティブ条件を結合します。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate((@column1 datetime, @column2 nvarchar(15))
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
     WHERE @column1 < N'20150101' AND @column2 IN (N'Completed', N'Returned', N'Cancelled')
   GO
-  
+
   ALTER TABLE table1 SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(date, shipment_status),
       MIGRATION_STATE = OUTBOUND
   ) )
   ```
-* The following example uses several conditions and a deterministic conversion with CONVERT.
-  
+* 次の例では、いくつかの条件、確定変換、CONVERT が使用されています。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example1(@column1 datetime, @column2 int, @column3 nvarchar)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
       WHERE @column1 < CONVERT(datetime, '1/1/2015', 101)AND (@column2 < -100 OR @column2 > 100 OR @column2 IS NULL)AND @column3 IN (N'Completed', N'Returned', N'Cancelled')
   GO
   ```
-* The following example uses mathematical operators and functions.
-  
+* 次の例では、算術演算子と関数が使用されています。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example2(@column1 float)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 < SQRT(400) + 10
   GO
   ```
-* The following example uses the BETWEEN and NOT BETWEEN operators. This usage is valid because the resulting function conforms to the rules described here after you replace the BETWEEN and NOT BETWEEN operators with the equivalent AND and OR expressions.
-  
+* 次の例では、BETWEEN 演算子と NOT BETWEEN 演算子が使用されています。 BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、結果的に生成される関数がここで説明するルールに準拠するため、この使用方法は有効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example3(@column1 int, @column2 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 BETWEEN 0 AND 100
               AND (@column2 NOT BETWEEN 200 AND 300 OR @column1 = 50)
   GO
   ```
-  The preceding function is equivalent to the following function after you replace the BETWEEN and NOT BETWEEN operators with the equivalent AND and OR expressions.
-  
+  BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、先行する関数は後続の関数と等しくなります。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example4(@column1 int, @column2 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 >= 0 AND @column1 <= 100AND (@column2 < 200 OR @column2 > 300 OR @column1 = 50)
   GO
   ```
 
-## <a name="examples-of-filter-functions-that-aren't-valid"></a>Examples of filter functions that aren't valid
-* The following function isn't valid because it contains a non\-deterministic conversion.
-  
+## <a name="examples-of-filter-functions-that-arent-valid"></a>無効なフィルター関数の例
+* 非決定性の変換が含まれるため、次の関数は無効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example5(@column1 datetime)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 < CONVERT(datetime, '1/1/2016')
   GO
   ```
-* The following function isn't valid because it contains a non\-deterministic function call.
-  
+* 非決定性の関数呼び出しが含まれるため、次の関数は無効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example6(@column1 datetime)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 < DATEADD(day, -60, GETDATE())
   GO
   ```
-* The following function isn't valid because it contains a subquery.
-  
+* サブクエリが含まれるため、次の関数は無効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example7(@column1 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 IN (SELECT SupplierID FROM Supplier WHERE Status = 'Defunct'))
   GO
   ```
-* The following functions aren't valid because expressions that use algebraic operators or built\-in functions must evaluate to a constant when you define the function. You can't include column references in algebraic expressions or function calls.
-  
+* 関数の定義時、代数演算子または組み込み関数を使う式が定数に評価される必要があるため、次の関数は無効です。 代数の式や関数呼び出しに列参照を含めることはできません。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example8(@column1 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE @column1 % 2 =  0
   GO
-  
+
   CREATE FUNCTION dbo.fn_example9(@column1 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE SQRT(@column1) = 30
   GO
   ```
-* The following function isn't valid because it violates the rules described here  after you replace the BETWEEN operator with the equivalent AND expression.
-  
+* BETWEEN 演算子を同等の AND 式で置換した後、ここで説明するルールに違反するため、次の関数は無効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example10(@column1 int, @column2 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE (@column1 BETWEEN 1 AND 200 OR @column1 = 300) AND @column2 > 1000
   GO
   ```
-  The preceding function is equivalent to the following function after you replace the BETWEEN operator with the equivalent AND expression. This function isn't valid because primitive conditions can only use the OR logical operator.
-  
+  BETWEEN 演算子を同等の AND 式で置換した後、先行する関数は後続の関数と等しくなります。 プリミティブ条件は OR 論理演算子のみを使用できるために、この関数は無効です。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example11(@column1 int, @column2 int)
   RETURNS TABLE
   WITH SCHEMABINDING
   AS
-  RETURN  SELECT 1 AS is_eligible
+  RETURN    SELECT 1 AS is_eligible
           WHERE (@column1 >= 1 AND @column1 <= 200 OR @column1 = 300) AND @column2 > 1000
   GO
   ```
 
-## <a name="how-stretch-database-applies-the-filter-function"></a>How Stretch Database applies the filter function
-Stretch Database applies the filter function to the table and determines eligible rows by using the CROSS APPLY operator. For example:
+## <a name="how-stretch-database-applies-the-filter-function"></a>Stretch Database がフィルター関数を適用するしくみ
+Stretch Database は、CROSS APPLY 演算子を利用して、テーブルにフィルター関数を適用し、対象の行を判定します。 次に例を示します。
 
 ```tsql
 SELECT * FROM stretch_table_name CROSS APPLY fn_stretchpredicate(column1, column2)
 ```
-If the function returns a non\-empty result for the row, the row is eligible to be migrated.
+関数が行に空ではない結果を返す場合、行は移行の対象となります。
 
-## <a name="<a-name="replacepredicate"></a>replace-an-existing-filter-function"></a><a name="replacePredicate"></a>Replace an existing filter function
-You can replace a previously specified filter function by running the **ALTER TABLE** statement again and specifying a new value for the **FILTER\_PREDICATE** parameter. For example:
+## <a name="a-namereplacepredicateareplace-an-existing-filter-function"></a><a name="replacePredicate"></a>既存のフィルター関数を置き換える
+**ALTER TABLE** ステートメントをもう一度実行し、**FILTER\_PREDICATE** パラメーターに新しい値を指定することで、以前に指定したフィルター関数を置換できます。 次に例を示します。
 
 ```tsql
 ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
     FILTER_PREDICATE = dbo.fn_stretchpredicate2(column1, column2),
     MIGRATION_STATE = <desired_migration_state>
 ```
-The new inline table\-valued function has the following requirements.
+新しいインライン テーブル値関数には次の要件があります。
 
-* The new function has to be less restrictive than the previous function.
-* All the operators that existed in the old function must exist in the new function.
-* The new function can't contain operators that don't exist in the old function.
-* The order of operator arguments can't change.
-* Only constant values that are part of a `<, <=, >, >=`  comparison can be changed in a way that makes the function less restrictive.
+* 新しい関数は、前の関数よりも制約を減らす必要があります。
+* 古い関数に含まれていたすべての演算子を新しい関数に含める必要があります。
+* 古い関数に含まれていない演算子は新しい関数に含めることができません。
+* 演算子の引数の順序は変更できません。
+* `<, <=, >, >=` 比較に含まれる定数値のみを、関数の制約が減るように変更できます。
 
-### <a name="example-of-a-valid-replacement"></a>Example of a valid replacement
-Assume that the following function is the current filter predicate.
+### <a name="example-of-a-valid-replacement"></a>有効な置換の例
+次の関数が現在のフィルター述語であると仮定します。
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate_old (@column1 datetime, @column2 int)
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE @column1 < CONVERT(datetime, '1/1/2016', 101)
             AND (@column2 < -100 OR @column2 > 100)
 GO
 ```
-The following function is a valid replacement because the new date constant (which specifies a later cutoff date) makes the function less restrictive.
+(遅い決算日を指定する) 新しい日付定数で関数の制約が減るため、次の関数は有効な置換となります。
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate_new (@column1 datetime, @column2 int)
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE @column1 < CONVERT(datetime, '2/1/2016', 101)
             AND (@column2 < -50 OR @column2 > 50)
 GO
 ```
 
-### <a name="examples-of-replacements-that-aren't-valid"></a>Examples of replacements that aren't valid
-The following function isn't a valid replacement because the new date constant (which specifies an earlier cutoff date) doesn't make the function less restrictive.
+### <a name="examples-of-replacements-that-arent-valid"></a>無効な置換の例
+(早い決算日を指定する) 新しい日付定数では関数の制約が減らないため、次の関数は有効な置換になりません。
 
 ```tsql
 CREATE FUNCTION dbo.fn_notvalidreplacement_1 (@column1 datetime, @column2 int)
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE @column1 < CONVERT(datetime, '1/1/2015', 101)
             AND (@column2 < -100 OR @column2 > 100)
 GO
 ```
-The following function isn't a valid replacement because one of the comparison operators has been removed.
+比較演算子の&1; つが削除されているため、次の関数は有効な置換になりません。
 
 ```tsql
 CREATE FUNCTION dbo.fn_notvalidreplacement_2 (@column1 datetime, @column2 int)
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE @column1 < CONVERT(datetime, '1/1/2016', 101)
             AND (@column2 < -50)
 GO
 ```
-The following function isn't a valid replacement because a new condition has been added with the AND logical operator.
+AND 論理演算子で新しい条件が追加されているため、次の関数は有効な置換になりません。
 
 ```tsql
 CREATE FUNCTION dbo.fn_notvalidreplacement_3 (@column1 datetime, @column2 int)
 RETURNS TABLE
 WITH SCHEMABINDING
 AS
-RETURN  SELECT 1 AS is_eligible
+RETURN    SELECT 1 AS is_eligible
         WHERE @column1 < CONVERT(datetime, '1/1/2016', 101)
             AND (@column2 < -100 OR @column2 > 100)
             AND (@column2 <> 0)
 GO
 ```
 
-## <a name="remove-a-filter-function-from-a-table"></a>Remove a filter function from a table
-To migrate the entire table instead of selected rows, remove the existing function by setting **FILTER\_PREDICATE** to null. For example:
+## <a name="remove-a-filter-function-from-a-table"></a>フィルター関数をテーブルから削除する
+選択した行ではなく、テーブル全体を移行する場合、**FILTER\_PREDICATE** を null に設定し、既存の関数を削除します。 次に例を示します。
 
 ```tsql
 ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
@@ -529,20 +533,22 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
     MIGRATION_STATE = <desired_migration_state>
 ) )
 ```
-After you remove the filter function, all rows in the table are eligible for migration. As a result, you cannot specify a filter function for the same table later unless you bring back all the remote data for the table from Azure first. This restriction exists to avoid the situation where rows that are not eligible for migration when you provide a new filter function have already been migrated to Azure.
+フィルター関数を削除すると、テーブルのすべての行が移行の対象になります。 このため、先に Azure からテーブルのすべてのリモート データを戻しておかない限り、後で同じテーブルにフィルター関数を指定することはできません。 この制限は、新しいフィルター関数の指定により移行対象外となる行が既に Azure に移行されているという状況を避けるために設けられています。
 
-## <a name="check-the-filter-function-applied-to-a-table"></a>Check the filter function applied to a table
-To check the filter function applied to a table, open the catalog view **sys.remote\_data\_archive\_tables** and check the value of the **filter\_predicate** column. If the value is null, the entire table is eligible for archiving. For more info, see [sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
+## <a name="check-the-filter-function-applied-to-a-table"></a>テーブルに適用されているフィルター関数を確認する
+テーブルに適用されているフィルター関数を確認するには、**sys.remote\_data\_archive\_tables** カタログ ビューを開き、**filter\_predicate** 列の値を確認します。 値が null の場合、テーブル全体がアーカイブの対象になります。 詳細については、「[sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」をご覧ください。
 
-## <a name="security-notes-for-filter-functions"></a>Security notes for filter functions
-A compromised account with db_owner privileges can do the following things.  
+## <a name="security-notes-for-filter-functions"></a>フィルター関数のセキュリティに関する注意事項
+db_owner 権限を持つ危害を受けたアカウントによって、次のことが行われる可能性があります。  
 
-* Create and apply a table-valued function that consumes large amounts of server resources or waits for an extended period resulting in a denial of service.  
-* Create and apply a table-valued function that makes it possible to infer the content of a table for which the user has been explicitly denied read access.  
+* 大量のサーバー リソースの消費、あるいは長期間の待機後に、サービス拒否を発生させるテーブル値関数の作成と適用。  
+* ユーザーの読み取りアクセスが明示的に拒否される原因となる、テーブル内容の推測を可能にするテーブル値関数の作成と適用。  
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>関連項目
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

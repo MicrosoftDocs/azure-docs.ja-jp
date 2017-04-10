@@ -1,6 +1,6 @@
 ---
-title: "Data Lake Store Java SDK を使用してアプリケーションを開発する | Microsoft Docs"
-description: "Data Lake Store Java SDK を使用してアプリケーションを開発する"
+title: "Java SDK を使用して Azure Data Lake Store でアプリケーションを開発する | Microsoft Docs"
+description: "Azure Data Lake Store Java SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 255e8def5179e544a4fb919774f3b18148566898
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -29,7 +30,8 @@ ms.openlocfilehash: 255e8def5179e544a4fb919774f3b18148566898
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 Azure Data Lake Store Java SDK を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
@@ -49,7 +51,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 2. Azure AD Web アプリケーションのクライアント ID、クライアント シークレット、トークン エンドポイントを取得します。
 3. 作成する Java アプリケーションからアクセスする Data Lake Store ファイル/フォルダーで、Azure AD Web アプリケーションのアクセスを構成します。
 
-これらの手順を実行する方法については、「[Create an Active Directory application (Active Directory アプリケーションを作成する)](data-lake-store-authenticate-using-active-directory.md#create-an-active-directory-application)」をご覧ください。
+これらの手順を実行する方法については、「[Create an Active Directory application (Active Directory アプリケーションを作成する)](data-lake-store-authenticate-using-active-directory.md)」をご覧ください。
 
 Azure Active Directory には、トークンを取得するための他のオプションも用意されています。 ブラウザーで実行されるアプリケーション、デスクトップ アプリケーションとして配布されるアプリケーション、オンプレミスまたは Azure 仮想マシンで実行されるサーバー アプリケーションなど、実際のシナリオに合わせてさまざまな認証メカニズムの中から選択できます。 また、パスワード、証明書、2 要素認証などの各種資格情報の中から選択することもできます。さらに、Azure Active Directory では、オンプレミスの Active Directory ユーザーをクラウドと同期することも可能です。 詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。 
 
@@ -63,7 +65,7 @@ Azure Active Directory には、トークンを取得するための他のオプ
           <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.0.4-SNAPSHOT</version>
+            <version>2.1.4</version>
           </dependency>
           <dependency>
             <groupId>org.slf4j</groupId>
@@ -72,37 +74,49 @@ Azure Active Directory には、トークンを取得するための他のオプ
           </dependency>
         </dependencies>
    
-    最初の依存関係では、maven リポジトリから Data Lake Store SDK (`azure-datalake-store`) を使用します。 2 番目の依存関係 (`slf4j-nop`) では、このアプリケーションで使用するログ記録フレームワークを指定します。 Data Lake Store SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
+    最初の依存関係では、maven リポジトリから Data Lake Store SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係 (`slf4j-nop`) では、このアプリケーションで使用するログ記録フレームワークを指定します。 Data Lake Store SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 ### <a name="add-the-application-code"></a>アプリケーション コードの追加
-コードには 3 つの主要部分があります。
+コードには&3; つの主要部分があります。
 
 1. Azure Active Directory トークンを取得する。
 2. トークンを使用して Data Lake Store クライアントを作成する。
 3. Data Lake Store クライアントを使用して操作を実行する。
 
 #### <a name="step-1-obtain-an-azure-active-directory-token"></a>手順 1: Azure Active Directory トークンを取得する
-Data Lake Store SDK には、Data Lake Store アカウントとの対話に必要なセキュリティ トークンを取得できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
+Data Lake Store SDK には、Data Lake Store アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
 
-Data Lake Store SDK を使用して、以前に作成した Active Directory Web アプリケーションのトークンを取得するには、`AzureADAuthenticator` クラスの静的メソッドを使用します。 **FILL-IN-HERE** を、Azure Active Directory Web アプリケーションの実際の値に置き換えます。
+Data Lake Store SDK を使用して、以前に作成した Active Directory Web アプリケーションのトークンを取得するには、`AccessTokenProvider` のサブクラスの&1; つを使用します (下の例では、`ClientCredsTokenProvider` を使用します)。 トークン プロバイダーは、メモリ内のトークンを取得するために使用する資格情報をキャッシュし、そのトークンの有効期限が切れそうになった場合に自動的に更新します。 トークンがカスタム トークンで取得されるように `AccessTokenProvider` のサブクラスを独自に作成することができますが、ここでは、SDK に用意されているものを使ってみましょう。
+
+**FILL-IN-HERE** を、Azure Active Directory Web アプリケーションの実際の値に置き換えます。
 
     private static String clientId = "FILL-IN-HERE";
     private static String authTokenEndpoint = "FILL-IN-HERE";
     private static String clientKey = "FILL-IN-HERE";
 
-    AzureADToken token = AzureADAuthenticator.getTokenUsingClientCreds(authTokenEndpoint, clientId, clientKey);
+    AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);
 
 #### <a name="step-2-create-an-azure-data-lake-store-client-adlstoreclient-object"></a>手順 2: Azure Data Lake Store クライアント (ADLStoreClient) オブジェクトを作成する
-[ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) オブジェクトを作成するには、Data Lake Store アカウント名と、最後の手順で生成された Azure Active Directory トークンを指定する必要があります。 Data Lake Store アカウント名は、完全修飾ドメイン名である必要があります。 たとえば、**FILL-IN-HERE** を **mydatalakestore.azuredatalakestore.net** などに置き換えます。
+[ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) オブジェクトを作成するには、Data Lake Store アカウント名と、最後の手順で生成されたトークン プロバイダーを指定する必要があります。 Data Lake Store アカウント名は、完全修飾ドメイン名である必要があります。 たとえば、**FILL-IN-HERE** を **mydatalakestore.azuredatalakestore.net** などに置き換えます。
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
-    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, token);
+    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
 ### <a name="step-3-use-the-adlstoreclient-to-perform-file-and-directory-operations"></a>手順 3: ADLStoreClient を使用してファイルとディレクトリの操作を実行する
 次のコードには、一部の一般的な操作のスニペットの例が含まれています。 他の操作については、**ADLStoreClient** オブジェクトの完全な [Data Lake Store Java SDK API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で確認できます。
 
 ファイルの読み取りと書き込みには、標準の Java ストリームを使用します。 つまり、Data Lake Store ストリームの上の層に Java ストリームを配置することで、標準の Java 機能 (書式設定された出力の印刷ストリームや、追加機能の圧縮または暗号化ストリームなど) のメリットが得られます。
 
+     // create file and write some content
+     String filename = "/a/b/c.txt";
+     OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
+     PrintStream out = new PrintStream(stream);
+     for (int i = 1; i <= 10; i++) {
+         out.println("This is line #" + i);
+         out.format("This is the same line (%d), but using formatted output. %n", i);
+     }
+     out.close();
+    
     // set file permission
     client.setPermission(filename, "744");
 
@@ -141,13 +155,9 @@ Data Lake Store SDK を使用して、以前に作成した Active Directory Web
 2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に、これを行う方法の例が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
+* [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

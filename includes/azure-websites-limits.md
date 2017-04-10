@@ -6,7 +6,7 @@
 | コンピューティング インスタンスの種類 |共有 |共有 |専用<sup>3</sup> |専用<sup>3</sup> |専用<sup>3</sup></p> |
 | [スケールアウト](../articles/app-service-web/web-sites-scale.md) (最大インスタンス) |1 Shared インスタンス |1 Shared インスタンス |3 専用インスタンス<sup>3</sup> |10 専用インスタンス<sup>3</sup> |20 専用インスタンス (ASE では50)<sup>3、4</sup> |
 | ストレージ<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4、5</sup></p> |
-| CPU 時間 (短)<sup>6</sup> |3 分 |3 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の料金で課金 |無制限、Standard の料金で課金 |
+| CPU 時間 (5 分)<sup>6</sup> |3 分 |3 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の料金で課金 |無制限、Standard の料金で課金 |
 | CPU 時間 (1 日)<sup>6</sup> |約 60 分 |約 240 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の料金で課金 |無制限、Standard の料金で課金 |
 | メモリ (1 時間) |App Service プランごとに 1,024 MB |アプリごとに 1,024 MB |該当なし |該当なし |該当なし |
 | 帯域幅 |165 MB |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、データ転送の料金が適用される |無制限、データ転送の料金が適用される |無制限、データ転送の料金が適用される |
@@ -23,7 +23,7 @@
 | [WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)<sup>9</sup> |○ |○ |○ |○ |○ |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) のサポート | |○ |○ |○ |○ |
 | [エンドポイントの監視](../articles/app-service-web/web-sites-monitor.md) | | |○ |○ |○ |
-| [ステージング スロット (プレビュー)](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
+| [ステージング スロット](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
 | アプリケーションごとのカスタム ドメイン数</a> | |500 |500 |500 |500 |
 | SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
@@ -38,6 +38,8 @@
 <sup>9</sup>カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 スケジュールされた Web ジョブの実行には、Azure Scheduler Free または Standard が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありませんが、実際にはアプリケーション コードの処理に依存する限界があります。   
 <sup>10</sup>フェールオーバー用に Azure Traffic Manager が構成された複数のインスタンスを使用するデプロイでは、SLA は 99.95% です。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Feb17_HO3-->
 
 

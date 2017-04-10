@@ -1,19 +1,24 @@
 ---
-title: Azure Active Directory の管理単位の管理
-description: 管理単位を使用した Azure Active Directory での細かいレベルの権限の委任
+title: "Azure Active Directory の管理単位の管理"
+description: "管理単位を使用した Azure Active Directory での細かいレベルの権限の委任"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 8464cd6b-1d1a-470d-a4fb-ee29b8eab4c4
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 02/13/2017
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b30ed9727229c082bff65023bfe4900640caa995
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD の管理単位 - パブリック プレビュー
@@ -23,8 +28,8 @@ ms.author: curtand
 
 > [!IMPORTANT]
 > 管理単位は、Azure Active Directory Premium を有効にした場合にのみ、作成して使用できます。 詳細については、「 [Azure AD Premium の概要](active-directory-get-started-premium.md)」を参照してください。
-> 
-> 
+>
+>
 
 全体管理者の観点から見ると、管理単位は、作成してリソースを設定できるディレクトリ オブジェクトです。 **このリリースでは、設定できるリソースはユーザーだけです。**  管理単位を作成して設定した後、与えられた権限の適用先を管理単位に含まれているリソースに限定するスコープとして使用できます。
 
@@ -35,7 +40,4 @@ Azure AD モジュールのソフトウェア要件とインストールの詳�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory のエディション](active-directory-editions.md)
-
-<!--HONumber=Oct16_HO2-->
-
 

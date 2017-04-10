@@ -1,44 +1,12 @@
 ---
-title: Azure SQL Database によるバックアップのトラブルシューティングと復元
-description: Azure SQL Database のバックアップおよびレプリカを使用した、クラウド データベースのエラーおよび障害からの回復方法について説明します。
-services: sql-database
-documentationcenter: ''
-author: dalechen
-manager: felixwu
-editor: ''
+redirect_url: /azure/sql-database/sql-database-recovery-using-backups
+translationtype: Human Translation
+ms.sourcegitcommit: d070b3485617260373e50560acd414eed5b0e345
+ms.openlocfilehash: ea790720aa9ffb39a1030ed29c51d54a6f5832c5
 
-ms.service: sql-database
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 08/31/2016
-ms.author: daleche
+--- 
 
----
-# 過去のある時点へのデータベースの復元、削除したデータベースの復元、またはデータ センターの障害からの回復
-SQL データベースは、障害やユーザー エラーから回復できるように、データベースのレプリカを保持します。使用可能なオプションは、データベースのサービス層と選択したオプションによって異なります。詳細および設計に関する考慮事項については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
-## 過去のある時点にデータベースを復元するには
-1. [Azure ポータル](https://azure.microsoft.com/)で **[SQL データベース]** をクリックします。
-2. 一覧からデータベースを選択して、**[復元]** をクリックします。
-3. データベースの新しい名前を入力し、復元する日付および時刻を選択してから、**[作成]** をクリックします。
-4. 新しいデータベースを参照する場合、必要に応じてアプリの調整を行います。[特定の時点へのデータベースの復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください。
+<!--HONumber=Dec16_HO1-->
 
-## 誤って削除したデータベースを復元するには
-1. [Azure ポータル](https://azure.microsoft.com/)で **[SQL Server]** をクリックします。
-2. 一覧からデータベースがホストされているサーバーを選択します。
-3. [サーバー] ブレードで下にスクロールし、**[削除済みデータベース]** をクリックします。
-4. 復元するデータベースを選択して、**[作成]** をクリックします。
-5. 新しいデータベースを参照する場合、必要に応じてアプリの調整を行います。[削除されたデータベースの復旧](sql-database-recovery-using-backups.md#deleted-database-restore)に関する記事を参照してください。
 
-## 地域のデータ センターの障害から回復するには
-Standard および Premium のデータベースで geo レプリケートされたセカンダリを設定している場合は、そのセカンダリを使用して回復することができます。これにより、データが失われる可能性の少ないデータベースの復元が可能になります。詳細については、「[データベースの自動バックアップを使用した Azure SQL Database の復旧](sql-database-disaster-recovery.md)」を参照してください。
-
-Azure では、別のリージョンでのすべてのデータベースのバックアップ (地理冗長バックアップ) も提供しています。geo リストアと呼ばれるこれらのバックアップから新しいデータベースを作成できますが、この方法のみに頼ると、データが失われる可能性があります。
-
-**geo リストアを使用してデータベースを回復するには：**
-
-* [Azure ポータル](https://azure.microsoft.com/)で**[新規]** をクリックし、**[データ + ストレージ]** をクリックしてから、**[SQL Database]** をクリックし、データベースのソースとして **[Backup]** を選択します。詳細については、「[Azure SQL データベースの障害からの回復](sql-database-disaster-recovery.md)」を参照してください。
-
-<!---HONumber=AcomDC_0831_2016-->

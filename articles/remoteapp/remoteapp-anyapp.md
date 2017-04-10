@@ -3,7 +3,7 @@ title: "Azure RemoteApp を使用して任意のデバイス上で任意の Wind
 description: "Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: 961d40ca-9673-4977-aa54-d6b22fc61ce1
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d46e4de6f8e1491671d4d5dfb73bacecefa2b118
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
 
 
 ---
@@ -125,6 +125,6 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

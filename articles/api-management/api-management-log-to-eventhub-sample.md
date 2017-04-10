@@ -1,271 +1,285 @@
 ---
-title: Monitor your APIs with Azure API Management, Event Hubs and Runscope
-description: Sample application demonstrating the log-to-eventhub policy by connecting Azure API Management, Azure Event Hubs and Runscope for HTTP  logging and monitoring
+title: "Azure API Management、Event Hubs、Runscope を使用した API の監視 | Microsoft Docs"
+description: "このサンプル アプリケーションでは、HTTP のログ記録および監視用に Azure API Management、Azure Event Hubs、および Runscope を関連付けた log-to-eventhub ポリシーの実例を示します"
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: darrelmiller
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: c528cf6f-5f16-4a06-beea-fa1207541a47
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: darrmi
+ms.date: 01/23/2017
+ms.author: apimpm
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 666d0f655a0705423d025b88a1f457b866008ab9
+ms.lasthandoff: 03/29/2017
 
 ---
-# <a name="monitor-your-apis-with-azure-api-management,-event-hubs-and-runscope"></a>Monitor your APIs with Azure API Management, Event Hubs and Runscope
-The [API Management service](api-management-key-concepts.md) provides many capabilities to enhance the processing of HTTP requests sent to your HTTP API. However, the existence of the requests and responses are transient. The request is made and it flows through the API Management service to your backend API. Your API processes the request and a response flows back through to the API consumer. The API Management service keeps some important statistics about the APIs for display in the Publisher portal dashboard, but beyond that, the details are gone.
+# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
+[API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 ただし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは発行者ポータル ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
 
-By using the [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [policy](api-management-howto-policies.md) in the API Management service you can send any details from the request and response to an [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). There are a variety of reasons why you may want to generate events from HTTP messages being sent to your APIs. Some examples include audit trail of updates, usage analytics, exception alerting and 3rd party integrations.   
+API Management サービスで [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [ポリシー](api-management-howto-policies.md)を使用することにより、要求から応答まですべての詳細を [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外の警告、サード パーティの統合の監査証跡が該当します。   
 
-This article demonstrates how to capture the entire HTTP request and response message, send it to an Event Hub and then relay that message to a third party service that provides HTTP logging and monitoring services.
+この記事では、HTTP 要求と応答のメッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージを中継する方法を示します。
 
-## <a name="why-send-from-api-management-service?"></a>Why Send From API Management Service?
-It is possible to write HTTP middleware that can plug into HTTP API frameworks to capture HTTP requests and responses and feed them into logging and monitoring systems. The downside to this approach is the HTTP middleware needs to be integrated into the backend API and must match the platform of the API. If there are multiple APIs then each one must deploy the middleware. Often there are reasons why backend APIs cannot be updated.
+## <a name="why-send-from-api-management-service"></a>API Management サービスから送信する理由
+HTTP API フレームワークに接続できる HTTP ミドルウェアを作成して、HTTP 要求と応答をキャプチャし、それらをログおよび監視システムに送ることは可能です。 この方法の欠点は、HTTP ミドルウェアをバックエンド API に統合する必要があり、API のプラットフォームに対応させる必要があることです。 API が複数ある場合は、それぞれがミドルウェアをデプロイする必要があります。 多くの場合、バックエンド API を更新できない理由もいくつかあります。
 
-Using the Azure API Management service to integrate with logging infrastructure provides a centralized and platform-independent solution. It is also scalable, in part due to the [geo-replication](api-management-howto-deploy-multi-region.md) capabilities of Azure API Management.
+Azure API Management サービスを使用してログ記録インフラストラクチャを統合すると、プラットフォームに依存しない一元的なソリューションを実現できます。 このソリューションがスケーラブルなのは、1 つには Azure API Management の [geo レプリケーション](api-management-howto-deploy-multi-region.md) 機能のおかげでもあります。
 
-## <a name="why-send-to-an-azure-event-hub?"></a>Why send to an Azure Event Hub?
-It is a reasonable to ask, why create a policy that is specific to Azure Event Hubs? There are many different places where I might want to log my requests. Why not just send the requests directly to the final destination?  That is an option. However, when making logging requests from an API management service, it is necessary to consider how logging messages will impact the performance of the API. Gradual increases in load can be handled by increasing available instances of system components or by taking advantage of geo-replication. However, short spikes in traffic can cause requests to be significantly delayed if requests to logging infrastructure start to slow under load.
+## <a name="why-send-to-an-azure-event-hub"></a>Azure Event ハブに送信する理由
+Azure Event Hubs に固有のポリシーを作成する理由を問うのも理にかなっています。 要求を記録できる場所にはいろいろあります。 なぜ最終的な宛先に直接、要求を送信しないのでしょうか。  それも 1 つの方法です。 ただし、API Management サービスからログ記録を要求する場合は、メッセージのログ記録が API のパフォーマンスにどのように影響するかを考慮する必要があります。 負荷が段階的に増加する場合は、システム コンポーネントの使用可能なインスタンスを増やすか、geo レプリケーションを活用することで対処できます。 ただし、トラフィックが短期間で急増した場合、負荷がかかることでログ記録インフラストラクチャへの要求の処理速度が低下し始めると、要求が大幅に遅延する可能性があります。
 
-The Azure Event Hubs is designed to ingress huge volumes of data, with capacity for dealing with a far higher number of events than the number of HTTP requests most APIs process. The Event Hub acts as a kind of sophisticated buffer between your API management service and the infrastructure that will store and process the messages. This ensures that your API performance will not suffer due to the logging infrastructure.  
+Azure Event Hubs は、膨大な量のデータの受信に対応できるように設計されており、ほとんどの API で処理される HTTP 要求の数よりもはるかに大量のイベントを処理できます。 イベント ハブは、API Management サービスと、メッセージを格納して処理するインフラストラクチャとの間で高度なバッファーの一種として機能します。 これにより、API のパフォーマンスはログ記録インフラストラクチャの影響を受けることはありません。  
 
-Once the data has been passed to an Event Hub it is persisted and will wait for Event Hub consumers to process it. The Event Hub does not care how it will be processed, it just cares about making sure the message will be successfully delivered.     
+イベント ハブに渡されたデータは保持され、イベント ハブ コンシューマーによって処理されるまで待機します。 イベント ハブでは、データがどのように処理されるかは配慮されません。配慮されるのは、メッセージが正常に配信されるようにすることだけです。     
 
-Event Hubs have the ability to stream events to multiple consumer groups. This allows events to be processed by completely different systems. This enables supporting many integration scenarios without putting addition delays on the processing of the API request within the API Management service as only one event needs to be generated.
+イベント ハブには、複数のコンシューマー グループにイベントをストリーム配信する機能があります。 これにより、イベントを完全に異なるシステムで処理できます。 生成する必要があるイベントは 1 つだけになるため、API Management サービス内での API 要求の処理でさらに遅延が発生することなく、多くの統合シナリオのサポートが可能になります。
 
-## <a name="a-policy-to-send-application/http-messages"></a>A policy to send application/http messages
-An Event Hub accepts event data as a simple string. The contents of that string are completely up to you. To be able to package up an HTTP request and send it off to Event Hubs we need to format the string with the request or response information. In situations like this, if there is an existing format we can reuse, then we may not have to write our own parsing code. Initially I considered using the [HAR](http://www.softwareishard.com/blog/har-12-spec/) for sending HTTP requests and responses. However, this format is optimized for storing a sequence of HTTP requests in a JSON based format. It contained a number of mandatory elements that added unnecessary complexity for the scenario of passing the HTTP message over the wire.  
+## <a name="a-policy-to-send-applicationhttp-messages"></a>application/http メッセージを送信するためのポリシー
+イベント ハブでは、イベント データを単純な文字列として受け取ります。 その文字列の内容はユーザーが自由に決めることができます。 HTTP 要求をパッケージ化し、それを Event Hubs に送信できるようにするには、要求または応答の情報を含む文字列の形式を設定する必要があります。 このような状況で再利用できる既存の形式がある場合は、独自の解析コードを記述する必要はありません。 最初、HTTP 要求と応答の送信には [HAR](http://www.softwareishard.com/blog/har-12-spec/) を使用することを考えていました。 しかし、この形式は、JSON ベースの形式で一連の HTTP 要求を格納するために最適化されています。 この形式には必須の要素が多数含まれていたため、ネットワーク経由で HTTP メッセージを渡すシナリオでは不必要に複雑さが増しました。  
 
-An alternative option was to use the `application/http` media type as described in the HTTP specification [RFC 7230](http://tools.ietf.org/html/rfc7230). This media type uses the exact same format that is used to actually send HTTP messages over the wire, but the entire message can be put in the body of another HTTP request. In our case we are just going to use the body as our message to send to Event Hubs. Conveniently, there is a parser that exists in [Microsoft ASP.NET Web API 2.2 Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) libraries that can parse this format and convert it into the native `HttpRequestMessage` and `HttpResponseMessage` objects.
+代わりの方法として、HTTP 仕様の [RFC 7230](http://tools.ietf.org/html/rfc7230) に規定されている `application/http` メディア タイプを使用しました。 このメディア タイプでは、実際にネットワーク経由で HTTP メッセージを送信する際に使用されるのとまったく同じ形式が使用されますが、メッセージ全体を別の HTTP 要求の本文に含めることができます。 ここでは、本文を、Event Hubs に送信するメッセージとして使用します。 [Microsoft ASP.NET Web API 2.2 クライアント](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) ライブラリには、この形式を解析してネイティブ `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換できる便利なパーサーが含まれています。
 
-To be able to create this message we need to take advantage of C# based [Policy expressions](https://msdn.microsoft.com/library/azure/dn910913.aspx) in Azure API Management. Here is the policy which sends a HTTP request message to Azure Event Hubs.
+このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
 
-       <log-to-eventhub logger-id="conferencelogger" partition-id="0">
-       @{
-           var requestLine = string.Format("{0} {1} HTTP/1.1\r\n",
-                                                       context.Request.Method,
-                                                       context.Request.Url.Path + context.Request.Url.QueryString);
+```xml
+<log-to-eventhub logger-id="conferencelogger" partition-id="0">
+@{
+   var requestLine = string.Format("{0} {1} HTTP/1.1\r\n",
+                                               context.Request.Method,
+                                               context.Request.Url.Path + context.Request.Url.QueryString);
 
-           var body = context.Request.Body?.As<string>(true);
-           if (body != null && body.Length > 1024)
-           {
-               body = body.Substring(0, 1024);
-           }
+   var body = context.Request.Body?.As<string>(true);
+   if (body != null && body.Length > 1024)
+   {
+       body = body.Substring(0, 1024);
+   }
 
-           var headers = context.Request.Headers
-                                  .Where(h => h.Key != "Authorization" && h.Key != "Ocp-Apim-Subscription-Key")
-                                  .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
-                                  .ToArray<string>();
+   var headers = context.Request.Headers
+                          .Where(h => h.Key != "Authorization" && h.Key != "Ocp-Apim-Subscription-Key")
+                          .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
+                          .ToArray<string>();
 
-           var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
+   var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
 
-           return "request:"   + context.Variables["message-id"] + "\n"
-                               + requestLine + headerString + "\r\n" + body;
-       }
-       </log-to-eventhub>
+   return "request:"   + context.Variables["message-id"] + "\n"
+                       + requestLine + headerString + "\r\n" + body;
+}
+</log-to-eventhub>
+```
 
-### <a name="policy-declaration"></a>Policy declaration
-There a few particular things worth mentioning about this policy expression. The log-to-eventhub policy has an attribute called logger-id which refers to the name of logger that has been created within the API Management service. The details of how to setup an Event Hub logger in the API Management service can be found in the document [How to log events to Azure Event Hubs in Azure API Management](api-management-howto-log-event-hubs.md). The second attribute is an optional parameter that instructs Event Hubs which partition to store the message in. Event Hubs use partitions to enable scalabilty and require a minimum of two. The ordered delivery of messages is only guaranteed within a partition. If we do not instruct Event Hub in which partition to place the message, it will use a round-robin algorithm to distribute the load. However, that may cause some of our messages to be processed out of order.  
+### <a name="policy-declaration"></a>ポリシーの宣言
+このポリシー式に関して触れておく必要があることがいくつかあります。 この log-to-eventhub ポリシーには、API Management サービス内で作成されたロガーの名前を参照する、logger-id という名前の属性があります。 API Management サービスでイベント ハブ ロガーを設定する方法の詳細については、 [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)に関するドキュメントを参照してください。 2 番目の属性は、メッセージを格納するパーティションをイベント ハブに指示する省略可能なパラメーターです。 イベント ハブでは、パーティションを使用して拡張性を実現するため、2 つ以上のパーティションが必要になります。 メッセージの順次配信は、パーティション内でのみ保証されます。 どのパーティションにメッセージを格納するかをイベント ハブに指示しなかった場合は、ラウンドロビン アルゴリズムを使用して負荷が分散されます。 ただし、その場合、メッセージのいくつかは順序どおりに処理されない可能性があります。  
 
-### <a name="partitions"></a>Partitions
-To ensure our messages are delivered to consumers in order and take advantage of the load distribution capability of partitions, I chose to send HTTP request messages to one partition and HTTP response messages to a second partition. This will ensure an even load distribution and we can guarantee that all requests will be consumed in order and all responses will be consumed in order. It is possible for a response to be consumed before the corresponding request, but as that is not a problem as we have a different mechanism for correlating requests to responses and we know that requests always come before responses.
+### <a name="partitions"></a>パーティション
+メッセージが順番にコンシューマーに配信されるようにして、パーティションの負荷分散機能を利用するために、ここでは、HTTP 要求メッセージを 1 つのパーティションに送信し、HTTP 応答メッセージをもう 1 つのパーティションに送信することにしました。 これにより、負荷が均等に分散されるようになるため、すべての要求が順序どおりに使用されることとすべての応答が順序どおりに使用されることを保証できます。 応答が対応する要求の前に使用される可能性はありますが、それは問題ではありません。なぜなら、要求を応答に対応付けるために別のメカニズムを使用しており、要求が常に応答の前に処理されることがわかっているためです。
 
-### <a name="http-payloads"></a>HTTP payloads
-After building the `requestLine` we check to see if the request body should be truncated. The request body is truncated to only 1024. This could be increased, however individual Event Hub messages are limited to 256KB, so it is likely that some HTTP message bodies will not fit in a single message. When doing logging and analytics a significant amount of information can be derived from just the HTTP request line and headers. Also, many API requests only return small bodies and so the loss of information value by truncating large bodies is fairly minimal in comparison to the reduction in transfer, processing and storage costs to keep all body contents. One final note about processing the body is that we need to pass `true` to the As<string>() method because we are reading the body contents, but was also want the backend API to be able to read the body. By passing true to this method we cause the body to be buffered so that it can be read a second time. This is important to be aware of if you have an API that does uploading of very large files or uses long polling. In these cases it would be best to avoid reading the body at all.   
+### <a name="http-payloads"></a>HTTP ペイロード
+`requestLine` を作成した後は、要求本文を切り詰める必要があるかどうかを確認します。 要求本文は 1,024 に切り詰められます。 この値は増やすこともできます。ただし、個々のイベント ハブ メッセージは 256 KB に制限されているため、HTTP メッセージ本文によっては 1 つのメッセージに収まらなくなる可能性があります。 ログ記録および分析を実施する場合、HTTP 要求行とヘッダーのみからでも膨大な量の情報が生成される可能性があります。 また、多くの API 要求ではサイズの小さな本文のみが返されるため、サイズの大きな本文を切り詰めた場合の情報価値の損害は、本文の内容すべてを保持するための転送、処理、保管のコストの削減と比較すると非常に小さなものです。 本文の処理に関する最後の注意点として、`true` を As<string>() メソッドに渡す必要があります。これは、単に本文の内容を読み取るだけでなく、バックエンド API でも本文を読み取ることができるようにするためです。 このメソッドに true を渡すことで、本文をもう一度読み取ることができるように本文はバッファーに格納されます。 非常に大きなファイルをアップロードする API や長いポーリング時間を使用する API がある場合は、この点に注意することが重要です。 このような場合は、本文の読み取りをまったく行わないようにするのが最善です。   
 
-### <a name="http-headers"></a>HTTP headers
-HTTP Headers can be simply transferred over into the message format in a simple key/value pair format. We have chosen to strip out certain security sensitive fields, to avoid unnecessarily leaking credential information. It is unlikely that API keys and other credentials would be used for analytics purposes. If we wish to do analysis on the user and the particular product they are using then we could get that from the `context` object and add that to the message.     
+### <a name="http-headers"></a>HTTP ヘッダー
+HTTP ヘッダーは、単純なキーと値のペアの形式のメッセージ形式に変換できます。 ここでは、資格情報が不必要に漏えいすることのないように、機密情報が格納される特定のフィールドを除去しています。 API キーとその他の資格情報が分析目的で使用される可能性はほとんどありません。 ユーザーやユーザーが使用している特定の製品について分析を行う場合は、 `context` オブジェクトから該当する情報を取得してメッセージに追加することができます。     
 
-### <a name="message-metadata"></a>Message Metadata
-When building the complete message to send to the event hub, the first line is not actually part of the `application/http` message. The first line is additional metadata consisting of whether the message is a request or response message and a message id which is used to correlate requests to responses. The message id is created by using another policy that looks like this:
+### <a name="message-metadata"></a>メッセージのメタデータ
+イベント ハブに送信する完全なメッセージを作成する際、最初の行は実際には `application/http` メッセージの一部ではありません。 最初の行は追加のメタデータで、メッセージが要求メッセージと応答メッセージのどちらであるかを示す値と、要求を応答に関連付けるためのメッセージ ID で構成されています。 メッセージ ID は、次のような別のポリシーを使用して作成されます。
 
-    <set-variable name="message-id" value="@(Guid.NewGuid())" />
+```xml
+<set-variable name="message-id" value="@(Guid.NewGuid())" />
+```
 
-We could have created the request message, stored that in a variable until the response was returned and then simply sent the request and response as a single message. However, by sending the request and response independently and using a message id to correlate the two, we get a bit more flexibility in the message size, the ability to take advantage of multiple partitions whilst maintaining message order and the request will appear in our logging dashboard sooner. There also may be some scenarios where a valid response is never sent to the event hub, possibly due to a fatal request error in the API Management service, but we still will have a record of the request.
+ここでは、要求メッセージを作成し、応答が返されるまでその要求メッセージを変数に格納した後、単に要求と応答を 1 つのメッセージとして送信することもできます。 ただし、要求と応答を個別に送信し、メッセージ ID を使用してその 2 つを関連付けることで、メッセージ サイズにおける柔軟性が若干向上し、メッセージの順序を維持しながら複数のパーティションを利用することができます。さらに、要求がログ記録ダッシュボードにより迅速に表示されるようになります。 また、一部のシナリオでは、API Management サービスでの致命的な要求エラーが原因でイベント ハブに有効な応答が送信されない場合もありますが、その要求の記録は残ります。
 
-The policy to send the response HTTP message looks very similar to the request and so the complete policy configuration looks like this:
+応答 HTTP メッセージを送信するポリシーは要求によく似ています。完全なポリシーの構成の例を次に示します。
 
-      <policies>
-        <inbound>
-            <set-variable name="message-id" value="@(Guid.NewGuid())" />
-            <log-to-eventhub logger-id="conferencelogger" partition-id="0">
-              @{
-                  var requestLine = string.Format("{0} {1} HTTP/1.1\r\n",
-                                                              context.Request.Method,
-                                                              context.Request.Url.Path + context.Request.Url.QueryString);
+```xml
+<policies>
+  <inbound>
+      <set-variable name="message-id" value="@(Guid.NewGuid())" />
+      <log-to-eventhub logger-id="conferencelogger" partition-id="0">
+      @{
+          var requestLine = string.Format("{0} {1} HTTP/1.1\r\n",
+                                                      context.Request.Method,
+                                                      context.Request.Url.Path + context.Request.Url.QueryString);
 
-                  var body = context.Request.Body?.As<string>(true);
-                  if (body != null && body.Length > 1024)
-                  {
-                      body = body.Substring(0, 1024);
-                  }
+          var body = context.Request.Body?.As<string>(true);
+          if (body != null && body.Length > 1024)
+          {
+              body = body.Substring(0, 1024);
+          }
 
-                  var headers = context.Request.Headers
-                                       .Where(h => h.Key != "Authorization" && h.Key != "Ocp-Apim-Subscription-Key")
-                                       .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
-                                       .ToArray<string>();
+          var headers = context.Request.Headers
+                               .Where(h => h.Key != "Authorization" && h.Key != "Ocp-Apim-Subscription-Key")
+                               .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
+                               .ToArray<string>();
 
-                  var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
+          var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
 
-                  return "request:"   + context.Variables["message-id"] + "\n"
-                                      + requestLine + headerString + "\r\n" + body;
-              }
-          </log-to-eventhub>
-        </inbound>
-        <backend>
-            <forward-request follow-redirects="true" />
-        </backend>
-        <outbound>
-            <log-to-eventhub logger-id="conferencelogger" partition-id="1">
-              @{
-                  var statusLine = string.Format("HTTP/1.1 {0} {1}\r\n",
-                                                      context.Response.StatusCode,
-                                                      context.Response.StatusReason);
+          return "request:"   + context.Variables["message-id"] + "\n"
+                              + requestLine + headerString + "\r\n" + body;
+      }
+  </log-to-eventhub>
+  </inbound>
+  <backend>
+      <forward-request follow-redirects="true" />
+  </backend>
+  <outbound>
+      <log-to-eventhub logger-id="conferencelogger" partition-id="1">
+      @{
+          var statusLine = string.Format("HTTP/1.1 {0} {1}\r\n",
+                                              context.Response.StatusCode,
+                                              context.Response.StatusReason);
 
-                  var body = context.Response.Body?.As<string>(true);
-                  if (body != null && body.Length > 1024)
-                  {
-                      body = body.Substring(0, 1024);
-                  }
+          var body = context.Response.Body?.As<string>(true);
+          if (body != null && body.Length > 1024)
+          {
+              body = body.Substring(0, 1024);
+          }
 
-                  var headers = context.Response.Headers
-                                                  .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
-                                                  .ToArray<string>();
+          var headers = context.Response.Headers
+                                          .Select(h => string.Format("{0}: {1}", h.Key, String.Join(", ", h.Value)))
+                                          .ToArray<string>();
 
-                  var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
+          var headerString = (headers.Any()) ? string.Join("\r\n", headers) + "\r\n" : string.Empty;
 
-                  return "response:"  + context.Variables["message-id"] + "\n"
-                                      + statusLine + headerString + "\r\n" + body;
-             }
-          </log-to-eventhub>
-        </outbound>
-      </policies>
+          return "response:"  + context.Variables["message-id"] + "\n"
+                              + statusLine + headerString + "\r\n" + body;
+     }
+  </log-to-eventhub>
+  </outbound>
+</policies>
+```
 
-The `set-variable` policy creates a value that is accessible by both the `log-to-eventhub` policy in the `<inbound>` section and the `<outbound>` section.  
+`set-variable` ポリシーでは、`<inbound>` セクションと `<outbound>` セクション両方の `log-to-eventhub` ポリシーからアクセスできる値を作成します。  
 
-## <a name="receiving-events-from-event-hubs"></a>Receiving events from Event Hubs
-Events from Azure Event Hub are received using the [AMQP protocol](http://www.amqp.org/). The Microsoft Service Bus team have made client libraries available to make the consuming events easier. There are two different approaches supported, one is being a *Direct Consumer* and the other is using the `EventProcessorHost` class. Examples of these two approaches can be found in the [Event Hubs Programming Guide](../event-hubs/event-hubs-programming-guide.md). The short version of the differences is, `Direct Consumer` gives you complete control and the `EventProcessorHost` does some of the plumbing work for you but makes certain assumptions about how you will process those events.  
+## <a name="receiving-events-from-event-hubs"></a>Event Hubs からのイベントの受信
+Azure Event Hubs からのイベントは、 [AMQP プロトコル](http://www.amqp.org/)を使用して受信します。 Microsoft Service Bus チームは、クライアント ライブラリでコンシューマー側のイベントを簡単に作成できるようにしました。 サポートされている方法は 2 つあり、1 つは*ダイレクト コンシューマー*、もう 1 つは `EventProcessorHost` クラスの使用です。 これらの 2 つの方法の例については、「 [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。 簡単に 2 つの方法の違いを説明すると、`Direct Consumer`を使用すると完全に制御できるのに対して、`EventProcessorHost` を使用した場合は、一部の面倒な作業が自動的に処理されますが、これらのイベントをどのように処理するかについてはある程度憶測が立てられます。  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-In this sample, we will use the `EventProcessorHost` for simplicity, however it may not the best choice for this particular scenario. `EventProcessorHost` does the hard work of making sure you don't have to worry about threading issues within a particular event processor class. However, in our scenario, we are simply converting the message to another format and passing it along to another service using an async method. There is no need for updating shared state and therefore no risk of threading issues. For most scenarios, `EventProcessorHost` is probably the best choice and it is certainly the easier option.     
+このサンプルでは、わかりやすくするために `EventProcessorHost` を使用していますが、これはこの特定のシナリオにとって最適ではない可能性があります。 `EventProcessorHost` では、特定のイベント プロセッサ クラス内でスレッドの問題について心配する必要がないようにする困難な処理が行われます。 ただし、このシナリオでは、メッセージを別の形式に変換し、非同期メソッドを使用してそれを別のサービスに渡しているだけです。 共有した状態を更新する必要はないため、スレッドの問題が発生するリスクはありません。 ほとんどのシナリオでは、 `EventProcessorHost` がおそらく最善の選択肢であり、最も簡単な方法であることは確実です。     
 
 ### <a name="ieventprocessor"></a>IEventProcessor
-The central concept when using `EventProcessorHost` is to create a an implementation of the `IEventProcessor` interface which contains the method `ProcessEventAsync`. The essence of that method is shown here:
+`EventProcessorHost` を使用する場合は、`ProcessEventAsync` メソッドを含む `IEventProcessor` インターフェイスの実装を作成することが中心的な考え方になります。 このメソッドの最も重要な部分を次に示します。
 
-  async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages) {
+```c#
+async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
+{
 
-           foreach (EventData eventData in messages)
-           {
-               _Logger.LogInfo(string.Format("Event received from partition: {0} - {1}", context.Lease.PartitionId,eventData.PartitionKey));
+   foreach (EventData eventData in messages)
+   {
+       _Logger.LogInfo(string.Format("Event received from partition: {0} - {1}", context.Lease.PartitionId,eventData.PartitionKey));
 
-               try
-               {
-                   var httpMessage = HttpMessage.Parse(eventData.GetBodyStream());
-                   await _MessageContentProcessor.ProcessHttpMessage(httpMessage);
-               }
-               catch (Exception ex)
-               {
-                   _Logger.LogError(ex.Message);
-               }
-           }
-            ... checkpointing code snipped ...
-        }
+       try
+       {
+           var httpMessage = HttpMessage.Parse(eventData.GetBodyStream());
+           await _MessageContentProcessor.ProcessHttpMessage(httpMessage);
+       }
+       catch (Exception ex)
+       {
+           _Logger.LogError(ex.Message);
+       }
+   }
+    ... checkpointing code snipped ...
+}
+```
 
-A list of EventData objects are passed into the method and we iterate over that list. The bytes of each method are parsed into a HttpMessage object and that object is passed to an instance of IHttpMessageProcessor.
+EventData オブジェクトのリストがメソッドに渡されます。ここでは、そのリストに対して反復処理を行います。 各メソッドのバイトが HttpMessage オブジェクトに解析され、そのオブジェクトが IHttpMessageProcessor のインスタンスに渡されます。
 
 ### <a name="httpmessage"></a>HttpMessage
-The `HttpMessage` instance contains three pieces of data:
+`HttpMessage` インスタンスには、3 つのデータが格納されます。
 
-      public class HttpMessage
-       {
-           public Guid MessageId { get; set; }
-           public bool IsRequest { get; set; }
-           public HttpRequestMessage HttpRequestMessage { get; set; }
-           public HttpResponseMessage HttpResponseMessage { get; set; }
+```c#
+public class HttpMessage
+{
+   public Guid MessageId { get; set; }
+   public bool IsRequest { get; set; }
+   public HttpRequestMessage HttpRequestMessage { get; set; }
+   public HttpResponseMessage HttpResponseMessage { get; set; }
 
-        ... parsing code snipped ...
+... parsing code snipped ...
 
-      }
+}
+```
 
-The `HttpMessage` instance contains a `MessageId` GUID that allows us to connect the HTTP request to the corresponding HTTP response and a boolean value that identifies if the object contains an instance of a HttpRequestMessage and HttpResponseMessage. By using the built in HTTP classes from `System.Net.Http`, I was able to take advantage of the `application/http` parsing code that is included in `System.Net.Http.Formatting`.  
+`HttpMessage` インスタンスには、HTTP 要求を対応する HTTP 応答に関連付けるための `MessageId` GUID と、オブジェクトに HttpRequestMessage と HttpResponseMessage のインスタンスが含まれるかどうかを示すブール値が格納されます。 `System.Net.Http` の組み込みの HTTP クラスを使用することで、`System.Net.Http.Formatting` に含まれている `application/http` 解析コードを使用することができました。  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-The `HttpMessage` instance is then forwarded to implementation of `IHttpMessageProcessor` which is an interface I created to decouple the receiving and interpretation of the event from Azure Event Hub and the actual processing of it.
+次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure Event Hubs からのイベントの受信および解釈と実際のイベントの処理を分離するために作成したものです。
 
-## <a name="forwarding-the-http-message"></a>Forwarding the HTTP message
-For this sample, I decided it would be interesting to push the HTTP Request over to [Runscope](http://www.runscope.com). Runscope is a cloud based service that specializes in HTTP debugging, logging and monitoring. They have a free tier, so it is easy to try and it allows us to see the HTTP requests in real-time flowing through our API Management service.
+## <a name="forwarding-the-http-message"></a>HTTP メッセージの転送
+このサンプルでは、少しひねって HTTP 要求を [Runscope](http://www.runscope.com) にプッシュ送信しました。 Runscope は、HTTP デバッグ、ログ記録、および監視に特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。
 
-The `IHttpMessageProcessor` implementation looks like this,
+`IHttpMessageProcessor` の実装は次のようになります。
 
-      public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
+```c#
+public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
+{
+   private HttpClient _HttpClient;
+   private ILogger _Logger;
+   private string _BucketKey;
+   public RunscopeHttpMessageProcessor(HttpClient httpClient, ILogger logger)
+   {
+       _HttpClient = httpClient;
+       var key = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-KEY", EnvironmentVariableTarget.User);
+       _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", key);
+       _HttpClient.BaseAddress = new Uri("https://api.runscope.com");
+       _BucketKey = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-BUCKET", EnvironmentVariableTarget.User);
+       _Logger = logger;
+   }
+
+   public async Task ProcessHttpMessage(HttpMessage message)
+   {
+       var runscopeMessage = new RunscopeMessage()
        {
-           private HttpClient _HttpClient;
-           private ILogger _Logger;
-           private string _BucketKey;
-           public RunscopeHttpMessageProcessor(HttpClient httpClient, ILogger logger)
-           {
-               _HttpClient = httpClient;
-               var key = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-KEY", EnvironmentVariableTarget.User);
-               _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", key);
-               _HttpClient.BaseAddress = new Uri("https://api.runscope.com");
-               _BucketKey = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-BUCKET", EnvironmentVariableTarget.User);
-               _Logger = logger;
-           }
+           UniqueIdentifier = message.MessageId
+       };
 
-           public async Task ProcessHttpMessage(HttpMessage message)
-           {
-               var runscopeMessage = new RunscopeMessage()
-               {
-                   UniqueIdentifier = message.MessageId
-               };
-
-               if (message.IsRequest)
-               {
-                   _Logger.LogInfo("Sending HTTP request " + message.MessageId.ToString());
-                   runscopeMessage.Request = await RunscopeRequest.CreateFromAsync(message.HttpRequestMessage);
-               }
-               else
-               {
-                   _Logger.LogInfo("Sending HTTP response " + message.MessageId.ToString());
-                   runscopeMessage.Response = await RunscopeResponse.CreateFromAsync(message.HttpResponseMessage);
-               }
-
-               var messagesLink = new MessagesLink() { Method = HttpMethod.Post };
-               messagesLink.BucketKey = _BucketKey;
-               messagesLink.RunscopeMessage = runscopeMessage;
-               var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
-               _Logger.LogDebug("Request sent to Runscope");
-           }
+       if (message.IsRequest)
+       {
+           _Logger.LogInfo("Sending HTTP request " + message.MessageId.ToString());
+           runscopeMessage.Request = await RunscopeRequest.CreateFromAsync(message.HttpRequestMessage);
+       }
+       else
+       {
+           _Logger.LogInfo("Sending HTTP response " + message.MessageId.ToString());
+           runscopeMessage.Response = await RunscopeResponse.CreateFromAsync(message.HttpResponseMessage);
        }
 
-I was able to take advantage of an [existing client library for Runscope](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) that makes it easy to push `HttpRequestMessage` and `HttpResponseMessage` instances up into their service. In order to access the Runscope API you will need an account and an API Key. Instructions for getting an API key can be found in the [Creating Applications to Access Runscope API](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) screencast.
+       var messagesLink = new MessagesLink() { Method = HttpMethod.Post };
+       messagesLink.BucketKey = _BucketKey;
+       messagesLink.RunscopeMessage = runscopeMessage;
+       var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
+       _Logger.LogDebug("Request sent to Runscope");
+   }
+}
+```
 
-## <a name="complete-sample"></a>Complete sample
-The [source code](https://github.com/darrelmiller/ApimEventProcessor) and tests for the sample are on Github. You will need an [API Management Service](api-management-get-started.md), [a connected Event Hub](api-management-howto-log-event-hubs.md), and a [Storage Account](../storage/storage-create-storage-account.md) to run the sample for yourself.   
+[Runscope 用の既存のクライアント ライブラリ](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)を利用し、`HttpRequestMessage` と `HttpResponseMessage` のインスタンスをサービスに簡単にプッシュ送信することができました。 Runscope API にアクセスするには、アカウントと API キーが必要です。 API キーを取得するための手順については、 [Runscope API にアクセスするアプリケーションの作成](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) に関するスクリーンキャストを参照してください。
 
-The sample is just a simple Console application that listens for events coming from Event Hub, converts them into a `HttpRequestMessage` and `HttpResponseMessage` objects and then forwards them on to the Runscope API.
+## <a name="complete-sample"></a>完全なサンプル
+サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](api-management-get-started.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/storage-create-storage-account.md)が必要です。   
 
-In the following animated image, you can see a request being made to an API in the Developer Portal, the Console application showing the message being received, processed and forwarded and then the request and response showing up in the Runscope Traffic inspector.
+このサンプルは、イベント ハブからのイベントをリッスンし、そのイベントを `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換して、Runscope API に転送するだけの簡単なコンソール アプリケーションです。
+
+次のアニメーション画像では、開発者ポータルで API に対する要求が行われ、コンソール アプリケーションでメッセージが受信、処理、転送された後、Runscope Traffic Inspector に要求と応答が表示されることを確認できます。
 
 ![Demonstration of request being forwarded to Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Summary
-Azure API Management service provides an ideal place to capture the HTTP traffic travelling to and from your APIs. Azure Event Hubs is a highly scalable, low cost solution for capturing that traffic and feeding it into secondary processing systems for logging, monitoring and other sophisticated analytics. Connecting to 3rd party traffic monitoring systems like Runscope is a simple as a few dozen lines of code.
+## <a name="summary"></a>まとめ
+Azure API Management サービスでは、API を経由して送受信される HTTP トラフィックをキャプチャするための理想的な場所が用意されています。 Azure Event Hubs は、そのトラフィックをキャプチャして、ログ記録、監視、その他の高度な分析用のセカンダリ処理システムに供給するための、非常にスケーラブルで低コストのソリューションです。 数十行のコードを書くだけで、Runscope のようなサード パーティ製のトラフィック監視システムに簡単に接続できます。
 
-## <a name="next-steps"></a>Next steps
-* Learn more about Azure Event Hubs
-  * [Get started with Azure Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-  * [Receive messages with EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)
-  * [Event Hubs programming guide](../event-hubs/event-hubs-programming-guide.md)
-* Learn more about API Management and Event Hubs integration
-  * [How to log events to Azure Event Hubs in Azure API Management](api-management-howto-log-event-hubs.md)
-  * [Logger entity reference](https://msdn.microsoft.com/library/azure/mt592020.aspx)
-  * [log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
-
-<!--HONumber=Oct16_HO2-->
-
+## <a name="next-steps"></a>次のステップ
+* Azure Event Hubs の詳細
+  * [Azure Event Hubs の使用](../event-hubs/event-hubs-c-getstarted-send.md)
+  * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
+* API Management と Event Hubs の統合の詳細
+  * [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)
+  * [ロガーのエンティティ リファレンス](https://msdn.microsoft.com/library/azure/mt592020.aspx)
+  * [log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 

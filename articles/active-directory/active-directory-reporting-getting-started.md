@@ -13,10 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ce0e0ce9004e1b331328fca5830f01b6ce6af6c
+ms.sourcegitcommit: eec9b73cbaccfa50eec6f237e4d1d810c6efa1d9
+ms.openlocfilehash: e5b8ac91914203156bd395d7f462385e9f6dbcb4
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -54,14 +55,14 @@ Azure Active Directory (Azure AD) には、ディレクトリに関するセキ�
 
 ## <a name="how-it-works"></a>動作のしくみ
 ### <a name="reporting-pipeline"></a>レポート パイプライン
-レポート パイプラインは、次の 3 つの主要な手順で構成されます。 ユーザーがサインインするたびに、または認証が行われるたびに、次の処理が実行されます。
+レポート パイプラインは、次の&3; つの主要な手順で構成されます。 ユーザーがサインインするたびに、または認証が行われるたびに、次の処理が実行されます。
 
 * 最初に、ユーザーの認証が行われ、その結果 (成功または失敗) が Azure Active Directory サービスのデータベースに格納されます。
 * 定期的に、最新のすべてのサインインが処理されます。 この時点で、Microsoft のセキュリティおよび異常アクティビティ アルゴリズムにより、最新のすべてのサインインについて疑わしいアクティビティが検索されます。
 * 処理が終わると、レポートが生成され、キャッシュに格納され、Azure クラシック ポータルで提供されます。
 
 ### <a name="report-generation-times"></a>レポートの生成時間
-Azure AD プラットフォームによって処理される認証およびサインインは膨大な量になるため、平均で 1 時間前のサインインが最新の処理済みサインインとして示されます。 まれに、最新のサインインを処理するのに最大で 8 時間かかる場合があります。
+Azure AD プラットフォームによって処理される認証およびサインインは膨大な量になるため、平均で&1; 時間前のサインインが最新の処理済みサインインとして示されます。 まれに、最新のサインインを処理するのに最大で 8 時間かかる場合があります。
 
 各レポートの最上部のヘルプ テキストを調べることで、最新の処理済みサインインを確認できます。
 
@@ -113,7 +114,7 @@ Azure AD プラットフォームによって処理される認証およびサ�
 ### <a name="integrate-with-the-azure-ad-reporting-api"></a>Azure AD Reporting API と統合する
 [Reporting API の概要](active-directory-reporting-api-getting-started.md)に関するページを参照してください。
 
-### <a name="engage-multifactor-authentication-on-users"></a>ユーザーに Multi-Factor Authentication を適用する
+### <a name="engage-multi-factor-authentication-on-users"></a>ユーザーに Multi-Factor Authentication を適用する
 レポート内のユーザーを選択します。
 
 画面の下部の [MFA を有効にする] をクリックします。
@@ -139,10 +140,5 @@ Azure AD プラットフォームによって処理される認証およびサ�
 > Azure AD レポートの詳細については、「 [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

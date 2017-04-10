@@ -1,198 +1,239 @@
 ---
-title: Use Ambari Views to work with Hive on HDInsight (Hadoop) | Microsoft Docs
-description: Learn how to use the Hive View from your web browser to submit Hive queries. The Hive View is part of the Ambari Web UI provided with your Linux-based HDInsight cluster.
+title: "Ambari ビューによる HDInsight (Hadoop) での Hive の使用 | Microsoft Docs"
+description: "Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 1abe9104-f4b2-41b9-9161-abbc43de8294
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 02/08/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
+ms.openlocfilehash: a846d5a70451ed3082b90d87b90bef0eb6da5993
+ms.lasthandoff: 02/09/2017
+
 
 ---
-# <a name="use-the-hive-view-with-hadoop-in-hdinsight"></a>Use the Hive View with Hadoop in HDInsight
+# <a name="use-the-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Hive View と Hadoop の使用
+
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Ambari is a management and monitoring utility provided with Linux-based HDInsight clusters. One of the features provided through Ambari is a Web UI that can be used to run Hive queries. This is the **Hive View**, part of the Ambari Views provided with your HDInsight cluster.
+Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の&1; つに、Hive クエリを実行するときに使用される Web UI があります。 これを **Hive ビュー**と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
 
 > [!NOTE]
-> Ambari has a lot of capabilities that won't be discussed in this document. For more information, see [Manage HDInsight clusters by using the Ambari Web UI](hdinsight-hadoop-manage-ambari.md).
-> 
-> 
+> Ambari には数多くの機能がありますが、このドキュメントではそれらについて説明しません。 詳細については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites
-* A Linux-based HDInsight cluster. For information on creating a new cluster, see [Get started with Linux-based HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+## <a name="prerequisites"></a>前提条件
 
-## <a name="open-the-hive-view"></a>Open the Hive view
-You can Ambari Views from the Azure Portal; select your HDInsight cluster and then select **Ambari Views** from the **Quick Links** section.
+* Linux ベースの HDInsight クラスター。 クラスターの作成方法については、[Linux ベースの HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
+## <a name="open-the-hive-view"></a>Hive ビューを開く
+
+Azure Portal から Ambari ビューを表示するには、HDInsight クラスターを選択し、**[クイック リンク]** セクションの **[Ambari ビュー]** を選択します。
 
 ![quick links section](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
 
-You can also navigate directly to Ambari by going to https://CLUSTERNAME.azurehdinsight.net in a web browser (where **CLUSTERNAME** is the name of your HDInsight cluster,) and then select the set of squares from the page menu (next to the **Admin** link and button on the left of the page,) to list available views. Select the **Hive view**.
+Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。 **[管理者]** リンクの横のページ メニューから四角形のセットを選択して、使用可能なビューの一覧を表示します。 **[Hive ビュー]** を選択します。
 
-![Selecting ambari views](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png).
+![Selecting Ambari views](./media/hdinsight-hadoop-use-hive-ambari-view/selecthiveview.png)に関するページを参照してください。
 
 > [!NOTE]
-> When accessing Ambari, you will be prompted to authenticate to the site. Enter the admin (default `admin`,) account name and password you used when creating the cluster.
-> 
-> 
+> Ambari にアクセスすると、サイトに対する認証が求められます。 クラスターを作成するときに使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
 
-You should see a page similar to the following:
+次のようなページが表示されます。
 
 ![Image of the hive view page, containing a query editor section](./media/hdinsight-hadoop-use-hive-ambari-view/hiveview.png)
 
-## <a name="view-tables"></a>View tables
-In the **Database Explorer** section of the page, select the **default** entry on the **Databases** tab. This will display a list of tables in the default database. For a new HDInsight cluster, only one table should exist; **hivesampletable**.
+## <a name="view-tables"></a>テーブルを表示する
+ページの **[Database Explorer]** セクションの **[Database]** タブで、**[default]** エントリを選択します。 これにより、既定のデータベース内にあるテーブルの一覧が表示されます。 新しい HDInsight クラスターの場合、存在するテーブルは **hivesampletable**のみです。
 
 ![database explorer with the default database expanded](./media/hdinsight-hadoop-use-hive-ambari-view/databaseexplorer.png)
 
-As new tables are added through the steps in this document, you can use the refresh icon in the upper right corner of the Database Explorer to refresh the list of available tables.
+このドキュメントの手順に従ってテーブルを追加した際、データベース エクスプローラーの右上隅にある更新アイコンを使用すると、一覧を更新できます。
 
-## <a name="<a-name="hivequery"></a>query-editor"></a><a name="hivequery"></a>Query editor
-Use the following steps from the Hive view to run a Hive query against data included with the cluster.
+## <a name="hivequery"></a>クエリ エディター
 
-1. In the **Query Editor** section of the page, paste the following HiveQL statements into the worksheet:
+Hive ビューから、次の手順を使用すると、Hive クエリを実行できます。
+
+1. ページの **[Query Editor]** セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
    
-        DROP TABLE log4jLogs;
-        CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-        SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    ```hiveql
+    DROP TABLE log4jLogs;
+    CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE LOCATION '/example/data/';
+    SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    ```
    
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
    
-   * **DROP TABLE** - Deletes the table and the data file, in case the table already exists.
-   * **CREATE EXTERNAL TABLE** - Creates a new "external" table in Hive. External tables store only the table definition in Hive; the data is left in the original location.
-   * **ROW FORMAT** - Tells Hive how the data is formatted. In this case, the fields in each log are separated by a space.
-   * **STORED AS TEXTFILE LOCATION** - Tells Hive where the data is stored (the example/data directory), and that it is stored as text.
-   * **SELECT** - Selects a count of all rows where column t4 contains the value [ERROR].
+   * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+
+   * **CREATE EXTERNAL TABLE** - Hive に新しく "外部" テーブルを作成します。 
+   外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
+
+   * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+
+   * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
+
+   * **SELECT** - t4 列の値が [ERROR] であるすべての行の数を指定します。
      
      > [!NOTE]
-     > External tables should be used when you expect the underlying data to be updated by an external source, such as an automated data upload process, or by another MapReduce operation, but you always want Hive queries to use the latest data. Dropping an external table does *not* delete the data, only the table definition.
-     > 
-     > 
-2. Use the **Execute** button at the bottom of the Query Editor to start the query. It should turn orange and the text will change to **Stop execution**. A **Query Process Results** section should appear beneath the Query Editor and display information about the job.
+     > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作によってです。 外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
+
+2. クエリを開始するには、クエリ エディターの下部にある **[Execute]** ボタンを使用します。 ボタンがオレンジ色に変わり、テキストが **[Stop execution]** に変わります。 クエリ エディターの下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。
    
    > [!IMPORTANT]
-   > Some browsers may not correctly refresh the log or results information. If you run a job and it appears to run forever without updating the log or returning results, try using Mozilla FireFox or Google Chrome instead.
-   > 
-   > 
-3. Once the query has finished, The **Query Process Results** section will display the results of the operation. The **Stop execution** button will also change back to a green **Execute** button. The **Results** tab should contain the following information:
+   > ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。 ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
+ 
+3. クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。 クエリが完了すると、**[Stop execution]** ボタンも緑色の **[Execute]** ボタンに戻ります。 **[Results]** タブには次の情報が表示されます。
    
         sev       cnt
         [ERROR]   3
    
-    The **Logs** tab can be used to view the logging information created by the job. You can use this for troubleshooting if there are problems with a query.
+    **[Logs]** タブを使用すると、ジョブによって作成されたログ情報を表示できます。
    
    > [!TIP]
-   > Note the **Save results** drop-down dialog in the upper left of the **Query Process Results** section; you can use this to either download the results, or save them to HDInsight storage as a CSV file.
-   > 
-   > 
-4. Select the first four lines of this query, then select **Execute**. Notice that there are no results when the job completes. This is because using the **Execute** button when part of the query is selected will only run the selected statements. In this case, the selection didn't include the final statement that retrieves rows from the table. If you select just that line and use **Execute**, you should see the expected results.
-5. Use the **New Worksheet** button at the bottom of the **Query Editor** to create a new worksheet. In the new worksheet, enter the following HiveQL statements:
+   > **[Query Process Results]** セクションの左上にある **[Save results]** ドロップダウン ダイアログでは、結果をダウンロードまたは保存できます。
+
+4. このクエリの最初の&4; 行を選択し、**[Execute]** を選択します。 ジョブが完了したときに結果は生成されません。 クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されます。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
+
+5. 新しいワークシートを追加するには、**クエリ エディター**の下部にある **[New Worksheet]** ボタンを使用します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
    
-        CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-        INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
+    ```hiveql
+    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
+    ```
    
     These statements perform the following actions:
    
-   * **CREATE TABLE IF NOT EXISTS** - Creates a table, if it does not already exist. Since the **EXTERNAL** keyword is not used, this is an internal table, which is stored in the Hive data warehouse and is managed completely by Hive. Unlike external tables, dropping an internal table will delete the underlying data as well.
-   * **STORED AS ORC** - Stores the data in Optimized Row Columnar (ORC) format. This is a highly optimized and efficient format for storing Hive data.
-   * **INSERT OVERWRITE ... SELECT** - Selects rows from the **log4jLogs** table that contain [ERROR], and then inserts the data into the **errorLogs** table.
+   * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードは使用されないため、内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
+
+   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+
+   * **INSERT OVERWRITE ...SELECT** - [ERROR] を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
      
-     Use the **Execute** button to run this query. The **Results** tab will not contain any information as no rows are returned by this query, but the status should show as **SUCCEEDED**.
+     **[Execute]** ボタンを使用して、このクエリを実行します。 クエリから返される行が&0; の場合、**[Results]** タブには情報が含まれません。 クエリが完了すると、状態として **[SUCCEEDED]** が表示されます。
 
-### <a name="hive-settings"></a>Hive settings
-Select the **Settings** icon to the right of the editor.
+### <a name="hive-settings"></a>Hive の設定
 
-![icons](./media/hdinsight-hadoop-use-hive-ambari-view/settings.png)
+エディターの右側にある **[Settings]** アイコンを選択します。
 
-Settings can be used to change various Hive settings, such as changing the execution engine for Hive from Tez (the default,) to MapReduce.
+![Settings icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-settings-icon.png)
 
-### <a name="visual-explain"></a>Visual explain
-Select the **Visual Explain** icon to the right of the editor.
+[Settings] では、Hive の実行エンジンを Tez (既定値) から MapReduce に変更するなど、さまざまな Hive 設定を変更できます。
 
-![icons](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplainicon.png)
+### <a name="visualization"></a>グラフ
 
-This is the **Visual Explain** view of the query, which can be helpful in understanding the flow of complex queries. You can view a textual equivalent of this view by using the **Explain** button in the Query Editor.
+エディターの右側にある __[Visualization]__ アイコンを選択します。
+
+![Visualization icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization-icon.png)
+
+視覚化のインターフェイスが開き、クエリから返されるデータの視覚化をここで作成できます。 HDInsight に含まれる `hivesampletable` のデータを使用した視覚化の例を次に示します。
+
+![Example visualization](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization.png)
+
+### <a name="visual-explain"></a>ビジュアルの説明
+
+エディターの右側にある **[Visual Explain]** アイコンを選択します。
+
+![Visual explain icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visual-explain-icon.png)
+
+これは、クエリの **[Visual Explain]** ビューです。このビューは、複雑なクエリのフローを理解する際に役立ちます。 クエリ エディターの **[Explain]** ボタンを使用して、このビューに対応するテキストを表示できます。
 
 ![visual explain image](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplain.png)
 
 ### <a name="tez"></a>Tez
-Select the **Tez** icon to the right of the editor.
 
-![icons](./media/hdinsight-hadoop-use-hive-ambari-view/tez.png)
+エディターの右側にある **[Tez]** アイコンを選択します。
 
-This will display the Directed Acyclic Graph (DAG) used by Tez for this query, if one is available. If you want to view the DAG for queries you've ran in the past, or debug the Tez process, use the [Tez View](hdinsight-debug-ambari-tez-view.md) instead.
+![Tez icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-tez-icon.png)
 
-### <a name="notifications"></a>Notifications
-Select the **Notifications** icon to the right of the editor.
+このクエリのために Tez で使用される有向非巡回グラフ (DAG) が表示されます (利用できる場合)。 過去に実行したクエリの DAG を表示する場合、または Tez プロセスをデバッグする場合は、 [[Tez View]](hdinsight-debug-ambari-tez-view.md) を使用します。
 
-![icons](./media/hdinsight-hadoop-use-hive-ambari-view/notifications.png)
+### <a name="notifications"></a>通知
 
-Notifications are messages that are generated when running queries. For example, you will receive a notification when a query is submitted, or when an error occurs.
+エディターの右側にある **[Notifications]** アイコンを選択します。
 
-## <a name="saved-queries"></a>Saved queries
-1. From the Query Editor, create a new worksheet and enter the following query:
+![Notifications icon for hive view](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-notifications-icon.png)
+
+通知とは、クエリを実行するときに生成されるメッセージです。 たとえば、クエリを送信したときや、エラーが発生したときに、通知が届きます。
+
+## <a name="saved-queries"></a>保存済みのクエリ
+
+1. クエリ エディターでワークシートを作成し、次のクエリを入力します。
    
-        SELECT * from errorLogs;
+    ```hiveql
+    SELECT * from errorLogs;
+    ```
    
-    Execute the query to verify that it works. The results will be as follows:
+    クエリを実行して、動作することを確認します。 結果は次の例のようになります。
    
-        errorlogs.t1    errorlogs.t2    errorlogs.t3    errorlogs.t4    errorlogs.t5    errorlogs.t6    errorlogs.t7
-        2012-02-03  18:35:34    SampleClass0    [ERROR]     incorrect   id  
-        2012-02-03  18:55:54    SampleClass1    [ERROR]     incorrect   id  
-        2012-02-03  19:25:27    SampleClass4    [ERROR]     incorrect   id
-2. Use the **Save as** button at the bottom of the editor. Name this query **Errorlogs** and select **OK**. Note that the name of the worksheet changes to **Errorlogs**.
-3. Select the **Saved Queries** tab at the top of the Hive View page. Note that **Errorlogs** is now listed as a saved query. It will remain in this list until you remove it. Selecting the name will open the query in the Query Editor.
+        errorlogs.t1     errorlogs.t2     errorlogs.t3     errorlogs.t4     errorlogs.t5     errorlogs.t6     errorlogs.t7
+        2012-02-03     18:35:34     SampleClass0     [ERROR]     incorrect     id     
+        2012-02-03     18:55:54     SampleClass1     [ERROR]     incorrect     id     
+        2012-02-03     19:25:27     SampleClass4     [ERROR]     incorrect     id
 
-## <a name="query-history"></a>Query history
-The **History** button at the top of the Hive View allows you to view queries you have ran previously. Use it now and select some of the queries you have ran previously. When you select a query, it opens it in the Query Editor.
+2. エディターの下部にある **[Save as]** ボタンを使用します。 このクエリに **Errorlogs** という名前を付け、**[OK]** を選択します。 ワークシートの名前が **Errorlogs** に変わります。
 
-## <a name="user-defined-functions-(udf)"></a>User Defined Functions (UDF)
-Hive can also be extended through **user-defined functions (UDF)**. A UDF allows you to implement functionality or logic that isn't easily modeled in HiveQL.
+3. [Hive ビュー] ページの上部にある **[Saved Queries]** タブを選択します。 **Errorlogs** が、保存済みのクエリとして表示されます。 クエリは、削除されるまでこの一覧に表示されます。 名前を選択すると、クエリ エディターにクエリが表示されます。
 
-While you can add a UDF as part of the HiveQL statements in your query, the UDF tab at the top of the Hive View allows you to declare and save a set of UDFs that can be used with the **Query Editor**.
+## <a name="query-history"></a>クエリの履歴
 
-Once you have added a UDF to the Hive View, an **Insert udfs** button will appear at the bottom of the **Query Editor**. Selecting this will display a drop-down list of the UDFs defined in the Hive View. Selecting a UDF will add HiveQL statements to your query to enable the UDF.
+[Hive ビュー] ページの上部にある **[History]** ボタンを選択すると、以前に実行したクエリを表示できます。 これを使用して、以前に実行したクエリの一部を選択できます。 クエリを選択すると、そのクエリがクエリ エディターに表示されます。
 
-For example, if you have defined a UDF with the following properties:
+## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
-* Resource name: myudfs
-* Resource path: wasbs:///myudfs.jar
-* UDF name: myawesomeudf
-* UDF class name: com.myudfs.Awesome
+Hive は **ユーザー定義関数 (UDF)**で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。
 
-Using the **Insert udfs** button will display an entry named **myudfs**, with another drop-down for each UDF defined for that resource. In this case, **myawesomeudf**. Selecting this entry will add the following to the beginning of the query:
+Hive ビューの上部にある [UDF] タブでは、**クエリ エディター**で使用できる UDF のセットを宣言して保存できます。
 
-    add jar wasbs:///myudfs.jar;
+Hive ビューに UDF を追加すると、**[Insert udfs]** ボタンが**クエリ エディター**の下部に表示されます。 このボタンを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
-    create temporary function myawesomeudf as 'com.myudfs.Awesome';
+たとえば、次のプロパティを持つ UDF を定義したとします。
 
-You can then use the UDF in your query. For example, `SELECT myawesomeudf(name) FROM people;`.
+* リソース名: myudfs
 
-For more information on using UDFs with Hive on HDInsight, see the following:
+* リソースのパス: /myudfs.jar
 
-* [Using Python with Hive and Pig in HDInsight](hdinsight-python.md)
-* [How to add a custom Hive UDF to HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* UDF 名: myawesomeudf
 
-## <a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Next steps
-For general information on Hive in HDInsight:
+* UDF のクラス名: com.myudfs.Awesome
 
-* [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md)
+**[Insert udfs]** ボタンを使用すると、**myudfs** という名前のエントリと、そのリソースに対して定義されている UDF ごとにドロップダウン リストが表示されます。 ここでは、**myawesomeudf** が表示されます。 このエントリを選択すると、クエリの先頭に次の内容が追加されます。
 
-For information on other ways you can work with Hadoop on HDInsight:
+```hiveql
+add jar /myudfs.jar;
+create temporary function myawesomeudf as 'com.myudfs.Awesome';
+```
 
-* [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md)
-* [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+これにより、クエリでこの UDF を使用できます。 たとえば、「 `SELECT myawesomeudf(name) FROM people;`」のように入力します。
 
-<!--HONumber=Oct16_HO2-->
+HDInsight において Hive で UDF を使用する方法の詳細については、以下の記事を参照してください。
+
+* [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
+* [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+
+## <a id="nextsteps"></a>次のステップ
+HDInsight での Hive に関する全般的な情報
+
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
+
+HDInsight での Hadoop のその他の使用方法に関する情報
+
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 

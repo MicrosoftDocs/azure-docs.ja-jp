@@ -3,8 +3,8 @@ title: "App Service で API Apps と ASP.NET を使用する | Microsoft Docs"
 description: "Visual Studio 2015 を使用して、Azure App Service で ASP.NET API アプリを作成、デプロイし、使用する方法について説明します。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
-manager: wpickett
+author: alexkarcher-msft
+manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
 ms.service: app-service-api
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="get-started-with-api-apps-aspnet-and-swagger-in-azure-app-service"></a>Azure App Service で API Apps、ASP.NET、Swagger を使用する
 [!INCLUDE [selector](../../includes/app-service-api-get-started-selector.md)]
 
-この記事は、RESTful API の開発とホストに役立つ Azure App Service の各機能の使用方法を説明するチュートリアル シリーズの第 1 回です。  このチュートリアルでは、Swagger 形式での API メタデータのサポートについて説明します。
+この記事は、RESTful API の開発とホストに役立つ Azure App Service の各機能の使用方法を説明するチュートリアル シリーズの第&1; 回です。  このチュートリアルでは、Swagger 形式での API メタデータのサポートについて説明します。
 
 学習内容:
 
@@ -40,7 +41,7 @@ ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
 
 ![API Apps sample application to do list](./media/app-service-api-dotnet-get-started/todospa.png)
 
-この Visual Studio ソリューションには、次の 3 つのプロジェクトが含まれています。
+この Visual Studio ソリューションには、次の&3; つのプロジェクトが含まれています。
 
 ![](./media/app-service-api-dotnet-get-started/projectsinse.png)
 
@@ -48,7 +49,7 @@ ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
 * **ToDoListAPI** - 中間層: To Do 項目に対して CRUD 操作を実行するデータ層を呼び出す ASP.NET Web API プロジェクト。
 * **ToDoListDataAPI** - データ層: To Do 項目に対して CRUD 操作を実行する ASP.NET Web API プロジェクト。
 
-この 3 層のアーキテクチャは API Apps を利用することで実装できる数多くのアーキテクチャの 1 つであり、ここではデモンストレーションのみを目的として使用しています。 各層のコードは API Apps の機能を説明するためにできる限り単純に設計されており、たとえばデータ層では永続化メカニズムとしてデータベースではなくサーバーのメモリを使用しています。
+この&3; 層のアーキテクチャは API Apps を利用することで実装できる数多くのアーキテクチャの&1; つであり、ここではデモンストレーションのみを目的として使用しています。 各層のコードは API Apps の機能を説明するためにできる限り単純に設計されており、たとえばデータ層では永続化メカニズムとしてデータベースではなくサーバーのメモリを使用しています。
 
 このチュートリアルを完了すると、2 つの Web API プロジェクトが完成し、クラウド上の App Service API アプリで実行できるようになります。
 
@@ -56,9 +57,9 @@ ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
 
 ## <a name="prerequisites"></a>前提条件
 * ASP.NET Web API - このチュートリアルの手順では、Visual Studio で ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) の基本的な操作方法について理解していることを前提としています。
-* Azure アカウント - [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
+* Azure アカウント - [無料の Azure アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
   
-    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service ですぐに作成できます。このサービスの利用にあたり、**クレジット カードは必要ありません**。契約も必要ありません。
+    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service ですぐに作成できます。このサービスの利用にあたり、**クレジット カードは必要ありません**。契約も必要ありません。
 * Visual Studio 2015 と [Azure SDK for .NET](https://azure.microsoft.com/downloads/archive-net-downloads/) - Visual Studio 2015 がない場合は、SDK によって自動的にインストールされます。
   
   * Visual Studio で、[ヘルプ]、[Microsoft Visual Studio のバージョン情報] の順にクリックし、"Azure App Service ツール v2.9.1" 以降がインストールされていることを確認します。
@@ -66,7 +67,7 @@ ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
     ![Azure App Tools vesion](./media/app-service-api-dotnet-get-started/apiversion.png)
     
     > [!NOTE]
-    > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
+    > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から&30; 分以上) かかる場合があります。
     > 
     > 
 
@@ -198,7 +199,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 > 
 > 
 
-## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
+## <a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
 このセクションでは、Visual Studio の **Web を発行** ウィザードに統合されている Azure ツールを使用し、Azure で新しい API アプリを作成します。 次に、ToDoListDataAPI プロジェクトを新しい API アプリにデプロイし、Swagger UI を実行して API を呼び出します。
 
 1. **ソリューション エクスプローラー**で ToDoListDataAPI プロジェクトを右クリックし、**[発行]** をクリックします。
@@ -224,7 +225,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     API アプリの URL は、 `{API app name}.azurewebsites.net`となります。
 6. **[リソース グループ]** ボックスの一覧の **[新規作成]** をクリックし、「ToDoListGroup」(またはお好きな名前) を入力します。
    
-    リソース グループは、API アプリ、データベース、VM など、一連の Azure リソースをひとまとめにしたものです。    このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
+    リソース グループは、API アプリ、データベース、VM など、一連の Azure リソースをひとまとめにしたものです。    このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを&1; 回の手順で簡単に削除できるからです。
    
     このボックスでは既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md)を選択するか、サブスクリプションの既存のリソース グループとは異なる名前を入力し、新しいリソース グループを作成できます。
 7. **[App Service プラン]** ドロップダウンの隣にある **[新規]** ボタンをクリックします。
@@ -291,7 +292,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     
     ![App Services blade](./media/app-service-api-dotnet-get-started/choosenewapiappinportal.png)
     
-    2 つのブレードが開きます。 1 つは、API アプリの概要を表示するブレードで、もう 1 つは、閲覧と変更が許可されている一連の設定を表示するブレードです。
+    2 つのブレードが開きます。 1 つは、API アプリの概要を表示するブレードで、もう&1; つは、閲覧と変更が許可されている一連の設定を表示するブレードです。
 20. **[設定]** ブレードの **[API]** セクションにある **[API 定義]** をクリックします。
     
     ![API Definition in Settings blade](./media/app-service-api-dotnet-get-started/apidefinsettings.png)
@@ -302,8 +303,8 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     
     クライアント コードを生成する API アプリを選択するとき、Visual Studio はこの URL からメタデータを取得します。
 
-## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> データ層のクライアント コードを生成する
-Azure API アプリと Swagger の統合の利点の 1 つは、自動コード生成です。 生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
+## <a id="codegen"></a> データ層のクライアント コードを生成する
+Azure API アプリと Swagger の統合の利点の&1; つは、自動コード生成です。 生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
 
 ToDoListAPI プロジェクトには既に生成済みのクライアント コードがありますが、次に示す手順では、コードの生成方法を確認するために、いったんそれを削除してから生成し直します。
 
@@ -422,7 +423,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 このチュートリアルの途中で問題が発生した場合に備えて、ここではトラブルシューティングの方法をいくつか紹介します。
 
 * 最新バージョンの [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003)を使用していることを確認します。
-* ToDoListAPI と ToDoListDataAPI の 2 つのプロジェクトは名前が似ています。 プロジェクトに対する作業中、記載されている手順の説明と何かが違うと感じたら、正しいプロジェクトを開いていることを確認してください。
+* ToDoListAPI と ToDoListDataAPI の&2; つのプロジェクトは名前が似ています。 プロジェクトに対する作業中、記載されている手順の説明と何かが違うと感じたら、正しいプロジェクトを開いていることを確認してください。
 * 企業ネットワークを使用しており、ファイアウォールを介して Azure App Service にデプロイしようとしている場合は、Web デプロイのためにポート 443 と 8172 を開いてください。 これらのポートを開くことができない場合は、他のデプロイ方法を使用することができます。  「 [Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 * "ルート名は一意でなければなりません" というエラー -- 間違ったプロジェクトを誤って API アプリにデプロイした後、正しいプロジェクトをデプロイすると、このようなエラーが表示される場合があります。 これを修正するには、API アプリに正しいプロジェクトを再デプロイし、**Web を発行**ウィザードの **[設定]** タブで、**[発行先の追加ファイルを削除する]** を選択します。
 
@@ -438,10 +439,5 @@ ASP.NET API アプリが Azure App Service で動作するようになったら�
 ![API App template in Visual Studio](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
 
 **[Azure API App]** プロジェクト テンプレートは、**[空]** の ASP.NET 4.5.2 テンプレートを選択し、Web API サポートを追加するためのチェック ボックスをオンにして、Swashbuckle NuGet パッケージをインストールしたものに相当します。 加えて、Swagger の操作 ID が重複して作成されるのを防ぐための Swashbuckle 構成コードが追加されます。 API アプリ プロジェクトを作成したら、それをこのチュートリアルで説明した手順と同じ方法で API アプリにデプロイすることができます。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

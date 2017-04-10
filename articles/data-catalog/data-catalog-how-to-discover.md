@@ -1,20 +1,24 @@
 ---
-title: データ ソースの探索方法 | Microsoft Docs
-description: Azure Data Catalog を使用して登録済みのデータ資産を探索する方法を説明する操作方法に関する記事 (検索とフィルター処理、Azure Data Catalog ポータルの検索語句の強調表示機能の使用など)。
+title: "データ ソースの探索方法 | Microsoft Docs"
+description: "Azure Data Catalog を使用して登録済みのデータ資産を探索する方法を説明する操作方法に関する記事 (検索とフィルター処理、Azure Data Catalog ポータルの検索語句の強調表示機能の使用など)。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: f72ae3a3-6573-4710-89a7-f13555e1968c
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
+
 
 ---
 # <a name="how-to-discover-data-sources"></a>データ ソースの探索方法
@@ -48,8 +52,8 @@ ms.author: maroche
 
 > [!NOTE]
 > **Azure Data Catalog** ポータルの「強調表示」スイッチを使用すれば、検索語句の強調表示を、必要に応じて、オフに切り替えることができます。
-> 
-> 
+>
+>
 
 検索結果を表示する場合は、検索語句の強調表示が有効であっても、データ資産が検索結果に含まれている理由が常に明らかであるとは限りません。 既定ではすべてのプロパティが検索されるため、列レベルのプロパティでの一致により、データ資産が返される可能性があります。 また、複数のユーザーが独自のタグおよび説明を使用して登録済みのデータ資産に注釈を付けることができるので、検索結果の一覧にすべてのメタデータが表示されるとは限りません。
 
@@ -63,6 +67,8 @@ ms.author: maroche
 ## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

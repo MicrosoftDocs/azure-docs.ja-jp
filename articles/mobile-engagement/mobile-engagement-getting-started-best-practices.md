@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7be266a6f8b3e18f2f6a27908ad75b5c19d3d862
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
 
 
 ---
-# <a name="azure-mobile-engagement-getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 概要とベスト プラクティス
+# <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 概要とベスト プラクティス
 ## <a name="overview"></a>概要
 **モバイル画面のスペースを巡る競争は激しさを増しています。** 2013 年に行われた調査によれば、平均的なモバイル デバイスには 27 個のアプリケーションがインストールされています。 ユーザーが日頃アプリに費やす月間の利用時間は 30 時間となっています。 その時間の大半約 20 時間は、ソーシャル ネットワークやゲームに費やされていました。 2014 年には、Android マーケットでユーザーに提供されているアプリケーション数は約 150 万個を突破しました。 Apple ストアで提供されているアプリの数も 120 万個に及びます。 今もなおモバイル アプリは増え続け、この急成長する市場で開発者は競争を繰り広げています。 
 
@@ -105,7 +105,7 @@ KPI を正しく定義することは簡単ではありません。 異なる業
 3. 対象アプリケーションのどこにそのデータがあるか (画面、設定、システムなど)。
 4. この KPI に関してエンゲージメント シーケンスを実施できるか。
 
-サンプルとガイダンスについては、[Media Playbook Template][Media Playbook リンク] の **KPI Builder** ワークシートをご覧ください。
+サンプルとガイダンスについては、[Media Playbook Template][Media Playbook link] の **KPI Builder** ワークシートをご覧ください。
 
 ## <a name="step-2-your-engagement-program"></a>ステップ 2: エンゲージメント プログラム
 好印象なモバイル エンゲージメント プログラムは、アプリの重要な構成要素と考えられます。 そのようなプログラムは必ず、ユーザーを歓迎するプログラムをアプリの使用が開始されたその日に提供しています。 このことがアプリに対するユーザーの愛着度と定着率に大きく貢献する傾向があります。 いくつかの調査によれば、ユーザーの大半は、アプリのインストール後、最初の数日で使用を中止しています。 ユーザーがアプリに関心を持っている間に、ユーザーの期待を満たす、あるいは期待を超えるよう努めることが大切です。 アプリの重要な価値と利点が、利用者に確実に伝わるようにしてください。 
@@ -209,13 +209,13 @@ KPI を正しく定義することは簡単ではありません。 異なる業
 #### <a name="playbook-exercise-2-create-your-engagement-program"></a>演習 2: エンゲージメント プログラムを作成する
 特定のシーケンスの練習をするために、実際に目標をまとめ、必要なキャンペーンを定義してみましょう。 キャンペーンの通知には必ず 3W のアプローチを適用してください。 
 
-サンプルとガイダンスについては、[Media Playbook Template][Media Playbook リンク] の **Engagement Program** ワークシートをご覧ください。
+サンプルとガイダンスについては、[Media Playbook Template][Media Playbook link] の **Engagement Program** ワークシートをご覧ください。
 
 ## <a name="step-3-app-integration"></a>ステップ 3: アプリの統合
 #### <a name="create-a-tag-plan"></a>タグ プランの作成
 Azure Mobile Engagement をアプリに統合するには、タグ プランを作成する必要があります。 タグ プランは、プロジェクトの基礎です。 マーケティングの仕様、アプリケーションのワークフロー、さらに KPI を測定するためにアプリ内で収集される実際のタグ データの関係は、タグ プランによって定義されます。 タグ プランによって指定された分析の対象が、ポータルで確認できるようになります。 また、タグ プランによってユーザー セグメントを定義し、ターゲットを絞り込んだプッシュ通知を送ることによってエンド ユーザーとの絆を深めることができます。 いったんタグ プランを定義すれば、Azure Mobile Engagement SDK を使用してコードを追加し、アプリに統合するのは簡単です。
 
-アプリケーションに対し、やみくもにタグ付けすることは避けてください。 対象とするタグ データは、モバイル エンゲージメント戦略に不可欠な要素に限定します。 通常この点はアプリケーションによって異なります。 Azure Mobile Engagement で提供されている [Media Playbook Template][Media Playbook リンク] を使用すると、所定の方法でタグ プランを作成することができます。 タグ プランを作成する際は、 **Tag Plan** ワークシートを参考にしてださい。
+アプリケーションに対し、やみくもにタグ付けすることは避けてください。 対象とするタグ データは、モバイル エンゲージメント戦略に不可欠な要素に限定します。 通常この点はアプリケーションによって異なります。 Azure Mobile Engagement で提供されている [Media Playbook Template][Media Playbook link] を使用すると、所定の方法でタグ プランを作成することができます。 タグ プランを作成する際は、 **Tag Plan** ワークシートを参考にしてださい。
 
 ワークシートのタグ セクションは、具体的に定義してください。 混乱を避けるためには、具体的に記述することがきわめて重要となります。 .それぞれのタグをどのような状況で送信するかを細かく記述してください。 各タグの埋め込み先となるアクティビティの名前も記述します。 いずれもワークシートの **Informative** 欄に記述してください。 Tag plan ワークシートは、テスト検証の主要な参考資料としてご利用ください。 
 
@@ -322,10 +322,10 @@ Azure Mobile Engagement のセットアップはきわめて単純です。 ユ�
 
 
 <!--Link references-->
-[Media Playbook リンク]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

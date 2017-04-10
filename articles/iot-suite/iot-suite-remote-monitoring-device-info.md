@@ -1,39 +1,63 @@
 ---
-title: リモート監視ソリューションのデバイス情報メタデータ | Microsoft Docs
-description: Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。
-services: ''
+title: "リモート監視ソリューションのデバイス情報メタデータ | Microsoft Docs"
+description: "Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 1b334769-103b-4eb0-a293-184f3d1ba9a3
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2016
+ms.date: 02/15/2017
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 9e1bcba086a9f70c689a5d7d7713a8ecdc764492
+ms.openlocfilehash: e41f5d5e6c5e1da8763c73978d2be9c7e61b8fff
+ms.lasthandoff: 02/27/2017
+
 
 ---
-# リモート監視構成済みソリューションのデバイス情報メタデータ
-Azure IoT Suite リモート監視構成済みソリューションは、デバイス メタデータを管理する手法を示します。この記事では、次のことがわかるように、このソリューションの手法について概説します。
+# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視構成済みソリューションのデバイス情報メタデータ
+Azure IoT Suite リモート監視構成済みソリューションは、デバイス メタデータを管理する手法を示します。 この記事では、次のことがわかるように、このソリューションの手法について概説します。
 
 * ソリューションが格納するデバイス メタデータ。
 * ソリューションがデバイス メタデータを管理する方法。
 
-## Context
-リモート監視構成済みソリューションでは、対象のデバイスからクラウドにデータを送信できるようにする [Azure IoT Hub][lnk-iot-hub] を使用します。IoT Hub には、IoT Hub へのアクセスを制御するための[デバイス ID レジストリ][lnk-identity-registry]が含まれています。IoT Hub デバイス ID レジストリは、デバイス情報メタデータが格納される、リモート監視ソリューション固有の*デバイス レジストリ*とは異なります。リモート監視ソリューションでは、[DocumentDB][lnk-docdb] データベースを使用して、デバイス情報メタデータを格納するためのデバイス レジストリが実装されます。一般的な IoT ソリューションでのデバイス レジストリの役割については、『[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-ref-arch]』で説明されています。
+## <a name="context"></a>Context
+リモート監視構成済みソリューションでは、対象のデバイスからクラウドにデータを送信できるようにする [Azure IoT Hub][lnk-iot-hub] を使用します。 このソリューションでは、次の&3; つの異なる場所にデバイスに関する情報を格納します。
+
+| 場所 | 格納される情報 | 実装 |
+| -------- | ------------------ | -------------- |
+| ID レジストリ | デバイス ID、認証キー、有効化の状態 | IoT Hub に組み込まれている |
+| デバイス ツイン | メタデータ: 報告されるプロパティ、必要なプロパティ、タグ | IoT Hub に組み込まれている |
+| DocumentDB | コマンドとメソッドの履歴 | ソリューション用のカスタム |
+
+IoT Hub は、IoT Hub へのアクセスを管理する[デバイス ID レジストリ][lnk-identity-registry]を含み、[デバイス ツイン][lnk-device-twin]を使用して、デバイス メタデータを管理します。 また、コマンドとメソッドの履歴を格納する*デバイス レジストリ*は、リモート監視ソリューションに固有です。 リモート監視ソリューションでは、[DocumentDB][lnk-docdb] データベースを使用して、コマンドとメソッドの履歴のカスタム ストアを実装します。
 
 > [!NOTE]
-> リモート監視構成済みソリューションは、デバイス ID レジストリとデバイス レジストリの同期状態を維持します。どちらのレジストリも、同一のデバイス ID を使用して、対象の IoT Hub に接続された各デバイスを一意に識別します。
+> リモート監視事前構成済みソリューションは、デバイス ID レジストリと DocumentDB データベース内の情報の同期状態を維持します。 どちらのレジストリも、同一のデバイス ID を使用して、対象の IoT Hub に接続された各デバイスを一意に識別します。
 > 
 > 
 
-[IoT Hub デバイス管理プレビュー][lnk-dm-preview]を使用すると、この記事で説明するデバイス情報管理機能に似た機能を IoT Hub に追加できます。現在、リモート監視ソリューションでは IoT Hub の一般公開 (GA) 機能のみを利用できます。
+## <a name="device-metadata"></a>デバイス メタデータ
+IoT Hub では、リモート監視ソリューションに接続されているシミュレートされたデバイスと物理デバイスごとに[デバイス ツイン][lnk-device-twin]を保持します。 このソリューションでは、デバイス ツインを使用して、デバイスに関連付けられているメタデータを管理します。 デバイス ツインは、IoT Hub によって保持される JSON ドキュメントです。このソリューションでは、IoT Hub API を使用して、デバイス ツインを操作します。
 
-## デバイス情報メタデータ
+デバイス ツインには、次の&3; つの種類のメタデータが格納されます。
+
+- *報告されるプロパティ*は、デバイスによって IoT Hub に送信されます。 リモート監視ソリューションでは、起動時と、**デバイス状態の変更**コマンドとメソッドへの応答時に、シミュレートされたデバイスから報告されるプロパティが送信されます。 報告されるプロパティは、ソリューション ポータルの **[デバイスの一覧]** と **[デバイスの詳細]** で確認できます。 報告されるプロパティは読み取り専用です。
+- *必要なプロパティ*は、デバイスによって IoT Hub から取得されます。 デバイスに対して必要な構成の変更を行うのは、デバイスの役目です。 また、変更内容を報告されるプロパティとしてハブに報告するのもデバイスの役目です。 必要なプロパティの値は、ソリューション ポータルで設定できます。
+- *タグ*は、デバイス ツインにのみ存在します。デバイスと同期されることはありません。 タグの値は、ソリューション ポータルで設定し、デバイスの一覧をフィルター処理するときに使用できます。 このソリューションでは、ソリューション ポータルでデバイスに対して表示するアイコンを特定するためにもタグを使用します。
+
+シミュレートされたデバイスから報告されるプロパティの例としては、製造元、モデル番号、緯度、経度が挙げられます。 また、シミュレートされたデバイスは、報告されるプロパティとしてサポートされているメソッドの一覧も返します。
+
+> [!NOTE]
+> シミュレートされたデバイスのコードは、IoT Hub に返信される報告されるプロパティを更新するために、必要なプロパティである **Desired.Config.TemperatureMeanValue** と **Desired.Config.TelemetryInterval** のみを使用します。 他の必要なプロパティの変更要求はすべて無視されます。
+
 デバイス レジストリ DocumentDB データベースに格納されるデバイス情報メタデータ JSON ドキュメントの構造は、次のようになっています。
 
 ```
@@ -55,210 +79,39 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 }
 ```
 
-* **DeviceProperties**: これらのプロパティはデバイス自体によって書き込まれます。また、デバイスはこのデータに対する権限を持ちます。その他のデバイス プロパティの例としては、製造元、モデル番号、シリアル番号が挙げられます。
-* **DeviceID**: 一意のデバイス ID。この値は、IoT Hub デバイス ID レジストリのものと同じです。
-* **HubEnabledState**: IoT Hub のデバイスの状態。この値は、デバイスが初めて接続されるまでは **null** に設定されています。ソリューション ポータルでは、**null** の値は、デバイスが "登録されていますが、存在していない" ことを表します。
-* **CreatedTime**: デバイスが作成された時刻。
-* **DeviceState**: デバイスによって報告される状態。
-* **UpdatedTime**: ソリューション ポータルによるデバイスの最終更新時刻。
-* **SystemProperties**: システム プロパティは、ソリューション ポータルによって書き込まれます。デバイスはこれらのプロパティの情報を持ちません。システム プロパティの一例としては、サービスを管理する SIM 対応デバイスによってソリューションが承認され、そのデバイスに接続される場合の **ICCID** があります。
-* **Commands**: デバイスでサポートされているコマンドの一覧。この情報は、デバイスからソリューションに提供されます。
-* **CommandHistory**: リモート監視ソリューションによってデバイスに送信されたコマンドと、それらのコマンドの状態の一覧。
-* **IsSimulatedDevice**: シミュレーションされたデバイスであるかどうかを示すフラグ。
-* **id**: このデバイス ドキュメントの一意の DocumentDB 識別子。
 
 > [!NOTE]
-> デバイス情報には、デバイスから IoT Hub に送信されたテレメトリを示すメタデータを含めることもできます。リモート監視ソリューションでは、このテレメトリ メタデータを使用して、ダッシュボードでの[動的テレメトリ][lnk-dynamic-telemetry]の表示方法をカスタマイズできます。
+> デバイス情報には、デバイスから IoT Hub に送信されたテレメトリを示すメタデータを含めることもできます。 リモート監視ソリューションでは、このテレメトリ メタデータを使用して、ダッシュボードでの[動的テレメトリ][lnk-dynamic-telemetry]の表示方法をカスタマイズできます。
 > 
 > 
 
-## ライフサイクル
-ソリューション ポータルで初めてデバイスを作成するとき、先ほどのようにソリューションによってデバイス レジストリのエントリが作成されます。当初は情報の多くが消去されており、**HubEnabledState** は **null** に設定されています。またこの時点で、デバイス ID レジストリのデバイスのエントリも作成されます。これにより、デバイスが IoT Hub での認証に使用するキーが生成されます。
+## <a name="lifecycle"></a>ライフサイクル
+ソリューション ポータルでデバイスを初めて作成すると、コマンドとメソッドの履歴を格納するエントリが DocumentDB データベース内に作成されます。 またこの時点で、デバイス ID レジストリのデバイスのエントリも作成されます。これにより、デバイスが IoT Hub での認証に使用するキーが生成されます。 デバイス ツインも作成されます。
 
-初めてソリューションに接続するとき、デバイスはデバイス情報メッセージを送信します。このデバイス情報メッセージには、デバイスの製造元、モデル番号、シリアル番号などのデバイス プロパティが含まれています。また、すべてのコマンド パラメーターの情報が付属した、デバイスでサポートされているコマンドの一覧も含まれています。このメッセージを受信すると、ソリューションはデバイス レジストリ内のデバイス情報メタデータを更新します。
+初めてソリューションに接続するとき、デバイスは報告されるプロパティとデバイス情報メッセージを送信します。 報告されるプロパティの値は、デバイス ツインに自動的に保存されます。 報告されるプロパティには、デバイスの製造元、モデル番号、シリアル番号、およびサポートされているメソッドの一覧が含まれています。 デバイス情報メッセージには、すべてのコマンド パラメーターの情報が付属した、デバイスでサポートされているコマンドの一覧が含まれています。 このメッセージを受信すると、ソリューションは DocumentDB データベース内のデバイス情報を更新します。
 
-### ソリューション ポータルでのデバイス情報の表示と編集
-ソリューション ポータルのデバイス一覧には、**[状態]**、**[DeviceId]**、**[製造元]**、**[モデル番号]**、**[シリアル番号]**、**[ファームウェア]**、**[プラットフォーム]**、**[プロセッサ]**、**[インストールされている RAM]** の各プロパティが、列として表示されています。**[緯度]** と **[経度]** のデバイス プロパティによって、ダッシュボードの Bing 地図内での位置が定まります。
+### <a name="view-and-edit-device-information-in-the-solution-portal"></a>ソリューション ポータルでのデバイス情報の表示と編集
+ソリューション ポータルのデバイス一覧には、**[状態]**、**[DeviceId]**、**[製造元]**、**[モデル番号]**、**[シリアル番号]**、**[ファームウェア]**、**[プラットフォーム]**、**[プロセッサ]**、**[インストールされている RAM]** の各プロパティが、列として既定で表示されています。 列をカスタマイズするには、**[列エディター]** をクリックします。 **[緯度]** と **[経度]** のデバイス プロパティによって、ダッシュボードの Bing 地図内での位置が定まります。
 
-![Device list][img-device-list]
+![デバイス一覧の [列エディター]][img-device-list]
 
-ソリューション ポータルで **[デバイスの詳細]** ウィンドウの **[編集]** をクリックすると、これらのプロパティをすべて編集できます。これらのプロパティを編集すると、DocumentDB データベース内のデバイスのレコードが更新されます。ただし、更新されたデバイス情報メッセージをデバイスから送信する場合は、ソリューション ポータルで加えた変更が上書きされます。ソリューション ポータルでは、**DeviceId**、**Hostname**、**HubEnabledState**、**CreatedTime**、**DeviceState**、**UpdatedTime** の各プロパティは編集できません。これらのプロパティに対する権限を持つのがデバイスのみであるためです。
+ソリューション ポータルの **[デバイスの詳細]** ウィンドウでは、必要なプロパティとタグを編集できます (報告されるプロパティは読み取り専用です)。
 
-![Device edit][img-device-edit]
+![[デバイスの詳細] ウィンドウ][img-device-edit]
 
-ソリューション ポータルを使用して、ソリューションからデバイスを削除できます。デバイスを削除すると、ソリューションによってソリューションのデバイス レジストリからデバイス情報メタデータが削除され、IoT Hub デバイス ID レジストリのデバイス エントリが削除されます。デバイスを削除するには、無効にしておく必要があります。
+ソリューション ポータルを使用して、ソリューションからデバイスを削除できます。 デバイスを削除すると、ID レジストリからデバイス エントリが削除され、次にデバイス ツインが削除されます。 また、DocumentDB データベースからデバイスに関連する情報も削除されます。 デバイスを削除するには、無効にしておく必要があります。
 
-![Device remove][img-device-remove]
+![デバイスの削除][img-device-remove]
 
-## デバイス情報メッセージの処理
-デバイスによって送信されるデバイス情報メッセージは、テレメトリ メッセージとは異なります。デバイス情報メッセージには、デバイス プロパティ、デバイスが応答できるコマンド、コマンド履歴などの情報が含まれます。IoT Hub 自体は、デバイス情報メッセージに含まれたメタデータを把握しません。このメッセージは、デバイスからクラウドへのメッセージを処理するのと同じ方法で処理されます。リモート監視ソリューションでは、[Azure Stream Analytics][lnk-stream-analytics] \(ASA) ジョブが IoT Hub からのメッセージを読み取ります。**DeviceInfo** Stream Analytics ジョブは、**"ObjectType": "DeviceInfo"** が含まれたメッセージをフィルター処理し、Web ジョブで実行される **EventProcessorHost** ホスト インスタンスにそれらを転送します。**EventProcessorHost** インスタンス内のロジックは、デバイス ID を使用して特定のデバイスの DocumentDB レコードを特定し、そのレコードを更新します。デバイス レジストリのレコードには現在、デバイス プロパティ、コマンド、コマンド履歴などの情報が含まれています。
+## <a name="device-information-message-processing"></a>デバイス情報メッセージの処理
+デバイスによって送信されるデバイス情報メッセージは、テレメトリ メッセージとは異なります。 デバイス情報メッセージには、デバイスが応答できるコマンドと、コマンドの履歴が含まれます。 IoT Hub 自体は、デバイス情報メッセージに含まれたメタデータを把握しません。このメッセージは、デバイスからクラウドへのメッセージを処理するのと同じ方法で処理されます。 リモート監視ソリューションでは、[Azure Stream Analytics][lnk-stream-analytics] (ASA) ジョブが IoT Hub からのメッセージを読み取ります。 **DeviceInfo** Stream Analytics ジョブは、**"ObjectType": "DeviceInfo"** が含まれたメッセージをフィルター処理し、Web ジョブで実行される **EventProcessorHost** ホスト インスタンスにそれらを転送します。 **EventProcessorHost** インスタンス内のロジックは、デバイス ID を使用して特定のデバイスの DocumentDB レコードを特定し、そのレコードを更新します。
 
 > [!NOTE]
-> デバイス情報メッセージは、標準的なデバイスからクラウドへのメッセージです。このソリューションでは、ASA クエリを使用してデバイス情報メッセージとテレメトリ メッセージが区別されます。
+> デバイス情報メッセージは、標準的なデバイスからクラウドへのメッセージです。 このソリューションでは、ASA クエリを使用してデバイス情報メッセージとテレメトリ メッセージが区別されます。
 > 
 > 
 
-## デバイス情報レコードの例
-リモート監視構成済みソリューションでは、2 種類のデバイス情報レコードが使用されます。ソリューションと共にデプロイされた、シミュレートされたデバイスのレコードと、ソリューションに接続するカスタム デバイスのレコードです。
-
-### シミュレートされたデバイス
-次の例は、シミュレートされたデバイスの JSON デバイス情報レコードを示します。このレコードには、デバイスが **DeviceInfo** メッセージを IoT Hub に送信したことを示す **UpdatedTime** の値セットがあります。レコードには一般的なデバイス プロパティがいくつか含まれており、シミュレートされたデバイスがサポートする 6 つのコマンドが定義されています。また、**IsSimulatedDevice** フラグが **1** に設定されています。
-
-```
-{
-  "DeviceProperties": {
-    "DeviceID": "SampleDevice001_455",
-    "HubEnabledState": true,
-    "CreatedTime": "2016-01-26T19:02:01.4550695Z",
-    "DeviceState": "normal",
-    "UpdatedTime": "2016-06-01T15:28:41.8105157Z",
-    "Manufacturer": "Contoso Inc.",
-    "ModelNumber": "MD-369",
-    "SerialNumber": "SER9009",
-    "FirmwareVersion": "1.39",
-    "Platform": "Plat-34",
-    "Processor": "i3-2191",
-    "InstalledRAM": "3 MB",
-    "Latitude": 47.583582,
-    "Longitude": -122.130622
-  },
-  "Commands": [
-    {
-      "Name": "PingDevice",
-      "Parameters": null
-    },
-    {
-      "Name": "StartTelemetry",
-      "Parameters": null
-    },
-    {
-      "Name": "StopTelemetry",
-      "Parameters": null
-    },
-    {
-      "Name": "ChangeSetPointTemp",
-      "Parameters": [
-        {
-          "Name": "SetPointTemp",
-          "Type": "double"
-        }
-      ]
-    },
-    {
-      "Name": "DiagnosticTelemetry",
-      "Parameters": [
-        {
-          "Name": "Active",
-          "Type": "boolean"
-        }
-      ]
-    },
-    {
-      "Name": "ChangeDeviceState",
-      "Parameters": [
-        {
-          "Name": "DeviceState",
-          "Type": "string"
-        }
-      ]
-    }
-  ],
-  "CommandHistory": [],
-  "IsSimulatedDevice": 1,
-  "Version": "1.0",
-  "ObjectType": "DeviceInfo",
-  "IoTHub": {
-    "MessageId": null,
-    "CorrelationId": null,
-    "ConnectionDeviceId": "SampleDevice001_455",
-    "ConnectionDeviceGenerationId": "635894317219942540",
-    "EnqueuedTime": "0001-01-01T00:00:00",
-    "StreamId": null
-  },
-  "SystemProperties": {
-    "ICCID": null
-  },
-  "id": "7101c002-085f-4954-b9aa-7466980a2aaf"
-}
-```
-
-### カスタム デバイス
-次の例は、カスタム デバイスの JSON デバイス情報レコードを示します。ここでは、**IsSimulatedDevice** フラグが **0** に設定されています。このカスタム デバイスが 2 つのコマンドをサポートしていることと、ソリューション ポータルからデバイスに **SetTemperature** コマンドが送信されたことがわかります。
-
-```
-{
-  "DeviceProperties": {
-    "DeviceID": "mydevice01",
-    "HubEnabledState": true,
-    "CreatedTime": "2016-03-28T21:05:06.6061104Z",
-    "DeviceState": "normal",
-    "UpdatedTime": "2016-06-07T22:05:34.2802549Z"
-  },
-  "SystemProperties": {
-    "ICCID": null
-  },
-  "Commands": [
-    {
-      "Name": "SetHumidity",
-      "Parameters": [
-        {
-          "Name": "humidity",
-          "Type": "int"
-        }
-      ]
-    },
-    {
-      "Name": "SetTemperature",
-      "Parameters": [
-        {
-          "Name": "temperature",
-          "Type": "int"
-        }
-      ]
-    }
-  ],
-  "CommandHistory": [
-    {
-      "Name": "SetTemperature",
-      "MessageId": "2a0cec61-5eca-4de7-92dc-9c0bc4211c46",
-      "CreatedTime": "2016-06-07T21:05:18.140796Z",
-      "Parameters": {
-        "temperature": 20
-      },
-      "UpdatedTime": "2016-06-07T21:05:18.716076Z",
-      "Result": "Expired"
-    }
-  ],
-  "IsSimulatedDevice": 0,
-  "id": "6184ae0f-2d94-4fbd-91cd-4b193aecc9d1",
-  "ObjectType": "DeviceInfo",
-  "Version": "1.0",
-  "IoTHub": {
-    "MessageId": null,
-    "CorrelationId": null,
-    "ConnectionDeviceId": "SampleCustom",
-    "ConnectionDeviceGenerationId": "635947959068246845",
-    "EnqueuedTime": "0001-01-01T00:00:00",
-    "StreamId": null
-  }
-}
-```
-
-次の例は、デバイス情報メタデータを更新するためにデバイスから送信された JSON **DeviceInfo** メッセージを示しています。
-
-```
-{ "ObjectType":"DeviceInfo",
-  "Version":"1.0",
-  "IsSimulatedDevice":false,
-  "DeviceProperties": { "DeviceID":"mydevice01", "HubEnabledState":true },
-  "Commands": [
-    {"Name":"SetHumidity", "Parameters":[{"Name":"humidity","Type":"double"}]},
-    {"Name":"SetTemperature", "Parameters":[{"Name":"temperature","Type":"double"}]}
-  ]
-}
-```
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 構成済みのソリューションをカスタマイズする方法を学習し終えたので、次のリンク先で IoT Suite の構成済みのソリューションのその他の機能のいくつかについて調べることができます。
 
 * [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
@@ -271,15 +124,13 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 [img-device-remove]: media/iot-suite-remote-monitoring-device-info/image3.png
 
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
-[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
+[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-docdb]: https://azure.microsoft.com/documentation/services/documentdb/
-[lnk-ref-arch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-dm-preview]: ../iot-hub/iot-hub-device-management-overview.md
 [lnk-dynamic-telemetry]: iot-suite-dynamic-telemetry.md
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0914_2016-->

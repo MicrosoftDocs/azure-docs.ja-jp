@@ -1,12 +1,12 @@
 ---
-title: How to use Notification Hubs with Python
-description: Learn how to use Azure Notification Hubs from a Python back-end.
+title: "Python で Notification Hubs を使用する方法"
+description: "Python バックエンドから Azure Notification Hubs を使用する方法について説明します。"
 services: notification-hubs
-documentationcenter: ''
+documentationcenter: 
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5640dd4a-a91e-4aa0-a833-93615bde49b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: python
@@ -14,59 +14,63 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9ceedb9940759427fc8cec74a1307e42472563a6
+
 
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>How to use Notification Hubs from Python
+# <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-You can access all Notification Hubs features from a Java/PHP/Python/Ruby back-end using the Notification Hub REST interface as described in the MSDN topic [Notification Hubs REST APIs](http://msdn.microsoft.com/library/dn223264.aspx).
+MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
 > [!NOTE]
-> This is a sample reference implementation for implementing the notification sends in Python and is not the officially supported Notifications Hub Python SDK.
+> これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
 > 
-> This sample is written using Python 3.4.
+> このサンプルは Python 3.4 を使用して書き込まれます。
 > 
 > 
 
-In this topic we show how to:
+このトピックでは、次の方法について説明します。
 
-* Build a REST client for Notification Hubs features in Python.
-* Send notifications using the Python interface to the Notification Hub REST APIs. 
-* Get a dump of the HTTP REST request/response for debugging/educational purpose. 
+* Python で Notification Hubs 機能の REST クライアントを記述します。
+* 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。 
+* デバッグ/教育目的のための HTTP REST 要求/応答のダンプを取得します。 
 
-You can follow the [Get started tutorial](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) for your mobile platform of choice, implementing the back-end portion in Python.
+選択したモバイル プラットフォームの「 [Notification Hubs の使用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 」に従って、Python のバックエンド部分を実装します。
 
 > [!NOTE]
-> The scope of the sample is only limited to send notifications and it doesn't do any registration management.
+> このサンプルの範囲は通知の送信のみに制限され、登録の管理は行いません。
 > 
 > 
 
-## <a name="client-interface"></a>Client interface
-The main client interface can provide the same methods that are available in the [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx). This will allow you to directly translate all the tutorials and samples currently available on this site, and contributed by the community on the internet.
+## <a name="client-interface"></a>クライアント インターフェイス
+メイン クライアント インターフェイスは、 [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx)で利用可能なものと同じメソッドを提供できます。 これでこのサイトで現在利用でき、インターネット上のコミュニティから提供されたすべてのチュートリアルとサンプルを直接訳せるようになります。
 
-You can find all the code available in the [Python REST wrapper sample].
+[Python REST ラッパー サンプル]で利用可能なすべてのコードを検索できます。
 
-For example, to create a client:
+たとえば、クライアントを作成する場合:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-To send a Windows toast notification:
+Windows トースト通知を送信する場合:
 
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
-## <a name="implementation"></a>Implementation
-If you did not already, please follow our [Get started tutorial] up to the last section where you have to implement the back-end.
+## <a name="implementation"></a>実装
+まだ実施していない場合は、「 [Notification Hubs の使用] 」に従って最後のセクションまで進み、バックエンドを実装します。
 
-All the details to implement a full REST wrapper can be found on [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). In this section we will describe the Python implementation of the main steps required to access Notification Hubs REST endpoints and send notifications
+REST ラッパーすべての実装の詳細については、 [MSDN の記事](http://msdn.microsoft.com/library/dn530746.aspx)を参照してください。 このセクションでは、Notification Hubs REST エンドポイントにアクセスし、通知を送信するために必要な主要手順の Python 実装について説明します。
 
-1. Parse the connection string
-2. Generate the authorization token
-3. Send a notification using HTTP REST API
+1. 接続文字列を解析する
+2. 認証トークンを生成する
+3. HTTP REST API を使用して通知を送信する
 
-### <a name="parse-the-connection-string"></a>Parse the connection string
-Here is the main class implementing the client, whose constructor parses the connection string:
+### <a name="parse-the-connection-string"></a>接続文字列を解析する
+接続文字列を解析するコンストラクターを持つクライアントを実装するメイン クラスです。
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -90,9 +94,9 @@ Here is the main class implementing the client, whose constructor parses the con
                     self.SasKeyValue = part[16:]
 
 
-### <a name="create-security-token"></a>Create security token
-The details of the security token creation are available [here](http://msdn.microsoft.com/library/dn495627.aspx).
-The following methods have to be added to the **NotificationHub** class to create the token based on the URI of the current request and the credentials extracted from the connection string.
+### <a name="create-security-token"></a>セキュリティ トークンを作成する
+セキュリティ トークンの作成の詳細については、 [こちら](http://msdn.microsoft.com/library/dn495627.aspx)をご覧ください。
+次のメソッドを **NotificationHub** クラスに追加し、接続文字列から抽出された現在の要求と、資格情報の URI に基づいたトークンを作成します。
 
     @staticmethod
     def get_expiry():
@@ -121,8 +125,8 @@ The following methods have to be added to the **NotificationHub** class to creat
         sas_token = auth_format.format(signature, expiry, self.SasKeyName, my_uri)
         return sas_token
 
-### <a name="send-a-notification-using-http-rest-api"></a>Send a notification using HTTP REST API
-First, let use define a class representing a notification.
+### <a name="send-a-notification-using-http-rest-api"></a>HTTP REST API を使用して通知を送信する
+最初に、通知を表すクラスの定義を使用します。
 
     class Notification:
         def __init__(self, notification_format=None, payload=None, debug=0):
@@ -141,11 +145,11 @@ First, let use define a class representing a notification.
             # in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
             self.headers = None
 
-This class is a container for a native notification body or a set of properties in case of a template notification, a set of headers which contains format (native platform or template) and platform-specific properties (like Apple expiration property and WNS headers).
+このクラスは、ネイティブ通知本体のコンテナー、またはテンプレート通知の場合にはプロパティのセットと、形式 (ネイティブ プラットフォームまたはテンプレート) およびプラットフォーム固有のプロパティを含むヘッダーのセットです (Apple 有効期限プロパティや WNS ヘッダーなど)。
 
-Please refer to the [Notification Hubs REST APIs documentation](http://msdn.microsoft.com/library/dn495827.aspx) and the specific notification platforms' formats for all the options available.
+利用可能なすべてのオプションについては、「 [REST API のメソッド](http://msdn.microsoft.com/library/dn495827.aspx) 」、および特定の通知プラットフォームの形式を参照してください。
 
-Now with this class, we can write the send notification methods inside of the **NotificationHub** class.
+このクラスを利用して、 **NotificationHub** クラス内に送信通知メソッドを作成できます。
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -253,29 +257,29 @@ Now with this class, we can write the send notification methods inside of the **
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-The above methods send an HTTP POST request to the /messages endpoint of your notification hub, with the correct body and headers to send the notification.
+上記のメソッドは、HTTP POST 要求、および通知を送信する正しい本体とヘッダーを通知ハブの /messages エンドポイントに送信します。
 
-### <a name="using-debug-property-to-enable-detailed-logging"></a>Using debug property to enable detailed logging
-Enabling debug property while initializing the Notification Hub will write out detailed logging information about the HTTP request and response dump as well as detailed Notification message send outcome. We recently added this property called [Notification Hubs TestSend property](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) which returns detailed information about the notification send outcome. To use it - initialize using the following:
+### <a name="using-debug-property-to-enable-detailed-logging"></a>デバッグ プロパティを使用して、詳細なログ記録を有効にする
+通知ハブの初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログの情報と応答ダンプ、詳細な通知メッセージの送信結果が書き込まれます。 [Notification Hubs の TestSend プロパティ](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)と呼ばれるプロパティを追加しました。通知送信の結果に関する詳細な情報が返されます。 使用するには、次を使用して初期化します。
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-The Notification Hub Send request HTTP URL gets appended with a "test" querystring as a result. 
+結果として HTTP URL が取得する通知ハブの送信要求には、"test"クエリ文字列が追加されます。 
 
-## <a name="<a-name="complete-tutorial"></a>complete-the-tutorial"></a><a name="complete-tutorial"></a>Complete the tutorial
-Now you can complete the Get Started tutorial by sending the notification from a Python back-end.
+## <a name="a-namecomplete-tutorialacomplete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
+ここで、Python バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
-Initialize your Notification Hubs client (substitute the connection string and hub name as instructed in the [Get started tutorial]):
+Notification Hubs クライアントを初期化します (「 [Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Then add the send code depending on your target mobile platform. This sample also adds higher level methods to enable sending notifications based on the platform e.g. send_windows_notification for windows; send_apple_notification (for apple) etc. 
+次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。 このサンプルでは、send_windows_notification (Windows)、send_apple_notification (Apple) など、プラットフォーム通知の送信を有効にするレベルの高いメソッドを追加します。 
 
-### <a name="windows-store-and-windows-phone-8.1-(non-silverlight)"></a>Windows Store and Windows Phone 8.1 (non-Silverlight)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows ストアおよび Windows Phone 8.1 (非 Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
-### <a name="windows-phone-8.0-and-8.1-silverlight"></a>Windows Phone 8.0 and 8.1 Silverlight
+### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 および 8.1 Silverlight
     hub.send_mpns_notification(toast)
 
 ### <a name="ios"></a>iOS
@@ -314,70 +318,70 @@ Then add the send code depending on your target mobile platform. This sample als
     }
     hub.send_baidu_notification(baidu_payload)
 
-Running your Python code should produce a notification appearing on your target device.
+Python コードを実行すると、ターゲット デバイスに表示される通知が生成されます。
 
-## <a name="examples:"></a>Examples:
-### <a name="enabling-debug-property"></a>Enabling debug property
-When you enable debug flag while initializing the NotificationHub then you will see detailed HTTP request and response dump as well as NotificationOutcome like the following where you can understand what HTTP headers are passed in the request and what HTTP response was received from the Notification Hub:     ![][1]
+## <a name="examples"></a>次に例を示します。
+### <a name="enabling-debug-property"></a>デバッグ プロパティを有効にする
+Notification Hubs の初期化中にデバッグ フラグを有効にすると、詳細な HTTP 要求と応答ダンプだけでなく、次のような NotificationOutcome が表示され、要求で渡される HTTP ヘッダーや Notification Hubs から受信した HTTP 応答について把握できるようになります。       ![][1]
 
-You will see detailed Notification Hub result e.g. 
+通知ハブの結果についての詳細が表示されます。 
 
-* when the message is successfully sent to the Push Notification Service. 
+* 例: プッシュ通知サービスにメッセージが正常に送信される場合。 
   
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* If there were no targets found for any push notification then you are likely going to see the following in the response (which indicates that there were no registrations found to deliver the notification probably because the registrations had some mismatched tags)
+* プッシュ通知の対象が見つからなかった場合、応答では次が表示される可能性が高くなります (登録でタグが一致しなかったために登録がなかったことを示す)。
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Broadcast toast notification to Windows
-Notice the headers that get sent out when you are sending a broadcast toast notification to Windows client. 
+### <a name="broadcast-toast-notification-to-windows"></a>Windows にトースト通知をブロードキャストする
+ブロードキャストのトースト通知を Windows クライアントに送信するときにヘッダーも送信されることに注意してください。 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
-### <a name="send-notification-specifying-a-tag-(or-tag-expression)"></a>Send notification specifying a tag (or tag expression)
-Notice the Tags HTTP header which gets added to the HTTP request (in the example below, we are sending the notification only to registrations with 'sports' payload)
+### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>タグ (またはタグ式) を指定して通知を送信する
+HTTP 要求に追加される HTTP ヘッダーのタグに注意してください (次の例では 'sports' ペイロードの登録のみに対し通知を送信します)
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
-### <a name="send-notification-specifying-multiple-tags"></a>Send notification specifying multiple tags
-Notice how the Tags HTTP header changes when multiple tags are sent. 
+### <a name="send-notification-specifying-multiple-tags"></a>複数のタグを指定すて通知を送信する
+複数のタグが送信される場合に HTTP ヘッダーが変更するタグに注意してください。 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
-### <a name="templated-notification"></a>Templated notification
-Notice that the Format HTTP header changes and the payload body is sent as part of the HTTP request body:
+### <a name="templated-notification"></a>テンプレート化された通知
+HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要求本文の一部として送信されることに注意してください。
 
-**Client side - registered template**
+**クライアント側 - 登録済みのテンプレート**
 
         var template =
                         @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
 
-**Server side - sending the payload**
+**サーバー側 - ペイロードの送信**
 
         template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
         hub.send_template_notification(template_payload)
 
 ![][5]
 
-## <a name="next-steps"></a>Next Steps
-In this topic we showed how to create a simple Python REST client for Notification Hubs. From here you can:
+## <a name="next-steps"></a>次のステップ
+このトピックでは、Notification Hubs 用の単純な Python REST クライアントの作成方法を説明しました。 次は、以下を実行できます。
 
-* Download the full [Python REST wrapper sample], which contains all the code above.
-* Continue learning about Notification Hubs tagging feature in the [Breaking News tutorial]
-* Continue learning about Notification Hubs Templates feature in the [Localizing News tutorial]
+* [Python REST ラッパー サンプル]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
+* 引き続き、「 [ニュース速報チュートリアル]
+* 引き続き、「 [ローカライズ版のニュース速報チュートリアル]
 
 <!-- URLs -->
-[Python REST wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Breaking News tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[Localizing News tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Python REST ラッパー サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[ニュース速報チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[ローカライズ版のニュース速報チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png
@@ -389,6 +393,6 @@ In this topic we showed how to create a simple Python REST client for Notificati
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: hero-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0bb3fcf1963819b5e8787c042fa895348dc69e12
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 83ef925a8268873d09c4a1611a1f2341acd92ba7
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -40,9 +41,9 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。 SQL Database に変更する場合は、 [Project Nami](http://projectnami.org/)の Web サイトを参照してください。 **Project Nami** は Marketplace からも入手できます。
 
 > [!NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 > 
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -60,7 +61,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 5. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
    
     Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
-6. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。 
+6. サブスクリプションが複数ある場合には、使用するものを&1; つ選択します。 
 7. **リソース グループ** を選択するか、新しく作成します。
    
     リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
@@ -81,7 +82,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     
      ![Web アプリの構成](./media/web-sites-php-web-site-gallery/configure.png)
     
-     Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
+     Azure App Service によって、通常は&1; 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
     
      ![進捗状況インジケーター](./media/web-sites-php-web-site-gallery/progress.png)
 
@@ -114,9 +115,4 @@ App Service Web Apps の使用方法の詳細については、ページの左�
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

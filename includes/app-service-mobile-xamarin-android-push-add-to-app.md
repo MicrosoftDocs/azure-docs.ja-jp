@@ -1,10 +1,10 @@
-1. Create a new class in the project called `ToDoBroadcastReceiver`.
-2. Add the following using statements to **ToDoBroadcastReceiver** class:
+1. `ToDoBroadcastReceiver`という名前のプロジェクトに新しいクラスを作成します。
+2. 次の using ステートメントを **ToDoBroadcastReceiver** クラスに追加します。
    
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. Add the following permission requests between the **using** statements and the **namespace** declaration:
+3. **using** ステートメントと **namespace** 宣言の間に、次のアクセス許可要求を追加します。
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -14,7 +14,7 @@
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-4. Replace the existing **ToDoBroadcastReceiver** class definition with the following:
+4. 既存の **ToDoBroadcastReceiver** クラスの定義を次の内容に置き換えます。
    
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -29,8 +29,8 @@
             public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
    
-    In the above code, you must replace *`<PROJECT_NUMBER>`* with the project number assigned by Google when you provisioned your app in the Google developer portal. 
-5. In the ToDoBroadcastReceiver.cs project file, add the following code that defines the **PushHandlerService** class:
+    上記のコードの *`<PROJECT_NUMBER>`* を、Google の開発者ポータルでアプリケーションをプロビジョニングしたときに Google によって割り当てられたプロジェクト番号に置き換える必要があります。 
+5. ToDoBroadcastReceiver.cs プロジェクト ファイルに、 **PushHandlerService** クラスを定義する次のコードを追加します。
    
         // The ServiceAttribute must be applied to the class.
         [Service] 
@@ -41,13 +41,13 @@
             public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
         }
    
-    Note that this class derives from **GcmServiceBase** and that the **Service** attribute must be applied to this class.
+    このクラスは **GcmServiceBase** から派生したものであり、このクラスに **Service** 属性を適用する必要があることに注意してください。
    
    > [!NOTE]
-   > The **GcmServiceBase** class implements the **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** and **OnError()** methods. You must override these methods in the **PushHandlerService** class.
+   > **GcmServiceBase** クラスでは、**OnRegistered()**、**OnUnRegistered()**、**OnMessage()**、**OnError()** の各メソッドを実装しています。 **PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
    > 
    > 
-6. Add the following code to the **PushHandlerService** class that overrides the **OnRegistered** event handler. 
+6. **OnRegistered** イベント ハンドラーを上書きする次のコードを **PushHandlerService** クラスに追加します。 
    
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -86,8 +86,8 @@
             }
         }
    
-    This method uses the returned GCM registration ID to register with Azure for push notifications. Tags can only be added to the registration after it is created. For more information, see [How to: Add tags to a device installation to enable push-to-tags](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
-7. Override the **OnMessage** method in **PushHandlerService** with the following code:
+    このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。 タグは、作成後にのみ登録に追加できます。 詳細については、「 [方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」を参照してください。
+7. **PushHandlerService** の **OnMessage** メソッドを次のコードで上書きします。
    
        protected override void OnMessage(Context context, Intent intent)
        {          
@@ -106,7 +106,7 @@
                // Create a new intent to show the notification in the UI. 
                PendingIntent contentIntent = 
                    PendingIntent.GetActivity(context, 0, 
-                   new Intent(this, typeof(ToDoActivity)), 0);           
+                   new Intent(this, typeof(ToDoActivity)), 0);              
    
                // Create the notification using the builder.
                var builder = new Notification.Builder(context);
@@ -122,7 +122,7 @@
    
            }
        }
-8. Override the **OnUnRegistered()** and **OnError()** methods with the following code.
+8. **OnUnRegistered()** メソッドと **OnError()** メソッドを次のコードで上書きします。
    
        protected override void OnUnRegistered(Context context, string registrationId)
        {
@@ -135,6 +135,8 @@
                string.Format("Error occurred in the notification: {0}.", errorId));
        }
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

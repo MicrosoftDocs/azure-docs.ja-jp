@@ -1,23 +1,27 @@
 ---
 title: Publish-WebApplicationVM | Microsoft Docs
-description: 仮想マシンに Web アプリケーションをデプロイする方法を学習します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
+description: "仮想マシンに Web アプリケーションをデプロイする方法を学習します。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 11/11/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bedcbc3218022b36cc9f961c7621db3c5a639828
+
 
 ---
-# Publish-WebApplicationVM (Windows PowerShell スクリプト)
-仮想マシンに Web アプリケーションをデプロイします。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
+# <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM (Windows PowerShell スクリプト)
+仮想マシンに Web アプリケーションをデプロイします。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
 
 ```
 Publish-WebApplicationVM
@@ -30,7 +34,7 @@ Publish-WebApplicationVM
 -Verbose
 ```
 
-### 構成
+### <a name="configuration"></a>構成
 デプロイの詳細が記述されている JSON 構成ファイルへのパス。
 
 | 別名 | なし |
@@ -41,7 +45,7 @@ Publish-WebApplicationVM
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### SubscriptionName
+### <a name="subscriptionname"></a>SubscriptionName
 仮想マシンを作成する Azure サブスクリプションの名前。
 
 | 別名 | なし |
@@ -52,8 +56,8 @@ Publish-WebApplicationVM
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### WebDeployPackage
-仮想マシンに発行する Web デプロイ パッケージへのパス。Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。詳細については、「[方法: Visual Studio で Web デプロイ パッケージを作成する](https://msdn.microsoft.com/library/dd465323.aspx)」をご覧ください。
+### <a name="webdeploypackage"></a>WebDeployPackage
+仮想マシンに発行する Web デプロイ パッケージへのパス。 Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。 詳細については、「 [方法: Visual Studio で Web デプロイ パッケージを作成する](https://msdn.microsoft.com/library/dd465323.aspx)」をご覧ください。
 
 | 別名 | なし |
 | --- | --- |
@@ -63,7 +67,7 @@ Publish-WebApplicationVM
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### AllowUntrusted
+### <a name="allowuntrusted"></a>AllowUntrusted
 True の場合は、信頼されたルート証明機関によって署名されていない証明書の使用が許可されます。
 
 | 別名 | なし |
@@ -74,8 +78,8 @@ True の場合は、信頼されたルート証明機関によって署名され
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### VMPassword
-仮想マシンアカウントの資格情報。例: -VMPassword @{Name = "admin"; Password = "password"}
+### <a name="vmpassword"></a>VMPassword
+仮想マシンアカウントの資格情報。 例: -VMPassword @{Name = "admin"; Password = "password"}
 
 | 別名 | なし |
 | --- | --- |
@@ -85,8 +89,8 @@ True の場合は、信頼されたルート証明機関によって署名され
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### DatabaseServerPassword
-Azure での SQL Database の資格情報。例: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
+### <a name="databaseserverpassword"></a>DatabaseServerPassword
+Azure での SQL Database の資格情報。 例: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
 
 | 別名 | なし |
 | --- | --- |
@@ -96,7 +100,7 @@ Azure での SQL Database の資格情報。例: -DatabaseServerPassword @{Name 
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-### SendHostMessagesToOutput
+### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 true の場合、スクリプトからのメッセージは出力ストリームに出力されます。
 
 | 別名 | なし |
@@ -107,10 +111,10 @@ true の場合、スクリプトからのメッセージは出力ストリーム
 | パイプライン入力を許可する |false |
 | ワイルドカード文字を許可する |false |
 
-## 解説
-スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](vs-azure-tools-publishing-using-powershell-scripts.md)」をご覧ください。
+## <a name="remarks"></a>解説
+スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「 [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](vs-azure-tools-publishing-using-powershell-scripts.md)」をご覧ください。
 
-JSON 構成ファイルではデプロイ対象の詳細が指定されます。これには、仮想マシンの名前、アフィニティ グループ、VHD イメージ、およびサイズなど、プロジェクトを作成したときに指定した情報が含まれています。また、仮想マシン上のエンドポイント、プロビジョニングするデータベース (該当する場合)、Web デプロイメント パラメーターも含まれています。次のコードは JSON 構成ファイルの例を示しています。
+JSON 構成ファイルではデプロイ対象の詳細が指定されます。 これには、仮想マシンの名前、アフィニティ グループ、VHD イメージ、およびサイズなど、プロジェクトを作成したときに指定した情報が含まれています。 また、仮想マシン上のエンドポイント、プロビジョニングするデータベース (該当する場合)、Web デプロイメント パラメーターも含まれています。 次のコードは JSON 構成ファイルの例を示しています。
 
 ```
 {
@@ -179,6 +183,11 @@ JSON 構成ファイルではデプロイ対象の詳細が指定されます。
 }
 ```
 
-プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
+プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。 仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

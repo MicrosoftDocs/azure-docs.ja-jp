@@ -1,22 +1,26 @@
 ---
 title: Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory で導入された OpenID Connect 認証プロトコルを利用した Web アプリケーションの構築。
+description: "Azure Active Directory で導入された OpenID Connect 認証プロトコルを利用した Web アプリケーションの構築。"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: dstrockis
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: c371aaab-813a-4317-97df-b62e2f53d865
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 51061199e4929406c3ac77a26e2f972686236bd4
+
 
 ---
-# <a name="azure-active-directory-b2c:-oauth-2.0-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0 承認コード フロー
+# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0 承認コード フロー
 デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Azure Active Directory (Azure AD) B2C で導入された OAuth 2.0 を利用することで、サインアップ、サインイン、その他の ID 管理タスクをモバイル アプリとデスクトップ アプリに追加できます。 このガイドは言語に依存しません。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
 <!-- TODO: Need link to libraries -->
@@ -30,7 +34,7 @@ Azure AD B2C は、単純な認証と承認以上のことができるように�
 下の HTTP 要求例では、サンプル B2C ディレクトリの **fabrikamb2c.onmicrosoft.com**、サンプル アプリケーション、ポリシーを利用します。 これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。
 [独自の B2C ディレクトリ、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について学習してください。
 
-## <a name="1.-get-an-authorization-code"></a>1.承認コードを取得する
+## <a name="1-get-an-authorization-code"></a>1.承認コードを取得する
 承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。 これはフローの対話部分であり、ユーザーが実際に操作します。 この要求では、クライアントはユーザーから取得する必要があるアクセス許可を `scope` パラメーターで示し、実行するポリシーを `p` パラメーターで示します。 3 つの例を以下に示します (読みやすいように改行してあります)。それぞれ異なるポリシーが使用されています。
 
 #### <a name="use-a-sign-in-policy"></a>サインイン ポリシーを使用する
@@ -71,7 +75,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | パラメーター | 必須 | Description |
 | --- | --- | --- |
-| client_id |必須 |[Azure ポータル](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |応答の種類。承認コード フローでは `code` を指定する必要があります。 |
 | redirect_uri |必須 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope |必須 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できる **アクセス トークン** をアプリが必要とすることを示します。  `offline_access` スコープは、リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。  Azure AD B2C の **id_token** を要求するために、`openid` スコープを使用することもできます。 |
@@ -112,7 +116,7 @@ error=access_denied
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 | state |詳細についてはこのセクションの最初の表を参照してください。 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
-## <a name="2.-get-a-token"></a>2.トークンを取得する
+## <a name="2-get-a-token"></a>2.トークンを取得する
 authorization_code を取得したところで、`POST` 要求を `/token` エンドポイントに送信して、トークンの `code` を目的のリソースに適用できます。 Azure AD B2C では、トークンを要求できる唯一のリソースはアプリの独自のバックエンド Web API です。 自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
 
 ```
@@ -127,7 +131,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
-| client_id |必須 |[Azure ポータル](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
 | grant_type |必須 |許可の種類。承認コード フローでは `authorization_code` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できる **アクセス トークン** をアプリが必要とすることを示します。  `offline_access` スコープは、リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。  Azure AD B2C の **id_token** を要求するために、`openid` スコープを使用することもできます。 |
 | code |必須 |フローの最初の段階で取得した authorization_code。 |
@@ -168,7 +172,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
-## <a name="3.-use-the-token"></a>手順 3.トークンを使用する
+## <a name="3-use-the-token"></a>手順 3.トークンを使用する
 `access_token` を正常に取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、バックエンド Web API への要求に使用することができます。
 
 ```
@@ -177,7 +181,7 @@ Host: https://mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="4.-refresh-the-token"></a>4.トークンを更新する
+## <a name="4-refresh-the-token"></a>4.トークンを更新する
 アクセス トークンと ID トークンの有効期限は非常に短いです。 リソースに引き続きアクセスできるようにするには、有効期限が切れた後で更新する必要があります。 トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。 このとき、`code` の代わりに `refresh_token` を指定します。
 
 ```
@@ -191,7 +195,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 | パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |元の refresh_token の取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
-| client_id |推奨 |[Azure ポータル](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
+| client_id |推奨 |[Azure Portal](https://portal.azure.com) によってアプリに割り当てられたアプリケーション ID。 |
 | grant_type |必須 |許可の種類。承認コード フローのこのレッグの `refresh_token` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できる **アクセス トークン** をアプリが必要とすることを示します。  `offline_access` スコープは、リソースに長期アクセスするためにアプリは **refresh_token** を必要とすることを示します。  Azure AD B2C の **id_token** を要求するために、`openid` スコープを使用することもできます。 |
 | redirect_uri |省略可能 |authorization_code を受け取った、アプリケーションの redirect_uri。 |
@@ -239,6 +243,9 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 * [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect_uri を取得します。 アプリに **ネイティブ クライアント** を追加します。
 * [ポリシーを作成し](active-directory-b2c-reference-policies.md) 、ポリシー名を取得します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

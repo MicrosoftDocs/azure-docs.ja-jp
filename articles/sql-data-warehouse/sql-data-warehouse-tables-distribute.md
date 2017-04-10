@@ -1,12 +1,12 @@
 ---
-title: Distributing tables in SQL Data Warehouse | Microsoft Docs
-description: Getting started with distributing tables in Azure SQL Data Warehouse.
+title: "SQL Data Warehouse のテーブルの分散 | Microsoft Docs"
+description: "Azure SQL Data Warehouse のテーブルの分散の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 5ed4337f-7262-4ef6-8fd6-1809ce9634fc
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,52 +14,56 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 4becdace365fce1fb70e9e870dd4c8b81d1c7496
+
 
 ---
-# <a name="distributing-tables-in-sql-data-warehouse"></a>Distributing tables in SQL Data Warehouse
+# <a name="distributing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの分散
 > [!div class="op_single_selector"]
-> * [Overview][Overview]
-> * [Data Types][Data Types]
-> * [Distribute][Distribute]
+> * [概要][概要]
+> * [データ型][データ型]
+> * [分散][分散]
 > * [Index][Index]
 > * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Temporary][Temporary]
-> 
-> 
+> * [統計][統計]
+> * [一時的な][一時]
+>
+>
 
-SQL Data Warehouse is a massively parallel processing (MPP) distributed database system.  By dividing data and processing capability across multiple nodes, SQL Data Warehouse can offer huge scalability - far beyond any single system.  Deciding how to distribute your data within your SQL Data Warehouse is one of the most important factors to achieving optimal performance.   The key to optimal performance is minimizing data movement and in turn the key to minimizing data movement is selecting the right distribution strategy.
+SQL Data Warehouse は、超並列処理 (MPP) 分散データベース システムです。  SQL Data Warehouse は、データと処理機能を複数のノードに分割することで、単一のシステムをはるかに超えた大規模なスケーラビリティを実現します。  SQL Data Warehouse でデータの分散方法を決定することは、最適なパフォーマンスを実現するための最も重要な要因の 1 つです。   最適なパフォーマンスを実現する鍵は、データの移動を最小限に抑えることです。同様に、データの移動を最小限に抑える鍵は、適切なディストリビューション戦略を選択することです。
 
-## <a name="understanding-data-movement"></a>Understanding data movement
-In an MPP system, the data from each table is divided across several underlying databases.  The most optimized queries on an MPP system can simply be passed through to execute on the individual distributed databases with no interaction between the other databases.  For example, let's say you have a database with sales data which contains two tables, sales and customers.  If you have a query that needs to join your sales table to your customer table and you divide both your sales and customer tables up by customer number, putting each customer in a separate database, any queries which join sales and customer can be solved within each database with no knowledge of the other databases.  In contrast, if you divided your sales data by order number and your customer data by customer number, then any given database will not have the corresponding data for each customer and thus if you wanted to join your sales data to your customer data, you would need to get the data for each customer from the other databases.  In this second example, data movement would need to occur to move the customer data to the sales data, so that the two tables can be joined.  
+## <a name="understanding-data-movement"></a>データの移動について
+MPP システムでは、各テーブルのデータは、基になる複数のデータベースにわたって分割されます。  MPP システムの高度に最適化されたクエリは、パススルーするだけで、他のデータベースとの対話なしで個々の分散データベース上で実行できます。  たとえば、2 つのテーブル (売上テーブルと顧客テーブル) が含まれる売上データのデータベースがあるとします。  売上テーブルを顧客テーブルに結合し、売上テーブルと顧客テーブルの両方を顧客番号で分割してそれぞれの顧客を別のデータベースに配置する必要のあるクエリがある場合、売上と顧客を結合するクエリは、他のデータベースに関する情報なしで各データベース内で解決できます。  これに対し、売上データが注文番号で分割され、顧客データが顧客番号で分割されている場合、特定のデータベースでそれぞれの顧客の対応するデータが存在しないケースがあります。そのため、売上データを顧客データに結合する場合に、それぞれの顧客のデータを他のデータベースから取得する必要があります。  この 2 つ目の例では、データの移動を行って顧客データを売上データに移動し、2 つのテーブルを結合できるようにする必要があります。  
 
-Data movement isn't always a bad thing, sometimes it's necessary to solve a query.  But when this extra step can be avoided, naturally your query will run faster.  Data Movement most commonly arises when tables are joined or aggregations are performed.  Often you need to do both, so while you may be able to optimize for one scenario, like a join, you still need data movement to help you solve for the other scenario, like an aggregation.  The trick is figuring out which is less work.  In most cases, distributing large fact tables on a commonly joined column is the most effective method for reducing the most data movement.  Distributing data on join columns is a much more common method to reduce data movement than distributing data on columns involved in an aggregation.
+データの移動は必ずしも悪いことではなく、場合によってはクエリを解決するために必要になります。  ただし、この余分な手順を回避できれば、当然ながら、クエリの実行速度が向上します。  データ移動は、テーブルが結合される、または集計が実行されるときに最もよく起こります。  多くの場合、この両方の操作を実行する必要があります。したがって、結合などの 1 つのシナリオ用に最適化できるとしても、やはり集計など、他のシナリオの解決に役立つデータ移動が必要になります。  その際のこつは、作業量が少ない方法を見極めることです。  ほとんどの場合、頻繁に結合される列を使用してサイズの大きいファクト テーブルを分散すると、データの移動を大きく抑えることができます。  データの移動を減らすには、集計に関係する列でデータを分散する方法よりも結合列でデータを分散する方法の方がより一般的です。
 
-## <a name="select-distribution-method"></a>Select distribution method
-Behind the scenes, SQL Data Warehouse divides your data into 60 databases.  Each individual database is referred to as a **distribution**.  When data is loaded into each table, SQL Data Warehouse has to know how to divide your data across these 60 distributions.  
+## <a name="select-distribution-method"></a>ディストリビューション方法を選択する
+SQL Data Warehouse では、データが 60 個のデータベースにバックグラウンドで分割されます。  個々のデータベースを **ディストリビューション**と呼びます。  各テーブルにデータが読み込まれると、SQL Data Warehouse は、60 個のディストリビューション全体でデータを分割する方法を認識する必要があります。  
 
-The distribution method is defined at the table level and currently there are two choices:
+ディストリビューション方法はテーブル レベルで定義され、現在は次の 2 つの選択肢があります。
 
-1. **Round robin** which distribute data evenly but randomly.
-2. **Hash Distributed** which distributes data based on hashing values from a single column
+1. **ラウンド ロビン** : 均等でありながらランダムにデータを分散させます。
+2. **ハッシュ分散** : 1 つの列の値のハッシュに基づいてデータを分散させます。
 
-By default, when you do not define a data distribution method, your table will be distributed using the **round robin** distribution method.  However, as you become more sophisticated in your implementation, you will want to consider using **hash distributed** tables to minimize data movement which will in turn optimize query performance.
+既定では、データのディストリビューション方法が定義されていない場合、テーブルは**ラウンド ロビン** ディストリビューション方法を使用して分散されます。  ただし、実装に慣れてきたら、データの移動を最小限に抑えるために、**ハッシュ分散**テーブルの使用を検討してもかまいません。これによってデータの移動が最小化されるため、クエリのパフォーマンスが最適化されます。
 
-### <a name="round-robin-tables"></a>Round Robin Tables
-Using the Round Robin method of distributing data is very much how it sounds.  As your data is loaded, each row is simply sent to the next distribution.  This method of distributing the data will always randomly distribute the data very evenly across all of the distributions.  That is, there is no sorting done during the round robin process which places your data.  A round robin distribution is sometimes called a random hash for this reason.  With a round-robin distributed table there is no need to understand the data.  For this reason, Round-Robin tables often make good loading targets.
+### <a name="round-robin-tables"></a>ラウンド ロビン テーブル
+データの分散にラウンド ロビン方式を使用することは、非常によくあることです。  データが読み込まれると、各行は単純に最も近いディストリビューションに送信されます。  データのこの分散方法では、ディストリビューション全体でデータを常にランダムに、極めて均一に分散させます。  つまり、データを配置するラウンド ロビン プロセス中に並び替えは実行されません。  そのため、ラウンド ロビン ディストリビューションは、ランダム ハッシュと呼ばれる場合もあります。  ラウンド ロビン分散テーブルでは、データを理解する必要はありません。  そのため、多くの場合、ラウンド ロビン テーブルは優れた読み込みターゲットとなっています。
 
-By default, if no distribution method is chosen, the round robin distribution method will be used.  However, while round robin tables are easy to use, because data is randomly distributed across the system it means that the system can't guarantee which distribution each row is on.  As a result, the system sometimes needs to invoke a data movement operation to better organize your data before it can resolve a query.  This extra step can slow down your queries.
+既定では、ディストリビューション方法が選択されていない場合は、ラウンド ロビン ディストリビューション方法が適用されます。  ただし、ラウンド ロビン テーブルは簡単に使用できますが、データがシステム全体でランダムに分散されるため、各行がどのディストリビューションに配置されたかをシステムで保証できないことになります。  その結果、クエリを解決するために、システムでデータの移動操作を呼び出して、データを整理することが必要になる場合があります。  この特別な手順のために、クエリが遅くなる可能性があります。
 
-Consider using Round Robin distribution for your table in the following scenarios:
+次のシナリオでは、テーブルにラウンド ロビン ディストリビューションを使用することを検討してください。
 
-* When getting started as a simple starting point
-* If there is no obvious joining key
-* If there is not good candidate column for hash distributing the table
-* If the table does not share a common join key with other tables
-* If the join is less significant than other joins in the query
-* When the table is a temporary staging table
+* 単純な開始ポイントとして作業を開始する場合
+* 明確な結合キーが存在しない場合
+* テーブルをハッシュ分散するのに適した候補列がない場合
+* テーブルが共通の結合キーを他のテーブルと共有していない場合
+* 結合がクエリの他の結合ほど重要ではない場合
+* テーブルが一時ステージング テーブルである場合
 
-Both of these examples will create a Round Robin Table:
+次のいずれの例でも、ラウンド ロビン テーブルが作成されます。
 
 ```SQL
 -- Round Robin created by default
@@ -94,14 +98,14 @@ WITH
 ```
 
 > [!NOTE]
-> While round robin is the default table type being explicit in your DDL is considered a best practice so that the intentions of your table layout are clear to others.
-> 
-> 
+> ラウンド ロビン方式は既定のテーブルの種類ですが、この方式を DDL で明示することがベスト プラクティスと考えられます。これはテーブル レイアウトの意図が他から明確になるからです。
+>
+>
 
-### <a name="hash-distributed-tables"></a>Hash Distributed Tables
-Using a **Hash distributed** algorithm to distribute your tables can improve performance for many scenarios by reducing data movement at query time.  Hash distributed tables are tables which are divided between the distributed databases using a hashing algorithm on a single column which you select.  The distribution column is what determines how the data is divided across your distributed databases.  The hash function uses the distribution column to assign rows to distributions.  The hashing algorithm and resulting distribution is deterministic.  That is the same value with the same data type will always has to the same distribution.    
+### <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
+**ハッシュ分散** アルゴリズムを使用してテーブルを分散すると、クエリを実行する際のデータの移動が少なくなり、多くのシナリオでパフォーマンスを向上させることができます。  ハッシュ分散テーブルとは、選択された単一列でハッシュ アルゴリズムを使用して、分散型データベース間で分割されたテーブルのことです。  ディストリビューション列によって、分散型データベース間でデータを分割する方法が決まります。  ハッシュ関数は、ディストリビューション列を使用して分散に行を割り当てます。  ハッシュ アルゴリズムと結果のディストリビューションは確定的です。  同じデータ型の同じ値は常に同じディストリビューションになります。    
 
-This example will create a table distributed on id:
+次の例では、ID で分散されるテーブルが作成されます。
 
 ```SQL
 CREATE TABLE [dbo].[FactInternetSales]
@@ -121,67 +125,67 @@ WITH
 ;
 ```
 
-## <a name="select-distribution-column"></a>Select distribution column
-When you choose to **hash distribute** a table, you will need to select a single distribution column.  When selecting a distribution column, there are three major factors to consider.  
+## <a name="select-distribution-column"></a>ディストリビューション列を選択する
+テーブルを **ハッシュ分散** する場合は、単一のディストリビューション列を選択する必要があります。  ディストリビューション列を選択するとき、考慮する必要がある要素が主に 3 つあります。  
 
-Select a single column which will:
+次の条件の単一列を選択します。
 
-1. Not be updated
-2. Distribute data evenly, avoiding data skew
-3. Minimize data movement
+1. 更新されない
+2. データが均等に分散されていて、データ傾斜を回避できる
+3. データの移動を最小化
 
-### <a name="select-distribution-column-which-will-not-be-updated"></a>Select distribution column which will not be updated
-Distribution columns are not updatable, therefore, select a column with static values.  If a column will need to be updated, it is generally not a good distribution candidate.  If there is a case where you must update a distribution column, this can be done by first deleting the row and then inserting a new row.
+### <a name="select-distribution-column-which-will-not-be-updated"></a>更新されないディストリビューション列を選択する
+ディストリビューション列は更新できないため、静的な値を持つ列を選択します。  列を更新する必要がある場合は、一般的にディストリビューションの候補として適切ではありません。  ディストリビューション列を更新する必要がある場合は、最初に行を削除し、新しい行を挿入することで対処できます。
 
-### <a name="select-distribution-column-which-will-distribute-data-evenly"></a>Select distribution column which will distribute data evenly
-Since a distributed system performs only as fast as its slowest distribution, it is important to divide the work evenly across the distributions in order to achieve balanced execution across the system.  The way the work is divided on a distributed system is based on where the data for each distribution lives.  This makes it very important to select the right distribution column for distributing the data so that each distribution has equal work and will take the same time to complete its portion of the work.  When work is well divided across the system, the data is balanced across the distributions.  When data is not evenly balanced, we call this **data skew**.  
+### <a name="select-distribution-column-which-will-distribute-data-evenly"></a>データを均等に分散するディストリビューション列を選択する
+分散システムの実行速度は、最も低速なディストリビューションの速さと同じになるため、システム全体にわたってバランスの取れた実行を実現するには、ディストリビューション全体で作業を均等に分割する必要があります。  作業を分散システムで分割する方法は、各ディストリビューションのデータが配置された場所に基づきます。  これにより、各ディストリビューションの作業が等しくなり、作業のその部分の完了に同じ時間がかかるように、データ分散するための適切なディストリビューション列を選択することが非常に重要になります。  作業をシステム全体で適切に分割すると、ディストリビューション全体でのデータのバランスを取ることができます。  データが均等に分割されていない状態を **データ傾斜**と言います。  
 
-To divide data evenly and avoid data skew, consider the following when selecting your distribution column:
+データを均等に分割し、データ傾斜を回避するには、ディストリビューション列を選択するときに次の点を考慮してください。
 
-1. Select a column which contains a significant number of distinct values.
-2. Avoid distributing data on columns with a few distinct values. 
-3. Avoid distributing data on columns with a high frequency of nulls.
-4. Avoid distributing data on date columns.
+1. かなり多くの個別の値が含まれている列を選択します。
+2. 含まれる個別の値が少ない列でデータを分散しないでください。
+3. null になることが多い列でデータを分散しないでください。
+4. 日付の列でデータを分散しないでください。
 
-Since each value is hashed to 1 of 60 distributions, to achieve even distribution you will want to select a column that is highly unique and contains more than 60 unique values.  To illustrate, consider a case where a column only has 40 unique values.  If this column was selected as the distribution key, the data for that table would land on 40 distributions at most, leaving 20 distributions with no data and no processing to do.  Conversely, the other 40 distributions would have more work to do that if the data was evenly spread over 60 distributions.  This scenario is an example of data skew.
+それぞれの値は 60 個のディストリビューションのいずれかにハッシュされるため、均等な分散を実現するには、一意性が高く、一意の値が 61 個以上含まれている列を選択する必要があります。  説明のために、1 列のみが 40 個の値を持つケースを考えます。  この列をディストリビューション キーとして選択した場合、そのテーブルのデータは最大で 40 個のディストリビューションに配置され、残りの 20 個のディストリビューションにはデータが配置されず処理対象もありません。  逆に、その他の 40 個のディストリビューションでは、データが 60 個を超えるディストリビューションに均等に分散された場合より作業が多くなります。  このシナリオが、データ傾斜の例になります。
 
-In MPP system, each query step waits for all distributions to complete their share of the work.  If one distribution is doing more work than the others, then the resource of the other distributions are essentially wasted just waiting on the busy distribution.  When work is not evenly spread across all distributions, we call this **processing skew**.  Processing skew will cause queries to run slower than if the workload can be evenly spread across the distributions.  Data skew will lead to processing skew.
+MPP システムの各クエリ ステップは、すべてのディストリビューションがそれぞれの担当作業を完了するまで待機します。  あるディストリビューションで行う作業が他のディストリビューションよりも多い場合、処理の多いディストリビューションの作業完了を待っている間は、他のディストリビューションのリソースが実質的に無駄になります。  このようにディストリビューション全体で作業が均等に分散されていない状態を、 **処理の傾斜**と言います。  処理の傾斜により、クエリの実行速度は、ワークロードがディストリビューション全体で均等に分散されている場合よりも遅くなります。  処理の傾斜の原因はデータ傾斜です。
 
-Avoid distributing on highly nullable column as the null values will all land on the same distribution. Distributing on a date column can also cause processing skew because all data for a given date will land on the same distribution. If several users are executing queries all filtering on the same date, then only 1 of the 60 distributions will be doing all of the work since a given date will only be on one distribution. In this scenario, the queries will likely run 60 times slower than if the data were equally spread over all of the distributions. 
+null 値はすべて同一のディストリビューションに配置されるため、null になる可能性が高い列では分散を行わないでください。 また、特定の日のデータはすべて同一のディストリビューションに配置されるため、日付列での分散も処理の傾斜の原因となります。 複数のユーザーが同じ日付を条件としてフィルター処理を行うクエリを実行する場合、指定された日付は 1 つのディストリビューションにのみ配置されるため、60 個のディストリビューションのうち 1 つだけがすべての作業を行うことになります。 このようなシナリオでは、クエリの実行速度は、ディストリビューション全体にデータが均等に分散された場合の 60 分の 1 になる可能性があります。
 
-When no good candidate columns exist, then consider using round robin as the distribution method.
+候補として適切な列が存在しない場合は、ディストリビューション方法としてラウンド ロビンを使用することを検討してください。
 
-### <a name="select-distribution-column-which-will-minimize-data-movement"></a>Select distribution column which will minimize data movement
-Minimizing data movement by selecting the right distribution column is one of the most important strategies for optimizing performance of your SQL Data Warehouse.  Data Movement most commonly arises when tables are joined or aggregations are performed.  Columns used in `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` and `HAVING` clauses all make for **good** hash distribution candidates. 
+### <a name="select-distribution-column-which-will-minimize-data-movement"></a>データの移動を最小化するディストリビューション列を選択する
+適切なディストリビューション列を選択してデータの移動を最小化することが、SQL Data Warehouse のパフォーマンスを最適化するための最も重要な戦略の 1 つです。  データ移動は、テーブルが結合される、または集計が実行されるときに最もよく起こります。  `JOIN`、`GROUP BY`、`DISTINCT`、`OVER`、および `HAVING` 句で使用される列はすべて、ハッシュ ディストリビューションの候補として**適しています**。
 
-On the other hand, columns in the `WHERE` clause do **not** make for good hash column candidates because they limit which distributions participate in the query, causing processing skew.  A good example of a column which might be tempting to distribute on, but often can cause this processing skew is a date column.
+その一方で、 `WHERE` 句内の列は、クエリに参加するディストリビューションを制限し、処理の傾斜を引き起こすため、ハッシュ列の候補には **適していません** 。  分散の対象になる可能性が高いものの処理の傾斜を引き起こす可能性が高い列の典型例としては、日付列があります。
 
-Generally speaking, if you have two large fact tables frequently involved in a join, you will gain the most performance by distributing both tables on one of the join columns.  If you have a table that is never joined to another large fact table, then look to columns that are frequently in the `GROUP BY` clause.
+一般的に、頻繁に結合に関係する 2 つの大規模なファクト テーブルがある場合は、いずれかの結合列で分散することで最適なパフォーマンスが得られます。  大規模な別のファクト テーブルに結合されないテーブルがある場合、 `GROUP BY` 句で頻繁に使用される列に注目してください。
 
-There are a few key criteria which must be met to avoid data movement during a join:
+結合中のデータ移動を避けるために満たす必要がある重要な基準がいくつかあります。
 
-1. The tables involved in the join must be hash distributed on **one** of the columns participating in the join.
-2. The data types of the join columns must match between both tables.
-3. The columns must be joined with an equals operator.
-4. The join type may not be a `CROSS JOIN`.
+1. 結合に関係するテーブルでは、結合に参加する列の **いずれか** でハッシュ分散する必要があります。
+2. 両方のテーブルで結合列のデータ型が一致する必要があります。
+3. 列を equal 演算子で結合する必要があります。
+4. 結合の種類に `CROSS JOIN`は許可されません。
 
-## <a name="troubleshooting-data-skew"></a>Troubleshooting data skew
-When table data is distributed using the hash distribution method there is a chance that some distributions will be skewed to have disproportionately more data than others. Excessive data skew can impact query performance because the final result of a distributed query must wait for the longest running distribution to finish. Depending on the degree of the data skew you might need to address it.
+## <a name="troubleshooting-data-skew"></a>データ傾斜のトラブルシューティング
+ハッシュ ディストリビューション方法でテーブル データを分散するとき、一部のディストリビューションが傾斜し、ディストリビューション間でデータ量が不均衡になることがあります。 過度のデータ傾斜では、最も時間のかかるディストリビューションが終了するまで分散クエリの最終的な結果が待機する必要があるため、クエリのパフォーマンスに影響を与えることがあります。 データ傾斜の程度によっては対処が必要になる場合があります。
 
-### <a name="identifying-skew"></a>Identifying skew
-A simple way to identify a table as skewed is to use `DBCC PDW_SHOWSPACEUSED`.  This is a very quick and simple way to see the number of table rows that are stored in each of the 60 distributions of your database.  Remember that for the most balanced performance, the rows in your distributed table should be spread evenly across all the distributions.
+### <a name="identifying-skew"></a>傾斜の識別
+テーブルの傾斜は、 `DBCC PDW_SHOWSPACEUSED`を使用すると簡単に識別できます。  これは、データベースの 60 のディストリビューションそれぞれに格納されるテーブル行の数を確認するには非常に簡単な方法です。  最もバランスの取れたパフォーマンスを実現するには、分散テーブルの行をディストリビューション全体で均等に広げる必要があることに注意してください。
 
 ```sql
 -- Find data skew for a distributed table
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-However, if you query the Azure SQL Data Warehouse dynamic management views (DMV) you can perform a more detailed analysis.  To start, create the view [dbo.vTableSizes][dbo.vTableSizes] view using the SQL from [Table Overview][Overview] article.  Once the view is created, run this query to identify which tables have more than 10% data skew.
+ただし、Azure SQL Data Warehouse 動的管理ビュー (DMV) を照会する場合は、さらに詳細な分析を実行できます。  最初に、[テーブルの概要][概要]に関する記事の SQL を使用して、[dbo.vTableSizes] [dbo.vTableSizes] ビューを作成します。  ビューを作成したら、次のクエリを実行して、どのテーブルでデータ傾斜が 10% を超えるかを識別します。
 
 ```sql
 select *
-from dbo.vTableSizes 
-where two_part_name in 
+from dbo.vTableSizes
+where two_part_name in
     (
     select two_part_name
     from dbo.vTableSizes
@@ -193,18 +197,18 @@ order by two_part_name, row_count
 ;
 ```
 
-### <a name="resolving-data-skew"></a>Resolving data skew
-Not all skew is enough to warrant a fix.  In some cases, the performance of a table in some queries can outweigh the harm of data skew.  To decide if you should resolve data skew in a table, you should understand as much as possible about the data volumes and queries in your workload.   One way to look at the impact of skew is to use the steps in the [Query Monitoring][Query Monitoring] article to monitor the impact of skew on query performance and specifically the impact to how long queries take to complete on the individual distributions.
+### <a name="resolving-data-skew"></a>データ傾斜の解決
+すべての傾斜に修正プログラムが対応しているわけではありません。  場合によっては、一部のクエリのテーブルのパフォーマンスが、データ傾斜の問題を超える可能性があります。  テーブルでデータ傾斜を解決する必要があるかを決定するには、ワークロード内のデータ ボリュームとクエリについて可能な限り理解する必要があります。   傾斜の影響を確認する方法の 1 つに、[クエリ監視][クエリ監視]に関する記事の手順を使用して、クエリのパフォーマンス、特に個々のディストリビューションでのクエリの完了時間に対する影響を監視する方法があります。
 
-Distributing data is a matter of finding the right balance between minimizing data skew and minimizing data movement. These can be opposing goals, and sometimes you will want to keep data skew in order to reduce data movement. For example, when the distribution column is frequently the shared column in joins and aggregations, you will be minimizing data movement. The benefit of having the minimal data movement might outweigh the impact of having data skew. 
+データの分散には、データ傾斜を最小限に抑え、データ移動を最小限に抑える適切なバランスを見つけることが重要です。 これらは相反する目標となる場合がありますが、場合によってはデータ移動を抑えるためにデータ傾斜を保持する必要があります。 たとえば、ディストリビューション列が頻繁に結合および集計に共有の列である場合は、データ移動を最小限に抑えます。 最小限のデータ移動による利点は、データ傾斜による影響を上回る可能性があることです。
 
-The typical way to resolve data skew is to re-create the table with a different distribution column. Since there is no way to change the distribution column on an existing table, the way to change the distribution of a table it to recreate it with a [CTAS][].  Here are two examples of how resolve data skew:
+データ傾斜を解決する一般的な方法は、他のディストリビューション列を含むテーブルを再作成することです。 既存のテーブルではディストリビューション列を変更できないため、テーブルのディストリビューションを変更するには、[CTAS][] を使用してテーブルを再作成します。  データ傾斜を解決する方法の 2 つの例を次に示します。
 
-### <a name="example-1-recreate-the-table-with-a-new-distribution-column"></a>Example 1: Re-create the table with a new distribution column
-This example uses [CTAS][] to re-create a table with a different hash distribution column. 
+### <a name="example-1-re-create-the-table-with-a-new-distribution-column"></a>例 1: 新しいディストリビューション列を含むテーブルを再作成する
+この例では、[CTAS][] を使用して、他のハッシュ ディストリビューション列を含むテーブルを再作成します。
 
 ```sql
-CREATE TABLE [dbo].[FactInternetSales_CustomerKey] 
+CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
 WITH (  CLUSTERED COLUMNSTORE INDEX
      ,  DISTRIBUTION =  HASH([CustomerKey])
      ,  PARTITION       ( [OrderDateKey] RANGE RIGHT FOR VALUES (   20000101, 20010101, 20020101, 20030101
@@ -239,11 +243,11 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-### <a name="example-2-recreate-the-table-using-round-robin-distribution"></a>Example 2: Re-create the table using round robin distribution
-This example uses [CTAS][] to re-create a table with round robin instead of a hash distribution. This change will produce even data distribution at the cost of increased data movement. 
+### <a name="example-2-re-create-the-table-using-round-robin-distribution"></a>例 2: ラウンド ロビン ディストリビューションを使用してテーブルを再作成する
+この例では、[CTAS][] を使用して、ハッシュ ディストリビューションではなくラウンド ロビンを含むテーブルを再作成します。 この変更により、データ移動で増加するコストで、均等なデータ分布が実現します。
 
 ```sql
-CREATE TABLE [dbo].[FactInternetSales_ROUND_ROBIN] 
+CREATE TABLE [dbo].[FactInternetSales_ROUND_ROBIN]
 WITH (  CLUSTERED COLUMNSTORE INDEX
      ,  DISTRIBUTION =  ROUND_ROBIN
      ,  PARTITION       ( [OrderDateKey] RANGE RIGHT FOR VALUES (   20000101, 20010101, 20020101, 20030101
@@ -278,32 +282,32 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_HASH];
 RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>Next steps
-To learn more about table design, see the [Distribute][Distribute], [Index][Index], [Partition][Partition], [Data Types][Data Types], [Statistics][Statistics] and [Temporary Tables][Temporary] articles.
+## <a name="next-steps"></a>次のステップ
+テーブル デザインの詳細について、[分散][分散]、[Index][Index]、[Partition][Partition]、[データ型][データ型]、[統計][統計]、[一時テーブル][一時]に関する各記事をご覧ください。
 
-For an overview of best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
+ベスト プラクティスの概要については、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[概要]: ./sql-data-warehouse-tables-overview.md
+[データ型]: ./sql-data-warehouse-tables-data-types.md
+[分散]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-[Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
-[dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#querying-table-sizes
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[一時]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[クエリ監視]: ./sql-data-warehouse-manage-monitor.md
+[dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 
 <!--MSDN references-->
-[DBCC PDW_SHOWSPACEUSED()]: https://msdn.microsoft.com/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 
 <!--Other Web references-->
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

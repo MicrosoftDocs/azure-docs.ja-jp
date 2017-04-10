@@ -1,83 +1,86 @@
 ---
-title: クラウド サービスごとの複数の VIP
-description: MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法
+title: "クラウド サービスの複数の VIP"
+description: "MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: tysonn
-
+author: kumudd
+manager: timlt
+ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2016
-ms.author: sewhee
+ms.date: 10/24/2016
+ms.author: kumud
+translationtype: Human Translation
+ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
+ms.openlocfilehash: 20aed2689e360b46e643ab154f5446c3866b3eb5
 
 ---
-# クラウド サービスごとの複数の VIP
-Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。このパブリック IP アドレスは、Azure Load Balancer にリンクされているため VIP (仮想 IP) と呼ばれますが、実際はクラウド サービス内の VM インスタンスではありません。クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
 
-ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。たとえば、クラウド サービスは、既定のポート 443 を使用して SSL 接続を必要とする複数の Web サイト、異なる顧客をホストする各サイト、テナントをホストできます。このようなシナリオでは、Web サイトごとに異なるパブリック IP アドレスを持つ必要があります。次の図は、同じパブリック ポートで複数の SSL 証明書が必要な一般的なマルチテナント Web ホスティングを示しています。
+# <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
+
+Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。 このパブリック IP アドレスは、クラウド サービス内の仮想マシン (VM) インスタンスではなく、Azure Load Balancer にリンクされているため、VIP (仮想 IP) と呼ばれます。 クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
+
+ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。 たとえば、クラウド サービスが、既定のポート 443 を使用した SSL 接続を必要とする複数の Web サイトをホストしている場合があります。各サイトはそれぞれ異なる顧客 (テナント) 用にホストされています。 このシナリオでは、Web サイトごとに異なるパブリック IP アドレスが必要です。 次の図は、同じパブリック ポートで複数の SSL 証明書を必要とする一般的なマルチテナント Web ホスティングを示しています。
 
 ![Multi VIP SSL scenario](./media/load-balancer-multivip/Figure1.png)
 
-前のシナリオでは、すべての VIP は同じパブリック ポート (443) を使用し、トラフィックはすべての Web サイトをホストするクラウド サービスの内部 IP アドレス用の一意のプライベート ポート上の 1 つ以上の負荷分散された VM にリダイレクトされます。
+前の例では、すべての VIP が同じパブリック ポート (443) を使用しており、トラフィックはすべての Web サイトをホストするクラウド サービスの内部 IP アドレス用の一意のプライベート ポートの 1 つ以上の負荷分散された VM にリダイレクトされます。
 
 > [!NOTE]
-> 複数の VIP を使用するもう 1 つのシナリオは、同じ仮想マシン セット上に複数の SQL AlwaysOn 可用性グループ リスナーをホストしています。
-> 
-> 
+> 同じ仮想マシン セットで複数の SQL AlwaysOn 可用性グループ リスナーをホストする場合にも、複数の VIP を使用する必要があります。
 
-VIP は、既定では動的です。つまり、時間の経過と共にクラウド サービスに割り当てられている実際の IP アドレスが変化する可能性があります。この問題を防ぐために、サービスの VIP を予約することができます。予約済み VIP の詳細については、「[予約済みパブリック IP](../virtual-network/virtual-networks-reserved-public-ip.md)」に関するページをご覧ください。
+VIP は、既定では動的です。つまり、時間の経過と共にクラウド サービスに割り当てられている実際の IP アドレスが変化する可能性があります。 この問題を防ぐために、サービスの VIP を予約することができます。 予約済み VIP の詳細については、[予約済みパブリック IP](../virtual-network/virtual-networks-reserved-public-ip.md) に関する記事をご覧ください。
 
 > [!NOTE]
-> VIP と予約済み IP の価格の詳細については、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
-> 
-> 
+> VIP と予約済み IP の価格の詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/) 」をご覧ください。
 
 PowerShell を使用すると、クラウド サービスで使用される VIP を確認できるだけでなく、VIP の追加 と削除、エンドポイントへの VIP の関連付け、特定の VIP での負荷分散の構成を行うことができます。
 
-## 制限事項
-現時点では、複数 VIP の機能は以下のシナリオに制限されています。
+## <a name="limitations"></a>制限事項
 
-* **IaaS のみ**。複数の VIP は、VM を含むクラウド サービスでのみ有効にできます。PaaS シナリオで、ロール インスタンスと共に複数の VIP を使用することはできません。
-* **PowerShell のみ**。複数の VIP は、PowerShell を使用してのみ管理できます。
+現時点では、マルチ VIP 機能は次のシナリオに制限されています。
 
-> [!IMPORTANT]
-> これらの制限は一時的なものであり、いつでも変更される可能性があります。今後の変更を確認するには、このページに再度アクセスしてください。
-> 
-> 
+* **IaaS のみ**。 マルチ VIP は、VM を含むクラウド サービスでのみ有効にすることができます。 PaaS シナリオのロール インスタンスでマルチ VIP を使用することはできません。
+* **PowerShell のみ**。 マルチ VIP は PowerShell でのみ管理できます。
 
-## VIP をクラウド サービスに追加する方法
+これらの制限は一時的なものであり、いつでも変更される可能性があります。 今後の変更を確認するには、このページに再度アクセスしてください。
+
+## <a name="how-to-add-a-vip-to-a-cloud-service"></a>VIP をクラウド サービスに追加する方法
 VIP をサービスを追加するには、次の PowerShell コマンドを実行します。
 
-    Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
+```powershell
+Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
+```
 
-上記のコマンドでは、次の例のような結果が表示されます。
+このコマンドでは、次のサンプルのような結果が表示されます。
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## VIP をクラウド サービスから削除する方法
+## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>VIP をクラウド サービスから削除する方法
 上記の例でサービスに追加された VIP を削除するには、次の PowerShell コマンドを実行します。
 
-    Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
+```powershell
+Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
+```
 
 > [!IMPORTANT]
 > エンドポイントが関連付けられていない場合にのみ、VIP を削除できます。
-> 
-> 
 
-## クラウド サービスから VIP 情報を取得する方法
+
+## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>クラウド サービスから VIP 情報を取得する方法
 クラウド サービスに関連付けられている VIP を取得するには、次の PowerShell スクリプトを実行します。
 
-    $deployment = Get-AzureDeployment -ServiceName myService
-    $deployment.VirtualIPs
+```powershell
+$deployment = Get-AzureDeployment -ServiceName myService
+$deployment.VirtualIPs
+```
 
-上記のスクリプトでは、次の例のような結果が表示されます。
+このスクリプトでは、次のサンプルのような結果が表示されます。
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -100,28 +103,31 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 この例では、クラウド サービスには次の 3 つの VIP があります。
 
 * **Vip1** は既定の VIP で、IsDnsProgrammedName の値が true に設定されていることがわかります。
-* **Vip2** と **Vip3** は、IP アドレスがない場合は使用されません。VIP にエンドポイントを関連付ける場合のみ使用されます。
+* **Vip2** と **Vip3** は IP アドレスがないので使用されません。 VIP にエンドポイントを関連付ける場合のみ使用されます。
 
 > [!NOTE]
-> これらをエンドポイントに関連付けると、サブスクリプションは余分な VIP にのみ課金されます。価格の詳細については、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
-> 
-> 
+> これらをエンドポイントに関連付けると、サブスクリプションは余分な VIP にのみ課金されます。 価格の詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
 
-## VIP をエンドポイントに関連付ける方法
+## <a name="how-to-associate-a-vip-to-an-endpoint"></a>VIP をエンドポイントに関連付ける方法
+
 クラウド サービスの VIP をエンドポイントに関連付けるには、次の PowerShell コマンドを実行します。
 
-    Get-AzureVM -ServiceName myService -Name myVM1 `
-    | Add-AzureEndpoint -Name myEndpoint -Protocol tcp -LocalPort 8080 -PublicPort 80 -VirtualIPName Vip2 `
-    | Update-AzureVM
+```powershell
+Get-AzureVM -ServiceName myService -Name myVM1 |
+    Add-AzureEndpoint -Name myEndpoint -Protocol tcp -LocalPort 8080 -PublicPort 80 -VirtualIPName Vip2 |
+    Update-AzureVM
+```
 
-上記のコマンドは、ポート *80* 上の *Vip2* という VIP にリンクされているエンドポイントを作成し、これを *TCP* ポート *8080* を使用して*myService* というクラウド サービスの *myVM1* という VM にリンクします。
+このコマンドは、ポート *80* の *Vip2* という VIP にリンクされたエンドポイントを作成し、このエンドポイントを、ポート *8080* で *TCP* を使用する *myService* というクラウド サービスの *myVM1* という VM にリンクします。
 
 構成を確認するには、次の PowerShell コマンドを実行します。
 
-    $deployment = Get-AzureDeployment -ServiceName myService
-    $deployment.VirtualIPs
+```powershell
+$deployment = Get-AzureDeployment -ServiceName myService
+$deployment.VirtualIPs
+```
 
-次のような出力が表示されます。
+出力は次の例のようになります。
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -141,24 +147,30 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
     ReservedIPName  :
     ExtensionData   :
 
-## 特定の VIP で負荷分散を有効にする方法
-負荷分散のために、複数の仮想マシンに 1 つの VIP を関連付けることができます。たとえば、*myService* というクラウド サービスと、*myVM1* と *myVM2* という 2 つの仮想マシンがあると仮定します。クラウド サービスには複数の VIP があり、その中の 1 つが *Vip2* です。*Vip2* のポート *81* のすべてのトラフィックが、ポート *8181* 上の *myVM1* と *myVM2* 間で分散されていることを確認する場合は、次の PowerShell スクリプトを実行します。
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>特定の VIP で負荷分散を有効にする方法
 
-    Get-AzureVM -ServiceName myService -Name myVM1 `
-    | Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
-        -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2  -DefaultProbe `
-    | Update-AzureVM
+負荷分散のために、複数の仮想マシンに 1 つの VIP を関連付けることができます。 たとえば、*myService* というクラウド サービスと、*myVM1*、*myVM2* という 2 つの仮想マシンがあるとします。 クラウド サービスには複数の VIP があり、その中の 1 つが *Vip2*です。 *Vip2* のポート *81* のすべてのトラフィックが、ポート *8181* の *myVM1* と *myVM2* の間で分散されていることを確認する場合は、次の PowerShell スクリプトを実行します。
 
-    Get-AzureVM -ServiceName myService -Name myVM2 `
-    | Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
-        -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2  -DefaultProbe `
-    | Update-AzureVM
+```powershell
+Get-AzureVM -ServiceName myService -Name myVM1 |
+    Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2 -DefaultProbe |
+    Update-AzureVM
 
-ロード バランサーを更新して異なる VIP を使用することもできます。たとえば、次の PowerShell コマンドを実行すると、負荷分散セットは Vip1 という VIP を使用するように変更されます。
+Get-AzureVM -ServiceName myService -Name myVM2 |
+    Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2  -DefaultProbe |
+    Update-AzureVM
+```
 
-    Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
+ロード バランサーを更新して異なる VIP を使用することもできます。 たとえば、次の PowerShell コマンドを実行すると、負荷分散セットは Vip1 という VIP を使用するように変更されます。
 
-## 関連項目
+```powershell
+Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
+```
+
+## <a name="next-steps"></a>次のステップ
+
+[Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
+
 [インターネットに接続するロード バランサーの概要](load-balancer-internet-overview.md)
 
 [インターネットに接続するロード バランサーの開始](load-balancer-get-started-internet-arm-ps.md)
@@ -167,4 +179,8 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

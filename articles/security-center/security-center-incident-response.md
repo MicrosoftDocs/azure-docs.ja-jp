@@ -1,5 +1,5 @@
 ---
-title: "Azure Security Center を活用したインシデント対応 | Microsoft Docs"
+title: "Azure Security Center でのセキュリティ インシデントへの対応 | Microsoft Docs"
 description: "このドキュメントでは、インシデント対応シナリオで Azure Security Center を活用する方法について説明します。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c02d49ec80d8694adb4e9378327c206872c88bb9
+ms.sourcegitcommit: f40f64906bf87d8505fa1a209222163256326d14
+ms.openlocfilehash: a2cc4729ca5cb1dcc10630158ec3d94315fb01a5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -24,13 +25,13 @@ ms.openlocfilehash: c02d49ec80d8694adb4e9378327c206872c88bb9
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
 
 ## <a name="incident-response-planning"></a>インシデント対応の計画
-計画が効果的なものとなるかどうかは、脅威に対する保護、検出、対応という 3 つの中心的な機能にかかっています。 保護はインシデントの防止を指し、検出は脅威の早期特定を指します。対応は、攻撃者を追い払うことと、システムを復元して侵害の影響を軽減することを指します。
+計画が効果的なものとなるかどうかは、脅威に対する保護、検出、対応という&3; つの中心的な機能にかかっています。 保護はインシデントの防止を指し、検出は脅威の早期特定を指します。対応は、攻撃者を追い払うことと、システムを復元して侵害の影響を軽減することを指します。
 
 この記事では、次の図に示すように、「[Microsoft Azure Security Response in the Cloud (クラウドにおける Microsoft Azure のセキュリティ対応)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678)」で述べられているセキュリティ インシデント対応の段階を使用します。
 
 ![Incident response lifecycle](./media/security-center-incident-response/security-center-incident-response-fig1.png)
 
-Security Center は、検出、評価、診断の各段階で利用できます。 初期インシデント対応の 3 つの段階で Security Center が役に立つ例を次に示します。
+Security Center は、検出、評価、診断の各段階で利用できます。 初期インシデント対応の&3; つの段階で Security Center が役に立つ例を次に示します。
 
 * **検出**: イベント調査の最初の兆候を確認します。
   * 例: 優先順位の高いセキュリティの警告が Security Center ダッシュボードに表示されたことの最初の確認。
@@ -78,13 +79,13 @@ Judy は Azure Portal にサインインし、Security Center コンソールで
 
 1. **[セキュリティ通知]** タイルをクリックし、**[セキュリティ通知]** ブレードにアクセスします。
     ![[セキュリティ通知] ブレード](./media/security-center-incident-response/security-center-incident-response-fig4.png)
-   
+
    > [!NOTE]
    > 前の図からわかるように、このシナリオでは、Judy は [Malicious SQL activity (悪意のある SQL アクティビティ)] の警告に関する評価を行います。
-   > 
-   > 
+   >
+   >
 2. **[Malicious SQL activity (悪意のある SQL アクティビティ)]** の警告をクリックし、**[Malicious SQL activity (悪意のある SQL アクティビティ)]** ブレードで攻撃されたリソースを確認します。 ![インシデントの詳細](./media/security-center-incident-response/security-center-incident-response-fig5.png)
-   
+
     このブレードで Judy は、攻撃されたリソースについて、この攻撃が行われた回数と攻撃が検出された時間を書き留めることができます。
 3. **[攻撃されたリソース]** をクリックし、この攻撃に関する詳しい情報を取得します。
 
@@ -100,10 +101,4 @@ Sam は Judy からこのケースを受け取り、Security Center によって
 
 ## <a name="conclusion"></a>まとめ
 インシデントが発生する前にチームを編成することは組織にとって非常に重要であり、インシデントの対処のあり方に確実に影響します。 リソースの監視に適切なツールを用意することで、このチームはセキュリティ インシデントを修正する手順を正確に実行できます。 Security Center の[検出機能](security-center-detection-capabilities.md)を利用すれば、IT はセキュリティ インシデントに迅速に対応してセキュリティの問題を修正できます。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

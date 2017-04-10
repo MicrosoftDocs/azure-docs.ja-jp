@@ -1,24 +1,29 @@
 ---
-title: ASP.NET 5 プロジェクトの変更点 (Visual Studio 接続済みサービス) | Microsoft Docs
-description: Visual Studio 接続済みサービスを使用して Visual Studio ASP.NET 5 プロジェクトの Azure ストレージ アカウントに接続した後の変更点について説明します。
+title: "ASP.NET 5 プロジェクトの変更点 (Visual Studio 接続済みサービス) | Microsoft Docs"
+description: "Visual Studio 接続済みサービスを使用して Visual Studio ASP.NET 5 プロジェクトの Azure ストレージ アカウントに接続した後の変更点について説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: e7caa9fa-c780-45eb-a546-299fc1c68455
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/02/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a5c0c7bdc6ad699be04c8ca803c18ad4e8126ce5
+
 
 ---
-# ASP.NET 5 プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
-## リファレンスの追加
-Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。このパッケージは、次の .NET 参照を追加します。
+# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>ASP.NET 5 プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
+## <a name="references-added"></a>リファレンスの追加
+Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。  
+このパッケージは、次の .NET 参照を追加します。
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -31,9 +36,14 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
 また、NuGet パッケージ **Microsoft.Framework.Configuration.Json** が追加されました。
 
-## Azure Storage の接続文字列の追加
+## <a name="connection-string-for-azure-storage-added"></a>Azure Storage の接続文字列の追加
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの config.json ファイル内に要素が作成されました。
 
-詳細については、「[ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
+詳細については、「 [ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

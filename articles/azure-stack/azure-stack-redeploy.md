@@ -2,25 +2,30 @@
 title: Redeploy Azure Stack | Microsoft Docs
 description: Redeploy Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 795af5ea-892d-40b1-a080-42e4472e4bba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 3/1/2017
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 381c00ad912eff535130689cc851b6b97c2b6623
+ms.openlocfilehash: eaa2897e797f5f54dc1ea32ebacd1d42b82acc0c
+ms.lasthandoff: 03/02/2017
+
 
 ---
 # <a name="redeploy-azure-stack"></a>Redeploy Azure Stack
 To redeploy Azure Stack, you must start over from scratch as described below.
 
 ## <a name="steps-to-redeploy-azure-stack"></a>Steps to redeploy Azure Stack
-1. Reboot the host into the original operating system (installed to bare metal). This is not the default setting in the boot menu, so you must use KVM or local console to select it during the reboot (during setup, you named the “Boot from VHD” OS to “AzureStack TP2”, this will help identify which OS is which).
+1. Reboot the host into the original operating system (installed to bare metal). This is not the default setting in the boot menu, so you must use KVM or local console to select it during the reboot (during setup, you named the “Boot from VHD” OS to “AzureStack”, this will help identify which OS is which).
    
     You don't need to remove the existing boot entry (the new support script “PrepareBootFromVHD.ps1” takes care of that for you.)
 2. If you do not have KVM, or would like to choose the Boot OS before rebooting:
@@ -32,12 +37,10 @@ To redeploy Azure Stack, you must start over from scratch as described below.
    5. Please just run the following command: Restart-Computer -force 
 3. Delete the CloudBuilder.vhdx file that was used as part of the previous deployment.
    
-    You don't need to delete the existing Storage Pool from the previous TP2 deployment. The deployment script detects and cleans up the existing, then creates new.
+    You don't need to delete the existing Storage Pool from the previous deployment. The deployment script detects and cleans up the existing, then creates new.
 4. Redeploy from copying a new copy of the CloudBuilder.vhdx, boot to it, etc.
 
 ## <a name="next-steps"></a>Next steps
 [Connect to Azure Stack](azure-stack-connect-azure-stack.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

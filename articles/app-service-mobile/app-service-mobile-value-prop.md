@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 94c61f4b204b30b16b424fa0716e370a4f4eb51b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 43ad434b21fd358b8d72702445126dea5ce179cb
 
 
 ---
@@ -68,18 +68,18 @@ Azure App Service は、プロの開発者のための完全に管理された [
   [App Service 環境]の詳細を確認してください。
 
 ## <a name="getting-started"></a>Getting Started (概要)
-Mobile Apps の使用を開始するには、 [作業の開始] に関するチュートリアルに従ってください。  このチュートリアルでは、モバイル バックエンドと任意のクライアントを生成した後、認証、オフライン同期、およびプッシュ通知を統合する方法の基礎を取り上げます。  [作業の開始] に関するチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
+Mobile Apps の使用を開始するには、 [作業の開始] に関するチュートリアルに従ってください。  このチュートリアルでは、モバイル バックエンドと任意のクライアントを生成した後、認証、オフライン同期、およびプッシュ通知を統合する方法の基礎を取り上げます。  [作業の開始] に関するチュートリアルは、クライアント アプリケーションごとに&1; 回ずつ、複数回行うことができます。
 
 Azure Mobile Apps の詳細については、 [学習マップ]を確認してください。
 Azure App Service プラットフォームの詳細については、 [Azure App Service]に関するページを参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/mobile/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
 <!-- URLs. -->
-[Mobile Service の App Service への移行]: app-service-mobile-migrating-from-mobile-services.md
+[Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]: ../storage/storage-getting-started-guide.md
@@ -93,8 +93,8 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [iOS および Android 用 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[auto scaling]: ../app-service-web/web-sites-scale.md
-[staging environments]: ../app-service-web/web-sites-staged-publishing.md
+[自動スケール]: ../app-service-web/web-sites-scale.md
+[ステージング環境]: ../app-service-web/web-sites-staged-publishing.md
 [デプロイ オプション]: ../app-service-web/web-sites-deploy.md
 [ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
@@ -104,6 +104,6 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

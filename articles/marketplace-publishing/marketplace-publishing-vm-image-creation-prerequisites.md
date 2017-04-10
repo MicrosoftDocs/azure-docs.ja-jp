@@ -1,12 +1,12 @@
 ---
-title: Technical prerequisites for creating a virtual machine image for the Azure Marketplace | Microsoft Docs
-description: Understand the requirements for creating and deploying a virtual machine image to the Azure Marketplace for others to purchase.
+title: "Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件 | Microsoft Docs"
+description: "他のユーザーが購入できる仮想マシン イメージを作成して Azure Marketplace にデプロイするための要件を理解します。"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,50 +14,54 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 8c2dbd0a79a616e291c974c16d20d423cbb25ce2
+
 
 ---
-# <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Technical prerequisites for creating a virtual machine image for the Azure Marketplace
-Read the process thoroughly before beginning and understand where and why each step is performed. As much as possible, you should prepare your company information and other data, download necessary tools, and/or create technical components before beginning the offer creation process. These items should be clear from reviewing this article.  
+# <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件
+始める前にプロセスをよく読み、各ステップをどこで、なぜ実行するのかを理解してください。 可能な限り、会社の情報と他のデータを準備し、必要なツールをダウンロードし、技術コンポーネントを作成してから、プラン作成プロセスを開始する必要があります。 この記事を読んでよく理解してください。  
 
-## <a name="download-needed-tools-&-applications"></a>Download needed tools & applications
-You should have the following items ready before beginning the process:
+## <a name="download-needed-tools-applications"></a>必要なツールとアプリケーションをダウンロードします。
+プロセスを開始する前に、次の項目を準備してください。
 
-* Depending on which operating system you are targeting, install the [Azure PowerShell cmdlets](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) or [Linux command-line interface tool](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) from the [Azure Downloads](https://azure.microsoft.com/downloads/) page.
-* Install Azure Storage Explorer from CodePlex.
-* Download and install the Certification Test Tool for Azure Certified:
-  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). You need a Windows-based computer to run the certification tool. If you do not have a Windows-based computer available, you can run the tool using a Windows-based VM in Azure.
+* 対象とするオペレーティング システムに応じて、[Azure のダウンロード](https://azure.microsoft.com/downloads/) ページから、[Azure PowerShell コマンドレット](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids)または [Linux コマンド ライン インターフェイス ツール](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409)をインストールします。
+* Azure Storage エクスプローラーを CodePlex からインストールします。
+* 次のリンクから、Azure 認定用の認定テスト ツールをダウンロードおよびインストールします。
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913)。 この認定ツールは、Windows ベースのコンピューターで実行する必要があります。 使用可能な Windows ベースのコンピューターがない場合は、Azure で Windows ベースの VM を使用するとツールを実行できます。
 
-## <a name="platforms-supported"></a>Platforms supported
-You can develop Azure-based VMs on Windows or Linux. Some elements of the publishing process--such as creating an Azure-compatible virtual hard disk (VHD)--use different tools and steps depending on which operating system you are using:  
+## <a name="platforms-supported"></a>サポートされているプラットフォーム
+Azure ベース のVM は、Windows または Linux 上で開発することができます。 Azure と互換性のある仮想ハードディスク (VHD) の作成などの発行プロセスの一部の要素では、使用されているオペレーティング システムに合わせて異なるツールや手順を使用します。  
 
-* If you are using Linux, refer to the “Create an Azure-compatible VHD (Linux-based)” section of the [Virtual machine image publishing guide](marketplace-publishing-vm-image-creation.md).
-* If you are using Windows, refer to the “Create an Azure-compatible VHD (Windows-based)” section of the [Virtual machine image publishing guide](marketplace-publishing-vm-image-creation.md).
+* Linux を使用している場合は、『 [Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。
+* Windows を使用している場合は、『 [Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。
 
 > [!NOTE]
-> You need access to a Windows-based machine to:
+> Windows ベースのコンピューターにアクセスして、次の操作を行う必要があります。
 > 
-> * Run the certification validation tool.
-> * Create the VHD shared access signature URL for the VHD certification submission.
+> * 証明書検証ツールを実行します。
+> * VHD 証明書送信用の VHD Shared Access Signature URL を作成します。
 > 
 > 
 
-## <a name="develop-your-vhd"></a>Develop your VHD
-You can develop Azure VHDs in the cloud or on-premises:
+## <a name="develop-your-vhd"></a>VHD の開発
+Azure VHD は、クラウドまたはオンプレミスでも開発できます。
 
-* Cloud-based development means all development steps are performed remotely on a VHD resident on Azure.
-* On-premises development requires downloading a VHD and developing it using on-premises infrastructure. Although this is possible, we do not recommend it. Note that developing for Windows or SQL on-premises requires you to have the relevant on-premises license keys. You cannot include or install SQL Server after creating a VM. You must also base your offer on an approved SQL image from the Azure portal. If you decide to develop on-premises, you must perform some steps differently than if you were developing in the cloud. You can find relevant information in [Create an on-premises VM image](marketplace-publishing-vm-image-creation-on-premise.md).
+* クラウド ベースで開発する場合、すべての開発手順は、Azure 上の VHD でリモート実行することになります。
+* オンプレミスで開発する場合、VHD をダウンロードして、オンプレミス インフラストラクチャを使用して VHD を開発する必要があります。 これを実行することは可能ですが、お勧めしません。 オンプレミスで Windows 用または SQL 用に開発する場合は、関連するオンプレミスのライセンス キーが必要になることに注意してください。 VM の作成後に SQL Server をインストールすることはできません。 また、プランは Azure ポータルからの承認済みの SQL イメージに基づく必要があります。 オンプレミスで開発する場合は、クラウドで開発する場合とは異なる手順をいくつか行わなければなりません。 関連情報については、「 [Azure Marketplace 向けのオンプレミスでの仮想マシン イメージの開発](marketplace-publishing-vm-image-creation-on-premise.md)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
-Now that you reviewed the prerequisites and completed the necessary tasks, you can move forward with creating your virtual machine image offer as detailed in the [Virtual machine image publishing guide](marketplace-publishing-vm-image-creation.md).
+## <a name="next-steps"></a>次のステップ
+前提条件を確認し、必要なタスクを完了したら、『 [Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』で詳しく説明されている、仮想マシン イメージのプランの作成を始められます。
 
-## <a name="see-also"></a>See also
-* [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
-* [Create a virtual machine running Windows in the Azure preview portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## <a name="see-also"></a>関連項目
+* [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

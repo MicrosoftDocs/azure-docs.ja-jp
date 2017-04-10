@@ -1,172 +1,137 @@
 ---
-title: Log Analytics の容量管理ソリューション | Microsoft Docs
-description: Log Analytics の容量計画ソリューションを利用して、System Center Virtual Machine Manager で管理する Hyper-V サーバーの容量を把握できます。
+title: "Azure Log Analytics の容量とパフォーマンス ソリューション | Microsoft Docs"
+description: "Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/29/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: af4aa0c69587b6a0448c470892e566b7efec4858
+ms.lasthandoff: 03/30/2017
+
 
 ---
-# <a name="capacity-management-solution-in-log-analytics"></a>Log Analytics の容量管理ソリューション
-Log Analytics の容量計画ソリューションを利用して、System Center Virtual Machine Manager で管理する Hyper-V サーバーの容量を把握できます。 このソリューションでは、System Center Operations Manager と System Center Virtual Machine Manager の両方が必要です。 直接接続型のエージェントのみを使用している場合、容量計画は利用できません。 このソリューションをインストールすると、Operations Manager エージェントが更新されます。 このソリューションは監視対象サーバーのパフォーマンス カウンターを読み取り、使用状況データを処理のためにクラウド上の OMS サービスに送ります。 使用状況データにロジックが適用されて、クラウド サービスによってそのデータが記録されます。 時間の経過と共に、使用状況パターンが識別されて、現在の消費量に基づいて容量が予測されます。
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
-たとえば、予測によって、追加のプロセッサ コアまたは追加のメモリが個々のサーバーに必要になるときがわかります。 この例では、予測により 30 日以内にサーバーに追加メモリが必要になることが示されています。 これにより、サーバーの次のメンテナンス期間 (たとえば 2 週間ごとに実施される) 中にメモリのアップグレードを計画できます。
+![容量とパフォーマンス ソリューション](./media/log-analytics-capacity/capacity-solution.png) Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
+
+このソリューションでは次のことが可能です。
+
+-    CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
+-    CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
+-    IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
+-    VM を実行しているホストを表示する
+-    クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
+- グループに基づくカスタマイズとフィルタリング
 
 > [!NOTE]
-> 容量管理ソリューションはワークスペースに追加できません。 容量管理ソリューションをインストールしているお客様は、引き続きソリューションを利用できます。  
-> 
-> 
+> 容量とパフォーマンス ソリューションは、以前のバージョンでは "容量管理" と呼ばれていました。このソリューションではこれまで、System Center Operations Manager と System Center Virtual Machine Manager が必要でしたが、 新しい容量とパフォーマンス ソリューションでは、どちらも不要になっています。
 
-容量管理ソリューションは、お客様が報告した次の問題を解決するために現在更新中です。
 
-* Virtual Machine Manager と Operations Manager を使用する必要がある
-* グループに基づいてカスタマイズしたり、フィルターを適用したりできない
-* 1 時間に 1 回というデータ集計の頻度が不十分
-* VM レベルの分析がない
-* データの信頼性
+## <a name="connected-sources"></a>接続先ソース
 
-新しい容量ソリューションには、次のメリットがあります。
+次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-* 信頼性と精度が高まり、きめ細かなデータ収集がサポートされる
-* VMM 不要の Hyper-V サポート
-* PowerBI におけるメトリックの視覚化
-* VM レベルの使用率の分析
+| 接続されているソース | サポート | 説明 |
+|---|---|---|
+| [Windows エージェント](log-analytics-windows-agents.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [SCOM 管理グループ](log-analytics-om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから OMS への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。|
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
-## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
-次の情報を使用して、ソリューションをインストールおよび構成します。
+## <a name="prerequisites"></a>前提条件
 
-* Operations Manager は、容量管理ソリューションに必須です。
-* Virtual Machine Manager は、容量管理ソリューションに必須です。
-* Operations Manager を Virtual Machine Manager (VMM) に接続する必要があります。 システムの接続の詳細については、「 [VMM を Operations Manager と接続する方法](http://technet.microsoft.com/library/hh882396.aspx)」をご覧ください。
-* Operations Manager を Log Analytics に接続する必要があります。
-* 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って容量管理ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
+- 仮想マシンではなく Windows Server 2012 以降の Hyper-V ホストに、Windows エージェントまたは Operations Manager エージェントをインストールする必要があります。
 
-## <a name="capacity-management-data-collection-details"></a>容量管理データ収集の詳細
-容量管理では、有効になっているエージェントを使用して、パフォーマンス データ、メタデータ、状態データを収集します。
 
-次の表は、容量管理におけるデータの収集手段と、データ収集方法に関する各種情報をまとめたものです。
+## <a name="configuration"></a>構成
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows |![いいえ](./media/log-analytics-capacity/oms-bullet-red.png) |![あり](./media/log-analytics-capacity/oms-bullet-green.png) |![なし](./media/log-analytics-capacity/oms-bullet-red.png) |![はい](./media/log-analytics-capacity/oms-bullet-green.png) |![あり](./media/log-analytics-capacity/oms-bullet-green.png) |時間単位 |
+容量とパフォーマンス ソリューションをワークスペースに追加する手順は、以下のとおりです。
 
-次の表は、容量管理によって収集されるデータ型の例を示しています。
+- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを OMS ワークスペースに追加します。
 
-| **データの種類** | **フィールド** |
-| --- | --- |
-| Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、 NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
-| パフォーマンス |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 状態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+## <a name="management-packs"></a>管理パック
 
-## <a name="capacity-management-page"></a>[容量管理] ページ
- 容量管理ソリューションをインストールすると、監視対象のサーバーの容量を表示することができます。それには、OMS の **[概要]** ページの **[容量計画]** タイルを使用します。
+SCOM 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが SCOM にインストールされます。 これらの管理パックに伴う構成や保守は不要です。
 
-![[容量計画] タイルの画像](./media/log-analytics-capacity/oms-capacity01.png)
+- Microsoft.IntelligencePacks.CapacityPerformance (Microsoft.IntelligencePacks.UpdateAssessment)
 
-このタイルをクリックすると、 **[容量管理]** ダッシュボードが開き、サーバーの容量の要約が表示されます。 このページには、クリック可能な以下のタイルが表示されます。
+1201 イベントは、次のようになります。
 
-* *仮想マシンのカウント*: 仮想マシンの容量について残りの日数を示します。
-* *コンピューティング*: プロセッサ コアと使用可能なメモリを示します。
-* *ストレージ*: 使用されているディスク領域と平均ディスク待機時間を示します。
-* *検索*: OMS システムで任意のデータを検索するときに使用できるデータ エクスプローラーです。
 
-![[容量管理] ダッシュ ボードの画像](./media/log-analytics-capacity/oms-capacity02.png)
+```
+New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
+```
 
-### <a name="to-view-a-capacity-page"></a>容量に関するページを表示するには
-* **[概要]** ページで、**[容量管理]** をクリックし、**[Compute]** または **[Storage]** をクリックします。
+容量とパフォーマンス ソリューションが更新された場合には、バージョン番号が変わります。
 
-## <a name="compute-page"></a>[コンピューティング] ページ
-Microsoft Azure OMS の **[コンピューティング]** ダッシュボードを使用すると、インフラストラクチャに関連する使用率、容量の予想日数、効率性に関する容量情報を確認できます。 仮想マシン ホストでの CPU コアおよびメモリの使用状況を確認するには、 **[使用率]** 領域を使用します。 予測ツールを使用すると、特定の日付範囲に利用できると予想される容量を推定できます。 **[効率]** 領域を使用すると、仮想マシン ホストの効率性を確認できます。 リンクされた項目をクリックするとその項目の詳細を表示できます。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
 
-次のカテゴリの Excel ブックを生成できます。
+## <a name="using-the-solution"></a>ソリューションの使用
 
-* コア使用率の高いホスト上位
-* メモリ使用率の高いホスト上位
-* 仮想マシンの効率が悪いホスト上位
-* 使用率別ホスト上位
-* 使用率別ホスト下位
+容量とパフォーマンス ソリューションをワークスペースに追加すると、[概要] ダッシュボードに [キャパシティとパフォーマンス] が追加されます。 このタイルには、現時点でアクティブになっている Hyper-V ホストと仮想マシンのうち、選択した期間に監視対象となっていたものの数が表示されます。
 
-![容量管理の [コンピューティング] ページの画像](./media/log-analytics-capacity/oms-capacity03.png)
+![[キャパシティとパフォーマンス] タイル](./media/log-analytics-capacity/capacity-tile.png)
 
-**[コンピューティング]** ダッシュボードには次の領域が表示されます。
 
-**使用率**: 仮想マシン ホストの CPU コアとメモリの使用率が表示されます。
+### <a name="review-utilization"></a>使用率の確認
 
-* *使用中のコア*: すべてのホストについての合計 (使用された CPU の % にホストの物理コアの数を掛けた値)。
-* *空きコア*: 合計物理コア数から使用中のコアを引いた値。
-* *使用可能なコアの割合*: 空き物理コア数を物理コア数合計で割った値。
-* *VM あたりの仮想コア数*: システム内の合計仮想コア数を、システム内の仮想マシンの合計数で割った値。
-* *仮想コアと物理コアの比率*: システム内の仮想マシンによって使用されている物理コア数に対する合計物理コア数の比率。
-* *使用可能な仮想コアの数*: 仮想コアと物理コアの比率に使用可能な物理コア数を掛けた値。
-* *メモリ使用量*: すべてのホストによって使用されているメモリの合計。
-* *空きメモリ*: 合計物理メモリから使用中のメモリを引いた値。
-* *使用可能なメモリの割合*: 空き物理メモリを合計物理メモリで割った値。
-* *VM あたりの仮想メモリ*: システム内の合計仮想メモリをシステム内の仮想マシンの合計数で割った値。
-* *仮想メモリと物理メモリの比率*: システム内の合計仮想メモリをシステム内の合計物理メモリで割った値。
-* *使用可能な仮想メモリ*: 仮想メモリと物理メモリの比率に使用可能な物理メモリを掛けた値。
+[キャパシティとパフォーマンス] タイルをクリックして、容量とパフォーマンスのダッシュボードを開きます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、列の一番下にある **[すべて表示]** をクリックするか、列ヘッダーをクリックします。
 
-**予測ツール**
+- **ホスト**
+    - **[ホストの CPU 使用率]** 選択した期間について、ホスト コンピューターの CPU 使用率の傾向を示したグラフと、ホストの一覧が表示されます。 折れ線グラフにカーソルを合わせると、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 ホスト名をクリックするとログ検索が開き、ホストされている VM について CPU カウンターの詳細を確認できます。
+    - **[ホストのメモリ使用率]** 選択した期間について、ホスト コンピューターのメモリ使用率の傾向を示したグラフと、ホストの一覧が表示されます。 折れ線グラフにカーソルを合わせると、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 ホスト名をクリックするとログ検索が開き、ホストされている VM についてメモリ カウンターの詳細を確認できます。
+- **Virtual Machines**
+    - **[VM の CPU 使用率]** 選択した期間について、仮想マシンの CPU 使用率の傾向を示したグラフと、仮想マシンの一覧が表示されます。 折れ線グラフにカーソルを合わせると、上位 3 位までの VM について、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 VM 名をクリックするとログ検索が開き、その VM について集計された CPU カウンターの詳細を確認できます。
+    - **[VM のメモリ使用率]** 選択した期間について、仮想マシンのメモリ使用率の傾向を示したグラフと、仮想マシンの一覧が表示されます。 折れ線グラフにカーソルを合わせると、上位 3 位までの VM について、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 VM 名をクリックするとログ検索が開き、その VM について集計されたメモリ カウンターの詳細を確認できます。
+    - **[VM の合計ディスク IOPS]** 選択した期間について、仮想マシンの合計ディスク IOPS の傾向を示したグラフと、それぞれの仮想マシンの IOPS を示した一覧が表示されます。 折れ線グラフにカーソルを合わせると、上位 3 位までの VM について、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 VM 名をクリックするとログ検索が開き、その VM について集計されたディスク IOPS カウンターの詳細を確認できます。
+    - **[VM の合計ディスク スループット]** 選択した期間について、仮想マシンの合計ディスク スループットの傾向を示したグラフと、それぞれの仮想マシンの合計ディスク スループットを示した一覧が表示されます。 折れ線グラフにカーソルを合わせると、上位 3 位までの VM について、特定の時点の詳細を確認できます。 ログ検索でさらに詳しい情報を確認するには、グラフをクリックします。 VM 名をクリックするとログ検索が開き、その VM について集計された合計ディスク スループット カウンターの詳細を確認できます。
+- **クラスター化共有ボリューム**
+    - **[スループットの合計]** クラスター化共有ボリュームに対する読み取りと書き込みの両方の合計が表示されます。
+    - **[IOPS の合計]** クラスター化共有ボリュームに対する 1 秒あたりの入出力操作の合計が表示されます。
+    - **[合計待機時間]** クラスター化共有ボリュームでの待ち時間の合計が表示されます。
+- **[ホストの密度]** 最上部にあるタイルで、このソリューションで利用可能なホストと仮想マシンの合計数が表示されます。 ログ検索で追加の詳細を確認するには、最上部のタイルをクリックします。 このタイルにはほかにも、全ホストの一覧と、それぞれにホストされている仮想マシンの数が表示されます。 VM に関するログ検索の結果を確認するには、ホストをクリックします。
 
-予測ツールを使用すると、リソースの使用率の履歴傾向を見ることができます。 これには、仮想マシン、メモリ、コア、およびストレージの利用状況の傾向が含まれます。 予測機能は、予測アルゴリズムを使用して、各リソースがいつごろなくなるかがわかるようにします。 これを参考にして適切な容量計画を計算し、追加容量 (メモリ、コア、ストレージなど) を購入する必要がある時期を知ることができます。
 
-**効率性**
+![ダッシュボードの [ホスト] ブレード](./media/log-analytics-capacity/dashboard-hosts.png)
 
-* *アイドル VM*: 指定された期間の CPU およびメモリの使用率が 10% 未満。
-* *使用超過 VM*: 指定された期間の CPU およびメモリの使用率が 90% 超。
-* *アイドル ホスト*: 指定された期間の CPU およびメモリの使用率が 10% 未満。
-* *使用超過ホスト*: 指定された期間の CPU およびメモリの使用率が 90% 超。
+![ダッシュボードの [仮想マシン] ブレード](./media/log-analytics-capacity/dashboard-vms.png)
 
-### <a name="to-work-with-items-on-the-compute-page"></a>[コンピューティング] ページの項目を操作するには
-1. **[Compute]** ダッシュボードの **[使用率]** 領域で、使用されている CPU コアとメモリに関する容量の情報を確認します。
-2. 項目をクリックすると、 **[検索]** ページにその項目が表示され、詳細な情報が表示されます。
-3. **予測** ツールでは、日付スライダーを移動して選択した日付に使用される容量の予測を表示します。
-4. **[効率]** 領域で、仮想マシンおよび仮想マシン ホストに関する容量の効率性の情報を確認します。
 
-## <a name="direct-attached-storage-page"></a>[直接接続ストレージ] ページの使用方法
-OMS の **[直接接続ストレージ]** ダッシュボードを使用して、ストレージの使用率、ディスクのパフォーマンス、および予想されるディスク容量日数に関する情報を表示できます。 仮想マシン ホストのディスク領域の使用率を見るには、 **[使用率]** 領域を使用します。 **[ディスク パフォーマンス]** 領域を使用すると、仮想マシン ホストのディスクのスループットと待機時間を見ることができます。 また、予測ツールを使用すると、特定の日付範囲に利用できると予想される容量を推定できます。 リンクされた項目をクリックするとその項目の詳細を表示できます。
+### <a name="evaluate-performance"></a>パフォーマンスの評価
 
-この容量情報から、次のカテゴリの Excel ブックを生成できます。
+コンピューティングの運用環境には、組織によって大きな差があります。 さらに、VM の実行方法や各自が "普通" であると考える状態の内容に応じて、容量とパフォーマンスのワークロードも変わります。 自分がパフォーマンスを測定するときに役立つ手順が何か具体的にあったとしても、それが環境に適用できるという保証はありません。 このため、もう少し一般化したガイダンスの方が、実用に適していると言えるでしょう。 Microsoft では、パフォーマンスの測定の規範として役立つガイダンス記事を多数公開しています。
 
-* ホスト別ディスク領域使用率上位
-* ホスト別平均待機時間上位
+このソリューションはつまるところ、パフォーマンス カウンターなどの多種多様な情報源から容量とパフォーマンスのデータを収集するものです。 収集した容量とパフォーマンスに関するデータは、このソリューションでさまざまな形で提示されます。このデータを、「[Measuring Performance on Hyper-V (Hyper-V のパフォーマンスを測定する)](https://msdn.microsoft.com/library/cc768535.aspx)」で紹介しているデータと比較してみてください。 同記事は少し前に書かれたものではありますが、メトリック、考慮事項、ガイドラインは依然として有効です。 また、この記事にはほかにも便利なリソースへのリンクが記載されています。
 
-**[ストレージ]** ページには次の領域が表示されます。
 
-* *使用率*: 仮想マシン ホストのディスク領域の使用状況を表示します。
-* *ディスク領域合計*: すべてのホストの合計 (論理ディスク領域)
-* *使用済みディスク領域*: すべてのホストの合計 (使用済みの論理ディスク領域)
-* *使用可能なディスク領域*: 合計ディスク領域から使用済みディスク領域を引いたもの
-* *使用済みのディスクの割合*: 使用済みディスク領域を合計ディスク領域で割った値
-* *使用可能なディスクの割合*: 使用可能なディスク領域を合計ディスク領域で割った値
+## <a name="sample-log-searches"></a>サンプル ログ検索
 
-![容量管理の [直接接続ストレージ] ページの画像](./media/log-analytics-capacity/oms-capacity04.png)
+以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
-**ディスク パフォーマンス**
+| クエリ | Description |
+|---|---|
+| ホストのメモリ構成の一括表示 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
+| VM のメモリ構成の一括表示 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
+| 全 VM の合計ディスク IOPS の内訳 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Reads/s" OR CounterName="VHD Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 全 VM の合計ディスク スループットの内訳 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Read MB/s" OR CounterName="VHD Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 全 CSV の合計 IOPS の内訳 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Reads/s" OR CounterName="CSV Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 全 CSV の合計スループットの内訳 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 全 CSV の合計待機時間の内訳 | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
-OMS を使用すると、ディスク領域の使用状況の履歴傾向を見ることができます。 予測機能は、将来の使用状況を推測するためのアルゴリズムを使用します。 領域の使用状況の場合、具体的には、予測機能によりディスク領域が不足するのがいつごろかを予測できます。 これは、適切なストレージを計画し、ストレージを追加購入する必要がある時期を把握するのに役立ちます。
 
-**予測ツール**
 
-予測ツールを使用すると、ディスク領域の使用率の履歴傾向を見ることができます。 また、ディスク領域が不足するタイミングを予想できます。 これは、適切な容量を計画し、ストレージ容量を追加購入する必要がある時期を把握するのに役立ちます。
-
-### <a name="to-work-with-items-on-the-direct-attached-storage-page"></a>[直接接続ストレージ] ページの項目を使用するには
-1. **[直接接続ストレージ]** ダッシュボードの **[使用率]** 領域では、ディスク使用率情報を見ることができます。
-2. リンク項目をクリックすると、 **[検索]** ページにその項目が表示され、詳細な情報が表示されます。
-3. **[ディスク パフォーマンス]** 領域では、ディスクのスループットと待機時間の情報を見ることができます。
-4. **予測ツール**では、日付スライダーを移動して選択した日付に使用される容量の予測を表示します。
 
 ## <a name="next-steps"></a>次のステップ
-* [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な容量管理データを確認してください。
-
-<!--HONumber=Oct16_HO2-->
-
+* [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
 

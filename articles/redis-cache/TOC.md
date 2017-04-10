@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ##[Redis Cache を使用する理由](https://azure.microsoft.com/services/cache/)
 ##[Premium レベルの機能を探索する](cache-premium-tier-intro.md)
 ## シナリオ
@@ -32,7 +32,7 @@
 ## ASP.NET と統合する
 ###[セッション状態プロバイダー](cache-aspnet-session-state-provider.md)
 ###[出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
-## [管理]
+## 管理
 ###[ポータルで構成する](cache-configure.md)
 ###[データをインポート/エクスポートする](cache-how-to-import-export-data.md)
 ###[Reboot](cache-administration.md#reboot)
@@ -45,21 +45,16 @@
 ###[別のサイズとレベルに更新する](cache-how-to-scale.md)
 ###[Redis クラスターを使用してスケールイン/スケールアウトする](cache-how-to-premium-clustering.md)
 
-#リファレンス
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/)
-## [Java](https://docs.microsoft.com/java/api/)
-## [.NET](https://docs.microsoft.com/dotnet/api/)
+# リファレンス
+## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [Azure CLI 2.0 プレビュー](/cli/azure/redis)
+## [.NET](/dotnet/api/microsoft.azure.management.redis)
+## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis クライアント](http://redis.io/clients)
 ## [Redis コマンド](http://redis.io/commands#)
 ## [REST ()](https://docs.microsoft.com/rest/api/redis/)
+
+# リソース
 ## [Redis Cache のサンプル](cache-redis-samples.md)
-
-#リソース
-##[料金](https://azure.microsoft.com/pricing/details/cache/)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+## [料金](https://azure.microsoft.com/pricing/details/cache/)
 

@@ -1,19 +1,23 @@
 ---
-title: Azure Machine Learning の従来の Web サービスにおける再トレーニングに関するトラブルシューティング | Microsoft Docs
-description: Azure Machine Learning Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。
+title: "Azure Machine Learning の従来の Web サービスにおける再トレーニングに関するトラブルシューティング | Microsoft Docs"
+description: "Azure Machine Learning Web サービス モデルを再トレーニングするときに発生する一般的な問題を特定し、修正します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: VDonGlover
 manager: raymondl
-editor: ''
-
+editor: 
+ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 5bbd1bd74176b67beaecfc9995d16e923e5a40f1
+
 
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Azure Machine Learning の従来の Web サービスにおける再トレーニングに関するトラブルシューティング
@@ -36,7 +40,7 @@ Web サービスの再トレーニングを行う必要がある場合は、い�
 
 1. Training Web Service を呼び出します。これは、Request Response Service (RRS) ではなく、Batch Execution Service (BES) に対する呼び出しです。 API ヘルプ ページにあるサンプル C# コードを使用して呼び出しを行うことができます。 
 2. *BaseLocation*、*RelativeLocation*、および *SasBlobToken* の値を見つけます。これらの値は、Training Web Service に対する呼び出しの出力に返されます。 
-     ![再トレーニングのサンプルの出力と、 BaseLocation、RelativeLocation、SasBlobToken の値を示しています。][image6]
+   ![再トレーニングのサンプルの出力と、 BaseLocation、RelativeLocation、SasBlobToken の値を示しています。][image6]
 3. 新しいトレーニング済みモデルを使用して、スコア付け Web サービスから追加されたエンドポイントを更新します。このためには、「プログラムによる Machine Learning のモデルの再トレーニング」にあるサンプル コードを使用し、Training Web Service からの新しくトレーニングを行ったモデルを使用して、スコア付けモデルに追加した新しいエンドポイントを更新します。
 
 ## <a name="common-obstacles"></a>一般的な障害
@@ -58,7 +62,7 @@ Web サービスの再トレーニングを行う必要がある場合は、い�
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. [Machine Learning] タブを開きます。 
-    ![[Machine Leaning] タブ][image4]
+   ![[Machine Leaning] タブ][image4]
 3. ワークスペース名、 **[Web サービス]**の順にクリックします。
 4. 作業中のスコア付け Web サービスをクリックします  (Web サービスの既定の名前を変更しなかった場合、その名前の末尾は [Scoring Exp.] です)。
 5. **[エンドポイントの追加]** をクリックします。
@@ -88,7 +92,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. [Machine Learning] タブを開きます。 
-    ![Machine Learning ワークスペースの UI][image4]
+   ![Machine Learning ワークスペースの UI][image4]
 3. ワークスペースを選択します。
 4. **[Web サービス]**をクリックします。
 5. 予測 Web サービスを選択します。
@@ -97,7 +101,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 ### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>Web サービスがあるワークスペースを調べて、適切なリージョンにあることを確認する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. メニューから [Machine Learning] を選択します。
-     ![Machine Learning リージョンの UI][image4]
+   ![Machine Learning リージョンの UI][image4]
 3. ワークスペースの場所を確認します。
 
 <!-- Image Links -->
@@ -111,6 +115,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 [image7]: ./media/machine-learning-troubleshooting-retraining-a-model/web-services-tab.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Jan17_HO5-->
 
 

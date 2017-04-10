@@ -1,34 +1,38 @@
 ---
 title: Azure Toolkit for Eclipse | Microsoft Docs
-description: Azure Toolkit for Eclipse の概要について説明します。
-services: ''
+description: "Azure Toolkit for Eclipse の概要について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: ef2f3839-2549-4471-9b53-0deb7f4c128b
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm;asirveda
+translationtype: Human Translation
+ms.sourcegitcommit: d58166140c5de03462df07ea6ea83eb78ffa54ba
+ms.openlocfilehash: 1c60d3730aa2bbca63abf259727ec41ffc164b47
+
 
 ---
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 
-# Azure Toolkit for Eclipse
-Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
+# <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
+Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。 これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
 
 * <https://github.com/microsoft/azure-tools-for-java>
 
 > [!NOTE]
-> IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
+> IntelliJ IDE 用の Azure Toolkit もあります。 詳細については、「 [Azure Toolkit for IntelliJ]」をご覧ください。
 > 
 > 
 
-## Azure Toolkit for Eclipse の概要
+## <a name="getting-started-with-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の概要
 次の記事では、Azure Toolkit for Eclipse の使用方法について説明します。
 
 * [Azure Toolkit for Eclipse の新機能]
@@ -36,7 +40,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [Azure 向け Hello World クラウド サービスを Eclipse で作成する]
 * [Eclipse で Azure 用の Hello World Web アプリを作成する]
 
-## Azure プロジェクト設定の構成
+## <a name="configuring-azure-project-settings"></a>Azure プロジェクト設定の構成
 次の記事では、Azure Toolkit for Eclipse を使用して Azure プロジェクトの設定を構成する方法について説明します。
 
 * [Azure プロジェクトのプロパティ]
@@ -46,7 +50,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [セッション アフィニティを有効にする]
 * [Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]
 
-## Azure Toolkit for Eclipse の使用
+## <a name="using-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の使用
 次の記事では、Azure Toolkit for Eclipse を使用して Azure 機能を Java プロジェクトに追加する方法について説明します。
 
 * [Java 用 Azure ライブラリ パッケージの Javadoc コンテンツの Eclipse での表示]
@@ -55,7 +59,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 * [Eclipse での Azure アプリケーションのデバッグ]
 * [Eclipse 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する][HDInsight Tools Plugin for Eclipse]
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * *Azure Toolkit for Eclipse (この記事)*
@@ -67,7 +71,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
   * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
   * [Azure Toolkit for IntelliJ の新機能]
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 
 <!-- URL List -->
 
@@ -81,6 +85,7 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 
 [Azure プロジェクトのプロパティ]: ./azure-toolkit-for-eclipse-azure-project-properties.md
 [Azure ロールのプロパティ]: ./azure-toolkit-for-eclipse-azure-role-properties.md
@@ -104,4 +109,8 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Jan17_HO2-->
+
+

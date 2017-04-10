@@ -1,26 +1,32 @@
 ---
-title: 'HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈 | Microsoft Docs'
-description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
+title: "HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈 | Microsoft Docs"
+description: "PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。"
 services: hdinsight
 tags: azure-portal
 editor: cgronlun
 manager: jhubbard
 author: mumian
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 7e6ceb0e-8be8-4911-bc80-20714030a3ad
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
+ms.lasthandoff: 02/07/2017
+
 
 ---
-# HDInsight ログの分析
-Azure HDInsight の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。このストレージ アカウントを、既定のストレージ アカウントと呼びます。クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。クラスターの既定のストレージ アカウントを調べるには、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+# <a name="analyze-hdinsight-logs"></a>HDInsight ログの分析
+Azure HDInsight の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、「 [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
-## Azure テーブルに書き込まれたログ
+## <a name="logs-written-to-azure-tables"></a>Azure テーブルに書き込まれたログ
 Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。
 
 HDInsight クラスターを作成すると、Linux ベースのクラスターの場合、既定の Table Storage 内に次の 6 つのテーブルが自動的に作成されます。
@@ -32,11 +38,11 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * ambariserverlog
 * ambariagentlog
 
-Windows ベースのクラスターの場合は、次の 3 つのテーブルが作成されます。
+Windows ベースのクラスターの場合は、次の&3; つのテーブルが作成されます。
 
 * setuplog: HDInsight クラスターのプロビジョニング/設定で発生したイベントと例外のログ。
-* hadoopinstalllog: クラスターに Hadoop をインストールする際に発生したイベントと例外のログ。このテーブルは、カスタム パラメーターを使用して作成されたクラスターに関連した問題のデバッグに役立つことがあります。
-* hadoopservicelog: すべての Hadoop サービスによって記録されるイベントと例外のログ。このテーブルは、HDInsight クラスターのジョブ エラーに関連した問題のデバッグに役立つことがあります。
+* hadoopinstalllog: クラスターに Hadoop をインストールする際に発生したイベントと例外のログ。 このテーブルは、カスタム パラメーターを使用して作成されたクラスターに関連した問題のデバッグに役立つことがあります。
+* hadoopservicelog: すべての Hadoop サービスによって記録されるイベントと例外のログ。 このテーブルは、HDInsight クラスターのジョブ エラーに関連した問題のデバッグに役立つことがあります。
 
 テーブルのファイル名は **u<ClusterName>DDMonYYYYatHHMMSSsss<TableName>** となります。
 
@@ -56,28 +62,28 @@ Windows ベースのクラスターの場合は、次の 3 つのテーブルが
 * TIMESTAMP
 * TraceLevel
 
-### ログにアクセスするためのツール
+### <a name="tools-for-accessing-the-logs"></a>ログにアクセスするためのツール
 これらのテーブルのデータにアクセスするには、次のようにさまざまなツールを使用できます。
 
 * Visual Studio
 * Azure ストレージ エクスプローラー
 * Power Query for Excel
 
-#### Power Query for Excel を使用する
-Power Query は、[www.microsoft.com/ja-JP/download/details.aspx?id=39379](http://www.microsoft.com/ja-JP/download/details.aspx?id=39379) からインストールできます。システム要件については、ダウンロード ページを参照してください。
+#### <a name="use-power-query-for-excel"></a>Power Query for Excel を使用する
+Power Query は、[www.microsoft.com/en-us/download/details.aspx?id=39379](http://www.microsoft.com/en-us/download/details.aspx?id=39379) からインストールできます。 システム要件については、ダウンロード ページを参照してください。
 
 **Power Query でサービス ログを開いて分析するには**
 
-1. **Microsoft Excel** を開きます。
+1. **Microsoft Excel**を開きます。
 2. **[Power Query]** メニューの **[Azure から]** をクリックし、**[Microsoft Azure テーブル ストレージから]** をクリックします。
    
     ![HDInsight Hadoop Excel PowerQuery open Azure Table storage](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
-3. ストレージ アカウント名を入力します。これには、短縮名または FQDN を指定できます。
-4. ストレージ アカウント キーを入力します。次のようなテーブルの一覧が表示されます。
+3. ストレージ アカウント名を入力します。 これには、短縮名または FQDN を指定できます。
+4. ストレージ アカウント キーを入力します。 次のようなテーブルの一覧が表示されます。
    
     ![HDInsight Hadoop logs stored in Azure Table storage](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
-5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、**[編集]** を選択します。4 つの列が表示されます。必要に応じて、**[パーティション キー]**、**[行キー]**、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
-6. [コンテンツ] 列にある展開アイコンをクリックし、Excel スプレッドシートにインポートする列を選択します。このデモでは、TraceLevel と ComponentName を選択しました。これによって、問題のあるコンポーネントに関する基本的な情報がわかるようになります。
+5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、**[編集]** を選択します。 4 つの列が表示されます。 必要に応じて、**[パーティション キー]**、**[行キー]**、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
+6. [コンテンツ] 列にある展開アイコンをクリックし、Excel スプレッドシートにインポートする列を選択します。 このデモでは、TraceLevel と ComponentName を選択しました。これによって、問題のあるコンポーネントに関する基本的な情報がわかるようになります。
    
     ![HDInsight Hadoop logs choose columns](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
 7. **[OK]** をクリックしてデータをインポートします。
@@ -85,226 +91,226 @@ Power Query は、[www.microsoft.com/ja-JP/download/details.aspx?id=39379](http:
 9. [グループ化] ダイアログ ボックスで **[OK]** をクリックします。
 10. **[適用して閉じる]** をクリックします。
 
-これで、Excel を使用して、必要に応じてフィルター処理と並べ替えを実行できるようになりました。当然ながら、問題の発生時にその問題を掘り下げるために、他の列 (Message など) を含めることもできますが、前に説明した列を選択してグループ化すると、Hadoop サービスで何が起こっているかを適切に把握できます。setuplog テーブルと hadoopinstalllog テーブルにも同じ考え方が当てはまります。
+これで、Excel を使用して、必要に応じてフィルター処理と並べ替えを実行できるようになりました。 当然ながら、問題の発生時にその問題を掘り下げるために、他の列 (Message など) を含めることもできますが、前に説明した列を選択してグループ化すると、Hadoop サービスで何が起こっているかを適切に把握できます。 setuplog テーブルと hadoopinstalllog テーブルにも同じ考え方が当てはまります。
 
-#### Visual Studio を使用する
+#### <a name="use-visual-studio"></a>Visual Studio を使用する
 **Visual Studio を使用するには**
 
 1. Visual Studio を開きます。
-2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。または、単に **Ctrl + \\、Ctrl + X** キーを押します。
-3. **Cloud Explorer** で **[リソースの種類]** を選択します。そのほかに、**[リソース グループ]** というオプションも選択できます。
+2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。 または、単に **Ctrl + \,、Ctrl + X** キーを押します。
+3. **Cloud Explorer** で **[リソースの種類]** を選択します。  そのほかに、 **[リソース グループ]**というオプションも選択できます。
 4. **[ストレージ アカウント]**、クラスターの既定のストレージ アカウント、**[テーブル]** の順に展開します。
-5. **hadoopservicelog** をダブルクリックします。
-6. フィルターを追加します。次に例を示します。
+5. **hadoopservicelog**をダブルクリックします。
+6. フィルターを追加します。 次に例を示します。
    
         TraceLevel eq 'ERROR'
    
     ![HDInsight Hadoop logs choose columns](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
    
-    フィルターの作成の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
+    フィルターの作成の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
 
-## Azure Blob Storage に書き込まれたログ
-[Azure テーブルに書き込まれたログ](#log-written-to-azure-tables)は、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。
+## <a name="logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれたログ
+[Azure テーブルに書き込まれたログ](#log-written-to-azure-tables)は、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
 
-ログを表示するには、「[Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
+ログを表示するには、「 [Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
 
-アプリケーション ログの詳細については、「[Simplifying user-logs management and access in YARN (YARN におけるユーザーログの管理とアクセスの簡略化)](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)」を参照してください。
+アプリケーション ログの詳細については、「 [Simplifying user-logs management and access in YARN (YARN におけるユーザーログの管理とアクセスの簡略化)](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)」を参照してください。
 
-## クラスターの状態とジョブ ログの表示
-### Hadoop UI にアクセスする
-Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
+## <a name="view-cluster-health-and-job-logs"></a>クラスターの状態とジョブ ログの表示
+### <a name="access-hadoop-ui"></a>Hadoop UI にアクセスする
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。
 
 ![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
 
-入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[Hadoop UI]** をクリックします。
+入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[Hadoop UI]**をクリックします。
 
 ![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
 
-### Yarn UI にアクセスする
-Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
+### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[YARN UI]**をクリックします。
 
 YARN UI では、次の操作を実行できます。
 
-* **クラスターの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
+* **クラスターの状態を取得します**。 左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
   
     ![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-yarn-cluster-state.png)
-* **ノードの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
-* **ジョブの状態を監視します**。左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、**[Applications]** の下にある該当リンクをクリックします。さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+* **ノードの状態を取得します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
+* **ジョブの状態を監視します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]**の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 
-### HBase UI にアクセスする
-Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
+### <a name="access-the-hbase-ui"></a>HBase UI にアクセスする
+Azure Portal から、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[HBase UI]**をクリックします。
 
-## HDInsight のエラー コード
+## <a name="hdinsight-error-codes"></a>HDInsight のエラー コード
 このセクションで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に直面する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復するための手順も示されています。
 
-一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。
+一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。 しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。 その他のエラー メッセージは、対応策が明白な文脈で提供されています。 
 
 ### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
 * **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
-* **対応策**: 有効な SQL Azure メタストアを指定して要求し直す必要があります。
+* **対応策**: 有効な SQL Azure メタストアを指定して要求し直す必要があります。  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **説明**: *nameOfYourRegion* リージョンにクラスターを作成できませんでした。有効な HDInsight リージョンを使用して要求し直してください。
-* **対応策**: 現在サポートされているリージョン (東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部) にクラスターを作成する必要があります。
+* **説明**: *nameOfYourRegion*リージョンにクラスターを作成できませんでした。 有効な HDInsight リージョンを使用して要求し直してください。
+* **対応策**: 現在サポートされているリージョン (東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部) にクラスターを作成する必要があります。  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **説明**: サーバーが、要求されたクラスター レコードを見つけることができませんでした。
+* **説明**: サーバーが、要求されたクラスター レコードを見つけることができませんでした。  
 * **対応策**: 操作をやり直します。
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **説明**: クラスターの DNS 名 *yourDnsName* が無効です。名前の先頭と末尾が英数字であり、使っている特殊文字は '-' だけであることを確認してください。
+* **説明**: クラスターの DNS 名 *yourDnsName* が無効です。 名前の先頭と末尾が英数字であり、使っている特殊文字は '-' だけであることを確認してください。  
 * **対応策**: クラスターに有効な DNS 名を使用していること、つまり、先頭と末尾が英数字で、ダッシュ (-) 以外の特殊文字を含まないことを確認して、操作をやり直します。
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
-* **説明**: クラスター名 *yourClusterName* は使用できません。別の名前を選択してください。
-* **対応策**: 既存のクラスターと重複しないクラスター名を指定して、やり直す必要があります。ポータルを使用している場合は、作成処理中にクラスター名が既に使用されていると、その時点で通知されます。
+* **説明**: クラスター名 *yourClusterName* は使用できません。 別の名前を選択してください。  
+* **対応策**: 既存のクラスターと重複しないクラスター名を指定して、やり直す必要があります。 ポータルを使用している場合は、作成処理中にクラスター名が既に使用されていると、その時点で通知されます。
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **説明**: クラスターのパスワードが無効です。パスワードは、数字、大文字、小文字、特殊文字を少なくとも 1 文字ずつ組み合わせて、10 文字以上とし、スペースは使わず、ユーザー名を含まないようにします。
+* **説明**: クラスターのパスワードが無効です。 パスワードは、数字、大文字、小文字、特殊文字を少なくとも 1 文字ずつ組み合わせて、10 文字以上とし、スペースは使わず、ユーザー名を含まないようにします。  
 * **対応策**: 有効なクラスター パスワードを指定して操作をやり直します。
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **説明**: クラスターのユーザー名が無効です。ユーザー名に特殊文字またはスペースが含まれていないことを確認してください。
+* **説明**: クラスターのユーザー名が無効です。 ユーザー名に特殊文字またはスペースが含まれていないことを確認してください。  
 * **対応策**: 有効なクラスター ユーザー名を指定して操作をやり直します。
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **説明**: クラスターの DNS 名 *yourDnsClusterName* が無効です。名前の先頭と末尾が英数字であり、使っている特殊文字は '-' だけであることを確認してください。
+* **説明**: クラスターの DNS 名 *yourDnsClusterName* が無効です。 名前の先頭と末尾が英数字であり、使っている特殊文字は '-' だけであることを確認してください。  
 * **対応策**: 有効な DNS クラスター ユーザー名を指定して操作をやり直します。
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **説明**: URI *yourcontainerURI* のコンテナー名と、要求本文の DNS 名 *yourDnsName* は同じである必要があります。
+* **説明**: URI *yourcontainerURI* のコンテナー名と、要求本文の DNS 名 *yourDnsName* は同じである必要があります。  
 * **対応策**: コンテナー名と DNS 名が同じであることを確認して操作をやり直します。
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **説明**: 無効なクラスター構成です。データ ノード定義がノード サイズに見つかりません。
+* **説明**: 無効なクラスター構成です。 データ ノード定義がノード サイズに見つかりません。  
 * **対応策**: 操作をやり直します。
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **説明**: クラスターでデプロイの削除に失敗しました
+* **説明**: クラスターでデプロイの削除に失敗しました  
 * **対応策**: 削除操作をやり直します。
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **説明**: サービスの構成エラー。必要な DNS マッピング情報が見つかりません。
+* **説明**: サービスの構成エラー。 必要な DNS マッピング情報が見つかりません。  
 * **対応策**: クラスターを削除して新しいクラスターを作成します。
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **説明**: クラスター コンテナー作成操作が重複しています。*nameOfYourContainer* のレコードが存在しますが、Etag が一致しません。
+* **説明**: クラスター コンテナー作成操作が重複しています。 *nameOfYourContainer* のレコードが存在しますが、Etag が一致しません。
 * **対応策**: 一意の名前をコンテナーに付けて、作成操作をやり直します。
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **説明**: ホストされるサービス *nameOfYourHostedService* には既にクラスターが含まれています。ホストされるサービスに複数のクラスターを含めることはできません。
+* **説明**: ホストされるサービス *nameOfYourHostedService* には既にクラスターが含まれています。 ホストされるサービスに複数のクラスターを含めることはできません。  
 * **対応策**: 別のホストされるサービスでクラスターをホストします。
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
-* **説明**: サーバーは、クラスターのデプロイの状態を更新できませんでした。
-* **対応策**: 操作をやり直します。これが何度も起きる場合は、CSS にお問い合わせください。
+* **説明**: サーバーは、クラスターのデプロイの状態を更新できませんでした。  
+* **対応策**: 操作をやり直します。 これが何度も起きる場合は、CSS にお問い合わせください。
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **説明**: クラスター *yourClusterName* がメンテナンスの一環として削除されました。クラスターを作成し直してください。
+* **説明**: クラスター *yourClusterName* がメンテナンスの一環として削除されました。 クラスターを作成し直してください。
 * **対応策**: クラスターを作成し直してください。
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **説明**: 無効なクラスター構成です。必要なヘッド ノード構成がノード サイズに見つかりません。
+* **説明**: 無効なクラスター構成です。 必要なヘッド ノード構成がノード サイズに見つかりません。
 * **対応策**: 操作をやり直します。
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **説明**: ホステッド サービス *nameOfYourHostedService* を作成できません。要求を再試行してください。
+* **説明**: ホステッド サービス *nameOfYourHostedService*を作成できません。 要求を再試行してください。  
 * **対応策**: 要求をやり直してください。
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境が展開されています。ホストされるサービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
+* **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境が展開されています。 ホストされるサービスに運用環境のデプロイを含めることはできません。 別のクラスター名を使用して要求を再試行してください。
 * **対応策**: 別のクラスター名を使用して要求をやり直します。
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **説明**: クラスターのホストされるサービス *nameOfYourHostedService* が見つかりませんでした。
+* **説明**: クラスターのホストされるサービス *nameOfYourHostedService* が見つかりませんでした。  
 * **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **説明**: ホストされるサービス *nameOfYourHostedService* には、関連付けられたデプロイメントがありません。
+* **説明**: ホストされるサービス *nameOfYourHostedService* には、関連付けられたデプロイメントがありません。  
 * **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **説明:** サブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* を作成するコアが残されていません。必要: *resourcesRequired*、利用可能: *resourcesAvailable*。
+* **説明**: サブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* を作成するコアが残されていません。 必要: *resourcesRequired*、利用可能: *resourcesAvailable*。  
 * **対応策**: サブスクリプションのリソースに空きを作るか、サブスクリプションで利用可能なリソースを増やし、クラスターの作成をやり直します。
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **説明**: サブスクリプション ID *yourSubscriptionId* に、新しいホストされるサービスがクラスター *yourClusterName* を作成するクォータがありません。
+* **説明**: サブスクリプション ID *yourSubscriptionId* に、新しいホストされるサービスがクラスター *yourClusterName* を作成するクォータがありません。  
 * **対応策**: サブスクリプションのリソースに空きを作るか、サブスクリプションで利用可能なリソースを増やし、クラスターの作成をやり直します。
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **説明**: サーバーで内部エラーが発生しました。要求を再試行してください。
+* **説明**: サーバーで内部エラーが発生しました。 要求を再試行してください。  
 * **対応策**: 要求をやり直してください。
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **説明**: Azure Storage の場所 *dataRegionName* が有効な場所ではありません。リージョンが正しいことを確認し、要求を再試行してください。
+* **説明**: Azure Storage の場所 *dataRegionName* が有効な場所ではありません。 リージョンが正しいことを確認し、要求を再試行してください。
 * **対応策**: HDInsight をサポートするストレージの場所を選択し、クラスターが併置されていることを確認して、操作をやり直します。
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **説明**: データ ノードの VM サイズが無効です。すべてのデータ ノードでサポートされているのは、'L VM' サイズのみです。
+* **説明**: データ ノードの VM サイズが無効です。 すべてのデータ ノードでサポートされているのは、'L VM' サイズのみです。  
 * **対応策**: データ ノードでサポートされているノード サイズを指定し、操作をやり直します。
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **説明**: ヘッド ノードの VM サイズが無効です。ヘッド ノードでサポートされているのは 'XL VM' サイズのみです。
+* **説明**: ヘッド ノードの VM サイズが無効です。 ヘッド ノードでサポートされているのは 'XL VM' サイズのみです。  
 * **対応策**: ヘッド ノードでサポートされているノード サイズを指定して、操作をやり直します。
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **説明**: 使用されているサブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* の削除操作を実行するための十分なアクセス許可がありません。
-* **対応策**: クラスターがエラー状態である場合は、クラスターを削除してやり直します。
+* **説明**: 使用されているサブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* の削除操作を実行するための十分なアクセス許可がありません。  
+* **対応策**: クラスターがエラー状態である場合は、クラスターを削除してやり直します。  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **説明**: 外部ストレージ アカウントの BLOB コンテナー名 *yourContainerName* が無効です。名前の先頭にアルファベットが使用され、名前には小文字、数字、およびダッシュのみが使用されていることを確認してください。
+* **説明**: 外部ストレージ アカウントの BLOB コンテナー名 *yourContainerName* が無効です。 名前の先頭にアルファベットが使用され、名前には小文字、数字、およびダッシュのみが使用されていることを確認してください。  
 * **対応策**: 有効なストレージ アカウント BLOB コンテナー名を指定して、操作をやり直します。
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **説明**: 秘密キーの詳細を設定するには、外部ストレージ アカウント *yourStorageAccountName* の構成が必要です。
+* **説明**: 秘密キーの詳細を設定するには、外部ストレージ アカウント *yourStorageAccountName* の構成が必要です。  
 * **対応策**: ストレージ アカウントの有効な秘密キーを指定し、操作をやり直します。
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **説明**: バージョン ヘッダー *yourVersionHeader* が有効な形式 yyyy-mm-dd ではありません。
+* **説明**: バージョン ヘッダー *yourVersionHeader* が有効な形式 yyyy-mm-dd ではありません。  
 * **対応策**: 有効な形式のバージョン ヘッダーを指定して、要求をやり直します。
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **説明**: 無効なクラスター構成です。ヘッド ノード構成が複数見つかりました。
-* **対応策**: 構成を編集して、ヘッド ノードが 1 つだけ指定されるようにします。
+* **説明**: 無効なクラスター構成です。 ヘッド ノード構成が複数見つかりました。  
+* **対応策**: 構成を編集して、ヘッド ノードが&1; つだけ指定されるようにします。
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **説明**: 許容時間または最大試行回数内に操作を完了できませんでした。要求を再試行してください。
+* **説明**: 許容時間または最大試行回数内に操作を完了できませんでした。 要求を再試行してください。  
 * **対応策**: 要求をやり直してください。
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **説明**: パラメーター *yourParameterName* を null または空にすることはできません。
+* **説明**: パラメーター *yourParameterName* を null または空にすることはできません。  
 * **対応策**: パラメーターの有効な値を指定します。
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **説明**: クラスターの作成要求入力が 1 つ以上、無効です。入力値が正しいことを確認して、要求を再試行してください。
+* **説明**: クラスターの作成要求入力が&1; つ以上、無効です。 入力値が正しいことを確認して、要求を再試行してください。  
 * **対応策**: 入力値が正しいことを確認して、要求を再試行してください。
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **説明**: リージョン *yourRegionName* およびサブスクリプション ID *yourSubscriptionId* ではリージョン能力が利用できません。
-* **対応策**: HDInsight クラスターをサポートするリージョンを指定します。パブリックにサポートされているリージョンは、東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部です。
+* **説明**: リージョン *yourRegionName* およびサブスクリプション ID *yourSubscriptionId* ではリージョン能力が利用できません。  
+* **対応策**: HDInsight クラスターをサポートするリージョンを指定します。 パブリックにサポートされているリージョンは、東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部です。
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **説明**: ストレージ アカウント *yourStorageAccountName* がリージョン *currentRegionName* にあります。これはクラスターのリージョン *yourClusterRegionName* と同じにする必要があります。
-* **対応策**: クラスターと同じリージョンにストレージ アカウントを指定します。または、データが既にストレージ アカウントにある場合は、既存のストレージ アカウントと同じリージョンに新しいクラスターを作成します。ポータルを使っている場合は、この問題があると、事前に通知されます。
+* **説明**: ストレージ アカウント *yourStorageAccountName* がリージョン *currentRegionName* にあります。 これはクラスターのリージョン *yourClusterRegionName*と同じにする必要があります。  
+* **対応策**: クラスターと同じリージョンにストレージ アカウントを指定します。または、データが既にストレージ アカウントにある場合は、既存のストレージ アカウントと同じリージョンに新しいクラスターを作成します。 ポータルを使っている場合は、この問題があると、事前に通知されます。
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **説明**: 指定されたサブスクリプション ID *yourSubscriptionId* がアクティブではありません。
+* **説明**: 指定されたサブスクリプション ID *yourSubscriptionId* がアクティブではありません。  
 * **対応策**: サブスクリプションを再度アクティブにするか、新しい有効なサブスクリプションを取得します。
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **説明**: サブスクリプション ID *yourSubscriptionId* が見つかりません。
+* **説明**: サブスクリプション ID *yourSubscriptionId* が見つかりません。  
 * **対応策**: サブスクリプション ID が有効であることを確認し、操作をやり直します。
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **説明**: DNS *yourDnsUrl* を解決できません。BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。
-* **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。
+* **説明**: DNS *yourDnsUrl*を解決できません。 BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。  
+* **対応策**: 有効な BLOB URL を指定します。 URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **説明**: リソース *yourDnsUrl* の場所を確認できません。BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。
-* **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。
+* **説明**: リソース *yourDnsUrl*の場所を確認できません。 BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。  
+* **対応策**: 有効な BLOB URL を指定します。 URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **説明**: バージョン *specifiedVersion* およびサブスクリプション ID *yourSubscriptionId* ではバージョン能力が利用できません。
+* **説明**: バージョン *specifiedVersion* およびサブスクリプション ID *yourSubscriptionId* ではバージョン能力が利用できません。  
 * **対応策**: 利用可能なバージョンを選択し、操作をやり直します。
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
@@ -312,16 +318,16 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 * **対応策**: サポートされているバージョンを選択し、操作をやり直します。
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **説明**: バージョン *specifiedVersion* は Azure リージョン *specifiedRegion* では使用できません。
+* **説明**: バージョン *specifiedVersion* は Azure リージョン *specifiedRegion* では使用できません。  
 * **対応策**: 指定したリージョンでサポートされているバージョンを選択し、操作をやり直します。
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **説明**: 無効なクラスター構成です。必要な WASB アカウント構成が外部アカウントに見つかりません。
+* **説明**: 無効なクラスター構成です。 必要な WASB アカウント構成が外部アカウントに見つかりません。  
 * **対応策**: アカウントが存在し、構成で適切に指定されていることを確認して、操作をやり直します。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 * [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+

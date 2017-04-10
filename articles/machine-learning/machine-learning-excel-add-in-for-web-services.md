@@ -1,39 +1,44 @@
 ---
-title: Machine Learning Web サービスの Excel アドイン | Microsoft Docs
-description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
+title: "Machine Learning Web サービスの Excel アドイン | Microsoft Docs"
+description: "コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: tedway
 manager: jhubbard
 editor: cgronlun
-tags: ''
-
+tags: 
+ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/05/2016
+ms.date: 03/14/2017
 ms.author: tedway;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: 814decc2aace0379332af229d232eef1a26939de
+ms.lasthandoff: 03/02/2017
+
 
 ---
 # <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Azure Machine Learning Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>ブックで既存の Web サービスを使用する手順
+
 1. [サンプルの Excel ファイル](http://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    
     ![Web サービスの選択][01]
-3. この操作により、 **[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]**をクリックすることもできます。
+3. この操作により、**[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]**をクリックすることもできます。
 4. ヘッダーを含めてデータを選択し、入力データ範囲のアイコンをクリックします。  [先頭行をデータの見出しとして使用する] ボックスを必ずオンにします。
 5. **[出力]** で、データを出力するセル番号を入力します。この場合、「H1」などと入力します。
 6. **[予測]**をクリックします。
    
     ![[予測] セクション][02]
 
-## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
-Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
+Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイについて詳しくは、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」をご覧ください。
 
 Web サービスの API キーを取得します。 取得元は、クラシック Machine Learning Web サービスを発行したか、新しい Machine Learning Web サービスを発行したかによって異なります。
 
@@ -60,7 +65,8 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 
 ## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
-1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
+
+1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイについて詳しくは、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」をご覧ください。
 2. **[Consume (使用)]**をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 4. Excel で、**[Web サービス]** セクションに移動します (**[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。
@@ -85,9 +91,4 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 [04]: ./media/machine-learning-excel-add-in-for-web-services/image4.png
 [05]: ./media/machine-learning-excel-add-in-for-web-services/image5.png
 [06]: ./media/machine-learning-excel-add-in-for-web-services/image6.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

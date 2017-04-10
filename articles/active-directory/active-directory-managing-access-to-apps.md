@@ -1,25 +1,29 @@
 ---
-title: Azure AD を使用したアプリへのアクセスの管理 | Microsoft Docs
-description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
+title: "Azure AD を使用したアプリへのアクセスの管理 | Microsoft Docs"
+description: "Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b0829f18-9e57-4107-925d-5f0457d81671
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d08131936f856ed671a2358867918d5ba40a5897
+
 
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 多くの場合、アプリへのアクセスの管理では、IT 管理者またはヘルプデスクが大きな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  他の組織は、既存の自動 ID との統合に投資し、ロール ベースの Access Control (RBAC)、属性ベースの Access Control (ABAC) などの管理システムにアクセスします。 統合とルールの開発はいずれも専門知識や高いコストが求められる傾向にあります。 いずれの管理方法での監視またはレポートも、個々にコストがかかる複雑な投資になります。
 
-## <a name="how-does-azure-active-directory-help?"></a>Azure Active Directory の機能
+## <a name="how-does-azure-active-directory-help"></a>Azure Active Directory の機能
  Azure AD では、構成済みのアプリケーション用に広範なアクセスの管理がサポートされているため、組織は、属性に基づく自動的な割り当て (ABAC または RBAC シナリオ) から、委任、また管理者の管理までにわたり、適切なアクセス ポリシーを簡単に達成できます。 Azure AD を使用すると、1 つのアプリケーションに対して複数の管理モデルを組み合わせて複雑なポリシーを簡単に達成できるだけでなく、対象ユーザーが同じアプリケーション全体で管理ルールを再利用することもできます。
 
 * [新しいまたは既存のアプリケーションの追加](active-directory-sso-integrate-saas-apps.md)
@@ -48,7 +52,7 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 管理者は、 [Azure AD 条件付きアクセス](active-directory-conditional-access.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
 
-## <a name="how-can-i-get-started?"></a>利用を始めるには?
+## <a name="how-can-i-get-started"></a>利用を始めるには?
 あなたは IT 管理者で、Azure AD をまだ使用したことがない場合:
 
 * [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/)  - 30 日間無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分程度でデプロイできます。
@@ -61,11 +65,14 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 * アプリケーション割り当てに関する FAQ
 * [アプリケーションの使用状況に関するダッシュボード/レポート](active-directory-passwords-get-insights.md)
 
-## <a name="where-can-i-learn-more?"></a>詳細情報を得るには?
+## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

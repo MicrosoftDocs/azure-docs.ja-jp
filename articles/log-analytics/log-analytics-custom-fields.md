@@ -1,12 +1,12 @@
 ---
-title: Log Analytics のカスタム フィールド | Microsoft Docs
-description: Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される OMS データから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。
+title: "Log Analytics のカスタム フィールド | Microsoft Docs"
+description: "Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される OMS データから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b98dcbcf219276bb9a7fd24e7f8c8c8eba806cf0
+
 
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
@@ -40,7 +44,7 @@ Log Analytics の **カスタム フィールド** 機能を使用すると、�
 > 
 > 
 
-### <a name="step-1-identify-records-that-will-have-the-custom-field"></a>手順 1 - カスタム フィールドを追加するレコードを指定する
+### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>手順 1 - カスタム フィールドを追加するレコードを指定する
 最初の手順は、カスタム フィールドを追加するレコードの指定です。  まず[標準のログ検索](log-analytics-log-searches.md)から始めて、Log Analytics が認識する、モデルとして動作するレコードを選択します。  データをカスタム フィールドに抽出しようとすると、**フィールド抽出ウィザード**が開きます。この画面で、条件を検証し、調整します。
 
 1. **ログ検索** を開き、 [クエリを使用してカスタム フィールドを追加するレコードを取得](log-analytics-log-searches.md) します。
@@ -49,14 +53,14 @@ Log Analytics の **カスタム フィールド** 機能を使用すると、�
 4. **フィールドの抽出ウィザード**が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
 5. 目的の選択内容ではない場合、追加のフィールドを選択して条件を絞り込みます。  条件のフィールド値を変更するには、取り消して、目的の条件と一致する別のレコードを選択する必要があります。
 
-### <a name="step-2-perform-initial-extract"></a>手順 2 - 初回の抽出を実行する
+### <a name="step-2---perform-initial-extract"></a>手順 2 - 初回の抽出を実行する
 カスタム フィールドを追加するレコードを特定したら、抽出するデータを特定します。  Log Analytics は、その情報を使用して、似たレコード内の似たパターンを特定します。  その後に、結果を検証して、Log Analytics で分析に使用する詳細情報を指定します。
 
 1. カスタム フィールドを設定するサンプル レコードのテキストを選択します。  フィールドの名前を指定し、初回の抽出を実行するダイアログ ボックスが表示されます。  **\_CF** という文字が自動的に付加されます。
 2. **[抽出]** をクリックして、収集したレコードの分析を実行します。  
 3. **[概要]** と **[検索結果]** セクションには抽出結果が表示されるので、正確さを確認できます。  **[概要]** には、レコードの特定に使用される条件と、特定された各データ値の件数が表示されます。  **[検索結果]** には、条件と一致するレコードの詳細な一覧が表示されます。
 
-### <a name="step-3-verify-accuracy-of-the-extract-and-create-custom-field"></a>手順 3 - 抽出の正確さを確認し、カスタム フィールドを作成する
+### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>手順 3 - 抽出の正確さを確認し、カスタム フィールドを作成する
 初回の抽出を実行すると、既に収集されたデータに基づいて結果が Log Analytics に表示されます。  結果が正確と判断したら、追加作業なしでカスタム フィールドを作成できます。  結果が正確ではない場合、Log Analytics がロジックを改善できるように結果を調整することができます。
 
 1. 初回の抽出の値が正しくない場合、不正確なレコードの横にある **[編集]** アイコンをクリックし、**[この選択内容の変更]** を選択して選択内容を変更します。
@@ -138,6 +142,9 @@ DPMRA サービスを含むレコードまでスクロールし、同じプロ�
 * 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](log-analytics-data-sources-custom-logs.md)を監視します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

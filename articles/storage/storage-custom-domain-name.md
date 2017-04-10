@@ -1,29 +1,33 @@
 ---
-title: BLOB ストレージ エンドポイントのドメイン名の構成 | Microsoft Docs
-description: Azure クラシック ポータルでカスタム ユーザー ドメインを Azure ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングする方法について説明します。
+title: "Blob Storage エンドポイントのドメイン名の構成 | Microsoft Docs"
+description: "Azure クラシック ポータルでカスタム ユーザー ドメインを Azure ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングする方法について説明します。"
 services: storage
-documentationcenter: ''
-author: tamram
-manager: carmonm
+documentationcenter: 
+author: mmacy
+manager: timlt
 editor: tysonn
-
+ms.assetid: aaafd8c5-eacb-49dc-8c8b-3f7011ad5e92
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: fe4b9c356e5f7d56cb7e1fa62344095353d0b699
+ms.openlocfilehash: 65ecd654cf6f1558a8f9ad6d6718ae5396fb52d0
+
 
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。 BLOB ストレージの既定のエンドポイントは `<storage-account-name>.blob.core.windows.net`です。 **www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 > [!IMPORTANT]
 > Azure Storage では、カスタム ドメインでの HTTPS はまだサポートしていません。 Microsoft では、お客様がこの機能に関心があることを認識しているので、将来のリリースで提供する予定です。
-> 
-> 
+>
+>
 
 ストレージ アカウントの BLOB エンドポイントをカスタム ドメインで参照するには、2 つの方法があります。 最も簡単な方法は、CNAME レコードを作成して、カスタム ドメインおよびサブドメインを BLOB エンドポイントにマッピングすることです。 CNAME レコードは、ソース ドメインを目的のドメインにマッピングする DNS 機能です。 この場合、ソース ドメインは、カスタム ドメインおよびサブドメインです。サブドメインは常に必要であることに注意してください。 目的のドメインは、BLOB サービス エンドポイントです。
 
@@ -55,8 +59,8 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 7. 新しい CNAME レコードを作成し、"**www**" や "**photos**" などのサブドメイン エイリアスを指定します。 次に、**mystorageaccount.blob.core.windows.net** (**mystorageaccount** はストレージ アカウントの名前です) という形式でホスト名を指定します。これは BLOB サービス エンドポイントです。 使用するホスト名は、**[カスタム ドメインの管理]** ダイアログ内のテキストに含まれています。
 8. 新しい CNAME レコードを作成したら、**[カスタム ドメインの管理]** ダイアログに戻り、サブドメインを含むカスタム ドメイン名を **[カスタム ドメイン名]** フィールドに入力します。 たとえば、ドメインが "**contoso.com**" で、サブドメインが "**www**" の場合は、"**www.contoso.com**" と入力します。サブドメインが "**photos**" の場合は、"**photos.contoso.com**" と入力します。 サブドメインは必須であることに注意してください。
 9. **[登録]** ボタンをクリックしてカスタム ドメインを登録します。
-   
-    登録が成功すると、 **"カスタム ドメインはアクティブです"**というメッセージが表示されます。 これで、ユーザーは、適切なアクセス許可を持っている限り、カスタム ドメインの BLOB データを表示できます。
+
+登録が成功すると、 **"カスタム ドメインはアクティブです"**というメッセージが表示されます。 これで、ユーザーは、適切なアクセス許可を持っている限り、カスタム ドメインの BLOB データを表示できます。
 
 ## <a name="register-a-custom-domain-for-your-storage-account-using-the-intermediary-asverify-subdomain"></a>中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録
 カスタム ドメインが現在、ダウンタイムが発生しないことが SLA で要求されているアプリケーションをサポートしている場合は、この手順でカスタム ドメインを登録します。 asverify.&lt;subdomain&gt;.&lt;customdomain&gt; から asverify.&lt;storageaccount&gt;.blob.core.windows.net を指す CNAME を作成すると、ドメインを Azure に事前登録できます。 そして、&lt;subdomain&gt;.&lt;customdomain&gt; から &lt;storageaccount&gt;.blob.core.windows.net を指す、もう 1 つの CNAME を作成します。このポイントから、カスタム ドメインへのトラフィックが BLOB エンドポイントにダイレクトされます。
@@ -73,7 +77,7 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 8. 新しい CNAME レコードを作成したら、**[カスタム ドメインの管理]** ダイアログに戻り、カスタム ドメイン名を **[カスタム ドメイン名]** フィールドに入力します。 たとえば、ドメインが "**contoso.com**" で、サブドメインが "**www**" の場合は、"**www.contoso.com**" と入力します。サブドメインが "**photos**" の場合は、"**photos.contoso.com**" と入力します。 サブドメインは必須であることに注意してください。
 9. **[高度: 'asverify' サブドメインを使ってカスタム ドメインを事前登録する]**チェックボックスをクリックします。
 10. **[登録]** ボタンをクリックしてカスタム ドメインを事前登録します。
-    
+
     事前登録が成功すると、 **"カスタム ドメインはアクティブです"**というメッセージが表示されます。
 11. この時点で、カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、まだストレージ アカウントへはルーティングされません。 処理を完了するには、DNS レジストラーの Web サイトに戻り、サブドメインを BLOB サービス エンドポイントにマッピングする別の CNAME レコードを作成します。 たとえば、**www** または **photos** というサブドメインと、**mystorageaccount.blob.core.windows.net** (**mystorageaccount** はストレージ アカウントの名前です) というホスト名を指定します。 この手順で、カスタム ドメインの登録が完了します。
 12. 最後に、**asverify** を使って作成した CNAME レコードを削除します。このレコードは、中間の手順としてだけ必要であったためです。
@@ -83,24 +87,27 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 ## <a name="verify-that-the-custom-domain-references-your-blob-service-endpoint"></a>カスタム ドメインが BLOB サービス エンドポイントを参照することの確認
 カスタム ドメインが実際に BLOB サービス エンドポイントにマッピングされていることを確認するために、ストレージ アカウントのパブリック コンテナーで BLOB を作成します。 そして、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。
 
-* http://<*subdomain.customdomain*>/<*mycontainer*>/<*myblob*>
+    http://<*subdomain.customdomain*>/<*mycontainer*>/<*myblob*>
 
 たとえば、**myforms** コンテナー内の BLOB にマッピングされている **photos.contoso.com** カスタム サブドメイン経由で Web フォームにアクセスするには、次の URI を使用します。
 
-* http://photos.contoso.com/myforms/applicationform.htm
+    http://photos.contoso.com/myforms/applicationform.htm
 
 ## <a name="unregister-a-custom-domain-from-your-storage-account"></a>ストレージ アカウントからのカスタム ドメインの登録解除
-カスタム ドメインを登録解除するには、次の手順に従います。 
+カスタム ドメインを登録解除するには、次の手順に従います。
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。 
-2. ナビゲーション ウィンドウで **[ストレージ]**をクリックします。 
-3. **[ストレージ]** ページで、ストレージ アカウントの名前をクリックしてダッシュボードを表示します。 
-4. リボンの **[ドメインの管理]**をクリックします。 
-5. **[カスタム ドメインの管理]** ダイアログ ボックスで、**[登録解除]** をクリックします。 
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+2. ナビゲーション ウィンドウで **[ストレージ]**をクリックします。
+3. **[ストレージ]** ページで、ストレージ アカウントの名前をクリックしてダッシュボードを表示します。
+4. リボンの **[ドメインの管理]**をクリックします。
+5. **[カスタム ドメインの管理]** ダイアログ ボックスで、**[登録解除]** をクリックします。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: REST を使用して Azure Media Services コンテンツを発行する
-description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コードは REST API を使用しています。
+title: "REST を使用して Azure Media Services コンテンツを発行する"
+description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。"
 author: Juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: ff332c30-30c6-4ed1-99d0-5fffd25d4f23
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: bb3ae3d26d174d0f37cc348cde570250699bf067
+ms.lasthandoff: 03/14/2017
+
 
 ---
-# REST を使用して Azure Media Services コンテンツを発行する
+# <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST ()](media-services-rest-deliver-streaming-content.md)
@@ -24,27 +29,31 @@ ms.author: juliako
 > 
 > 
 
-## Overview
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ([こちらの](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
+## <a name="overview"></a>概要
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。 [アセットをエンコードする](media-services-rest-encode-asset.md) トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。 コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ( [こちらの](media-services-rest-configure-asset-delivery-policy.md) トピックをご覧ください)。 
 
-また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
+また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。 また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
 
-[次](#types)のセクションに、値が REST コールで使われる列挙型を示します。
+[次](#types) のセクションに、値が REST コールで使われる列挙型を示します。   
 
-## オンデマンド ストリーミング ロケーターを作成する
+## <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
 
 1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
 2. オンデマンド ストリーミング ロケーターを作成します。
-3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。
+3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。 
    
-   プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。
-4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。
+   プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。 
+4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
 5. 書き込みまたは削除アクセス許可を含む AccessPolicy を使用するストリーミング ロケーターは作成できません。
 
-### アクセス ポリシーを作成します。
+### <a name="create-an-access-policy"></a>アクセス ポリシーを作成します。
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
 要求:
 
     POST https://media.windows.net/api/AccessPolicies HTTP/1.1
@@ -80,7 +89,7 @@ ms.author: juliako
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
-### オンデマンド ストリーミング ロケーターを作成する
+### <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 指定された資産と資産ポリシーのロケーターを作成します。
 
 要求:
@@ -118,8 +127,8 @@ ms.author: juliako
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"http://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"http://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
-### ストリーミング URL を作成します。
-ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。
+### <a name="build-streaming-urls"></a>ストリーミング URL を作成します。
+ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。 
 
 Smooth Streaming: **Path** + マニフェスト ファイル名 + "/manifest"
 
@@ -141,8 +150,8 @@ DASH: **Path** + マニフェスト ファイル名 + "/manifest(format=mpd-time
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-### プログレッシブ ダウンロード URL を作成します。
-ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。
+### <a name="build-progressive-download-urls"></a>プログレッシブ ダウンロード URL を作成します。
+ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。   
 
 URL: **Path** + アセット ファイル mp4 名
 
@@ -168,13 +177,13 @@ URL: **Path** + アセット ファイル mp4 名
         OnDemandOrigin = 2,
     }
 
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+

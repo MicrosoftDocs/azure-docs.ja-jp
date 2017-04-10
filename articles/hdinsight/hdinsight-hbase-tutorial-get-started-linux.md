@@ -1,5 +1,5 @@
 ---
-title: "HBase のチュートリアル: Hadoop で Linux ベースの HBase クラスターを使用する | Microsoft Docs"
+title: "Azure HDInsight での HBase の使用 | Microsoft Docs"
 description: "HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
 keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル"
 services: hdinsight
@@ -9,24 +9,23 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 03/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ecac06a51bee157d88634a13c5749dc16f4b505a
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 21d8dff230e045607b70013f4eabf1bfe8ec3993
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-with-linuxbased-hadoop-in-hdinsight"></a>HBase チュートリアル: HDInsight の Linux ベースの Hadoop で Apache HBase を使用する
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
+# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase チュートリアル: HDInsight で Apache HBase を使用する
 
-HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。 HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事をご覧ください。
-
-このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
+HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。 HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -45,7 +44,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは、パブリック BLOB コンテナー内にあります。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[カスタム デプロイ]** ブレードで以下を入力します。
    
    * **サブスクリプション**: クラスターの作成に使用する Azure サブスクリプションを選択します。
@@ -57,7 +56,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
      
      その他のパラメーターは省略可能です。  
      
-     各クラスターには Azure Blob Storage アカウントとの依存関係があります。 クラスターを削除すると、データはストレージ アカウントに保持されます。 クラスターの既定のストレージ アカウント名は、クラスター名に "store" が追加されたものです。 これは、テンプレートの variables セクションでハードコードされます。
+     各クラスターには Azure ストレージ アカウントとの依存関係があります。 クラスターを削除すると、データはストレージ アカウントに保持されます。 クラスターの既定のストレージ アカウント名は、クラスター名に "store" が追加されたものです。 これは、テンプレートの variables セクションでハードコードされます。
 3. **[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
 > [!NOTE]
@@ -66,7 +65,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 > 
 
 ## <a name="create-tables-and-insert-data"></a>テーブルを作成してデータを挿入する
-SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データの照会を行うことができます。 SSH の使用方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データの照会を行うことができます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -95,14 +94,14 @@ BigTable の実装である HBase では、同じデータが次のように表�
         put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
         scan 'Contacts'
    
-    ![hdinsight hadoop hbase shell][img-hbase-shell]
+    ![HDInsight Hadoop HBase シェル][img-hbase-shell]
 4. 1 つの行を取得します。
    
         get 'Contacts', '1000'
    
     行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
    
-    Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」をご覧ください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
+    HBase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」を参照してください。
 5. シェルを終了します。
    
         exit
@@ -113,18 +112,18 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 サンプル データ ファイルがパブリック BLOB コンテナー (*wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*) にアップロードされています。  このデータ ファイルの内容は次のとおりです。
 
-    8396    Calvin Raji        230-555-0191    230-555-0191    5415 San Gabriel Dr.
-    16600    Karen Wu        646-555-0113    230-555-0192    9265 La Paz
-    4324    Karl Xie        508-555-0163    230-555-0193    4912 La Vuelta
-    16891    Jonn Jackson    674-555-0110    230-555-0194    40 Ellis St.
+    8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
+    16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
+    4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta
+    16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.
     3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive
-    3588    Osa Agbonile    592-555-0152    230-555-0196    1873 Lion Circle
-    10272    Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
-    4868    Jose Hayes        599-555-0171    230-555-0198    793 Crawford Street
-    4761    Caleb Alexander    670-555-0141    230-555-0199    4775 Kentucky Dr.
-    16443    Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
+    3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle
+    10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
+    4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street
+    4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
+    16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。 手順については、「[HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]」をご覧ください。
+必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。 手順については、「[HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]」を参照してください。
 
 > [!NOTE]
 > この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
@@ -142,10 +141,18 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 ## <a name="use-hive-to-query-hbase"></a>Hive を使用して HBase を照会する
 Hive を使用して HBase テーブルのデータを照会できます。 このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
 
+> [!NOTE]
+> Hive と HBase が同じ VNet 内の異なるクラスター上にある場合、Hive シェルの呼び出し中に zookeeper クォーラムを渡す必要があります。
+>
+>       hive --hiveconf hbase.zookeeper.quorum=zk0-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk1-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk2-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net --hiveconf zookeeper.znode.parent=/hbase-unsecure  
+>
+>
+
 1. **PuTTY**を開き、クラスターに接続します。  前の手順の指示を参照してください。
 2. Hive シェルを開きます。
    
        hive
+       
 3. 次の HiveQL スクリプトを実行して、HBase テーブルにマップする Hive テーブルを作成します。 ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
    
         CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -183,7 +190,7 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
    
         curl -u <UserName>:<Password> \
         -G https://<ClusterName>.azurehdinsight.net/hbaserest/
-3. 次のコマンドを使用して、2 つの列ファミリがある新しい HBase テーブルを作成します。
+3. 次のコマンドを使用して、2 つの列ファミリを含む新しい HBase テーブルを作成します。
    
         curl -u <UserName>:<Password> \
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
@@ -199,7 +206,7 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d "{\"Row\":{\"key\":\"MTAwMA==\",\"Cell\":{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}}}" \
+        -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
         -v
    
     -d スイッチで指定された値に base64 エンコードを使用する必要があります。  たとえば、次のようになります。
@@ -218,56 +225,29 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
 
 HBase Rest の詳細については、「 [Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
 
+>
+> [!NOTE]
+> Thrift は、HDInsight での HBase ではサポートされていません。
+>
+
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
 HDInsight の HBase には、クラスターを監視するための Web UI が付属します。 この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
 
-SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングすることもできます。 ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。 詳細については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)」を参照してください。
+**HBase Master UI にアクセスするには**
 
-**SSH トンネリング セッションを確立するには**
+1. https://&lt;クラスター名>.azurehdinsight.net で Ambari Web UI を開きます。
+2. 左側のメニューで **[HBase]** をクリックします。
+3. ページの上部にある **[Quick links (クイック リンク)]** をクリックし、アクティブな Zookeeper ノード リンクをポイントして、**[HBase Master UI]** をクリックします。  UI は別のブラウザー タブで開かれます。
 
-1. **PuTTY**を開きます。  
-2. 作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
-   
-    **[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。 最後に、 **[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
-3. **[カテゴリ]** で **[セッション]** をクリックします。
-4. PuTTY セッション画面の基本オプションで、次の値を入力します。
-   
-   * **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。 SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します  (*mycluster-ssh.azurehdinsight.net* など)。
-   * **ポート**: 22。 プライマリ ヘッドノードの ssh ポートは 22 です。  
-5. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** をクリックします。
-6. [SSH ポートの転送を管理するオプション] フォームに次の情報を入力します。
-   
-   * **[ソース ポート]** - 転送するクライアント上のポート (9876 など)。
-   * **[動的]** - 動的な SOCKS プロキシを有効にします。
-7. **[追加]** をクリックして設定を追加します。
-8. ダイアログの下部にある **[開く]** をクリックして SSH 接続を開きます。
-9. メッセージが表示されたら、SSH アカウントを使用してサーバーにログインします。 これにより、SSH セッションが確立され、トンネルが有効になります。
+  ![HDInsight HBase Master UI](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-**Ambari を使用して Zookeeper の FQDN を確認するには**
+  HBase Master UI には次のセクションがあります。
 
-1. https://<ClusterName>.azurehdinsight.net/ にアクセスします。
-2. クラスター ユーザー アカウントの資格情報を 2 回入力します。
-3. 左側のメニューにある **[Zookeeper]**をクリックします。
-4. [概要] リストにある 3 つの **[Zookeeper サーバー]** リンクのいずれかをクリックします。
-5. **[ホスト名]**をコピーします。 (例: zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net)。
-
-**プログラム (Fireｆox) を構成してクラスターの状態を確認するには**
-
-1. FireFox を開きます。
-2. **[メニューを開く]** ボタンをクリックします。
-3. **[オプション]**をクリックします。
-4. **[詳細]**、**[ネットワーク]**、**[設定]** の順にクリックします。
-5. **[手動でプロキシを設定する]**を選択します。
-6. 次の値を入力します。
-   
-   * **SOCKS ホスト**: localhost
-   * **ポート**: Putty SSH トンネリングで構成したものと同じポートを使用します。  (9876 など)。
-   * **SOCKS v5**: (オンにします)
-   * **リモート DNS**: (オンにします)
-7. **[OK]** をクリックして変更を保存します。
-8. http://&lt;ZooKeeper の FQDN>:60010/master-status を参照します。
-
-高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
+  - リージョン サーバー
+  - バックアップ マスター
+  - tables
+  - タスク
+  - ソフトウェア属性
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
@@ -279,7 +259,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 詳細については、次を参照してください。
 
-* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと厳密な整合性を実現します。
+* [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -307,9 +287,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

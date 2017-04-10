@@ -1,74 +1,86 @@
 ---
-title: 正規分布の Web サービス スイート | Microsoft Docs
-description: 正規分布の Web サービス スイート
+title: "(非推奨) 正規分布の Web サービス スイート - Azure | Microsoft Docs"
+description: "(非推奨) 正規分布の Web サービス スイート"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: ireiter
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: aab7b92e-953b-43d8-b0af-031394406bfe
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
+translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
+ms.lasthandoff: 01/11/2017
+
 
 ---
-# 正規分布スイート
-正規分布のスイートは、一連のサンプル Web サービス ([正規分布ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/ndg7)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/ndq5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/ndp5)) で、正規分布を生成し処理します。これらのサービスにより、任意の長さの正規分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。正規分布スイートは、R の統計パッケージに含まれている R 関数 qnorm、rnorm、および pnorm に基づいています。
+# <a name="deprecated-normal-distribution-suite"></a>(非推奨) 正規分布スイート
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
+正規分布のスイートは、一連のサンプル Web サービス ([正規分布ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/ndg7)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/ndq5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/ndp5)) で、正規分布を生成し処理します。 これらのサービスにより、任意の長さの正規分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。 それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。 正規分布スイートは、R の統計パッケージに含まれている R 関数 qnorm、rnorm、および pnorm に基づいています。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
 > 
 > 
 
-## Web サービスの使用
+## <a name="consumption-of-web-service"></a>Web サービスの使用
 正規分布スイートには、次の 3 つのサービスが含まれています。
 
-### 正規分布の変位値計算:
+### <a name="normal-distribution-quantile-calculator"></a>正規分布の変位値計算:
 このサービスでは、正規分布の 4 つの引数を使用し、関連付けられている変位値を計算します。
 
 入力引数は、次のとおりです。
 
-* p – 正規分布のイベントの 1 つの確率
+* p – 正規分布のイベントの&1; つの確率 
 * mean – 正規分布の平均
-* SD – 正規分布の標準偏差
+* SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部
 
 サービスの出力は計算された変位値で、指定された確率に関連付けられています。
 
-### 正規分布の確率計算:
+### <a name="normal-distribution-probability-calculator"></a>正規分布の確率計算:
 このサービスでは、正規分布の 4 つの引数を使用し、関連する確率を計算します。
 
 入力引数は、次のとおりです。
 
-* q – 正規分布でのイベントの 1 つの変位値
+* q – 正規分布でのイベントの&1; つの変位値 
 * mean – 正規分布の平均
-* SD – 正規分布の標準偏差
+* SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部
 
 サービスの出力は計算された確率で、指定された変位値に関連付けられています。
 
-### 正規分布ジェネレーター
-このサービスは、正規分布の 3 つの引数を使用し、正規分布の数値のランダム シーケンスを生成します。要求には、次の引数を指定する必要があります。
+### <a name="normal-distribution-generator"></a>正規分布ジェネレーター
+このサービスは、正規分布の 3 つの引数を使用し、正規分布の数値のランダム シーケンスを生成します。 要求には、次の引数を指定する必要があります。
 
-* n – 観察数
-* Mean – 正規分布の平均
-* SD – 正規分布の標準偏差
+* n – 観察数 
+* mean – 正規分布の平均
+* SD – 正規分布の標準偏差 
 
 サービスの出力は、mean と sd の引数に基づいた正規分布での長さ n のシーケンスです。
 
-> Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
+> Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。 
 > 
 > 
 
 自動でサービスを使用するための複数の方法があります (アプリケーション例: [ジェネレーター](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx)、[確率計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx)、[変位値計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx))。
 
-### Web サービスを使用する C# コードを開始します。
-### 正規分布の変位値計算:
+### <a name="starting-c-code-for-web-service-consumption"></a>Web サービスを使用する C# コードを開始します。
+### <a name="normal-distribution-quantile-calculator"></a>正規分布の変位値計算:
     public class Input
     {
             public string p;
@@ -99,7 +111,7 @@ ms.author: ireiter
     }
 
 
-### 正規分布の確率計算:
+### <a name="normal-distribution-probability-calculator"></a>正規分布の確率計算:
     public class Input
     {
             public string q;
@@ -129,7 +141,7 @@ ms.author: ireiter
             var scoreResult = result.ReadAsStringAsync().Result;
     }
 
-### 正規分布ジェネレーター
+### <a name="normal-distribution-generator"></a>正規分布ジェネレーター
     public class Input
     {
             public string n;
@@ -159,14 +171,14 @@ ms.author: ireiter
     }
 
 
-## Web サービスの作成
-> この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。
+## <a name="creation-of-web-service"></a>Web サービスの作成
+> この Web サービスは、Azure Machine Learning を使用して作成されました。 無料試用版の場合は、実験の作成と [Web サービスの発行](machine-learning-publish-a-machine-learning-web-service.md)に関する入門ビデオのほか、[azure.com/ml](http://azure.com/ml) もご覧ください。 
 > 
 > 
 
 Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
-### 正規分布の変位値計算:
+### <a name="normal-distribution-quantile-calculator"></a>正規分布の変位値計算:
 実験フロー:
 
 ![実験フロー][2]
@@ -201,7 +213,7 @@ Web サービスを作成した実験のスクリーン ショット、および
     # Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
-### 正規分布の確率計算:
+### <a name="normal-distribution-probability-calculator"></a>正規分布の確率計算:
 実験フロー:
 
 ![実験フロー][3]
@@ -231,7 +243,7 @@ Web サービスを作成した実験のスクリーン ショット、および
     # Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
-### 正規分布ジェネレーター
+### <a name="normal-distribution-generator"></a>正規分布ジェネレーター
 実験フロー:
 
 ![実験フロー][4]
@@ -251,11 +263,11 @@ Web サービスを作成した実験のスクリーン ショット、および
     # Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
-## 制限事項
-これらは、正規分布周辺のきわめて単純な例です。上のコード例からわかるように、エラーのキャッチはほとんど実装されていません。
+## <a name="limitations"></a>制限事項
+これらは、正規分布周辺のきわめて単純な例です。 上のコード例からわかるように、エラーのキャッチはほとんど実装されていません。
 
-## FAQ
-Web サービスの使用や、Azure Marketplace への発行に関するよく寄せられる質問については、[ここ](machine-learning-marketplace-faq.md)をご覧ください。
+## <a name="faq"></a>FAQ
+Web サービスの使用や、Azure Marketplace への発行に関するよく寄せられる質問については、 [ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 [1]: ./media/machine-learning-r-csharp-normal-distribution/normal-img1.png
 [2]: ./media/machine-learning-r-csharp-normal-distribution/normal-img2.png
@@ -263,4 +275,3 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
 
 
-<!---HONumber=AcomDC_0914_2016-->

@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ディレクトリ同期要件の決定 | Microsoft Docs
-description: 企業のオンプレミスとクラウド間で、すべてのユーザーを同期するために必要な要件を特定します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ディレクトリ同期要件の決定 | Microsoft Docs"
+description: "企業のオンプレミスとクラウド間で、すべてのユーザーを同期するために必要な要件を特定します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32039e6c9291879a4151cd12dfa5dac11a153ee0
+
 
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
@@ -70,6 +74,9 @@ ms.author: billmath
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

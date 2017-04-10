@@ -1,41 +1,37 @@
 ---
-title: SQL Database における 1433 以外のポート | Microsoft Docs
-description: ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。1433 以外のポートが重要になります。
+title: "SQL Database における 1433 以外のポート | Microsoft Docs"
+description: "ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。 1433 以外のポートが重要になります。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 3f17106a-92fd-4aa4-b6a9-1daa29421f64
 ms.service: sql-database
+ms.custom: development
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: annemill
+ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
+ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
+
 
 ---
-# Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)
-このトピックでは、Azure SQL Database V12 によってもたらされる ADO.NET 4.5 以降のバージョンを使用するクライアントの接続動作の変化について説明します。
+# <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
+このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
 
-## SQL Database V11: ポート 1433
-クライアント プログラムで ADO.NET 4.5 を使用して、SQL Database V11 に接続し、クエリを実行する場合、内部での実行順序は次のようになります。
+## <a name="outside-vs-inside"></a>外部と内部
+Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の&2; つの一般的なシナリオについて説明します。
 
-1. ADO.NET が SQL Database への接続を試行します。
-2. ADO.NET は、ポート 1433 を使用して、ミドルウェア モジュールを呼び出し、ミドルウェアが SQL Database に接続します。
-3. SQL Database は、ミドルウェアへ応答を送信し、ミドルウェアが ADO.NET のポート 1433 へ応答を転送します。
-
-**用語:** 前述の実行順序の説明では、ADO.NET は*プロキシ ルート*を使用して SQL Database とやり取りしていることを表現しています。ミドルウェアが関与していない場合は、*ダイレクト ルート*を使用するというように表現します。
-
-## SQL Database V12: 外部と内部
-V12 への接続については、クライアント プログラムが Azure クラウド境界の*内部*で実行されているか、または*外部*で実行されているかを確認する必要があります。サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
-
-#### *外部:* クライアントをデスクトップ コンピューターで実行
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューターで実行
 ポート 1433 が、SQL Database クライアント アプリケーションをホストするデスクトップ コンピューターで開く必要がある唯一のポートです。
 
-#### *内部:* クライアントを Azure で実行
-Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる*ダイレクト ルート* を使用して SQL Database とやり取りします。接続が確立した後に、クライアントとデータベース間のやり取りにミドルウェア プロキシが関与することはありません。
+#### <a name="inside-client-runs-on-azure"></a>*内部:* クライアントを Azure で実行
+Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる *ダイレクト ルート* を使用して SQL Database とやり取りします。 接続が確立した後に、クライアントとデータベース間のやり取りにミドルウェア プロキシが関与することはありません。
 
 順序は次のとおりです。
 
@@ -48,30 +44,30 @@ Azure クラウド境界内でクライアントを実行している場合、�
 11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
 
 * 具体的には、対象の範囲のポートが他のすべての送信ブロッカーの影響を受けないようにします。
-* Azure VM では、**高度なセキュリティを備えた Windows ファイアウォール**がポート設定を制御します。
+* Azure VM では、 **高度なセキュリティを備えた Windows ファイアウォール** がポート設定を制御します。
   
   * [ファイアウォールのユーザー インターフェイス](http://msdn.microsoft.com/library/cc646023.aspx)を利用し、**TCP** プロトコルと「**11000-11999**」のような構文のポート範囲を指定するルールを追加できます。
 
-## バージョンの明確化
-このセクションでは、製品バージョンを参照するモニカーを明らかにします。また、製品間でのバージョンのいくつかの組み合わせも一覧表示します。
+## <a name="version-clarifications"></a>バージョンの明確化
+このセクションでは、製品バージョンを参照するモニカーを明らかにします。 また、製品間でのバージョンのいくつかの組み合わせも一覧表示します。
 
-#### ADO.NET
+#### <a name="adonet"></a>ADO.NET
 * ADO.NET 4.0 は TDS 7.3 プロトコルをサポートしますが、7.4 はサポートされません。
 * ADO.NET 4.5 以降は、TDS 7.4 プロトコルをサポートします。
 
-#### SQL Database V11 と V12
-このトピックでは、SQL Database V11 と V12 でのクライアント接続の差異について説明します。
-
-*注:* Transact-SQL ステートメント `SELECT @@version;` は、'11.' または '12.' から始まる値を返します。この数値は、SQL Database のバージョン名 (V11 と V12) と一致します。
-
-## 関連リンク
-* ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
-* ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。
+## <a name="related-links"></a>関連リンク
+* ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。 .NET チームのブログのお知らせは [こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
+* ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。 .NET チームのブログのお知らせは [こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。
   
-  * ADO.NET 4.5.1 についてのブログの投稿は、[こちら](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)からご利用になれます。
+  * ADO.NET 4.5.1 についてのブログの投稿は、 [こちら](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)からご利用になれます。
 * [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
 * [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Jan17_HO5-->
+
+

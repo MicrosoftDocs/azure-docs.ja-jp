@@ -1,20 +1,23 @@
-
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID ライフサイクルの導入戦略の決定 | Microsoft Docs
-description: ライフサイクルの各フェーズで使用できるオプションに従って、ハイブリッド ID の管理タスクを定義します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID ライフサイクルの導入戦略の決定 | Microsoft Docs"
+description: "ライフサイクルの各フェーズで使用できるオプションに従って、ハイブリッド ID の管理タスクを定義します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 14e78eca1e03125143b8814c5652c43f3f3fd3a8
+
 
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
@@ -97,6 +100,9 @@ ID の同期プロセス
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

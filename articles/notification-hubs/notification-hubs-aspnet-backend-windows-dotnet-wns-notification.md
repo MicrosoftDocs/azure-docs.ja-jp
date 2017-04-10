@@ -1,22 +1,26 @@
 ---
-title: Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
-description: Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。
+title: "Azure Notification Hubs と .NET バックエンドによるユーザーへの通知"
+description: "Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。"
 documentationcenter: windows
-author: wesmc7777
+author: ysxu
 manager: erikre
 services: notification-hubs
-editor: ''
-
+editor: 
+ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/03/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
+
 
 ---
-# <a name="azure-notification-hubs-notify-users-with-.net-backend"></a>Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
+# <a name="azure-notification-hubs-notify-users-with-net-backend"></a>Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Overview
@@ -35,9 +39,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 * [Notification Hubs の使用]<br/>通知ハブを作成し、アプリ名を予約して、このチュートリアルの通知を受け取るための登録をします。 このチュートリアルでは、これらの手順を既に完了することを前提としています。 完了していない場合は、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」の手順に従ってください。特に、「[アプリを Windows ストアに登録する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store)」と「[通知ハブを構成する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)」を完了してください。 特に、ポータルで通知ハブの **[構成]** タブに、**[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。 この構成手順は、セクション「[通知ハブを構成する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)」で説明しています。 これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
 
 > [!NOTE]
-> バックエンド サービスとして App Services で Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)をご覧ください。
+> バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)に関するページをご覧ください。
 > 
 > 
+
+&nbsp;
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -337,11 +343,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 <!-- URLs. -->
 [Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [安全なプッシュ]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

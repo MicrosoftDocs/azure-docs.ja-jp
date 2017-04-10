@@ -1,22 +1,21 @@
-# Overview
+# 概要
 
 ## [SQL Data Warehouse の概要](sql-data-warehouse-overview-what-is.md)
 ## [データ ウェアハウスのワークロード](sql-data-warehouse-overview-workload.md)
 ## [分散データ](sql-data-warehouse-distributed-data.md)
+## [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 # 作業の開始
 
-## SQL Data Warehouse の作成
-### [Azure Portal](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
+## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
+## [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
 
 # 方法
 
-## バックアップおよび復元
+## バックアップと復元
 
 ### [Backup の概要](sql-data-warehouse-backups.md)
 ### [復元の概要](sql-data-warehouse-restore-database-overview.md)
@@ -27,12 +26,16 @@
 ## 接続
 
 ### [概要](sql-data-warehouse-connect-overview.md)
-### [接続文字列](sql-data-warehouse-connection-strings.md)
-### クエリ
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Visual Studio のインストール](sql-data-warehouse-install-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [接続文字列](sql-data-warehouse-connection-strings.md)
+
+## 作成
+### [Azure ポータル](sql-data-warehouse-get-started-provision.md)
+### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 開発
 
@@ -79,11 +82,10 @@
 
 ### [概要](sql-data-warehouse-overview-load.md)
 ### [サンプル データ](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [SQL Server からの BCP](sql-data-warehouse-load-from-sql-server-with-bcp.md)
-### [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-### [Blob Storage からの Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase ガイダンス](sql-data-warehouse-load-polybase-guide.md)
 ### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
@@ -100,10 +102,10 @@
 ### [データの移行](sql-data-warehouse-migrate-data.md)
 ### [Premium Storage への移行](sql-data-warehouse-migrate-to-premium-storage.md)
 
-## 一時停止とスケール
+## コンピューティングの管理
 
 ### [概要](sql-data-warehouse-manage-compute-overview.md)
-### [Azure Portal](sql-data-warehouse-manage-compute-portal.md)
+### [Azure ポータル](sql-data-warehouse-manage-compute-portal.md)
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
@@ -111,9 +113,9 @@
 ## パフォーマンス
 
 ### [概要](sql-data-warehouse-overview-manage-user-queries.md)
+### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [クエリ](sql-data-warehouse-manage-monitor.md)
 ### [ワークロード](sql-data-warehouse-develop-concurrency.md)
-### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
 
 ## セキュリティ
 
@@ -144,8 +146,3 @@
 ### [ビジネス インテリジェンス](sql-data-warehouse-partner-business-intelligence.md)
 ### [データ統合](sql-data-warehouse-partner-data-integration.md)
 ### [データ管理](sql-data-warehouse-partner-data-management.md)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

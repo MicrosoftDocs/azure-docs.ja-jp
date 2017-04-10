@@ -1,19 +1,24 @@
 ---
-title: Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン | Microsoft Docs
-description: AD ドメイン サービスと AD フェデレーション サービスをオンプレミスにデプロイする方法をご存じの方を対象に、Azure 仮想マシンへのデプロイ方法を説明します。
+title: "Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン | Microsoft Docs"
+description: "AD ドメイン サービスと AD フェデレーション サービスをオンプレミスにデプロイする方法をご存じの方を対象に、Azure 仮想マシンへのデプロイ方法を説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
-manager: stevenpo
-editor: ''
-
+manager: femila
+editor: 
+ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/27/2016
+ms.date: 02/22/2017
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c6d26aca309597cf9552e97a22e84b6c122fe58b
+ms.lasthandoff: 03/08/2017
+
 
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
@@ -47,7 +52,7 @@ AD をデプロイした経験のない方は、「[AD DS Deployment Guide (AD D
 
 また、以下のトピックについてのチュートリアル、ガイド、ビデオを最初にご覧になるようお勧めします。
 
-* [Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+* [Azure Portal を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
 * [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 * [Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
 * [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)
@@ -57,7 +62,7 @@ AD をデプロイした経験のない方は、「[AD DS Deployment Guide (AD D
 ## <a name="introduction"></a>はじめに
 Windows Server Active Directory を Azure 仮想マシンにデプロイするための基本的な要件は、オンプレミスの仮想マシンにデプロイする場合とほとんど変わりません (物理マシンにデプロイする場合とも、ある程度共通)。 たとえば Windows Server AD DS について言えば、Azure 仮想マシンにデプロイするドメイン コントローラー (DC) が、既にあるオンプレミスの企業ドメイン/フォレスト内のレプリカである場合、Azure へのデプロイも、Windows Server Active Directory サイトを追加するときと、ほぼ同じ方法で行うことができます。 つまり、Windows Server AD DS にサブネットを定義してサイトを作成し、サブネットとサイトを接続したうえで、適切なサイト リンクを使って他のサイトに接続する必要があります。 ただし、一部の違いは Azure へのどのデプロイ シナリオにも共通していますが、デプロイ シナリオに固有のものもあります。 以降、2 つの基本的な違いについて説明します。
 
-### <a name="azure-virtual-machines-may-need-connectivity-to-the-on-premises-corporate-network."></a>Azure 仮想マシンがオンプレミスの企業ネットワークに接続されている必要がある。
+### <a name="azure-virtual-machines-may-need-connectivity-to-the-on-premises-corporate-network"></a>Azure 仮想マシンがオンプレミスの企業ネットワークに接続されている必要がある。
 Azure 仮想マシンをオンプレミスの企業ネットワークに折り返し接続するためには、Azure 仮想マシンとオンプレミスのコンピューターとを Azure 仮想ネットワークでシームレスに接続できなければなりません。Azure 仮想ネットワークには、サイト間仮想プライベート ネットワーク (VPN) コンポーネントまたはサイト対ポイントの仮想プライベート ネットワーク (VPN) コンポーネントが含まれています。 ドメイン コントローラーが Azure 仮想マシンにのみホストされている Windows Server Active Directory ドメインに対して、オンプレミスのドメイン メンバー コンピューターからアクセスするときにも、この VPN コンポーネントが必要となります。 ただし、この VPN で障害が発生した場合、Windows Server Active Directory に依存する操作 (認証など) にも支障が生じます。 既にキャッシュされている資格情報を使ってユーザーがサインインできる場合もありますが、チケットがまだ発行されていない、または古くなっている、ピア ツー ピアまたはクライアント ツー サーバーの認証はすべて失敗します。
 
 [Azure Portal でのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)など詳しい手順を説明した一連のチュートリアルとデモンストレーション ビデオについては、[Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) に関するページをご覧ください。
@@ -67,10 +72,10 @@ Azure 仮想マシンをオンプレミスの企業ネットワークに折り�
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell."></a>静的 IP アドレスは Azure PowerShell を使って構成する必要がある。
+### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>静的 IP アドレスは Azure PowerShell を使って構成する必要がある。
 既定では動的アドレスが割り当てられますが、静的 IP アドレスを割り当てるには、Set-AzureStaticVNetIP コマンドレットを使用します。 このコマンドレットによって設定される静的 IP アドレスは、サービス復旧後や VM のシャットダウン/再起動後も変化しません。 詳細については、「 [Static internal IP address for virtual machines (仮想マシンに使用する静的な内部 IP アドレス)](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)」を参照してください。
 
-## <a name="<a-name="bkmk_glossary"></a>terms-and-definitions"></a><a name="BKMK_Glossary"></a>用語と定義
+## <a name="BKMK_Glossary"></a>用語と定義
 以下、この記事に出現する各種 Azure テクノロジで用いられているいくつかの用語をピックアップしました。
 
 * **Azure Virtual Machines**: Azure の IaaS 製品。この製品を使って VM をデプロイすることで、従来オンプレミスで運用されてきたほぼすべてのサーバー ワークロードを実行することができます。
@@ -86,7 +91,7 @@ Azure 仮想マシンをオンプレミスの企業ネットワークに折り�
   
   Windows Server Active Directory は MAC アドレスやプロセッサ/CPU ID には依存していないため、いずれの動作の影響も受けません。Azure に対するすべての Windows Server Active Directory デプロイは、前述のように Azure 仮想ネットワークで実行することをお勧めします。
 
-## <a name="is-it-safe-to-virtualize-windows-server-active-directory-domain-controllers?"></a>Windows Server Active Directory ドメイン コントローラーを仮想化しても安全か
+## <a name="is-it-safe-to-virtualize-windows-server-active-directory-domain-controllers"></a>Windows Server Active Directory ドメイン コントローラーを仮想化しても安全か
 Windows Server Active Directory DC を Azure 仮想マシンにデプロイする場合、オンプレミスの仮想マシンで DC を実行するときと同じガイドラインが適用されます。 DC のバックアップと復元のガイドラインに従っていれば、DC を仮想化して実行することに問題はありません。 DC を仮想化して実行する場合の制約とガイドラインの詳細については、「 [Hyper-V でのドメイン コントローラーの実行](https://technet.microsoft.com/library/dd363553)」を参照してください。
 
 通常ならありえない手法がハイパーバイザーであれば簡単にできてしまい、それが Windows Server Active Directory を含め、さまざまな分散システムの問題を引き起こす場合があります。 たとえば物理サーバーでも、ディスクを複製したり、サポート外の手段 (SAN など) でサーバーの状態をロールバックしたりすることはできます。しかしそれはハイパーバイザーで仮想マシンのスナップショットを復元することに比べれば、はるかに敷居の高い作業です。 同様の不適切な状態は、Azure の機能においても起こりえます。 たとえば、DC の VHD ファイルはコピーするのではなく定期的にバックアップを行ってください。コピーした VHD ファイルを使用して DC を復元すると、スナップショットの復元機能を使った場合と似た状況になることがあります。
@@ -103,19 +108,19 @@ DC が受ける影響の詳細については、「 [Hyper-V でのドメイン 
 Windows Server 2012 以降では、[特別な保護機能が AD DS に組み込まれています](https://technet.microsoft.com/library/hh831734.aspx)。 土台となるハイパーバイザー プラットフォームが VM-GenerationID に対応していれば、ここに挙げた問題から仮想ドメイン コントローラーを保護することが可能です。 Azure は VM-GenerationID に対応しています。つまり、Azure 仮想マシン上で Windows Server 2012 以降を実行しているドメイン コントローラーには、その特別な保護機能が備わっています。
 
 > [!NOTE]
-> Azure 内でドメイン コントローラー ロールを実行する VM のシャットダウンと再起動は、Azure クラシック ポータルの **[シャットダウン]** オプションを使用せずに、ゲスト オペレーティング システム内で行う必要があります。 現在、クラシック ポータルを使用して VM をシャットダウンすると、VM の割り当てが解除されます。 割り当てが解除された VM は料金が発生しないという利点はありますが、VM-GenerationID がリセットされます。これは DC にとって好ましくありません。 VM-GenerationID がリセットされると、AD DS データベースの invocationID もリセットされ、RID プールは破棄され、SYSVOL は non-authoritative とマークされます。 詳細については、「[Active Directory Domain Services (AD DS) の仮想化 (レベル 100) の概要](https://technet.microsoft.com/library/hh831734.aspx)」と「[Safely Virtualizing DFSR (DFSR の安全な仮想化)](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx)」を参照してください。
+> Azure 内でドメイン コントローラー ロールを実行する VM のシャットダウンと再起動は、Azure Portal またはクラシック ポータルの **[シャットダウン]** オプションを使用せずに、ゲスト オペレーティング システム内で行う必要があります。 現在、ポータルを使用して VM をシャットダウンすると、VM の割り当てが解除されます。 割り当てが解除された VM は料金が発生しないという利点はありますが、VM-GenerationID がリセットされます。これは DC にとって好ましくありません。 VM-GenerationID がリセットされると、AD DS データベースの invocationID もリセットされ、RID プールは破棄され、SYSVOL は non-authoritative とマークされます。 詳細については、「[Active Directory Domain Services (AD DS) の仮想化 (レベル&100;) の概要](https://technet.microsoft.com/library/hh831734.aspx)」と「[Safely Virtualizing DFSR (DFSR の安全な仮想化)](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx)」を参照してください。
 > 
 > 
 
-## <a name="why-deploy-windows-server-ad-ds-on-azure-virtual-machines?"></a>Windows Server AD DS を Azure 仮想マシンにデプロイする理由
+## <a name="why-deploy-windows-server-ad-ds-on-azure-virtual-machines"></a>Windows Server AD DS を Azure 仮想マシンにデプロイする理由
 Windows Server AD DS は多くの場合、Azure 上の VM としてデプロイすることができます。 たとえば、ヨーロッパに拠点のある会社で、アジアのリモート オフィスにいるユーザーを認証する必要があるとします。 この会社はこれまでアジアに Windows Server Active Directory DC をデプロイしたことはありません。デプロイに必要なコストが大きいうえに、サーバー デプロイ後の管理に必要な知識や経験も限られていたためです。 やむを得ずアジアからの認証要求は、ヨーロッパにある DC で処理しており、パフォーマンスは決して最善とはいえません。 このような場合、アジアの Azure データセンター内で実行するよう指定した VM に DC をデプロイすることができます。 リモート オフィスに直接接続されている Azure 仮想ネットワークにその DC を接続すれば、認証パフォーマンスが向上します。
 
-また、Azure は、コストが大きくなりがちな障害復旧 (DR) サイトに代わる有力な選択肢でもあります。 少数のドメイン コントローラーと 1 つの仮想ネットワークを Azure でホストした方がコストが小さくて済むため、魅力的な選択肢となっています。
+また、Azure は、コストが大きくなりがちな障害復旧 (DR) サイトに代わる有力な選択肢でもあります。 少数のドメイン コントローラーと&1; つの仮想ネットワークを Azure でホストした方がコストが小さくて済むため、魅力的な選択肢となっています。
 
 さらに、Windows Server Active Directory は使用するものの、オンプレミスのネットワークや社内の Windows Server Active Directory には依存していないネットワーク アプリケーション (SharePoint など) があれば、ぜひ Azure にデプロイすることを検討してください。 そのようなケースでは、フォレストを分離して Azure にデプロイすることにより、SharePoint サーバーの要件を最適な形で満たすことができます。 もちろん、オンプレミス ネットワークと社内 Active Directory への接続を必要とするネットワーク アプリケーションのデプロイもサポートされています。
 
 > [!NOTE]
-> Azure 仮想ネットワーク内の VPN コンポーネントにより、オンプレミス ネットワークとの間でレイヤー 3 接続が可能であるため、オンプレミスで動作するメンバー サーバーも、Azure 仮想ネットワークで Azure 仮想マシンとして動作する DC を活用できます。 しかし VPN が利用できない場合は、オンプレミスのコンピューターは Azure ベースのドメイン コントローラーと通信できず、認証エラーをはじめとする各種のエラーが発生します。  
+> Azure 仮想ネットワーク内の VPN コンポーネントにより、オンプレミス ネットワークとの間でレイヤー&3; 接続が可能であるため、オンプレミスで動作するメンバー サーバーも、Azure 仮想ネットワークで Azure 仮想マシンとして動作する DC を活用できます。 しかし VPN が利用できない場合は、オンプレミスのコンピューターは Azure ベースのドメイン コントローラーと通信できず、認証エラーをはじめとする各種のエラーが発生します。  
 > 
 > 
 
@@ -132,7 +137,7 @@ Windows Server AD DS は多くの場合、Azure 上の VM としてデプロイ�
 * 仮想ネットワークを作成するかどうかに関係なく、Azure の課金対象は送信トラフィックであって受信トラフィックではありません。 デプロイによって生成される送信トラフィックの量は、Windows Server Active Directory の設計上のさまざまな選択によって変わる可能性があります。 たとえばデプロイの対象が読み取り専用のドメイン コントローラー (RODC) である場合、送信方向のレプリケートがない分、送信トラフィックは限定的です。 しかし RODC をデプロイするという判断は、DC に対して書き込み操作を行う必要性や、サイト内のアプリケーションやサービスと RODC との [互換性](https://technet.microsoft.com/library/cc755190) を考慮して慎重に検討する必要があります。 トラフィックの料金の詳細については、「 [Azure の価格](http://azure.microsoft.com/pricing/)」を参照してください。
 * オンプレミスの VM では、使用するサーバー リソース (RAM やディスクのサイズなど) をすべて自分で決定できますが、Azure では、あらかじめ構成された一連のサーバー サイズから選択する必要があります。 DC の場合、オペレーティング システム ディスクに加えて、Windows Server Active Directory データベースを保存するためのデータ ディスクも必要です。
 
-## <a name="can-you-deploy-windows-server-ad-fs-on-azure-virtual-machines?"></a>Windows Server AD FS を Azure 仮想マシンにデプロイできますか?
+## <a name="can-you-deploy-windows-server-ad-fs-on-azure-virtual-machines"></a>Windows Server AD FS を Azure 仮想マシンにデプロイできますか?
 はい、できます。Azure 仮想マシンには Windows Server AD FS をデプロイすることができます。オンプレミスに [AD FS をデプロイする場合のベスト プラクティス](https://technet.microsoft.com/library/dn151324.aspx)が、Azure にデプロイする場合にも同じように適用されます。 ただし一部のベスト プラクティスには、負荷分散や高可用性など、AD FS そのものには備わっていないテクノロジが必要となります。 こうしたテクノロジは、基盤となるインフラストラクチャに備わっている必要があります。 以下、これらのベスト プラクティスをいくつか紹介し、それらを Azure VM と Azure 仮想ネットワークを使用して実現する方法を見ていきましょう。
 
 1. **セキュリティ トークン サービス (STS) サーバーをインターネットに直接公開しない。**
@@ -201,7 +206,7 @@ AD FS サーバーへのトラフィックは、送信元が次に該当する�
 
 AD FS プロキシ サーバーと AD FS サーバーの間のトラフィックは、[Barracuda NG Firewall](https://www.barracuda.com/products/ngfirewall) アプライアンスを使用して制御することもできます。 この方法は、セキュリティと高可用性の点でベスト プラクティスを満たしています。また、Barracuda NG Firewall アプライアンスはホワイトリスト モードのファイアウォール管理に対応しており、Azure 仮想ネットワークに直接設置できるため、初期セットアップ後はこちらの方が管理の手間が少なくて済みます。 新しいサーバーをデプロイに追加するたびにネットワーク ACL を構成する必要はありません。 ただしこの方法は、初期デプロイの複雑さとコストが大きくなります。
 
-1 つ目の方法では、デプロイした仮想ネットワークが 1 つでしたが、このケースでは仮想ネットワークを 2 つデプロイします。 それらを VNet1 および VNet2 と呼ぶことにします。 VNet1 にはプロキシが、VNet2 には STS のほか、企業ネットワークへのネットワーク接続が存在します。 したがって、VNet1 は (あくまで仮想的にではありますが) 物理的に VNet2 から、ひいては企業ネットワークからも分離されます。 そのうえで VNet1 は、TINA (Transport Independent Network Architecture) という特殊なトンネリング テクノロジを使って VNet2 に接続されます。 TINA トンネルは、Barracuda NG Firewall を使用して個々の仮想ネットワークに接続されます (Barracuda は仮想ネットワークごとに 1 つ存在)。  高可用性を確保するために、各仮想ネットワークに 2 つの Barracuda (1 つはアクティブ、もう 1 つはパッシブ) をデプロイすることをお勧めします。 Barracuda が持つ豊富なファイアウォール機能によって、従来からあるオンプレミスの DMZ の動作を Azure で擬似的に再現することができます。
+1 つ目の方法では、デプロイした仮想ネットワークが&1; つでしたが、このケースでは仮想ネットワークを&2; つデプロイします。 それらを VNet1 および VNet2 と呼ぶことにします。 VNet1 にはプロキシが、VNet2 には STS のほか、企業ネットワークへのネットワーク接続が存在します。 したがって、VNet1 は (あくまで仮想的にではありますが) 物理的に VNet2 から、ひいては企業ネットワークからも分離されます。 そのうえで VNet1 は、TINA (Transport Independent Network Architecture) という特殊なトンネリング テクノロジを使って VNet2 に接続されます。 TINA トンネルは、Barracuda NG Firewall を使用して個々の仮想ネットワークに接続されます (Barracuda は仮想ネットワークごとに&1; つ存在)。  高可用性を確保するために、各仮想ネットワークに&2; つの Barracuda (1 つはアクティブ、もう&1; つはパッシブ) をデプロイすることをお勧めします。 Barracuda が持つ豊富なファイアウォール機能によって、従来からあるオンプレミスの DMZ の動作を Azure で擬似的に再現することができます。
 
 ![ADFS on Azure with firewall.](media/active-directory-deploying-ws-ad-guidelines/ADFS_Azure_firewall.png)
 
@@ -216,7 +221,7 @@ Office 365 のサインインに対応することのみが目的である場合
 | --- | --- |
 | 1.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 |1.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 |
 | 2.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 |2.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 |
-| 手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |
+| 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |
 | 4.Azure AD はユーザーを認証できませんが、オンプレミスの AD FS との間に信頼関係があることがわかっているため、ユーザーを AD FS にリダイレクトします。 |4.Azure AD は Kerberos チケットを直接受理することができず、信頼関係が存在しないため、ユーザーに資格情報の入力を要請します。 |
 | 5.ユーザーは Kerberos チケットを AD FS STS に送信します。 |5.ユーザーは、同じオンプレミスのパスワードを入力します。Azure AD は、DirSync によって同期されているユーザー名とパスワードに照らして入力内容を検証します。 |
 | 6.AD FS は Kerberos チケットを必要なトークン形式/要求に変換し、ユーザーを Azure AD にリダイレクトします。 |6.Azure AD がユーザーを Office 365 にリダイレクトします。 |
@@ -250,7 +255,7 @@ Office 365 で DirSync とパスワード同期を使用する場合 (AD FS を�
    
     たとえば、構成データとユーザー プロファイル データのリポジトリとして Windows Server AD DS を使用する、Windows 統合認証をサポートする LDAP 対応のアプリケーションを Azure 仮想マシンにデプロイします。 アプリケーションは会社の既存の Windows Server AD DS を利用し、かつシングル サインオンに対応していることが理想です。 アプリケーションは要求対応ではありません。
 
-### <a name="<a-name="bkmk_cloudonly"></a>1.-ad-ds:-deploy-an-ad-ds-aware-application-with-no-requirement-for-corporate-network-connectivity"></a><a name="BKMK_CloudOnly"></a>1.AD DS: 企業ネットワークへの接続が不要な AD DS 対応のアプリケーションをデプロイする
+### <a name="BKMK_CloudOnly"></a>1.AD DS: 企業ネットワークへの接続が不要な AD DS 対応のアプリケーションをデプロイする
 ![Cloud-only AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_cloud.png)
 **図 1**
 
@@ -270,14 +275,14 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
 * [Windows Server AD DS データベースと SYSVOL の配置](#BKMK_PlaceDB): Windows Server Active Directory データベース、ログ、SYSVOL を格納するために、Azure VM として実行されている DC にデータ ディスクを追加します。
 * [バックアップと復元](#BKMK_BUR): システムの状態のバックアップをどこに保存するかを決めます。 必要に応じて、バックアップを保存するためのデータ ディスクを別途 DC VM に追加します。
 
-### <a name="<a-name="bkmk_cloudonlyfed"></a>2-ad-fs:-extend-a-claims-aware-on-premises-front-end-application-to-the-internet"></a><a name="BKMK_CloudOnlyFed"></a>2 AD FS: 要求対応のオンプレミス フロントエンド アプリケーションをインターネットに拡張する
+### <a name="BKMK_CloudOnlyFed"></a>2 AD FS: 要求対応のオンプレミス フロントエンド アプリケーションをインターネットに拡張する
 ![Federation with cross-premises connectivity](media/active-directory-deploying-ws-ad-guidelines/Federation_xprem.png)
 **図 2**
 
 #### <a name="description"></a>Description
-社内ユーザーによって使用されている、オンプレミスにデプロイされた要求対応のアプリケーションにインターネットから直接アクセスできるようにします。 アプリケーションは、データの保存先となる SQL データベースへの Web フロントエンドとして機能しています。 アプリケーションによって使用される SQL Server も会社のネットワークに配置されています。 社内ユーザーのアクセス用に、2 つの Windows Server AD FS STS と 1 つのロード バランサーがオンプレミスにデプロイされています。 今後は、既存の社内ユーザーだけでなく、自社の ID を使用するビジネス パートナーも、インターネット経由でアプリケーションに直接アクセスする必要があります。
+社内ユーザーによって使用されている、オンプレミスにデプロイされた要求対応のアプリケーションにインターネットから直接アクセスできるようにします。 アプリケーションは、データの保存先となる SQL データベースへの Web フロントエンドとして機能しています。 アプリケーションによって使用される SQL Server も会社のネットワークに配置されています。 社内ユーザーのアクセス用に、2 つの Windows Server AD FS STS と&1; つのロード バランサーがオンプレミスにデプロイされています。 今後は、既存の社内ユーザーだけでなく、自社の ID を使用するビジネス パートナーも、インターネット経由でアプリケーションに直接アクセスする必要があります。
 
-この新しい要件に伴い、デプロイと構成のニーズを効率よく満たすために決定したのは、別途 2 つの Web フロントエンドと 2 つの Windows Server AD FS プロキシ サーバーを Azure 仮想マシンにインストールすることです。 4 つの VM はすべてインターネットに直接公開され、Azure 仮想ネットワークのサイト間 VPN 機能を使用してオンプレミス ネットワークに接続されます。
+この新しい要件に伴い、デプロイと構成のニーズを効率よく満たすために決定したのは、別途&2; つの Web フロントエンドと&2; つの Windows Server AD FS プロキシ サーバーを Azure 仮想マシンにインストールすることです。 4 つの VM はすべてインターネットに直接公開され、Azure 仮想ネットワークのサイト間 VPN 機能を使用してオンプレミス ネットワークに接続されます。
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>シナリオの考慮事項と適用する技術領域
 * [ネットワーク トポロジ](#BKMK_NetworkTopology): Azure 仮想ネットワークを作成し、[クロスプレミス接続を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)します。
@@ -286,20 +291,20 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
   > Windows Server AD FS の各証明書について、証明書テンプレート内で定義されている URL とそのリンク先の証明書に、Azure で実行されている Windows Server AD FS インスタンスからアクセスできることを確認します。 そのために PKI インフラストラクチャ コンポーネントへのクロスプレミス接続が必要になる場合があります。 たとえば、CRL のエンドポイントが LDAP ベースであり、オンプレミスでのみホストされている場合は、クロスプレミス接続が必要になります。 それが難しい場合、使用する証明書は、CRL にインターネットでアクセスできる CA によって発行されたものである必要があります。
   > 
   > 
-* [クラウド サービスの構成](#BKMK_CloudSvcConfig): 負荷分散された 2 つの仮想 IP アドレスを提供するために 2 つのクラウド サービスを用意する必要があります。 1 つ目のクラウド サービスの仮想 IP アドレスは、ポート 80 と 443 を使用する 2 つの Windows Server AD FS プロキシ VM に割り振られます。 Windows Server AD FS プロキシ VM は、Windows Server AD FS STS に接続されたオンプレミス ロード バランサーの IP アドレスを参照するように構成します。 2 つ目のクラウド サービスの仮想 IP アドレスは、同様にポート 80 と 443 を使用する Web フロントエンドを実行する 2 つの VM に割り振られます。 正常に稼働している Windows Server AD FS プロキシと Web フロントエンドの VM にのみロード バランサーがトラフィックを確実に割り振るようにカスタム プローブを構成します。
+* [クラウド サービスの構成](#BKMK_CloudSvcConfig): 負荷分散された&2; つの仮想 IP アドレスを提供するために&2; つのクラウド サービスを用意する必要があります。 1 つ目のクラウド サービスの仮想 IP アドレスは、ポート 80 と 443 を使用する 2 つの Windows Server AD FS プロキシ VM に割り振られます。 Windows Server AD FS プロキシ VM は、Windows Server AD FS STS に接続されたオンプレミス ロード バランサーの IP アドレスを参照するように構成します。 2 つ目のクラウド サービスの仮想 IP アドレスは、同様にポート 80 と 443 を使用する Web フロントエンドを実行する 2 つの VM に割り振られます。 正常に稼働している Windows Server AD FS プロキシと Web フロントエンドの VM にのみロード バランサーがトラフィックを確実に割り振るようにカスタム プローブを構成します。
 * [フェデレーション サーバーの構成](#BKMK_FedSrvConfig): クラウド内に作成した Windows Server Active Directory フォレストのセキュリティ トークンを生成するように、Windows Server AD FS をフェデレーション サーバー (STS) として構成します。 フェデレーション要求プロバイダーと、受け付ける ID の各種パートナーとの信頼関係を設定します。また、証明書利用者とトークン生成先のさまざまなアプリケーションとの信頼関係を構成します。
   
     ほとんどのシナリオでは、インターネットに接続可能な領域にはセキュリティ上、Windows Server AD FS プロキシ サーバーをデプロイし、対応する Windows Server AD FS フェデレーション サーバーはインターネットに直接接続できないよう分離します。 デプロイのシナリオに関係なく、クラウド サービスは、仮想 IP アドレスを使って構成する必要があります。インターネットに公開される IP アドレスとポートは仮想 IP アドレスによって得られ、2 つの Windows Server AD FS STS インスタンス間やプロキシ インスタンス間の負荷分散も仮想 IP アドレスによって実現されます。
-* [Windows Server AD FS の高可用性構成](#BKMK_ADFSHighAvail): Windows Server AD FS ファームのデプロイでは、フェールオーバーと負荷分散用に、少なくとも 2 台のサーバーをデプロイすることをお勧めします。 Windows Server AD FS の構成データには Windows Internal Database (WID) の使用を検討してください。また、Azure の内部負荷分散機能を使用してファーム内のサーバー間で着信要求を分散させることをお勧めします。
+* [Windows Server AD FS の高可用性構成](#BKMK_ADFSHighAvail): Windows Server AD FS ファームのデプロイでは、フェールオーバーと負荷分散用に、少なくとも&2; 台のサーバーをデプロイすることをお勧めします。 Windows Server AD FS の構成データには Windows Internal Database (WID) の使用を検討してください。また、Azure の内部負荷分散機能を使用してファーム内のサーバー間で着信要求を分散させることをお勧めします。
 
 詳細については、「 [AD DS Deployment Guide (AD DS デプロイ ガイド)](https://technet.microsoft.com/library/cc753963)」を参照してください。
 
-### <a name="<a-name="bkmk_hybridext"></a>3.-ad-ds:-deploy-a-windows-server-ad-ds-aware-application-that-requires-connectivity-to-the-corporate-network"></a><a name="BKMK_HybridExt"></a>3.AD DS: 企業ネットワークへの接続が必要な Windows Server AD DS 対応のアプリケーションをデプロイする
+### <a name="BKMK_HybridExt"></a>3.AD DS: 企業ネットワークへの接続が必要な Windows Server AD DS 対応のアプリケーションをデプロイする
 ![Cross-premises AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_xprem.png)
 **図 3**
 
 #### <a name="description"></a>説明
-LDAP 対応アプリケーションを Azure 仮想マシンにデプロイします。 このアプリケーションは Windows 統合認証をサポートし、構成データとユーザー プロファイル データのリポジトリとして Windows Server AD DS を使用します。 このシナリオの目的は、会社の既存の Windows Server AD DS を利用し、かつシングル サインオンにアプリケーションを対応させることです。 アプリケーションは要求対応ではありません。 また、ユーザーはインターネットから直接アプリケーションにアクセスする必要があります。 パフォーマンスとコストを考慮し、会社のドメインに属している 2 つのドメイン コントローラーを別途、アプリケーションと共に Azure にデプロイすることになりました。
+LDAP 対応アプリケーションを Azure 仮想マシンにデプロイします。 このアプリケーションは Windows 統合認証をサポートし、構成データとユーザー プロファイル データのリポジトリとして Windows Server AD DS を使用します。 このシナリオの目的は、会社の既存の Windows Server AD DS を利用し、かつシングル サインオンにアプリケーションを対応させることです。 アプリケーションは要求対応ではありません。 また、ユーザーはインターネットから直接アプリケーションにアクセスする必要があります。 パフォーマンスとコストを考慮し、会社のドメインに属している&2; つのドメイン コントローラーを別途、アプリケーションと共に Azure にデプロイすることになりました。
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>シナリオの考慮事項と適用する技術領域
 * [ネットワーク トポロジ](#BKMK_NetworkTopology): [クロスプレミス接続](../vpn-gateway/vpn-gateway-site-to-site-create.md)を使用する Azure 仮想ネットワークを作成します。
@@ -321,7 +326,7 @@ LDAP 対応アプリケーションを Azure 仮想マシンにデプロイし�
 ## <a name="deployment-decisions-and-factors"></a>デプロイの決定事項と考慮すべき要素
 この表では、前に示したシナリオで適用した Windows Server Active Directory の技術領域、対応する決定事項、考慮すべき要素をまとめています。 デプロイ シナリオによっては適用できない技術領域もあれば、特に重要度の高い技術領域もあります。
 
-たとえば仮想ネットワークにレプリカ DC をデプロイするとき、フォレストにドメインが 1 つしかなければ、グローバル カタログ サーバーをデプロイするという選択は、そのデプロイ シナリオにとって重要ではありません。それ以上のレプリケーション要件は発生しないためです。 一方、フォレストに複数のドメインがある場合は、仮想ネットワークにグローバル カタログをデプロイするという判断は、使用可能な帯域幅、パフォーマンス、認証、ディレクトリ検索などに影響する可能性があります。
+たとえば仮想ネットワークにレプリカ DC をデプロイするとき、フォレストにドメインが&1; つしかなければ、グローバル カタログ サーバーをデプロイするという選択は、そのデプロイ シナリオにとって重要ではありません。それ以上のレプリケーション要件は発生しないためです。 一方、フォレストに複数のドメインがある場合は、仮想ネットワークにグローバル カタログをデプロイするという判断は、使用可能な帯域幅、パフォーマンス、認証、ディレクトリ検索などに影響する可能性があります。
 
 | Windows Server Active Directory の技術領域 | 決定事項 | 考慮すべき要素 |
 | --- | --- | --- |
@@ -337,26 +342,26 @@ LDAP 対応アプリケーションを Azure 仮想マシンにデプロイし�
 | [バックアップと復元](#BKMK_BUR) |データをどのように保護し、復元するか。 |システムの状態のバックアップを作成します。 |
 | [フェデレーション サーバーの構成](#BKMK_FedSrvConfig) |<li>フェデレーションを使用する新しいフォレストをクラウドにデプロイするか。</li> <li>AD FS をオンプレミスにデプロイし、プロキシをクラウドで公開するか。</li> |<li>セキュリティ</li> <li>コンプライアンス</li> <li>コスト</li> <li>ビジネス パートナーによるアプリケーションへのアクセス</li> |
 | [クラウド サービスの構成](#BKMK_CloudSvcConfig) |仮想マシンを初めて作成すると、クラウド サービスは暗黙にデプロイされるが、 それ以外にクラウド サービスをデプロイする必要があるか。 |<li>VM をインターネットに直接公開する必要はあるか。</li> <li> サービスに負荷分散は必要か。</li> |
-| [パブリック IP とプライベート IP のアドレス指定に関するフェデレーション サーバーの要件 (動的 IP と仮想 IP)](#BKMK_FedReqVIPDIP) |<li>Windows Server AD FS インスタンスにインターネットから直接アクセスする必要があるか。</li> <li>クラウドにデプロイするアプリケーションにインターネット接続専用の IP アドレスとポートが必要か。</li> |デプロイする環境に必要な仮想 IP アドレスごとに 1 つのクラウド サービスを作成します。 |
+| [パブリック IP とプライベート IP のアドレス指定に関するフェデレーション サーバーの要件 (動的 IP と仮想 IP)](#BKMK_FedReqVIPDIP) |<li>Windows Server AD FS インスタンスにインターネットから直接アクセスする必要があるか。</li> <li>クラウドにデプロイするアプリケーションにインターネット接続専用の IP アドレスとポートが必要か。</li> |デプロイする環境に必要な仮想 IP アドレスごとに&1; つのクラウド サービスを作成します。 |
 | [Windows Server AD FS の高可用性構成](#BKMK_ADFSHighAvail) |<li>Windows Server AD FS サーバー ファーム内のノードの数。</li> <li>Windows Server AD FS プロキシ ファームにデプロイするノードの数。</li> |回復性とフォールト トレランス |
 
-### <a name="<a-name="bkmk_networktopology"></a>network-topology"></a><a name="BKMK_NetworkTopology"></a>ネットワーク トポロジ
+### <a name="BKMK_NetworkTopology"></a>ネットワーク トポロジ
 Windows Server AD DS の IP アドレスの整合性と DNS の要件を満たすには、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)をまず作成し、仮想マシンをその仮想ネットワークに接続する必要があります。 仮想ネットワークの作成時、必要に応じてオンプレミスの企業ネットワークにも接続可能にするかどうかを決める必要があります。接続可能にすると、Azure 仮想マシンがオンプレミスのコンピューターに透過的に接続するようになります。この接続性は、従来の VPN テクノロジを使用して実現され、企業ネットワークの境界に VPN エンドポイントを公開することが必要です。 つまり、VPN 接続は Azure 側から企業ネットワーク側に開始されます。その逆に開始されることはありません。
 
 仮想ネットワークをオンプレミス ネットワークに拡張すると、各 VM に適用される標準の料金に加算して追加の料金が適用されることに注意してください。 具体的には、Azure Virtual Network ゲートウェイの CPU 時間に対する課金と、オンプレミス コンピューターと VPN 経由で通信する各 VM によって生成される送信トラフィックに対する課金です。 ネットワーク トラフィックの料金の詳細については、「 [Azure の価格](http://azure.microsoft.com/pricing/)」を参照してください。
 
-### <a name="<a-name="bkmk_deploymentconfig"></a>dc-deployment-configuration"></a><a name="BKMK_DeploymentConfig"></a>DC のデプロイ構成
+### <a name="BKMK_DeploymentConfig"></a>DC のデプロイ構成
 DC の構成方法は、Azure で実行するサービスの要件によって異なります。 たとえば、自社のフォレストから分離した新しいフォレストをデプロイして、概念実証や新しいアプリケーション、その他の短期プロジェクトのテストに使用することが考えられます。このようなテストで必要なのはディレクトリ サービスであって、企業の内部リソースへのアクセスは必要ありません。
 
 分離したフォレストの DC がオンプレミスの DC との間でレプリケートされないため、システム自体によって生成される送信ネットワーク トラフィックが減って、コストの削減に直結することが利点として挙げられます。 ネットワーク トラフィックの料金の詳細については、「 [Azure の価格](http://azure.microsoft.com/pricing/)」を参照してください。
 
-もう 1 つ例を挙げます。社内の Windows Server Active Directory へのアクセスを必要とするサービスにプライバシー要件が課せられているとします。 サービスのデータをクラウドでホストすることが認められていれば、社内フォレストに使用する新しい子ドメインを Azure にデプロイしてもかまいません。 この場合、新しい子ドメインの DC をデプロイできます (プライバシーの問題に対処するため、グローバル カタログは使用しません)。 このシナリオでは、レプリカ DC のデプロイも必要になるため、オンプレミス DC との接続用に仮想ネットワークが必要です。
+もう&1; つ例を挙げます。社内の Windows Server Active Directory へのアクセスを必要とするサービスにプライバシー要件が課せられているとします。 サービスのデータをクラウドでホストすることが認められていれば、社内フォレストに使用する新しい子ドメインを Azure にデプロイしてもかまいません。 この場合、新しい子ドメインの DC をデプロイできます (プライバシーの問題に対処するため、グローバル カタログは使用しません)。 このシナリオでは、レプリカ DC のデプロイも必要になるため、オンプレミス DC との接続用に仮想ネットワークが必要です。
 
 新しいフォレストを作成する場合は、[Active Directory による信頼関係](https://technet.microsoft.com/library/cc771397)を使用するか[フェデレーションによる信頼関係](https://technet.microsoft.com/library/dd807036)を使用するかを選択します。 互換性、セキュリティ、コンプライアンス、コスト、回復性に関して規定された各要件のバランスを考慮してください。 たとえば [選択的認証](https://technet.microsoft.com/library/cc755844) を利用するには、Azure に新しいフォレストをデプロイし、オンプレミスのフォレストとクラウドのフォレストとの間に Windows Server Active Directory による信頼関係を作成することが一つの選択肢となります。 一方、アプリケーションが要求対応である場合は、Active Directory フォレストによる信頼関係ではなく、フェデレーションによる信頼関係をデプロイすることが考えられますまた、コストも考慮しなければなりません。 オンプレミスの Windows Server Active Directory をクラウドに拡張することで、レプリケートするデータが増えたり、認証と照会の処理により生成される送信トラフィックが増えたりするので、そのために必要なコストが問題になります。
 
 どのようなデプロイ構成を採用するかの判断には、可用性とフォールト トレランスの要件も関係してきます。 たとえばリンクが中断された場合、必要なインフラストラクチャが Azure にデプロイされていない限り、Kerberos による信頼関係またはフェデレーションによる信頼関係を利用するアプリケーションは、高い確率で機能不全となります。 レプリカ DC (書き込み可能 DC または読み取り専用 DC) など代替のデプロイ構成を用意すれば、リンクの停止に対する耐性を高めることができます。
 
-### <a name="<a-name="bkmk_adsitetopology"></a>windows-server-active-directory-site-topology"></a><a name="BKMK_ADSiteTopology"></a>Windows Server Active Directory のサイト トポロジ
+### <a name="BKMK_ADSiteTopology"></a>Windows Server Active Directory のサイト トポロジ
 トラフィックを最適化してコストを最小限に抑えるには、サイトとサイト リンクを正しく定義する必要があります。 サイト、サイト リンク、サブネットは DC 間のレプリケーション トポロジと認証トラフィックのフローに影響を与えます。 トラフィックへの課金について次の点を考慮したうえで、デプロイ シナリオの要件に応じて DC をデプロイ、構成します。
 
 * ゲートウェイ自体に対して時間単位でわずかな料金が発生する。
@@ -372,7 +377,7 @@ DC の構成方法は、Azure で実行するサービスの要件によって�
 * コストを抑えることが最優先課題である場合は、レプリケーションがスケジュールされていること、変更通知が無効になっていることを確認します。 これがサイト間のレプリケート時の既定の構成です。 仮想ネットワークに RODC をデプロイする場合、送信方向に変更がレプリケートされることはないので、この構成は重要ではありません。 しかし、書き込み可能 DC をデプロイする場合は、必要以上に高い頻度で変更をレプリケートするようにサイト リンクが構成されていないか必ず確認してください。 グローバル カタログ サーバー (GC) をデプロイする場合は、GC が置かれている他のすべてのサイトについて、ドメイン パーティションのレプリケート元となるソース DC のあるサイトが、Azure サイト内の GC よりも低コストのサイト リンクに接続されていることを確認してください。
 * さらに、レプリケーションの圧縮アルゴリズムを変更することで、サイト間のレプリケーションによって生成されるネットワーク トラフィックを減らすこともできます。 圧縮アルゴリズムは、REG_DWORD レジストリ エントリである HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Replicator compression algorithm によって制御されます。 既定値は 3 で、Xpress 圧縮アルゴリズムを指定しています。 値を 2 に変更して、アルゴリズムを MSZIP に変更できます。 ほとんどの場合、これにより圧縮率は高くなりますが、その分 CPU 使用率も上昇します。 詳細については、「 [How Active Directory replication topology works (Active Directory のレプリケーション トポロジのしくみ)](https://technet.microsoft.com/library/cc755994)」を参照してください。
 
-### <a name="<a-name="bkmk_ipaddressdns"></a>ip-addressing-and-dns"></a><a name="BKMK_IPAddressDNS"></a>IP アドレス指定と DNS
+### <a name="BKMK_IPAddressDNS"></a>IP アドレス指定と DNS
 Azure 仮想マシンには、"DHCP によってリースされたアドレス" が既定で割り当てられます。 Azure 仮想ネットワークの動的アドレスは、仮想マシンの有効期間にわたって仮想マシンに保持されるため、Windows Server AD DS の要件は満たされます。
 
 結果的に、Azure で動的アドレスを使用すると、実際には静的 IP アドレスを使用していることになります。アドレスはリース期間にわたって割り振り可能であり、リース期間はクラウド サービスの有効期間と等しくなるためです。
@@ -389,9 +394,9 @@ Azure 仮想マシンには、"DHCP によってリースされたアドレス" 
 
 VM は VM 自体の DNS 名を起動時または名前変更時に自動的に登録します。
 
-この例の詳細と、最初の VM をプロビジョニングしてその VM に AD DS をインストールする別の例については、「 [Azure Virtual Network での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。 Windows PowerShell の使用の詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」および[Azure の管理コマンドレット](https://msdn.microsoft.com/library/azure/jj152841)に関するページをご覧ください。
+この例の詳細と、最初の VM をプロビジョニングしてその VM に AD DS をインストールする別の例については、「 [Azure Virtual Network での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。 Windows PowerShell の使用の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」および[Azure の管理コマンドレット](https://msdn.microsoft.com/library/azure/jj152841)に関するページをご覧ください。
 
-### <a name="<a-name="bkmk_distributeddcs"></a>geo-distributed-dcs"></a><a name="BKMK_DistributedDCs"></a>地理的に分散された DC
+### <a name="BKMK_DistributedDCs"></a>地理的に分散された DC
 複数の DC をそれぞれ異なる仮想ネットワークでホストする利点は次のとおりです。
 
 * マルチサイトのフォールト トレランス
@@ -399,7 +404,7 @@ VM は VM 自体の DNS 名を起動時または名前変更時に自動的に�
 
 仮想ネットワーク間での直接通信の構成の詳細については、「 [Azure クラシック ポータルでの VNet 間接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。
 
-### <a name="<a-name="bkmk_rodc"></a>read-only-dcs"></a><a name="BKMK_RODC"></a>読み取り専用 DC
+### <a name="BKMK_RODC"></a>読み取り専用 DC
 読み取り専用 DC をデプロイするか書き込み可能 DC をデプロイするかを選択する必要があります。 ドメイン コントローラーには物理的な管理が行き届かないために、RODC をデプロイしようと考える方が多いかもしれません。しかし RODC は、物理的なセキュリティ リスクがある場所 (ブランチ オフィスなど) へのデプロイを想定して設計されています。
 
 ブランチ オフィスにおける物理的なセキュリティ リスクは、Azure にはありません。しかしそれでも、RODC の方が、コスト効果の面で有利であると考えられます。本来の意義とは大きく異なるものの、RODC の機能はこうした環境によく適合しているためです。 たとえば、RODC では送信方向のレプリケーションがなく、またシークレット (パスワード) の取り込みも選択的に行うことができます。 シークレットが不足しているために、ユーザーまたはコンピューターが本人性を証明する際、それらを検証するための送信トラフィックがオンデマンドで発生するのが欠点となります。 しかしシークレットは、あらかじめ取り込んでキャッシュしておくこともできます。
@@ -408,14 +413,14 @@ RODC は、HBI (高ビジネス インパクト) や PII (個人を特定でき�
 
 使用予定の RODC がアプリケーションの動作に支障をきたさないことを確認してください。 Windows Server Active Directory 対応のアプリケーションはその多くが RODC と正しく連動しますが、書き込み可能 DC にアクセスできない場合、効率的または正常に実行できないアプリケーションもあります。 詳細については、「 [アプリケーションと読み取り専用ドメイン コントローラーの互換性](https://technet.microsoft.com/library/cc755190)」を参照してください。
 
-### <a name="<a-name="bkmk_gc"></a>global-catalog"></a><a name="BKMK_GC"></a>グローバル カタログ
+### <a name="BKMK_GC"></a>グローバル カタログ
 グローバル カタログ (GC) をインストールするかどうかを選択する必要があります。 単一ドメイン フォレストでは、すべての DC をグローバル カタログ サーバーとして構成することをお勧めします。 レプリケーション トラフィックの増大を伴わないので、それによってコストが増えることはありません。
 
 マルチドメイン フォレストでは、認証プロセス中にユニバーサル グループのメンバーシップを取得するために GC が必要となります。 GC をデプロイしない場合、Azure 上の DC に対して認証を行う仮想ネットワークのワークロードにより、送信方向の認証トラフィックが間接的に発生します。認証が試みられるたびにオンプレミスの GC が照会されるためです。
 
 GC には (部分的とはいえ) すべてのドメインがホストされるので、GC に関連するコストは予測が困難です。 インターネットに公開されたサービスをホストし、Windows Server AD DS に対してユーザーを認証するワークロードにいたっては、コストをまったく予測できないこともあります。 認証時にクラウド サイトの範囲外への GC の照会を減らすには、 [ユニバーサル グループ メンバーシップ キャッシュを有効](https://technet.microsoft.com/library/cc816928)にするのが効果的です。
 
-### <a name="<a-name="bkmk_installmethod"></a>installation-method"></a><a name="BKMK_InstallMethod"></a>インストール方法
+### <a name="BKMK_InstallMethod"></a>インストール方法
 仮想ネットワークに DC をインストールする方法を選択する必要があります。
 
 * 新しい DC を昇格させる。 詳細については、「 [Azure Virtual Network での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。
@@ -425,7 +430,7 @@ DC には、(Azure の Web ロールや worker ロールの VM ではなく) 必
 
 SYSPREP を使用して DC をデプロイしたり複製したりしないでください。 DC の複製機能は Windows Server 2012 以降でのみ使用できます。 DC の複製機能を使用するには、土台となるハイパーバイザーが VMGenerationID に対応している必要があります。 Windows Server 2012 の Hyper-V と Azure 仮想ネットワークは両方とも、サード パーティ製の仮想化ソフトウェア ベンダーと同様に、VMGenerationID をサポートしています。
 
-### <a name="<a-name="bkmk_placedb"></a>placement-of-the-windows-server-ad-ds-database-and-sysvol"></a><a name="BKMK_PlaceDB"></a>Windows Server AD DS データベースと SYSVOL の配置
+### <a name="BKMK_PlaceDB"></a>Windows Server AD DS データベースと SYSVOL の配置
 Windows Server AD DS のデータベース、ログ、SYSVOL を検索する場所を選択します。 これらのデータは Azure データ ディスクにデプロイする必要があります。
 
 > [!NOTE]
@@ -442,14 +447,14 @@ Windows Server AD DS にとって、この動作は重要です。後書きデ�
 * Azure データ ディスクの [ホスト キャッシュ設定] を [なし] に設定します。 そうすれば、AD DS の動作で書き込みキャッシュの問題は発生しません。
 * データベース、ログ、SYSVOL をすべて同じデータ ディスクに保存するか、別々のデータ ディスクに保存します。 データ ディスクは通常、オペレーティング システム自体に使用されるディスクとは分かれています。 重要なのは、Windows Server AD DS のデータベースと SYSVOL を Azure オペレーティング システム ディスクに保存しないということです。 既定では、AD DS のインストール プロセスによりこれらのコンポーネントは %systemroot% フォルダーにインストールされますが、Azure にはお勧めしません。
 
-### <a name="<a-name="bkmk_bur"></a>backup-and-restore"></a><a name="BKMK_BUR"></a>バックアップと復元
+### <a name="BKMK_BUR"></a>バックアップと復元
 DC のバックアップと復元、特に VM で実行されている DC のバックアップと復元に関して、何がサポートされ、何がサポートされていないかについて注意が必要です。 「 [仮想化ドメイン コントローラーのバックアップと復元に関する考慮事項](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv#backup_and_restore_considerations_for_virtualized_domain_controllers)」を参照してください。
 
 Windows Server AD DS に関するバックアップの要件を厳密に満たしているバックアップ ソフトウェア (Windows Server バックアップなど) のみを使用して、システムの状態のバックアップを作成します。
 
 DC の VHD ファイルをコピーしたり複製したりするのではなく、通常のバックアップを行ってください。 万一復元が必要になった場合、サポートされているハイパーバイザーと Windows Server 2012 を介さずに、VHD の複製またはコピーによって復元すると USN バブルが発生します。
 
-### <a name="<a-name="bkmk_fedsrvconfig"></a>federation-server-configuration"></a><a name="BKMK_FedSrvConfig"></a>フェデレーション サーバーの構成
+### <a name="BKMK_FedSrvConfig"></a>フェデレーション サーバーの構成
 Windows Server AD FS フェデレーション サーバー (STS) の構成は、Azure にデプロイするアプリケーションがオンプレミス ネットワーク上のリソースにアクセスする必要があるかどうかによってやや異なります。
 
 アプリケーションが次の条件を満たしている場合に、オンプレミス ネットワークから切り離してアプリケーションをデプロイすることができます。
@@ -475,15 +480,15 @@ Windows Server AD FS フェデレーション サーバー (STS) の構成は、
 
 どちらのシナリオでも、企業間のグループ作業が必要な場合は、ID プロバイダーを増やしてそれらのプロバイダーとの信頼関係を確立できることに注意してください。
 
-### <a name="<a-name="bkmk_cloudsvcconfig"></a>cloud-services-configuration"></a><a name="BKMK_CloudSvcConfig"></a>クラウド サービスの構成
-インターネットに VM を直接公開したり、インターネットに接続された負荷分散アプリケーションを公開したりする場合は、クラウド サービスが必要です。 クラウド サービスにはそれぞれ、設定によって変更できる仮想 IP アドレスが 1 つ用意されており、それによってインターネット接続が実現されます。
+### <a name="BKMK_CloudSvcConfig"></a>クラウド サービスの構成
+インターネットに VM を直接公開したり、インターネットに接続された負荷分散アプリケーションを公開したりする場合は、クラウド サービスが必要です。 クラウド サービスにはそれぞれ、設定によって変更できる仮想 IP アドレスが&1; つ用意されており、それによってインターネット接続が実現されます。
 
-### <a name="<a-name="bkmk_fedreqvipdip"></a>federation-server-requirements-for-public-and-private-ip-addressing-(dynamic-ip-vs.-virtual-ip)"></a><a name="BKMK_FedReqVIPDIP"></a>パブリック IP とプライベート IP のアドレス指定に関するフェデレーション サーバーの要件 (動的 IP と仮想 IP)
-個々の Azure 仮想マシンには動的 IP アドレスが割り当てられます。 動的 IP アドレスは、Azure 内でのみアクセス可能なプライベート アドレスです。 一方、Windows Server AD FS のデプロイには、ほとんどの場合、仮想 IP アドレスの構成が伴います。 Windows Server AD FS のエンドポイントをインターネットに公開するためには仮想 IP アドレスが必要であり、フェデレーション パートナーやクライアントは、仮想 IP アドレスを使って認証や継続的な管理を行います。 仮想 IP アドレスは、1 つまたは複数の Azure 仮想マシンのホストとなるクラウド サービスのプロパティです。 Azure にデプロイされた要求対応のアプリケーションと Windows Server AD FS の両方がインターネットに接続し、同じポートを共有する場合は、それぞれに専用の仮想 IP アドレスが必要になります。つまり、アプリケーション用と Windows Server AD FS 用にそれぞれ 1 つのクラウド サービスを作成する必要があります。
+### <a name="BKMK_FedReqVIPDIP"></a>パブリック IP とプライベート IP のアドレス指定に関するフェデレーション サーバーの要件 (動的 IP と仮想 IP)
+個々の Azure 仮想マシンには動的 IP アドレスが割り当てられます。 動的 IP アドレスは、Azure 内でのみアクセス可能なプライベート アドレスです。 一方、Windows Server AD FS のデプロイには、ほとんどの場合、仮想 IP アドレスの構成が伴います。 Windows Server AD FS のエンドポイントをインターネットに公開するためには仮想 IP アドレスが必要であり、フェデレーション パートナーやクライアントは、仮想 IP アドレスを使って認証や継続的な管理を行います。 仮想 IP アドレスは、1 つまたは複数の Azure 仮想マシンのホストとなるクラウド サービスのプロパティです。 Azure にデプロイされた要求対応のアプリケーションと Windows Server AD FS の両方がインターネットに接続し、同じポートを共有する場合は、それぞれに専用の仮想 IP アドレスが必要になります。つまり、アプリケーション用と Windows Server AD FS 用にそれぞれ&1; つのクラウド サービスを作成する必要があります。
 
 仮想 IP アドレスおよび動的 IP アドレスという用語の定義については、「 [用語と定義](#BKMK_Glossary)」を参照してください。
 
-### <a name="<a-name="bkmk_adfshighavail"></a>windows-server-ad-fs-high-availability-configuration"></a><a name="BKMK_ADFSHighAvail"></a>Windows Server AD FS の高可用性構成
+### <a name="BKMK_ADFSHighAvail"></a>Windows Server AD FS の高可用性構成
 Windows Server AD FS フェデレーション サービスをスタンドアロンでデプロイすることはできますが、運用環境の AD FS STS とプロキシ用に、2 つ以上のノードを備えたファームをデプロイすることをお勧めします。
 
 特定のニーズに最適なデプロイ構成オプションを選択するには、[AD FS 2.0 の設計ガイド](https://technet.microsoft.com/library/dd807036)で [AD FS 2.0 のデプロイ トポロジに関する考慮事項](https://technet.microsoft.com/library/gg982489)を参照してください。
@@ -493,7 +498,5 @@ Windows Server AD FS フェデレーション サービスをスタンドアロ�
 > Windows Server のネットワーク負荷分散 (NLB) は Azure でサポートされていません。
 > 
 > 
-
-<!--HONumber=Oct16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Test your VM offer for the Marketplace | Microsoft Docs
-description: Understand how to test your VM image for the Azure Marketplace.
+title: "Marketplace の VM プランのテスト | Microsoft Docs"
+description: "Azure Marketplace の VM イメージをテストする方法を理解します。"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,50 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ad057a9129156c0ad5094a73c0da2899fc2a3812
+
 
 ---
-# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Test your VM offer for the Azure Marketplace in staging
-Staging means deploying your SKU in a private “sandbox” where you can test and validate its functionality before deploying it to the Marketplace. The SKU appears in staging just as it would to a customer who has deployed it. Your VM image must be certified to be pushed to staging.
+# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>ステージングでの Azure Marketplace の VM プランのテスト
+ステージングとは、SKU をプライベートの「サンドボックス」にデプロイすることです。そこから、Marketplace にデプロイする前に、機能をテストおよび検証できます。 ステージングでは、SKU はそれをデプロイしたお客様に表示されるのと同じように表示されます。 VM イメージをステージングにプッシュするには認定を受ける必要があります。
 
-## <a name="step-1:-push-your-offer-to-staging"></a>Step 1: Push your offer to staging
-1. On the **Publish** tab, click **Push to Staging**.
+## <a name="step-1-push-your-offer-to-staging"></a>手順 1: ステージングへのプランのプッシュ
+1. **[発行]** タブで **[ステージングにプッシュ]** をクリックします。
    
-    ![drawing](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
-2. If the Publishing Portal notifies you of any errors, correct them.
-3. In the **Who can access your staged offer?** dialog box, enter the list of Azure subscriptions that you will use to preview your offer in the [Azure preview portal](https://portal.azure.com).
+    ![図](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
+2. 発行ポータルでエラーが通知される場合は、それらを修正します。
+3. **[ステージングされたプランにアクセスできるユーザー]** ダイアログ ボックスで、 [Azure プレビュー ポータル](https://portal.azure.com)でプランをプレビューするために使用する Azure サブスクリプションのリストを入力します。
    
    > [!NOTE]
-   > In case of Virtual Machines and Solution templates, please **do not** whitelist subscriptions of type CSP, DreamSpark or Azure in Open.
+   > Virtual Machines テンプレートとソリューション テンプレートの場合、タイプが CSP、DreamSpark、または Azure イン オープン プランのサブスクリプションは、ホワイトリストに登録 **しない** でください。
    > 
    > 
 
-    > In case of Virtual Machines, when you click on the button **PUSH TO STAGING**, the following steps are performed behind the scene. You will be able to view the progress of each step under the PUBLISH tab in the Publishing portal. You must check this page at regular interval (until the status shows STAGED) for any failure information which need correction from your end.
+    > Virtual Machines の場合、 **[PUSH TO STAGING (ステージングにプッシュ)]**をクリックすると、次の手順が見えないところで実行されます。 各手順の進行状況は、発行ポータルの [発行] タブで確認できます。 このページは (ステータスが "ステージング済み" になるまで) 定期的にチェックして、ご自身で修正する必要があるエラーがないかどうかを確認してください。
 
-    > - At first your staging request goes to the certification team who validate the vhd. However, if your request has got only marketing change, then the certification step is skipped.
-    > - Once the certification is complete, replication of the offer start across all the Azure datacenters. It generally takes 24-48hours for the replication to complete but may take up to a week depending on the size of the vhd. However, if your request has got only marketing change, then the replication is faster.
-    > - When the replication is complete, then the offer will be available in the [Azure portal](http:/portal.azure.com). At that time the status become STAGED in the Publishing portal. A staged offer is visible in the [Azure portal](http:/portal.azure.com) only using the email id(s) associated with the subscription with which the offer is staged.
+    > - ステージング要求は、まず、VHD を検証する認定チームに送信されます。 ただし、マーケティングの変更のみの場合、認定手順はスキップされます。
+    > - 認定が完了したら、すべての Azure データセンターへのプランのレプリケーションが開始されます。 一般的に、レプリケーションの所要時間は 24 ～ 48 時間ですが、VHD のサイズによっては最大で 1 週間かかる場合があります。 ただし、マーケティングの変更だけの場合、レプリケーションはもっと早く完了します。
+    > - レプリケーションが完了したら、 [Azure ポータル](http:/portal.azure.com)でプランが使用できるようになります。 この時点で、発行ポータルでのステータスは "ステージング済み" になります。 ステージングされたプランを [Azure ポータル](http:/portal.azure.com) に表示するには、プランのステージングで使用されたサブスクリプションに関連付けられている、電子メール ID を使う必要があります。
 
-1. Sign in to the [Azure preview portal](https://portal.azure.com) by using one of the Azure subscriptions listed in the previous step.
-2. Find your offer and validate your VM image points:
+1. 前の手順で示されている上記のいずれかの Azure サブスクリプションを使用して、 [Azure プレビュー ポータル](https://portal.azure.com) にサインインします。
+2. プランを検索して、VM イメージについて以下の点を検証します。
    
-   * Make sure that marketing content shows up correctly in the Marketplace.
-   * End-to-end deployment of the VM image.
+   * マーケティング コンテンツが Marketplace に正しく表示されていることを確認します。
+   * VM イメージのエンド ツー エンドのデプロイメント。
      
       ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
 > [!IMPORTANT]
-> Your offer will remain in staging until you notify Microsoft via the Publishing Portal [**Publish** tab > click on the button **"Request Approval to Push to Production"**] that you are ready to push to production. This is an ideal time to have all members of your team check over everything in preparation for your offer going listed.
+> プランは、本番にプッシュする準備が整っている発行ポータル (**[発行]** タブで **[Request approval to push to production (本番にプッシュするための承認を要求)]** をクリック) を介して Microsoft に通知するまで、ステージング状態のままです。 この時期が、プラン表示への移行の準備段階で必要な項目をチームのすべてのメンバーにチェックさせるのに最適です。
 > 
-> The staging platform is designed for testing the offer in a preview mode by the publisher. We strongly discourage using this platofrm for commerical purposes.
+> ステージング プラットフォームは、発行元がプレビュー モードでプランをテストするために設計されています。 このプラットフォームは、商用目的では使用しないことを強くお勧めします。
 > 
 > 
 
-## <a name="next-steps"></a>Next steps
-Now that your offer is "staged" and you have tested its functionality and marketing content, you can proceed to the final publishing phase, **Step 4**: [Deploying your offer to the Marketplace](marketplace-publishing-push-to-production.md).
+## <a name="next-steps"></a>次のステップ
+これで、プランは「ステージングされた」状態になり、その機能とマーケティング コンテンツがテストされたので、最終発行段階である **手順 4**の「 [Azure Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。
 
-## <a name="see-also"></a>See also
-* [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>関連項目
+* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,55 +1,61 @@
 ---
-title: Partitioning tables in SQL Data Warehouse | Microsoft Docs
-description: Getting started with table partitioning in Azure SQL Data Warehouse.
+title: "SQL Data Warehouse でのテーブルのパーティション分割 | Microsoft Docs"
+description: "Azure SQL Data Warehouse でのテーブルのパーティション分割の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 6cef870c-114f-470c-af10-02300c58885d
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0d2ff3ce90c355ba63f3fb66982baa621091ae6e
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitioning tables in SQL Data Warehouse
+# <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのパーティション分割
 > [!div class="op_single_selector"]
-> * [Overview][Overview]
-> * [Data Types][Data Types]
-> * [Distribute][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Temporary][Temporary]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
-Partitioning is supported on all SQL Data Warehouse table types; including clustered columnstore, clustered index, and heap.  Partitioning is also supported on all distribution types, including both hash or round robin distributed.  Partitioning enables you to divide your data into smaller groups of data and in most cases, partitioning is done on a date column.
+パーティション分割は、クラスター化列ストア、クラスター化インデックス、ヒープなど、SQL Data Warehouse のすべてのテーブル型でサポートされます。  パーティション分割は、ハッシュ分散とラウンド ロビン分散の両方を含むあらゆる種類のディストリビューションでもサポートされます。  パーティション分割により、データはより小さなグループに分割されます。ほとんどの場合、パーティション分割は日付列で実行されます。
 
-## <a name="benefits-of-partitioning"></a>Benefits of partitioning
-Partitioning can benefit data maintenance and query performance.  Whether it benefits both or just one is dependent on how data is loaded and whether the same column can be used for both purposes, since partitioning can only be done on one column.
+## <a name="benefits-of-partitioning"></a>パーティション分割のメリット
+パーティション分割をすると、データのメンテナンスとクエリのパフォーマンスでメリットを得ることができます。  両方のメリットを得られるか、片方のみかは、データの読み込み方法と、同じ列を両方の目的で使用できるかどうかによります。その理由は、パーティション分割を実行できるのが 1 つの列のみであるためです。
 
-### <a name="benefits-to-loads"></a>Benefits to loads
-The primary benefit of partitioning in SQL Data Warehouse is improve the efficiency and performance of loading data by use of partition deletion, switching and merging.  In most cases data is partitioned on a date column that is closely tied to the sequence which the data is loaded to the database.  One of the greatest benefits of using partitions to maintain data it the avoidance of transaction logging.  While simply inserting, updating or deleting data can be the most straightforward approach, with a little thought and effort, using partitioning during your load process can substantially improve performance.
+### <a name="benefits-to-loads"></a>読み込みに対するメリット
+SQL Data Warehouse でパーティション分割する主なメリットは、パーティションの削除、切り替え、および結合の使用による、データの読み込みの効率性とパフォーマンスの向上です。  ほとんどの場合、データは、データがデータベースに読み込まれる順序に密接に関連付けられている日付列でパーティション分割されます。  データを保持するためにパーティションを使用する最大のメリットの 1 つが、トランザクション ログの回避です。  単にデータを挿入、更新、または削除するのは最も簡単なアプローチですが、少しの配慮と労力を注いで読み込みプロセス中にパーティション分割を使用すると、大幅にパフォーマンスを向上できます。
 
-Partition switching can be used to quickly remove or replace a section of a table.  For example, a sales fact table might contain just data for the past 36 months.  At the end of every month, the oldest month of sales data is deleted from the table.  This data could be deleted by using a delete statement to delete the data for the oldest month.  However, deleting a large amount of data row-by-row with a delete statement can take a very long time, as well as create the risk of large transactions which could take a long time to rollback if something goes wrong.  A more optimal approach is to simply drop the oldest partition of data.  Where deleting the individual rows could take hours, deleting an entire partition could take seconds.
+テーブルのセクションを手早く削除したり置き換えたりするには、パーティションの切り替えを使用できます。  たとえば、売上のファクト テーブルに過去 36 か月のデータのみが含まれるとします。  毎月末に、最も古い月の売上データがテーブルから削除されます。  このデータは、最も古い月のデータを削除する delete ステートメントを使用して削除できます。  ただし、大量のデータを delete ステートメントで行単位で削除すると、非常に長い時間がかかるだけでなく、問題が生じた場合に、トランザクションが巨大なことにより、ロールバックに時間がかかるリスクが生じる可能性があります。  より最適なアプローチは、単にデータの最も古いパーティションを削除する方法です。  個々の行の削除に時間がかかる可能性がある場合、パーティション全体を削除すると、わずかな時間で終了する可能性があります。
 
-### <a name="benefits-to-queries"></a>Benefits to queries
-Partitioning can also be used to improve query performance.  If a query applies a filter on a partitioned column, this can limit the scan to only the qualifying partitions which may be a much smaller subset of the data, avoiding a full table scan.  With the introduction of clustered columnstore indexes, the predicate elimination performance benefits are less beneficial, but in some cases there can be a benefit to queries.  For example, if the sales fact table is partitioned into 36 months using the sales date field, then queries that filter on the sale date can skip searching in partitions that don’t match the filter.
+### <a name="benefits-to-queries"></a>クエリに対するメリット
+パーティション分割により、クエリのパフォーマンスを向上させることもできます。  クエリで、パーティション分割された列にフィルターを適用すると、限定されたパーティションのみにスキャンを制限でき、対象のパーティションがより小さなデータのサブセットになる可能性があるため、フル テーブル スキャンを回避できます。  クラスター化列ストア インデックスの導入では、述語の削除によるパフォーマンスのメリットはあまりありませんが、クエリにメリットをもたらす場合があります。  たとえば、売上のファクト テーブルが販売日フィールドを使用して 36 か月にパーティション分割されている場合は、販売日をフィルター処理するクエリによって、フィルターと一致しないパーティションの検索を省略できます。
 
-## <a name="partition-sizing-guidance"></a>Partition sizing guidance
-While partitioning can be used to improve performance some scenarios, creating a table with **too many** partitions can hurt performance under some circumstances.  These concerns are especially true for clustered columnstore tables.  For partitioning to be helpful, it is important to understand when to use partitioning and the number of partitions to create.  There is no hard fast rule as to how many partitions are too many, it depends on your data and how many partitions you are loading to simultaneously.  But as a general rule of thumb, think of adding 10s to 100s of partitions, not 1000s.
+## <a name="partition-sizing-guidance"></a>パーティションのサイズ設定のガイダンス
+パーティション分割を使用すると一部のシナリオのパフォーマンスが向上する可能性がありますが、パーティションが **多すぎる** テーブルを作成すると、特定の状況でパフォーマンスが低下する可能性があります。  これらの問題は、特にクラスター化列ストア テーブルに当てはまります。  パーティション分割が役立つように、パーティション分割を使用する時期と作成するパーティション数を把握することが重要です。  パーティションの数が多すぎるかどうかについて厳格なルールはなく、データと、同時に読み込むパーティションの数によります。  ただし一般的な経験則として、数千ではなく、数十から数百のパーティションを追加することを検討してください。
 
-When creating partitioning on **clustered columnstore** tables, it is important to consider how many rows will land in each partition.  For optimal compression and performance of clustered columnstore tables, a minimum of 1 million rows per distribution and partition is needed.  Before partitions are created, SQL Data Warehouse already divides each table into 60 distributed databases.  Any partitioning added to a table is in addition to the distributions created behind the scenes.  Using this example, if the sales fact table contained 36 monthly partitions, and given that SQL Data Warehouse has 60 distributions, then the sales fact table should contain 60 million rows per month, or 2.1 billion rows when all months are populated.  If a table contains significantly less rows than the recommended minimum number of rows per partition, consider using fewer partitions in order to make increase the number of rows per partition.  Also see the [Indexing][Index] article which includes queries that can be run on SQL Data Warehouse to assess the quality of cluster columnstore indexes.
+**クラスター化列ストア** テーブルでパーティションを作成するときに、各パーティションに取り込まれる行数が重要になります。  クラスター化列ストア テーブルの圧縮とパフォーマンスを最適化するためには、ディストリビューションおよびパーティションあたり少なくとも 100 万行が必要です。  SQL Data Warehouse では、パーティションが作成される前に、各テーブルが 60 個の分散データベースに既に分割されています。  テーブルに追加されるすべてのパーティション分割は、バックグラウンドで作成されたディストリビューションに追加されたものです。  この例を使用して、売上のファクト テーブルに 36 か月のパーティションが含まれる場合、SQL Data Warehouse に 60 のディストリビューションがあるとすると、売上のファクト テーブルは 1 か月あたり 6 千万行、すべての月を指定する場合は 21 億行を含む必要があります。  テーブルに含まれる行が、パーティションごとの推奨される最小の行数よりも大幅に少ない場合、パーティションあたりの行数を増やすためにパーティション数を少なくすることを検討する必要があります。  また、[インデックス作成][Index]に関する記事も参照してください。この記事には、クラスター化列ストア インデックスの質を評価するために SQL Data Warehouse で実行できるクエリについて記載されています。
 
-## <a name="syntax-difference-from-sql-server"></a>Syntax difference from SQL Server
-SQL Data Warehouse introduces a simplified definition of partitions which is slightly different from SQL Server.  Partitioning functions and schemes are not used in SQL Data Warehouse as they are in SQL Server.  Instead, all you need to do is identify partitioned column and the boundary points.  While the syntax of partitioning may be slightly different from SQL Server, the basic concepts are the same.  SQL Server and SQL Data Warehouse support one partition column per table, which can be ranged partition.  To learn more about partitioning, see [Partitioned Tables and Indexes][Partitioned Tables and Indexes].
+## <a name="syntax-difference-from-sql-server"></a>SQL Server との構文の違い
+SQL Data Warehouse では、SQL Server とは少し異なり、パーティションの簡略化された定義を導入しています。  パーティション関数とパーティション構成は、SQL Server のものであるため、SQL Data Warehouse では使用されません。  代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。  パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。  SQL Server および SQL Data Warehouse は、テーブルごとに 1 つのパーティション列をサポートします。このパーティション列で、範囲指定によるパーティションを指定することができます。  パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス][Partitioned Tables and Indexes]」をご覧ください。
 
-The below example of a SQL Data Warehouse partitioned [CREATE TABLE][CREATE TABLE] statement, partitions the FactInternetSales table on the OrderDateKey column:
+次の例は、SQL Data Warehouse のパーティション分割が指定された [CREATE TABLE][CREATE TABLE] ステートメントを示しています。FactInternetSales テーブルが OrderDateKey 列でパーティション分割されます。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -75,13 +81,13 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>Migrating partitioning from SQL Server
-To migrate SQL Server partition definitions to SQL Data Warehouse simply:
+## <a name="migrating-partitioning-from-sql-server"></a>SQL Server からのパーティション分割の移行
+SQL Server のパーティション定義を SQL Data Warehouse に単純に移行するには、次の操作を行います。
 
-* Eliminate the SQL Server [partition scheme][partition scheme].
-* Add the [partition function][partition function] definition to your CREATE TABLE.
+* SQL Server の[パーティション構成][partition scheme]を除去します。
+* [パーティション関数][partition function]の定義を CREATE TABLE に追加します。
 
-If you are migrating a partitioned table from a SQL Server instance the below SQL can help you to interrogate the number of rows that are in each partition.  Keep in mind that if the same partitioning granularity is used on SQL Data Warehouse, the number of rows per partition will decrease by a factor of 60.  
+パーティション分割されたテーブルを SQL Server インスタンスから移行する場合、各パーティションに含まれる行数を調査するうえで以下の SQL が役立つ場合があります。  SQL Data Warehouse で同じパーティション分割の粒度を使用する場合、パーティションごとの行数が 60 の倍数で減少することに注意してください。  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -117,36 +123,36 @@ GROUP BY    s.[name]
 ;
 ```
 
-## <a name="workload-management"></a>Workload management
-One final piece consideration to factor in to the table partition decision is [workload management][workload management].  Workload management in SQL Data Warehouse is primarily the management of memory and concurrency.  In SQL Data Warehouse the maximum memory allocated to each distribution during query execution is governed resource classes.  Ideally your partitions will be sized in consideration of other factors like the memory needs of building clustered columnstore indexes.  Clustered columnstore indexes benefit greatly when they are allocated more memory.  Therefore, you will want to ensure that a partition index rebuild is not starved of memory. Increasing the amount of memory available to your query can be achieved by switching from the default role, smallrc, to one of the other roles such as largerc.
+## <a name="workload-management"></a>ワークロード管理
+テーブル パーティションを決定する際の考慮事項の最後の部分として、[ワークロード管理][workload management]があります。  SQL Data Warehouse のワークロード管理は、主にメモリと同時実行の管理です。  SQL Data Warehouse では、リソース クラスによって、クエリの実行中に各ディストリビューションに割り当てられる最大メモリが管理されます。  理論的には、パーティションは、クラスター化列ストア インデックスの作成に必要なメモリなどのその他の要因を考慮してサイズ変更されます。  多くのメモリを割り当てると、クラスター化列ストア インデックスのメリットが大きくなります。  したがって、パーティション インデックスの再構築でメモリ不足にならないようにする必要があります。 クエリで使用できるメモリの量を増やすには、既定のロール smallrc から largerc などの他のいずれかのロールに切り替えます。
 
-Information on the allocation of memory per distribution is available by querying the resource governor dynamic management views. In reality your memory grant will be less than the figures below. However, this provides a level of guidance that you can use when sizing your partitions for data management operations.  Try to avoid sizing your partitions beyond the memory grant provided by the extra large resource class. If your partitions grow beyond this figure you run the risk of memory pressure which in turn leads to less optimal compression.
+ディストリビューションごとのメモリの割り当てに関する情報は、リソース ガバナーの動的管理ビューを照会することで入手できます。 実際には、メモリ許可は次の数値よりも少なくなります。 ただし、データ管理操作のためにパーティションのサイズを設定するときに、これがある程度の目安になります。  非常に大きなリソース クラスで提供されるメモリ許可を上回るパーティション サイズに設定しないようにしてください。 パーティションのサイズがこの数値を上回ると、メモリ負荷のリスクが生じ、最適に圧縮できなくなります。
 
 ```sql
-SELECT  rp.[name]                               AS [pool_name]
-,       rp.[max_memory_kb]                      AS [max_memory_kb]
-,       rp.[max_memory_kb]/1024                 AS [max_memory_mb]
-,       rp.[max_memory_kb]/1048576              AS [mex_memory_gb]
-,       rp.[max_memory_percent]                 AS [max_memory_percent]
-,       wg.[name]                               AS [group_name]
-,       wg.[importance]                         AS [group_importance]
-,       wg.[request_max_memory_grant_percent]   AS [request_max_memory_grant_percent]
-FROM    sys.dm_pdw_nodes_resource_governor_workload_groups  wg
-JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools   rp ON wg.[pool_id] = rp.[pool_id]
+SELECT  rp.[name]                                AS [pool_name]
+,       rp.[max_memory_kb]                        AS [max_memory_kb]
+,       rp.[max_memory_kb]/1024                    AS [max_memory_mb]
+,       rp.[max_memory_kb]/1048576                AS [mex_memory_gb]
+,       rp.[max_memory_percent]                    AS [max_memory_percent]
+,       wg.[name]                                AS [group_name]
+,       wg.[importance]                            AS [group_importance]
+,       wg.[request_max_memory_grant_percent]    AS [request_max_memory_grant_percent]
+FROM    sys.dm_pdw_nodes_resource_governor_workload_groups    wg
+JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools    rp ON wg.[pool_id] = rp.[pool_id]
 WHERE   wg.[name] like 'SloDWGroup%'
 AND     rp.[name]    = 'SloDWPool'
 ;
 ```
 
-## <a name="partition-switching"></a>Partition switching
-SQL Data Warehouse supports partition splitting, merging, and switching. Each of these functions is excuted using the [ALTER TABLE][ALTER TABLE] statement.
+## <a name="partition-switching"></a>パーティションの切り替え
+SQL Data Warehouse では、パーティションの分割、結合、および切り替えをサポートします。 これらの各機能は、[ALTER TABLE][ALTER TABLE] ステートメントを使用して実行されます。
 
-To switch partitions between two tables you must ensure that the partitions align on their respective boundaries and that the table definitions match. As check constraints are not available to enforce the range of values in a table the source table must contain the same partition boundaries as the target table. If this is not the case, then the partition switch will fail as the partition metadata will not be synchronized.
+2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 そうでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
 
-### <a name="how-to-split-a-partition-that-contains-data"></a>How to split a partition that contains data
-The most efficient method to split a partition that already contains data is to use a `CTAS` statement. If the partitioned table is a clustered columnstore then the table partition must be empty before it can be split.
+### <a name="how-to-split-a-partition-that-contains-data"></a>データが含まれたパーティションを分割する方法
+既にデータが含まれているパーティションを分割する最も効率的な方法は、 `CTAS` ステートメントを使用することです。 パーティション テーブルがクラスター化列ストアの場合、テーブルのパーティションを分割するには、パーティションを空にしておく必要があります。
 
-Below is a sample partitioned columnstore table containing one row in each partition:
+各パーティションに行が 1 つ含まれた、パーティション分割された列ストア テーブルのサンプルを次に示します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -180,11 +186,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> By Creating the statistic object, we ensure that table metadata is more accurate. If we omit creating statistics, then SQL Data Warehouse will use default values. For details on statistics please review [statistics][statistics].
+> 統計オブジェクトを作成することによって、テーブルのメタデータをより正確なものにすることができます。 統計の作成を省略した場合は、SQL Data Warehouse では既定値が使用されます。 統計の詳細については､[統計][statistics]に関する記事をご覧ください。
 > 
 > 
 
-We can then query for the row count using the `sys.partitions` catalog view:
+次に、 `sys.partitions` カタログ ビューを使用して行数を照会できます。
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -201,15 +207,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-If we try to split this table, we will get an error:
+このテーブルを分割しようとすると、次のエラーが発生します。
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty.  Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.
+パーティションが空でないため、ALTER PARTITION ステートメントの Msg 35346, Level 15, State 1, Line 44 SPLIT 句が失敗しました。  テーブルに列ストア インデックスが存在する場合、分割できるのは空のパーティションだけです。 ALTER PARTITION ステートメントを発行する前に列ストア インデックスを無効にし、ALTER PARTITION が完了したら列ストア インデックスを再構築することを検討します。
 
-However, we can use `CTAS` to create a new table to hold our data.
+ただし、 `CTAS` を使用して、データを保持する新しいテーブルを作成できます。
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -227,7 +233,7 @@ WHERE   1=2
 ;
 ```
 
-As the partition boundaries are aligned a switch is permitted. This will leave the source table with an empty partition that we can subsequently split.
+パーティション境界が配置されているので、切り替えが許可されます。 これにより、後で分割できる空のパーティションを含むソース テーブルをそのままにしておくことができます。
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -235,7 +241,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-All that is left to do is to align our data to the new partition boundaries using `CTAS` and switch our data back in to the main table
+後は、 `CTAS` を使用して新しいパーティション境界に合わせてデータを配置し、データをメイン テーブルに切り替えるだけです。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -256,16 +262,16 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Once you have completed the movement of the data it is a good idea to refresh the statistics on the target table to ensure they accurately reflect the new distribution of the data in their respective partitions:
+データの移動が完了したら、ターゲット テーブルの統計に、それぞれのパーティションのデータの新しいディストリビューションが正確に反映されるように、統計を更新することをお勧めします。
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="table-partitioning-source-control"></a>Table partitioning source control
-To avoid your table definition from **rusting** in your source control system you may want to consider the following approach:
+### <a name="table-partitioning-source-control"></a>テーブル パーティションのソース管理
+ソース管理システムでテーブル定義が **古く** ならないように、次の方法を検討することをお勧めします。
 
-1. Create the table as a partitioned table but with no partition values
+1. パーティション値を含まないパーティション テーブルとしてテーブルを作成します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -289,7 +295,7 @@ WITH
 ;
 ```
 
-1. `SPLIT` the table as part of the deployment process:
+1. `SPLIT` (分割) します。
 
 ```sql
 -- Create a table containing the partition boundaries
@@ -342,10 +348,10 @@ END
 DROP TABLE #partitions;
 ```
 
-With this approach the code in source control remains static and the partitioning boundary values are allowed to be dynamic; evolving with the warehouse over time.
+この方法では、ソース管理のコードを静的なコードとして維持し、パーティション境界値は動的にすることが可能になるので、時間の経過に伴って、ウェアハウスとともに進化させることができます。
 
-## <a name="next-steps"></a>Next steps
-To learn more, see the articles on [Table Overview][Overview], [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
+## <a name="next-steps"></a>次のステップ
+[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
 
@@ -369,9 +375,4 @@ To learn more, see the articles on [Table Overview][Overview], [Table Data Types
 
 
 <!-- Other web references -->
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

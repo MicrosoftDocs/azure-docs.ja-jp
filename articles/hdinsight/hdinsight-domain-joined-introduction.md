@@ -1,5 +1,5 @@
 ---
-title: "セキュリティで保護された HDInsight の概要 | Microsoft Docs"
+title: "Hadoop セキュリティ - ドメイン参加済み HDInsight クラスター - Azure | Microsoft Docs"
 description: "詳細...."
 services: hdinsight
 documentationcenter: 
@@ -9,25 +9,28 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 40b0d0660f4693d5ebedf847734ffe037c4ec7ca
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 21078a82e979af251a08bca70d623c80949d064a
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="an-introduction-to-domainjoined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの概要 (プレビュー)
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要 (プレビュー)
+
 Azure HDInsight では、これまで単一ユーザーのローカル管理者のみをサポートしていました。 これは、小規模なアプリケーション チームや部門に適していました。 Hadoop ベースのワークロードがエンタープライズ部門に普及するにつれて、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御などのエンタープライズ レベルの機能の必要性がますます重要になってきました。 ドメイン参加済み HDInsight クラスターを使用すると、Active Directory ドメインに参加している HDInsight クラスターを作成し、Azure Active Directory で認証して HDInsight クラスターにログオンできる企業の従業員のリストを構成できます。 社外のユーザーは、HDInsight クラスターにログオンすることもアクセスすることもできません。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成できるため、データへのアクセスを必要な分だけに制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。
 
 > [!NOTE]
-> このプレビューで説明する新機能は、Hive ワークロードに対応する Linux ベースの HDInsight クラスターでのみ使用できます。 HBase、Spark、Storm、Kafka など、他のワークロードには今後のリリースで対応する予定です。 
-> 
-> 
+> このプレビューで説明する新機能は、Hive ワークロードに対応する Linux ベースの HDInsight クラスターでのみ使用できます。 HBase、Spark、Storm、Kafka など、他のワークロードには今後のリリースで対応する予定です。
+>
+>
 
 ## <a name="benefits"></a>メリット
 エンタープライズ セキュリティには、境界セキュリティ、認証、承認、暗号化の 4 つの大きな柱があります。
@@ -53,11 +56,5 @@ HDInsight クラスター リソースを未承認のユーザーから保護し
 * ドメイン参加済み HDInsight クラスターの構成については、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関する記事をご覧ください。
 * ドメイン参加済み HDInsight クラスターの管理については、[ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)に関する記事をご覧ください。
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
-* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+* SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関するページをご覧ください。
 

@@ -1,19 +1,23 @@
 ---
-title: Azure Toolkit for IntelliJ の新機能 | Microsoft Docs
-description: Azure Toolkit for IntelliJ の最新の機能について説明します。
-services: ''
+title: "Azure Toolkit for IntelliJ の新機能 | Microsoft Docs"
+description: "Azure Toolkit for IntelliJ の最新の機能について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 46ed791f-df59-416a-809e-f52345ad973c
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm;asirveda;martinsawicki
+translationtype: Human Translation
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: a2006dbcf0d63ef38651a0859dc654d531fd875a
+
 
 ---
 # <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の新機能
@@ -76,7 +80,7 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
-[Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
+[What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 
@@ -84,6 +88,6 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

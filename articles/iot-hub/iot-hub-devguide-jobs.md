@@ -1,12 +1,12 @@
 ---
-title: Developer guide - jobs | Microsoft Docs
-description: Azure IoT Hub developer guide - scheduling jobs to run on multiple devices connected to your hub
+title: "Azure IoT Hub ジョブについて | Microsoft Docs"
+description: "開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,38 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
+translationtype: Human Translation
+ms.sourcegitcommit: eac5027f39d15e355d1c9f60a31ded567272d5fa
+ms.openlocfilehash: b94ceac2298509817020b32b65125c5f767d8089
+ms.lasthandoff: 12/16/2016
+
 
 ---
-# <a name="schedule-jobs-on-multiple-devices-(preview)"></a>Schedule jobs on multiple devices (preview)
+# <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 ## <a name="overview"></a>Overview
-As described by previous articles, Azure IoT Hub enables a number of building blocks ([device twin properties and tags][lnk-twin-devguide] and [cloud-to-device methods][lnk-dev-methods]).  Typically, IoT back end applications enable device administrators and operators to update and interact with IoT devices in bulk and at a scheduled time.  Jobs encapsulate the execution of device twin updates and C2D methods against a set of devices at a schedule time.  For example, an operator would use a back end application that would initiate and track a job to reboot a set of devices in building 43 and floor 3 at a time that would not be disruptive to the operations of the building.
+前の記事の説明のとおり、Azure IoT Hub では、多数の構成要素 ([デバイス ツインのプロパティとタグ][lnk-twin-devguide]および[ダイレクト メソッド][lnk-dev-methods]) を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻にデバイスに対して実行されるデバイス ツインの更新とダイレクト メソッドの実行をカプセル化します。  たとえば、オペレーターは、ビル 43 の 3 階にあるデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用できます。
 
-### <a name="when-to-use"></a>When to use
-Consider using jobs when: a solution back end needs to schedule and track progress any of the following activities on a set of device:
+### <a name="when-to-use"></a>使用時の注意
+ジョブは、ソリューションのバックエンドで、一連のデバイスで実行される次のアクティビティのスケジュールを設定し、その進行状況を追跡する必要があるときに使用を検討します。
 
-* Update device twin desired properties
-* Update device twin tags
-* Invoke C2D methods
+* 必要なプロパティを更新する
+* タグを更新する
+* ダイレクト メソッドを呼び出す
 
-## <a name="job-lifecycle"></a>Job lifecycle
-Jobs are initiated by the solution back end and maintained by IoT Hub.  You can initiate a job through a service-facing URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-09-30-preview`) and query for progress on an executing job through a service-facing URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-09-30-preview`).  Once a job is initiated, querying for jobs will enable the back end application to refresh the status of running jobs.
+## <a name="job-lifecycle"></a>ジョブのライフサイクル
+ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) を通して照会できます。  ジョブの開始後、バックエンド アプリは、ジョブを照会することで、実行中のジョブの状態を更新できます。
 
 > [!NOTE]
-> When you initiate a job, property names and values can only contain US-ASCII printable alphanumeric, except any in the following set: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> ジョブを呼び出すとき、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
 > 
 > 
 
-## <a name="reference"></a>Reference
-For all HTTP requests, see the following references:
+## <a name="reference-topics"></a>参照トピック:
+以下の参照トピックは、ジョブの使用に関する詳細情報を提供しています。
 
-* Query condition: [Details for querying of twins][lnk-query]
-* Method details: [Details for C2D methods][lnk-dev-methods]
-
-## <a name="jobs-to-execute-c2d-methods"></a>Jobs to execute C2D methods
-The following is the HTTP 1.1 request details for executing a C2D method on a set of devices using a job:
+## <a name="jobs-to-execute-direct-methods"></a>ダイレクト メソッドを実行するジョブ
+ジョブを使用してデバイス上で[ダイレクト メソッド][lnk-dev-methods]を実行するための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -58,20 +60,28 @@ The following is the HTTP 1.1 request details for executing a C2D method on a se
         cloudToDeviceMethod: {
             methodName: '<methodName>',
             payload: <payload>,                 
-            timeoutInSeconds: methodTimeoutInSeconds 
+            responseTimeoutInSeconds: methodTimeoutInSeconds 
         },
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
+次に示すように、クエリ条件は&1; つのデバイス ID にもデバイス ID のリストにも設定できます。
 
-## <a name="jobs-to-update-device-twin-properties"></a>Jobs to update device twin properties
-The following is the HTTP 1.1 request details for updating device twin properties using a job:
+**例**
+```
+queryCondition = "deviceId = 'MyDevice1'"
+queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
+queryCondition = "deviceId IN ['MyDevice1']
+```
+IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-query]に関するページをご覧ください。
+
+## <a name="jobs-to-update-device-twin-properties"></a>デバイス ツインのプロパティを更新するジョブ
+ジョブを使用してデバイス ツインのプロパティを更新するための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
     Request-Id: <guid>
@@ -81,18 +91,17 @@ The following is the HTTP 1.1 request details for updating device twin propertie
         jobId: '<jobId>',
         type: 'scheduleTwinUpdate', 
         updateTwin: <patch>                 // Valid JSON object
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
     ```
 
-## <a name="querying-for-progress-on-jobs"></a>Querying for progress on jobs
-The following is the HTTP 1.1 request details for querying for jobs:
+## <a name="querying-for-progress-on-jobs"></a>ジョブの進行状況の照会
+[ジョブを照会する][lnk-query]ための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    GET /jobs/v2/query?api-version=2016-09-30-preview[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
+    GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -100,51 +109,51 @@ The following is the HTTP 1.1 request details for querying for jobs:
     User-Agent: <sdk-name>/<sdk-version>
     ```
 
-The continuationToken is provided from the response.  
+ContinuationToken は、応答から提供されます。  
 
-## <a name="jobs-properties"></a>Jobs Properties
-The following is a list of properties and corresponding descriptions, which can be used when querying for jobs or job results.
+## <a name="jobs-properties"></a>ジョブのプロパティ
+ジョブまたはジョブの結果を照会するときに使用できるプロパティとその説明の一覧を次に示します。
 
-| Property | Description |
+| プロパティ | 説明 |
 | --- | --- |
-| **jobId** |Application provided ID for the job. |
-| **startTime** |Application provided start time (ISO-8601) for the job. |
-| **endTime** |IoT Hub provided date (ISO-8601) for when the job completed. Valid only after the job reaches the 'completed' state. |
-| **type** |Types of jobs: |
-| **scheduledUpdateTwin**: A job used to update a set of twin desired properties or tags. | |
-| **scheduledDeviceMethod**: A job used to invoke a device method on a set of twin. | |
-| **status** |Current state of the job. Possible values for status: |
-| **pending** : Scheduled and waiting to be picked up by the job service. | |
-| **scheduled** : Scheduled for a time in the future. | |
-| **running** : Currently active job. | |
-| **cancelled** : Job has been cancelled. | |
-| **failed** : Job failed. | |
-| **completed** : Job has completed. | |
-| **deviceJobStatistics** |Statistics about the job's execution. |
+| **jobId** |アプリケーションが提供するジョブの ID。 |
+| **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO&8601;)。 |
+| **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO&8601;)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
+| **type** |ジョブの種類: |
+| **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 | |
+| **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 | |
+| **状態** |ジョブの現在の状態。 状態の可能値: |
+| **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 | |
+| **scheduled**: 将来の時刻のスケジュールが設定されています。 | |
+| **running**: 現在アクティブなジョブです。 | |
+| **cancelled**: ジョブは取り消されています。 | |
+| **failed**: ジョブは失敗しました。 | |
+| **completed**: ジョブは完了しています。 | |
+| **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
 
-During the preview, the deviceJobStatistics object is available only after the job is completed.
+**deviceJobStatistics** プロパティ。
 
-| Property | Description |
+| プロパティ | 説明 |
 | --- | --- |
-| **deviceJobStatistics.deviceCount** |Number of devices in the job. |
-| **deviceJobStatistics.failedCount** |Number of devices where the job failed. |
-| **deviceJobStatistics.succeededCount** |Number of devices where the job succeeded. |
-| **deviceJobStatistics.runningCount** |Number of devices that are currently running the job. |
-| **deviceJobStatistics.pendingCount** |Number of devices that are pending to run the job. |
+| **deviceJobStatistics.deviceCount** |ジョブ内のデバイスの数。 |
+| **deviceJobStatistics.failedCount** |ジョブが失敗したデバイスの数。 |
+| **deviceJobStatistics.succeededCount** |ジョブが成功したデバイスの数。 |
+| **deviceJobStatistics.runningCount** |現在ジョブが実行中であるデバイスの数。 |
+| **deviceJobStatistics.pendingCount** |現在ジョブの実行が保留されているデバイスの数。 |
 
-### <a name="additional-reference-material"></a>Additional reference material
-Other reference topics in the Developer Guide include:
+### <a name="additional-reference-material"></a>参考資料
+IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
-* [IoT Hub endpoints][lnk-endpoints] describes the various endpoints that each IoT hub exposes for runtime and management operations.
-* [Throttling and quotas][lnk-quotas] describes the quotas that apply to the IoT Hub service and the throttling behavior to expect when you use the service.
-* [IoT Hub device and service SDKs][lnk-sdks] lists the various language SDKs you an use when you develop both device and service applications that interact with IoT Hub.
-* [Query language for twins, methods, and jobs][lnk-query] describes the query language you can use to retrieve information from IoT Hub about your device twins, methods and jobs.
-* [IoT Hub MQTT support][lnk-devguide-mqtt] provides more information about IoT Hub support for the MQTT protocol.
+* [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
+* [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
+* [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+* [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>Next steps
-If you would like to try out some of the concepts described in this article, you may be interested in the following IoT Hub tutorial:
+## <a name="next-steps"></a>次のステップ
+この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
 
-* [Schedule and broadcast jobs][lnk-jobs-tutorial]
+* [Schedule and broadcast jobs (ジョブのスケジュールとブロードキャスト)][lnk-jobs-tutorial]
 
 <!-- links and images -->
 
@@ -153,14 +162,9 @@ If you would like to try out some of the concepts described in this article, you
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-jobs-tutorial]: iot-hub-schedule-jobs.md
-[lnk-c2d-methods]: iot-hub-c2d-methods.md
+[lnk-jobs-tutorial]: iot-hub-node-node-schedule-jobs.md
+[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

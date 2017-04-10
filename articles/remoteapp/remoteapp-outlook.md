@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1ec1d88b72d2f34dc7515d4387d09a46b4da7184
+ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
+ms.openlocfilehash: 941cc40c3c1979609649eda42e4b39aa383c3fd2
 
 
 ---
@@ -40,6 +40,6 @@ Azure RemoteApp では、Outlook 内での検索利用に制限があります�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,43 +1,50 @@
 ---
-title: HDInsight での Hadoop Sqoop の使用 | Microsoft Docs
-description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
+title: "Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行 | Microsoft Docs"
+description: "コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/22/2017
 ms.author: jgao
+ROBOTS: NOINDEX
+translationtype: Human Translation
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 3f053d4c94d48630252f7c80fa8077c8ae5feb2d
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# HDInsight の Hadoop での Sqoop の使用
+# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 HDInsight で Sqoop を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する方法について説明します。
 
 Hadoop はログやファイルなどの非構造化データおよび半構造化データを処理する場合に自然な選択ですが、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
-[Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
+[Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。 このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
 
 HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
-## シナリオの理解
-HDInsight クラスターにはサンプル データがいくつか付属しています。そのうちの以下の 2 つを使用します。
+## <a name="understand-the-scenario"></a>シナリオの理解
+HDInsight クラスターにはサンプル データがいくつか付属しています。 そのうちの以下の&2; つを使用します。
 
-* log4j ログ ファイル (*/example/data/sample.log*)。次のようなログがファイルから抽出されます。
+* log4j ログ ファイル ( */example/data/sample.log*)。 次のようなログがファイルから抽出されます。
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
-* *hivesampletable* という名前の Hive テーブル。*/hive/warehouse/hivesampletable* にあるデータ ファイルを参照しています。テーブルはモバイル デバイスのデータを含んでいます。
+* *hivesampletable* という名前の Hive テーブル。*/hive/warehouse/hivesampletable* にあるデータ ファイルを参照しています。 テーブルはモバイル デバイスのデータを含んでいます。 
   
   | フィールド | データ型 |
   | --- | --- |
@@ -45,7 +52,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
   | querytime |string |
   | market |string |
   | deviceplatform |string |
-  | devicemake |文字列 |
+  | devicemake |string |
   | devicemodel |string |
   | state |string |
   | country |string |
@@ -57,49 +64,55 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     /tutorials/usesqoop/importeddata
 
-## クラスターと SQL Database を作成します。
-ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
-
-1. 次の画像をクリックして Azure Portal で Resource Manager テンプレートを開きます。
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
-    Resource Manager テンプレートは、次のパブリック BLOB コンテナー内にあります。*https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*
-   
-    Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。bacpac パッケージも、パブリック BLOB コンテナー内 (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac) にあります。bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+## <a name="create-cluster-and-sql-database"></a>クラスターと SQL Database を作成します。
+ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージはパブリック BLOB コンテナー内にあります (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac)。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
    
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
-2. [パラメーター] ブレードで、次の各項目を入力します。
+
+Azure PowerShell を使用してクラスターと SQL Database を作成する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
+
+1. 次の画像をクリックして、Azure Portal で Resource Manager テンプレートを開きます。         
    
-   * **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
-   * **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
-   * **SSH のユーザー名とパスワード**。
-   * **SQL Database サーバーのログイン名とパスワード**。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
+   
+
+2. 次のプロパティを入力します。
+
+    - **サブスクリプション**： Azure のサブスクリプションを入力します。
+    - **[リソース グループ]**： 新しい Azure リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループは、管理目的で使用します。  これは、オブジェクトのコンテナーです。
+    - **[場所]**: リージョンを選択します。
+    - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
+    - **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
+    - **SSH のユーザー名とパスワード**。
+    - **SQL Database サーバーのログイン名とパスワード**。
+    - **_artifacts Location**: 別の場所で独自の bacpac ファイルを使用する場合を除き、既定値を使用します。
+    - **_artifacts Location Sas Token**: 空白のままにします。
+    - **Bacpac ファイル名**: 独自の bacpac ファイルを使用する場合を除き、既定値を使用します。
      
      次の値は、変数セクションにハードコードされています。
      
-     | 既定のストレージ アカウント名 | <クラスター名> ストア |
+     | 既定のストレージ アカウント名 | <CluterName>store |
      | --- | --- |
-     | Azure SQL データベース サーバー名 |<クラスター名> dbserver |
-     | Azure SQL データベース名 |<クラスター名> db |
+     | Azure SQL データベース サーバー名 |<ClusterName>dbserver |
+     | Azure SQL データベース名 |<ClusterName>db |
      
-     これらの値を書き留めておいてください。この情報は後で必要になります。
+     これらの値を書き留めておいてください。  この情報は後で必要になります。
 
-3\. **[OK]** をクリックしてパラメーターを保存します。
+3. **[OK]** をクリックしてパラメーターを保存します。
 
-4\. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
+4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。 リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 
-5\. **[法律条項]** をクリックし、**[作成]** をクリックします。
+5. **[法律条項]** をクリックし、**[作成]** をクリックします。
 
-6\. **[作成]** をクリックします。"Submitting deployment for Template deployment" という新しいタイルが表示されます。クラスターと SQL Database の作成には約 20 分かかります。
+6. **[作成]** をクリックします。 "Submitting deployment for Template deployment" という新しいタイルが表示されます。 クラスターと SQL Database の作成には約 20 分かかります。
 
 既存の Azure SQL Database または Microsoft SQL Server を使用する場合
 
-* **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。
+* **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
   
   > [!NOTE]
-  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
+  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。 Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
   > 
   > 
 * **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
@@ -109,50 +122,50 @@ HDInsight クラスターにはサンプル データがいくつか付属して
   > 
   > 
   
-  * 仮想ネットワークを作成および構成する場合は、「[Virtual Network の構成タスク](../services/virtual-machines.md)」を参照してください。
+  * 仮想ネットワークの作成と構成については、「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
     
-    * SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
+    * SQL Server をデータセンター内で使っている場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
       
       > [!NOTE]
       > **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
       > 
       > 
     * SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
-  * 仮想ネットワークに HDInsight クラスターを作成する場合は、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
+  * 仮想ネットワークに HDInsight クラスターを作成する場合は、 [カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)
     
     > [!NOTE]
-    > SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
+    > SQL Server では認証を許可する必要もあります。 この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
     > 
     > 
 
-## Sqoop ジョブの実行
-HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行できます。次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
+## <a name="run-sqoop-jobs"></a>Sqoop ジョブの実行
+HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
 
-| 使用する**方法** | **対話型**シェルの有無 | **バッチ**処理の有無 | 使用する**クラスターのオペレーティング システム** | 使用元の**クライアントのオペレーティング システム** |
+| **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](hdinsight-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
 | [Azure PowerShell](hdinsight-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
 
-## 制限事項
+## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
 
-## 次のステップ
-ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
+## <a name="next-steps"></a>次のステップ
+ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での Oozie の使用][hdinsight-use-oozie]\: Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]\: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]\: HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
+* [HDInsight での Oozie の使用][hdinsight-use-oozie]: Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
+* [HDInsight へのデータのアップロード][hdinsight-upload-data]: HDInsight/Azure Blob torage にデータをアップロードするその他の方法を説明します。
 
-## 付録 A - PowerShell サンプル
+## <a name="appendix-a---a-powershell-sample"></a>付録 A - PowerShell サンプル
 PowerShell のサンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
-2. Azure リソース グループを作成します。詳細については、[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
-3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。
+2. Azure リソース グループを作成します。 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
+3. Azure SQL Database サーバー、Azure SQL Database、および&2; つのテーブルを作成します。 
    
     SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
    
@@ -178,38 +191,38 @@ PowerShell のサンプルでは、次の手順を実行します。
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
    
-    データベースとテーブルを確認する最も簡単な方法は、Visual Studio を使用することです。データベース サーバーとデータベースは、Azure ポータルを使用して確認できます。
+    データベースとテーブルを確認する最も簡単な方法は、Visual Studio を使用することです。 データベース サーバーとデータベースは、Azure ポータルを使用して確認できます。
 4. HDInsight クラスターを作成します。
    
     クラスターを確認するには、Azure ポータルまたは Azure PowerShell を使用します。
 5. ソース データ ファイルを前処理します。
    
-    このチュートリアルでは、log4j ログ ファイル (区切られたファイル) と Hive テーブルを Azure SQL データベースにエクスポートします。区切られたファイルは */example/data/sample.log* と呼ばれます。チュートリアルの前半で、log4j ログのサンプルをいくつか示しました。ログ ファイルには空白行がいくつかあり、その他の行は次のような内容です。
+    このチュートリアルでは、log4j ログ ファイル (区切られたファイル) と Hive テーブルを Azure SQL データベースにエクスポートします。 区切られたファイルは */example/data/sample.log*と呼ばれます。 チュートリアルの前半で、log4j ログのサンプルをいくつか示しました。 ログ ファイルには空白行がいくつかあり、その他の行は次のような内容です。
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
    
-    これは、このデータを使用する他の例に適していますが、Azure SQL データベースまたは SQL Server にインポートする前にこれらの例外を削除する必要があります。空の文字列がある場合、または Azure SQL データベース テーブルで定義されているフィールドの数よりも要素の数が少ない行がある場合、Sqoop エクスポートは失敗します。log4jlogs テーブルには 7 個の文字列型のフィールドがあります。
+    これは、このデータを使用する他の例に適していますが、Azure SQL データベースまたは SQL Server にインポートする前にこれらの例外を削除する必要があります。 空の文字列がある場合、または Azure SQL データベース テーブルで定義されているフィールドの数よりも要素の数が少ない行がある場合、Sqoop エクスポートは失敗します。 log4jlogs テーブルには 7 個の文字列型のフィールドがあります。
    
-    この手順で、クラスター上に新しいファイル (tutorials/usesqoop/data/sample.log) が作成されます。変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[Azure HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
+    この手順で、クラスター上に新しいファイル (tutorials/usesqoop/data/sample.log) が作成されます。 変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。 「[Azure HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するサンプル コードが示されています。
 6. Azure SQL Database にデータ ファイルをエクスポートします。
    
-    ソース ファイルは、tutorials/usesqoop/data/sample.log です。データのエクスポート先のテーブルは log4jlogs です。
+    ソース ファイルは、tutorials/usesqoop/data/sample.log です。 データのエクスポート先のテーブルは log4jlogs です。
    
    > [!NOTE]
-   > 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
+   > 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。 これらの手順は次の構成を使用してテスト済みです。
    > 
-   > * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
-   > * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
+   > * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。 詳細については、「 [管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md) 」を参照してください。
+   > * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、 [カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md) に関するページをご覧ください。
    > * **SQL Server 2014**: 仮想ネットワークに安全に接続するために、認証と、VPN クライアント構成パッケージの実行を許可する構成。
    > 
    > 
 7. Azure SQL Database に Hive テーブルをエクスポートします。
 8. HDInsight クラスターに mobiledata テーブルをインポートします。
    
-    変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
+    変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。  「[HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するサンプル コードが示されています。
 
-### PowerShell サンプル
+### <a name="the-powershell-sample"></a>PowerShell サンプル
     # Prepare an Azure SQL database to be used by the Sqoop tutorial
 
     #region - provide the following values
@@ -604,7 +617,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 [azure-management-portal]: https://portal.azure.com/
 
-[hdinsight-versions]: hdinsight-component-versioning.md
+[hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
@@ -614,12 +627,11 @@ PowerShell のサンプルでは、次の手順を実行します。
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 
 [sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
+[sqldatabase-create-configue]: ../sql-database/sql-database-get-started.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-install]: powershell-install-configure.md
+[powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0914_2016-->

@@ -1,12 +1,12 @@
 ---
-title: AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化
-description: AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化について説明します。
+title: "AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化"
+description: "AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: d649ce6bcb5629cb820befd3478afa3f70293ccb
+ms.lasthandoff: 01/13/2017
+
 
 ---
 # <a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化
-AES 256 ビット暗号化を使用してコンテンツをローカルに暗号化し、それを Azure Storage にアップロードすることをお勧めします。そうすることで、コンテンツが保存時に暗号化された状態で格納されます。
+AES&256; ビット暗号化を使用してコンテンツをローカルに暗号化し、それを Azure Storage にアップロードすることをお勧めします。そうすることで、コンテンツが保存時に暗号化された状態で格納されます。
 
 この記事では、AMS ストレージの暗号化の概要を紹介し、ストレージ暗号化が実行されたコンテンツをアップロードする方法を示します。
 
@@ -36,14 +41,14 @@ AES 256 ビット暗号化を使用してコンテンツをローカルに暗号
 > 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
 > 
 > 
 
 ## <a name="storage-encryption-overview"></a>ストレージ暗号化の概要
 AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗号化を適用します。  AES-CTR モードは、任意の長さのデータを暗号化できるブロック暗号です。埋め込みの必要はありません。 AES アルゴリズムを使用してカウンター ブロックを暗号化し、AES の出力と、暗号化または復号化するデータの排他論理和をとるという演算です。  使用されるカウンター ブロックを構築するには、InitializationVector の値をカウンター値のバイト 0 から 7 にコピーし、カウンター値のバイト 8 から 15 はゼロに設定します。 16 バイトのカウンター ブロックのうち、バイト 8 から 15 (つまり、下位バイト) は単純な符号なし 64 ビット整数として使用されます。それ以降に処理されるデータのブロックごとに 1 ずつ増分され、ネットワーク バイト順は維持されます。 整数が最大値 (0xFFFFFFFFFFFFFFFF) に達すると、増分によってゼロにリセットされます (バイト 8 から 15)。残りの 64 ビットのカウンター (バイト 0 から 7) には影響がありません。   AES-CTR モード暗号化のセキュリティを維持するには、コンテンツ キーごとに指定されたキー識別子の InitializationVector 値をファイルごとに一意にする必要があります。また、ファイルの長さを 2^64 ブロック未満にする必要があります。  これによって、カウンター値が特定のキーに再利用されないようにすることができます。 CTR モードの詳細については、[こちらの wiki ページ](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) ("InitializationVector" ではなく "Nonce" という用語を使用する wiki 記事) を参照してください。
 
-**ストレージ暗号化**で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
+**ストレージ暗号化**で AES&256; ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。 ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。 ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
 
 ストレージで暗号化された資産を配信するためには、資産の配信ポリシーを構成して、コンテンツの配信方法を Media Services に指示する必要があります。 資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシー (AES、共通暗号化、暗号化なしなど) を使用してコンテンツをストリーミングする必要があります。
 
@@ -55,7 +60,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 1. ストレージ暗号化の場合、32 バイトの AES キーがランダムに生成されます。 
    
     これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。 
-2. [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
+2. [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
 3. X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
    
    Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。  具体的な .NET の例については、「 [EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
@@ -88,11 +93,11 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
         }
 
 
-1. 前の手順で取得した **EncryptedContentKey** 値 (Base 64 エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
+1. 前の手順で取得した **EncryptedContentKey** 値 (Base&64; エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
 
     ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
 
-    要求本文のプロパティ   | Description
+    要求本文のプロパティ    | Description
     ---|---
     ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
     ContentKeyType | 整数によるこのコンテンツ キーの種類です。 ストレージの暗号化には、値 1 を渡します。
@@ -296,9 +301,9 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
     HTTP/1.1 204 No Content 
 
 ## <a name="create-an-assetfile"></a>AssetFile を作成する
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には 1 つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には&1; つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
-**AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+**AssetFile** インスタンスと実際のメディア ファイルは次の&2; つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 デジタル メディア ファイルを BLOB コンテナーにアップロードした後、 **MERGE** HTTP 要求を使用して、メディア ファイルに関する情報とともに AssetFile を更新します (このトピックでは説明しません)。 
 
@@ -361,9 +366,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
        "MimeType":"video/mp4",
        "ContentChecksum":null
     }
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

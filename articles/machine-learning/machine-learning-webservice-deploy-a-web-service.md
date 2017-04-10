@@ -1,23 +1,29 @@
 ---
-title: 新しい Web サービスのデプロイ
-description: ARM ベースの Web サービスをデプロイするワークフロー
+title: "Azure Machine Learning での新しい Web サービスのデプロイ | Microsoft Docs"
+description: "ARM ベースの Web サービスをデプロイするワークフロー"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: raymondl
-editor: ''
-
+editor: 
+ms.assetid: a358b04f-0d08-4d50-820e-eeac971854cf
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/13/2017
 ms.author: v-donglo
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-publish-a-machine-learning-web-service
+translationtype: Human Translation
+ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
+ms.openlocfilehash: 902be47eb59444a1214b096be10525743f406d1c
+
 
 ---
 # <a name="deploy-a-new-web-service"></a>新しい Web サービスのデプロイ
-Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
+Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
 
 Microsoft Azure Machine Learning Web サービスを使用して Web サービスをデプロイする一般的なワークフローは次のとおりです。
 
@@ -37,7 +43,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 **注**: 従来の Web サービスとして実験を既にデプロイしている場合は、新しい Web サービスとしてデプロイすることはできません。
 
-実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ \[新規\].md)]** をクリックします。 Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
+実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックします。 Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
 
 ## <a name="machine-learning-web-service-manager-deploy-experiment-page"></a>Machine Learning Web サービス マネージャの [Deploy Experiment (実験のデプロイ)] ページ
 [Deploy Experiment (実験のデプロイ]) ページで、Web サービスの名前を入力します。
@@ -45,7 +51,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 1. **[Price Plan (料金プラン)]** ドロップダウンで、既存のプランを選択するか、**[Select new plan (新しいプランを選択する)]** オプションを選択します。
 2. **[プラン名]**に、請求書でプランを識別する名前を入力します。
-3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか 1 つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされることにご注意ください。
+3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか&1; つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされることにご注意ください。
 
 **[デプロイ]** をクリックすると、Web サービスの [クイック スタート] ページが開きます。
 
@@ -99,6 +105,6 @@ Web サービスの使用方法の詳細については、以下を参照して�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

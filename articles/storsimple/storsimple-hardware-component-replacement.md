@@ -1,23 +1,30 @@
 ---
-title: StorSimple のハードウェア コンポーネントの交換 | Microsoft Docs
-description: StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。
+title: "StorSimple のハードウェア コンポーネントの交換 | Microsoft Docs"
+description: "StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
-manager: carmonm
-editor: ''
-
+manager: timlt
+editor: 
+ms.assetid: e8087ba7-0b66-4f59-8988-e53aad52ee21
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/11/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: f2d197264f066a23468db80686444bd24f6d796f
+ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# <a name="storsimple-hardware-component-replacement"></a>StorSimple のハードウェア コンポーネントの交換
-## <a name="overview"></a>Overview
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
+
+## <a name="overview"></a>概要
 ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。 この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
 > [!IMPORTANT]
@@ -130,7 +137,5 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
-
-<!--HONumber=Oct16_HO2-->
 
 

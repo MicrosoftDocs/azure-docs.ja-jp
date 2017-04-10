@@ -1,32 +1,24 @@
 ---
-title: ビッグ データ
-のデータ: ''
-ソースを操作する方法: ''
-'|': ''
-microsoft: ''
-azure": ''
-description: 'Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの '
-ビッグ: ''
-データ": ''
-ソースと共に: ''
-azure: ''
-data: ''
-catalog: ''
-を使用するためのパターンを説明する、操作方法に関する記事。": ''
+title: "&quot;ビッグ データ&quot; のデータ ソースを操作する方法 | Microsoft Docs"
+description: "Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの &quot;ビッグ データ&quot; のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
+
 
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
@@ -76,6 +68,8 @@ ms.author: maroche
 ## <a name="summary"></a>概要
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。 ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。
 
-<!---HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,64 +1,70 @@
 ---
-title: Managing statistics on tables in SQL Data Warehouse | Microsoft Docs
-description: Getting started with statistics on tables in Azure SQL Data Warehouse.
+title: "SQL Data Warehouse のテーブルの統計の管理 | Microsoft Docs"
+description: "Azure SQL Data Warehouse のテーブルの統計の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
+ms.lasthandoff: 12/08/2016
+
 
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Managing statistics on tables in SQL Data Warehouse
+# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの統計の管理
 > [!div class="op_single_selector"]
-> * [Overview][Overview]
-> * [Data Types][Data Types]
-> * [Distribute][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Temporary][Temporary]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
-The more SQL Data Warehouse knows about your data, the faster it can execute queries against your data.  The way that you tell SQL Data Warehouse about your data, is by collecting statistics about your data.  Having statistics on your data is one of the most important things you can do to optimize your queries.  Statistics help SQL Data Warehouse create the most optimal plan for your queries.  This is because the SQL Data Warehouse query optimizer is a cost based optimizer.  That is, it compares the cost of various query plans and then chooses the plan with the lowest cost, which should also be the plan that will execute the fastest.
+SQL Data Warehouse がご使用のデータについてより多くを把握していればいるほど、それだけ速くデータにクエリを実行できます。  データに関する情報を SQL Data Warehouse に伝えるには、データに関する統計情報を収集します。  データに関する統計情報を取得することが、クエリの最適化のために実行できる最も重要なことの 1 つです。  統計は、SQL Data Warehouse のクエリの最適なプランの作成に利用できます。  これは、SQL Data Warehouse のクエリ オプティマイザーがコストに基づくオプティマイザーであるためです。  つまり、さまざまなクエリ プランのコストを比較し、コストが最も低いプランを選択します。選択されたプランが、最も高速に実行されるプランでもあります。
 
-Statistics can be created on a single column, multiple columns or on an index of a table.  Statistics are stored in a histogram which captures the range and selectivity of values.  This is of particular interest when the optimizer needs to evaluate JOINs, GROUP BY, HAVING and WHERE clauses in a query.  For example, if the optimizer estimates that the date you are filtering in your query will return 1 row, it may choose a very different plan than if it estimates that they date you have selected will return 1 million rows.  While creating statistics is extremely important, it is equally important that statistics *accurately* reflect the current state of the table.  Having up-to-date statistics ensures that a good plan is selected by the optimizer.  The plans created by the optimizer are only as good as the statistics on your data.
+統計は、単一列、複数列、またはテーブルのインデックスに作成することができます。  統計は、値の範囲と選択性をキャプチャするヒストグラムに格納されます。  これは、オプティマイザーがクエリの JOIN、GROUP BY、HAVING、WHERE の各句 を評価する必要がある場合に特に重要となります。  たとえば、オプティマイザーによって、クエリでフィルター処理している日付が 1 行を返すと評価された場合、選択した日付が 100 万行を返すと評価された場合とではまったく異なるプランを選択することができます。  統計を作成することは非常に重要ですが、テーブルの現在の状態をその統計に "正確に" ** 反映することは、同じくらい重要です。  最新の統計情報を取得すると、オプティマイザーによって適切なプランが確実に選択されることになります。  オプティマイザーによって作成されたプランの有効性は、データの統計によって決まります。
 
-The process of creating and updating statistics is currently a manual process, but is very simple to do.  This is unlike SQL Server which automatically creates and updates statistics on single columns and indexes.  By using the information below, you can greatly automate the management of the statistics on your data. 
+統計の作成および更新の処理は、現在は手動のプロセスですが、操作は非常に簡単です。  この点が、単一列とインデックスに関する統計が自動的に作成および更新される SQL Server と異なります。  次の情報を使用すると、データの統計情報の管理を大幅に自動化できます。 
 
-## <a name="getting-started-with-statistics"></a>Getting started with statistics
- Creating sampled statistics on every column is an easy way to get started with statistics.  Since it is equally important to keep statistics up-to-date, a conservative approach may be to update your statistics daily or after each load. There are always trade-offs between performance and the cost to create and update statistics.  If you find it is taking too long to maintain all of your statistics, you may want to try to be more selective about which columns have statistics or which columns need frequent updating.  For example, you might want to update date columns daily, as new values may be added rather than after every load. Again, you will gain the most benefit by having statistics on columns involved in JOINs, GROUP BY, HAVING and WHERE clauses.  If you have a table with a lot of columns which are only used in the SELECT clause, statistics on these columns may not help, and spending a little more effort to identify only the columns where statistics will help, can reduce the time to maintain your statistics.
+## <a name="getting-started-with-statistics"></a>統計の概要
+ 統計を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。  統計情報を最新の状態に維持することは同様に重要なため、保守的なアプローチでは、毎日または各読み込みの後に統計を更新します。 パフォーマンスと統計を作成および更新するコストの間には常にトレードオフの関係が存在します。  すべての統計を管理するのは時間がかかりすぎる場合は、統計を作成する列や頻繁に更新する列を限定することをお勧めします。  たとえば、読み込み後に新しい値が追加される可能性があるため、日付列は日次で更新することができます。 さらに、JOIN、GROUP BY、HAVING、WHERE 句で使用されている列の統計を作成すると、最も大きなメリットが得られます。  SELECT 句のみで使用される列を多数持つテーブルがある場合、これらの列の統計情報が役に立たない場合があります。統計情報が役立つ列のみを特定する努力を少しするだけで、統計情報を維持するために必要な時間を短縮できます。
 
-## <a name="multicolumn-statistics"></a>Multi-column statistics
-In addition to creating statistics on single columns, you may find that your queries will benefit from multi-column statistics.  Multi-column statistics are statistics created on a list of columns.  They include single column statistics on the first column in the list, plus some cross-column correlation information called densities.  For example, if you have a table that joins to another on two columns, you may find that SQL Data Warehouse can better optimize the plan if it understands the relationship between two columns.   Multi-column statistics can improve query performance for some operations such as composite joins and group by.
+## <a name="multi-column-statistics"></a>複数列統計
+単一列で統計を作成するだけでなく、複数列統計からクエリにとってのメリットを得られる場合がります。  複数列統計は、列のリストで作成される統計です。  この統計には、リストの最初の列の単一列統計に加え、密度と呼ばれる列間の相関関係情報が含まれます。  たとえば、2 つの列で別のテーブルと結合されているテーブルがある場合、SQL Data Warehouse が 2 つの列のリレーションシップを認識すると、プランはさらに最適化されます。   複合結合やグループ化などの一部の操作では、複数列統計によってクエリのパフォーマンスを向上させることができます。
 
-## <a name="updating-statistics"></a>Updating statistics
-Updating statistics is an important part of your database management routine.  When the distribution of data in the database changes, statistics need to be updated.  Out-of-date statistics will lead to sub-optimal query performance.
+## <a name="updating-statistics"></a>統計の更新
+統計の更新は、データベース管理ルーチンの重要な一部です。  データベース内のデータの分布が変わったら、統計を更新する必要があります。  統計情報が古いと、クエリのパフォーマンスが最適化されなくなります。
 
-One best practice is to update statistics on date columns each day as new dates are added.  Each time new rows are loaded into the data warehouse, new load dates or transaction dates are added. These change the data distribution and make the statistics out-of-date. Conversely, statistics on a country column in a customer table might never need to be updated, as the distribution of values doesn’t generally change. Assuming the distribution is constant between customers, adding new rows to the table variation isn't going to change the data distribution. However, if your data warehouse only contains one country and you bring in data from a new country, resulting in data from multiple countries being stored, then you definitely need to update statistics on the country column.
+ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。  新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国しか含まれておらず、新しい国のデータを取り込んで複数の国のデータが格納されるようになった場合は、国列の統計を更新する必要があることは明らかです。
 
-One of the first questions to ask when troubleshooting a query is, "Are the statistics up-to-date?"
+クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「統計は最新の状態ですか」というものです。
 
-This question is not one that can be answered by the age of the data. An up to date statistics object could be very old if there's been no material change to the underlying data. When the number of rows has changed substantially or there is a material change in the distribution of values for a given column *then* it's time to update statistics.  
+この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが非常に古い可能性があります。 行数が大幅に変わった場合や、特定の列の値の分布で重大な変更があった場合は、"その後で" ** 統計を更新する必要があります。  
 
-For reference, **SQL Server** (not SQL Data Warehouse) automatically updates statistics for these situations:
+なお、 **SQL Server** (SQL Data Warehouse ではありません) によって統計が自動更新されるのは次の場合です。
 
-* If you have zero rows in the table, when you add rows, you’ll get an automatic update of statistics
-* When you add more than 500 rows to a table starting with less than 500 rows (e.g. at start you have 499 and then add 500 rows to a total of 999 rows), you’ll get an automatic update 
-* Once you’re over 500 rows you will have to add 500 additional rows + 20% of the size of the table before you’ll see an automatic update on the stats
+* テーブルに行が含まれていない場合に、行を追加すると、自動更新された統計が表示されます。
+* 500 行未満で開始されるテーブルに 500 を超える行を追加すると (たとえば、499 から開始されるテーブルに 500 行を追加すると、合計 999 行になります)、自動更新が表示されます。 
+* 500 行を超える場合、自動更新された統計を表示するには、追加の 500 行と、テーブル サイズの 20% を追加する必要があります。
 
-Since there is no DMV to determine if data within the table has changed since the last time statistics were updated, knowing the age of your statistics can provide you with part of the picture.  You can use the following query to determine the last time your statistics where updated on each table.  
+前回の統計が更新されてからテーブル内のデータが変更されたかどうかを判断するための DMV がないため、統計情報の経過期間がわかると、全体像の一部を把握できます。  以下のクエリでは、それぞれのテーブルで統計情報が最後に更新された時刻を確認できます。  
 
 > [!NOTE]
-> Remember if there is a material change in the distribution of values for a given column, you should update statistics regardless of the last time they were updated.  
+> 指定した列の値の分布に重要な変更がある場合は、最後に更新された時刻に関係なく統計を更新する必要があります。  
 > 
 > 
 
@@ -89,111 +95,111 @@ WHERE
     st.[user_created] = 1;
 ```
 
-Date columns in a data warehouse, for example, usually need frequent statistics updates. Each time new rows are loaded into the data warehouse, new load dates or transaction dates are added. These change the data distribution and make the statistics out-of-date.  Conversely, statistics on a gender column on a customer table might never need to be updated. Assuming the distribution is constant between customers, adding new rows to the table variation isn't going to change the data distribution. However, if your data warehouse only contains one gender and a new requirement results in multiple genders then you definitely need to update statistics on the gender column.
+たとえば、データ ウェアハウスの日付列では、通常、統計を頻繁に更新する必要があります。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。  一方、顧客テーブルの性別列の統計は更新する必要がないと考えられます。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの性別しか含まれておらず、新しい要件によって複数の性別が含まれるようになった場合は、性別列の統計を更新する必要があることは明らかです。
 
-For further explanation, see [Statistics][Statistics] on MSDN.
+詳細については、MSDN の「[統計][Statistics]」をご覧ください。
 
-## <a name="implementing-statistics-management"></a>Implementing statistics management
-It is often a good idea to extend your data loading process to ensure that statistics are updated at the end of the load. The data load is when tables most frequently change their size and/or their distribution of values. Therefore, this is a logical place to implement some management processes.
+## <a name="implementing-statistics-management"></a>統計管理の実装
+多くの場合、読み込みの終わりに統計が確実に更新されるように、データ読み込みプロセスを拡張することが推奨されます。 テーブルのサイズや値の分布が変わる頻度が最も高いのがデータの読み込み時です。 したがって、これが管理プロセスを実装する論理的な場所となります。
 
-Some guiding principles are provided below for updating your statistics during the load process:
+読み込みプロセスで統計を更新する際の基本原則は、次のとおりです。
 
-* Ensure that each loaded table has at least one statistics object updated. This updates the tables size (row count and page count) information as part of the stats update.
-* Focus on columns participating in JOIN, GROUP BY, ORDER BY and DISTINCT clauses
-* Consider updating "ascending key" columns such as transaction dates more frequently as these values will not be included in the statistics histogram.
-* Consider updating static distribution columns less frequently.
-* Remember each statistic object is updated in series. Simply implementing `UPDATE STATISTICS <TABLE_NAME>` may not be ideal - especially for wide tables with lots of statistics objects.
+* 読み込まれた各テーブルに更新された統計オブジェクトが少なくとも 1 つは含まれていることを確認します。 これにより、統計の更新の一環として、テーブル サイズ (行数とページ数) 情報が更新されます。
+* JOIN、GROUP BY、ORDER BY、DISTINCT の各句に関与している列を重視します。
+* トランザクションの日付などの "昇順キー" 列の値は、統計ヒストグラムに含まれないため、これらの列の更新頻度を増やすことを検討します。
+* 静的な分布列の更新頻度を減らすことを検討します。
+* 各統計オブジェクトは系列で更新されることに注意してください。 特に、多数の統計オブジェクトが含まれた幅の広いテーブルでは、 `UPDATE STATISTICS <TABLE_NAME>` を実装するだけでは十分とはいえない場合があります。
 
 > [!NOTE]
-> For more details on [ascending key] please refer to the SQL Server 2014 cardinality estimation model whitepaper.
+> [昇順キー] の詳細については、SQL Server 2014 の基数推定モデルに関するホワイト ペーパーをご覧ください。
 > 
 > 
 
-For further explanation, see  [Cardinality Estimation][Cardinality Estimation] on MSDN.
+詳細については、MSDN の[基数推定][Cardinality Estimation]に関するページをご覧ください。
 
-## <a name="examples-create-statistics"></a>Examples: Create statistics
-These examples show how to use various options for creating statistics. The options that you use for each column depend on the characteristics of your data and how the column will be used in queries.
+## <a name="examples-create-statistics"></a>例: 統計の作成
+以下の例では、さまざまなオプションを使用して統計を作成する方法を示します。 各列に使用するオプションは、データの特性とクエリでの列の使用方法によって異なります。
 
-### <a name="a-create-singlecolumn-statistics-with-default-options"></a>A. Create single-column statistics with default options
-To create statistics on a column, simply provide a name for the statistics object and the name of the column.
+### <a name="a-create-single-column-statistics-with-default-options"></a>A. 既定のオプションを使用した単一列統計の作成
+列の統計を作成するには、統計オブジェクトの名前と列の名前を指定するだけです。
 
-This syntax uses all of the default options. By default, SQL Data Warehouse samples 20 percent of the table when it creates statistics.
+次の構文では、既定のオプションをすべて使用しています。 既定では、SQL Data Warehouse は統計を作成するときに、テーブルの 20% をサンプリングします。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
-### <a name="b-create-singlecolumn-statistics-by-examining-every-row"></a>B. Create single-column statistics by examining every row
-The default sampling rate of 20 percent is sufficient for most situations. However, you can adjust the sampling rate.
+### <a name="b-create-single-column-statistics-by-examining-every-row"></a>B. すべての列の検査による単一列統計の作成
+ほとんどの場合、20% という既定のサンプリング レートで十分です。 ただし、サンプリング レートを調整することもできます。
 
-To sample the full table, use this syntax:
+テーブル全体をサンプリングするには、次の構文を使用します。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
-### <a name="c-create-singlecolumn-statistics-by-specifying-the-sample-size"></a>C. Create single-column statistics by specifying the sample size
-Alternatively, you can specify the sample size as a percent:
+### <a name="c-create-single-column-statistics-by-specifying-the-sample-size"></a>C. サンプル サイズを指定した単一列統計の作成
+サンプル サイズをパーセントで指定することもできます。
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
-### <a name="d-create-singlecolumn-statistics-on-only-some-of-the-rows"></a>D. Create single-column statistics on only some of the rows
-Another option, you can create statistics on a portion of the rows in your table. This is called a filtered statistic.
+### <a name="d-create-single-column-statistics-on-only-some-of-the-rows"></a>D. 一部の行のみの単一列統計の作成
+テーブルの一部の行の統計を作成することもできます。 これは、フィルター選択された統計と呼ばれます。
 
-For example, you could use filtered statistics when you plan to query a specific partition of a large partitioned table. By creating statistics on only the partition values, the accuracy of the statistics will improve, and therefore improve query performance.
+たとえば、大規模なパーティション テーブルの特定のパーティションのクエリを計画するときに、フィルター選択された統計を使用できます。 パーティション値のみで統計を作成すると、統計の精度が向上するので、クエリのパフォーマンスが向上します。
 
-This example creates statistics on a range of values. The values could easily be defined to match the range of values in a partition.
+次の例では、値の範囲の統計を作成します。 パーティションの値の範囲に一致する値を簡単に定義できます。
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
-> For the query optimizer to consider using filtered statistics when it chooses the distributed query plan, the query must fit inside the definition of the statistics object. Using the previous example, the query's where clause needs to specify col1 values between 2000101 and 20001231.
+> クエリ オプティマイザーが分散クエリ プランを選択するときに、フィルター選択された統計の使用も考慮されるようにするには、クエリが統計オブジェクトの定義の範囲内である必要があります。 前の例では、クエリの WHERE 句で col1 の値として 2000101 ～ 20001231 の値を指定する必要があります。
 > 
 > 
 
-### <a name="e-create-singlecolumn-statistics-with-all-the-options"></a>E. Create single-column statistics with all the options
-You can, of course, combine the options together. The example below creates a filtered statistics object with a custom sample size:
+### <a name="e-create-single-column-statistics-with-all-the-options"></a>E. すべてのオプションを使用した単一列統計の作成
+オプションは組み合わせることができます。 次の例では、カスタム サンプル サイズを指定してフィルター選択された統計オブジェクトを作成します。
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-For the full reference, see [CREATE STATISTICS][CREATE STATISTICS] on MSDN.
+詳細については、MSDN の [CREATE STATISTICS][CREATE STATISTICS] に関するページをご覧ください。
 
-### <a name="f-create-multicolumn-statistics"></a>F. Create multi-column statistics
-To create a multi-column statistics, simply use the previous examples, but specify more columns.
+### <a name="f-create-multi-column-statistics"></a>F. 複数列統計の作成
+複数列統計を作成するには、これまでの例を使用するだけですが、複数の列を指定します。
 
 > [!NOTE]
-> The histogram, which is used to estimate number of rows in the query result, is only available for the first column listed in the statistics object definition.
+> クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 > 
 > 
 
-In this example, the histogram is on *product\_category*. Cross-column statistics are calculated on *product\_category* and *product\_sub_c\ategory*:
+次の例では、ヒストグラムは *product\_category* で使用されます。 列間の統計は、*product\_category* と *product\_sub_c\ategory* で計算されます。
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Since there is a correlation between *product\_category* and *product\_sub\_category*, a multi-column stat can be useful if these columns are accessed at the same time.
+*product\_category* と *product\_sub\_category* の間には相関関係があるため、これらの列に同時にアクセスする場合は複数列統計が役立ちます。
 
-### <a name="g-create-statistics-on-all-the-columns-in-a-table"></a>G. Create statistics on all the columns in a table
-One way to create statistics is to issues CREATE STATISTICS commands after creating the table.
+### <a name="g-create-statistics-on-all-the-columns-in-a-table"></a>G. テーブルのすべての列の統計の作成
+統計を作成する方法の 1 つとして、テーブルの作成後に CREATE STATISTICS コマンドを発行します。
 
 ```sql
 CREATE TABLE dbo.table1
@@ -213,10 +219,10 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. Use a stored procedure to create statistics on all columns in a database
-SQL Data Warehouse does not have a system stored procedure equivalent to [sp_create_stats][] in SQL Server. This stored procedure creates a single column statistics object on every column of the database that doesn't already have statistics.
+### <a name="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. ストアド プロシージャを使用した、データベース内のすべての列の統計の作成
+SQL Data Warehouse には、SQL Server の [sp_create_stats][] に相当するシステム ストアド プロシージャはありません。 このストアド プロシージャは、まだ統計がないデータベースのすべての列の単一列統計オブジェクトを作成します。
 
-This will help you get started with your database design. Feel free to adapt it to your needs.
+これは、データベースの設計を開始する際に役立ちます。 ニーズに合わせて、このオブジェクトを自由に変更できます。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -261,9 +267,9 @@ JOIN        sys.[columns] c         ON  t.[object_id]       = c.[object_id]
 LEFT JOIN   sys.[stats_columns] l   ON  l.[object_id]       = c.[object_id]
                                     AND l.[column_id]       = c.[column_id]
                                     AND l.[stats_column_id] = 1
-LEFT JOIN   sys.[external_tables] e ON  e.[object_id]       = t.[object_id]
+LEFT JOIN    sys.[external_tables] e    ON    e.[object_id]        = t.[object_id]
 WHERE       l.[object_id] IS NULL
-AND         e.[object_id] IS NULL -- not an external table
+AND            e.[object_id] IS NULL -- not an external table
 )
 SELECT  [table_schema_name]
 ,       [table_name]
@@ -299,83 +305,83 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-To create statistics on all columns in the table with this procedure, simply call the procedure.
+このプロシージャを使用して、テーブルのすべての列の統計を作成するには、プロシージャを呼び出すだけです。
 
 ```sql
 prc_sqldw_create_stats;
 ```
 
-## <a name="examples-update-statistics"></a>Examples: update statistics
-To update statistics, you can:
+## <a name="examples-update-statistics"></a>例: 統計の更新
+統計を更新するには、次の操作を行います。
 
-1. Update one statistics object. Specify the name of the statistics object you wish to update.
-2. Update all statistics objects on a table. Specify the name of the table instead of one specific statistics object.
+1. 統計オブジェクトを 1 つ更新します。 更新する統計オブジェクトの名前を指定します。
+2. テーブルのすべての統計オブジェクトを更新します。 特定の統計オブジェクトではなく、テーブルの名前を指定します。
 
-### <a name="a-update-one-specific-statistics-object"></a>A. Update one specific statistics object
-Use the following syntax to update a specific statistics object:
+### <a name="a-update-one-specific-statistics-object"></a>A. 1 つの特定の統計オブジェクトの更新
+特定の統計オブジェクトを更新するには、次の構文を使用します。
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-By updating specific statistics objects, you can minimize the time and resources required to manage statistics. This requires some thought, though, to choose the best statistics objects to update.
+特定の統計オブジェクトを更新することで、統計を管理するために必要な時間とリソースを最小限に抑えることができます。 ただし、この場合、更新する最適な統計オブジェクトの選択について少し検討する必要があります。
 
-### <a name="b-update-all-statistics-on-a-table"></a>B. Update all statistics on a table
-This shows a simple method for updating all the statistics objects on a table.
+### <a name="b-update-all-statistics-on-a-table"></a>B. テーブルのすべての統計の更新
+テーブルのすべての統計オブジェクトを更新する簡単な方法を次に示します。
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 UPDATE STATISTICS dbo.table1;
 ```
 
-This statement is easy to use. Just remember this updates all statistics on the table, and therefore might perform more work than is necessary. If the performance is not an issue, this is definitely the easiest and most complete way to guarantee statistics are up-to-date.
+これは使いやすいステートメントです。 このステートメントはテーブルのすべての統計を更新するので、必要以上の処理が実行される可能性があります。 パフォーマンスが問題でない場合は、これが、統計が最新の状態であることを保証する最も簡単で最も包括的な方法であることは確かです。
 
 > [!NOTE]
-> When updating all statistics on a table, SQL Data Warehouse does a scan to sample the table for each statistics. If the table is large, has many columns, and many statistics, it might be more efficient to update individual statistics based on need.
+> テーブルのすべての統計を更新する場合、SQL Data Warehouse では、統計ごとにテーブルのスキャンを実行してサンプリングします。 テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
 > 
 > 
 
-For an implementation of an `UPDATE STATISTICS` procedure please see the [Temporary Tables][Temporary] article. The implementation method is slightly different to the `CREATE STATISTICS` procedure above but the end result is the same.
+`UPDATE STATISTICS` プロシージャの実装については、[一時テーブル][Temporary]に関する記事をご覧ください。 実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、最終的な結果は同じです。
 
-For the full syntax, see [Update Statistics][Update Statistics] on MSDN.
+完全な構文については、MSDN の [Update Statistics][Update Statistics] に関するページをご覧ください。
 
-## <a name="statistics-metadata"></a>Statistics metadata
-There are several system view and functions that you can use to find information about statistics. For example, you can see if a statistics object might be out-of-date by using the stats-date function to see when statistics were last created or updated.
+## <a name="statistics-metadata"></a>統計のメタデータ
+統計に関する情報を確認する際に使用できるシステム ビューとシステム関数がいくつかあります。 たとえば、stats-date 関数を使用して、統計が最後に作成または更新されたのがいつであるかを確認することで、統計オブジェクトが古くなっているかどうかがわかります。
 
-### <a name="catalog-views-for-statistics"></a>Catalog views for statistics
-These system views provide information about statistics:
+### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
+次のシステム ビューは、統計に関する情報を提供します。
 
-| Catalog View | Description |
+| カタログ ビュー | Description |
 |:--- |:--- |
-| [sys.columns][sys.columns] |One row for each column. |
-| [sys.objects][sys.objects] |One row for each object in the database. |
-| [sys.schemas][sys.schemas] |One row for each schema in the database. |
-| [sys.stats][sys.stats] |One row for each statistics object. |
-| [sys.stats_columns][sys.stats_columns] |One row for each column in the statistics object. Links back to sys.columns. |
-| [sys.tables][sys.tables] |One row for each table (includes external tables). |
-| [sys.table_types][sys.table_types] |One row for each data type. |
+| [sys.columns][sys.columns] |列ごとに 1 行。 |
+| [sys.objects][sys.objects] |データベース内のオブジェクトごとに 1 行。 |
+| [sys.schemas][sys.schemas] |データベースのスキーマごとに 1 行。 |
+| [sys.stats][sys.stats] |統計オブジェクトごとに 1 行。 |
+| [sys.stats_columns][sys.stats_columns] |統計オブジェクトの列ごとに 1 行。 sys.columns にリンク。 |
+| [sys.tables][sys.tables] |テーブル (外部テーブルを含む) ごとに 1 行。 |
+| [sys.table_types][sys.table_types] |データ型ごとに 1 行。 |
 
-### <a name="system-functions-for-statistics"></a>System functions for statistics
-These system functions are useful for working with statistics:
+### <a name="system-functions-for-statistics"></a>統計のシステム関数
+次のシステム関数は統計の操作に役立ちます。
 
-| System Function | Description |
+| システム関数 | Description |
 |:--- |:--- |
-| [STATS_DATE][STATS_DATE] |Date the statistics object was last updated. |
-| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |Provides summary level and detailed information about the distribution of values as understood by the statistics object. |
+| [STATS_DATE][STATS_DATE] |統計オブジェクトの最終更新日。 |
+| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報を提供します。 |
 
-### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Combine statistics columns and functions into one view
-This view brings columns that relate to statistics, and results from the [STATS_DATE()][]function together.
+### <a name="combine-statistics-columns-and-functions-into-one-view"></a>1 つのビューへの統計列と関数の統合
+このビューには、統計に関連する列と、[STATS_DATE()][] 関数の結果が一緒に表示されます。
 
 ```sql
 CREATE VIEW dbo.vstats_columns
@@ -413,54 +419,54 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() examples
-DBCC SHOW_STATISTICS() shows the data held within a statistics object. This data comes in three parts.
+## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() の例
+DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されているデータを表示します。 このデータは 3 つの部分で提供されます。
 
-1. Header
-2. Density Vector
-3. Histogram
+1. ヘッダー
+2. 密度ベクトル
+3. ヒストグラム
 
-The header metadata about the statistics. The histogram displays the distribution of values in the first key column of the statistics object. The density vector measures cross-column correlation. SQLDW computes cardinality estimates with any of the data in the statistics object.
+ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQLDW では、統計オブジェクト内のデータを使用して基数推定値を計算します。
 
-### <a name="show-header-density-and-histogram"></a>Show header, density, and histogram
-This simple example shows all three parts of a statistics object.
+### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
+次の簡単な例は、統計オブジェクトの 3 つの部分をすべて表示します。
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Show one or more parts of DBCC SHOW_STATISTICS();
-If you are only interested in viewing specific parts, use the `WITH` clause and specify which parts you want to see:
+### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>DBCC SHOW_STATISTICS(); の 1 つ以上の部分の表示
+特定の部分だけを表示する場合は、`WITH` 句を使用して表示する部分を指定します。
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-For example:
+次に例を示します。
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() differences
-DBCC SHOW_STATISTICS() is more strictly implemented in SQL Data Warehouse compared to SQL Server.
+## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
+SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がより厳密に実装されています。
 
-1. Undocumented features are not supported
-2. Cannot use Stats_stream
-3. Cannot join results for specific subsets of statistics data e.g. (STAT_HEADER JOIN DENSITY_VECTOR)
-4. NO_INFOMSGS cannot be set for message suppression
-5. Square brackets around statistics names cannot be used
-6. Cannot use column names to identify statistics objects
-7. Custom error 2767 is not supported
+1. ドキュメントに記載されていない機能はサポートされていません。
+2. Stats_stream は使用できません。
+3. 統計データの特定のサブセットの結果を結合することはできません (STAT_HEADER JOIN DENSITY_VECTOR など)。
+4. メッセージを抑制するために、NO_INFOMSGS を設定することはできません。
+5. 統計名を囲む角かっこは使用できません。
+6. 列名を使用して、統計オブジェクトを識別することはできません。
+7. カスタム エラー 2767 はサポートされていません。
 
-## <a name="next-steps"></a>Next steps
-For more details, see [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] on MSDN.  To learn more, see the articles on [Table Overview][Overview], [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].  
+## <a name="next-steps"></a>次のステップ
+MSDN の [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] に関するページで詳細を確認します。  [テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。  
 
 <!--Image references-->
 
@@ -490,9 +496,4 @@ For more details, see [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] on MSDN.  To 
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
 <!--Other Web references-->  
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

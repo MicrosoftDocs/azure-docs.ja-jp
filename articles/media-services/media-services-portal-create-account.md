@@ -1,5 +1,5 @@
 ---
-title: " Azure Portal での Azure Media Services アカウントの作成 | Microsoft Docs"
+title: " Azure Portal での Azure Media Services アカウントの作成 | Microsoft Docss"
 description: "このチュートリアルでは、Azure Portal で Azure Media Services アカウントを作成する手順について説明します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8e03f7b3d4b9c17b08aca033f44ebfc5f3332eec
+ms.sourcegitcommit: 7ef0383ae88dcb8beb4b30792eaf60dec2911507
+ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 8e03f7b3d4b9c17b08aca033f44ebfc5f3332eec
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
-> * [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
@@ -36,7 +37,7 @@ Azure Portal には、Azure Media Services (AMS) アカウントをすばやく�
 この記事では、いくつかの一般的な概念について説明し、Azure Portal で Media Services アカウントを作成する方法を示します。
 
 ## <a name="concepts"></a>概念
-Media Services にアクセスするには、関連付けられた次の 2 つのアカウントが必要です。
+Media Services にアクセスするには、関連付けられた次の&2; つのアカウントが必要です。
 
 * Media Services アカウント。 アカウントを使用して、Azure で利用可能なクラウド ベースの Media Services にアクセスできます。 Media Services アカウントには実際のメディア コンテンツは保存されません。 代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。 アカウントを作成するときに、利用可能な Media Services リージョンを選択します。 選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
   
@@ -54,12 +55,12 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. **[+新規]** > **[Web + モバイル]** > **[Media Services]** の順にクリックします。
    
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services Create](./media/media-services-create-account/media-services-new1.png)
 3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
    
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    ![Media Services Create](./media/media-services-create-account/media-services-new3.png)
    
-   1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
+   1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 文字から 24 文字です。
    2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
    3. **[リソース グループ]**ボックスで、新規または既存のリソースを選択します。  リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)を参照してください。
    4. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。 このリージョンでメディアの処理とストリーミングが行われます。 ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。 
@@ -69,9 +70,12 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
    6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
 4. フォームの下部にある **[作成]** をクリックします。
    
-    アカウントの作成に成功すると、ステータスが **[実行中]**に変化します。 
+    アカウントが正常に作成されると、概要ページが読み込まれます。 ストリーミング エンドポイントのテーブルで、アカウントには既定のストリーミング エンドポイントが**停止**状態で示されます。 
+
+    >[!NOTE]
+    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
    
-    ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services settings](./media/media-services-create-account/media-services-settings.png)
    
     AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
@@ -86,7 +90,7 @@ Media Services アカウントにプログラムからアクセスするには�
     **[キーの管理]** ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 
 3. コピー ボタンをクリックして値をコピーします。
    
-    ![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    ![Media Services Keys](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>次のステップ
 これで、ファイルを AMS アカウントにアップロードできるようになりました。 詳細については、 [ファイルのアップロード](media-services-portal-upload-files.md)に関するページを参照してください。
@@ -96,10 +100,5 @@ Media Services アカウントにプログラムからアクセスするには�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

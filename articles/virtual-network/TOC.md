@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [仮想ネットワーク](virtual-networks-overview.md)
 ## [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)
 ## [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)
@@ -7,13 +7,9 @@
 ## IP アドレス指定
 ### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [クラシック](virtual-network-ip-addresses-overview-classic.md)
-## 仮想マシン
-### [ネットワーク インターフェイス](virtual-network-network-interface-overview.md)
-### [名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 作業の開始
-## [仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md)
-## [仮想ネットワークへの VM のデプロイ](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)
 
 # 方法
 ## 計画と設計
@@ -50,6 +46,10 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
+### [ネットワーク インターフェイス](virtual-network-network-interface.md)
+
+### [パブリック IP アドレス](virtual-network-public-ip-address.md)
+
 ### 仮想マシン
 
 #### 静的パブリック IP アドレス
@@ -77,6 +77,8 @@
 #### 複数の IP アドレス
 ##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
+##### [テンプレート](virtual-network-multiple-ip-addresses-template.md)
 
 ### 接続のシナリオ
 #### [仮想ネットワーク (VNet) から VNet に](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -95,33 +97,38 @@
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
 ## 構成
-### Accelerated Networking
-#### [Azure Portal](virtual-network-accelerated-networking-portal.md)
+### VM の Accelerated Networking
+#### [Azure ポータル](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [VM のネットワーク スループットを最適化する](virtual-network-optimize-network-bandwidth.md)
 ### アクセス制御リスト
 #### [クラシック ポータル](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [VM とクラウド サービスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
-## [管理]
+## 管理
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [ログ](virtual-network-nsg-manage-log.md)
-#### トラブルシューティング
-##### [ポータル](virtual-network-nsg-troubleshoot-portal.md)
-##### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
-### ルートのトラブルシューティング
-#### [ポータル](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### 仮想マシン
 #### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [VM を別のサブネットに移動する](virtual-networks-move-vm-role-to-subnet.md)
 
+## トラブルシューティング
+### ネットワーク セキュリティ グループ
+#### [ポータル](virtual-network-nsg-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+### ルート
+#### [ポータル](virtual-network-routes-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+### [スループットのテスト](virtual-network-bandwidth-testing.md)
+
 # リファレンス
-## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell (クラシック)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
-## [Azure CLI](/cli/azure/)
+## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
+## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj157182.aspx)
@@ -141,8 +148,3 @@
 ## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

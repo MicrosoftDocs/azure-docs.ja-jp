@@ -1,80 +1,156 @@
 ---
-title: Log Analytics における Azure Storage データの収集について | Microsoft Docs
-description: Azure リソースは、Azure 診断を使用して、Azure Storage アカウントにログとメトリックを書き込むことができます。 Log Analytics は、このデータのインデックスを作成し、検索可能な状態にすることができます。
+title: "Log Analytics での Azure サービスのログとメトリックの収集 | Microsoft Docs"
+description: "Log Analytics にログとメトリックが書き込まれるように Azure のリソースの診断を構成します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/09/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 04bab3024474ae521090a8693b6c095e1704d4dc
+ms.lasthandoff: 03/15/2017
+
 
 ---
-# <a name="collecting-azure-storage-data-in-log-analytics-overview"></a>Log Analytics における Azure Storage データの収集について
-多くの Azure リソースは、ログとメトリックを Azure Storage アカウントに書き込むことができます。 そのデータを Log Analytics から利用することによって、Azure リソースを容易に監視することができます。
+# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
-Azure Storage にデータを書き込むリソースは、Azure 診断を使用するか、データを書き込むための独自の手段を有している必要があります。 このデータは、さまざまな形式で次のいずれかの場所に書き込まれます。
+Azure サービスのログとメトリックを収集する方法は&4; 種類あります。
 
-* Azure テーブル
-* Azure BLOB
-* EventHub
+1. Azure 診断から Log Analytics に直接 (次の表の "*診断*")
+2. Azure 診断から Azure storage 経由で Log Analytics に (次の表の "*ストレージ*")
+3. Azure サービスのコネクタ (次の表の "*コネクタ*")
+4. スクリプトでデータを収集して Log Analytics に投稿 (次の表の空白セルと、表に記載されていないサービス用)
 
-Log Analytics は、[Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を使用してデータを書き込む Azure サービスに対応しています。 その他、さまざまな場所に各種形式のログとメトリックを出力するサービスにも対応しています。  
+
+| サービス                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
+| --- | --- | --- | --- | --- |
+| アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Application Gateway 分析](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| Application Insights    |                                         | コネクタ   | コネクタ   | [Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (プレビュー) |
+| Automation アカウント     | Microsoft.Automation/AutomationAccounts | 診断 |             | [詳細情報](../automation/automation-manage-send-joblogs-log-analytics.md)|
+| Batch アカウント          | Microsoft.Batch/batchAccounts           | 診断 | 診断 | |
+| 従来のクラウド サービス  |                                         | Storage     |             | [詳細情報](log-analytics-azure-storage-iis-table.md) |
+| Cognitive Services      | Microsoft.CognitiveServices/accounts    |             | 診断 | |
+| Data Lake Analytics     | Microsoft.DataLakeAnalytics/accounts    | 診断 |             | |
+| Data Lake Store         | Microsoft.DataLakeStore/accounts        | 診断 |             | |
+| Event Hub 名前空間     | Microsoft.EventHub/namespaces           | 診断 | 診断 | |
+| IoT Hub                | Microsoft.Devices/IotHubs               |             | 診断 | |
+| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault 分析](log-analytics-azure-key-vault.md) |
+| ロード バランサー          | Microsoft.Network/loadBalancers         | 診断 |             |  |
+| Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 診断 | 診断 | |
+| ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Recovery コンテナー         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (プレビュー)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
+| Search サービス         | Microsoft.Search/searchServices         | 診断 | 診断 | |
+| Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+| Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](log-analytics-service-fabric.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | [Azure SQL Analytics (プレビュー)](log-analytics-azure-sql.md) |
+| Storage                 |                                         |             | スクリプト      | [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
+| Virtual Machines        | Microsoft.Compute/virtualMachines       | 内線番号   | 内線番号 <br> 診断  | |
+| 仮想マシン スケール セット | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 診断 | |
+| Web サーバー ファーム        | Microsoft.Web/serverfarms               |             | 診断 | |
+| Web サイト               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 診断 | [Azure Web Apps Analytics (プレビュー)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
+
+
+> [!NOTE]
+> Azure 仮想マシン (Linux と Windows の両方) を監視する場合は、[Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)のインストールをお勧めします。 仮想マシン内から収集された洞察は、エージェントによって提供されます。 仮想マシン スケール セットの拡張機能を使用することもできます。
+>
+>
+
+## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure 診断から Log Analytics に直接
+多くの Azure リソースで診断ログとメトリックを Log Analytics に直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データが Log Analytics に即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
+
+[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
+
+* 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
+* 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)」を参照してください。
+
+### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
+2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) が必要です。
+
+次の PowerShell の例は、[Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
+
+```powershell
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
+
+Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
+```
+
+### <a name="enable-diagnostics-with-resource-manager-templates"></a>Resource Manager テンプレートを使用して診断を有効にする
+
+リソースを作成するときにリソースで診断を有効にして診断を Log Analytics ワークスペースに送信するには、次のようなテンプレートを使用できます。 この例は Automation アカウント向けですが、サポートされているすべてのリソース タイプで動作します。
+
+```json
+        {
+            "type": "Microsoft.Automation/automationAccounts/providers/diagnosticSettings",
+            "name": "[concat(parameters('omsAutomationAccountName'), '/', 'Microsoft.Insights/service')]",
+            "apiVersion": "2015-07-01",
+            "dependsOn": [
+                "[concat('Microsoft.Automation/automationAccounts/', parameters('omsAutomationAccountName'))]",
+                "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspaceName'))]"
+            ],
+            "properties": {
+                "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('omsWorkspaceName'))]",
+                "logs": [
+                    {
+                        "category": "JobLogs",
+                        "enabled": true
+                    },
+                    {
+                        "category": "JobStreams",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+```
+
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
+
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure 診断からストレージ経由で Log Analytics に
+
+一部のリソース内からログを収集するには、Azure Storage にログを送信して、そこからログを読み取るように Log Analytics を構成することができます。
+
+Log Analytics では、この方法を使用して、次のリソースとログについて Azure Storage から診断を収集できます。
+
+| リソース | ログ |
+| --- | --- |
+| Service Fabric |ETWEvent <br> 操作イベント <br> Reliable Actor イベント <br> Reliable Service イベント |
+| Virtual Machines |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |
+| Web ロール <br> worker ロール |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |
 
 > [!NOTE]
 > ストレージ アカウントに診断を送信する際、および Log Analytics がストレージ アカウントからデータを読み取る際のデータの格納と転送には、通常の Azure 料金が課金されます。
-> 
-> 
+>
+>
 
-![Azure Storage の図](media/log-analytics-azure-storage/azure-storage-diagram.png)
+Log Analytics でこれらのログを収集する方法の詳細については、[IIS の Blob Storage とイベントの Table Storage の使用](log-analytics-azure-storage-iis-table.md)に関するページをご覧ください。
 
-## <a name="supported-azure-resources"></a>サポートされる Azure リソース
-Log Analytics は、以下の Azure リソースのデータを収集できます。
+## <a name="connectors-for-azure-services"></a>Azure サービスのコネクタ
 
-| リソースの種類 | ログ (診断カテゴリ) | Log Analytics ソリューション |
-| --- | --- | --- |
-| Application Insights |可用性 <br> カスタム イベント <br> 例外 <br> 要求数 <br> |Application Insights (プレビュー) |
-| API Management | |"*なし*" (プレビュー) |
-| Automation <br> Microsoft.Automation/AutomationAccounts |JobLogs <br> JobStreams |Azure Automation (プレビュー) |
-| Key Vault <br> Microsoft.KeyVault/Vaults |AuditEvent |KeyVault (プレビュー) |
-| Application Gateway <br> Microsoft.Network/ApplicationGateways |ApplicationGatewayAccessLog <br> ApplicationGatewayPerformanceLog |Azure Networking (プレビュー) |
-| ネットワーク セキュリティ グループ <br> Microsoft.Network/NetworkSecurityGroups |NetworkSecurityGroupEvent <br> NetworkSecurityGroupRuleCounter |Azure Networking (プレビュー) |
-| Service Fabric |ETWEvent <br> 操作イベント <br> Reliable Actor イベント <br> Reliable Service イベント |ServiceFabric (プレビュー) |
-| Virtual Machines |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |"*なし*" |
-| Web ロール <br> worker ロール |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |"*なし*" |
+Application Insights にはコネクタがあり、これを使用して、Application Insights で収集されたデータを Log Analytics に送信することができます。
 
-> [!NOTE]
-> Azure 仮想マシン (Linux と Windows の両方) を監視する場合は、[Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)のインストールをお勧めします。 このエージェントを使用すると、ストレージに書き込まれた診断情報を使用した場合よりもさらに深く、仮想マシンの状態を把握することができます。
-> 
-> 
+[Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)に関する詳細を確認してください。
 
-OMS で分析できるログを追加する順番を決定するために、 [フィードバック ページ](http://feedback.azure.com/forums/267889-azure-log-analytics/category/88086-log-management-and-log-collection-policy)で投票にご協力ください。
+## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>スクリプトでデータを収集して Log Analytics に投稿
 
-* 「[Log Analytics を使用した Azure 診断ログの分析](log-analytics-azure-storage-json.md)」を参照し、[Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に対応した Azure サービスから Log Analytics がログを読み取る方法について詳しく確認します。
-  * Azure Key Vault
-  * Azure Automation
-  * Application Gateway
-  * ネットワーク セキュリティ グループ
-* [IIS の Blob Storage とイベントの Table Storage の使用](log-analytics-azure-storage-iis-table.md)に関するページを参照し、診断情報を Table Storage に出力する Azure サービスのログや Blob Storage に出力された IIS ログを Log Analytics がどのようにして読み取っているかを詳しく確認します。
-  * Service Fabric
-  * Web ロール
-  * worker ロール
-  * Virtual Machines
+Log Analytics にログとメトリックを直接送信する手段が提供されていない Azure のサービスについては、Azure Automation スクリプトを使用してログとメトリックを収集することができます。 次に、このスクリプトで[データ コレクター API](log-analytics-data-collector-api.md) を使用して Log Analytics にデータを送信できます。
 
-Application Insights はプライベート プレビューであり、Blob Storage への連続エクスポートを使用します。 プライベート プレビューに参加するには、Microsoft アカウント チームにお問い合わせいただくか、[フィードバック サイト](https://feedback.azure.com/forums/267889-log-analytics/suggestions/6519248-integration-with-app-insights)の情報を参照してください。
+Azure テンプレート ギャラリーには、サービスからデータを収集し、Log Analytics に送信するために [Azure Automation を使用する例](https://azure.microsoft.com/en-us/resources/templates/?term=OMS)が用意されています。
 
 ## <a name="next-steps"></a>次のステップ
-* [Log Analytics を使用して Azure 診断ログを分析](log-analytics-azure-storage-json.md)します。ログは、診断情報を JSON 形式で Blob Storage に出力する Azure サービスから読み取ります。
+
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-
-<!--HONumber=Oct16_HO2-->
-
 

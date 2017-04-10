@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 3/1/2017
 ms.author: mattmcg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 040727e39aecfeeda37dfb8879a13dcae3096e27
+ms.sourcegitcommit: a6d1037293ff48808f19cfa9a1fa468c22cc2328
+ms.openlocfilehash: 7a41e34925ef4208ee8fa2eb3151cbb058ea5b17
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="set-quotas-in-azure-stack"></a>Set quotas in Azure Stack
+# <a name="set-and-view-quotas-in-azure-stack"></a>Set and view quotas in Azure Stack
 Quotas define the limits of resources that a tenant subscription can provision or consume. For example, a quota might allow a tenant to create up to five VMs. To add a service to a plan, the administrator must configure the quota settings for that service.
 
 Quotas are configurable per service and per location, enabling administrators to provide granular control over the resource consumption. Administrators can create one or more quota resources and associate them with plans, which means they can provide differentiated offerings for their services. Quotas for a given service can be created from the **Resource Provider** administration blade for that service.
@@ -28,12 +29,12 @@ Quotas are configurable per service and per location, enabling administrators to
 A tenant that subscribes to an offer that contains multiple plans can use all resources that are available in each plan.
 
 ## <a name="to-create-an-iaas-quota"></a>To create an IaaS quota
-1. In a browser, go to [https://portal.azurestack.local](https://portal.azurestack.local/).
+1. In a browser, go to [https://portal.local.azurestack.external](https://portal.local.azurestack.external/).
    
    Sign in to the Azure Stack portal as an administrator (by using the credentials that you provided during deployment).
-2. Select **New**, and then select **Quota**.
+2. Select **New**, then **Tenant Offers + Plans**, and select **Quota**.
 3. Select the first service for which you want to create a quota. For an IaaS quota, follow these steps for the Compute, Network, and Storage services.
-   In this example, we first create a quota for the Compute service. In the **Namespace** list, select the **Microsoft.Compute.Admin** namespace.
+   In this example, we first create a quota for the Compute service. In the **Namespace** list, select the **Microsoft.Compute** namespace.
    
    > ![Creating a new Compute quota](./media/azure-stack-setting-quota/NewComputeQuota.PNG)
    > 
@@ -83,9 +84,7 @@ A tenant that subscribes to an offer that contains multiple plans can use all re
 | Max NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
 | Max network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+##<a name="view-an-existing-quota"></a>View an existing quota
+To view an existing quota, click **More services**>**Resource Providers** and select the service with which the quota you want to view is associated. Next, click **Quotas**, and select the Quota you want to view.
+   > ![Viewing an existing quota](./media/azure-stack-setting-quota/ExistingQuota.PNG)
 

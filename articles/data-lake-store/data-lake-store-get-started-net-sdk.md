@@ -1,6 +1,6 @@
 ---
-title: "Data Lake Store .NET SDK を使用してアプリケーションを開発する | Microsoft Docs"
-description: "Data Lake Store .NET SDK を使用してアプリケーションを開発する"
+title: ".NET SDK を使用して Azure Data Lake Store でアプリケーションを開発する | Microsoft Docs"
+description: "Azure Data Lake Store .NET SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 03/07/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1fd8fe3847299d98a55a16ab400b43be074a5f33
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -29,15 +30,19 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2013 または 2015**。 以下の手順では、Visual Studio 2015 を使用します。
+* **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2015 Update 2 を使用します。
+
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
 * **Azure Data Lake Store アカウント**。 アカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
+
 * **Azure Active Directory アプリケーションを作成する**。 Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。 Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**があります。 認証方法の手順と詳しい情報については、「 [Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
@@ -57,20 +62,21 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
    2. **[Nuget パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
       
-      * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v0.12.5-preview を使用します。
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` - このチュートリアルでは、v0.10.6-preview を使用します。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.8-preview を使用します。
+      * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v1.0.4 を使用します。
+      * `Microsoft.Azure.Management.DataLake.StoreUploader` - このチュートリアルでは、v1.0.1-preview を使用します。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.11 を使用します。
         
-        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Create a new Azure Data Lake account")
+        ![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
    
         using System;
-        using System.Threading;
+        using System.IO;
+    using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates      using System.Threading;
    
-        using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.StoreUploader;
+    using Microsoft.Azure.Management.DataLake.Store.Models;  using Microsoft.Azure.Management.DataLake.StoreUploader;  using Microsoft.IdentityModel.Clients.ActiveDirectory;  using Microsoft.Rest.Azure.Authentication;
+
 7. 以下のように変数を宣言し、既に存在する Data Lake Store 名とリソース グループ名の値を指定します。 また、ここで指定するローカル パスとファイル名は、コンピューターに存在している必要があります。 名前空間の宣言後に次のコード スニペットを追加します。
    
         namespace SdkSample
@@ -93,9 +99,9 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
                     _subId = "<SUBSCRIPTION-ID>";
 
                     string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
-                    string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
+                    string localFilePath = Path.Combine(localFolderPath, "file.txt"); // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
-                    string remoteFilePath = remoteFolderPath + "file.txt";
+                    string remoteFilePath = Path.Combine(remoteFolderPath, "file.txt");
                 }
             }
         }
@@ -103,67 +109,66 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 記事の以降のセクションでは、認証、ファイルのアップロードなどの操作を実行する .NET メソッドの使用方法について説明します。
 
 ## <a name="authentication"></a>認証
-### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>エンド ユーザー認証を使用している場合 (このチュートリアルではこちらを推奨)
-既存の Azure AD "ネイティブ クライアント" アプリケーションと共に、次に記載されているスニペットを使用します。 このチュートリアルは、できるだけ短時間で終了できるよう、このアプローチの使用を推奨しています。
+
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>エンド ユーザー認証を使用している場合 (このチュートリアルではこちらを推奨)
+
+既存の Azure AD ネイティブ アプリケーションでこれを使用して、アプリケーションを**対話的に**認証します。これは、Azure の資格情報を入力するよう求められることを意味します。 
+
+使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 このチュートリアルは、できるだけ短時間で終了できるよう、このアプローチの使用を推奨しています。 次のスニペットでは、単にテナント ID の値を指定しています。 この値は、[Active Directory アプリケーションの作成](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページの手順を使用して取得できます。
 
     // User login via interactive popup
-    // Use the client ID of an existing AAD "Native Client" application.
+    // Use the client ID of an existing AAD Web application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-    var domain = "common"; // Replace this string with the user's Azure Active Directory tenant ID or domain name, if needed.
+    var tenant_id = "<AAD_tenant_id>"; // Replace this string with the user's Azure Active Directory tenant ID
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-    var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
+    var creds = UserTokenProvider.LoginWithPromptAsync(tenant_id, activeDirectoryClientSettings).Result;
 
-このスニペットに関して、以下の 2 点に留意してください。
+このスニペットに関して、以下の&2; 点に留意してください。
 
 * できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションから既定で利用できる Azure AD ドメインとクライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用**してください。
-* ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、Azure AD ドメイン、クライアント ID、リダイレクト URI を、作成したアプリケーションに使用する必要があります。 手順については、「 [Active Directory アプリケーションを作成する](../resource-group-create-service-principal-portal.md#create-an-active-directory-application) 」を参照してください。
+* ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、作成したアプリケーションの Azure AD テナント ID、クライアント ID、およびリダイレクト URI を使用する必要があります。 手順については、[Data Lake Store でのエンド ユーザー認証のための Active Directory アプリケーションの作成](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
 
-> [!NOTE]
-> 上記のリンクの手順は、Azure AD Web アプリケーションのためのものです。 しかし、ネイティブ クライアント アプリケーションを作成する場合でも、手順はまったく同じです。 
-> 
-> 
-
-### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証を使用している場合
-次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを非対話的に認証するために使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証を使用している場合
+次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを**非対話的に**認証するために使用できます。 これは、既存の Azure AD "Web アプリ" アプリケーションと共に使用します。 Azure AD Web アプリケーションを作成する方法と、次のスニペットに必要なクライアント ID とクライアント シークレットを取得する方法については、[Data Lake Store でのサービス間認証のための Active Directory アプリケーションの作成](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
     // Service principal / appplication authentication with client secret / key
-    // Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+    
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
     var clientSecret = "<AAD-application-client-secret>";
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
-    var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
+    var creds = await ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential);
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>証明書によるサービス間認証を使用している場合
-3 つ目のオプションとして、次のスニペットは、アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを非対話的に認証するためにも使用できます。 これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証を使用している場合
+3 つ目のオプションとして、次のスニペットは、Azure Active Directory アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを**非対話的に**認証するためにも使用できます。 これは、既存の [Azure AD アプリケーションと証明書](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)と共に使用します。
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+    
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
-    System.Security.Cryptography.X509Certificates.X509Certificate2 clientCert = <AAD-application-client-certificate>
+    var clientCert = <AAD-application-client-certificate>
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
-    var creds = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
+    var creds = await ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate);
 
 ## <a name="create-client-objects"></a>クライアント オブジェクトを作成する
 次のスニペットは、Data Lake Store アカウントとファイルシステム クライアント オブジェクトを作成します。これらは、サービスに要求を発行するために使用されます。
 
     // Create client objects and set the subscription ID
-    _adlsClient = new DataLakeStoreAccountManagementClient(creds);
+    _adlsClient = new DataLakeStoreAccountManagementClient(creds) { SubscriptionId = _subId };
     _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
-
-    _adlsClient.SubscriptionId = _subId;
 
 ## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>サブスクリプション内のすべての Data Lake Store アカウントを一覧表示する
 次のスニペットは、特定の Azure サブスクリプション内のすべての Data Lake Store アカウントを一覧表示します。
 
     // List all ADLS accounts within the subscription
-    public static List<DataLakeStoreAccount> ListAdlStoreAccounts()
+    public static async Task<List<DataLakeStoreAccount>> ListAdlStoreAccounts()
     {
-        var response = _adlsClient.Account.List();
+        var response = await _adlsClient.Account.ListAsync();
         var accounts = new List<DataLakeStoreAccount>(response);
 
         while (response.NextPageLink != null)
@@ -179,9 +184,9 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 次のスニペットは、Data Lake Store アカウント内にディレクトリを作成するために使用できる `CreateDirectory` メソッドの例です。
 
     // Create a directory
-    public static void CreateDirectory(string path)
+    public static async Task CreateDirectory(string path)
     {
-        _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
+        await _adlsFileSystemClient.FileSystem.MkdirsAsync(_adlsAccountName, path);
     }
 
 ## <a name="upload-a-file"></a>ファイルをアップロードする
@@ -202,9 +207,9 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 次のスニペットは、Data Lake Store で使用できるファイルまたはディレクトリに関する情報を取得するために使用できる `GetItemInfo` メソッドの例です。 
 
     // Get file or directory info
-    public static FileStatusProperties GetItemInfo(string path)
+    public static async Task<FileStatusProperties> GetItemInfo(string path)
     {
-        return _adlsFileSystemClient.FileSystem.GetFileStatus(_adlsAccountName, path).FileStatus;
+        return await _adlsFileSystemClient.FileSystem.GetFileStatusAsync(_adlsAccountName, path).FileStatus;
     }
 
 ## <a name="list-file-or-directories"></a>ファイルまたはディレクトリを一覧表示する
@@ -220,34 +225,34 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 次のスニペットは、ファイルの連結に使用する `ConcatenateFiles` メソッドの例です。 
 
     // Concatenate files
-    public static void ConcatenateFiles(string[] srcFilePaths, string destFilePath)
+    public static Task ConcatenateFiles(string[] srcFilePaths, string destFilePath)
     {
-        _adlsFileSystemClient.FileSystem.Concat(_adlsAccountName, destFilePath, srcFilePaths);
+        await _adlsFileSystemClient.FileSystem.ConcatAsync(_adlsAccountName, destFilePath, srcFilePaths);
     }
 
 ## <a name="append-to-a-file"></a>ファイルに追加する
 次のスニペットは、Data Lake Store アカウントに既に格納されているファイルに、データを追加するために使用する `AppendToFile` メソッドの例です。
 
     // Append to file
-    public static void AppendToFile(string path, string content)
+    public static async Task AppendToFile(string path, string content)
     {
-        var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
-
-        _adlsFileSystemClient.FileSystem.Append(_adlsAccountName, path, stream);
+        using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
+        {
+            await _adlsFileSystemClient.FileSystem.AppendAsync(_adlsAccountName, path, stream);
+        }
     }
 
 ## <a name="download-a-file"></a>ファイルをダウンロードする
 次のスニペットは、Data Lake Store アカウントからファイルをダウンロードするために使用する `DownloadFile` メソッドの例です。
 
     // Download file
-    public static void DownloadFile(string srcPath, string destPath)
+    public static async Task DownloadFile(string srcPath, string destPath)
     {
-        var stream = _adlsFileSystemClient.FileSystem.Open(_adlsAccountName, srcPath);
-        var fileStream = new FileStream(destPath, FileMode.Create);
-
-        stream.CopyTo(fileStream);
-        fileStream.Close();
-        stream.Close();
+        using (var stream = await _adlsFileSystemClient.FileSystem.OpenAsync(_adlsAccountName, srcPath))
+        using (var fileStream = new FileStream(destPath, FileMode.Create))
+        {
+            await stream.CopyToAsync(fileStream);
+        }
     }
 
 ## <a name="next-steps"></a>次のステップ
@@ -256,10 +261,5 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
 * [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

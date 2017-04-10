@@ -12,11 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 4f6feb844774fba00e3c46438f686e61b52d03d3
+ms.lasthandoff: 01/30/2017
+
 
 
 ---
@@ -34,7 +37,7 @@ ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
 * データを定義するデータベース オブジェクトを作成する
 * データを読み込む T-SQL クエリを実行する
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
@@ -43,7 +46,7 @@ ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
 
 * SQL Data Warehouse データベース
 * 種類が Standard ローカル冗長ストレージ (Standard-LRS)、Standard geo 冗長ストレージ (Standard-GRS)、または Standard 読み取りアクセス geo 冗長ストレージ (Standard-RAGRS) である Azure ストレージ アカウント
-* AzCopy コマンド ライン ユーティリティ Microsoft Azure Storage Tools と共にインストールされる[最新バージョンの AzCopy][最新バージョンの AzCopy] をダウンロードしてインストールします。
+* AzCopy コマンド ライン ユーティリティ Microsoft Azure Storage Tools と共にインストールされる[最新バージョンの AzCopy][latest version of AzCopy] をダウンロードしてインストールします。
   
     ![Azure Storage Tools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
@@ -106,7 +109,7 @@ Azure Blob Storage にデータをコピーするには:
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-[AzCopy コマンド ライン ユーティリティの概要][最新バージョンの AzCopy]に関するページも参照してください。
+[AzCopy コマンド ライン ユーティリティの概要][latest version of AzCopy]に関するページも参照してください。
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
 Blob Storage にアップロードしたファイルを表示するには:
@@ -237,25 +240,25 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-詳細については、[統計][統計]に関するページを参照してください。  
+詳細については、[統計][Statistics]に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
-PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase ガイド]を参照してください。
+PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase guide]を参照してください。
 
 <!--Image references-->
 
 
 <!--Article references-->
-[SQL Data Warehouse の PolyBase チュートリアル]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[bcp を使用したデータの読み込み]: ./sql-data-warehouse-load-with-bcp.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[PolyBase ガイド]: ./sql-data-warehouse-load-polybase-guide.md
-[最新バージョンの AzCopy]: ../storage/storage-use-azcopy.md
+[PolyBase in SQL Data Warehouse Tutorial]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
+[latest version of AzCopy]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
-[サポートされているソース/シンク]: https://msdn.microsoft.com/library/dn894007.aspx
-[コピー アクティビティ]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server 変換先アダプター]: https://msdn.microsoft.com/library/ms141095.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
@@ -273,9 +276,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

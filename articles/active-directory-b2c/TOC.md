@@ -1,6 +1,5 @@
-# Overview
-## [Azure AD B2C とは](https://azure.microsoft.com/services/active-directory-b2c/)
-## [動作のしくみ](active-directory-b2c-overview.md)
+# 概要
+## [概要](active-directory-b2c-overview.md)
 ## [アプリケーションの種類](active-directory-b2c-apps.md)
 ## [運用スケールとプレビューの B2C テナント](active-directory-b2c-reference-tenant-type.md)
 
@@ -46,15 +45,15 @@
 ## [認証プロトコル](active-directory-b2c-reference-protocols.md)
 ## [トークン](active-directory-b2c-reference-tokens.md)
 
+## [脅威管理](active-directory-b2c-reference-threat-management.md)
+
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 # リソース
-## [サポート](active-directory-b2c-support.md)
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)
-
-<!--HONumber=Nov16_HO2-->
-
-
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [サポート](active-directory-b2c-support.md)

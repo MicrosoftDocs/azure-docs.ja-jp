@@ -1,29 +1,10 @@
 ---
-title: カスタムの Linux 仮想マシンの作成 | Microsoft Docs
-description: クラシック デプロイ モデルを使用して Azure クラシック ポータルからカスタムの Linux 仮想マシンを作成する方法を説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: timlt
-editor: tysonn
-tags: azure-service-management
-
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 09/27/2016
-ms.author: cynthn
+redirect_url: /azure/virtual-machines/linux/classic/createportal
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: e7a1a393aa0e9ca383c2556930ec74a0ed98a5e9
+ms.lasthandoff: 03/27/2017
 
 ---
-# Linux を実行するカスタム仮想マシンの作成
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-新しい Azure Portal を使用した Linux 仮想マシンの作成については、「[ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)」を参照してください。
-
-[!INCLUDE [virtual-machines-common-classic-createportal](../../includes/virtual-machines-common-classic-createportal.md)]
-
-[!INCLUDE [virtual-machines-create-linuxvm](../../includes/virtual-machines-create-linuxvm.md)]
-
-<!---HONumber=AcomDC_0928_2016-->

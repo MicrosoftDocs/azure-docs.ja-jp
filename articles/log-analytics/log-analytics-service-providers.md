@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のサービス プロバイダー向け機能 | Microsoft Docs
-description: Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。
+title: "Log Analytics のサービス プロバイダー向け機能 | Microsoft Docs"
+description: "Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 11/22/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: d5e4a19ddb2b60a6796ba48c864d443164de86c1
+ms.openlocfilehash: 8a67d9a9d345682e9e6c8f5c7779204a038f5f6a
+
 
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Log Analytics のサービス プロバイダー向け機能
@@ -47,7 +51,7 @@ Log Analytics では、*クラウド ソリューション プロバイダー* �
 * OMS ポータルの [設定] の [ユーザー管理] ページの表示と使用。
 
 > [!NOTE]
-> Log Analytics の Backup ソリューションと Site Recovery ソリューションは、Recovery Services コンテナーに接続できず、CSP サブスクリプションでは構成できません。
+> Log Analytics の組み込みの Backup ソリューションと Site Recovery ソリューションは、Recovery Services コンテナーに接続できず、CSP サブスクリプションでは構成できません。 
 > 
 > 
 
@@ -61,13 +65,15 @@ Log Analytics では、*クラウド ソリューション プロバイダー* �
 
 顧客ごとにワークスペースを作成すると、顧客のデータを個別化し、顧客ごとに使用状況を追跡することができます。
 
-複数のワークスペースを作成するタイミングと目的の詳細については、「manage access to log analytics」(Log Analytics へのアクセスの管理) (log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need) を参照してください。
+複数のワークスペースを作成するタイミングと理由の詳細については、[Log Analytics へのアクセスの管理](log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need)に関するセクションを参照してください。
 
 [PowerShell](log-analytics-powershell-workspace-configuration.md)、[Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)、または [REST API](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/) を使用して、顧客のワークスペースの作成と構成を自動化することができます。
 
 ワークスペースの構成に Resource Manager テンプレートを利用すると、ワークスペースの作成と構成に使用できる優れた構成を持つことができます。 顧客にワークスペースが作成されると、そのワークスペースは要件を満たすように自動的に構成されます。 要件を更新すると、テンプレートが更新されて既存のワークスペースに再適用されます。 このプロセスにより、既存のワークスペースも新しい基準を満たすことが保証されます。    
 
 複数の Log Analytics ワークスペースを管理する場合は、[アラート](log-analytics-alerts.md)機能を使用して、ワークスペースごとに既存のチケット システムまたはオペレーション コンソールと統合することをお勧めします。 既存のシステムと統合することで、サポート スタッフは引き続きなじみのあるプロセスに従うことができます。 Log Analytics は、指定されたアラートの条件に沿って各ワークスペースを定期的にチェックし、アクションが必要な場合はアラートを生成します。
+
+データのビューをカスタマイズするには、Azure Portal の[ダッシュボード](../azure-portal/azure-portal-dashboards.md)機能を使用します。  
 
 ワークスペース全体のデータを要約するエグゼクティブ レベルのレポートには、Log Analytics と [PowerBI](log-analytics-powerbi.md) 間の統合を利用することができます。 別のレポート システムと統合する必要がある場合は、クエリの実行と検索結果のエクスポートに (PowerShell または [REST](log-analytics-log-search-api.md) で) Search API を使用することができます。
 
@@ -77,6 +83,9 @@ Log Analytics では、*クラウド ソリューション プロバイダー* �
 * [アラート](log-analytics-alerts.md) を使用して既存のシステムと統合する
 * [PowerBI](log-analytics-powerbi.md) を使用して概要レポートを作成する
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

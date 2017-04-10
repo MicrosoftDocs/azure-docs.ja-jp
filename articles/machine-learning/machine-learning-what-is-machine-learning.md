@@ -1,7 +1,7 @@
 ---
-title: "Azure Machine Learning とは | Microsoft Docs"
+title: "Azure Machine Learning Studio とは | Microsoft Docs"
 description: "クラウドにおける機械学習の基本的な概念とその用途について説明し、機械学習の用語を定義します。"
-keywords: "機械学習とは, 機械学習の用語, 予測, 予測分析とは, 運用"
+keywords: "機械学習とは, 機械学習の用語, 予測, 予測分析とは, 機械学習の用語"
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,64 +13,64 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a0415a3a07a1334f1947ff89e79bc710332de113
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
 
 
 ---
-# <a name="introduction-to-machine-learning-in-the-cloud"></a>クラウドでの機械学習の概要
+# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>クラウドでの Azure Machine Learning の概要
 ## <a name="what-is-machine-learning"></a>機械学習とは
-機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。  
+機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の&1; つ です。  
 
 機械学習からのこうした予想や予測によってアプリやデバイスの機能性を高めることができます。 オンライン ショッピングでは、ユーザーが今までに購入した製品に基づいて他の商品をお勧めするのに機械学習が役立っています。 クレジット カードが読み取られると、機械学習は、トランザクションをトランザクションのデータベースと比較し、不正の検出を支援します。 ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
 
 概要については、 [初心者向けデータ サイエンス](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)のビデオ シリーズをご覧ください。 初心者向けデータ サイエンス シリーズでは、専門用語や数式を使わずに機械学習について説明し、単純な予測モデルを紹介しています。
 
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>Microsoft Azure クラウドにおける Machine Learning とは
-Azure Machine Learning は、クラウド ベースの強力な予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイします。 Azure クラウドを使って機械学習実験を実行するか、ソリューションを構築すれば、高価なハードウェアやインフラストラクチャを購入せずに済みます。
+Azure Machine Learning は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。
+
+そのまま使うことのできるアルゴリズムのライブラリを利用して、インターネットに接続した PC でモデルを作成し、予測ソリューションを迅速にデプロイできます。 [Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)にある、すぐに利用できるサンプルとソリューションで作業を始めてください。
 
 ![機械学習とは Azure Machine Learning で予測分析を運用する場合の基本的なワークフローについて説明します。](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
-Azure Machine Learning は、モデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするための、完全に管理されたサービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供します。予測モデルを迅速に作成、テストし、運用を実現して管理します。
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+Azure Machine Learning は、モデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするための、完全に管理されたサービスを提供します。
 
 ## <a name="what-is-predictive-analytics"></a>予測分析とは
-予測分析では、アルゴリズムと呼ばれる各種数式を使用して過去のデータや最新のデータのパターンや傾向を分析し、将来のイベントを予測します。
+予測分析では、アルゴリズムと呼ばれる数式を使用して過去または最新のデータのパターンや傾向を分析し、将来のイベントを予測します。
 
-Azure Machine Learning は非常に強力な方法で予測分析を行います。すぐに使用できるアルゴリズムのライブラリを利用して作業し、インターネットに接続された PC でアルゴリズムを使ってモデルを作成して、予測ソリューションを迅速にデプロイできます。 短時間で結果を得るには、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)にある、すぐに利用できるサンプルとソリューションで作業を始めてください。
-
-## <a name="build-complete-machine-learning-solutions-in-the-cloud"></a>クラウドで完全な機械学習ソリューションを構築する
-Azure Machine Learning には、大規模なアルゴリズム ライブラリから、モデル構築のためのスタジオや、モデルを Web サービスとしてデプロイする簡単な方法まで、クラウドで予測分析ソリューションを作成するために必要なものすべてが揃っています。
+## <a name="tools-to-build-complete-machine-learning-solutions-in-the-cloud"></a>クラウドで完全な機械学習ソリューションを構築するためのツール
+Azure Machine Learning には、大規模なアルゴリズム ライブラリから、モデル構築のためのスタジオや、モデルを Web サービスとしてデプロイする簡単な方法まで、クラウドで完全な予測分析ソリューションを作成するために必要なものすべてが揃っています。 予測モデルを迅速に作成、テスト、運用、管理できます。
 
 ### <a name="machine-learning-studio-create-predictive-models"></a>Machine Learning Studio: 予測モデルの作成
-[Machine Learning Studio](machine-learning-what-is-ml-studio.md)では、モジュールをドラッグ アンド ドロップしたり、接続したりして予測モデルを迅速に作成できます。 さまざまな組み合わせでの実験が容易で、 [無料で試すことができます](https://studio.azureml.net/?selectAccess=true&o=2)。
+[Machine Learning Studio](machine-learning-what-is-ml-studio.md)では、モジュールをドラッグ アンド ドロップしたり、接続したりして予測モデルを迅速に作成できます。 さまざまな組み合わせで実験でき、[無料で試すことができます](https://studio.azureml.net/?selectAccess=true&o=2)。
 
 * [Cortana Intelligence ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)では、他の開発者が作成した分析ソリューションを試すことも、自分のソリューションを共有することもできます。 また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。
-  
+
   ![予測実験を試したり、自分の実験を Azure Cortana Intelligence ギャラリーに投稿したりします。](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * Machine Learning Studio にある [Machine Learning アルゴリズムとモジュール](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) の大規模なライブラリを使用して、予測モデルをすぐに開始します。 サンプル実験、R と Python のパッケージ、Xbox や Bing など Microsoft のビジネスで使われている最高クラスのアルゴリズムを選ぶことができます。 [R](machine-learning-r-quickstart.md) と [Python](machine-learning-execute-python-scripts.md) の独自のカスタム スクリプトで Studio モジュールを拡張できます。
-  
+
   ![予測分析とは: Azure Machine Learning Studio の予測分析実験の例](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
-### <a name="operationalize-predictive-analytics-solutions-purchase-web-services-or-publish-your-own"></a>予測分析ソリューションの運用を実現: Web サービスを購入するか、独自に発行
-* 推奨事項、テキスト分析、異常検出などすぐに使用できる Web サービスを [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning)から購入します。
-* 予測分析モデルの運用を実現します。
-  
-  * [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
-  * [API を通じてモデルをトレーニング/再トレーニングする](machine-learning-retrain-models-programmatically.md)
-  * [Web サービスのエンドポイントを管理する](machine-learning-create-endpoint.md)
-  * [Web サービスをスケーリングする](machine-learning-scaling-webservice.md)
-  * [Web サービスを使用する](machine-learning-consume-web-services.md)
+### <a name="operationalize-predictive-analytics-solutions-by-publishing-your-own"></a>独自の予測分析ソリューションを発行し、運用可能にする
+次のチュートリアルでは、予測分析モデルを運用可能な状態にする方法について説明します。
+
+ * [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
+ * [API を通じてモデルを再トレーニングする](machine-learning-retrain-models-programmatically.md)
+ * [Web サービスのエンドポイントを管理する](machine-learning-create-endpoint.md)
+ * [Web サービスをスケーリングする](machine-learning-scaling-webservice.md)
+ * [Web サービスを使用する](machine-learning-consume-web-services.md)
 
 ## <a name="key-machine-learning-terms-and-concepts"></a>機械学習における主な用語と概念
 機械学習の用語はわかりにくい場合があります。 ここでは、役に立つ主な用語の定義を紹介します。 これ以外にも定義をご希望の用語があれば、後のコメントを利用してお知らせください。
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>データの探索、説明的な分析、予測分析
-**データの探索** は、大規模で、多くの場合構造化されていないデータ セットに関する情報を収集するプロセスであり、焦点を絞った分析のための特性を見つけ出すために行われます。 **データ マイニング** は自動化されたデータの探索を参照します。
+
+**データの探索** は、大規模で、多くの場合構造化されていないデータ セットに関する情報を収集するプロセスであり、焦点を絞った分析のための特性を見つけ出すために行われます。
+
+**データ マイニング** は自動化されたデータの探索を参照します。
 
 **説明的な分析** は、変更内容を要約するためにデータ セットを分析するプロセスです。 売り上げレポート、Web のメトリック、ソーシャル ネットワークの分析などほとんどのビジネス分析は、説明的な分析になります。
 
@@ -115,6 +115,6 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

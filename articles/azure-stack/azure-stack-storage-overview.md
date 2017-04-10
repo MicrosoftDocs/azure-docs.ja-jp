@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: anirudha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4c9b338898bdb9cd761d68c5ecacc8f9c57d87e5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0337162ed4b4dd066bde4840f9b6c253a8f0da97
 
 
 ---
-# <a name="introduction-to-azureconsistent-storage"></a>Introduction to Azure-consistent storage
+# <a name="introduction-to-azure-consistent-storage"></a>Introduction to Azure-consistent storage
 Azure-consistent storage is the set of storage cloud services in Microsoft Azure Stack. Azure-consistent storage provides blob, table, queue, and account management functionality with Azure-consistent semantics. It also provides functionality to help a cloud administrator manage storage services. This article introduces Azure-consistent storage and discusses how storage cloud services in Azure Stack nicely complement the rich [software-defined storage capabilities in Windows Server 2016](https://blogs.technet.microsoft.com/windowsserver/2016/04/14/ten-reasons-youll-love-windows-server-2016-5-software-defined-storage/).
 
 Azure-consistent storage delivers the following broad categories of functionality:
@@ -37,19 +37,19 @@ Azure-consistent storage delivers the following broad categories of functionalit
 
 <span id="_Toc386544160" class="anchor"><span id="_Toc389466733" class="anchor"><span id="_Toc433223833" class="anchor"></span></span></span>
 
-## <a name="azureconsistent-storage-architecture"></a>Azure-consistent storage architecture
+## <a name="azure-consistent-storage-architecture"></a>Azure-consistent storage architecture
 ![Azure Stack storage: solution view](./media/azure-stack-storage-overview/acs-solution-view.png)
 
 <span id="_Ref428549771" class="anchor"></span>Figure 1. Azure-consistent storage: solution view
 
-## <a name="azureconsistent-storage-virtualized-services-and-clusters"></a>Azure-consistent storage virtualized services and clusters
+## <a name="azure-consistent-storage-virtualized-services-and-clusters"></a>Azure-consistent storage virtualized services and clusters
 In the Azure-consistent storage architecture, all tenant or administrator-accessible  storage services are virtualized. That is, they run in service provider-managed, highly available VMs based on [Hyper-V](https://technet.microsoft.com/library/dn765471.aspx) functionality in [Windows Server 2016](http://www.microsoft.com/server-cloud/products/windows-server-2016/).
 Although the VMs are highly available based on [Windows Server Failover Clustering](https://technet.microsoft.com/library/dn765474.aspx) technology, the Azure-consistent storage virtualized services themselves are guest-clustered, highly available services based on [Azure Service Fabric technology](http://azure.microsoft.com/campaigns/service-fabric/).
 
 Azure-consistent storage employs two Service Fabric clusters in an Azure Stack deployment.
 The Storage Resource Provider service is deployed on a Service Fabric cluster (“RP cluster”) that is also shared by other foundational resource provider services. The rest of the storage virtualized data path services--including the Blob, Table, and Queue services--are hosted on a second Service Fabric cluster (“Azure-consistent storage cluster”).
 
-## <a name="blob-service-and-softwaredefined-storage"></a>Blob service and software-defined storage
+## <a name="blob-service-and-software-defined-storage"></a>Blob service and software-defined storage
 The Blob service back end, on the other hand, runs directly on the [Scale-Out File Server](https://technet.microsoft.com/library/hh831349.aspx) cluster nodes. In the Azure Stack solution architecture, Scale-Out File Server is based on the [Storage Spaces Direct](https://technet.microsoft.com/library/mt126109.aspx)-based, shared-nothing failover cluster. Figure 1 depicts the major Azure-consistent storage component services and their distributed deployment model. As you see in the diagram, Azure-consistent storage dovetails with existing software-defined storage features in Windows Server 2016. No special hardware is required for Azure-consistent storage beyond these Windows Server platform requirements.
 
 ## <a name="storage-farm"></a>Storage Farm
@@ -82,6 +82,6 @@ Azure-consistent storage is valuable for two user roles:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

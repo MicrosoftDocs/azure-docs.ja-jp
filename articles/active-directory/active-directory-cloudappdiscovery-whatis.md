@@ -1,20 +1,24 @@
 ---
-title: 管理されていないクラウド アプリケーションを Cloud App Discovery で検出する | Microsoft Docs
-description: Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。
+title: "管理されていないクラウド アプリケーションを Cloud App Discovery で検出する | Microsoft Docs"
+description: "Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。"
 services: active-directory
-keywords: Cloud App Discovery, アプリケーションの管理
-documentationcenter: ''
+keywords: "Cloud App Discovery, アプリケーションの管理"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 04/06/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 011cdf5f1e1b78832a8e4f18f4eef0f376860c45
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="finding-unmanaged-cloud-applications-with-cloud-app-discovery"></a>管理されていないクラウド アプリケーションを Cloud App Discovery で検出する
@@ -47,7 +51,5 @@ Cloud App Discovery の使用を開始するには、 [Cloud App Discovery の�
 * [Cloud App Discovery エージェントの変更ログ ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 * [Cloud App Discovery に関してよく寄せられる質問](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

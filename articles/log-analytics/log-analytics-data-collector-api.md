@@ -1,32 +1,47 @@
 ---
-title: Log Analytics HTTP データ コレクター API | Microsoft Docs
-description: Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。
+title: "Log Analytics HTTP データ コレクター API | Microsoft Docs"
+description: "Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 01/30/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2b5899ba43f651ae6f5fdf84d7aa5ee35d81b738
+ms.openlocfilehash: be27695cd1d998eedff0ca76f6ae9d4ff69bb97b
+ms.lasthandoff: 01/05/2017
+
 
 ---
-# <a name="log-analytics-http-data-collector-api"></a>Log Analytics HTTP データ コレクター API
-Azure Log Analytics HTTP データ コレクター API を使用すれば、REST API を呼び出すことのできるクライアントから POST JavaScript Object Notation (JSON) データを Log Analytics リポジトリに追加できます。 この方法を使用すれば、サードパーティ製アプリケーションまたは Azure Automation の Runbook などのスクリプトからデータを送信できます。  
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信
+この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
+
+## <a name="concepts"></a>概念
+REST API を呼び出すことができる任意のクライアントから、HTTP データ コレクター API を使用して Log Analytics にデータを送信できます。  これは、Azure または別のクラウドから管理データを収集する Azure Automation の Runbookや、Log Analytics を使用してデータを統合して分析するログ分析を使用する他の管理システムが考えられます。
+
+Log Analytics リポジトリ内のすべてのデータは、特定の種類のレコードとして保存されます。  HTTP データ コレクター API に送信するデータを、JSON 形式の複数のレコードとして設定します。  データを送信すると、要求ペイロード内の各レコードに対応する個別のレコードがリポジトリ内に作成されます。
+
+
+![HTTP データ コレクターの概要](media/log-analytics-data-collector-api/overview.png)
+
+
 
 ## <a name="create-a-request"></a>要求を作成する
-次の 2 つの表では、Log Analytics HTTP データ コレクター API への各要求に必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
+HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の&3; つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
-| Attribute | プロパティ |
+| 属性 | プロパティ |
 |:--- |:--- |
 | メソッド |POST |
-| URI |https://<WorkspaceID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | コンテンツの種類 |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
@@ -59,10 +74,10 @@ Authorization: SharedKey <WorkspaceID>:<Signature>
 
 ```
 StringToSign = VERB + "\n" +
-               Content-Length + "\n" +
+                  Content-Length + "\n" +
                Content-Type + "\n" +
-               x-ms-date + "\n" +
-               "/api/logs";
+                  x-ms-date + "\n" +
+                  "/api/logs";
 ```
 
 署名文字列の例を次に示します。
@@ -80,7 +95,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 次のセクションのサンプルには、承認ヘッダーを作成するのに役立つサンプル コードが含まれています。
 
 ## <a name="request-body"></a>要求本文
-メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを 1 つ以上含める必要があります。
+メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを&1; つ以上含める必要があります。
 
 ```
 {
@@ -91,7 +106,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 }
 ```
 
-次の形式を使用して複数のレコードを 1 つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
+次の形式を使用して複数のレコードを&1; つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
 
 ```
 {
@@ -128,7 +143,7 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 * レコード型が存在しない場合、Log Analytics によって新しいレコード型が作成されます。 新しいレコードの各プロパティに対してデータ型を決定するために、Log Analytics では JSON 型推論が使用されます。
 * レコード型が存在する場合、Log Analytics によって、既存のプロパティに基づいて新しいレコードの作成が試みられます。 新しいレコードのプロパティのデータ型が既存の型と一致せず、変換することもできない場合や、存在しないプロパティを含むレコードの場合、Log Analytics によって関連性のあるサフィックスを持つ新しいプロパティが作成されます。
 
-たとえば、次のような送信エントリには、**number_d**、**boolean_b**、**string_s** の 3 つのプロパティを持つレコードが作成されます。
+たとえば、次のような送信エントリには、**number_d**、**boolean_b**、**string_s** の&3; つのプロパティを持つレコードが作成されます。
 
 ![サンプル レコード 1](media/log-analytics-data-collector-api/record-01.png)
 
@@ -140,18 +155,25 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 
 ![サンプル レコード 3](media/log-analytics-data-collector-api/record-03.png)
 
-次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という 3 つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
+次に、レコード型が作成される前に、下記のようなエントリを送信する場合、Log Analytics によって **number_s**、**boolean_s**、**string_s** という&3; つのプロパティを含むレコードが作成されます。 このエントリでは、初期の値はそれぞれ文字列の形式で指定されています。
 
 ![サンプル レコード 4](media/log-analytics-data-collector-api/record-04.png)
 
+## <a name="data-limits"></a>データ制限
+Log Analytics データ収集 API に送信するデータに関して制約がいくつかあります。
+
+* Log Analytics データ コレクター API に送信するデータの上限は 30 MB です。 これは&1; 回の送信のサイズ制限です。 1 回の送信のデータ サイズが 30 MB を超える場合は、データを小さなサイズのチャンクに分割し、それらを同時に送信する必要があります。 
+* フィールド値の上限は 32 KB です。 フィールド値が 32 KB を超えた場合、データは切り捨てられます。 
+* 特定の種類のフィールドの推奨される最大数は 50 個です。 これは、使いやすさと検索エクスペリエンスの観点からの実質的な制限です。  
+
 ## <a name="return-codes"></a>リターン コード
-HTTP 状態コード 202 は、要求は処理のために受け入れられているものの、処理は未完了であることを意味します。 これは、操作が正常に完了したことを示します。
+HTTP 状態コード 200 は、要求が処理するために受信されたことを意味します。 これは、操作が正常に完了したことを示します。
 
 次の表に、サービスから返される可能性のあるすべての状態コードの一覧を示します。
 
 | コード | 状態 | エラー コード | Description |
 |:--- |:--- |:--- |:--- |
-| 202 |承認済み | |要求は正常に受け入れられました。 |
+| 200 |OK | |要求は正常に受け入れられました。 |
 | 400 |正しくない要求 |InactiveCustomer |このワークスペースは閉じられています。 |
 | 400 |正しくない要求 |InvalidApiVersion |指定した API のバージョンがサービスに認識されませんでした。 |
 | 400 |正しくない要求 |InvalidCustomerId |指定したワークスペース ID が無効です。 |
@@ -162,6 +184,8 @@ HTTP 状態コード 202 は、要求は処理のために受け入れられて�
 | 400 |正しくない要求 |MissingLogType |必須の値であるログの種類が指定されていませんでした。 |
 | 400 |正しくない要求 |UnsupportedContentType |コンテンツの種類が **application/json** に設定されていませんでした。 |
 | 403 |許可されていません |InvalidAuthorization |サービスで要求を認証できませんでした。 ワークスペース ID と接続キーが有効であるかどうかを確認してください。 |
+| 404 |見つかりません | | 指定された URL が正しくないか、要求が大きすぎます。 |
+| 429 |要求が多すぎます | | サービスはアカウントの大量のデータを処理しています。 後で要求を再試行してください。 |
 | 500 |内部サーバー エラー |UnspecifiedError |サービスで内部エラーが発生しました。 要求を再試行してください。 |
 | 503 |サービス利用不可 |ServiceUnavailable |サービスは現在、要求を受信できません。 要求を再試行してください。 |
 
@@ -263,43 +287,47 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
-### <a name="c#-sample"></a>C# のサンプル
+### <a name="c-sample"></a>C# のサンプル
 ```
 using System;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OIAPIExample
 {
     class ApiExample
     {
-// An example JSON object, with key/value pairs
-        static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField1"":""DemoValue3"",""DemoField2"":""DemoValue4""}]";
+        // An example JSON object, with key/value pairs
+        static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-// Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Operations Management Suite workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
-// For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
+        // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-// LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Log Analytics
         static string LogName = "DemoExample";
 
-// You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
         {
-// Create a hash for the API signature
+            // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
-
+    
             PostData(signature, datestring, json);
         }
 
-// Build the API signature
+        // Build the API signature
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -312,22 +340,36 @@ namespace OIAPIExample
             }
         }
 
-// Send a request to the POST API endpoint
+        // Send a request to the POST API endpoint
         public static void PostData(string signature, string date, string json)
         {
-            string url = "https://"+ customerId +".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-            using (var client = new WebClient())
+            try
+            { 
+                string url = "https://" + customerId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
+    
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("Log-Type", LogName);
+                client.DefaultRequestHeaders.Add("Authorization", signature);
+                client.DefaultRequestHeaders.Add("x-ms-date", date);
+                client.DefaultRequestHeaders.Add("time-generated-field", TimeStampField);
+    
+                System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
+    
+                System.Net.Http.HttpContent responseContent = response.Result.Content;
+                string result = responseContent.ReadAsStringAsync().Result;
+                Console.WriteLine("Return Result: " + result);
+            }
+            catch (Exception excep)
             {
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                client.Headers.Add("Log-Type", LogName);
-                client.Headers.Add("Authorization", signature);
-                client.Headers.Add("x-ms-date", date);
-                client.Headers.Add("time-generated-field", TimeStampField);
-                client.UploadString(new Uri(url), "POST", json);
+                Console.WriteLine("API Post Exception: " + excep.Message);
             }
         }
     }
 }
+
 ```
 
 ### <a name="python-sample"></a>Python のサンプル
@@ -383,7 +425,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
     bytes_to_hash = bytes(string_to_hash).encode('utf-8')  
     decoded_key = base64.b64decode(shared_key)
-    encoded_hash = base64.b64encode(hmac.new(decoded_key, string_to_hash, digestmod=hashlib.sha256).digest())
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest())
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
@@ -405,7 +447,7 @@ def post_data(customer_id, shared_key, body, log_type):
     }
 
     response = requests.post(uri,data=body, headers=headers)
-    if (response.status_code == 202):
+    if (response.status_code >= 200 and response.status_code <= 299):
         print 'Accepted'
     else:
         print "Response code: {}".format(response.status_code)
@@ -414,8 +456,5 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [ビュー デザイナー](log-analytics-view-designer.md)を使用して、送信したデータのカスタム ビューを構築します。
-
-<!--HONumber=Oct16_HO2-->
-
+- Log Analytics リポジトリから [Log Search API](log-analytics-log-search-api.md) を使用してデータを取得する
 

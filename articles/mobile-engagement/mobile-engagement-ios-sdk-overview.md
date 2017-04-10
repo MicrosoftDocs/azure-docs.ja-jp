@@ -1,51 +1,54 @@
 ---
-title: Azure Mobile Engagement iOS SDK の概要 | Microsoft Docs
-description: Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順
+title: "Azure Mobile Engagement iOS SDK の概要 | Microsoft Docs"
+description: "Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 3a03bbd6-bcf8-436c-9775-5a8188629252
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
+ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
+
 
 ---
-# iOS SDK for Azure Mobile Engagement
-ここでは、iOS アプリで Azure Mobile Engagement を統合する方法の詳細を確認します。まず試してみる場合は、「[15 分間チュートリアル](mobile-engagement-ios-get-started.md)」をご覧ください
+# <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK for Azure Mobile Engagement
+ここでは、iOS アプリで Azure Mobile Engagement を統合する方法の詳細を確認します。 まず試してみる場合は、「 [15 分間チュートリアル](mobile-engagement-ios-get-started.md)」をご覧ください
 
-[SDK コンテンツ](mobile-engagement-ios-sdk-content.md)について表示するにはここをクリックします。
+[SDK コンテンツ](mobile-engagement-ios-sdk-content.md)
 
-## 統合手順
+## <a name="integration-procedures"></a>統合手順
 1. ここから開始: [iOS アプリで Mobile Engagement を統合する方法](mobile-engagement-ios-integrate-engagement.md)
 2. 通知: [リーチ (通知) を iOS アプリに統合する方法](mobile-engagement-ios-integrate-engagement-reach.md)
 3. タグ付けプランの実装: [iOS アプリで高度な Mobile Engagement のタグ付け API を使用する方法](mobile-engagement-ios-use-engagement-api.md)
 
-## リリース ノート
-### 4\.0.0 (2016 年 9 月 12 日)
-* iOS 10 デバイスで処理されない通知を修正しました。
-* XCode 7 が非推奨になりました。
+## <a name="release-notes"></a>リリース ノート
+### <a name="401-12132016"></a>4.0.1 (12/13/2016)
+* バックグラウンドでのログ配信が改善されました。
 
-以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
+以前のバージョンについては、「 [完全リリース ノート](mobile-engagement-ios-release-notes.md)
 
-## アップグレードの手順
+## <a name="upgrade-procedures"></a>アップグレードの手順
 既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
 SDK のいくつかのバージョンがない場合は、次の手順に従う必要があります。完全な「[アップグレード手順](mobile-engagement-ios-upgrade-procedure.md)」をご覧ください。
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-### 3\.0.0 から 4.0.0 に移行
-### XCode 8
+### <a name="from-300-to-400"></a>3.0.0 から 4.0.0 に移行
+### <a name="xcode-8"></a>XCode 8
 SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
 
 > [!NOTE]
-> XCode 7 に依存している場合は、[iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh) を使用できます。この以前のバージョンの Reach モジュールには、iOS 10 デバイスで実行したときに、システム通知が処理されないという既知のバグがあります。これを修正するには、次のようにアプリケーション デリゲートで非推奨 API の `application:didReceiveRemoteNotification:` を実装する必要があります。
+> XCode 7 に依存している場合は、 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)を使用できます。 この以前のバージョンの Reach モジュールには、iOS 10 デバイスで実行したときに、システム通知が処理されないという既知のバグがあります。 これを修正するには、次のようにアプリケーション デリゲートで非推奨 API の `application:didReceiveRemoteNotification:` を実装する必要があります。
 > 
 > 
 
@@ -56,20 +59,20 @@ SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
     }
 
 > [!IMPORTANT]
-> **この回避策はお勧めできません**。この iOS API は推奨されていないため、(マイナー アップグレードも含め) iOS バージョンの今後のアップグレードでこの動作が変更される可能性があります。できるだけ速やかに XCode 8 に切り替えてください。
+> **この回避策はお勧めできません。**この iOS API は推奨されていないため、(マイナー アップグレードも含め) iOS バージョンの今後のアップグレードでこの動作が変更される可能性があります。 できるだけ速やかに XCode 8 に切り替えてください。
 > 
 > 
 
-#### UserNotifications フレームワーク
+#### <a name="usernotifications-framework"></a>UserNotifications フレームワーク
 `UserNotifications` フレームワークをビルド フェーズに追加する必要があります。
 
-プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、**[Build phases (ビルド フェーズ)]** タブを開き、**[Link Binary With Libraries (バイナリをライブラリとリンク)]** メニューで `UserNotifications.framework` フレームワークを追加し、リンクを `Optional` として設定します。
+プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。 次に、**[Build phases (ビルド フェーズ)]** タブを開き、**[Link Binary With Libraries (バイナリをライブラリとリンク)]** メニューで `UserNotifications.framework` フレームワークを追加し、リンクを `Optional` として設定します。
 
-#### アプリケーションのプッシュ機能
+#### <a name="application-push-capability"></a>アプリケーションのプッシュ機能
 XCode 8 はアプリケーションのプッシュ機能をリセットする場合があります。選択したターゲットの `capability` タブで、この機能を再確認してください。
 
-#### 新しい iOS 10 通知登録コードの追加
-アプリケーションを通知に登録するための古いコード スニペットは引き続き機能しますが、iOS 10 での実行時に非推奨 API を使用します。
+#### <a name="add-the-new-ios-10-notification-registration-code"></a>新しい iOS 10 通知登録コードの追加
+アプリケーションを通知に登録するための古いコード スニペットは引き続き機能しますが、iOS 10 での実行時に非推奨 API を使用します。 
 
 `User Notification` フレームワークをインポートします。
 
@@ -104,12 +107,15 @@ XCode 8 はアプリケーションのプッシュ機能をリセットする場
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-#### 開発者独自の UNUserNotificationCenterDelegate 実装が既にある場合
-SDK には UNUserNotificationCenterDelegate プロトコルの独自の実装があります。これは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。UNUserNotificationCenter デリゲートはアプリケーションごとに 1 つしか使用できないため、SDK は開発者のデリゲートを検出すると、独自の実装を使用しなくなります。これは、開発者独自のデリゲートに Engagement ロジックを追加する必要があることを意味します。
+#### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>UNUserNotificationCenter デリゲートの競合を解決する
 
-これを実現する方法は 2 つあります。
+*アプリケーションも、いずれかのサードパーティ ライブラリも `UNUserNotificationCenterDelegate` を実装していない場合は、この部分をスキップできます。*
 
-デリゲート呼び出しを SDK に転送します。
+`UNUserNotificationCenter` デリゲートは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在できる `UNUserNotificationCenter` デリゲートは&1; つだけです。 `UNUserNotificationCenter` オブジェクトに追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはサード パーティのデリゲートが検出された場合、SDK によって独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
+
+これを実現する方法は&2; つあります。
+
+提案 1: 単に、デリゲート呼び出しを SDK に転送します。
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -136,7 +142,7 @@ SDK には UNUserNotificationCenterDelegate プロトコルの独自の実装が
     }
     @end
 
-または、`AEUserNotificationHandler` クラスから継承します。
+提案 2: `AEUserNotificationHandler` クラスから継承します。
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -164,7 +170,20 @@ SDK には UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 > [!NOTE]
 > 通知が Engagement から送信されたものかどうかを確認するには、`userInfo` ディクショナリをエージェントの `isEngagementPushPayload:` クラス メソッドに渡します。
-> 
-> 
 
-<!---HONumber=AcomDC_0928_2016-->
+`UNUserNotificationCenter` オブジェクトのデリゲートがアプリケーション デリゲートの `application:willFinishLaunchingWithOptions:` または `application:didFinishLaunchingWithOptions:` メソッド内のデリゲートに設定されていることを確認します。
+たとえば、上記の提案 1 を実装した場合は、次のようになります。
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
+
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

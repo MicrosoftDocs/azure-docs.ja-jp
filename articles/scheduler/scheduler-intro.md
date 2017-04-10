@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f2b21e24a5f692fa315db7b58d2d2824f7145729
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
 
 
 ---
@@ -56,6 +56,6 @@ Scheduler では、ジョブおよび [ジョブ コレクション](scheduler-c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

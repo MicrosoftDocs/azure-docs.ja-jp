@@ -1,13 +1,13 @@
 ---
-title: スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs
-description: イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。
+title: "スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs"
+description: "イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。"
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: glenga
+translationtype: Human Translation
+ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
+ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+
 
 ---
 # <a name="use-azure-functions-to-perform-a-scheduled-clean-up-task"></a>スケジュールされたクリーンアップ タスクを Azure Functions で実行する
@@ -48,16 +52,20 @@ Mobile Apps バックエンドで使用する接続文字列は、ポータル�
    
     ![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
 2. **[開発]** タブの **[コード]** ウィンドウで、既存の関数コードの一番上に次のアセンブリ参照を追加します。
-   
+    ```cs
         #r "System.Configuration"
         #r "System.Data"
+    ```
+
 3. 次の `using` ステートメントを関数に追加します。
-   
+    ```cs
         using System.Configuration;
         using System.Data.SqlClient;
-        using System.Threading.Tasks; 
+        using System.Threading.Tasks;
+    ```
+
 4. 既存の **Run** 関数を次のコードに置き換えます。
-   
+    ```cs
         public static async Task Run(TimerInfo myTimer, TraceWriter log)
         {
             var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
@@ -73,6 +81,8 @@ Mobile Apps バックエンドで使用する接続文字列は、ポータル�
                 }
             }
         }
+    ```
+
 5. **[保存]** をクリックして、次に関数が実行されるようすを **[ログ]** ウィンドウで観察し、TodoItems テーブルから削除された行数をメモします。
 6. (省略可) [Mobile Apps クイック スタート アプリ](../app-service-mobile/app-service-mobile-ios-get-started.md)を使用して、新たにいくつかの項目を "完了済み" に設定します。その後 **[ログ]** ウィンドウに戻り、次回関数が実行されたときに、同数の行が削除されるようすを観察してください。 
 
@@ -80,14 +90,17 @@ Mobile Apps バックエンドで使用する接続文字列は、ポータル�
 Azure Functions の詳細については、次のトピックを参照してください。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-  関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
+   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 * [Azure Functions のテスト](functions-test-a-function.md)  
-  関数をテストするための各種ツールと手法について説明します。
+   関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
+  Azure Functions で利用できるサービス プラン (従量課金プランを含む) と、適切なプランを選択する方法について説明します。  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO5-->
 
 

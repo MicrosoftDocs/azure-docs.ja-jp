@@ -1,33 +1,39 @@
 ---
-title: HDInsight で Hadoop サービスのヒープ ダンプを有効にする | Microsoft Docs
-description: デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする
+title: "HDInsight で Hadoop サービスのヒープ ダンプを有効にする | Microsoft Docs"
+description: "デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/17/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
+ms.lasthandoff: 01/18/2017
+
 
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-(preview)"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする (プレビュー)
+# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-preview"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする (プレビュー)
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
 
-> [!NOTE]
-> この記事の情報は、Linux ベースの HDInsight にのみ適用されます。 Windows ベースの HDInsight については、 [Windows ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dumps.md)
-> 
-> 
 
-## <a name="<a-name="whichservices"></a>services"></a><a name="whichServices"></a>サービス
+
+> [!IMPORTANT]
+> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
+## <a name="whichServices"></a>サービス
 次のサービスのヒープ ダンプを有効にできます。
 
 * **hcatalog** - tempelton
@@ -38,12 +44,12 @@ ms.author: larryfr
 
 HDInsight によって実行されるマップと削減のプロセスに対して、ヒープ ダンプを有効にすることもできます。
 
-## <a name="<a-name="configuration"></a>understanding-heap-dump-configuration"></a><a name="configuration"></a>ヒープ ダンプ構成について
+## <a name="configuration"></a>ヒープ ダンプ構成について
 ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。 ほとんどの Hadoop サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することでこれを実現できます。
 
 各スクリプトには、JVM に渡されるオプションを含む **\*\_OPTS** のエクスポートが含まれています。 たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
 
-これらが MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、これらの JVM オプションを含む 2 つのエントリがあります。 どちらも **mapred-site.xml**に含まれています。
+これらが MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、これらの JVM オプションを含む&2; つのエントリがあります。 どちらも **mapred-site.xml**に含まれています。
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
@@ -58,7 +64,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     -XX:+HeapDumpOnOutOfMemoryError
 
- **+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
+**+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
 
 > [!WARNING]
 > ヒープ ダンプは、ダンプ ファイルが大きくなる可能性があるため、既定では HDInsight の Hadoop サービスで無効になっています。 トラブルシューティングのために有効にした場合は、問題を再現してダンプ ファイルを収集したら、忘れずに無効にしてください。
@@ -92,7 +98,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
     メッセージが表示されたら、HTTP のアカウント名 (既定値: admin) とクラスターのパスワードを使用してサイトを認証します。
    
    > [!NOTE]
-   > Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。 その場合は、同じアカウント名とパスワードを再入力してください。
+   > Ambari によって、ユーザー名とパスワードの入力が&2; 回求められる場合があります。 その場合は、同じアカウント名とパスワードを再入力してください。
    > 
    > 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]**です。 中央の領域で、 **[Configs]** タブを選択します。
@@ -111,7 +117,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > 
    
     **[保存]** ボタンを押して、変更を保存します。 変更を説明する短いメモを入力できます。
-5. 変更が適用されると、 **再起動が必要** であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
+5. 変更が適用されると、 **再起動が必要** であることを示すアイコンが&1; つ以上のサービスの横に表示されます。
    
     ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 6. 再起動が必要な各サービスを選択し、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 これは、再起動したときに、このサービスからアラートが生成されないようにします。
@@ -126,7 +132,5 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > 
    > 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
-
-<!--HONumber=Oct16_HO2-->
 
 

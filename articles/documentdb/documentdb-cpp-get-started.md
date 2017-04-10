@@ -12,21 +12,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: hero-article
-ms.date: 11/02/2016
+ms.date: 12/25/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8770e89cd54dae23ba05fb53382f7d89d19b029a
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 78c3da6fd83a6fca0351a90846d10acd82924be3
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="nosql-c-tutorial-documentdb-c-console-application"></a>NoSQL C++ チュートリアル: DocumentDB C++ コンソール アプリケーション
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [MongoDB 用 Node.js](documentdb-mongodb-samples.md)
 > * [Node.JS](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
+>  
 > 
-> 
+ 
 
 C++ 用の Azure DocumentDB 動作保証済み SDK の C++ チュートリアルへようこそ。 このチュートリアルでは、C++ データベースなどの DocumentDB リソースを作成してクエリするコンソール アプリケーションを作成します。
 
@@ -61,7 +66,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupcastep-2-set-up-your-c-application"></a><a id="SetupC++"></a>手順 2: C++ アプリケーションをセットアップする
+## <a id="SetupC++"></a>手順 2: C++ アプリケーションをセットアップする
 1. Visual Studio を開き、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。 
 2. **[新しいプロジェクト]** ウィンドウの **[インストール済み]** ウィンドウで、**[Visual C++]** を展開し、**[Win32]** をクリックしてから、**[Win32 コンソール アプリケーション]** をクリックします。 プロジェクトに hellodocumentdb という名前を付け、**[OK]** をクリックします。 
    
@@ -76,12 +81,12 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
    
     パッケージがプロジェクトに追加されると、コードの記述し始める準備が整います。   
 
-## <a name="a-idconfigastep-3-copy-connection-details-from-azure-portal-for-your-documentdb-database"></a><a id="Config"></a>手順 3: DocumentDB データベース用に Azure ポータルから接続の詳細をコピーする
+## <a id="Config"></a>手順 3: DocumentDB データベース用に Azure ポータルから接続の詳細をコピーする
 [Azure ポータル](https://portal.azure.com)を表示し、作成した NoSQL (DocumentDB) データベース アカウントに移動します。 C++ のコード スニペットからの接続を確立するために、次の手順で Azure ポータルの URI と プライマリ キーが必要になります。 
 
 ![Azure ポータル内の DocumentDB URI と キー](media/documentdb-cpp-get-started/nosql-tutorial-keys.png)
 
-## <a name="a-idconnectastep-4-connect-to-a-documentdb-account"></a><a id="Connect"></a>手順 4: DocumentDB アカウントに接続する
+## <a id="Connect"></a>手順 4: DocumentDB アカウントに接続する
 1. ソース コードの `#include "stdafx.h"` の後に、次のヘッダーと名前空間を追加します。
    
         #include <cpprest/json.h>
@@ -99,7 +104,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
    
     documentdb クライアントを初期化するためのコードは以上で完成です。DocumentDB のリソースを使って動作を確認してみましょう。
 
-## <a name="a-idcreatedbcollastep-5-create-a-c-database-and-collection"></a><a id="CreateDBColl"></a>手順 5: C++ データベースとコレクションを作成する
+## <a id="CreateDBColl"></a>手順 5: C++ データベースとコレクションを作成する
 この手順を実行する前に、DocumentDB の初心者向けにデータベース、コレクション、およびドキュメントの相互関係を確認しておきましょう。 [データベース](documentdb-resources.md#databases)は、コレクションに分割されたドキュメント ストレージの論理上のコンテナーです。 [コレクション](documentdb-resources.md#collections)には、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。 DocumentDB 階層型リソース モデルと概念の詳細については、「[DocumentDB 階層型リソース モデルと概念](documentdb-resources.md)」をご覧ください。
 
 データベースと、対応するコレクションを作成するには、main 関数の末尾に次のコードを追加します。 これにより、前の手順で宣言したクライアント構成を使用して、'FamilyRegistry' というデータベースと 'FamilyCollection' というコレクションが作成されます。
@@ -112,7 +117,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
     }
 
 
-## <a name="a-idcreatedocastep-6-create-a-document"></a><a id="CreateDoc"></a>手順 6: ドキュメントを作成する
+## <a id="CreateDoc"></a>手順 6: ドキュメントを作成する
 [ドキュメント](documentdb-resources.md#documents)は、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 これで、DocumentDB にドキュメントを挿入できます。 ドキュメントを作成するには、main 関数の末尾に次のコードをコピーします。 
 
     try {
@@ -134,7 +139,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 
 ![C++ チュートリアル - アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図](media/documentdb-cpp-get-started/documentdbdocs.png)
 
-## <a name="a-idquerydbastep-7-query-documentdb-resources"></a><a id="QueryDB"></a>手順 7: DocumentDB リソースをクエリする
+## <a id="QueryDB"></a>手順 7: DocumentDB リソースをクエリする
 DocumentDB では、各コレクションに格納された JSON ドキュメントに対する [リッチ クエリ](documentdb-sql-query.md) をサポートしています。 次のサンプル コードは、前の手順で作成したドキュメントに対して実行できるクエリを示しています。DocumentDB SQL 構文が使用されています。
 
 この関数は、ドキュメント クライアントと共に、データベースとコレクションの一意の識別子またはリソース id を引数として受け取ります。 main 関数の前にこのコードを追加します。
@@ -165,7 +170,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
       }
     }
 
-## <a name="a-idreplaceastep-8-replace-a-document"></a><a id="Replace"></a>手順 8: ドキュメントを置換する
+## <a id="Replace"></a>手順 8: ドキュメントを置換する
 DocumentDB は、次のコードに示すように、JSON ドキュメントの置換をサポートします。 このコードを executesimplequery 関数の後に追加します。
 
     void replacedocument(const DocumentClient &client, const wstring dbresourceid,
@@ -185,7 +190,7 @@ DocumentDB は、次のコードに示すように、JSON ドキュメントの�
       }
     }
 
-## <a name="a-iddeleteastep-9-delete-a-document"></a><a id="Delete"></a>手順 9: ドキュメントを削除する
+## <a id="Delete"></a>手順 9: ドキュメントを削除する
 DocumentDB では、JSON ドキュメントの削除がサポートされています。次のコードをコピーして replacedocument 関数の後に貼り付けることで実行できます。 
 
     void deletedocument(const DocumentClient &client, const wstring dbresourceid,
@@ -200,7 +205,7 @@ DocumentDB では、JSON ドキュメントの削除がサポートされてい�
       }
     }
 
-## <a name="a-iddeletedbastep-10-delete-a-database"></a><a id="DeleteDB"></a>手順 10: データベースを削除する
+## <a id="DeleteDB"></a>手順 10: データベースを削除する
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。
 
 次のコード スニペット (cleanup 関数) をコピーして deletedocument 関数の後に貼り付けます。この関数によって、データベースとすべての子リソースが削除されます。
@@ -213,7 +218,7 @@ DocumentDB では、JSON ドキュメントの削除がサポートされてい�
       }
     }
 
-## <a name="a-idrunastep-11-run-your-c-application-all-together"></a><a id="Run"></a>手順 11: C++ アプリケーションの全体的な実行の流れ
+## <a id="Run"></a>手順 11: C++ アプリケーションの全体的な実行の流れ
 このように、さまざまな DocumentDB リソースに対して作成、クエリ、変更、および削除を実行するためのコードを追加しました。  hellodocumentdb.cpp の main 関数からこれらのさまざまな関数への呼び出しを診断メッセージと共に追加してつないでみましょう。
 
 アプリケーションの main 関数を次のコードに置き換えると、これを実行することができます。 これは、手順 3. でコードにコピーした account_configuration_uri と primary_key を上書きします。そのため、該当する行を保存しておくか、ポータルからもう一度その値をコピーします。 
@@ -273,7 +278,7 @@ Visual Studio で F5 キーを押すか、ターミナル ウィンドウでア�
 
 ご利用ありがとうございます。 以上で C++ チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
-## <a name="a-idgetsolutionaget-the-complete-c-tutorial-solution"></a><a id="GetSolution"></a>完全な C++ チュートリアル ソリューションを入手する
+## <a id="GetSolution"></a>完全な C++ チュートリアル ソリューションを入手する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
 * [DocumentDB アカウント][documentdb-create-account]。
@@ -285,13 +290,6 @@ Visual Studio で F5 キーを押すか、ターミナル ウィンドウでア�
 * プログラミング モデルの詳細については、 [DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 
-
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

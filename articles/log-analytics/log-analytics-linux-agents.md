@@ -1,23 +1,29 @@
 ---
-title: Linux コンピューターを Log Analytics に接続する | Microsoft Docs
-description: Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。
+title: "Azure Log Analytics への Linux コンピューターの接続 | Microsoft Docs"
+description: "Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/29/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b01b0d3d61168c1eec52f3fd040b829e0c51a878
+ms.lasthandoff: 03/30/2017
+
 
 ---
-# <a name="connect-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する
-Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。 Linux から収集されたデータを OMS に追加すれば、実質的にどこからでも Linux システムやコンテナー ソリューション (Docker など) を管理できます。 したがって、こうしたデータの生成元は、オンプレミスのデータセンターに物理サーバーとして存在することもあれば、Amazon Web Services (AWS) や Microsoft Azure などのクラウドでホストされるサービス内の仮想コンピューターとして存在することもあります。デスク上のノート PC がデータの生成元となる場合もあるでしょう。 OMS は、Windows コンピューターからもデータを収集するため、紛れもなく異種混合の IT 環境に対応します。
+# <a name="connect-your-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する
+Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。 Linux から収集されたデータを OMS に追加すれば、実質的にどこからでも Linux システムやコンテナー ソリューション (Docker など) を管理できます。 こうしたデータの生成元は、オンプレミスのデータセンターに物理サーバーとして存在することもあれば、Amazon Web Services (AWS) や Microsoft Azure などのクラウドでホストされるサービス内の仮想コンピューターとして存在することもあります。デスク上のノート PC がデータの生成元となる場合もあるでしょう。 OMS は、Windows コンピューターからもデータを収集するため、紛れもなく異種混合の IT 環境に対応します。
 
 OMS の Log Analytics では、こうした種々雑多なソースのデータを単一の管理ポータルで表示し、管理することができます。 そのため監視に必要なシステムの種類や数が減って、データが取り込みやすくなり、ビジネス分析ソリューションや既存のシステムに必要なデータをエクスポートすることができます。
 
@@ -83,8 +89,8 @@ OMS Agent for Linux のパッケージをインストールした後、システ
 
 > [!NOTE]
 > syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
-> 
-> 
+>
+>
 
 ## <a name="quick-install"></a>クイック インストール
 omsagent をダウンロードしてチェックサムを検証し、エージェントをインストールして利用できる状態にするためには、以下のコマンドを実行します。 コマンドは 64 ビット用です。 ワークスペース ID とプライマリ キーは OMS ポータルの **[Settings (設定)]** の **[Connected Sources (接続されているソース)]** タブで確認できます。
@@ -92,9 +98,7 @@ omsagent をダウンロードしてチェックサムを検証し、エージ�
 ![workspace details](./media/log-analytics-linux-agents/oms-direct-agent-primary-key.png)
 
 ```
-wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.1.0-28/omsagent-1.1.0-28.universal.x64.sh
-sha256sum ./omsagent-1.1.0-28.universal.x64.sh
-sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
 ```
 
 エージェントは、他にもさまざまな方法でインストールしたりアップグレードしたりすることができます。 詳細については、「 [Steps to install the OMS Agent for Linux (OMS Agent for Linux のインストール手順)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#steps-to-install-the-oms-agent-for-linux)」を参照してください。
@@ -104,7 +108,7 @@ sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID
 ## <a name="choose-your-linux-data-collection-method"></a>Linux データの収集手段の選択
 収集するデータの種類をどのように選ぶかは、OMS ポータルを使用するか、各種構成ファイルを Linux クライアント上で直接編集するかによって異なります。 ポータルを使用する場合、その構成が自動的にすべての Linux クライアントに送信されます。 Linux クライアントごとに異なる構成が必要な場合は、クライアントのファイルを個別に編集するか、代替手段 (PowerShell DSC、Chef、Puppet など) を使用する必要があります。
 
-収集対象とする syslog イベントとパフォーマンス カウンターは、Linux コンピューター上の構成ファイルで指定できます。 *エージェントの構成ファイルを編集することによってデータの収集を構成する場合は、構成の一元管理を無効にする必要があります。*   以降、エージェントの構成ファイルでデータの収集設定を行う手順と、すべての OMS Agent for Linux または個々のコンピューターに対して構成の一元管理を無効化する手順について説明しています。
+収集対象とする syslog イベントとパフォーマンス カウンターは、Linux コンピューター上の構成ファイルで指定できます。 *エージェントの構成ファイルを編集することによってデータの収集を構成する場合は、構成の一元管理を無効にする必要があります。*  以降、エージェントの構成ファイルでデータの収集設定を行う手順と、すべての OMS Agent for Linux または個々のコンピューターに対して構成の一元管理を無効化する手順について説明しています。
 
 ### <a name="disable-oms-management-for-an-individual-linux-computer"></a>Linux コンピューターの OMS 管理を個別に無効化する
 構成データ収集の一元管理を Linux コンピューターごとに無効化するには、OMS_MetaConfigHelper.py スクリプトを使用します。 この方法は、特殊な構成を一部のコンピューターにのみ適用する必要がある場合に効果的です。
@@ -125,7 +129,7 @@ sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py –enable
 Linux のパフォーマンス カウンターは、Windows のパフォーマンス カウンターと似ており、どちらも同じような働きがあります。 パフォーマンス カウンターの追加と構成は、以下の手順で行います。 パフォーマンス カウンターが OMS に追加された後、30 秒おきにデータが収集されます。
 
 ### <a name="to-add-a-linux-performance-counter-in-oms"></a>Linux のパフォーマンス カウンターを OMS で追加するには
-1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings](設定.md) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
+1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] (設定) ページで Linux のパフォーマンス カウンターを追加し、 **[Data]**(データ) をクリックします。  
 2. **[Settings (設定)]** ページの **[Data (データ)]** で、**[Linux performance counters (Linux パフォーマンス カウンター)]** をクリックし、追加するカウンターの名前を選択するか入力します。  
     ![データ](./media/log-analytics-linux-agents/oms-settings-data01.png)
 3. カウンターのフル ネームがわからない場合は、名前の一部分を入力すると、使用できるカウンターが一覧表示されます。 追加するカウンターが見つかったら、目的の名前を一覧から選んでクリックし、プラス アイコンをクリックしてカウンターを追加します。
@@ -145,7 +149,7 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 同様に、親カウンターに対して選択したサンプリング間隔が、そのすべての子カウンターに適用されます。 つまり、すべての子カウンターのサンプリング間隔とインスタンスは 1 つのまとまりとして存在しています。
 
 ### <a name="add-and-configure-performance-metrics-with-linux"></a>Linux でのパフォーマンス メトリックの追加と構成
-収集するパフォーマンス メトリックは、/etc/opt/microsoft/omsagent/conf/omsagent.conf の構成によって制御されます。 OMS Agent for Linux で利用できるクラスとメトリックについては、「 [Available performance metrics (利用可能なパフォーマンス メトリック)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#appendix-available-performance-metrics) 」を参照してください。
+収集するパフォーマンス メトリックは、/etc/opt/microsoft/omsagent/&lt;workspace id&gt;/conf/omsagent.conf の構成によって制御されます。 OMS Agent for Linux で利用できるクラスとメトリックについては、「 [Available performance metrics (利用可能なパフォーマンス メトリック)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#appendix-available-performance-metrics) 」を参照してください。
 
 収集するパフォーマンス メトリックの各オブジェクト (カテゴリ) は、構成ファイルの中で単一の `<source>` 要素として定義する必要があります。 次の構文形式に従って記述してください。
 
@@ -211,13 +215,13 @@ omsagent バンドルをインストールするときに、コンピュータ�
 
 > [!NOTE]
 > 資格情報ファイルの読み取りが omsagent アカウントに対して許可されている必要があります。 mycimprovauth コマンドは、omsgent として実行することをお勧めします。
-> 
-> 
+>
+>
 
 ```
-sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>
 
-sudo service omiserverd restart
+sudo /opt/omi/bin/service_control restart
 ```
 
 
@@ -240,7 +244,7 @@ Apache 監視モジュールをアンロードするには、次のコマンド�
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 ### <a name="to-view-performance-data-with-log-analytics"></a>Log Analytics でパフォーマンス データを表示するには
-1. Operations Management Suite ポータルで、[Log Search](ログの検索.md) タイルをクリックします。
+1. Operations Management Suite ポータルで、[Log Search] (ログの検索) タイルをクリックします。
 2. すべてのパフォーマンス カウンターを表示するには、検索バーに「 `* (Type=Perf)` 」と入力します。
 
 OMS の収集対象には Windows のパフォーマンス カウンター データも含まれるので、Linux 固有のデータに検索範囲を限定する必要があります。 次の例では、Chorizo21 という名前の Linux サーバーに固有のパフォーマンス データが表示されます。
@@ -276,8 +280,8 @@ OMS エージェントの既定の syslog 構成では、重要度が警告以�
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
-> 
-> 
+>
+>
 
 OMS Agent for Linux の既定の syslog 構成は次のとおりです。
 
@@ -326,13 +330,13 @@ Nagios または Zabbix を使用して Linux マシンを管理している場�
 ### <a name="collect-alerts-from-nagios"></a>Nagios からのアラートの収集
 Nagios サーバーからアラートを収集するには、次のように構成を変更する必要があります。
 
-1. Nagios ログ ファイル (/var/log/nagios/nagios.log/var/log/nagios/nagios.log) の読み取りアクセス権をユーザー **omsagent** に追加します。 たとえば nagios.log ファイルをグループ **nagios** が所有している場合、ユーザー **omsagent** を **nagios** グループに追加します。
-   
+1. Nagios ログ ファイル (/var/log/nagios/nagios.log) の読み取りアクセス権をユーザー **omsagent** に追加します。 たとえば nagios.log ファイルをグループ **nagios** が所有している場合、ユーザー **omsagent** を **nagios** グループに追加します。
+
     ```
     sudo usermod –a -G nagios omsagent
     ```
-2. omsagent.confconfiguration ファイル (/etc/opt/microsoft/omsagent/conf/omsagent.conf) に変更を加えます。 次のエントリが存在し、コメント アウトされていないことを確認します。
-   
+2. omsagent.confconfiguration ファイル (/etc/opt/microsoft/omsagent/&lt;workspace id&gt;/conf/omsagent.conf) に変更を加えます。 次のエントリが存在し、コメント アウトされていないことを確認します。
+
     ```
     <source>
     type tail
@@ -341,21 +345,21 @@ Nagios サーバーからアラートを収集するには、次のように構�
     format none
     tag oms.nagios
     </source>
-   
+
     <filter oms.nagios>
     type filter_nagios_log
     </filter>
     ```
 3. omsagent デーモンを再起動します。
-   
+
     ```
-    sudo service omsagent restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="collect-alerts-from-zabbix"></a>Zabbix からのアラートの収集
 Zabbix サーバーからアラートを収集する手順は、前述した Nagios の場合と同様ですが、ユーザーとパスワードは *クリア テキスト*で指定する必要があります。 本来このような仕様は好ましくありませんので、近い将来改善される可能性は十分あります。 この問題に対処するために、ユーザーを作成し、監視専用の権限を付与することをお勧めします。
 
-Zabbix に使用する omsagent.conf 構成ファイル (/etc/opt/microsoft/omsagent/conf/omsagent.conf) のセクションの例を次に示します。
+Zabbix に使用する omsagent.conf 構成ファイル (/etc/opt/microsoft/omsagent/&lt;workspace id&gt;/conf/omsagent.conf) のセクションの例を次に示します。
 
 ```
 <source>
@@ -379,7 +383,7 @@ Type=Alert
 #### <a name="to-view-all-nagios-alerts-with-log-analytics"></a>Log Analytics ですべての Nagios アラートを表示するには
 1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
-   
+
     ```
     Type=Alert SourceSystem=Nagios
     ```
@@ -390,7 +394,7 @@ Type=Alert
 ### <a name="to-view-all-zabbix-alerts-with-log-analytics"></a>Log Analytics ですべての Zabbix アラートを表示するには
 1. Operations Management Suite ポータルで、 **[Log Search]** (ログの検索) タイルをクリックします。
 2. クエリ バーに、次の検索クエリを入力します。
-   
+
     ```
     Type=Alert SourceSystem=Zabbix
     ```
@@ -403,16 +407,16 @@ OMS Agent for Linux は、エージェントのバイナリを System Center Ope
 
 > [!NOTE]
 > OMS Agent for Linux のインストール先となるコンピューターが現在は Operations Manager によって管理されていないものの、将来的には Operations Manager で管理することを予定している場合、そのコンピューターを検出するには、OMI の構成に変更を加える必要があります。 **Operations Manager エージェントが OMS Agent for Linux より先にインストールされている場合、この手順は不要です。**
-> 
-> 
+>
+>
 
 ### <a name="to-enable-the-oms-agent-for-linux-to-communicate-with-operations-manager"></a>Operations Manager と連携できるように OMS Agent for Linux を設定するには
 1. /etc/opt/omi/conf/omiserver.conf ファイルを編集します。
 2. **httpsport=** で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)
 3. 次のコマンドで OMI サーバーを再起動します。
-   
+
     ```
-    service omiserver restart or systemctl restart omiserver
+    sudo /opt/omi/bin/service_control restart
     ```
 
 ## <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL のパフォーマンス カウンターに必要なデータベース権限
@@ -502,7 +506,7 @@ MySQL OMI 認証ファイルは、次の場所に "mysql-auth" という名前�
 ## <a name="agent-logs"></a>エージェントのログ
 OMS Agent for Linux のログは次の場所に格納されています。
 
-/var/opt/microsoft/omsagent/log/
+/var/opt/microsoft/omsagent/&lt;workspace id&gt;/log/
 
 OMS Agent for Linux の omsconfig (エージェント構成) プログラムのログは次の場所に格納されています。
 
@@ -525,20 +529,20 @@ OMS Agent for Linux の omsconfig (エージェント構成) プログラムの�
 ### <a name="important-log-locations"></a>重要なログの場所
 | ファイル | パス |
 | --- | --- |
-| OMS Agent for Linux のログ ファイル |`/var/opt/microsoft/omsagent/log/omsagent.log ` |
+| OMS Agent for Linux のログ ファイル |`/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log ` |
 | OMS エージェント構成のログ ファイル |`/var/opt/microsoft/omsconfig/omsconfig.log` |
 
 ### <a name="important-configuration-files"></a>重要な構成ファイル
 | カテゴリ | ファイルの場所 |
 | --- | --- |
 | syslog |`/etc/syslog-ng/syslog-ng.conf` または `/etc/rsyslog.conf` または `/etc/rsyslog.d/95-omsagent.conf` |
-| パフォーマンス、Nagios、Zabbix、OMS の出力および汎用エージェント |`/etc/opt/microsoft/omsagent/conf/omsagent.conf` |
-| 追加の構成 |`/etc/opt/microsoft/omsagent/conf.d/*.conf` |
+| パフォーマンス、Nagios、Zabbix、OMS の出力および汎用エージェント |`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` |
+| 追加の構成 |`/etc/opt/microsoft/omsagent/<workspace id>/omsagent.d/*.conf` |
 
 > [!NOTE]
 > 編集しているパフォーマンス カウンターおよび syslog の構成ファイルは、OMS ポータル構成が有効になると上書きされます。 OMS ポータルで、すべてのノードの構成を無効にすることができます。1 つのノードの場合は、次のように実行します。
-> 
-> 
+>
+>
 
 ```
 sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable
@@ -549,7 +553,7 @@ sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --d
 デバッグ ログを有効にするには、OMS 出力プラグインと詳細出力を使用できます。
 
 #### <a name="oms-output-plugin"></a>OMS 出力プラグイン
-FluentD を使用すると、プラグインは入力と出力に対して異なるログ レベルを指定できます。 OMS 出力に異なるログ レベルを指定するには、`/etc/opt/microsoft/omsagent/conf/omsagent.conf` ファイルで汎用エージェントの構成を編集します。
+FluentD を使用すると、プラグインは入力と出力に対して異なるログ レベルを指定できます。 OMS 出力に異なるログ レベルを指定するには、`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` ファイルで汎用エージェントの構成を編集します。
 
 構成ファイルの末尾の近くで、`log_level` プロパティを `info` から `debug` に変更します。
 
@@ -560,7 +564,7 @@ FluentD を使用すると、プラグインは入力と出力に対して異な
   num_threads 5
   buffer_chunk_limit 5m
   buffer_type file
-  buffer_path /var/opt/microsoft/omsagent/state/out_oms*.buffer
+  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms*.buffer
   buffer_queue_limit 10
   flush_interval 20s
   retry_limit 10
@@ -581,7 +585,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 #### <a name="verbose-output"></a>詳細出力
 OMS 出力プラグインを使用する代わりに、データ項目を `stdout` に直接出力することもできます。この出力は、OMS Agent for Linux のログ ファイルで見ることができます。
 
-`/etc/opt/microsoft/omsagent/conf/omsagent.conf` にある OMS 汎用エージェントの構成ファイルで、OMS 出力プラグインをコメントアウトします。コメントアウトするには、各行の先頭に `#` を追加します。
+`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある OMS 汎用エージェントの構成ファイルで、OMS 出力プラグインをコメントアウトします。コメントアウトするには、各行の先頭に `#` を追加します。
 
 ```
 #<match oms.** docker.**>
@@ -590,7 +594,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 #  num_threads 5
 #  buffer_chunk_limit 5m
 #  buffer_type file
-#  buffer_path /var/opt/microsoft/omsagent/state/out_oms*.buffer
+#  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms*.buffer
 #  buffer_queue_limit 10
 #  flush_interval 20s
 #  retry_limit 10
@@ -645,7 +649,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 #### <a name="resolution"></a>解決策
 * `date` コマンドを使用して、Linux サーバーの時刻を確認します。 データが現在の時刻から 15 分より前または後である場合、オンボードは失敗します。 これを修正するには、Linux サーバーの日付やタイムゾーンを更新します。
-* OMS Agent for Linux の最新バージョンは、時間の差によってオンボードが失敗する場合に通知します
+* OMS Agent for Linux の最新バージョンは、時間の差によってオンボードが失敗する場合に通知します。
 * 正しいワークスペース ID とワークスペース キーを使用して、再オンボードします。 詳細については、「[Onboarding using the command line (コマンド ラインを使用したオンボード)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)」を参照してください。
 
 ### <a name="a-500-error-or-404-error-appears-in-the-log-file-after-onboarding"></a>オンボード後、ログ ファイルに 500 エラーまたは 404 エラーが記録される
@@ -658,7 +662,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 #### <a name="resolutions"></a>解決策
 * Nagios ファイルからの読み取りができるように、omsagent ユーザーを追加します。 詳細については、「[Nagios alerts (Nagios の警告)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)」を参照してください。
-* `/etc/opt/microsoft/omsagent/conf/omsagent.conf` にある OMS Agent for Linux の汎用構成ファイルで、Nagios ソースとフィルターの**両方**のセクションから、次の例のようにコメントが削除されていることを確認します。
+* `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある OMS Agent for Linux の汎用構成ファイルで、Nagios ソースとフィルターの**両方**のセクションから、次の例のようにコメントが削除されていることを確認します。
 
 ```
 <source>
@@ -674,17 +678,17 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 ```
 
 
-### <a name="linux-data-doesn't-appear-in-the-oms-portal"></a>Linux データが OMS ポータルに表示されない
+### <a name="linux-data-doesnt-appear-in-the-oms-portal"></a>Linux データが OMS ポータルに表示されない
 #### <a name="probable-causes"></a>考えられる原因
 * OMS サービスへのオンボードが失敗しました
 * OMS サービスへの接続がブロックされています
 * OMS Agent for Linux のデータがバックアップされました
 
 #### <a name="resolutions"></a>解決策
-* `/etc/opt/microsoft/omsagent/conf/omsadmin.conf` が存在していることを確認することにより、OMS サービスへのオンボードが成功したことを確認します。
+* `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在していることを確認することにより、OMS サービスへのオンボードが成功したことを確認します。
 * omsadmin.sh コマンド ラインを使用して再オンボードします。 詳細については、「[Onboarding using the command line (コマンド ラインを使用したオンボード)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)」を参照してください。
 * プロキシを使用する場合は、上記のプロキシのトラブルシューティング手順に従います
-* 場合によっては、OMS Agent for Linux が OMS サービスと通信できない場合、Agent のデータが最大バッファー サイズである 50 MB までバックアップされます。 `service omsagent restart` または `systemctl restart omsagent` コマンドを実行して、OMS Agent for Linux を再起動してください。
+* 場合によっては、OMS Agent for Linux が OMS サービスと通信できない場合、Agent のデータが最大バッファー サイズである 50 MB までバックアップされます。 `/opt/microsoft/omsagent/bin/service_control restart` コマンドを実行して OMS Agent for Linux を再起動します。
   >[AZURE.NOTE] この問題は、Agent Version 1.1.0-28 以降で修正されます。
 
 ### <a name="syslog-linux-performance-counter-configuration-is-not-applied-in-the-oms-portal"></a>Syslog Linux パフォーマンス カウンターの構成が OMS ポータルで適用されない
@@ -693,15 +697,15 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 * ポータルで変更された設定が適用されていません
 
 #### <a name="resolutions"></a>解決策
-OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS ポータル構成の変更を 5 分ごとに取得します。 この構成が、`/etc/opt/microsoft/omsagent/conf/omsagent.conf` にある OMS Agent for Linux 構成ファイルに適用されます。
+OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS ポータル構成の変更を 5 分ごとに取得します。 この構成が、`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` にある OMS Agent for Linux 構成ファイルに適用されます。
 
 * 場合によっては、OMS Agent for Linux 構成エージェントがポータル構成サービスと通信できず、最新の構成が適用されないことがあります。
 * 次のようにして、`omsconfig` エージェントがインストールされていることを確認してください。
-  
+
   * `dpkg --list omsconfig` または `rpm -qi omsconfig`
   * インストールされていない場合は、OMS Agent for Linux の最新バージョンを再インストールします
 * `omsconfig` エージェントが OMS サービスと通信できることを確認します
-  
+
   * `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` コマンドを実行します
     * 上記のコマンドは、エージェントがポータルから取得した構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています
     * 上記のコマンドが失敗した場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに OMS サービスと通信して最新の構成を取得するように強制します。
@@ -717,12 +721,12 @@ OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS �
 * これは、OMS Agent for Linux Version 1.1.0-217 で修正された、競合状態に関する既知の問題です
 
 #### <a name="resolutions"></a>解決策
-* `/etc/opt/microsoft/omsagent/conf/omsadmin.conf` ファイルが存在するかどうかを調べることによって、正常にオンボードできていることを確認します。
+* `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` ファイルが存在するかどうかを調べることによって、正常にオンボードできていることを確認します。
   * 必要であれば、omsadmin.sh コマンド ラインを使用して、もう一度オンボードします。 詳細については、「[Onboarding using the command line (コマンド ラインを使用したオンボード)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)」を参照してください。
 * OMS ポータルの **[Settings (設定)]** の **[Data (データ)]** タブで、**[Apply the following configuration to my Linux Servers (次の構成を Linux サーバーに適用する)]** 設定がオンになっていることを確認します  
   ![構成の適用](./media/log-analytics-linux-agents/customloglinuxenabled.png)
 * `omsconfig` エージェントが OMS サービスと通信できることを確認します
-  
+
   * `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` コマンドを実行します
   * 上記のコマンドは、エージェントがポータルから取得した構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています
   * 上記のコマンドが失敗した場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに OMS サービスと通信して最新の構成を取得するように強制します。
@@ -737,7 +741,7 @@ OMS Agent for Linux の構成エージェントである `omsconfig` は、OMS �
 OMS Agent for Linux Version 1.1.0-217 で修正された、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。
 
 ```
-sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/conf/omsagent.conf
+sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf
 ```
 
 ## <a name="known-limitations"></a>既知の制限事項
@@ -746,7 +750,7 @@ sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/oms
 ### <a name="azure-diagnostics"></a>Azure 診断
 Azure で実行されている Linux 仮想マシンの場合、Azure 診断と Operations Management Suite によるデータ収集を有効にするには、別途作業が必要となります。 **Version 2.2** が必要です。
 
-Diagnostic Extension for Linux のインストールと構成の詳細については、「[Azure CLI コマンドを使用して Linux Diagnostic Extension を有効にする](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)」を参照してください。
+Diagnostic Extension for Linux のインストールと構成の詳細については、「[Azure CLI コマンドを使用して Linux Diagnostic Extension を有効にする](../virtual-machines/linux/classic/diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)」を参照してください。
 
 **Linux Diagnostics Extension 2.0 から 2.2 へのアップグレード (Azure CLI ASM):**
 
@@ -778,7 +782,4 @@ syslog メッセージを収集するには、rsyslog または syslog-ng が必
 * [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
-
-<!--HONumber=Oct16_HO2-->
-
 

@@ -1,23 +1,28 @@
 ---
-title: Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する | Microsoft Docs
-description: Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。  これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
+title: "Azure Media Analytics OCR でテキストをデジタル化する | Microsoft Docs"
+description: "Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。  これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 307c196e-3a50-4f4b-b982-51585448ffc6
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/02/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 5b5095610085019ad3fee7f4394f0c87f3740bed
+ms.openlocfilehash: 8d78a0f93a1e65eda7bfefbf910b56e0218a42c5
+ms.lasthandoff: 02/02/2017
+
 
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 ビデオ ファイルからテキスト コンテンツを抽出し、編集かつ検索可能なデジタル テキストを生成する必要がある場合は、Azure Media Analytics OCR (光学式文字認識) を使用する必要があります。 この Azure メディア プロセッサは、ビデオ ファイル内のテキスト コンテンツを検出し、テキスト ファイルを生成して使用できるようにします。 OCR を使用すると、メディアのビデオ信号から有意なメタデータを自動的に抽出できます。
 
 検索エンジンと組み合わせれば、テキストを使って簡単にメディアにインデックスを作成できるため、コンテンツがさらに探しやすくなります。 これは、ビデオ記録やスライドショー プレゼンテーションの画面キャプチなど、テキスト情報の多いビデオでは非常に便利です。Azure OCR メディア プロセッサは、デジタル テキスト用に最適化されています。
@@ -32,29 +37,38 @@ ms.author: juliako
 ## <a name="task-configuration"></a>タスクの構成
 タスクの構成 (プリセット) です。 **Azure Media OCR**でタスクを作成するときは、JSON または XML を使用して、構成プリセットを指定する必要があります。 
 
+>[!NOTE]
+>OCR エンジンが有効な入力として処理できるのは、高さと幅の両方が最小 40 ピクセルから最大 32000 ピクセルまでのイメージ領域のみです。
+>
+
 ### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | Description |
 | --- | --- |
 | 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
 | TextOrientation |(省略可能) 検索対象テキストの向きです。  "Left" は、すべての文字の上部が左を指していることを意味します。  既定のテキスト (書籍など) は "Up"、つまり上を指しています。  次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。 |
 | TimeInterval |(省略可能) サンプリング レートです。  既定値は、毎 0.5 秒です。<br/>JSON 形式 – HH:mm:ss.SSS (既定値 00:00:00.500)<br/>XML 形式 – W3C XSD プリミティブ期間 (既定値 PT0.5) |
-| DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の 4 つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
+| DetectRegions |(省略可能)テキストを検出するビデオ フレーム内の領域を指定する DetectRegion オブジェクトの配列。<br/>DetectRegion オブジェクトは、次の&4; つの整数値で構成されます。<br/>Left: 左余白からのピクセル<br/>Top: 上余白からのピクセル<br/>Width: 領域の幅 (ピクセル)<br/>Height: 領域の高さ (ピクセル) |
 
 #### <a name="json-preset-example"></a>JSON プリセットの例
+
     {
-        'Version':'1.0', 
-        'Options': 
+        "Version":1.0, 
+        "Options": 
         {
-        'Language':'English', 
-            'TimeInterval':'00:00:01.5',
-            'DetectRegions': 
-             [
-                {'Left':'1','Top':'1','Width':'1','Height':'1'},
-                {'Left':'2','Top':'2','Width':'2','Height':'2'}
-             ],
-            'TextOrientation':'Up'
+            "Language":"English", 
+            "TimeInterval":"00:00:01.5",
+            "TextOrientation":"Up",
+            "DetectRegions": [
+                    {
+                       "Left": 10,
+                       "Top": 10,
+                       "Width": 100,
+                       "Height": 50
+                    }
+             ]
         }
     }
+
 
 #### <a name="xml-preset-example"></a>XML プリセットの例
     <?xml version=""1.0"" encoding=""utf-16""?>
@@ -64,10 +78,10 @@ ms.author: juliako
          <TimeInterval>PT1.5S</TimeInterval>
          <DetectRegions>
              <DetectRegion>
-                   <Left>1</Left>
-                   <Top>1</Top>
-                   <Width>1</Width>
-                   <Height>1</Height>
+                   <Left>10</Left>
+                   <Top>10</Top>
+                   <Width>100</Width>
+                   <Height>50</Height>
             </DetectRegion>
        </DetectRegions>
        <TextOrientation>Up</TextOrientation>
@@ -84,9 +98,9 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 | 要素 | Description |
 | --- | --- |
-| タイムスケール |ビデオの 1 秒あたりの "ティック数" |
+| タイムスケール |ビデオの&1; 秒あたりの "ティック数" |
 | Offset |タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。 |
-| Framerate |ビデオの 1 秒あたりのフレーム数 |
+| Framerate |ビデオの&1; 秒あたりのフレーム数 |
 | width |ビデオの幅 (ピクセル単位) |
 | height |ビデオの高さ (ピクセル単位) |
 | Fragments |ビデオの時間ベースのチャンクの配列。メタデータはこのチャンク配列単位で分割されます |
@@ -334,7 +348,5 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

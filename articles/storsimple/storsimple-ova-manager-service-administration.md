@@ -1,12 +1,12 @@
 ---
-title: StorSimple Manager Virtual Array の管理 | Microsoft Docs
-description: Azure クラシック ポータルで StorSimple Manager サービスを使用して、StorSimple のオンプレミスの仮想アレイを管理する方法を説明します。
+title: "StorSimple Manager Virtual Array の管理 | Microsoft Docs"
+description: "Azure クラシック ポータルで StorSimple Manager サービスを使用して、StorSimple のオンプレミスの仮想アレイを管理する方法を説明します。"
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: f0ae362c-dffd-4a14-bbcf-c304bfb93268
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d90864501485344d93c1f3bd32237683c2abb4ab
+
 
 ---
 # <a name="use-the-storsimple-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple Manager サービスを使用した StorSimple Virtual Array の管理
@@ -92,6 +96,9 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ## <a name="next-steps"></a>次のステップ
 Web UI とその使用方法については、「 [StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

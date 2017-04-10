@@ -1,165 +1,168 @@
 ---
-title: How to Deploy the Access Panel Extension for Internet Explorer using Group Policy | Microsoft Docs
-description: How to use group policy to deploy the Internet Explorer add-on for the My Apps portal.
+title: "GPO を使用して IE 用 Azure アクセス パネル拡張機能をデプロイする | Microsoft Docs"
+description: "グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2016
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
+ms.openlocfilehash: af36f45e66b68e2e76651eb408682f36ee0cbb68
+ms.lasthandoff: 03/01/2017
+
 
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy
-This tutorial shows how to use group policy to remotely install the Access Panel extension for Internet Explorer on your users' machines. This extension is required for Internet Explorer users who need to sign into apps that are configured using [password-based single sign-on](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
+このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
 
-It is recommended that admins automate the deployment of this extension. Otherwise, users will have to download and install the extension themselves, which is prone to user error and requires administrator permissions. This tutorial covers one method of automating software deployments by using group policy. [Learn more about group policy.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+管理者にはこの拡張機能のデプロイメントを自動化することをお勧めします。 自動化しないと、ユーザーは自分で拡張機能をダウンロードしてインストールする必要があるので、ユーザー エラーが発生しやすく、管理者のアクセス許可が必要になります。 このチュートリアルでは、グループ ポリシーを使用してソフトウェアのデプロイメントを自動化する方法について説明します。 [グループ ポリシーの詳細についてはこちらを参照してください。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-The Access Panel extension is also available for [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) and [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), neither of which require administrator permissions to install.
+アクセス パネルの拡張機能は [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) および [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) でも使用でき、どちらの場合もインストールに管理者のアクセス許可は必要ありません。
 
-## <a name="prerequisites"></a>Prerequisites
-* You have set up [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), and you have joined your users' machines to your domain.
-* You must have the "Edit settings" permission in order to edit Group Policy Objects (GPOs). By default, members of the following security groups have this permission: Domain Administrators, Enterprise Administrators, and Group Policy Creator Owners. [Learn more.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+## <a name="prerequisites"></a>前提条件
+* [Active Directory ドメイン サービス](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
+* グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 [詳細情報。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>Step 1: Create the Distribution Point
-First, you must place the installer package on a network location that can be accessed from all of the machines that you wish to remotely install the extension on. To do this, follow these steps:
+## <a name="step-1-create-the-distribution-point"></a>手順 1: 配布ポイントを作成する
+最初に、拡張機能をリモートでインストールするコンピューターがアクセスできるネットワークの場所に、インストーラー パッケージを置く必要があります。 そのためには、次の手順に従います。
 
-1. Log on to the server as an administrator
-2. In the **Server Manager** window, go to **Files and Storage Services**.
+1. サーバーに管理者としてログオンします。
+2. **[サーバー マネージャー]** ウィンドウで、**[ファイルおよび記憶域サービス]** に移動します。
    
-    ![Open Files and Storage Services](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. Go to the **Shares** tab. Then click on **Tasks** > **New Share...**
+    ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/files-services.png)
+3. **[共有]** タブに移動します。 **[タスク]**  >  **[新しい共有...]** の順にクリックします
    
-    ![Open Files and Storage Services](./media/active-directory-saas-ie-group-policy/shares.png)
-4. Complete the **New Share Wizard** and set permissions to ensure that it can be accessed from your users' machines. [Learn more about shares.](https://technet.microsoft.com/library/cc753175.aspx)
-5. Download the following Microsoft Windows Installer package (.msi file): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
-6. Copy the installer package to a desired location on the share.
+    ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/shares.png)
+4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
+5. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[[Access Panel Extension.msi]](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
+6. インストーラー パッケージを共有上の目的の場所にコピーします。
    
-    ![Copy the .msi file to your the share.](./media/active-directory-saas-ie-group-policy/copy-package.png)
-7. Verify that your client machines are able to access the installer package from the share. 
+    ![.msi ファイルを共有にコピーする。](./media/active-directory-saas-ie-group-policy/copy-package.png)
+7. クライアント コンピューターが共有のインストーラー パッケージにアクセスできることを確認します。 
 
-## <a name="step-2-create-the-group-policy-object"></a>Step 2: Create the Group Policy Object
-1. Log on to the server that hosts your Active Directory Domain Services (AD DS) installation.
-2. In the Server Manager, go to **Tools** > **Group Policy Management**.
+## <a name="step-2-create-the-group-policy-object"></a>手順 2: グループ ポリシー オブジェクトを作成する
+1. Active Directory ドメイン サービス (AD DS) のインストールをホストしているサーバーにログオンします。
+2. サーバー マネージャーで、**[ツール]** > **[グループ ポリシーの管理]** に移動します。
    
-    ![Go to Tools > Group Policy Managment](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
-3. In the left pane of the **Group Policy Management** window, view your Organizational Unit (OU) hierarchy and determine at which scope you would like to apply the group policy. For instance, you may decide to pick a small OU to deploy to a few users for testing, or you may pick a top-level OU to deploy to your entire organization.
+    ![[ツール] > [グループ ポリシーの管理] に移動する](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
+3. **[グループ ポリシーの管理** ] の左側のウィンドウで組織単位 (OU) 階層を表示し、グループ ポリシーを適用するスコープを決定します。 たとえば、テストのために数ユーザーにデプロイする場合は小さい OU を選択し、組織全体にデプロイする場合は最上位レベルの OU を選択します。
    
    > [!NOTE]
-   > If you would like to create or edit your Organization Units (OUs), switch back to the Server Manager and go to **Tools** > **Active Directory Users and Computers**.
+   > 組織単位 (OU) を作成または編集する場合は、サーバー マネージャーに戻り、**[ツール]** > **[Active Directory ユーザーとコンピューター]** に移動します。
    > 
    > 
-4. Once you have selected an OU, right-click on it and select **Create a GPO in this domain, and Link it here...**
+4. OU を選択して右クリックし、**[このドメインに GPO を作成し、このコンテナーにリンクする...]** を選択します
    
-    ![Create a new GPO](./media/active-directory-saas-ie-group-policy/create-gpo.png)
-5. In the **New GPO** prompt, type in a name for the new Group Policy Object.
+    ![新しい GPO を作成する](./media/active-directory-saas-ie-group-policy/create-gpo.png)
+5. **[新しい GPO]** プロンプトで、新しいグループ ポリシー オブジェクトの名前を入力します。
    
-    ![Name the new GPO](./media/active-directory-saas-ie-group-policy/name-gpo.png)
-6. Right-click on the Group Policy Object that you just created, and select **Edit**.
+    ![新しい GPO の名前を設定する](./media/active-directory-saas-ie-group-policy/name-gpo.png)
+6. 作成したグループ ポリシー オブジェクトを右クリックし、**[編集]** を選択します。
    
-    ![Edit the new GPO](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
+    ![新しい GPO を編集する](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
-## <a name="step-3-assign-the-installation-package"></a>Step 3: Assign the Installation Package
-1. Determine whether you would like to deploy the extension based on **Computer Configuration** or **User Configuration**. When using [computer configuration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), the extension will be installed on the computer regardless of which users log on to it. On the other hand, with [user configuration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), users will have the extension installed for them regardless of which computers they log on to.
-2. In the left pane of the **Group Policy Management Editor** window, go to either of the following folder paths, depending on which type of configuration you chose:
+## <a name="step-3-assign-the-installation-package"></a>手順 3: インストール パッケージを割り当てる
+1. **[コンピューターの構成]** と **[ユーザーの構成]** のどちらを基にして拡張機能をデプロイするかを決めます。 [コンピューターの構成](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)を使用すると、コンピューターにログオンしているユーザーに関係なく、拡張機能はコンピューターにインストールされます。 [ユーザーの構成](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)では、ユーザーがログオンしているコンピューターに関係なく、拡張機能はユーザーに対してインストールされます。
+2. **[グループ ポリシー管理エディター]** の左側のウィンドウで、選択した構成の種類に応じて、次のどちらかのフォルダー パスに移動します。
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. Right-click on **Software installation**, then select **New** > **Package...**
+3. **[ソフトウェアのインストール]** を右クリックして、**[新規]**  >  **[パッケージ...]** の順に選択します
    
-    ![Create a new software installation package](./media/active-directory-saas-ie-group-policy/new-package.png)
-4. Go to the shared folder that contains the installer package from [Step 1: Create the Distribution Point](#step-1-create-the-distribution-point), select the .msi file, and click **Open**.
+    ![新しいソフトウェア インストール パッケージを作成する](./media/active-directory-saas-ie-group-policy/new-package.png)
+4. 「 [手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]**をクリックします。
    
    > [!IMPORTANT]
-   > If the share is located on this same server, verify that you are accessing the .msi through the network file path, rather than the local file path.
+   > 共有が同じサーバー上に存在する場合は、ローカル ファイル パスではなく、ネットワーク ファイル パスから .msi にアクセスしていることを確認します。
    > 
    > 
    
-    ![Select the installation package from the shared folder.](./media/active-directory-saas-ie-group-policy/select-package.png)
-5. In the **Deploy Software** prompt, select **Assigned** for your deployment method. Then click **OK**.
+    ![共有フォルダーからインストール パッケージを選択する](./media/active-directory-saas-ie-group-policy/select-package.png)
+5. **[ソフトウェアの展開]** プロンプトで、デプロイ方法として **[割り当て]** を選択します。 次に、 **[OK]**をクリックします
    
-    ![Select Assigned, then click OK.](./media/active-directory-saas-ie-group-policy/deployment-method.png)
+    ![[割り当て] を選択し、[OK] をクリックする](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
-The extension is now deployed to the OU that you selected. [Learn more about Group Policy Software Installation.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+選択した OU に拡張機能がデプロイされます。 [グループ ポリシー ソフトウェアのインストールの詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-autoenable-the-extension-for-internet-explorer"></a>Step 4: Auto-Enable the Extension for Internet Explorer
-In addition to running the installer, every extension for Internet Explorer must be explicitly enabled before it can be used. Follow the steps below to enable the Access Panel Extension using group policy:
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>手順 4: Internet Explorer の拡張機能を自動的に有効にする
+Internet Explorer のすべての拡張機能は、インストーラーを実行するだけでなく、明示的に有効にしてからでないと使用できません。 グループ ポリシーを使用してアクセス パネル拡張機能を有効にするのには、次の手順に従います。
 
-1. In the **Group Policy Management Editor** window, go to either of the following paths, depending on which type of configuration you chose in [Step 3: Assign the Installation Package](#step-3-assign-the-installation-package):
+1. **[グループ ポリシー管理エディター]** ウィンドウで、「 [手順 3: インストール パッケージを割り当てる](#step-3-assign-the-installation-package)」で選んだ構成の種類に応じて、次のどちらかのパスに移動します。
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
-2. Right-click on **Add-on List**, and select **Edit**.
-    ![Edit Add-on List.](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
-3. In the **Add-on List** window, select **Enabled**. Then, under the **Options** section, click **Show...**.
+2. **[アドオンの一覧]** を右クリックし、**[編集]** を選択します。
+    ![アドオンの一覧を編集します。](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
+3. **[アドオンの一覧]** ウィンドウで、**[有効]** を選択します。 次に、**[オプション]** セクションで **[表示...]** をクリックします。
    
-    ![Click Enable, then click Show...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
-4. In the **Show Contents** window, perform the following steps:
+    ![[有効] をクリックし、[表示...] をクリックする](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
+4. **[表示するコンテンツ]** ウィンドウで、次の手順を実行します。
    
-   1. For the first column (the **Value Name** field), copy and paste the following Class ID: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. For the second column (the **Value** field), type in the following value: `1`
-   3. Click **OK** to close the **Show Contents** window.
+   1. 1 列目の **[値の名前]** フィールドには、次のクラス ID をコピーして貼り付けます。`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   2. 2 列目の **[値]** フィールドには、次の値を入力します。`1`
+   3. **[OK]** をクリックして **[表示するコンテンツ]** ウィンドウを閉じます。
       
-      ![Fill out the values as specified above.](./media/active-directory-saas-ie-group-policy/show-contents.png)
-5. Click **OK** to apply your changes and close the **Add-on List** window.
+      ![上で指定した値を入力する](./media/active-directory-saas-ie-group-policy/show-contents.png)
+5. **[OK]** をクリックして変更を適用し、**[アドオンの一覧]** ウィンドウを閉じます。
 
-The extension should now be enabled for the machines in the selected OU. [Learn more about using group policy to enable or disable Internet Explorer add-ons.](https://technet.microsoft.com/library/dn454941.aspx)
+選択した OU のコンピューターで拡張機能が有効になります。 [グループ ポリシーを使用して Internet Explorer のアドオンを有効または無効にする方法の詳細については、こちらを参照してください。](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>Step 5 (Optional): Disable "Remember Password" Prompt
-When users sign-in to websites using the Access Panel Extension, Internet Explorer may show the following prompt asking "Would you like to store your password?"
+## <a name="step-5-optional-disable-remember-password-prompt"></a>手順 5 (省略可能): パスワードを保存するかどうかを確認するプロンプトを無効にする
+ユーザーがアクセス パネル拡張機能を使用してサインインするときに、Internet Explorer でパスワードを保存するかどうかを確認する次のプロンプトが表示されることがあります。
 
 ![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
-If you wish to prevent your users from seeing this prompt, then follow the steps below to prevent auto-complete from remembering passwords:
+ユーザーに対してこのメッセージが表示されないようにする場合は、次の手順に従って、パスワードの保存によるオートコンプリートを禁止します。
 
-1. In the **Group Policy Management Editor** window, go to the path listed below. Note that this configuration setting is only available under **User Configuration**.
+1. **グループ ポリシー管理エディター** ウィンドウで、次のパスに移動します。 この構成設定は **[ユーザー構成]** でのみ利用できます。
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-2. Find the setting named **Turn on the auto-complete feature for user names and passwords on forms**.
+2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]**という名前の設定を見つけます。
    
    > [!NOTE]
-   > Previous versions of Active Directory may list this setting with the name **Do not allow auto-complete to save passwords**. The configuration for that setting differs from the setting described in this tutorial.
+   > 以前のバージョンの Active Directory では、この設定は、 **[パスワードを保存するオートコンプリートを許可しない]**という名前で表示される場合があります。 その設定の構成は、このチュートリアルで説明する設定とは異なります。
    > 
    > 
    
-    ![Remember to look for this under User Settings.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
-3. Right click on the above setting, and select **Edit**.
-4. In the window titled **Turn on the auto-complete feature for user names and passwords on forms**, select **Disabled**.
+    ![これは [ユーザー設定] から探すことに注意](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
+3. 上記の設定を右クリックし、**[編集]** を選択します。
+4. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** というタイトルのウィンドウで、**[無効]** を選択します。
    
-    ![Select Disable](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
-5. Click **OK** to apply these changes and close the window.
+    ![[無効] を選択](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
+5. **[OK]** をクリックしてこれらの変更を適用し、ウィンドウを閉じます。
 
-Users will no longer be able to store their credentials or use auto-complete to access previously stored credentials. However, this policy does allow users to continue to use auto-complete for other types of form fields, such as search fields.
+これで、ユーザーは資格情報を保存することも、オートコンプリートを使用して前に保存された資格情報にアクセスすることもできなくなります。 ただし、このポリシーでは、他の種類のフォーム フィールド (検索フィールドなど) でのオートコンプリートは引き続き許可されます。
 
 > [!WARNING]
-> If this policy is enabled after users have chosen to store some credentials, this policy will *not* clear the credentials that have already been stored.
+> ユーザーがいくつかの資格情報を保存した後でこのポリシーが有効になった場合、既に保存されている資格情報がこのポリシーによって消去されることは*ありません*。
 > 
 > 
 
-## <a name="step-6-testing-the-deployment"></a>Step 6: Testing the Deployment
-Follow the steps below to verify if the extension deployment was successful:
+## <a name="step-6-testing-the-deployment"></a>手順 6: デプロイのテスト
+拡張機能のデプロイメントが成功したかどうかを確認するには、次の手順に従います。
 
-1. If you deployed using **Computer Configuration**, sign into a client machine that belongs to the OU that you selected in [Step 2: Create the Group Policy Object](#step-2-create-the-group-policy-object). If you deployed using **User Configuration**, make sure to sign in as a user who belongs to that OU.
-2. It may take a couple sign ins for the group policy changes to fully update with this machine. To force the update, open a **Command Prompt** window and run the following command: `gpupdate /force`
-3. You will need to restart the machine for the installation to take place. Bootup may take significantly more time than usual while the extension installs.
-4. After restarting, open **Internet Explorer**. On the upper-right corner of the window, click on **Tools** (the gear icon), and then select **Manage add-ons**.
+1. **[コンピューターの構成]**を使用してデプロイした場合は、「 [手順 2: グループ ポリシー オブジェクトを作成する](#step-2-create-the-group-policy-object)」で選択した OU に属しているクライアント コンピューターにサインインします。 **[ユーザーの構成]**を使用してデプロイした場合は、その OU に属しているユーザーとしてサインインします。
+2. そのコンピューターでグループ ポリシーの変更が完全に更新されるには、2 回サインインする必要がある場合があります。 強制的に更新するには、**[コマンド プロンプト]** ウィンドウを開き、次のコマンドを実行します。`gpupdate /force`
+3. インストールが行われるには、コンピューターを再起動する必要があります。 起動には、通常の拡張機能のインストールよりかなり長い時間がかかる可能性があります。
+4. コンピューターが再起動したら、 **Internet Explorer**を開きます。 ウィンドウの右上隅の **[ツール]** (歯車アイコン) をクリックし、**[アドオンの管理]** をクリックします。
    
-    ![Go to Tools > Manage Add-Ons](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
-5. In the **Manage Add-ons** window, verify that the **Access Panel Extension** has been installed and that its **Status** has been set to **Enabled**.
+    ![[ツール] > [アドオンの管理] に移動する](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
+5. **[アドオンの管理]** ウィンドウで、**[Access Panel Extension]** がインストールされていて、**[状態]** が **[有効]** に設定されていることを確認します。
    
-    ![Verify that the Access Panel Extension is installed and enabled.](./media/active-directory-saas-ie-group-policy/verify-install.png)
+    ![Access Panel Extension がインストールされ、有効になっていることを確認する](./media/active-directory-saas-ie-group-policy/verify-install.png)
 
-## <a name="related-articles"></a>Related Articles
+## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [Application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md)
-* [Troubleshooting the Access Panel Extension for Internet Explorer](active-directory-saas-ie-troubleshooting.md)
-
-<!--HONumber=Oct16_HO2-->
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md)
 
 

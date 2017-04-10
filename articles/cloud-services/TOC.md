@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Cloud Services とは](cloud-services-choose-me.md)
 ## [クラウド サービスの構成ファイルとパッケージ化](cloud-services-model-and-package.md)
 
@@ -16,7 +16,7 @@
 ### [PHP Web ロールと worker ロールの作成](../cloud-services-php-create-web-role.md)
 ### [Node.js アプリケーションの構築とデプロイ](cloud-services-nodejs-develop-deploy-app.md)
 ### [Express を使用した Node.js Web アプリケーションの構築](cloud-services-nodejs-develop-deploy-express-app.md)
-### ストレージと Visual Studio
+### Storage と Visual Studio
 #### [Blob Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-blobs.md)
 #### [Queue Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-queues.md)
 #### [Table Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-tables.md)
@@ -36,8 +36,8 @@
 #### [タスクを使用してクラウド サービス ロールで .NET をインストールする](cloud-services-dotnet-install-dotnet.md)
 
 ### リモート デスクトップの構成
-#### [Visual Studio](cloud-services-role-enable-remote-desktop.md)
-#### [Node.JS](cloud-services-nodejs-enable-remote-desktop.md)
+#### [ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## デプロイ
@@ -63,6 +63,13 @@
 #### [ポータル](cloud-services-how-to-scale-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-scale.md)
 ### [Python を使用した Azure リソースの管理](cloud-services-python-how-to-use-service-management.md)
+
+### [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)
+### ゲスト OS の提供終了
+#### [提供終了ポリシー](cloud-services-guestos-retirement-policy.md)
+#### [ファミリ 1 の提供終了に関する通知](cloud-services-guestos-family1-retirement.md)
+### [ゲスト OS のリリース ニュース](cloud-services-guestos-update-matrix.md)
+### [Cloud Services ロール構成の XPath チート シート](cloud-services-role-config-xpath.md)
 
 ## 証明書の管理
 ### [Cloud Services と管理証明書](cloud-services-certs-create.md)
@@ -98,15 +105,9 @@
 ### [Cloud Services に関する FAQ](cloud-services-faq.md)
 
 # リファレンス
-## [.NET](https://msdn.microsoft.com/library)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
-## [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)
-## ゲスト OS の提供終了
-### [提供終了ポリシー](cloud-services-guestos-retirement-policy.md)
-### [ファミリ 1 の提供終了に関する通知](cloud-services-guestos-family1-retirement.md)
-## [ゲスト OS のリリース ニュース](cloud-services-guestos-update-matrix.md)
-## [Cloud Services ロール構成の XPath チート シート](cloud-services-role-config-xpath.md)
+## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -114,8 +115,3 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

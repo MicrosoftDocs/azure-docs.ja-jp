@@ -1,19 +1,24 @@
 ---
-title: Service Bus キューの使用方法 (Node.js) | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
-services: service-bus
+title: "Service Bus キューの使用方法 (Node.js) | Microsoft Docs"
+description: "Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。"
+services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/11/2017
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
+ms.openlocfilehash: d993ba4bdff690ee6f0867cdbf0a8059fb5847ee
+ms.lasthandoff: 01/13/2017
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Service Bus キューの使用方法
@@ -23,16 +28,18 @@ ms.author: sethm
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="create-a-node.js-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]」または「[Node.js クラウド サービス][Node.js クラウド サービス]」 (Windows PowerShell の使用) を参照してください。
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
+## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Create and deploy a Node.js application to an Azure Website]」または「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用) をご覧ください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Azure Service Bus を使用するには、Node.js Azure パッケージをダウンロードして使用します。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
 
-### <a name="use-node-package-manager-(npm)-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 1. **Windows PowerShell for Node.js** コマンド ウィンドウを使用して、サンプル アプリケーションを作成した **c:\\node\\sbqueues\\WebRole1** フォルダーに移動します。
 2. コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます。
-   
+
     ```
     azure@0.7.5 node_modules\azure
         ├── dateformat@1.0.2-1.2.3
@@ -51,27 +58,27 @@ Azure Service Bus を使用するには、Node.js Azure パッケージをダウ
 ### <a name="import-the-module"></a>モジュールのインポート
 メモ帳などのテキスト エディターを使用して、アプリケーションの **server.js** ファイルの先頭に次の内容を追加します。
 
-```
+```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus 接続の設定
 Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。 これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
+Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][Node.js Cloud Service with Storage]をご覧ください。
 
-Azure Web サイトの [Azure クラシック ポータル][Azure クラシック ポータル]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][ストレージを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの [Azure クラシック ポータル][Azure classic portal]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
 
 ## <a name="create-a-queue"></a>キューを作成する
 Service Bus キューは、**ServiceBusService** オブジェクトを使用して操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
 
-```
+```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
 **ServiceBusService** オブジェクトの **createQueueIfNotExists** を呼び出すことによって、指定されたキューが返されるか (存在する場合)、指定された名前で新しいキューが作成されます。 次のコードでは、**createQueueIfNotExists** を使用して、`myqueue` という名前のキューを作成、またはキューに接続します。
 
-```
+```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
     if(!error){
         // Queue exists
@@ -81,7 +88,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 
 **createServiceBusService** は追加のオプションもサポートしています。これにより、メッセージの有効期間や最大キュー サイズなどの既定のキューの設定をオーバーライドできます。 次の例では、最大キュー サイズを 5 GB に、有効期間を 1 分に設定します。
 
-```
+```javascript
 var queueOptions = {
       MaxSizeInMegabytes: '5120',
       DefaultMessageTimeToLive: 'PT1M'
@@ -97,21 +104,21 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ### <a name="filters"></a>フィルター
 オプションのフィルター操作は、**ServiceBusService** を使用して行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
-```
+```javascript
 function handle (requestOptions, next)
 ```
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは `next` を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-```
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
 このコールバックで、**returnObject** (サーバーへの要求からの応答) の処理の後に、コールバックは `next` を呼び出すか (他のフィルターの処理を続けるためにそれが存在する場合)、単に (サービス呼び出しを終了する) `finalCallback` を呼び出す必要があります。
 
-再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **ServiceBusService** オブジェクトを作成します。
+再試行のロジックを実装する&2; つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **ServiceBusService** オブジェクトを作成します。
 
-```
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
@@ -121,7 +128,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 
 次の例では、**sendQueueMessage** を使用して、`myqueue` という名前のキューにテスト メッセージを送信する方法を示しています。
 
-```
+```javascript
 var message = {
     body: 'Test message',
     customProperties: {
@@ -134,18 +141,18 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus のクォータ]」を参照してください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー&1; つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信するには、**ServiceBusService** オブジェクトの **receiveQueueMessage** メソッドを使用します。 既定では、メッセージは読み取られるときにキューから削除されますが、省略可能な **isPeekLock** パラメーターを **true** に設定することによって、キューからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックできます。
 
 受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**isPeekLock** パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**deleteMessage** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 **deleteMessage** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
+**isPeekLock** パラメーターが **true** に設定されている場合、受信処理が&2; 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**deleteMessage** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第&2; 段階を完了します。 **deleteMessage** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 次の例は ** receiveQueueMessage** を使用してメッセージを受信し、処理する方法を示しています。 この例では、最初にメッセージを受信して削除し、次に **true** に設定した **isPeekLock** を使用してメッセージを受信した後、**deleteMessage** を使用してメッセージを削除します。
 
-```
+```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
     if(!error){
         // Message received and deleted
@@ -168,28 +175,22 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、**deleteMessage** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="next-steps"></a>次のステップ
 キューの詳細については、次のリソースを参照してください。
 
-* [キュー、トピック、サブスクリプション][キュー、トピック、サブスクリプション]
+* [キュー、トピック、サブスクリプション][Queues, topics, and subscriptions]
 * GitHub の [Azure SDK for Node][Azure SDK for Node] リポジトリ
-* [Node.js デベロッパー センター](/develop/nodejs/)
+* [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 
-[Node.js クラウド サービス]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
-[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[ストレージを使用する Node.js クラウド サービス]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
-[ストレージを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
-[Service Bus のクォータ]: service-bus-quotas.md
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service-web/app-service-web-get-started-nodejs.md
+[Node.js Cloud Service with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
+[Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
+[Service Bus quotas]: service-bus-quotas.md
 

@@ -1,19 +1,23 @@
 ---
-title: システム正常性レポートを使用してトラブルシューティングを行う | Microsoft Docs
-description: Azure Service Fabric のコンポーネントよって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。
+title: "システム正常性レポートを使用してトラブルシューティングを行う |Microsoft Docs"
+description: "Azure Service Fabric のコンポーネントよって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: d20b8d5848d1a11326c60d998099571a4ab8056e
+ms.openlocfilehash: 0306b8c38a7dd86dff56f6cc7bb9eab7e0428762
+
 
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
@@ -31,7 +35,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 > 
 > 
 
-システム コンポーネント レポートはソース別に識別され、"**System.**"  プレフィックスで始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
+システム コンポーネント レポートはソース別に識別され、"**System.**" プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
 いくつかのシステム レポートを確認し、何がレポートのトリガーになっているか、レポートに表示された問題を修正する方法を理解しましょう。
 
 > [!NOTE]
@@ -54,7 +58,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 ## <a name="node-system-health-reports"></a>ノード システム正常性レポート
 **System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます ( [RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx)を参照)。
 
-### <a name="node-up/down"></a>ノードを上/下に移動
+### <a name="node-updown"></a>ノードを上/下に移動
 System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動 (新規インスタンス) が報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
 
 * **SourceId**: System.FM
@@ -678,6 +682,9 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

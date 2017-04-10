@@ -1,19 +1,24 @@
 ---
-title: SQL と Python を使用して SQL Server のデータの特徴を作成する | Microsoft Docs
-description: SQL Azure からのデータを処理する
+title: "SQL と Python を使用して SQL Server のデータの特徴を作成する | Microsoft Docs"
+description: "SQL Azure からのデータを処理する"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 03/24/2017
 ms.author: bradsev;fashah;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
+ms.lasthandoff: 11/17/2016
+
 
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
@@ -34,7 +39,7 @@ ms.author: bradsev;fashah;garye
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 * データが SQL Server に格納されている。 格納されていない場合、データの移動手順については、「 [Azure Machine Learning 用にデータを Azure SQL Database に移動する](machine-learning-data-science-move-sql-azure.md) 」をご覧ください。
 
-## <a name="a-namesqlfeaturegenafeature-generation-with-sql"></a><a name="sql-featuregen"></a>SQL を使用した特徴の生成
+## <a name="sql-featuregen"></a>SQL を使用した特徴の生成
 このセクションでは SQL を使用して特徴を生成する方法について説明します。  
 
 1. [カウント ベースの特徴の生成](#sql-countfeature)
@@ -46,7 +51,7 @@ ms.author: bradsev;fashah;garye
 > 
 > 
 
-### <a name="a-namesqlcountfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>カウント ベースの特徴の生成
+### <a name="sql-countfeature"></a>カウント ベースの特徴の生成
 このドキュメントでは、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
@@ -54,13 +59,13 @@ ms.author: bradsev;fashah;garye
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
-### <a name="a-namesqlbinningfeatureabinning-feature-generation"></a><a name="sql-binningfeature"></a>ビン分割特徴の生成
+### <a name="sql-binningfeature"></a>ビン分割特徴の生成
 次の例は、数値型の列をビン分割 (5 つの箱を使用) して、特徴として代わりに使用できる、ビン分割特徴を生成する方法を示しています。
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="a-namesqlfeaturerolloutarolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>1 つの列からの特徴の展開
+### <a name="sql-featurerollout"></a>1 つの列からの特徴の展開
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
 緯度と経度の位置データ (リソースは `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`の stackoverflow) の簡単な概要を次に示します。 これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
@@ -80,7 +85,7 @@ ms.author: bradsev;fashah;garye
 
     select
         <location_columnname>
-        ,round(<location_columnname>,0) as l1       
+        ,round(<location_columnname>,0) as l1        
         ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
         ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
         ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
@@ -93,16 +98,16 @@ ms.author: bradsev;fashah;garye
 
 > [!TIP]
 > お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。
-> [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
+>  [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
 > 
 > 
 
-### <a name="a-namesqlamlaconnecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning への接続
+### <a name="sql-aml"></a>Azure Machine Learning への接続
 新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。 特徴を生成できます。作成済みであれば、次に示すように、Azure ML の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールを使用してアクセスすることができます。
 
 ![Azure ML リーダー](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png)
 
-## <a name="a-namepythonausing-a-programming-language-like-python"></a><a name="python"></a>Python などのプログラミング言語の使用
+## <a name="python"></a>Python などのプログラミング言語の使用
 データが SQL Server に格納されている場合に Python を使用して特徴を生成する手順は、「[Azure BLOB データを高度な分析を使用して処理する](machine-learning-data-science-process-data-blob.md)」で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。 データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。 このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。
@@ -117,7 +122,5 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/) には、Python �
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
 [Pandas を使用して Azure BLOB ストレージ データの特徴を作成する](machine-learning-data-science-create-features-blob.md)方法についてのページの説明に従って、Pandas データ フレームを使用できるようになりました。
-
-<!---HONumber=Oct16_HO2-->
 
 

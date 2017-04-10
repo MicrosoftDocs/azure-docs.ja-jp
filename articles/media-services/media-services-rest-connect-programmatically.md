@@ -1,12 +1,12 @@
 ---
-title: Media Services REST API を使用して Media Services アカウントに接続する | Microsoft Docs
-description: このトピックでは、Media Services REST API を使用して Media Services に接続する方法について説明します。
+title: "Media Services REST API を使用して Media Services アカウントに接続する | Microsoft Docs"
+description: "このトピックでは、Media Services REST API を使用して Media Services に接続する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 79dc64f1-15d8-4a81-b9d9-3d3c44d2e1e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
+ms.lasthandoff: 03/14/2017
+
 
 ---
 # <a name="connecting-to-media-services-account-using-media-services-rest-api"></a>Media Services REST API を使用して Media Services アカウントに接続する
@@ -25,7 +30,7 @@ ms.author: juliako
 
 このトピックでは、Media Services REST API でプログラミングしている場合に、Microsoft Azure Media Services にプログラムで接続する方法について説明します。
 
-Microsoft Azure Media Services にアクセスする際には、Azure Access Control Service (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。 Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
+Microsoft Azure Media Services にアクセスする際には、Azure Access Control Service (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の&2; つが必要です。 Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
@@ -45,6 +50,9 @@ Microsoft Azure Media Services にアクセスする際には、Azure Access Con
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
     この場合、続けて、「https://wamsbayclus001rest-hs.cloudapp.net/api/」へ API コールを行う必要があります。
+
+    >[!NOTE]
+    >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
 ## <a name="access-control-address"></a>アクセス制御アドレス
 Media Services のアクセス制御アドレスは https://wamsprodglobal001acs.accesscontrol.windows.net です。ただし、中国北部リージョンの場合は https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn です。
@@ -178,7 +186,5 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-<!--HONumber=Oct16_HO2-->
 
 

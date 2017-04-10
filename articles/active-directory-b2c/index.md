@@ -1,10 +1,27 @@
 ---
+title: "Azure Active Directory B2C のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウドで包括的なコンシューマーの ID 管理をデプロイする方法について説明します。 ドキュメントでは、コンシューマー向けの Web アプリとモバイル アプリを保護する方法を紹介します。"
+services: active-directory-b2c
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: active-directory-b2c
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2bb7fe165fc88df62a2b12ccf666da0a7965d43b
+ms.lasthandoff: 03/27/2017
+
 ---
 
-#Active Directory B2C Documentation
+#<a name="active-directory-b2c-documentation"></a>Active Directory B2C のドキュメント
 
-Azure Active Directory B2C is a comprehensive cloud identity management solution for your consumer-facing web and mobile applications. It is a highly available global service that scales to hundreds of millions of consumer identities. Built on an enterprise-grade secure platform, Azure Active Directory B2C keeps your applications, your business, and your consumers protected.
+Active Directory B2C を使って、クラウド内の包括的なコンシューマーの ID 管理を設定および管理する方法について説明します。 チュートリアルやリファレンスなどのドキュメントでは、セキュリティで保護されたサインインで、コンシューマー向けの Web アプリケーションやモバイル アプリケーションを保護する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +35,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Active Directory B2C</h3>
+                        <h3>Active Directory B2C について</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +53,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Active Directory B2C Video Library</h3>
+                        <h3>Azure Active Directory B2C のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +71,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Azure AD B2C tenant</h3>
+                        <h3>Azure AD B2C テナントを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +89,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an iOS app using a third-party libraryC</h3>
+                        <h3>サード パーティ製ライブラリを使用して iOS アプリを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +107,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Android application</h3>
+                        <h3>Android アプリケーションを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +125,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Node.js Web API</h3>
+                        <h3>Node.js Web API を作成する</h3>
                     </div>
                 </div>
             </div>
@@ -126,7 +143,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a .NET web app</h3>
+                        <h3>.NET Web アプリを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -144,7 +161,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a .NET web API</h3>
+                        <h3>.NET Web API を作成する</h3>
                     </div>
                 </div>
             </div>
@@ -162,7 +179,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create Windows desktop app</h3>
+                        <h3>Windows デスクトップ アプリを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -171,13 +188,4 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
     </li>
 </ul>
 
----
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-b2c.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Active Directory B2C Documentation
-        </div>
-    </a>
-</div>

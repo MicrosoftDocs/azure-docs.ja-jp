@@ -1,112 +1,119 @@
 ---
-title: Sign-in experiences with Azure AD Identity Protection| Microsoft Docs
-description: Provides an overview of the user experience when Identity Protection has mitigated or remediated a user or when multi-factor authentication is required by a policy.
+title: "Azure AD Identity Protection を使用したサインイン エクスペリエンス| Microsoft Docs"
+description: "Identity Protection でユーザーの侵害が和らげられたか修正された場合、またはポリシーにより多要素認証が要求される場合のユーザー エクスペリエンスの概要を示します。"
 services: active-directory
-keywords: azure active directory identity protection, cloud app discovery, managing applications, security, risk, risk level, vulnerability, security policy
-documentationcenter: ''
+keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/24/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
+
 
 ---
-# <a name="signin-experiences-with-azure-ad-identity-protection"></a>Sign-in experiences with Azure AD Identity Protection
-With Azure Active Directory Identity Protection, you can:
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
+Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
 
-* require users to register for multi-factor authentication
-* handle risky sign-ins and compromised users
+* 多要素認証での登録をユーザーに要求する
+* リスクの高いサインインと侵害されたユーザーを処理する
 
-The response of the system to these issues has an impact on a user's sign-in experience because just directly signing-in by providing a user name and a password won't be possible anymore. Additional steps are required to get a user safely back into business.
+ユーザー名とパスワードだけを入力して直接サインインすることは不可能になるため、こうした問題に対するシステムの応答はユーザーのサインイン操作に影響を及ぼします。 ユーザーが安全に業務に戻ることができるようにする追加のステップが必須になります。
 
-This topic gives you an overview of a user's sign-in experience for all cases that can occur.
+このトピックでは、発生する可能性があるすべてのケースについて、ユーザーのサインイン エクスペリエンスの概要を示します。
 
-**Multi-factor authentication**
+**多要素認証**
 
-* Multi-factor authentication registration
+* 多要素認証の登録
 
-**Sign-in at risk**
+**リスクのあるサインイン**
 
-* Risky sign-in recovery
-* Risky sign-in blocked
-* Multi-factor authentication registration during a risky sign-in
+* リスクの高いサインインの復旧
+* ブロックされたリスクの高いサインイン
+* リスクの高いサインインの間の多要素認証の登録
 
-**User at risk**
+**リスクのあるユーザー**
 
-* Compromised account recovery
-* Compromised account blocked
+* 侵害されたアカウントの復旧
+* ブロック済みの侵害されたアカウント
 
-## <a name="multifactor-authentication-registration"></a>Multi-factor authentication registration
-The best user experience for both, the compromised account recovery flow and the risky sign-in flow, is when the user can self-recover. If users are registered for multi-factor authentication, they already have a phone number associated with their account that can be used to pass security challenges. No help desk or administrator involvement is needed to recover from account compromise. Thus, it’s highly recommended to get your users registered for multi-factor authentication. 
+## <a name="multi-factor-authentication-registration"></a>多要素認証の登録
+侵害されたアカウントの復旧フローでも、リスクの高いサインインのフローでも、最善のユーザー エクスペリエンスは、ユーザーが自分で復旧できる場合です。 ユーザーは、多要素認証で登録された場合、セキュリティ チャレンジを解くために使用できる電話番号が既にアカウントに関連付けられています。 アカウントの侵害から復旧するために、ヘルプ デスクまたは管理者の介入は必要ありません。 したがって、ユーザーを多要素認証に登録させることを強くお勧めします。 
 
-Administrators can:
+管理者は次のことをできます。
 
-* set a policy that requires users to set up their accounts for additional security verification. 
-* allow skipping multi-factor authentication registration for up to 30 days, in case they want to give users a grace period before registering.
+* 追加のセキュリティ検証用にアカウントを設定するようユーザーに要求するポリシーを設定します。 
+* 登録前に猶予期間をユーザーに与える場合、最大で 30 日間、多要素認証の登録のスキップを許可します。
 
-**The multi-factor authentication registration has three steps:**
+**多要素認証の登録には 3 つのステップがあります。**
 
-1. In the first step, the user gets a notification about the requirement to set the account up for multi-factor authentication. 
+1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。 
    
-    ![Remediation](./media/active-directory-identityprotection-flows/140.png "Remediation")
-2. To set multi-factor authentication up, you need to let the system know how you want to be contacted.
+    ![修復](./media/active-directory-identityprotection-flows/140.png "Remediation")
+2. 多要素認証を設定するには、システムに自分への連絡方法を設定する必要があります。
    
-    ![Remediation](./media/active-directory-identityprotection-flows/141.png "Remediation")
-3. The system submits a challenge to you and you need to respond.
+    ![修復](./media/active-directory-identityprotection-flows/141.png "Remediation")
+3. システムがチャレンジを送信するので、対応します。
    
-    ![Remediation](./media/active-directory-identityprotection-flows/142.png "Remediation")
+    ![修復](./media/active-directory-identityprotection-flows/142.png "Remediation")
 
-## <a name="risky-signin-recovery"></a>Risky sign-in recovery
-When an administrator has configured a policy for sign-in risks, the affected users are notified when they try to sign-in. 
+## <a name="risky-sign-in-recovery"></a>リスクの高いサインインの復旧
+管理者がサインイン リスクのポリシーを構成してある場合、影響を受けたユーザーはサインインを試みると通知を受け取ります。 
 
-**The risky sign-in flow has two steps:** 
+**高リスク サインインのフローには 2 つのステップがあります。** 
 
-1. The user is informed that something unusual was detected about their sign-in, such as signing in from a new location, device, or app. 
+1. ユーザーは、新しい場所、デバイス、アプリからのサインインなど、サインインに関して異常が検出されたことの通知を受け取ります。 
    
-    ![Remediation](./media/active-directory-identityprotection-flows/120.png "Remediation")
-2. The user is required to prove their identity by solving a security challenge. If the user is registered for multi-factor authentication they need to round-trip a security code to their phone number. Since this is a just a risky sign in and not a compromised account, the user won’t have to change the password in this flow. 
+    ![修復](./media/active-directory-identityprotection-flows/120.png "Remediation")
+2. ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。 多要素認証に登録しているユーザーは、電話番号にセキュリティ コードを折り返す必要があります。 これは単にリスクの高いサインインであり、侵害されたアカウントではないので、このフローではユーザーがパスワードを変更する必要はありません。 
    
-    ![Remediation](./media/active-directory-identityprotection-flows/121.png "Remediation")
+    ![修復](./media/active-directory-identityprotection-flows/121.png "Remediation")
 
-## <a name="risky-signin-blocked"></a>Risky sign-in blocked
-Administrators can also choose to set a Sign-In Risk policy to block users upon sign-in depending on the risk level. To get unblocked, end users must contact an administrator or help desk, or they can try signing in from a familiar location or device. Self-recovering by solving multi-factor authentication is not an option in this case.
+## <a name="risky-sign-in-blocked"></a>ブロックされたリスクの高いサインイン
+管理者は、サインイン リスク ポリシーを設定し、リスク レベルに応じてサインイン時にユーザーをブロックすることもできます。 ブロックを解除するには、エンドユーザーは管理者またはヘルプ デスクに連絡する必要があります。または、既知の場所またはデバイスからサインインを試みることもできます。 この場合、多要素認証を解決することによる自己復旧は利用できません。
 
-![Remediation](./media/active-directory-identityprotection-flows/200.png "Remediation")
+![修復](./media/active-directory-identityprotection-flows/200.png "Remediation")
 
-## <a name="compromised-account-recovery"></a>Compromised account recovery
-When a user risk security policy has been configured, users who meet the user risk level specified in the policy (and are therefore assumed compromised) must go through the user compromise recovery flow before they can sign-in. 
+## <a name="compromised-account-recovery"></a>侵害されたアカウントの復旧
+ユーザーのリスク セキュリティ ポリシーが構成されている場合、ポリシーで指定されているユーザー リスク レベルを満たす (したがって侵害されているものと考えられる) ユーザーは、ユーザー侵害復旧フローを通過してからでないと、サインインできません。 
 
-**The user compromise recovery flow has three steps:**
+**ユーザー侵害復旧フローには、3 つのステップがあります。**
 
-1. The user is informed that their account security is at risk because of suspicious activity or leaked credentials.
+1. 不審なアクティビティまたは漏洩した資格情報のためにアカウントのセキュリティにリスクがあることが、ユーザーに通知されます。
    
-    ![Remediation](./media/active-directory-identityprotection-flows/101.png "Remediation")
-2. The user is required to prove their identity by solving a security challenge. If the user is registered for multi-factor authentication they can self-recover from being compromised. They will need to round-trip a security code to their phone number. 
+    ![修復](./media/active-directory-identityprotection-flows/101.png "Remediation")
+2. ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。 ユーザーが多要素認証に登録されている場合、ユーザーは侵害状態から自力で復旧できます。 ユーザーは、セキュリティ コードを電話番号に折り返させる必要があります。 
    
-   ![Remediation](./media/active-directory-identityprotection-flows/110.png "Remediation")
-3. Finally, the user is forced to change their password since someone else may have had access to their account. Screenshots of this experience are below.
+   ![修復](./media/active-directory-identityprotection-flows/110.png "Remediation")
+3. 最後に、誰かがアカウントにアクセスした可能性があるため、ユーザーはパスワードの変更を強制されます。 
+   このエクスペリエンスのスクリーンショットは次のとおりです。
    
-   ![Remediation](./media/active-directory-identityprotection-flows/111.png "Remediation")
+   ![修復](./media/active-directory-identityprotection-flows/111.png "Remediation")
 
-## <a name="compromised-account-blocked"></a>Compromised account blocked
-To get a user that was blocked by a user risk security policy unblocked, the user must contact an administrator or help desk. Self-recovering by solving multi-factor authentication is not an option in this case.
+## <a name="compromised-account-blocked"></a>ブロック済みの侵害されたアカウント
+ユーザーのリスク セキュリティ ポリシーによってブロックされたユーザーをブロック解除するには、ユーザーが管理者またはヘルプ デスクに連絡する必要があります。 この場合、多要素認証を解決することによる自己復旧は利用できません。
 
-![Remediation](./media/active-directory-identityprotection-flows/104.png "Remediation")
+![修復](./media/active-directory-identityprotection-flows/104.png "Remediation")
 
-## <a name="reset-password"></a>Reset password
-If compromised users are blocked from signing in, an administrator can generate a temporary password for them. The users will have to change their password during a next sign-in.
+## <a name="reset-password"></a>パスワードのリセット
+侵害されたユーザーがサインインからブロックされている場合、管理者はそのユーザー用に一時的なパスワードを生成できます。 ユーザーは、次にサインインするときにパスワードを変更する必要があります。
 
-![Remediation](./media/active-directory-identityprotection-flows/160.png "Remediation")
+![修復](./media/active-directory-identityprotection-flows/160.png "Remediation")
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

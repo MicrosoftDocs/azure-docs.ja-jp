@@ -1,30 +1,10 @@
 ---
-title: クラシック Linux VM の可用性セット | Microsoft Docs
-description: Azure ポータルと Azure PowerShell を使用して新規または既存の Linux 仮想マシンに対する可用性セットをクラシック デプロイメント モデルで構成します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: timlt
-editor: ''
-tags: azure-service-management
-
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2016
-ms.author: cynthn
+redirect_url: /azure/virtual-machines/linux/classic/configure-availability
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: c8db3110ea7ede347ab1afea3b8611f1d18b558c
+ms.lasthandoff: 03/27/2017
 
 ---
-# クラシック デプロイメント モデルに Linux 仮想マシンの可用性セットを構成する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-. Resource Manager デプロイで[可用性セットを構成](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)することもできます。
-
-[!INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
-
-## 次のステップ
-クラシック デプロイに関するその他の記事については、「[Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)」を参照してください。
-
-<!----HONumber=AcomDC_0713_2016-->

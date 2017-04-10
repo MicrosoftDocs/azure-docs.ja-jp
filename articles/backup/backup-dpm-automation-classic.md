@@ -1,27 +1,31 @@
 ---
-title: Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Docs
-description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
+title: "Azure Backup: PowerShell を使用して DPM ワークロードをバックアップする | Microsoft Docs"
+description: "PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: Nkolli1
 manager: shreeshd
-editor: ''
-
+editor: 
+ms.assetid: bcbcef79-9d33-4e84-a558-9866614f2cae
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: jimpark; trinadhk; anuragm; markgal
+ms.date: 1/23/2017
+ms.author: nkolli;trinadhk;anuragm;markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 127484103706be5acd0f988aee3d13217d4d87f2
+ms.openlocfilehash: f73bdcf056dc745f9f40e96d3dc51e5e4b88f77d
+
 
 ---
-# <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-(dpm)-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
+# <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 > [!div class="op_single_selector"]
 > * [ARM](backup-dpm-automation.md)
 > * [クラシック](backup-dpm-automation-classic.md)
-> 
-> 
+>
+>
 
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
@@ -64,8 +68,8 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
 ### <a name="create-a-backup-vault"></a>バックアップ資格情報コンテナーの作成
 > [!WARNING]
 > 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。 これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
-> 
-> 
+>
+>
 
 **New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。 バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。 管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -139,8 +143,8 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 
 > [!IMPORTANT]
 > コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。 このコマンドレットへの入力には、絶対パスを指定する必要があります。
-> 
-> 
+>
+>
 
 ### <a name="initial-configuration-settings"></a>初期構成の設定
 DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。 これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。 サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
@@ -190,8 +194,8 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 
 > [!IMPORTANT]
 > 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。 このパスフレーズがないと、Azure からデータを復元できません。
-> 
-> 
+>
+>
 
 この時点で、必要な変更はすべて ```$setting``` オブジェクトに行われています。 変更を忘れずにコミットします。
 
@@ -284,7 +288,7 @@ PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -Tim
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む 4 つの要素を持つ配列です。
+上記の例で ```$onlineSch``` は、GFS スキームの保護グループ用の既存のオンライン保護スケジュールを含む&4; つの要素を持つ配列です。
 
 1. ```$onlineSch[0]``` は日次スケジュールを含みます
 2. ```$onlineSch[1]``` は週次スケジュールを含みます
@@ -299,7 +303,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
-### <a name="changing-the-size-of-dpm-replica-&-recovery-point-volume"></a>DPM レプリカと回復ポイントのボリューム サイズの変更
+### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM レプリカと回復ポイントのボリューム サイズの変更
 DPM レプリカとシャドウ コピーのボリューム サイズは、[Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) コマンドレットを使用して変更することもできます。次に例を示します。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>保護グループに対する変更のコミット
@@ -345,6 +349,8 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## <a name="next-steps"></a>次のステップ
 * Azure DPM Backup の詳細については、「 [DPM Backup の概要](backup-azure-dpm-introduction.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

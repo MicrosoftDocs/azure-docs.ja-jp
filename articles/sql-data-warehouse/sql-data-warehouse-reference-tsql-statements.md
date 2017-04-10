@@ -1,23 +1,27 @@
 ---
-title: SQL Data Warehouse Transact-SQL リファレンス | Microsoft Docs
-description: SQL Data Warehouse によって使用される Transact-SQL トピックのリファレンス コンテンツへのリンク。
+title: "SQL Data Warehouse Transact-SQL リファレンス | Microsoft Docs"
+description: "SQL Data Warehouse によって使用される Transact-SQL トピックのリファレンス コンテンツへのリンク。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/22/2016
-ms.author: barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ab42fce8cd49d9ae1585072a173e0c2b928f9f35
+
 
 ---
-# Transact-SQL トピック
-## データ定義言語 (DDL) ステートメント
+# <a name="transact-sql-topics"></a>Transact-SQL トピック
+## <a name="data-definition-language-ddl-statements"></a>データ定義言語 (DDL) ステートメント
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 * [ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
@@ -50,23 +54,23 @@ ms.author: barbkess;sonyama
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
-## データ操作言語 (DML) ステートメント
+## <a name="data-manipulation-language-dml-statements"></a>データ操作言語 (DML) ステートメント
 * [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)
 
-## データベース コンソール コマンド
+## <a name="database-console-commands"></a>データベース コンソール コマンド
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
-* [DBCC PDW\_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [DBCC PDW\_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [DBCC PDW\_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [DBCC SHOW\_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
+* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
-## クエリ ステートメント
+## <a name="query-statements"></a>クエリ ステートメント
 * [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
-* [WITH common\_table\_expression](https://msdn.microsoft.com/library/ms175972.aspx)
+* [WITH common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [EXCEPT and INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [EXPLAIN](https://msdn.microsoft.com/library/mt631615.aspx)
 * [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
@@ -82,7 +86,7 @@ ms.author: barbkess;sonyama
 * [検索条件](https://msdn.microsoft.com/library/ms173545.aspx)
 * [サブクエリ](https://msdn.microsoft.com/library/mt631613.aspx)
 
-## セキュリティ ステートメント
+## <a name="security-statements"></a>セキュリティ ステートメント
 * 権限: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ALTER AUTHORIZATION](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
@@ -107,17 +111,21 @@ ms.author: barbkess;sonyama
 * [DROP USER](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## 次のステップ
-TSQL の例については、「[SQL Data Warehouse の参照トピック][SQL Data Warehouse の参照トピック]」を参照してください。
+## <a name="next-steps"></a>次のステップ
+TSQL の詳細な例については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse のリファレンス概要] に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse の参照トピック]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

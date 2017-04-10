@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ecc365fd90ba955efb977c4e598eae6746916f0
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -60,7 +61,7 @@ ms.openlocfilehash: 6ecc365fd90ba955efb977c4e598eae6746916f0
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-apikey-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
 Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。 
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
@@ -72,7 +73,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 5. サービスの URL と管理者キーをコピーします。 後で **config.properties** ファイルに追加するときに必要になります。
 
 ## <a name="download-the-sample-files"></a>サンプル ファイルのダウンロード
-1. Github で [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) に移動します。
+1. GitHub で [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) に移動します。
 2. **[Download ZIP]**をクリックして .zip ファイルをディスクに保存した後、すべてのファイルをコンテナーに抽出します。 後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
 3. サンプル ファイルは読み取り専用です。 フォルダーのプロパティを右クリックし、読み取り専用の属性をオフにします。
 
@@ -88,7 +89,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 3. **[完了]**をクリックします。
 4. **Project Explorer** を使用して、ファイルを表示および編集します。 まだ開いていない場合は、**[Window (ウィンドウ)]** > **[Show View (ビューを表示)]** > **[Project Explorer]** の順にクリックするか、またはショートカットを使用して開きます。
 
-## <a name="configure-the-service-url-and-apikey"></a>サービスの URL と API キーの構成
+## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と API キーの構成
 1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
 2. この記事で前述の手順を参照し、 [Azure ポータル](https://portal.azure.com)でサービスの URL と API キーを探して、 **config.properties**に入力する値を取得します。
 3. **config.properties**で、「API キー」をサービスの API キーに置き換えます。 次に、サービス名 (URL http://servicename.search.windows.net の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
@@ -179,9 +180,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

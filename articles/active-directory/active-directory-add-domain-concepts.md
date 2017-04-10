@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory でのカスタム ドメイン名の概念の概要 | Microsoft Docs
-description: シングル サインオン用のフェデレーションを含む、Azure Active Directory でカスタム ドメイン名を使用するための概念的なフレームワークについて説明します
+title: "Azure Active Directory でのカスタム ドメイン名の概念の概要 | Microsoft Docs"
+description: "シングル サインオン用のフェデレーションを含む、Azure Active Directory でカスタム ドメイン名を使用するための概念的なフレームワークについて説明します"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeffsta
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: curtand;jeffsta
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 12d41a77655c4892a9dc20979ef98b1bd39f94c5
+
 
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Azure Active Directory でのカスタム ドメイン名の概念の概要
@@ -58,6 +62,9 @@ Azure Web アプリでは、独自のメカニズムを使用して、ドメイ�
 * [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Azure AD Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

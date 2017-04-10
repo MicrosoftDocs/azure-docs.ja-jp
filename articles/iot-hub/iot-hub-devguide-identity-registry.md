@@ -1,142 +1,152 @@
 ---
-title: Developer guide - device identity registry | Microsoft Docs
-description: Azure IoT Hub developer guide - description of the device identity registry and how to use it to manage your devices
+title: "Azure IoT Hub ID レジストリについて | Microsoft Docs"
+description: "開発者ガイド - IoT Hub ID レジストリおよびこのレジストリを使用してデバイスを管理する方法の説明。 デバイス ID の一括でのインポートとエクスポートに関する情報が含まれています。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 0706eccd-e84c-4ae7-bbd4-2b1a22241147
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 03/24/2017
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 75a2fa16a7e33cf85746538e120ca90a389b05c5
+ms.lasthandoff: 03/24/2017
+
 
 ---
-# <a name="manage-device-identities-in-iot-hub"></a>Manage device identities in IoT Hub
-## <a name="overview"></a>Overview
-Every IoT hub has a device identity registry that stores information about the devices that are permitted to connect to the hub. Before a device can connect to a hub, there must be an entry for that device in the hub's device identity registry. A device must also authenticate with the hub based on credentials stored in the device identity registry.
+# <a name="understand-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリの理解
 
-At a high level, the device identity registry is a REST-capable collection of device identity resources. When you add an entry to the registry, IoT Hub creates a set of per-device resources in the service such as the queue that contains in-flight cloud-to-device messages.
+## <a name="overview"></a>概要
 
-### <a name="when-to-use"></a>When to use
-Use the device identity registry when you need to provision devices that connect to you IoT hub and when you need to control per-device access to the device-facing endpoints in your hub.
+すべての IoT Hub には、その IoT Hub への接続が許可されたデバイスに関する情報を保存する ID レジストリがあります。 デバイスを IoT Hub に接続できるようにするには、そのデバイスのエントリが IoT Hub の ID レジストリに存在する必要があります。 さらに、ID レジストリに保存されている資格情報に基づいて、デバイスが IoT Hub で認証される必要があります。
 
-> [!NOTE]
-> The device identity registry does not contain any application-specific metadata.
-> 
-> 
+大まかに言うと、ID レジストリは、デバイス ID リソースの REST 対応コレクションです。 この ID レジストリにエントリを追加すると、IoT Hub によって、転送中の C2D メッセージを含むキューなどのデバイス単位のリソースがサービス内に作成されます。
 
-## <a name="device-identity-registry-operations"></a>Device identity registry operations
-The IoT Hub device identity registry exposes the following operations:
+### <a name="when-to-use"></a>使用時の注意
 
-* Create device identity
-* Update device identity
-* Retrieve device identity by ID
-* Delete device identity
-* List up to 1000 identities
-* Export all identities to blob storage
-* Import identities from blob storage
-
-All these operations can use optimistic concurrency, as specified in [RFC7232][lnk-rfc7232].
-
-> [!IMPORTANT]
-> The only way to retrieve all identities in a hub's identity registry is to use the [Export][lnk-export] functionality.
-> 
-> 
-
-An IoT Hub device identity registry:
-
-* Does not contain any application metadata.
-* Can be accessed like a dictionary, by using the **deviceId** as the key.
-* Does not support expressive queries.
-
-An IoT solution typically has a separate solution-specific store that contains application-specific metadata. For example, the solution-specific store in a smart building solution would record the room in which a temperature sensor is deployed.
-
-> [!IMPORTANT]
-> Only use the device identity registry for device management and provisioning operations. High throughput operations at run time should not depend on performing operations in the device identity registry. For example, checking the connection state of a device before sending a command is not a supported pattern. Make sure to check the [throttling rates][lnk-quotas] for the device identity registry, and the [device heartbeat][lnk-guidance-heartbeat] pattern.
-> 
-> 
-
-## <a name="disable-devices"></a>Disable devices
-You can disable devices by updating the **status** property of an identity in the registry. Typically, you use this property in two scenarios:
-
-* During a provisioning orchestration process. For more information, see [Device Provisioning][lnk-guidance-provisioning].
-* If, for any reason, you consider a device is compromised or has become unauthorized.
-
-## <a name="import-and-export-device-identities"></a>Import and export device identities
-You can export device identities in bulk from an IoT hub's identity registry, by using asynchronous operations on the [IoT Hub Resource Provider endpoint][lnk-endpoints]. Exports are long-running jobs that use a customer-supplied blob container to save device identity data read from the identity registry.
-
-You can import device identities in bulk to an IoT hub's identity registry, by using asynchronous operations on the [IoT Hub Resource Provider endpoint][lnk-endpoints]. Imports are long-running jobs that use data in a customer-supplied blob container to write device identity data into the device identity registry.
-
-* For detailed information about the import and export APIs, see [Azure IoT Hub - Resource Provider APIs][lnk-resource-provider-apis].
-* To learn more about running import and export jobs, see [Bulk management of IoT Hub device identities][lnk-bulk-identity].
-
-## <a name="device-provisioning"></a>Device provisioning
-The device data that a given IoT solution stores depends on the specific requirements of that solution. But, as a minimum, a solution must store device identities and authentication keys. Azure IoT Hub includes an identity registry that can store values for each device such as IDs, authentication keys, and status codes. A solution can use other Azure services such as tables, blobs, or Azure DocumentDB to store any additional device data.
-
-*Device provisioning* is the process of adding the initial device data to the stores in your solution. To enable a new device to connect to your hub, you must add a new device ID and keys to the IoT Hub identity registry. As part of the provisioning process, you might need to initialize device-specific data in other solution stores.
-
-## <a name="device-heartbeat"></a>Device heartbeat
-The IoT Hub identity registry contains a field called **connectionState**. You should only use the **connectionState** field during development and debugging, IoT solutions should not query the field at run time (for example, to check if a device is connected in order to decide whether to send a cloud-to-device message or an SMS).
-
-If your IoT solution needs to know if a device is connected (either at run time, or with more accuracy than the **connectionState** property provides), your solution should implement the *heartbeat pattern*.
-
-In the heartbeat pattern, the device sends device-to-cloud messages at least once every fixed amount of time (for example, at least once every hour). This means that even if a device does not have any data to send, it still sends an empty device-to-cloud message (usually with a property that identifies it as a heartbeat). On the service side, the solution maintains a map with the last heartbeat received for each device, and assumes that there is a problem with a device if it does not receive a heartbeat message within the expected time.
-
-A more complex implementation could include the information from [operations monitoring][lnk-devguide-opmon] to identify devices that are trying to connect or communicate but failing. When you implement the heartbeat pattern, make sure to check [IoT Hub Quotas and Throttles][lnk-quotas].
+ID レジストリは、IoT Hub に接続するデバイスをプロビジョニングする必要があるとき、およびハブのデバイス向けのエンドポイントに対するアクセスをデバイス単位で制御する必要があるときに使用します。
 
 > [!NOTE]
-> If an IoT solution needs the device connection state solely to determine whether to send cloud-to-device messages, and messages are not broadcast to large sets of devices, a much simpler pattern to consider is to use a short Expiry time. This achieves the same result as maintaining a device connection state registry using the heartbeat pattern, while being significantly more efficient. It is also possible, by requesting message acknowledgements, to be notified by IoT Hub of which devices are able to receive messages and which are not online or are failed.
-> 
-> 
+> ID レジストリには、アプリケーション固有のメタデータは含まれません。
 
-## <a name="reference"></a>Reference
-### <a name="device-identity-properties"></a>Device identity properties
-Device identities are represented as JSON documents with the following properties.
+## <a name="identity-registry-operations"></a>ID レジストリの操作
 
-| Property | Options | Description |
+IoT Hub の ID レジストリでは、次の操作が公開されています。
+
+* デバイス ID の作成
+* デバイス ID の更新
+* ID ごとのデバイス ID の取得
+* デバイス ID の削除
+* 最大 1000 個の ID の一覧表示
+* Azure BLOB ストレージへのすべての ID のエクスポート
+* Azure BLOB ストレージからのすべての ID のインポート
+
+これらすべての操作で、[RFC7232][lnk-rfc7232] に指定されているオプティミスティック同時実行制御を使用できます。
+
+> [!IMPORTANT]
+> IoT Hub の ID レジストリにあるすべての ID を取得する唯一の方法は、[エクスポート][lnk-export]機能を使用することです。
+
+IoT Hub の ID レジストリの特徴は次のとおりです。
+
+* アプリケーションのメタデータは含まれていません。
+* **deviceId** をキーとして使用することで、ディクショナリと同様にアクセスできます。
+* 詳細なクエリはサポートされていません。
+
+通常、IoT ソリューションにはソリューション固有のストアがあり、各ストアにはアプリケーション固有のメタデータが含まれています。 たとえば、スマート ビルディング ソリューションのソリューション固有のストアでは、気温センサーをデプロイする部屋を記録します。
+
+> [!IMPORTANT]
+> ID レジストリは、デバイスの管理およびプロビジョニング操作でのみ使用します。 実行時の高スループット操作が、ID レジストリに対する操作の影響を受けないようにする必要があります。 たとえば、コマンドを送信する前に、デバイスの接続状態を確認するやり方は、サポートされていないパターンです。 ID レジストリの[スロットル率][lnk-quotas]と[デバイス ハートビート パターン][lnk-guidance-heartbeat]を必ず確認してください。
+
+## <a name="disable-devices"></a>デバイスの無効化
+
+ID レジストリで ID の **status** プロパティを更新することにより、デバイスを無効にすることができます。 通常、このプロパティは次の 2 つのシナリオで使用します。
+
+* オーケストレーション プロセスのプロビジョニング中。 詳細については、[デバイスのプロビジョニング][lnk-guidance-provisioning]に関するページを参照してください。
+* 何らかの理由でデバイスが侵害された、または許可されていないと考えられる場合。
+
+## <a name="import-and-export-device-identities"></a>デバイス ID のインポートとエクスポート
+
+[IoT Hub のリソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をエクスポートすることができます。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
+
+[IoT Hub のリソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をインポートすることができます。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
+
+* インポート API とエクスポート API の詳細については、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] に関する記事を参照してください。
+* インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]に関するページを参照してください。
+
+## <a name="device-provisioning"></a>デバイス プロビジョニング
+
+特定の IoT ソリューションに格納されるデバイス データは、そのソリューションの具体的な要件によって異なりますが、 ソリューションには少なくともデバイスの ID と認証キーを格納する必要があります。 Azure IoT Hub には、各デバイスの ID、認証キー、状態コードなどの値を保存できる ID レジストリがあります。 ソリューションでは、Azure テーブル ストレージ、Azure BLOB ストレージ、Azure DocumentDB などの Azure サービスを使用して、さらにデバイス データを保存できます。
+
+*デバイス プロビジョニング* とは、最初のデバイス データをソリューション内のストアに追加するプロセスです。 新しいデバイスをハブに接続できるようにするには、デバイスの ID とキーを IoT Hub ID レジストリに追加する必要があります。 プロビジョニング プロセスの一環として、他のソリューション ストアにあるデバイス固有データの初期化が必要になる場合があります。
+
+## <a name="device-heartbeat"></a>デバイスのハートビート
+
+IoT Hub ID レジストリには、**connectionState** というフィールドが含まれています。 **connectionState**フィールドは、開発とデバッグ中にのみ使用します。 IoT ソリューションでは実行時にこのフィールドを照会しないでください (たとえば、C2D メッセージまたは SMS を送信するかどうかを決定するためにデバイスが接続されているかどうかを確認する目的で)。
+
+デバイスが接続されているかどうかを (実行時に、または **connectionState** プロパティを使用するよりも正確に) IoT ソリューションで把握する必要がある場合は、*ハートビート パターン*を実装してください。
+
+ハートビート パターンでは、デバイスは一定の時間ごとに 1 回以上、D2C メッセージを送信します。(たとえば、1 時間ごとに 1 回以上)。 したがって、デバイスは送信するデータを保持していなくても、空の D2C メッセージを送信します (通常は、それをハートビートとして識別するプロパティが伴います)。 サービス側では、ソリューションは、各デバイスから受信した最後のハートビートのマップを保持します。 所定の時間内にハートビート メッセージを受信しなかった場合、ソリューションは、デバイスに問題があるとみなします。
+
+より複雑な実装になると、[操作の監視][lnk-devguide-opmon]からの情報を取り込むことで、接続または通信を試みているが失敗しているデバイスを識別することが可能です。 ハートビート パターンを実装する場合は、[IoT Hub のクォータとスロットル][lnk-quotas]を必ず確認してください。
+
+> [!NOTE]
+> C2D メッセージを送信するかどうかを判断するためだけに IoT ソリューションでデバイス接続状態が必要であり、多数のデバイスにメッセージをブロードキャストしない場合は、簡単なパターンとして短い有効期間の使用を検討する必要があります。 この方法を使用すると、ハートビート パターンを使用してデバイス接続状態レジストリを維持するのと同じ結果を得られますが、効率が向上します。 また、メッセージの受信確認を要求することにより、メッセージを受信できるデバイスおよびオンラインではないデバイスや障害が発生しているデバイスについて IoT Hub から通知を受け取ることもできます。
+
+## <a name="reference-topics"></a>参照トピック:
+
+以下の参照トピックに、ID レジストリに関する詳細情報を示します。
+
+## <a name="device-identity-properties"></a>デバイス ID のプロパティ
+
+デバイス ID は、次のプロパティを持つ JSON ドキュメントとして表されます。
+
+| プロパティ | オプション | 説明 |
 | --- | --- | --- |
-| deviceId |required, read-only on updates |A case-sensitive string (up to 128 characters long) of ASCII 7-bit alphanumeric characters + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| generationId |required, read-only |A hub-generated, case-sensitive string up to 128 characters long. This is used to distinguish devices with the same **deviceId**, when they have been deleted and re-created. |
-| etag |required, read-only |A string representing a weak etag for the device identity, as per [RFC7232][lnk-rfc7232]. |
-| auth |optional |A composite object containing authentication information and security materials. |
-| auth.symkey |optional |A composite object containing a primary and a secondary key, stored in base64 format. |
-| status |required |An access indicator. Can be **Enabled** or **Disabled**. If **Enabled**, the device is allowed to connect. If **Disabled**, this device cannot access any device-facing endpoint. |
-| statusReason |optional |A 128 character-long string that stores the reason for the device identity status. All UTF-8 characters are allowed. |
-| statusUpdateTime |read-only |A temporal indicator, showing the date and time of the last status update. |
-| connectionState |read-only |A field indicating connection status: either **Connected** or **Disconnected**. This field represents the IoT Hub view of the device connection status. **Important**: This field should be used only for development/debugging purposes. The connection state is updated only for devices using MQTT or AMQP. Also, it is based on protocol-level pings (MQTT pings, or AMQP pings), and it can have a maximum delay of only 5 minutes. For these reasons, there can be false positives, such as devices reported as connected but that are actually disconnected. |
-| connectionStateUpdatedTime |read-only |A temporal indicator, showing the date and last time the connection state was updated. |
-| lastActivityTime |read-only |A temporal indicator, showing the date and last time the device connected, received, or sent a message. |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 |
+| generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
+| etag |必須、読み取り専用 |[RFC7232][lnk-rfc7232] に準拠した、デバイス ID の弱い ETag を表す文字列。 |
+| auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
+| auth.symkey |省略可能 |base64 形式でプライマリ キーとセカンダリ キーを格納する複合オブジェクト。 |
+| status |必須 |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]**の場合、デバイスからの接続が許可されます。 **[無効]**の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
+| statusReason |省略可能 |デバイス ID の状態の理由を格納する、長さが 128 文字の文字列。 すべての UTF-8 文字を使用できます。 |
+| statusUpdateTime |読み取り専用 |状態が最後に更新された日時を示す時間のインジケーター。 |
+| connectionState |読み取り専用 |接続状態を示すフィールド。**Connected** または **Disconnected** のいずれか。 このフィールドは、デバイスの接続状態に関する IoT Hub ビューを表します。 **重要**: このフィールドは、開発およびデバッグ専用として使用してください。 接続状態は、MQTT または AMQP を使用するデバイスについてのみ更新されます。 また、この更新はプロトコル レベルの ping (MQTT ping または AMQP ping) に基づいており、遅延は最大でもわずか 5 分です。 このため、接続状態にあると報告されているが切断状態にあるデバイスのように、偽陽性を示す可能性があります。 |
+| connectionStateUpdatedTime |読み取り専用 |前回接続状態が更新された日時を示す時間のインジケーター。 |
+| lastActivityTime |読み取り専用 |前回デバイスが接続された日時またはメッセージを送受信した日時を示す時間のインジケーター。 |
 
 > [!NOTE]
-> Connection state can only represent the IoT Hub view of the status of the connection. Updates to this state may be delayed, depending on network conditions and configurations.
-> 
-> 
+> 接続状態が表すのは、その接続状態を示す IoT Hub ビューのみです。 ネットワークの状態と構成によっては、この状態の更新が遅延することがあります。
 
-### <a name="additional-reference-material"></a>Additional reference material
-Other reference topics in the Developer Guide include:
+## <a name="additional-reference-material"></a>参考資料
 
-* [IoT Hub endpoints][lnk-endpoints] describes the various endpoints that each IoT hub exposes for runtime and management operations.
-* [Throttling and quotas][lnk-quotas] describes the quotas that apply to the IoT Hub service and the throttling behavior to expect when you use the service.
-* [IoT Hub device and service SDKs][lnk-sdks] lists the various language SDKs you an use when you develop both device and service applications that interact with IoT Hub.
-* [Query language for twins, methods, and jobs][lnk-query] describes the query language you can use to retrieve information from IoT Hub about your device twins, methods and jobs.
-* [IoT Hub MQTT support][lnk-devguide-mqtt] provides more information about IoT Hub support for the MQTT protocol.
+IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
-## <a name="next-steps"></a>Next steps
-Now you have learned how to use the IoT Hub device identity registry, you may be interested in the following Developer Guide topics:
+* [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
+* [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
+* [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+* [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-* [Control access to IoT Hub][lnk-devguide-security]
-* [Use device twins to synchronize state and configurations][lnk-devguide-device-twins]
-* [Invoke a direct method on a device][lnk-devguide-directmethods]
-* [Schedule jobs on multiple devices][lnk-devguide-jobs]
+## <a name="next-steps"></a>次のステップ
 
-If you would like to try out some of the concepts described in this article, you may be interested in the following IoT Hub tutorial:
+IoT Hub の ID レジストリの使用方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 
-* [Get started with Azure IoT Hub][lnk-getstarted-tutorial]
+* [IoT Hub へのアクセスの制御][lnk-devguide-security]
+* [デバイス ツインを使って状態と構成を同期する][lnk-devguide-device-twins]
+* [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
+* [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]
+
+この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+
+* [Azure IoT Hub を使ってみる][lnk-getstarted-tutorial]
 
 <!-- Links and images -->
 
@@ -159,8 +169,4 @@ If you would like to try out some of the concepts described in this article, you
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
-
-
-<!--HONumber=Oct16_HO2-->
-
 

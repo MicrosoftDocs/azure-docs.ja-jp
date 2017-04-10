@@ -1,19 +1,24 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ID 要件の決定 | Microsoft Docs
-description: ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ID 要件の決定 | Microsoft Docs"
+description: "ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 03/21/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
+ms.lasthandoff: 03/22/2017
+
 
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
@@ -51,7 +56,7 @@ ms.author: billmath
 * 現在、その統合は運用中ですか、パイロットですか。
 
 > [!NOTE]
-> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 このツールにアクセスするには、 [https://appdiscovery.azure.com](https://appdiscovery.azure.com/)
+> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 作業を開始するには、「[Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)」をご覧ください。
 > 
 > 
 
@@ -104,7 +109,5 @@ ms.author: billmath
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

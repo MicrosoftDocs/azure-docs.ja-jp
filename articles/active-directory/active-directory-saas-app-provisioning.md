@@ -1,23 +1,27 @@
 ---
-title: Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化 | Microsoft Docs
-description: Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
+title: "Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化 | Microsoft Docs"
+description: "Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/09/2016
-ms.author: asmalser-msft
+ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 1bee9573e23e1c814626d19a3df1eb7ab12486ab
+
 
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
-## <a name="what-is-automated-user-provisioning-for-saas-apps?"></a>SaaS アプリへのユーザー プロビジョニングの自動化とは
+## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>SaaS アプリへのユーザー プロビジョニングの自動化とは
 Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。
 
 **以下に、この機能を使用して行うことができる例をいくつか示します。**
@@ -34,7 +38,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 * プロビジョニング エラーのためのオプションの電子メール通知。
 * 監視とトラブルシューティングに役立つレポートとアクティビティ ログ。
 
-## <a name="why-use-automated-provisioning?"></a>自動プロビジョニングを使用する理由
+## <a name="why-use-automated-provisioning"></a>自動プロビジョニングを使用する理由
 この機能を使用する一般的な動機は、次のとおりです。
 
 * 手動によるプロビジョニング プロセスに関連するコスト、非効率性、人的エラーを回避するため。
@@ -67,7 +71,7 @@ Azure AD は 5 ～ 10 分ごとに変更を確認します。 SaaS アプリが�
 
 [Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
-## <a name="how-does-automated-provisioning-work?"></a>自動プロビジョニングのしくみ
+## <a name="how-does-automated-provisioning-work"></a>自動プロビジョニングのしくみ
 Azure AD は、各アプリケーション ベンダーによって提供されるプロビジョニング エンドポイントに接続することで、SaaS アプリにユーザーをプロビジョニングします。 これらのエンドポイントを使用して、Azure AD はプログラムによってユーザーを作成、更新、削除します。 Azure AD がプロビジョニングを自動化するために行うさまざまな手順の概要を以下に示します。
 
 1. 初めてアプリのプロビジョニングを有効にする場合は、次の操作が実行されます。
@@ -109,6 +113,9 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

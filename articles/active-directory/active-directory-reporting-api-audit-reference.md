@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory 監査 API リファレンス | Microsoft Docs
-description: Azure Active Directory 監査 API の概要について説明します。
+title: "Azure Active Directory 監査 API リファレンス | Microsoft Docs"
+description: "Azure Active Directory 監査 API の概要について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
+ms.date: 11/16/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: b1de516d907826d3e6ede0783649f6101b381852
+ms.openlocfilehash: 261cce0b8424f73df4c7ca86784a14e95a8336f1
+
 
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 監査 API リファレンス
@@ -28,7 +32,7 @@ Azure AD レポートは、コードまたは関連ツールを使用して監�
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
 
-## <a name="who-can-access-the-data?"></a>誰がデータにアクセスできますか。
+## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 * セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
 * グローバル管理者
 * API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
@@ -86,7 +90,7 @@ Azure AD 監査 API によって (OData 改ページ調整を使用) 返され�
 
 **例**:
 
-    $filter=tdomain + 'activities/audit?api-version=beta&`$filter=eventTime gt ' + $7daysago    
+    $filter=tdomain + 'activities/audit?api-version=beta&`$filter=activityDate gt ' + $7daysago    
 
 **注**:
 
@@ -98,7 +102,7 @@ datetime は UTC 形式にする必要があります。
 
 **例**:
 
-    $filter=activityType eq 'User'  
+    $filter=activityType eq 'User'    
 
 **注**:
 
@@ -110,26 +114,26 @@ datetime は UTC 形式にする必要があります。
 
 **例**:
 
-    $filter=activity eq 'Add application' or contains(activity, 'Application') or startsWith(activity, 'Add')   
+    $filter=activity eq 'Add application' or contains(activity, 'Application') or startsWith(activity, 'Add')    
 
 **注**:
 
 大文字と小文字の区別
 
 - - -
-### <a name="actor/name"></a>actor/name
+### <a name="actorname"></a>actor/name
 **サポートされている演算子**: eq、contains、startsWith
 
 **例**:
 
-    $filter=actor/name eq 'test' or contains(actor/name, 'test') or startswith(actor/name, 'test')  
+    $filter=actor/name eq 'test' or contains(actor/name, 'test') or startswith(actor/name, 'test')    
 
 **注**:
 
 大文字と小文字は区別されない
 
 - - -
-### <a name="actor/objectid"></a>actor/objectid
+### <a name="actorobjectid"></a>actor/objectid
 **サポートされている演算子**: eq
 
 **例**:
@@ -137,24 +141,24 @@ datetime は UTC 形式にする必要があります。
     $filter=actor/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba'    
 
 - - -
-### <a name="target/name"></a>target/name
+### <a name="targetname"></a>target/name
 **サポートされている演算子**: eq、contains、startsWith
 
 **例**:
 
-    $filter=targets/any(t: t/name eq 'some name')   
+    $filter=targets/any(t: t/name eq 'some name')    
 
 **注**:
 
 大文字と小文字は区別されない
 
 - - -
-### <a name="target/upn"></a>target/upn
+### <a name="targetupn"></a>target/upn
 **サポートされている演算子**: eq、startsWith
 
 **例**:
 
-    $filter=targets/any(t: startswith(t/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity/userPrincipalName,'abc')) 
+    $filter=targets/any(t: startswith(t/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity/userPrincipalName,'abc'))    
 
 **注**:
 
@@ -162,7 +166,7 @@ datetime は UTC 形式にする必要があります。
 * Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity を照会する場合は、完全な名前空間を追加する必要があります。
 
 - - -
-### <a name="target/objectid"></a>target/name
+### <a name="targetobjectid"></a>target/name
 **サポートされている演算子**: eq
 
 **例**:
@@ -170,12 +174,12 @@ datetime は UTC 形式にする必要があります。
     $filter=targets/any(t: t/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba')    
 
 - - -
-### <a name="actor/upn"></a>actor/upn
+### <a name="actorupn"></a>actor/upn
 **サポートされている演算子**: eq、startsWith
 
 **例**:
 
-    $filter=startswith(actor/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity/userPrincipalName,'abc')  
+    $filter=startswith(actor/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity/userPrincipalName,'abc')    
 
 **注**:
 
@@ -187,6 +191,9 @@ datetime は UTC 形式にする必要があります。
 * フィルター処理されたシステム アクティビティの例を参照しますか。 [Azure Active Directory 監査 API のサンプル](active-directory-reporting-api-audit-samples.md)に関する記事を確認してください。
 * Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

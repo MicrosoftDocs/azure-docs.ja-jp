@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> 現在、Network Watcher はパブリック プレビュー リリースであり、一般公開リリースのサービスと同じレベルの可用性と信頼性がない場合があります。 特定の機能はサポート対象ではなく、機能が制限されることもあります。また、[Azure の場所](https://azure.microsoft.com/regions/)によっては、利用できない場合もあります。 このサービスの可用性とステータスに関する最新の通知については、[Azure Network Watcher の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。 Network Watcher の機能を使用するには、[機能を登録する必要があります](../articles/network-watcher/network-watcher-create.md#register-the-preview-capability)。

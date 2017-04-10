@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c90fe9e9f088e8af80b5d9dcf7ab5b970034122f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
 
 
 ---
@@ -42,10 +42,10 @@ Data Lake Store に格納されたデータは、MapReduce または Hive など
 ### <a name="unlimited-storage-petabyte-files"></a>無制限のストレージ、ペタバイト ファイル
 Azure Data Lake Store では無制限のストレージを実現しています。このため、分析を目的としてさまざまなデータを格納するのに適しています。 Data Lake に格納できるアカウント サイズ、ファイル サイズ、またはデータ量に関する制限は設定されていません。 対応可能な個々のファイルのサイズはキロバイトからペタバイトの範囲にわたり、任意の種類のデータを自由に格納することができます。 データは複数のコピーを作成して格納されるため障害が発生しても保護されます。Data Lake でのデータの格納期間に制限はありません。
 
-### <a name="performancetuned-for-big-data-analytics"></a>ビッグ データを分析するためのパフォーマンス チューニング
+### <a name="performance-tuned-for-big-data-analytics"></a>ビッグ データを分析するためのパフォーマンス チューニング
 Azure Data Lake Store は、大量のデータのクエリと分析のために非常に高いスループットを必要とする、大規模な分析システムを実行するために構築されています。 Data Lake では、ファイル内のデータを複数の異なる記憶域サーバーに分散します。 これにより、ファイルを並列に読み取ってデータ分析を実行する場合の読み取りスループットが向上します。
 
-### <a name="enterpriseready-highlyavailable-and-secure"></a>エンタープライズ対応: 高い可用性とセキュリティ保護
+### <a name="enterprise-ready-highly-available-and-secure"></a>エンタープライズ対応: 高い可用性とセキュリティ保護
 Azure Data Lake Store では、業界標準の可用性と信頼性を提供します。 データ資産は、冗長なコピーを作成して格納されるので、予期せぬ障害が発生しても保護されます。 企業では、実際のソリューションの中で既存のデータ プラットフォームの重要な部分として Azure Data Lake を使用できます。
 
 Data Lake Store では、格納されたデータに対してエンタープライズ レベルのセキュリティも提供します。 詳細については、「 [Azure Data Lake Store 内のデータをセキュリティで保護する](#DataLakeStoreSecurity)」を参照してください。
@@ -105,6 +105,6 @@ Data Lake Store の一連の機能について紹介するビデオをご覧く�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

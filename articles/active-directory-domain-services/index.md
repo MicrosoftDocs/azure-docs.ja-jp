@@ -1,9 +1,25 @@
 ---
+title: "Azure Active Directory Domain Services のドキュメント - チュートリアル | Microsoft Docs"
+description: "Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに Azure 仮想マシンをドメインに参加させ、グループ ポリシーで管理する方法について説明します。"
+services: active-directory-ds
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Active Directory Domain Services Documentation
+ms.assetid: 
+ms.service: active-directory-ds
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
+ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
 
-Azure AD Domain Services (DS) provides managed domain services such as domain join, group policy, LDAP, Kerberos/NTLM authentication that are fully compatible with Windows Server Active Directory.  This service enables users to deploy a wide range of computing solutions in an agile manner.
+---
+# <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
+
+Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに、Azure 仮想マシンをドメインに参加させる方法について説明します。 チュートリアルなどのドキュメントでは、グループ ポリシーを使用して仮想マシンを管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Active Directory Domain Services</h3>
+                        <h3>Active Directory Domain Services について</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +41,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=active-directory">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=active-directory">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +51,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Active Directory Video Library</h3>
+                        <h3>Active Directory のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure AD Domain Services</h3>
+                        <h3>Azure AD ドメイン サービスの使用開始</h3>
                     </div>
                 </div>
             </div>
@@ -71,14 +87,13 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create or select a Virtual network</h3>
+                        <h3>仮想ネットワークを作成または選択する</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
-    <li>
+    </li>    
     <li>
         <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started-enableaadds">
         <div class="cardSize">
@@ -90,13 +105,14 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Enable Azure AD Domain Services</h3>
+                        <h3>Azure AD Domain Services を有効にする</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
+    <li>
         <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started-dns">
         <div class="cardSize">
             <div class="cardPadding">
@@ -107,7 +123,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Update DNS settings</h3>
+                        <h3>DNS の設定を更新する</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +141,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Enable password sync for Cloud-only tenant</h3>
+                        <h3>クラウド専用テナントでパスワード同期を有効にする</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +159,7 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Enable password sync for Synced tenant</h3>
+                        <h3>同期テナントでパスワード同期を有効にする</h3>
                     </div>
                 </div>
             </div>
@@ -152,13 +168,9 @@ Azure AD Domain Services (DS) provides managed domain services such as domain jo
     </li>
 </ul>
 
----
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-domain-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Active Directory Domain Services Documentation
-        </div>
-    </a>
-</div>
+
+
+<!--HONumber=Feb17_HO2-->
+
+

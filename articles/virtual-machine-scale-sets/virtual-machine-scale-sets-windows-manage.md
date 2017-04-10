@@ -1,33 +1,37 @@
 ---
-title: 仮想マシン スケール セットの VM を管理する | Microsoft Docs
-description: Azure PowerShell を利用し、仮想マシン スケール セットで仮想マシンを管理する
+title: "仮想マシン スケール セットの VM を管理する | Microsoft Docs"
+description: "Azure PowerShell を利用し、仮想マシン スケール セットで仮想マシンを管理する"
 services: virtual-machine-scale-sets
-documentationcenter: ''
-author: davidmu1
+documentationcenter: 
+author: Thraka
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2016
-ms.author: davidmu
+ms.date: 09/27/2016
+ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
+
 
 ---
-# 仮想マシン スケール セットで仮想マシンを管理する
-この記事では、仮想マシン スケール セットで仮想マシン リソースを管理する方法を紹介します。
+# <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットで仮想マシンを管理する
+この記事では、仮想マシン スケール セットで仮想マシンを管理する方法を紹介します。
 
-スケール セットで仮想マシンを管理するためのあらゆる作業で、管理するマシンのインスタンス ID が必要になります。[Azure リソース エクスプローラー](https://resources.azure.com)を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
+スケール セットで仮想マシンを管理するためのほとんどの作業で、管理するマシンのインスタンス ID が必要になります。 [Azure リソース エクスプローラー](https://resources.azure.com) を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。 リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
-## 仮想マシン スケール セットに関する情報を表示する
-スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。あるいは、セットのリソースに関する情報など、より具体的な情報を取得できます。
+## <a name="display-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
+スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。 あるいは、スケール セットのリソースに関する情報など、より具体的な情報を取得できます。
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換えます。それから、このコマンドを実行します。
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えてから、コマンドを実行します。
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
@@ -87,7 +91,7 @@ ms.author: davidmu
         Settings                                : {"xmlCfg":"...","storageAccount":"astore"}
     ProvisioningState                           : Succeeded
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換え、*InstanceId* を情報の取得元となる仮想マシンのインスタンス ID に置き換えます。それから、このコマンドを実行します。
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。 *#* を情報の取得元となる仮想マシンのインスタンス ID に置き換えてから、コマンドを実行します。
 
     Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
@@ -140,12 +144,12 @@ ms.author: davidmu
       Settings                    : {"xmlCfg":"...","storageAccount":"astore"}
       ProvisioningState           : Succeeded
 
-## スケール セットで仮想マシンを起動する
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+## <a name="start-a-virtual-machine-in-a-scale-set"></a>スケール セットで仮想マシンを起動する
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。 *#* を起動する仮想マシンの ID に置き換えてから、コマンドを実行します。
 
     Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-リソース エクスプローラーで、インスタンスの状態が **running** (実行中) であることがわかります。
+リソース エクスプローラーで、インスタンスの状態が **running**(実行中) であることがわかります。
 
     "statuses": [
       {
@@ -161,14 +165,14 @@ ms.author: davidmu
       }
     ]
 
--InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを開始できます。
+-InstanceId パラメーターを使用しなければ、スケール セット内のすべての仮想マシンを開始できます。
 
-## スケール セットで仮想マシンを停止する
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を停止する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+## <a name="stop-a-virtual-machine-in-a-scale-set"></a>スケール セットで仮想マシンを停止する
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。 *#* を停止する仮想マシンの ID に置き換えてから、コマンドを実行します。
 
     Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-リソース エクスプローラーで、インスタンスの状態が **deallocated** (割り当て解除) であることがわかります。
+リソース エクスプローラーで、インスタンスの状態が **deallocated**(割り当て解除) であることがわかります。
 
     "statuses": [
       {
@@ -184,20 +188,34 @@ ms.author: davidmu
       }
     ]
 
-仮想マシンを停止して割当てを解除しない場合、-StayProvisioned パラメーターを使用します。-InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを停止できます。
+仮想マシンを停止して割当てを解除しない場合、-StayProvisioned パラメーターを使用します。 -InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを停止できます。
 
-## スケール セットで仮想マシンを再起動する
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を再起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+## <a name="restart-a-virtual-machine-in-a-scale-set"></a>スケール セットで仮想マシンを再起動する
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。 *#* を再起動する仮想マシンの ID に置き換えてから、コマンドを実行します。
 
     Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
 -InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを再起動できます。
 
-## スケール セットから仮想マシンを削除する
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* をスケール セットから削除する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+## <a name="remove-a-virtual-machine-from-a-scale-set"></a>スケール セットから仮想マシンを削除する
+引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。 *#* を削除する仮想マシンの ID に置き換えてから、コマンドを実行します。  
 
     Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
 -InstanceId パラメーターを使用しなければ、すべての仮想マシンをスケール セットから削除できます。
 
-<!---HONumber=AcomDC_0720_2016-->
+## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
+セットの容量を変更することで、仮想マシンを追加または削除できます。 変更するスケール セットを取得し、必要な容量を設定してから、新しい容量でスケール セットを更新します。 次のコマンドでは、引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。
+
+    $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+    $vmss.sku.capacity = 5
+    Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
+
+スケール セットから仮想マシンを削除する場合は、ID が最も大きい仮想マシンから順に削除されます。
+
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

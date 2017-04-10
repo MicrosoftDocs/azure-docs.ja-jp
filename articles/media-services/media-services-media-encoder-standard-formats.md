@@ -1,12 +1,12 @@
 ---
-title: Media Encoder Standard の形式とコーデック
-description: このトピックでは、Media Encoder Standard の形式とコーデックの概要を示します。
+title: "Media Encoder Standard の形式とコーデック"
+description: "このトピックでは、Media Encoder Standard の形式とコーデックの概要を示します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: f334b1ce-2f56-4968-a019-f0a2b0016d9f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 382913f0501c692cc1ee460d2264118414ad20c3
+
 
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 このドキュメントでは、Media Encoder Standard で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
 
-## <a name="input-container/file-formats"></a>入力コンテナー/ファイル形式
+## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 | ファイル形式 (ファイル拡張子) | サポートされています |
 | --- | --- | --- | --- |
-| (H.264 および AAC コーデックでの) FLV (.flv) |あり |
-| MXF (.mxf) |あり |
-| GXF (.gxf) |あり |
+| (H.264 および AAC コーデックでの) FLV (.flv) |はい |
+| MXF    (.mxf) |はい |
+| GXF    (.gxf) |はい |
 | MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp、.3gpp、.mpg) |あり |
 | Windows Media Video (WMV)/ASF (.wmv、.asf) |あり |
 | AVI (非圧縮 8-bit/10-bit) (.avi) |あり |
@@ -108,6 +112,9 @@ Media Encoder Standard の入力コンテナーは次のオーディオ形式に
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

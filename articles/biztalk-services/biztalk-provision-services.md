@@ -15,13 +15,12 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Azure ポータルを使用して BizTalk Services を作成する
-Azure ポータルで Azure BizTalk Services を作成します。
 
 > [!TIP]
 > Azure ポータルにサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](http://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
@@ -116,7 +115,7 @@ Azure ポータルで Azure BizTalk Services を作成します。
 
 BizTalk サービスの状態によっては、一部の操作を完了できません。 これに該当する操作の一覧については、 [BizTalk サービスの状態のチャート](biztalk-service-state-chart.md)を参照してください。
 
-## <a name="postprovisioning-steps"></a>プロビジョニング後の手順
+## <a name="post-provisioning-steps"></a>プロビジョニング後の手順
 * [証明書をローカル コンピューターにインストールする](#InstallCert)
 * [運用対応証明書を追加する](#AddCert)
 * [Access Control 名前空間を取得する](#ACS)
@@ -131,7 +130,7 @@ BizTalk サービスをプロビジョニングするときに、自己署名証
    ![SSL 証明書の変更][QuickGlance]
 5. 証明書をダブルクリックし、ウィザードを最後まで実行して証明書をインストールします。 この証明書は必ず **[信頼されたルート証明機関]** ストアにインストールしてください。
 
-#### <a name="a-nameaddcertaadd-a-productionready-certificate"></a><a name="AddCert"></a>運用対応証明書を追加する
+#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>運用対応証明書を追加する
 BizTalk サービスの作成時に自動的に作成される自己署名証明書は、開発環境に限定して使用するためのものです。 本稼働のときは、この証明書を運用対応証明書で置き換えます。
 
 1. **[ダッシュボード]** タブで、**[SSL 証明書の更新]** を選択します。
@@ -275,6 +274,6 @@ BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

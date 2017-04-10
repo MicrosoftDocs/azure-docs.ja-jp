@@ -8,15 +8,17 @@ manager: swadhwa
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fe043cd4438612ada9a31ae895aae75b913b0a37
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -27,7 +29,7 @@ ms.openlocfilehash: fe043cd4438612ada9a31ae895aae75b913b0a37
 Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 OMS の詳細については、[Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)に関する記事を参照してください。
 
 ## <a name="oms-security-and-audit-dashboard"></a>OMS Security and Audit dashboard
-OMS のセキュリティと監査ソリューションでは、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 **[Security and Audit]** (セキュリティと監査) ダッシュボードは、OMS におけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。 **[セキュリティおよび監視]** ダッシュボードにアクセスするには、次の手順に従います。
+OMS のセキュリティと監査ソリューションでは、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 **[Security and Audit]** \(セキュリティと監査) ダッシュボードは、OMS におけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。 **[セキュリティおよび監視]** ダッシュボードにアクセスするには、次の手順に従います。
 
 1. **Microsoft Operations Management Suite** のメイン ダッシュボードで、左側にある **[設定]** タイルをクリックします。
 2. **[設定]** ブレードで、**[ソリューション]** の下にある **[セキュリティおよび監視]** オプションをクリックします。
@@ -57,7 +59,7 @@ OMS のセキュリティと監査ダッシュボードは、次の 4 つの主�
 > 
 > 
 
-## <a name="security-domains"></a>[Security Domains] (セキュリティ ドメイン)
+## <a name="security-domains"></a>[Security Domains] \(セキュリティ ドメイン)
 リソースを監視する場合は、現在の環境の状態にすばやくアクセスできるようにする必要があります。 しかし、過去に発生したイベントをさかのぼって追跡できることも重要であり、これによって特定の時点で環境内に発生したイベントを詳細に把握できるようになります。 
 
 > [!NOTE]
@@ -65,7 +67,7 @@ OMS のセキュリティと監査ダッシュボードは、次の 4 つの主�
 > 
 > 
 
-インシデント対応とフォレンジクス調査のシナリオでは、 **[Security Records over Time]** (時間別のセキュリティ レコード) タイルに表示される結果をそのまま活用できます。
+インシデント対応とフォレンジクス調査のシナリオでは、 **[Security Records over Time]** \(時間別のセキュリティ レコード) タイルに表示される結果をそのまま活用できます。
 
 ![Security records over time](./media/oms-security-getting-started/oms-getting-started-fig2.JPG)
 
@@ -96,7 +98,7 @@ OMS のダッシュボードに表示されているその他のライブ タイ
 
 コンピューターの名前をクリックすると、このコンピューターの保護の状態についての時系列ビューが表示されます。 この機能は、過去にマルウェア対策がインストールされていて、ある時点でそれが削除されたようなケースを把握する必要がある場合に、非常に役に立ちます。   
 
-### <a name="update-assessment"></a>[Update Assessment] (更新の評価)
+### <a name="update-assessment"></a>[Update Assessment] \(更新の評価)
 このオプションでは、潜在的なセキュリティの問題に全体でどの程度さらされているか、これらの更新プログラムが環境にとって重要かどうか、その重要度はどの程度かをすばやく判断することができます。 OMS のセキュリティと監査ソリューションで提供するのは、これらの更新プログラムの視覚化機能のみであり、実際のデータは OMS 内の別のモジュールである[システムの更新ソリューション](https://technet.microsoft.com/library/mt484096.aspx)から提供されます。 次に更新プログラムの例を示します。
 
 ![system updates](./media/oms-security-getting-started/oms-getting-started-fig6.png)
@@ -133,13 +135,13 @@ ID アクティビティを監視することにより、インシデントが�
 
 各コンピューターをクリックするとさらに詳細が表示され、フラグが設定されたセキュリティ イベントを確認することができます。
 
-### <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 このタイルは、基本的には Azure Security Center のダッシュボードにアクセスするためのショートカットです。 このソリューションの詳細については、 [Azure Security Center の概要](../security-center/security-center-get-started.md) に関するページを参照してください。
 
-## <a name="notable-issues"></a>[Notable Issues] (注目すべき問題)
-複数のオプションから成るこのグループの主な目的は、環境内で発生している問題を、重大、警告、情報に分類して簡単に確認できるようにすることです。 これらの問題を視覚化したものが [Active issue type] (アクティブな問題の種類) タイルですが、このタイルでは問題ごとの詳細を確認することはできません。詳細を確認するには、このタイルの下部の、問題の名前 ([NAME] (名前))、問題によって発生したオブジェクトの数 ([COUNT] (カウント))、問題の重大度 ([SEVERITY] (重要度)) が表示されている部分を使用する必要があります。
+## <a name="notable-issues"></a>[Notable Issues] \(注目すべき問題)
+複数のオプションから成るこのグループの主な目的は、環境内で発生している問題を、重大、警告、情報に分類して簡単に確認できるようにすることです。 これらの問題を視覚化したものが [Active issue type] \(アクティブな問題の種類) タイルですが、このタイルでは問題ごとの詳細を確認することはできません。詳細を確認するには、このタイルの下部の、問題の名前 ([NAME] \(名前))、問題によって発生したオブジェクトの数 ([COUNT] \(カウント))、問題の重大度 ([SEVERITY] \(重要度)) が表示されている部分を使用する必要があります。
 
-![[Notable Issues] (注目すべき問題)](./media/oms-security-getting-started/oms-getting-started-fig10.JPG)
+![[Notable Issues] \(注目すべき問題)](./media/oms-security-getting-started/oms-getting-started-fig10.JPG)
 
 ご存じのとおり、これらの問題は既に **[セキュリティ ドメイン]** グループのさまざまな領域で取り上げられていました。このことからも、利用する環境において最も重要な問題を 1 つの場所で視覚化するという、このビューの目的が明確になっています。
 
@@ -148,7 +150,7 @@ ID アクティビティを監視することにより、インシデントが�
 
 ![Threat Intel](./media/oms-security-getting-started/oms-getting-started-fig12.png)
 
-また、このオプションをインシデント対応調査中に使用すると、評価を実行し、攻撃に関する詳細を入手できます。
+また、このオプションを[インシデント対応調査](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)中に使用すると、評価を実行し、攻撃に関する詳細を入手できます。
 
 > [!NOTE]
 > インシデント対応に OMS を使用する方法の詳細については、「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (インシデント対応に Azure Security Center と Microsoft Operations Management Suite を利用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」を参照してください。
@@ -182,10 +184,5 @@ ID アクティビティを監視することにより、インシデントが�
 * [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

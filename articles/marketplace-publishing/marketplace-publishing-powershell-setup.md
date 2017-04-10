@@ -1,12 +1,12 @@
 ---
-title: Set up PowerShell to create a VM for the Marketplace | Microsoft Docs
-description: Instructions for setting up Azure PowerShell and using it as an optional process flow to create VM images to deploy to, and sell on, the Azure Marketplace
+title: "Marketplace 向けの VM を作成するための PowerShell のセットアップ | Microsoft Docs"
+description: "Azure PowerShell をセットアップしてオプションのプロセス フローとして使用し、VM イメージを作成して Azure Marketplace にデプロイし、販売する方法を説明します"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: e19d6cda-76df-4e42-be84-c9fe47a636db
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,22 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2016
 ms.author: hascipio
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68be118bc40e3a62aad73cb43119f49415f5b6a9
+
 
 ---
-# <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Set up Azure PowerShell to create an offer for the Azure Marketplace
-For detailed information on how to set up PowerShell in Azure, see [How to install and configure Azure PowerShell](../powershell-install-configure.md). A simple approach is to use the certificate method, which downloads and imports a certificate needed for authentication. To obtain the needed certificate, use the **Get-AzurePublishSettingsFile** cmdlet. Save the file when you're prompted. To import the certificate into a PowerShell session, use the **Import-AzurePublishSettingsFile** cmdlet.
+# <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Azure Marketplace のプランを作成するための Azure PowerShell のセットアップ
+Azure で PowerShell をセットアップする方法の詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。 証明書方式を使用すると、認証に必要な証明書がダウンロードおよびインポートされるため簡単に処理できます。 必要な証明書を取得するには、 **Get-AzurePublishSettingsFile** コマンドレットを使用します。 求められたらファイルを保存します。 証明書を PowerShell セッションにインポートするには、 **Import-AzurePublishSettingsFile** コマンドレットを使用します。
 
-To configure and store the common Microsoft Azure subscription settings for the PowerShell session, use the **Set-AzureSubscription** and **Select-AzureSubscription** cmdlets:
+PowerShell セッション用の一般的な Microsoft Azure サブスクリプションの設定を構成して保存するには、**Set-AzureSubscription** コマンドレットと **Select-AzureSubscription** コマンドレットを使用します。
 
         Set-AzureSubscription -SubscriptionName “mySubName” -CurrentStorageAccountName “mystorageaccount”
         Select-AzureSubscription -SubscriptionName "mySubName" –Current
 
-The first command associates a default storage account with the subscription (needed for some VM provisioning operations).  The second makes the subscription the current one (recognized by other cmdlets).
+最初のコマンドは、既定のストレージ アカウントをサブスクリプションに関連付けます (一部の VM プロビジョニング操作に必要)。  2 番目のコマンドは、そのサブスクリプションを現在のサブスクリプションにします (他のコマンドレットによって認識される)。
 
-## <a name="see-also"></a>See also
-* [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
-* [Creating a virtual machine image for the Marketplace](marketplace-publishing-vm-image-creation.md)
+## <a name="see-also"></a>関連項目
+* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

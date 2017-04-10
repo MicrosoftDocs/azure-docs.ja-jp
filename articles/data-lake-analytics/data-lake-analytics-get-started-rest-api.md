@@ -7,16 +7,16 @@ author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e133d92-baaa-44c9-890c-ab2d85c91122
-ms.service: data-lake-store
+ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 02/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
+ms.sourcegitcommit: 2fea3686b1484406d31c5447c7d3d7e2451b827e
+ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
 
 
 ---
@@ -33,7 +33,7 @@ WebHDFS REST API と Data Lake Analytics REST API を使用して、Data Lake An
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory を使用して認証する
 Azure Active Directory を使用して認証する場合、2 つの方法があります。
 
-### <a name="enduser-authentication-interactive"></a>エンド ユーザー認証 (対話型)
+### <a name="end-user-authentication-interactive"></a>エンド ユーザー認証 (対話型)
 この方法を使用すると、アプリケーションはユーザーにログインを要求し、すべての操作がユーザーのコンテキストで実行されます。 
 
 対話型認証を行うには、次の手順に従います。
@@ -76,7 +76,7 @@ Azure Active Directory を使用して認証する場合、2 つの方法があ�
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
-### <a name="servicetoservice-authentication-noninteractive"></a>サービス間認証 (非対話型)
+### <a name="service-to-service-authentication-non-interactive"></a>サービス間認証 (非対話型)
 この方法を使用すると、操作を実行するための独自の資格情報をアプリケーションが提供します。 この場合、次に示すように POST 要求を発行する必要があります。 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -209,7 +209,7 @@ Data Lake Analytics アカウントを作成するには、Azure リソース �
         ]
     }
 
-## <a name="submit-usql-jobs"></a>U-SQL ジョブを送信する
+## <a name="submit-u-sql-jobs"></a>U-SQL ジョブを送信する
 次の Curl コマンドは、U-SQL ジョブを送信する方法を示しています。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
@@ -266,7 +266,7 @@ Data Lake Analytics アカウントを作成するには、Azure リソース �
     }
 
 
-## <a name="list-usql-jobs"></a>U-SQL ジョブを一覧表示する
+## <a name="list-u-sql-jobs"></a>U-SQL ジョブを一覧表示する
 次の Curl コマンドは、U-SQL ジョブを一覧表示する方法を示しています。
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
@@ -350,6 +350,6 @@ Data Lake Analytics アカウントを作成するには、Azure リソース �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

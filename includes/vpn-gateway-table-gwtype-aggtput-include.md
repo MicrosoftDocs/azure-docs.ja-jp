@@ -6,7 +6,7 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 | --- | --- | --- | --- | --- |
 | **Basic SKU (3)(5)** |100 Mbps |10 |500 Mbps |なし |
 | **Standard SKU (4)(5)** |100 Mbps |10 |1000 Mbps |はい |
-| ** SKU (4)** |200 Mbps |30 |2000 Mbps |はい |
+| **High Performance SKU (4)** |200 Mbps |30 |2000 Mbps |はい |
 
 * (1) VPN のスループットは、同一 Azure リージョン内の VNet 間での測定値に基づく大まかな推定値です。 インターネット経由でのクロスプレミス接続では、このスループットが保証されるわけではありません。 この値は、達成可能な最大スループットです。
 * (2) トンネルの数とは、RouteBased VPN を指しています。 PolicyBased VPN がサポートできるサイト間 VPN トンネルは 1 つのみです。
@@ -16,6 +16,6 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

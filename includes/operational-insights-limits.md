@@ -1,29 +1,30 @@
----
-title: Operational Insights 制限の表
-description: Operational Insights のシステム制限について説明します。
-services: operational-insights
-documentationcenter: NA
-author: bandersmsft
-manager: jwhit
-editor: ''
 
-ms.service: operational-insights
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 07/01/2015
-ms.author: banders
+>[!NOTE]
+>Log Analytics は、以前は Operational Insights と呼ばれていました。
+>
+>
 
----
-次の制限は、Operational Insights のサブスクリプションに適用されます。
+各サブスクリプションの Log Analytics リソースには、次の制限が適用されます。
 
-|  | 無料 | 標準 | プレミアム |
-| --- | --- | --- | --- |
-| 日次データ転送の上限 |500 MB<sup>1</sup> |なし |なし |
-| データ保持期間 |7 日 |1 か月 |12 か月 |
-| データ ストレージの上限 |500 MB * 7 日 = 3.5 GB |無制限 |無制限 |
+| リソース | 既定の制限 | 説明
+| --- | --- | --- |
+| サブスクリプションあたりの無料のワークスペースの数 | 10 | この制限を増やすことはできません。 |
+| サブスクリプションあたりの有料のワークスペースの数 | 該当なし | リソース グループ内のリソースの数とサブスクリプションあたりのリソース グループの数によって制限されます | 
 
-<sup>1</sup>500 MB の 1 日のデータ転送の上限に達した場合、データの分析は停止し、翌日のはじめに再開されます。1 日は UTC に基づきます。
 
-<!---HONumber=AcomDC_0706_2016-->
+Log Analytics の各ワークスペースには次の制限が適用されます。
+
+|  | 無料 | Standard | プレミアム | スタンドアロン | OMS |
+| --- | --- | --- | --- | --- | --- |
+| 1 日に収集されるデータ量 |500 MB<sup>1</sup> |なし |なし | なし | なし
+| データ保持期間 |7 日 |1 か月 |12 か月 | 1 か月<sup>2</sup> | 1 か月<sup>2</sup>|
+
+<sup>1</sup> 500 MB の 1 日のデータ転送の上限に達した場合、データの分析は停止し、翌日の初めに再開されます。 1 日は UTC に基づきます。
+
+<sup>2</sup> スタンドアロンと OMS 価格プランのデータ保有期間は 730 日間に増やすことができます。
+
+| カテゴリ | 制限 | 説明
+| --- | --- | --- |
+| データ コレクター API | 1 回の投稿の最大サイズは 30 MB<br>フィールド値の最大サイズは 32 KB | 大量の場合は複数の投稿に分割します<br>32 KB を超えるフィールドは切り詰められます。 |
+| Search API | 非集計データの場合に返されるレコードは&5;,000 件<br>集計データの場合に返されるのは&500;,000 件 | 集計データは、`measure` コマンドを含む検索です
+ 

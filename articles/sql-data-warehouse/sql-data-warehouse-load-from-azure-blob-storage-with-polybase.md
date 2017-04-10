@@ -1,48 +1,55 @@
 ---
-title: Load data from Azure blob storage into SQL Data Warehouse (PolyBase) | Microsoft Docs
-description: Learn how to use PolyBase to load data from Azure blob storage into SQL Data Warehouse. Load a few tables from public data into the Contoso Retail Data Warehouse schema.
+title: "Azure Blob から Azure Data Warehouse に読み込む | Microsoft Docs"
+description: "PolyBase を使用して、Azure Blob Storage から SQL Data Warehouse にデータを読み込む方法について説明します。 パブリック データから Contoso Retail Data Warehouse スキーマにテーブルをいくつか読み込みます。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 348605fed8101cf83cbcfb559c71f34407692f7a
+ms.lasthandoff: 01/24/2017
+
+
 
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Load data from Azure blob storage into SQL Data Warehouse (PolyBase)
+# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)
 > [!div class="op_single_selector"]
 > * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
 > * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 > 
 > 
 
-Use PolyBase and T-SQL commands to load data from Azure blob storage into Azure SQL Data Warehouse. 
+PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込みます。 
 
-To keep it simple, this tutorial loads two tables from a public Azure Storage Blob into the Contoso Retail Data Warehouse schema. To load the full data set, run the example [Load the full Contoso Retail Data Warehouse][Load the full Contoso Retail Data Warehouse] from the Microsoft SQL Server Samples repository.
+このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の&2; つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む][Load the full Contoso Retail Data Warehouse]例を実行します。
 
-In this tutorial you will:
+このチュートリアルでは、次のことについて説明します。
 
-1. Configure PolyBase to load from Azure blob storage
-2. Load public data into your database
-3. Perform optimizations after the load is finished.
+1. Azure Blob Storage から読み込むために PolyBase を構成する
+2. パブリック データをデータベースに読み込む
+3. 読み込みの完了後、最適化を実行する。
 
-## <a name="before-you-begin"></a>Before you begin
-To run this tutorial, you need an Azure account that already has a SQL Data Warehouse database. If you don't already have this, see [Create a SQL Data Warehouse][Create a SQL Data Warehouse].
+## <a name="before-you-begin"></a>開始する前に
+このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。 アカウントがない場合は、「[SQL Data Warehouse の作成][Create a SQL Data Warehouse]」をご覧ください。
 
-## <a name="1-configure-the-data-source"></a>1. Configure the data source
-PolyBase uses T-SQL external objects to define the location and attributes of the external data. The external object definitions are stored in SQL Data Warehouse. The data itself is stored externally.
+## <a name="1-configure-the-data-source"></a>1.データ ソースの構成
+PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Data Warehouse に格納されます。 データ自体は外部に保存されます。
 
-### <a name="11-create-a-credential"></a>1.1. Create a credential
-**Skip this step** if you are loading the Contoso public data. You don't need secure access to the public data since it is already accessible to anyone.
+### <a name="11-create-a-credential"></a>1.1. 資格情報を作成する
+**この手順をスキップ** してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
 
-**Don't skip this step** if you are using this tutorial as a template for loading your own data. To access data through a credential, use the following script to create a database-scoped credential, and then use it when defining the location of the data source.
+**この手順をスキップしないでください** 。 資格情報を使用してデータにアクセスするには、次のスクリプトを使用してデータベース スコープの資格情報を作成し、データ ソースの場所を定義するときに、その資格情報を使用します。
 
 ```sql
 -- A: Create a master key.
@@ -77,10 +84,10 @@ WITH (
 );
 ```
 
-Skip to step 2.
+スキップして手順 2. に進みます。
 
-### <a name="12-create-the-external-data-source"></a>1.2. Create the external data source
-Use this [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] command to store the location of the data, and the type of data. 
+### <a name="12-create-the-external-data-source"></a>1.2. 外部データ ソースを作成する
+この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -92,40 +99,40 @@ WITH
 ```
 
 > [!IMPORTANT]
-> If you choose to make your azure blob storage containers public, remember that as the data owner you will be charged for data egress charges when data leaves the data center. 
+> Azure Blob Storage コンテナーをパブリックにすると、データがデータ センターから発信されるときに、データ所有者としてデータ送信料金が課金されることに注意してください。 
 > 
 > 
 
-## <a name="2-configure-data-format"></a>2. Configure data format
-The data is stored in text files in Azure blob storage, and each field is separated with a delimiter. Run this [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] command to specify the format of the data in the text files. The Contoso data is uncompressed and pipe delimited.
+## <a name="2-configure-data-format"></a>2.データ形式の構成
+データは Azure Blob Storage 内のテキスト ファイルに格納され、各フィールドは区切り記号で区切られます。 この [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] コマンドを実行して、テキスト ファイル内のデータ形式を指定します。 Contoso データは圧縮されず、パイプで区切られます。
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
 WITH 
 (   FORMAT_TYPE = DELIMITEDTEXT
-,   FORMAT_OPTIONS  (   FIELD_TERMINATOR = '|'
-                    ,   STRING_DELIMITER = ''
-                    ,   DATE_FORMAT      = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,   USE_TYPE_DEFAULT = FALSE 
+,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
+                    ,    STRING_DELIMITER = ''
+                    ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
+                    ,    USE_TYPE_DEFAULT = FALSE 
                     )
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. Create the external tables
-Now that you have specified the data source and file format, you are ready to create the external tables. 
+## <a name="3-create-the-external-tables"></a>3.外部テーブルの作成
+データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Create a schema for the data.
-To create a place to store the Contoso data in your database, create a schema.
+### <a name="31-create-a-schema-for-the-data"></a>3.1. データのスキーマを作成する
+データベースの Contoso データを格納する場所を作成するには、スキーマを作成します。
 
 ```sql
 CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. Create the external tables.
-Run this script to create the DimProduct and FactOnlineSales external tables. All we are doing here is defining column names and data types, and binding them to the location and format of the Azure blob storage files. The definition is stored in SQL Data Warehouse and the data is still in the Azure Storage Blob.
+### <a name="32-create-the-external-tables"></a>3.2. 外部テーブルを作成する
+このスクリプトを実行して、DimProduct 外部テーブルと FactOnlineSales 外部テーブルを作成します。 ここでは列名とデータ型を定義し、Azure Blob Storage ファイルの場所と形式にバインドします。 定義は SQL Data Warehouse に格納されますが、データはまだ Azure Storage BLOB にあります。
 
-The  **LOCATION** parameter is the folder under the root folder in the Azure Storage Blob. Each table is in a different folder.
+**LOCATION** パラメーターは、Azure Storage BLOB のルート フォルダーの下にあるフォルダーです。 各テーブルは、別のフォルダーにあります。
 
 ```sql
 
@@ -210,23 +217,23 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. Load the data
-There's different ways to access external data.  You can query data directly from the external table, load the data into new database tables, or add external data to existing database tables.  
+## <a name="4-load-the-data"></a>4.データを読み込む
+外部データにはさまざまな方法でアクセスできます。  外部テーブルのデータに直接クエリを実行できます。また、データを新しいデータベース テーブルに読み込んだり、外部データを既存のデータベース テーブルに追加したりできます。  
 
-### <a name="41-create-a-new-schema"></a>4.1. Create a new schema
-CTAS creates a new table that contains data.  First, create a schema for the contoso data.
+### <a name="41-create-a-new-schema"></a>4.1. 新しいスキーマを作成する
+CTAS により、データを含む新しいテーブルが作成されます。  最初に、contoso データのスキーマを作成します。
 
 ```sql
 CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. Load the data into new tables
-To load data from Azure blob storage and save it in a table inside of your database, use the [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you have just created.To load the data into new tables, use one [CTAS][CTAS] statement per table. 
+### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
+Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使います。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを使います。データを新しいテーブルに読み込むには、テーブルごとに&1; つの [CTAS][CTAS] ステートメントを使います。 
 
-CTAS creates a new table and populates it with the results of a select statement. CTAS defines the new table to have the same columns and data types as the results of the select statement. If you select all the columns from an external table, the new table will be a replica of the columns and data types in the external table.
+CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
-In this example, we create both the dimension and the fact table as hash distributed tables. 
+この例では、ディメンションとファクト テーブルの両方を、ハッシュ分散テーブルとして作成します。 
 
 ```sql
 SELECT GETDATE();
@@ -236,15 +243,15 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 Track the load progress
-You can track the progress of your load using dynamic management views (DMVs). 
+### <a name="43-track-the-load-progress"></a>4.3 読み込みの進行状況を追跡する
+読み込みの進捗状況を追跡するには、動的管理ビュー (DMV) を使用します。 
 
 ```sql
 -- To see all requests
 SELECT * FROM sys.dm_pdw_exec_requests;
 
 -- To see a particular request identified by its label
-SELECT * FROM sys.dm_pdw_exec_requests as r;
+SELECT * FROM sys.dm_pdw_exec_requests as r
 WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
       OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
@@ -272,10 +279,10 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. Optimize columnstore compression
-By default, SQL Data Warehouse stores the table as a clustered columnstore index. After a load completes, some of the data rows might not be compressed into the columnstore.  There's a variety of reasons why this can happen. To learn more, see [manage columnstore indexes][manage columnstore indexes].
+## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
 
-To optimize query performance and columnstore compression after a load, rebuild the table to force the columnstore index to compress all the rows. 
+読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
 
 ```sql
 SELECT GETDATE();
@@ -285,14 +292,14 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-For more information on maintaining columnstore indexes, see the [manage columnstore indexes][manage columnstore indexes] article.
+列ストア インデックスの保守について詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
 
-## <a name="6-optimize-statistics"></a>6. Optimize statistics
-It is best to create single-column statistics immediately after a load. There are some choices for statistics. For example, if you create single-column statistics on every column it might take a long time to rebuild all the statistics. If you know certain columns are not going to be in query predicates, you can skip creating statistics on those columns.
+## <a name="6-optimize-statistics"></a>6.統計の最適化
+読み込みの直後に単一列の統計を作成することをお勧めします。 統計には選択肢がいくつかあります。 たとえば、すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。
 
-If you decide to create single-column statistics on every column of every table, you can use the stored procedure code sample `prc_sqldw_create_stats` in the [statistics][statistics] article.
+すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事][statistics]のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
 
-The following example is a good starting point for creating statistics. It creates single-column statistics on each column in the dimension table, and on each joining column in the fact tables. You can always add single or multi-column statistics to other fact table columns later on.
+次の例は、統計の作成の出発点として適しています。 これによりディメンション テーブルの各列と、ファクト テーブルの各結合列に、単一列の統計が作成されます。 他のファクト テーブルの列には、後で単一列または複数列の統計をいつでも追加できます。
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -336,10 +343,10 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_PromotionKey] ON [cso].[FactOnlineSa
 CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]([StoreKey]);
 ```
 
-## <a name="achievement-unlocked"></a>Achievement unlocked!
-You have successfully loaded public data into Azure SQL Data Warehouse. Great job!
+## <a name="achievement-unlocked"></a>結果
+パブリック データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
-You can now start querying the tables using queries like the following:
+次のようなクエリを使用すると、テーブルに対するクエリ実行を開始できます。
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -349,8 +356,8 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>Next steps
-To load the full Contoso Retail Data Warehouse data, use the script in For more development tips, see [SQL Data Warehouse development overview][SQL Data Warehouse development overview].
+## <a name="next-steps"></a>次のステップ
+Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使います。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要に関する記事][SQL Data Warehouse development overview]をご覧ください。
 
 <!--Image references-->
 
@@ -373,9 +380,4 @@ To load the full Contoso Retail Data Warehouse data, use the script in For more 
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

@@ -1,12 +1,12 @@
 ---
-title: Use twin properties | Microsoft Docs
-description: This tutorial shows you how to use twin properties
+title: "Azure IoT Hub デバイス ツインのプロパティの使用 (.NET/Node) | Microsoft Docs"
+description: "Azure IoT Hub デバイス ツインを使用してデバイスを構成する方法。 Azure IoT device SDK for Node.js を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、デバイス ツインを使用するデバイス構成を変更するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 3c627476-f982-43c9-bd17-e0698c5d236d
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article
@@ -14,46 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
+translationtype: Human Translation
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
+
 
 ---
-# <a name="tutorial:-use-desired-properties-to-configure-devices-(preview)"></a>Tutorial: Use desired properties to configure devices (preview)
+# <a name="use-desired-properties-to-configure-devices"></a>必要なプロパティを使用してデバイスを構成する
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-At the end of this tutorial, you will have two Node.js console applications:
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
-* **SimulateDeviceConfiguration.js**, a simulated device app that waits for a desired configuration update and reports the status of a simulated configuration update process.
-* **SetDesiredConfigurationAndQuery**, a .NET console app meant to be run from the back end, which sets the desired configuration on a device and queries the configuration update process.
+* **SimulateDeviceConfiguration.js**: 必要な構成の更新を待機し、シミュレートされた構成の更新プロセスの状態を報告する、シミュレートされたデバイス アプリです。
+* **SetDesiredConfigurationAndQuery**: .NET バックエンド アプリで、デバイス上に目的の構成を設定し、構成更新プロセスをクエリします。
 
 > [!NOTE]
-> The article [IoT Hub SDKs][lnk-hub-sdks] provides information about the various SDKs that you can use to build both device and back-end applications.
+> デバイス アプリとバックエンド アプリ両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDK][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
-To complete this tutorial you need the following:
+このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015.
-* Node.js version 0.10.x or later.
-* An active Azure account. (If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk-free-trial].)
+* Microsoft Visual Studio 2015
+* Node.js バージョン 0.10.x 以降。
+* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-If you followed the [Get started with device twins][lnk-twin-tutorial] tutorial, you already have a device management enabled hub and a device identity called **myDeviceId**; and you can skip to the [Create the simulated device app][lnk-how-to-configure-createapp] section.
+[デバイス ツインの概要][lnk-twin-tutorial]に関するチュートリアルを行った場合は、既に IoT ハブと、**myDeviceId** というデバイス ID があるため、「[シミュレートされたデバイス アプリを作成する][lnk-how-to-configure-createapp]」セクションに進んでください。
 
-[!INCLUDE [iot-hub-get-started-create-hub-pp](../../includes/iot-hub-get-started-create-hub-pp.md)]
+[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-## <a name="create-the-simulated-device-app"></a>Create the simulated device app
-In this section, you create a Node.js console app that connects to your hub as **myDeviceId**, waits for a desired configuration update and then reports updates on the simulated configuration update process.
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-1. Create a new empty folder called **simulatedeviceconfiguration**. In the **simulatedeviceconfiguration** folder, create a new package.json file using the following command at your command-prompt. Accept all the defaults:
+## <a name="create-the-simulated-device-app"></a>シミュレートされたデバイスのアプリを作成する
+このセクションでは、ハブに **myDeviceId** として接続し、必要な構成の更新を待機して、シミュレートされた構成の更新プロセスの情報を報告する、Node.js コンソール アプリを作成します。
+
+1. **simulatedeviceconfiguration** という名前の新しい空のフォルダーを作成します。 **simulatedeviceconfiguration** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
     ```
     npm init
     ```
-2. At your command-prompt in the **simulatedeviceconfiguration** folder, run the following command to install the **azure-iot-device**, and **azure-iot-device-mqtt** package:
+2. コマンド プロンプトで、**simulatedeviceconfiguration** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
-    npm install azure-iot-device@dtpreview azure-iot-device-mqtt@dtpreview --save
+    npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Using a text editor, create a new **SimulateDeviceConfiguration.js** file in the **simulatedeviceconfiguration** folder.
-4. Add the following code to the **SimulateDeviceConfiguration.js** file, and substitute the **{device connection string}** placeholder with the connection string you copied when you created the **myDeviceId** device identity:
+3. テキスト エディターを使用して、**simulatedeviceconfiguration** フォルダーに新しい **SimulateDeviceConfiguration.js** ファイルを作成します。
+4. **SimulateDeviceConfiguration.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -87,15 +93,15 @@ In this section, you create a Node.js console app that connects to your hub as *
             }
         });
    
-    The **Client** object exposes all the methods required to interact with device twins from the device. The previous code, after it initializes the **Client** object, retrieves the twin for **myDeviceId**, and attaches a handler for the update on desired properties. The handler verifies that there is an actual configuration change request by comparing the configIds, then invokes a method that starts the configuration change.
+    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、必要なプロパティの更新のハンドラーをアタッチします。 ハンドラーは、configIds を比較して実際に構成の変更リクエストがあることを確認してから、構成の変更を開始するメソッドを呼び出します。
    
-    Note that for the sake of simplicity, the previous code uses a hard-coded default for the inital configuration. A real app would probably load that configuration from a local storage.
+    わかりやすくするため、前のコードでは初期構成にハードコーディングされた既定値を使用しています。 実際のアプリでは、おそらくローカル ストレージから構成を読み込みます。
    
    > [!IMPORTANT]
-   > Desired property change events are always emitted once at device connection, make sure to check that there is an actual change in the desired properties before performing any action.
+   > 目的のプロパティの変更イベントは常にデバイスの接続時に発行されるため、何らかの操作を行う前に、目的のプロパティに実際に変更点があることをかならずご確認ください。
    > 
    > 
-5. Add the following methods before the `client.open()` invocation:
+5. `client.open()` の呼び出しの前に次のメソッドを追加します。
    
         var initConfigChange = function(twin) {
             var currentTelemetryConfig = twin.properties.reported.telemetryConfig;
@@ -136,40 +142,40 @@ In this section, you create a Node.js console app that connects to your hub as *
             });
         };
    
-    The **initConfigChange** method updates reported properties on the local twin object with the config update request and sets the status to **Pending**, then updates the device twin on the service. After successfully updating the twin, it simulates a long running process that terminates in the execution of **completeConfigChange**. This method updates the local twin's reported properties setting the status to **Success** and removing the **pendingConfig** object. It then updates the twin on the service.
+    **initConfigChange** メソッドは、構成の更新要求を使用してローカル デバイス ツイン オブジェクトの報告されるプロパティを更新し、状態を**保留中**に設定し、サービス上のデバイス ツインを更新します。 デバイス ツインを正常に更新できたら、**completeConfigChange** を実行して停止する、長期間実行していたプロセスをシミュレートします。 このメソッドは、ローカルの報告されるプロパティを更新し、状態を**成功**に設定して、**pendingConfig** オブジェクトを削除します。 その後、サービス上のデバイス ツインを更新します。
    
-    Note that, to save bandwidth, reported properties are updated by specifying only the properties to be modified (named **patch** in the above code), instead of replacing the whole document.
+    帯域幅を節約するため、報告されたプロパティの更新は、ドキュメント全体を置き換えるのではなく、変更するプロパティのみを指定して行われます (上のコードでは **patch**)。
    
    > [!NOTE]
-   > This tutorial does not simulate any behavior for concurrent configuration updates. Some configuration update processes might be able to accommodate changes of target configuration while the update is running, others might have to queue them, and others could reject them with an error condition. Make sure to consider the desired behavior for your specific configuration process, and add the appropriate logic before initiating the configuration change.
+   > このチュートリアルでは、同時実行の構成の更新動作はシミュレートしません。 一部の構成更新プロセスでは、更新の実行中に対象の構成に変更を加えることができますが、場合によってはキューに入れる必要がある場合や、エラー条件で拒否されることがあります。 お使いの構成プロセスに必要な動作を考慮し、構成の変更を開始する前に適切なロジックを追加するようにしてください。
    > 
    > 
-6. Run the device app:
+6. デバイス アプリを実行する:
    
         node SimulateDeviceConfiguration.js
    
-    You should see the message `retrieved device twin`. Keep the app running.
+    `retrieved device twin` というメッセージが表示されます。 そのままアプリを実行します。
 
-## <a name="create-the-service-app"></a>Create the service app
-In this section, you will create a Node.js console app that updates the *desired properties* on the twin associated with **myDeviceId** with a new telemetry configuration object. It then queries the device twins stored in the hub and shows the difference between the desired and reported configurations of the device.
+## <a name="create-the-service-app"></a>サービス アプリケーションを作成する
+このセクションでは、新しいテレメトリの構成オブジェクトを使用して、**myDeviceId** に関連付けられたデバイス ツインの*必要なプロパティ*を更新する、.NET コンソール アプリを作成します。 その後このアプリでは、IoT Hub に格納されているデバイス ツインにクエリを実行し、デバイスの必要な構成と報告される構成の違いを示します。
 
-1. In Visual Studio, add a Visual C# Windows Classic Desktop project to the current solution by using the **Console Application** project template. Name the project **SetDesiredConfigurationAndQuery**.
+1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **SetDesiredConfigurationAndQuery** という名前を付けます。
    
     ![New Visual C# Windows Classic Desktop project][img-createapp]
-2. In Solution Explorer, right-click the **SetDesiredConfigurationAndQuery** project, and then click **Manage Nuget Packages**.
-3. In the **Nuget Package Manager** window, make sure that **Include prerelease** is checked, search for **microsoft.azure.devices**, select **Install** to install the the *prerelease* version of the **Microsoft.Azure.Devices** package, and accept the terms of use. This procedure downloads, installs, and adds a reference to the [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] Nuget package and its dependencies.
+2. ソリューション エクスプローラーで **SetDesiredConfigurationAndQuery** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
    
-    ![Nuget Package Manager window][img-servicenuget]
-4. Add the following `using` statements at the top of the **Program.cs** file:
+    ![NuGet Package Manager window][img-servicenuget]
+4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         using System.Threading;
         using Newtonsoft.Json;
-5. Add the following fields to the **Program** class. Replace the placeholder value with the connection string for the IoT hub that you created in the previous section.
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-6. Add the following method to the **Program** class:
+6. **Program** クラスに次のメソッドを追加します。
    
         static private async Task SetDesiredConfigurationAndQuery()
         {
@@ -186,7 +192,7 @@ In this section, you will create a Node.js console app that updates the *desired
                 };
    
             await registryManager.UpdateTwinAsync(twin.DeviceId, JsonConvert.SerializeObject(patch), twin.ETag);
-            Console.WriteLine("Updated desired state");
+            Console.WriteLine("Updated desired configuration");
    
             while (true)
             {
@@ -203,34 +209,34 @@ In this section, you will create a Node.js console app that updates the *desired
             }
         }
    
-    The **Registry** object exposes all the methods required to interact with device twins from the service. The previous code, after it initializes the **Registry** object, retrieves the twin for **myDeviceId**, and updates its desired properties with a new telemetry configuration object.
-    After that, every 10 seconds, it queries the twins stored in the hub and prints the desired and reported telemetry configurations. Refer to the [IoT Hub query language][lnk-query] to learn how to generate rich reports across all your devices.
+    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Registry** オブジェクトを初期化した後、**myDeviceId** のデバイス ツインを取得して、新しいテレメトリ構成オブジェクトを使って必要なプロパティを更新します。
+    この後、10 秒毎に IoT Hub に格納されたデバイス ツインのクエリを実行し、目的のテレメトリ構成と報告されたテレメトリ構成を出力します。 すべてのデバイスに関する豊富なレポートを生成する方法については、[IoT Hub のクエリ言語][lnk-query]に関するページを参照してください。
    
    > [!IMPORTANT]
-   > This application queries IoT Hub every 10 seconds for illustrative purposes. Use queries to generate user-facing reports across many devices, and not to detect changes. If your solution requires real-time notifications of device events use [device-to-cloud messages][lnk-d2c].
+   > このアプリケーションでは、例示を目的として 10 秒ごとに IoT Hub にクエリを実行します。 変更を検出するためではなく、あらゆるデバイスのユーザー向けのレポートを生成するためにクエリを使用します。 ソリューションにデバイス イベントのリアルタイム通知が必要な場合は、[デバイスからクラウドへのメッセージ][lnk-d2c]を使用します。
    > 
    > 
-7. Finally, add the following lines to the **Main** method:
+7. 最後に、 **Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         SetDesiredConfigurationAndQuery();
         Console.WriteLine("Press any key to quit.");
         Console.ReadLine();
-8. With **SimulateDeviceConfiguration.js** running, run the .NET application from Visual Studio using **F5** and you should see the reported configuration change from **Success** to **Pending** to **Success** again with the new active send frequency of five minutes instead of 24 hours.
+8. **SimulateDeviceConfiguration.js** を実行した状態で、Visual Studio から **F5** を使用して .NET アプリケーションを実行します。報告される構成が、「**成功**」から「**保留中**」に変わり、24 時間ではなく 5分の新しいアクティブな送信頻度を使って再度「**成功**」に変わります。
    
    > [!IMPORTANT]
-   > There is a delay of up to a minute between the device report operation and the query result. This is to enable the query infrastructure to work at very high scale. To retrieve consistent views of a single twin use the **getDeviceTwin** method in the **Registry** class.
+   > デバイスのレポート操作とクエリの結果までには、最大 1 分間の遅延が生じます。 これは、非常に大きな規模でクエリのインフラストラクチャを動作させるためです。 1 つのデバイス ツインの一貫したビューを取得するには、**Registry** クラスで **getDeviceTwin** メソッドを使用します。
    > 
    > 
 
-## <a name="next-steps"></a>Next steps
-In this tutorial, you set a desired configuration as *desired properties* from the back end, and wrote a device app to detect that change and simulate a multi-step update process reporting its status as *reported properties* to the twin.
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、必要な構成を*必要なプロパティ*としてソリューション バックエンドから設定し、その変更を検出して、報告されるプロパティを通してその状態を報告するマルチステップ更新プロセスをシミュレートするデバイス アプリを記述しました。
 
-Use the following resources to learn how to:
+詳細については、次のリソースをご覧ください。
 
-* send telemetry from devices with the [Get started with IoT Hub][lnk-iothub-getstarted] tutorial,
-* schedule or perform operations on large sets of devices see the [Use jobs to schedule and broadcast device operations][lnk-schedule-jobs] tutorial.
-* control devices interactively (such as turning on a fan from a user-controlled app), with the [Use direct methods][lnk-methods-tutorial] tutorial.
+* [IoT Hub の概要][lnk-iothub-getstarted]に関するチュートリアルでデバイスからテレメトリを送信する。
+* 多数のデバイスで操作をスケジュールまたは実行するには、[ジョブのスケジュールとブロードキャスト][lnk-schedule-jobs]に関するチュートリアルを参照してください。
+* [ダイレクト メソッドの使用][lnk-methods-tutorial]に関するチュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-twin-getstarted/servicesdknuget.png
@@ -239,7 +245,7 @@ Use the following resources to learn how to:
 <!-- links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/1.1.0-preview-004
+[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/1.1.0/
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-query]: iot-hub-devguide-query-language.md
@@ -247,19 +253,20 @@ Use the following resources to learn how to:
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
-[lnk-schedule-jobs]: iot-hub-schedule-jobs.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-schedule-jobs]: iot-hub-node-node-schedule-jobs.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
-[lnk-methods-tutorial]: iot-hub-c2d-methods.md
+[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 [lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

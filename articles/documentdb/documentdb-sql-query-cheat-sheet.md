@@ -1,44 +1,47 @@
 ---
-title: DocumentDB SQL cheat sheet PDF | Microsoft Docs
-description: Printable SQL cheat sheet PDF that helps you use DocumentDB's SQL syntax to query JSON documents in its NoSQL database - SQL quick reference
-keywords: sql cheat sheet, sql cheat sheet pdf, sql query cheat sheet
+title: "DocumentDB SQL チート シート PDF | Microsoft Docs"
+description: "DocumentDB の SQL 構文を使用して NoSQL データベースの JSON ドキュメントに対してクエリを実行する際に役立つ、印刷可能な SQL チート シート PDF - SQL クイック リファレンス"
+keywords: "sql チート シート, sql チート シート pdf, sql クエリ チート シート"
 services: documentdb
-documentationcenter: ''
+documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: monicar
-
+ms.assetid: fdbdbc39-5a46-4129-b4ed-b049d1c9ccab
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: 82ac3feb64c688a372d2b6d41a259d7126df44c1
+ms.openlocfilehash: 68968f3300ff783a526469274d07ba524b7d3569
+ms.lasthandoff: 02/04/2017
+
 
 ---
-# <a name="documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL query cheat sheet PDF
-The **DocumentDB SQL Query Cheat Sheet** helps you quickly write queries for DocumentDB data by displaying common  database queries, keywords, built-in functions, and operators in an easy to print PDF reference sheet. 
+# <a name="documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL クエリのチート シート PDF
+**DocumentDB SQL クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、キーワード、組み込み関数、演算子が記載されており、これを利用すれば DocumentDB データのクエリをすばやく記述できます。 
 
-DocumentDB supports relational, hierarchical,  and spatial querying of JSON documents using [SQL](documentdb-sql-query.md) without specifying a schema or secondary indexes. In addition to the standard ANSI-SQL keywords and operators, DocumentDB supports JavaScript user defined functions (UDFs), JavaScript operators, and a multitude of built-in functions.
+DocumentDB は、[SQL](documentdb-sql-query.md) を利用した JSON ドキュメントのリレーショナル クエリ、階層クエリ、空間クエリにサポートしています。スキーマやセカンダリ インデックスを指定する必要がありません。 標準 ANSI-SQL のキーワードと演算子に加え、DocumentDB は JavaScript のユーザー定義関数 (UDF)、JavaScript 演算子、さまざまな組み込み関数に対応しています。
 
-## <a name="download-the-documentdb-sql-query-cheat-sheet-pdf"></a>Download the DocumentDB SQL query cheat sheet PDF
-Write your queries faster by downloading the SQL query cheat sheet and using it as a quick reference. The SQL cheat sheet PDF shows common queries used to retrieve data from two example JSON documents. To keep it nearby, you can print the single-sided SQL query cheat sheet in page letter size (8.5 x 11 in.).
+## <a name="download-the-documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL クエリのチート シート PDF のダウンロード
+SQL クエリ チート シートをダウンロードし、それをクイック リファレンスとして利用し、クエリを短時間で記述します。 SQL チート シート PDF には&2; つのサンプル JSON ドキュメントからデータを取得するための共通クエリが表示されます。 片面 SQL クエリ チート シートをページ レター サイズ (8.5 x 11 インチ) で印刷し、手元に置いておくことができます。
 
-**Download the SQL cheat sheet here: [Microsoft Azure DocumentDB SQL cheat sheet](http://go.microsoft.com/fwlink/?LinkId=623215)**
+**SQL チート シートはここでダウンロードします: [Microsoft Azure DocumentDB SQL チート シート](http://go.microsoft.com/fwlink/?LinkId=623215)**
 
-![DocumentDB SQL query cheat sheet: A quick reference PDF to the SQL syntax supported by DocumentDB - SQL cheat sheet, SQL cheat sheet PDF, SQL quick reference][cheat-sheet]
+![DocumentDB SQL クエリ チート シート: DocumentDB によってサポートされる SQL 構文のクイック リファレンス PDF - SQL チート シート、SQL チート シート PDF、SQL クイック リファレンス][cheat-sheet]
 
 [cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
-## <a name="more-help-with-writing-sql-queries"></a>More help with writing SQL queries
-* For a walk through of the query options available in DocumentDB, see [Query DocumentDB](documentdb-sql-query.md).
-* For the related reference documentation, see [DocumentDB SQL Query Language](https://msdn.microsoft.com/library/azure/dn782250.aspx).
+## <a name="more-help-with-writing-sql-queries"></a>SQL クエリの記述に関するその他のヘルプ
+* DocumentDB で利用できるクエリ オプションのチュートリアルについては、「 [DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
+* 関連リファレンス ドキュメントについては、「 [DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
-## <a name="release-notes"></a>Release notes
-Updated on 7/29/2016 to include TOP.
-
-<!--HONumber=Oct16_HO2-->
+## <a name="release-notes"></a>リリース ノート
+TOP を含めるために 2016 年 7 月 29 日に更新されました。
 
 

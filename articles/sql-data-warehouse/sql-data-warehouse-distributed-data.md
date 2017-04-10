@@ -1,75 +1,79 @@
 ---
-title: Distributed data and distributed table options for the Massively Parallel Processing (MPP) systems of SQL Data Warehouse and Parallel Data Warehouse | Microsoft Docs
-description: Learn how data is distributed for Massively Parallel Processing (MPP) and the options for distributing tables in Azure SQL Data Warehouse and Parallel Data Warehouse.
+title: "Azure SQL Data Warehouse での分散データの概要 | Microsoft Docs"
+description: "超並列処理 (MPP) でのデータ分散方法および Azure SQL Data Warehouse と Parallel Data Warehouse でのテーブル分散オプションについて説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: bae494a6-7ac5-4c38-8ca3-ab2696c63a9f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>Distributed data and distributed tables for Massively Parallel Processing (MPP)
-Learn how user data is distributed in Azure SQL Data Warehouse and Parallel Data Warehouse, which are Microsoft's Massively Parallel Processing (MPP) systems. Designing your data warehouse to use distributed data effectively helps you to achieve the query processing benefits of the MPP architecture. A few database design choices can have a significant impact on improving query performance.  
+# <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>超並列処理 (MPP) 用の分散データと分散テーブル
+Azure SQL Data Warehouse および Parallel Data Warehouse でのユーザー データの分散方法について説明します。これらは、Microsoft の超並列処理 (MPP) システムです。 分散データを効率的に使用するようにデータ ウェアハウスを設計すると、MPP アーキテクチャのクエリ処理のメリットを実現するのに役立ちます。 いくつかのデータベース設計の選択は、クエリのパフォーマンス向上に大きな影響を与えます。  
 
 > [!NOTE]
-> Azure SQL Data Warehouse and Parallel Data Warehouse use the same Massively Parallel Processing (MPP) design, but they have a few differences because of the underlying platform. SQL Data Warehouse is a Platform as a Service (PaaS) that runs on Azure. Parallel Data Warehouse runs on Analytics Platform System (APS) which is an on-premises appliance that runs on Windows Server.
+> Azure SQL Data Warehouse と Parallel Data Warehouse は同じ超並列処理 (MPP) デザインを使用しますが、基になっているプラットフォームのためにいくつかの違いがあります。 SQL Data Warehouse は、Azure 上で実行するサービスとしてのプラットフォーム (PaaS) です。 Parallel Data Warehouse は、Windows Server 上で実行するオンプレミスのアプリケーションである Analytics Platform System (APS) で実行します。
 > 
 > 
 
-## <a name="what-is-distributed-data"></a>What is distributed data?
-In SQL Data Warehouse and Parallel Data Warehouse, distributed data refers to user data that is stored in multiple locations across the MPP system. Each of those locations functions as an independent storage and processing unit that runs queries on its portion of the data. Distributed data is fundamental to running queries in parallel to achieve high query performance.
+## <a name="what-is-distributed-data"></a>分散データとは
+SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MPP システムの複数の場所に格納されているユーザー データのことです。 これらの各場所は、独立した記憶域およびその場所にあるデータの部分に対するクエリを実行する処理単位として機能します。 分散データは、クエリを並列実行して高いクエリ パフォーマンスを実現するための基礎です。
 
-To distribute data, the data warehouse assigns each row of a user table to one distributed location.  You can distribute tables with a hash-distribution method or a round-robin method. The distribution method is specified in the CREATE TABLE statement. 
+データを分散させるため、データ ウェアハウスはユーザー テーブルの各行を&1; つの分散場所に割り当てます。  テーブルの分散方法としては、ハッシュ分散方式とラウンドロビン方式があります。 分散方式は、CREATE TABLE ステートメントで指定します。 
 
-## <a name="hashdistributed-tables"></a>Hash-distributed tables
-The following diagram illustrates how a full (non-distributed table) gets stored as a hash-distributed table. A deterministic function assigns each row to belong to one distribution. In the table definition, one of the columns is designated as the distribution column. The hash function uses the value in the distribution column to assign each row to a distribution.
+## <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
+次の図は、完全な (分散していない) テーブルがハッシュ分散テーブルとして保存されるしくみを示したものです。 確定関数が、各行を&1; つのディストリビューションに割り当てます。 テーブルの定義では、1 つの列をディストリビューション列として指定します。 ハッシュ関数は、ディストリビューション列の値を使用してディストリビューションに各行を割り当てます。
 
-There are performance considerations for the selection of a distribution column, such as distinctness, data skew, and the types of queries run on the system.
+ディストリビューション列の選択については、差異性、データ スキュー、およびシステムで実行されるクエリの種類など、パフォーマンスに関する考慮事項があります。
 
-![Distributed table](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distributed table")  
+![分散テーブル](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分散テーブル")  
 
-* Each row belongs to one distribution.  
-* A deterministic hash algorithm assigns each row to one distribution.  
-* The number of table rows per distribution varies as shown by the different sizes of tables.
+* 各行は、1 つのディストリビューションに属しています。  
+* 確定ハッシュ アルゴリズムが、各行を&1; つのディストリビューションに割り当てます。  
+* ディストリビューションごとのテーブル行の数は、異なるテーブル サイズによって示されるように異なります。
 
-## <a name="roundrobin-distributed-tables"></a>Round-robin distributed tables
-A round-robin distributed table distributes the rows by assigning each row to a distribution in a sequential manner. It is quick to load data into a round-robin table, but query performance might be slower.  Joining a round-robin table usually requires reshuffling the rows to enable the query to produce an accurate result, which takes time.
+## <a name="round-robin-distributed-tables"></a>ラウンドロビン分散テーブル
+ラウンドロビン分散テーブルは、各行をディストリビューションに順番に割り当てることによって、行を分散させます。 ラウンドロビン テーブルへのデータの読み込みはすばやいですが、クエリのパフォーマンスは低下する可能性があります。  通常、ラウンドロビン テーブルを結合するには、クエリが正確な結果を生成できるように行を再シャッフルする必要があり、これには時間がかかります。
 
-## <a name="distributed-storage-locations-are-called-distributions"></a>Distributed storage locations are called distributions
-Each distributed location is called a distribution. When a query runs in parallel, each distribution performs a SQL query on its portion of the data. SQL Data Warehouse uses SQL Database to run the query. Parallel Data Warehouse uses SQL Server to run the query. This shared-nothing architecture design is fundamental to achieving scale-out parallel computing.
+## <a name="distributed-storage-locations-are-called-distributions"></a>分散される記憶域の場所はディストリビューションと呼ばれる
+分散される各場所は、ディストリビューションと呼ばれます。 クエリが並列で実行するとき、各ディストリビューションはデータの一部分に対する SQL クエリを実行します。 SQL Data Warehouse は、SQL Database を使用してクエリを実行します。 Parallel Data Warehouse は、SQL Server を使用してクエリを実行します。 このシェアード ナッシング アーキテクチャの設計は、スケールアウト並列コンピューティングを実現するための基礎です。
 
-### <a name="can-i-view-the-distributions"></a>Can I view the distributions?
-Each distribution has a distribution ID and is visible in system views that pertain to SQL Data Warehouse and Parallel Data Warehouse. You can use the distribution ID to troubleshoot query performance and other problems. For a list of the system views, see the [MPP system view](sql-data-warehouse-reference-tsql-statements.md).
+### <a name="can-i-view-the-distributions"></a>ディストリビューションを見ることはできますか?
+各ディストリビューションはディストリビューション ID を持っており、SQL Data Warehouse および Parallel Data Warehouse に関するシステム ビューで表示できます。 ディストリビューション ID を使用して、クエリのパフォーマンスやその他の問題を解決できます。 システム ビューの一覧については、[MPP のシステム ビューに関する記事](sql-data-warehouse-reference-tsql-statements.md)をご覧ください。
 
-## <a name="difference-between-a-distribution-and-a-compute-node"></a>Difference between a distribution and a Compute node
-A distribution is the basic unit for storing distributed data and processing parallel queries. Distributions are grouped into Compute nodes. Each Compute node tracks one or more distributions.  
+## <a name="difference-between-a-distribution-and-a-compute-node"></a>ディストリビューションとコンピューティング ノードの違い
+ディストリビューションは、分散データの格納および並列クエリの処理に関する基本的な単位です。 ディストリビューションをグループ化したものがコンピューティング ノードです。 各コンピューティング ノードは、1 つまたは複数のディストリビューションを追跡します。  
 
-* Analytics Platform System uses Compute nodes as a central component of the hardware architecture and scale-out capabilities. It always uses eight distributions per Compute node, as shown in the diagram for hash-distributed tables. The number of Compute nodes, and therefore the number of distributions, is determined by the number of Compute nodes you purchase for the appliance. For example, if you purchase eight Compute nodes, you get 64 distributions (8 Compute nodes x 8 distributions/node). 
-* SQL Data Warehouse has a fixed number of 60 distributions and a flexible number of Compute nodes. The Compute nodes are implemented with Azure computing and storage resources. The number of Compute nodes can change according to the backend service workload and the computing capacity (DWUs) you specify for the data warehouse. When the number of Compute nodes changes, the number of distributions per Compute node also changes. 
+* Analytics Platform System は、ハードウェア アーキテクチャおよびスケールアウト機能の中心的なコンポーネントとしてコンピューティング ノードを使用します。 ハッシュ分散テーブルの図で示されているように、常に、コンピューティング ノードあたり&8; 個のディストリビューションを使用します。 コンピューティング ノードの数、したがってディストリビューションの数は、アプライアンスに対して購入するコンピューティング ノードの数によって決まります。 たとえば、8 個のコンピューティング ノードを購入した場合、ディストリビューションは 64 個です (8 コンピューティング ノード x 8 ディストリビューション/ノード)。 
+* SQL Data Warehouse では、ディストリビューションは 60 個に固定されており、コンピューティング ノードの数は可変です。 コンピューティング ノードは、Azure のコンピューティングおよびストレージ リソースで実装されます。 コンピューティング ノードの数は、バックエンド サービスの作業負荷と、ユーザーがデータ ウェアハウスに対して指定する計算能力 (DWU) に従って変化します。 コンピューティング ノードの数が変わると、コンピューティング ノードあたりのディストリビューションの数も変更されます。 
 
-### <a name="can-i-view-the-compute-nodes"></a>Can I view the Compute nodes?
-Each Compute node has a node ID and is visible in system views that pertain to SQL Data Warehouse and Parallel Data Warehouse.  You can see the Compute node by looking for the node_id column in system views whose names begin with sys.pdw_nodes. For a list of the system views, see the [MPP system view](sql-data-warehouse-reference-tsql-statements.md).
+### <a name="can-i-view-the-compute-nodes"></a>コンピューティング ノードを見ることはできますか?
+各コンピューティング ノードはノード ID を持っており、SQL Data Warehouse および Parallel Data Warehouse に関するシステム ビューで表示できます。  名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノードを見ることができます。 システム ビューの一覧については、[MPP のシステム ビューに関する記事](sql-data-warehouse-reference-tsql-statements.md)をご覧ください。
 
-## <a name="a-namereplicatedareplicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>Replicated Tables for Parallel Data Warehouse
-Applies to: Parallel Data Warehouse
+## <a name="Replicated"></a>Parallel Data Warehouse のレプリケート テーブル
+適用対象: Parallel Data Warehouse
 
-In addition to using distributed tables, Parallel Data Warehouse offers an option to replicate tables. A *replicated table* is a table that is stored in its entirety on each Compute node. Replicating a table removes the need to transfer its table rows among Compute nodes before using the table in a join or aggregation. Replicated tables are only feasible with small tables because of the extra storage required to store the full table on each compute node.  
+分散テーブルを使用する以外に、Parallel Data Warehouse にはテーブルをレプリケートするオプションがあります。 "*レプリケート テーブル*" とは、各コンピューティング ノードに全体が格納されるテーブルです。 テーブルをレプリケートすると、結合または集計でテーブルを使用する前にコンピューティング ノード間でテーブルの行を転送する必要がなくなります。 各コンピューティング ノードに完全なテーブルを格納するために余分な記憶域が必要になるため、レプリケート テーブルは小さなテーブルにのみ使用できます。  
 
-The following diagram shows a replicated table that is stored on each Compute node. The replicated table is stored across all disks assigned to the Compute node. This disk strategy is implemented by using SQL Server filegroups.  
+次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。 このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
 
-![Replicated table](media/sql-data-warehouse-distributed-data/replicated-table.png "Replicated table") 
+![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 
-## <a name="next-steps"></a>Next steps
-To use distributed tables effectively, see [Distributing tables in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md)  
-
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+分散テーブルを効果的に使用する方法については、「[SQL Data Warehouse のテーブルの分散](sql-data-warehouse-tables-distribute.md)」を参照してください。  
 
 

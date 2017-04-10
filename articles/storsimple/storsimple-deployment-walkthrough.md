@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d9e5f3b177f6b91abe48d3bb6d49a2d3195e6f79
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device"></a>オンプレミスの StorSimple デバイスのデプロイ
+# <a name="deploy-your-on-premises-storsimple-device"></a>オンプレミスの StorSimple デバイスのデプロイ
 > [!div class="op_single_selector"]
 > * [Update 2](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -146,7 +146,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 |  | | |
 | **登録** |送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 |`Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
 
-## <a name="stepbystep-deployment"></a>デプロイの手順
+## <a name="step-by-step-deployment"></a>デプロイの手順
 StorSimple デバイスをデータセンター内にデプロイするには、次の詳細な手順を実行します。
 
 ## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
@@ -286,6 +286,6 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

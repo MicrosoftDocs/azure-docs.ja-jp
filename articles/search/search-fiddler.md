@@ -12,23 +12,24 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
-
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
 
 ---
+
 # <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>Fiddler を使用して Azure Search REST API を評価およびテストする
 > [!div class="op_single_selector"]
+>
 > * [概要](search-query-overview.md)
 > * [Search エクスプローラー](search-explorer.md)
 > * [Fiddler](search-fiddler.md)
 > * [.NET](search-query-dotnet.md)
 > * [REST ()](search-query-rest-api.md)
-> 
-> 
+>
+>
 
 この記事では、コードを記述することなく、 [Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler)Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。 Azure Search は、Microsoft Azure の完全に管理されたホステッド クラウド検索サービスで、.NET API および REST API を使用して簡単にプログラミングできます。 Azure Search サービス REST API については、 [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
 
@@ -39,26 +40,26 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
 ## <a name="create-an-index"></a>インデックスを作成する
 1. Fiddler を起動します。 **[File (ファイル)]** メニューの **[Capture Traffic (トラフィックのキャプチャ)]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。
 2. **[Composer]** タブで、次のスクリーン ショットのような要求を生成します。
-   
+
       ![][1]
 3. **[PUT]**を選択します。
 4. サービス URL、要求属性、および API バージョンを指定する URL を入力します。 次の点に留意してください。
-   
+
    * HTTPS をプレフィックスとして使用します。
    * 要求属性は "/indexes/hotels" です。 この属性は Search に "hotels" という名前のインデックスを作成することを指定します。
-   * API バージョンは、小文字で「?api-version=2015-02-28」と指定します。 Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。 まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。 このため、Azure Search では、使用するバージョンを完全に制御するために、各要求に API バージョンが必要です。
-     
+   * API バージョンは、小文字で「?api-version=2016-09-01」と指定します。 Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。 まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。 このため、Azure Search では、使用するバージョンを完全に制御するために、各要求に API バージョンが必要です。
+
      URL 全体は、次の例のようになります。
-     
-             https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+
+             https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
 5. ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 6. 要求の本文には、インデックス定義を構成するフィールドを貼り付けます。
-   
+
           {
          "name": "hotels",  
          "fields": [
@@ -87,17 +88,17 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
    ![][2]
 
 1. **[POST]**を選択します。
-2. HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs/index?api-version=2015-02-28」と入力します。 URL 全体は、次の例のようになります。
-   
-         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+2. HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs/index?api-version=2016-09-01」と入力します。 URL 全体は、次の例のようになります。
+
+         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
 3. 要求ヘッダーは前と同じにします。 ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 4. 要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
-   
+
          {
          "value": [
          {
@@ -169,12 +170,12 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 1. **[GET]**を選択します。
 2. HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs?」、クエリ パラメーターの順に入力します。 例として、サンプル ホスト名をサービスで有効な値に置き換えた、次の URL を使用します。
-   
-         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
-   
+
+         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
+
    このクエリは、用語 "motel" を検索し、評価のファセット カテゴリを取得します。
 3. 要求ヘッダーは前と同じにします。 ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -188,11 +189,11 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 **スペースを置き換える前:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
 
 **スペースを + で置き換えた後:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
 ## <a name="query-the-system"></a>システムのクエリを実行する
 システムのクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。 **[Composer]** タブでは、要求は次のように表示され、応答ではドキュメント数と使用されているストレージ領域が返されます。
@@ -200,11 +201,11 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
  ![][5]
 
 1. **[GET]**を選択します。
-2. 次のように、サービスの URL の後に「/indexes/hotels/stats?api-version=2015-02-28」を続けて URL を入力します。
-   
-         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+2. 次のように、サービスの URL の後に「/indexes/hotels/stats?api-version=2016-09-01」を続けて URL を入力します。
+
+         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
 3. ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -225,6 +226,6 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

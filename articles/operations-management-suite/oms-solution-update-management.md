@@ -4,7 +4,7 @@ description: "この記事の目的は、このソリューションを使用し
 services: operations-management-suite
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
@@ -12,18 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 03/06/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 18aa17f6af7fe492f3875e1af7cb06b613f171af
+ms.lasthandoff: 04/03/2017
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![OMS の更新管理ソリューション](./media/oms-solution-update-management/update-management-solution-icon.png) OMS の更新管理ソリューション
+# <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。 
 
 ## <a name="prerequisites"></a>前提条件
+* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価の実行と、Windows Server 2012 以降に対する更新プログラムのデプロイのみです。  Server Core と Nano Server のインストール オプションはサポートされていません。
+* Windows クライアント オペレーティング システムはサポートされていません。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。  
   
   > [!NOTE]
@@ -33,7 +36,10 @@ OMS の更新管理ソリューションを使用すると、Windows コンピ�
 * Linux エージェントは、更新リポジトリへのアクセスが必要です。  OMS Agent for Linux は [GitHub](https://github.com/microsoft/oms-agent-for-linux) からダウンロードできます。 
 
 ## <a name="configuration"></a>構成
-OMS ワークスペースに更新管理ソリューションを追加し、Linux エージェントを追加するには、次の手順を実行します。  Windows エージェントは、そのままの構成で自動的に追加されます。
+OMS ワークスペースに更新管理ソリューションを追加し、Linux エージェントを追加するには、次の手順を実行します。 Windows エージェントは、そのままの構成で自動的に追加されます。
+
+> [!NOTE]
+> このソリューションを有効にすると、OMS ワークスペースに接続された Windows コンピューターは自動的に Hybrid Runbook Worker として構成されます。これは、このソリューションに含まれる Runbook をサポートするための措置です。  ただし、このコンピューターは、Automation アカウントで既に定義した可能性のあるハイブリッド worker グループには登録されません。  このソリューションと Hybrid Runbook Worker グループのメンバーシップの両方に同じアカウントを使用していれば、Automation Runbook をサポートするために、このコンピューターを Automation アカウントの Hybrid Runbook Worker に追加することができます。  この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。   
 
 1. ソリューション ギャラリーからの [OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、更新管理ソリューションを OMS ワークスペースに追加します。  
 2. OMS ポータルで、**[設定]** を選択し、**[接続されたソース]** を選択します。  **ワークスペース ID** と、**主キー**または **2 次キー**をメモしておきます。
@@ -41,11 +47,10 @@ OMS ワークスペースに更新管理ソリューションを追加し、Linu
    
    a.    次のコマンドを実行して、OMS Agent for Linux の最新バージョンをインストールします。  <Workspace ID> を実際のワークスペース ID、<Key> を実際の主キーまたは 2 次キーに置き換えてください。
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
-   
-   b. エージェントを削除するには、次のコマンドを実行します。
-   
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        cd ~
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID>  -s <PrimaryKey> -d opinsights.azure.com 
+
+   b. エージェントを削除するには、「[Uninstalling the OMS Agent for Linux (OMS Agent for Linux のアンインストール)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#uninstalling-the-oms-agent-for-linux)」セクションで説明しているプロセスを使用します。  
 
 ## <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックに伴う構成や保守は不要です。 
@@ -60,7 +65,7 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続されているソース | サポートされています | Description |
+| 接続されているソース | サポートの有無 | 説明 |
 | --- | --- | --- |
 | Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集します。 |
@@ -99,7 +104,9 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 ## <a name="installing-updates"></a>更新プログラムのインストール
 ご利用の環境のすべての Windows コンピューターで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成することで、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上の Windows コンピューターに必要な更新プログラムをスケジュールに従ってインストールすることです。  対象に含めるコンピューターまたはコンピューター グループに加え、展開の日時を指定します。  
 
-更新プログラムは、Azure Automation の Runbook によってインストールされます。  現在、これらの Runbook を表示できません。また、これらは構成不要です。  "更新プログラムの展開" を作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。  このマスター Runbook は、必要な更新プログラムのインストールを実行する子 Runbook を各 Windows エージェントで開始します。  
+更新プログラムは、Azure Automation の Runbook によってインストールされます。  これらの Runbook は表示できません。また、これらは構成不要です。  "更新プログラムの展開" を作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。  このマスター Runbook は、必要な更新プログラムのインストールを実行する子 Runbook を各 Windows エージェントで開始します。  
+
+Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/linux/update-infrastructure-redhat.md) にアクセスするよう登録されています。  その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
 
 ### <a name="viewing-update-deployments"></a>更新プログラムの展開の表示
 **[Update Deployment (更新プログラムの展開)]** タイルをクリックすると、既存の更新プログラムの展開の一覧が表示されます。  これらは状態別 (**スケジュール**、**実行中**、**Completed (完了)**) にグループ化されています。<br><br> ![更新プログラムの展開スケジュールのページ](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
@@ -238,10 +245,5 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

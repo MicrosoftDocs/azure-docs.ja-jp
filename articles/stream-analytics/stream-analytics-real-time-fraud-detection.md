@@ -1,28 +1,33 @@
 ---
-title: 'Stream Analytics: リアルタイムの不正行為の検出 | Microsoft Docs'
-description: Stream Analytics を使用してリアルタイムの不正行為検出ソリューションを作成する方法について説明します。 リアルタイム イベント処理のためにイベント ハブを使用します。
-keywords: 異常検出, 不正行為の検出, リアルタイムの異常検出
+title: "Stream Analytics: リアルタイムの不正行為の検出 | Microsoft Docs"
+description: "Stream Analytics を使用してリアルタイムの不正行為検出ソリューションを作成する方法について説明します。 リアルタイム イベント処理のためにイベント ハブを使用します。"
+keywords: "異常検出, 不正行為の検出, リアルタイムの異常検出"
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 03/28/2017
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 18156086ca3eaf3ee99dfeb61096bc1eee49458b
+ms.openlocfilehash: 3d32518bed64ebe3dd1790bb511949624b5dcac1
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# <a name="get-started-using-azure-stream-analytics:-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
 Azure Stream Analytics を使用してリアルタイムに不正行為を検出するための、エンド ツー エンド ソリューションを作成する方法について説明します。 Azure イベント ハブにイベントを取り込み、集計用または警告用の Stream Analytics クエリを作成し、結果を出力シンクに送信することで、リアルタイム処理でデータに対する洞察を得ることができます。 通信に関するリアルタイムの異常検出が説明されていますが、このサンプルの手法は、クレジット カードや ID の盗難のシナリオなど、その他の種類の不正行為の検出にも同様に適しています。
 
 Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。 詳細については、「 [Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
 
-## <a name="scenario:-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
 ある通信会社は、膨大な量の着信データを扱っています。 この会社では、このデータを使用して次のことを行う必要があります。
 
 * データを管理可能な量に削減し、時間および地理的領域で変化するお客様の利用状況に関する洞察を得る。
@@ -35,7 +40,7 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 * 省略可能: [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)
 
 ## <a name="create-azure-event-hubs-input-and-consumer-group"></a>Azure Event Hubs 入力とコンシューマー グループの作成
-サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンスにプッシュしてリアルタイム処理を行います。 Service Bus Event Hubs は、Stream Analytics に推奨されるイベント取り込み方法です。 Event Hubs の詳細については、[Azure Service Bus のドキュメント](/documentation/services/service-bus/)を参照してください。
+サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンスにプッシュしてリアルタイム処理を行います。 Service Bus Event Hubs は、Stream Analytics に推奨されるイベント取り込み方法です。 Event Hubs の詳細については、[Azure Service Bus のドキュメント](/azure/service-bus/)を参照してください。
 
 イベント ハブを作成するには:
 
@@ -43,7 +48,7 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 2. 各 Stream Analytics ジョブが単一のイベント ハブ コンシューマー グループから読み取るようにするのがベスト プラクティスです。 後で、コンシューマー グループを作成するプロセスを説明します。 [コンシューマー グループの詳細](https://msdn.microsoft.com/library/azure/dn836025.aspx)に関するページをご覧ください。 コンシューマー グループを作成するには、新たに作成されたイベント ハブに移動し、**[コンシューマー グループ]** タブをクリックし、ページ下部の **[作成]** をクリックして、コンシューマー グループの名前を指定します。
 3. イベント ハブへのアクセスを許可するには、共有アクセス ポリシーを作成する必要があります。 イベント ハブの **[構成]** タブをクリックします。
 4. **[共有アクセス ポリシー]** で、**[管理]** アクセス許可を持つ新しいポリシーを作成します。
-   
+
    ![管理アクセス許可のあるポリシーを作成できる [共有アクセス ポリシー]。](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-shared-access-policies.png)
 5. ページの下部にある **[保存]** をクリックします。
 6. **[ダッシュボード]** に移動し、ページ下部の **[接続情報]** をクリックし、接続情報をコピーして保存します。
@@ -52,16 +57,16 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 サンプル受信通話メタデータを生成し、それを Event Hubs にプッシュするクライアント アプリケーションが提供されています。 このアプリケーションを設定するには、次の手順を実行します。  
 
 1. [TelcoGenerator.zip ファイル](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)をダウンロードし、ディレクトリに解凍します。
-   
+
    > [!NOTE]
    > ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。 ファイルを右クリックし、**[プロパティ]** をクリックします。 "このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、**[ブロック解除]** ボックスをオンにして、zip ファイルで [適用] をクリックします。
-   > 
+   >
    > 
 2. telcodatagen.exe.config 内の Microsoft.ServiceBus.ConnectionString 値と EventHubName 値を、イベント ハブの接続文字列と名前に置き換えます。
-   
+
    Azure ポータルからコピーされた接続文字列によって、接続の名前が最後に配置されます。 "add key=" フィールドから ";EntityPath=<value>" を必ず削除してください。
 3. アプリケーションを起動します。 使用方法は次のとおりです。
-   
+
    telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]
 
 次の例では、2 時間の間に、不正行為の確率が 20% のイベントが 1000 件生成されます。
@@ -70,14 +75,14 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 イベント ハブに送信されるレコードが表示されます。 このリアルタイムの不正行為検出アプリケーションで使用するいくつかのキー フィールドをここで定義します。
 
-| レコード | 定義 |
-| --- | --- |
-| CallrecTime |通話開始時刻のタイムスタンプ。 |
-| SwitchNum |通話の接続に使用された電話交換機。 |
-| CallingNum |発信元の電話番号。 |
-| CallingIMSI |IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。  発信元の一意の識別番号。 |
-| CalledNum |通話受信者の電話番号。 |
-| CalledIMSI |IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。  通話受信者の一意の識別番号。 |
+| レコード      | 定義                               |
+| ----------- | ---------------------------------------- |
+| CallrecTime | 通話開始時刻のタイムスタンプ。       |
+| SwitchNum   | 通話の接続に使用された電話交換機。 |
+| CallingNum  | 発信元の電話番号。              |
+| CallingIMSI | IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。  発信元の一意の識別番号。 |
+| CalledNum   | 通話受信者の電話番号。      |
+| CalledIMSI  | IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。  通話受信者の一意の識別番号。 |
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 ここまでで通信イベントのストリームが存在するようになったため、リアルタイムでこれらのイベントを分析するための Stream Analytics ジョブを設定できます。
@@ -85,14 +90,14 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 ### <a name="provision-a-stream-analytics-job"></a>Stream Analytics のジョブの準備
 1. Azure ポータルで、**[新規]**  >  **[データ サービス]**  >  **[STREAM ANALYTICS]**  >  **[簡易作成]** をクリックします。
 2. 次の値を指定してから、 **[Stream Analytics ジョブの作成]**をクリックします。
-   
+
    * **[ジョブ名]**: ジョブ名を入力します。
    * **[リージョン]**: ジョブを実行するリージョンを選択します。 パフォーマンスを向上させ、リージョン間のデータ転送が有料にならないように、同じリージョンにジョブとイベント ハブを配置することを検討します。
    * **[ストレージ アカウント]**: このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用する Azure ストレージ アカウントを選択します。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。
 3. Stream Analytics ジョブを一覧表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。
-   
+
    ![Stream Analytics サービス アイコン](./media/stream-analytics-real-time-fraud-detection/stream-analytics-service-icon.png)
-   
+
    新しいジョブが **[作成済み]**の状態で表示されます。 ページの下部にある **[開始]** ボタンが無効になっていることがわかります。 ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があります。
 
 ### <a name="specify-job-input"></a>ジョブの入力の指定
@@ -100,17 +105,17 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 2. **[データ ストリーム]**を選択し、右側のボタンをクリックします。
 3. **[イベント ハブ]**を選択してから、右側のボタンをクリックします。
 4. 3 ページ目で、次の値を入力または選択します。
-   
+
    * **[入力のエイリアス]**: *CallStream*など、このジョブの入力のフレンドリ名を入力します。 後でクエリでこの名前を使用します。
    * **[イベント ハブ]**: 作成したイベント ハブが Stream Analytics ジョブと同じサブスクリプションにある場合は、イベント ハブがある名前空間を選択します。
-     
-       イベント ハブが別のサブスクリプションにある場合、**[別のサブスクリプションのイベント ハブを使用]** を選択してから、**[Service Bus 名前空間]**、**[イベント ハブ名]**、**[イベント ハブ ポリシー名]**、**[イベント ハブ ポリシー キー]**、**[イベント ハブ パーティション数]** の情報を手動で入力します。
+
+     イベント ハブが別のサブスクリプションにある場合、**[別のサブスクリプションのイベント ハブを使用]** を選択してから、**[Service Bus 名前空間]**、**[イベント ハブ名]**、**[イベント ハブ ポリシー名]**、**[イベント ハブ ポリシー キー]**、**[イベント ハブ パーティション数]** の情報を手動で入力します。
    * **[イベント ハブ名]**: イベント ハブの名前を選択します。
    * **[イベント ハブ ポリシー名]**: このチュートリアルで前に作成したイベント ハブのポリシーを選択します。
    * **[イベント ハブ コンシューマー グループ]**: このチュートリアルで前に作成したコンシューマー グループを入力します。
 5. 右側のボタンをクリックします。
 6. 次の値を指定します。
-   
+
    * **[イベント シリアライザー形式]**: JSON
    * **[エンコード]**: UTF8
 7. **チェック** ボタンをクリックしてこのソースを追加し、Stream Analytics がイベント ハブに正常に接続できることを確認します。
@@ -118,13 +123,13 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 ### <a name="specify-job-query"></a>ジョブのクエリの指定
 Stream Analytics では、リアルタイム処理のために変換を記述する単純な宣言型のクエリ モデルがサポートされます。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/dn834998.aspx)を参照してください。 このチュートリアルは、通話データのリアルタイム ストリームに対するいくつかのクエリを作成してテストするのに役立ちます。
 
-#### <a name="optional:-sample-input-data"></a>省略可能: サンプルの入力データ
+#### <a name="optional-sample-input-data"></a>省略可能: サンプルの入力データ
 実際のジョブ データに対するクエリを検証するには、**サンプル データ**機能を使用して、ストリームからイベントを抽出し、テスト用のイベントの .JSON ファイルを作成できます。  次の手順で、これを実行する方法を説明します。 さらに、テスト目的のサンプルの [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) ファイルも提供しています。
 
 1. イベント ハブの入力を選択して、ページ下部の **[サンプル データ]** をクリックします。
 2. 開いたダイアログ ボックスで、データ収集を開始する **[開始時間]** を指定し、使用する追加のデータ量に応じて **[期間]** を指定します。
 3. 入力からのデータのサンプリングを開始するには、**チェック** ボタンをクリックします。  データ ファイルが生成されるまでに、1 ～ 2 分かかります。  プロセスが完了したら、**[詳細]** をクリックし、生成された JSON ファイルをダウンロードし、保存します。
-   
+
    ![処理済みデータをダウンロードして JSON ファイルに保存](./media/stream-analytics-real-time-fraud-detection/stream-analytics-download-save-json-file.png)
 
 #### <a name="pass-through-query"></a>パススルー クエリ
@@ -132,60 +137,51 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 
 1. Stream Analytics ジョブ ページの上部にある **[クエリ]** をクリックします。
 2. 次の内容をコード エディターに追加します。
-   
-       SELECT * FROM CallStream
-   
+
+     SELECT * FROM CallStream
+
    > [!IMPORTANT]
    > 入力ソースの名前が前に指定した入力の名前と必ず一致するようにします。
-   > 
+   >
    > 
 3. クエリ エディターの下の **[テスト]** をクリックします。
 4. テスト ファイルを指定します。 前の手順を使用して作成したテスト ファイルを使用するか、[telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/SampleDataFiles/Telco.json) を使用します。
 5. **チェック** ボタンをクリックして、クエリ定義の下に表示される結果を確認します。
-   
+
    ![クエリの定義の結果](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sim-fraud-output.png)
 
 ### <a name="column-projection"></a>列のプロジェクション
 返されたフィールドを削減して、より小規模なセットにします。
 
 1. コード エディターでクエリを次のように変更します。
-   
-       SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum
-       FROM CallStream
+
+     SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum   FROM CallStream
 2. クエリ エディターの下の **[再実行]** をクリックして、クエリの結果を表示します。
-   
+
    ![クエリ エディターで出力します。](./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-output.png)
 
-### <a name="count-of-incoming-calls-by-region:-tumbling-window-with-aggregation"></a>リージョン別の着信通話の数: 集計を含むタンブリング ウィンドウ
+### <a name="count-of-incoming-calls-by-region-tumbling-window-with-aggregation"></a>リージョン別の着信通話の数: 集計を含むタンブリング ウィンドウ
 リージョンごとの着信通話の数を比較するには、[TumblingWindow](https://msdn.microsoft.com/library/azure/dn835055.aspx) を利用して、5 秒ごとに **SwitchNum** でグループ化された着信通話の数を取得します。
 
 1. コード エディターでクエリを次のように変更します。
-   
-       SELECT System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount
-       FROM CallStream TIMESTAMP BY CallRecTime
-       GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
-   
+
+     SELECT System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount   FROM CallStream TIMESTAMP BY CallRecTime   GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
+
    このクエリでは、 **Timestamp By** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。 このフィールドが指定されていない場合は、各イベントがイベント ハブに到着した時間を使用してウィンドウ化操作が実行されます。 [「Stream Analytics クエリ言語リファレンス」にある到着時間とアプリケーション時間の比較に関する説明](https://msdn.microsoft.com/library/azure/dn834998.aspx)を参照してください。
-   
+
    各期間の終わりのタイムスタンプには、 **System.Timestamp** プロパティを使用してアクセスできることに注意してください。
 2. クエリ エディターの下の **[再実行]** をクリックして、クエリの結果を表示します。
-   
+
    ![Timestand By でのクエリ結果](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-query-editor-rerun.png)
 
 ### <a name="sim-fraud-detection-with-a-self-join"></a>自己結合による SIM 不正行為の検出
 不正使用の可能性を識別するために、同一ユーザーからの、5 秒未満で別の場所から発信された通話を探します。  この場合は通話イベントのストリームを自己 [結合](https://msdn.microsoft.com/library/azure/dn835026.aspx) し、そのようなケースがないかを確認します。
 
 1. コード エディターでクエリを次のように変更します。
-   
-       SELECT System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1,
-       CS2.CallingNum as CallingNum2, CS1.SwitchNum as Switch1, CS2.SwitchNum as Switch2
-       FROM CallStream CS1 TIMESTAMP BY CallRecTime
-       JOIN CallStream CS2 TIMESTAMP BY CallRecTime
-       ON CS1.CallingIMSI = CS2.CallingIMSI
-       AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
-       WHERE CS1.SwitchNum != CS2.SwitchNum
+
+     SELECT System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1,   CS2.CallingNum as CallingNum2, CS1.SwitchNum as Switch1, CS2.SwitchNum as Switch2   FROM CallStream CS1 TIMESTAMP BY CallRecTime   JOIN CallStream CS2 TIMESTAMP BY CallRecTime   ON CS1.CallingIMSI = CS2.CallingIMSI   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5   WHERE CS1.SwitchNum != CS2.SwitchNum
 2. クエリ エディターの下の **[再実行]** をクリックして、クエリの結果を表示します。
-   
+
    ![結合のクエリ結果](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-query-editor-join.png)
 
 ### <a name="create-output-sink"></a>出力シンクの作成
@@ -201,7 +197,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 1. Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。 表示されたダイアログ ボックスには、出力を設定する手順がいくつか表示されます。
 2. **[BLOB ストレージ]**を選択し、右側のボタンをクリックします。
 3. 3 ページ目で、次の値を入力または選択します。
-   
+
    * **[出力のエイリアス]**: このジョブの出力のフレンドリ名を入力します。
    * **[サブスクリプション]**: 作成した Blob Storage が Stream Analytics ジョブと同じサブスクリプションにある場合は、**[現在のサブスクリプションのストレージ アカウントを使用]** を選択します。 ストレージが別のサブスクリプションにある場合は、**[別のサブスクリプションのストレージ アカウントを使用]** を選択し、**[ストレージ アカウント]**、**[ストレージ アカウント キー]**、**[コンテナー]** の情報を手動で入力します。
    * **[ストレージ アカウント]**: ストレージ アカウントの名前を選択します。
@@ -209,7 +205,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
    * **[ファイル名プレフィックス]**: BLOB 出力の書き込み時に使用するファイルのプレフィックスを入力します。
 4. 右側のボタンをクリックします。
 5. 次の値を指定します。
-   
+
    * **[イベント シリアライザー形式]**: JSON
    * **[エンコード]**: UTF8
 6. **チェック** ボタンをクリックしてこのソースを追加し、Stream Analytics からストレージ アカウントに正常に接続できることを確認します。
@@ -233,7 +229,5 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-<!--HONumber=Oct16_HO2-->
 
 

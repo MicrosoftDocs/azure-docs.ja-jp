@@ -1,12 +1,12 @@
 ---
-title: Marketplace 用データ サービスの作成ガイド | Microsoft Docs
-description: Azure Marketplace で購入できるデータ サービスを作成、認定、デプロイする方法について詳しく説明します。
+title: "Marketplace 用データ サービスの作成ガイド | Microsoft Docs"
+description: "Azure Marketplace で購入できるデータ サービスを作成、認定、デプロイする方法について詳しく説明します。"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
-manager: ''
-editor: ''
-
+manager: hascipio
+editor: 
+ms.assetid: 3a632825-db5b-49ec-98bd-887138798bc4
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,38 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
+
 
 ---
-# CSDL を使用した既存の Web サービスの OData へのマッピング
+# <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>CSDL を使用した既存の Web サービスの OData へのマッピング
 > [!IMPORTANT]
-> **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
+> **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。 IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
 > 
 > 
 
-この記事では、CSDL を使用して既存のサービスを OData 互換サービスにマッピングする方法について説明します。また、サービスの呼び出し経由でクライアントからの入力要求を変換し、OData 互換フィード経由で出力 (データ) を返すマッピング ドキュメント (CSDL) を作成する方法についても説明します。Microsoft Azure Marketplace は、OData プロトコルを使用してエンドユーザーにサービスを公開しています。コンテンツ プロバイダー (データ所有者) が公開するサービスは、REST、SOAP など多様な形式で公開されます。
+この記事では、CSDL を使用して既存のサービスを OData 互換サービスにマッピングする方法について説明します。 また、サービスの呼び出し経由でクライアントからの入力要求を変換し、OData 互換フィード経由で出力 (データ) を返すマッピング ドキュメント (CSDL) を作成する方法についても説明します。 Microsoft Azure Marketplace は、OData プロトコルを使用してエンドユーザーにサービスを公開しています。 コンテンツ プロバイダー (データ所有者) が公開するサービスは、REST、SOAP など多様な形式で公開されます。
 
-## CSDL とその構造
+## <a name="what-is-a-csdl-and-its-structure"></a>CSDL とその構造
 CSDL (Conceptual Schema Definition Language) は、Azure Marketplace に対して共通の XML 表現で Web サービスまたはデータベース サービスを記述する方法を定義した仕様です。
 
-**要求フロー**の概要:
+**要求フロー**
 
   `Client -> Azure Marketplace -> Content Provider’s Web Service (Get, Post, Delete, Put)`
 
-**データ フロー**は反対方向です。
+**データ フロー** は反対方向です。
 
   `Client <- Azure Marketplace <- Content Provider’s WebService`
 
-**図 1** は、Azure Marketplace にアクセスして、クライアントがコンテンツ プロバイダー (発行元のサービス) のデータを取得する方法を示します。CSDL は、コンテンツ プロバイダーのサービスと要求側クライアント間で渡される要求とデータを処理するマッピング/変換コンポーネントに使用されます。
+**図 1** は、Azure Marketplace にアクセスして、クライアントがコンテンツ プロバイダー (発行元のサービス) のデータを取得する方法を示します。  CSDL は、コンテンツ プロバイダーのサービスと要求側クライアント間で渡される要求とデータを処理するマッピング/変換コンポーネントに使用されます。
 
 *図 1: Azure Marketplace 経由の要求側クライアントからコンテンツ プロバイダーへのフローの詳細*
 
   ![図](media/marketplace-publishing-data-service-creation-odata-mapping/figure-1.png)
 
-Azure Marketplace 拡張機能を構築する基本となる Atom、Atom Pub、OData プロトコルの背景については、[http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx) を参照してください。
+Azure Marketplace 拡張機能を構築する基本となる Atom、Atom Pub、OData プロトコルの背景については、 [http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
 
-このリンクからの引用: *" Open Data プロトコル (以降 OData) の目的は、データ サービスとして公開されているリソースに対する CRUD スタイルの操作 (作成、読み取り、更新、削除) 用に REST ベースのプロトコルを提供することです。"データ サービス" とは、それぞれにゼロ個以上の "エントリ" がある 1 つ以上の "コレクション" から公開されたデータがあるエンドポイントです。エントリは型指定された名前と値のペアで構成されます。OData は、OASIS (Organization for the Advancement of Structured Information Standards) 標準に従い Microsoft から発行されています。そのため、誰でも、ロイヤリティや制限なしでサーバー、クライアント、またはツールを構築できます。"*
+このリンクからの引用:       *" Open Data プロトコル (以降 OData) の目的は、データ サービスとして公開されているリソースに対する CRUD スタイルの操作 (作成、読み取り、更新、削除) 用に REST ベースのプロトコルを提供することです。"データ サービス" とは、それぞれにゼロ個以上の "エントリ" がある 1 つ以上の "コレクション" から公開されたデータがあるエンドポイントです。エントリは型指定された名前と値のペアで構成されます。OData は、OASIS (Organization for the Advancement of Structured Information Standards) 標準に従い Microsoft から発行されています。そのため、誰でも、ロイヤリティや制限なしでサーバー、クライアント、またはツールを構築できます。"*
 
-### CSDL で定義する必要がある 3 つの重要な項目があります。
+### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are"></a>CSDL で定義する必要がある 3 つの重要な項目があります。
 * サービス プロバイダーの**エンドポイント**。サービスの Web アドレス (URI) です。
 * サービス プロバイダーへの入力として渡される**データ パラメーター**。データ型など、コンテンツ プロバイダーのサービスに送信されるパラメーターの定義です。
 * 要求側サービスに返されるデータの**スキーマ**。コンテンツ プロバイダーのサービスから配信されるデータのスキーマです (コンテナー、collections/tables、variables/columns、データ型など)。
@@ -54,60 +58,60 @@ Azure Marketplace 拡張機能を構築する基本となる Atom、Atom Pub、O
 
   ![図](media/marketplace-publishing-data-service-creation-odata-mapping/figure-2.png)
 
-### 手順:
+### <a name="steps"></a>手順:
 1. クライアントは、XML に定義されている入力パラメーターを指定した要求を、サービス呼び出しによってAzure Marketplace に送信します。
 2. CSDL は、サービス呼び出しの検証に使用されます。
    * 書式設定されたサービス呼び出しは、Azure Marketplace によってコンテンツ プロバイダー サービスに送信されます。
 3. Web サービスは、HTTP 動詞 (GET など) の処理を実行します。データは Azure Marketplace に返されます。Azure Marketplace では、CSDL に定義されているマッピングを使用して、要求されたデータ (ある場合) が XML 形式でクライアントに発行されます。
 4. データがある場合、クライアントには XML または JSON 形式で送信されます。
 
-## 定義
-### OData ATOM pub
-ATOM pub の拡張機能です。各エントリで 1 行の結果セットが表されます。エントリのコンテンツ部分は、キーと値のペアとして行の値を含むように強化されます。詳細については、[https://www.odata.org/documentation/odata-version-3-0/atom-format/](https://www.odata.org/documentation/odata-version-3-0/atom-format/) を参照してください。
+## <a name="definitions"></a>定義
+### <a name="odata-atom-pub"></a>OData ATOM pub
+ATOM pub の拡張機能です。各エントリで 1 行の結果セットが表されます。 エントリのコンテンツ部分は、キーと値のペアとして行の値を含むように強化されます。 詳細については、[https://www.odata.org/documentation/odata-version-3-0/atom-format/](https://www.odata.org/documentation/odata-version-3-0/atom-format/) を参照してください。
 
-### CSDL - Conceptual Schema Definition Language
-データベースで公開される関数 (SPROC) とエンティティを定義できます。詳細については、[http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx) を参照してください。
+### <a name="csdl---conceptual-schema-definition-language"></a>CSDL - Conceptual Schema Definition Language
+データベースで公開される関数 (SPROC) とエンティティを定義できます。 詳細については、 [http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)  
 
 > [!TIP]
-> 記事が表示されない場合は、**他のバージョン**のドロップダウンをクリックしてバージョンを選択してください。
+> 記事が表示されない場合は、 **他のバージョン** のドロップダウンをクリックしてバージョンを選択してください。
 > 
 > 
 
-### EDM - Entry Data Model
+### <a name="edm---entry-data-model"></a>EDM - Entry Data Model
 * 概要: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx][OverviewLink]
 
-[OverviewLink]: http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
+[OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
 * プレビュー: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx][PreviewLink]
 
-[PreviewLink]: http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
+[PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
 * データ型: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][DataTypesLink]
 
-[DataTypesLink]: http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
+[DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
 
 次に、クライアントが OData ステートメントを入力して (コンテンツ プロバイダーの Web サービスを呼び出して)、結果/データを取得するフロー (左から右方向) の詳細を示します。
 
   ![図](media/marketplace-publishing-data-service-creation-odata-mapping/figure-3.png)
 
-## CSDL の基本
-CSDL (Conceptual Schema Definition Language) は、Azure Marketplace に対して共通の XML 表現で Web サービスまたはデータベース サービスを記述する方法を定義した仕様です。CSDL では、**データ ソースを Azure Marketplace にデータを渡す**ために重要な部分を記述します。 その主要部分を次に示します。
+## <a name="csdl-basics"></a>CSDL の基本
+CSDL (Conceptual Schema Definition Language) は、Azure Marketplace に対して共通の XML 表現で Web サービスまたはデータベース サービスを記述する方法を定義した仕様です。 CSDL では、**データ ソースを Azure Marketplace にデータを渡す**ために重要な部分を記述します。 その主要部分を次に示します。
 
 * パブリックに使用できる関数について説明したインターフェイス情報 (FunctionImport ノード)
 * メッセージ要求 (入力) とメッセージ応答 (出力) すべてのデータ型情報 (EntityContainer/EntitySet/EntityType ノード)
 * 使用するトランスポート プロトコルに関するバインディング情報 (Header ノード)
 * 指定したサービスを特定するためのアドレス情報 (BaseURI 属性)
 
-簡単に説明すると、CSDL とは、サービス要求側とサービス プロバイダー間のプラットフォームや言語に依存しない規約です。クライアントは CSDL を使用して、Web サービス/データベース サービスを特定し、パブリックに使用できる関数を呼び出すことができます。
+簡単に説明すると、CSDL とは、サービス要求側とサービス プロバイダー間のプラットフォームや言語に依存しない規約です。 クライアントは CSDL を使用して、Web サービス/データベース サービスを特定し、パブリックに使用できる関数を呼び出すことができます。
 
-### CSDL とデータベースまたはコレクションとの関連付け
+### <a name="relating-a-csdl-to-a-database-or-a-collection"></a>CSDL とデータベースまたはコレクションとの関連付け
 **CSDL の仕様**
 
-CSDL は、Web サービスを記述するための XML 文法です。CSDL の仕様は、主に EntitySet、FunctionImport、NameSpace、EntityType という 4 つの要素に分けられます。
+CSDL は、Web サービスを記述するための XML 文法です。 CSDL の仕様は、主に EntitySet、FunctionImport、NameSpace、EntityType という 4 つの要素に分けられます。
 
 この抽象化をさらにわかりやすくするために、CSDL をテーブルに関連付けてみましょう。
 
 繰り返しになりますが、
 
-  CSDL とは、**サービス要求側**と**サービス プロバイダー**間のプラットフォームや言語に依存しない規約です。**クライアント**は CSDL を使用して、**Web サービス/データベース サービス**を特定し、パブリックに使用できる**関数**を呼び出すことができます。
+  CSDL とは、**サービス要求側**と**サービス プロバイダー**間のプラットフォームや言語に依存しない規約です。 **クライアント**は CSDL を使用して、**Web サービス/データベース サービス**を特定し、パブリックに使用できる**関数**を呼び出すことができます。
 
 データ サービスの場合、4 つの部分の CSDL は、データベース、テーブル、列、ストアド プロシージャの観点から考えることができます。
 
@@ -125,20 +129,21 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 * DELETE – データベースからデータを削除します (コレクションを削除する)。
 * PUT – データベースにデータを挿入して更新します (コレクションを置換または新規作成する)。
 
-## メタデータ/マッピング ドキュメント
-メタデータ/マッピング ドキュメントは、コンテンツ プロバイダーの既存の Web サービスをマッピングするために使用されます。このマッピングによって、Azure Marketplace システムによる OData Web サービスとして公開できます。メタデータ/マッピング ドキュメントは CSDL に基づいており、CSDL にいくつかの拡張機能を実装することで、Azure Marketplace 経由の REST ベース Web サービスのニーズに対応しています。拡張機能については、[http://schemas.microsoft.com/dallas/2010/04](http://schemas.microsoft.com/dallas/2010/04) 名前空間を参照してください。
+## <a name="metadatamapping-document"></a>メタデータ/マッピング ドキュメント
+メタデータ/マッピング ドキュメントは、コンテンツ プロバイダーの既存の Web サービスをマッピングするために使用されます。このマッピングによって、Azure Marketplace システムによる OData Web サービスとして公開できます。 メタデータ/マッピング ドキュメントは CSDL に基づいており、CSDL にいくつかの拡張機能を実装することで、Azure Marketplace 経由の REST ベース Web サービスのニーズに対応しています。 拡張機能については、[http://schemas.microsoft.com/dallas/2010/04](http://schemas.microsoft.com/dallas/2010/04) 名前空間を参照してください。
 
-次に CSDL の例について説明します (以下の CSDL 例をコピーして XML エディターに貼り付け、実際のサービスに合わせて変更します。[Azure Marketplace 発行ポータル](https://publish.windowsazure.com)でサービスを作成するときに、変更した内容を [データ サービス] タブの CSDL マッピングに貼り付けます)。
+次に CSDL の例について説明します (以下の CSDL 例をコピーして XML エディターに貼り付け、実際のサービスに合わせて変更します。  [Azure Marketplace 発行ポータル](https://publish.windowsazure.com)でサービスを作成するときに、変更した内容を [データ サービス] タブの CSDL マッピングに貼り付けます)。
 
-**用語:** CSDL の用語と[発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語との対応関係について。
+**用語:** CSDL の用語と [発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語との対応関係について。
 
 * PPUI におけるプランの "タイトル" は、MyWebOffer と対応します。
-* PPUI における MyCompany は、[Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure)の UI における **Publisher Display Name** と対応します。
+* PPUI における MyCompany は、 **Microsoft デベロッパー センター** の UI における [Publisher Display Name](http://dev.windows.com/registration?accountprogram=azure) と対応します。
 * ご利用の API は、Web サービスまたはデータ サービス (PPUI におけるプラン) に対応します。
 
-**階層:** 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
+**階層:**
+ 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
 
-### WebService CSDL の例
+### <a name="webservice-csdl-example"></a>WebService CSDL の例
 (C# アプリケーションと同様に) Web アプリケーション エンドポイントを公開しているサービスへの接続
 
         <?xml version="1.0" encoding="utf-8"?>
@@ -250,11 +255,11 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
         </Schema>
 
 > [!TIP]
-> 他の CSDL Web サービスの例については、[既存の Web サービスを CSDL で OData にマッピングする例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事を参照してください。
+> 他の CSDL Web サービスの例については、 [既存の Web サービスを CSDL で OData にマッピングする例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)
 > 
 > 
 
-### DataService CSDL の例
+### <a name="dataservice-csdl-example"></a>DataService CSDL の例
 エンドポイントとしてデータベース テーブルまたビューを公開するサービスに接続します。次の例では、データベースに基づく API CSDL の 2 つの API を示します (テーブルではなくビューを使用できます)。
 
         <?xml version="1.0"?>
@@ -308,9 +313,14 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
         </EntityType>
         </Schema>
 
-## 関連項目
-* 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事を参照してください。
-* 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
-* データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
+## <a name="see-also"></a>関連項目
+* 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この [データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) に関する記事を参照してください。
+* 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
+* データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0831_2016--->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

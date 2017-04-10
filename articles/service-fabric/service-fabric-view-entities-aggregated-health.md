@@ -1,19 +1,23 @@
 ---
-title: Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Docs
-description: 正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。
+title: "Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Docs"
+description: "正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: 2573f300231ceb080343dad5c1c2aa65cc31c59e
+ms.openlocfilehash: f62a7a8f594c67cac687159d72bfdb00a3355025
+
 
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
@@ -55,27 +59,27 @@ Service Fabric Explorer を使用したクラスターのビュー
 
 > [!NOTE]
 > [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)の詳細をご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="health-queries"></a>正常性クエリ
 Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 API ( **FabricClient.HealthManager**にあるメソッド)、PowerShell コマンドレット、および REST を使用してアクセスできます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、エンティティが正常でない場合の異常評価、といったエンティティの正常性についての完全な情報を返します。
 
 > [!NOTE]
 > 正常性エンティティは、正常性ストアにすべてが設定されると返されます。 エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。 階層チェーン上の親エンティティも、システム レポートを含む必要があります。 これらの条件が満たされていないと、正常性クエリでは例外が返され、エンティティが返されない理由が表示されます。
-> 
-> 
+>
+>
 
 正常性クエリは、エンティティの識別子を渡す必要があります。エンティティの識別子はエンティティの型によって異なります。 正常性クエリには、オプションで正常性ポリシーのパラメーターを指定できます。 正常性ポリシーを指定しないと、クラスター マニフェストやアプリケーション マニフェストの[正常性ポリシー](service-fabric-health-introduction.md#health-policies)が評価に使用されます。 正常性クエリにはフィルターも適用できます。適用すると、指定したフィルターに該当する子やイベントのみが返されます。
 
 > [!NOTE]
 > 出力フィルターはサーバー側に適用されるため、応答されるメッセージのサイズが減少します。 フィルターをクライアント側に適用するよりも、返されたデータの数を制限するために出力フィルターを使用することをお勧めします。
-> 
-> 
+>
+>
 
 エンティティの正常性に含まれているものは、次のとおりです。
 
-* エンティティの正常性状態の集計。 エンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。 [エンティティの正常性評価](service-fabric-health-introduction.md#entity-health-evaluation)の詳細をご覧ください。  
+* エンティティの正常性状態の集計。 エンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。 [エンティティの正常性評価](service-fabric-health-introduction.md#health-evaluation)の詳細をご覧ください。  
 * エンティティの正常性イベント。
 * 子が存在するエンティティについては、すべての子の正常性状態のコレクション。 正常性状態にはエンティティの識別子と正常性状態の集計が含まれます。 子の完全な正常性を取得するには、子のエンティティ型に対して正常性クエリを呼び出し、子の識別子を渡します。
 * エンティティが正常でない場合は、エンティティの状態をトリガーしたレポートを示す異常性の評価。
@@ -988,8 +992,8 @@ ApplicationHealthStateChunks :
 
 > [!NOTE]
 > 一般クエリはエンティティの正常性状態の集計を返し、正常性に関する詳細なデータは含まれません。 エンティティが正常でない場合は、正常性クエリを実行してイベント、子の正常性状態、異常性の評価などの正常性に関するすべての情報を取得できます。
-> 
-> 
+>
+>
 
 エンティティについて一般クエリで不明な正常性状態が返された場合、エンティティに関するすべてのデータが正常性ストアに揃っていない可能性があります。 また、正常性ストアに対するサブクエリが失敗した可能性もあります (たとえば、通信エラーがあったか、正常性ストアが制限されていた)。 引き続きエンティティに対して正常性クエリを実行します。 サブクエリで一時的なエラーが発生していた (ネットワークの問題など) 場合、このフォローアップ クエリは成功することがあります。 また、エンティティが公開されなかった理由の詳細を正常性ストアから確認することもできます。
 
@@ -1019,8 +1023,8 @@ ApplicationHealthStateChunks :
 
 > [!NOTE]
 > 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
-> 
-> 
+>
+>
 
 ### <a name="examples"></a>例
 次のコードは、クラスター内の正常でないアプリケーションを取得します。
@@ -1134,8 +1138,8 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 > [!NOTE]
 > 異常性の評価には、エンティティが現在の正常性状態であると評価された第一の理由が示されます。 この状態をトリガーする複数のイベントが他に存在する場合がありますが、それらのイベントは評価には反映されません。 より詳しい情報を得るには、正常性エンティティを詳しく調べ、クラスター内の異常性レポートをすべて確認します。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>次のステップ
 [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
@@ -1148,6 +1152,8 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO2-->
 
 

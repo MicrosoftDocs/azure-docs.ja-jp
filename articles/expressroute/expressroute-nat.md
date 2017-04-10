@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d16326340f668285e185a6e8adb1a8316d8bd0eb
+ms.sourcegitcommit: 371c76ed36cd9d21026a5a49c6ef86a0cd3cc816
+ms.openlocfilehash: 8fd8b4b9611adb15df7e436a00f8ec35ea1e9614
 
 
 ---
@@ -45,7 +45,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
-#### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>ご利用のネットワークから Microsoft に送信されるトラフィック
+### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>ご利用のネットワークから Microsoft に送信されるトラフィック
 * トラフィックが有効なパブリック IPv4 アドレスで Microsoft ピアリング パスに入っていることを確認する必要があります。 Microsoft はリージョンのルーティング インターネット レジストリ (RIR) またはインターネット ルーティング レジストリ (IRR) に対して IPv4 NAT アドレスの所有者を検証する必要があります。 ピアリングされている AS 番号と NAT に使用されている IP アドレスに基づいて確認されます。 ルーティング レジストリに関する情報については、 [ExpressRoute のルーティングの要件](expressroute-routing.md) のページを参照してください。
 * Azure パブリック ピアリング セットアップと他の ExpressRoute 回線に使用する IP アドレスは BGP セッションで Microsoft にアドバタイズしないでください。 このピアリングでアドバタイズされる NAT IP プレフィックスの長さには制約がありません。
   
@@ -54,7 +54,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
   > 
   > 
 
-#### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Microsoft からあなたのネットワークに送信されるトラフィック
+### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Microsoft からあなたのネットワークに送信されるトラフィック
 * 一部のシナリオでは、あなたのネットワーク内でホストされているサービス エンドポイントへの接続を Microsoft が開始する必要があります。 そのようなシナリオの典型的な例は、Office 365 からあなたのネットワークでホストされている ADFS サービスに接続する場合です。 そのような場合は、ネットワークから Microsoft ピアリングに適切なプレフィックスをリークする必要があります。 
 * Microsoft からあなたのネットワーク内にある IP アドレスに送信されるトラフィックを SNAT 変換する必要があります。 
 
@@ -70,6 +70,6 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

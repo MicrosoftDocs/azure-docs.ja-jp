@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
+ms.openlocfilehash: df3d303ee10fcc982552ea9756eb59198c87b650
 
 
 ---
@@ -27,9 +27,9 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 このトピックでは、イベント タイマーに従って実行され、メッセージをストレージ キューに追加する新しい関数を C# で作成する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
-関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
+関数アプリは Azure での関数の実行をホストします。 Azure アカウントがない場合は、[Functions の試用](https://functions.azure.com/try)に関するエクスペリエンスを確認するか、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)します。 
 
-## <a name="create-a-timertriggered-function-from-the-template"></a>タイマーでトリガーされる関数をテンプレートから作成する
+## <a name="create-a-timer-triggered-function-from-the-template"></a>タイマーでトリガーされる関数をテンプレートから作成する
 関数アプリは Azure での関数の実行をホストします。 関数を作成するには、アクティブな Azure アカウントを用意する必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。 
 
 1. [Azure Functions ポータル](https://functions.azure.com/signin) に移動し、Azure アカウントでサインインします。
@@ -72,13 +72,13 @@ Azure Functions の詳細については、次のトピックを参照してく�
 * [Azure Functions のテスト](functions-test-a-function.md)  
    関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
-   Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
+  Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

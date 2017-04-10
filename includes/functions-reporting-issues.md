@@ -4,4 +4,8 @@
 | テンプレート |作成テンプレートに関するコードの問題 |[問題のファイリング](https://github.com/Azure/azure-webjobs-sdk-templates/issues) |
 | ポータル |ユーザー インターフェイスまたはエクスペリエンスの問題 |[問題のファイリング](https://github.com/ProjectKudu/AzureFunctionsPortal/issues) |
 
-<!---HONumber=AcomDC_0420_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

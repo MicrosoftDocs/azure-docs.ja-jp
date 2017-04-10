@@ -1,19 +1,24 @@
 ---
-title: Azure App Service Web Apps での PHP の構成 | Microsoft Docs
-description: Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。
+title: "Azure App Service Web Apps での PHP の構成 | Microsoft Docs"
+description: "Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
 services: app-service
 documentationcenter: php
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/16/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b62ee732f1730e8934443fb4320327e64d110833
+ms.lasthandoff: 03/25/2017
+
 
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
@@ -22,10 +27,10 @@ ms.author: robmcm
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-builtin-php-version"></a>方法: ビルトインの PHP バージョンを変更する
-既定では、App Service Web アプリを作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
+## <a name="how-to-change-the-built-in-php-version"></a>方法: ビルトインの PHP バージョンを変更する
+既定では、App Service Web アプリを作成すると PHP 5.5 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
-PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
+PHP 5.6 および PHP 7.0 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
 
 ### <a name="azure-portal"></a>Azure ポータル
 1. [Azure ポータル](https://portal.azure.com) で Web アプリに移動し、 **[設定]** ボタンをクリックします。
@@ -44,12 +49,12 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
         PS C:\> Login-AzureRmAccount
 2. Web アプリの PHP バージョンを設定します。
    
-        PS C:\> Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name {site-name}
+        PS C:\> Set-AzureWebsite -PhpVersion {5.5 | 5.6 | 7.0} -Name {app-name}
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
    
-        PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
+        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-commandline-interface-linux-mac-windows"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
+### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
 Azure コマンド ライン インターフェイスを使用するには、 **Node.js** をコンピューターにインストールする必要があります。
 
 1. ターミナルを開いてアカウントにログインします。
@@ -57,12 +62,22 @@ Azure コマンド ライン インターフェイスを使用するには、 **
         azure login
 2. Web アプリの PHP バージョンを設定します。
    
-        azure site set --php-version [5.4 | 5.5] {site-name}
+        azure site set --php-version {5.5 | 5.6 | 7.0} {app-name}
+
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
    
-        azure site show {site-name}
+        azure site show {app-name}
 
-## <a name="how-to-change-the-builtin-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
+> [!NOTE] 
+> 上記に相当する [Azure CLI 2.0](https://github.com/Azure/azure-cli) のコマンドは次のとおりです。
+>
+>
+
+    az login
+    az appservice web config update --php-version {5.5 | 5.6 | 7.0} -g {resource-group-name} -n {app-name}
+    az appservice web config show -g {resource-group-name} -n {app-name}
+
+## <a name="how-to-change-the-built-in-php-configurations"></a>方法: ビルトインの PHP 構成を変更する
 次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます (php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
@@ -95,7 +110,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
 
 ### <a name="configure-via-ini-settings"></a>Ini 設定を使用して構成します。
 1. `d:\home\site` ディレクトリを `ext` ディレクトリに追加します。
-2. `ext` ディレクトリに、`.dll` 拡張ファイル (`php_mongo.dll`、`php_xdebug.dll`  など) を配置します。 拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+2. `ext` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 3. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) を Web アプリに追加する
 4. `ini` ファイルを `extensions.ini` と呼ばれる `d:\home\site\ini` に作成します。
 5. 'php.ini' ファイルで使用するものと同じ構文を使用して、構成設定を `extensions.ini` ファイルに追加します。 たとえば、MongoDB や XDebug 拡張機能を有効にする場合、 `extensions.ini` ファイルには次のテキストが含まれます。
@@ -107,7 +122,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
 
 ### <a name="configure-via-app-setting"></a>アプリ設定の構成
 1. ディレクトリを `bin` ディレクトリに追加します。
-2. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_mongo.dll` など) を配置します。 拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+2. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 3. Web アプリをデプロイします。
 4. Azure ポータルで Web アプリに移動し、 **[設定]** ボタンをクリックします。
    
@@ -168,7 +183,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -189,10 +204,5 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
-
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

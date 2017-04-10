@@ -1,9 +1,9 @@
 ---
-title: "Azure Batch CLI の使用 | Microsoft Docs"
+title: "Batch 用の Azure CLI の概要 | Microsoft Docs"
 description: "Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,21 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 09/30/2016
-ms.author: marsma
+ms.date: 01/23/2017
+ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 698c481e2eff5e0a3b893a0377d9f4cd2f052eb4
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-cli"></a>Azure Batch CLI の使用
+# <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
+
 クロスプラットフォームの Azure コマンド ライン インターフェイス (Azure CLI) を使用すると、Linux、Mac、Windows のコマンド シェルで Batch アカウントや各種リソース (プール、ジョブ、タスクなど) を管理できます。 Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI で実行したりスクリプト化したりできます。
 
 この記事は、Azure CLI バージョン 0.10.5 に基づいています。
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure CLI のインストール](../xplat-cli-install.md)
+* [Azure CLI のインストール](../cli-install-nodejs.md)
 * [Azure サブスクリプションへの Azure CLI の接続](../xplat-cli-connect.md)
 * **Resource Manager モード**への切り替え: `azure config mode arm`
 
@@ -129,7 +132,7 @@ Azure CLI を使用して、プール、計算ノード、ジョブ、タスク�
 
 多くのリソース作成操作をコマンド ライン オプションのみを使用して実行できますが、一部の機能では、リソースの詳細を含む JSON 形式のファイルが必要です。 たとえば、開始タスクのリソース ファイルを指定する場合は、JSON ファイルを使用する必要があります。
 
-リソースの作成に必要な JSON を確認するには、MSDN の [Batch の REST API リファレンス][rest_api]のドキュメントを参照してください。 「" *リソースの種類*" の追加」の各トピックには、リソース作成用の JSON の例が含まれていて、JSON ファイルのテンプレートとして使用できます。 たとえば、プール作成用の JSON は、「[Add a pool to an account (アカウントへのプールの追加)][rest_add_pool]」に含まれています。
+リソースの作成に必要な JSON を確認するには、MSDN の [Batch の REST API リファレンス][rest_api]のドキュメントを参照してください。 「" *リソースの種類*" の追加」の各トピックには、リソース作成用の JSON の例が含まれていて、JSON ファイルのテンプレートとして使用できます。 たとえば、プール作成用の JSON は、「[アカウントへのプールの追加][rest_add_pool]」に含まれています。
 
 > [!NOTE]
 > リソースの作成時に JSON ファイルを指定すると、そのリソースに対してコマンド ラインで指定したその他すべてのパラメーターが無視されます。
@@ -151,7 +154,7 @@ Azure CLI を使用して、プール、計算ノード、ジョブ、タスク�
 
 Batch サービスに計算ノードのプールを作成します。
 
-[Batch 機能の概要](batch-api-basics.md#pool)のページで説明したように、プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という 2 つのオプションがあります。 仮想マシンの構成のプールを作成するには `--image-*` オプション、Cloud Services の構成のプールを作成するには `--os-family` オプションを使用します。 `--os-family` オプションと `--image-*` オプションの両方を指定することはできません。
+[Batch 機能の概要](batch-api-basics.md#pool)のページで説明したように、プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という&2; つのオプションがあります。 仮想マシンの構成のプールを作成するには `--image-*` オプション、Cloud Services の構成のプールを作成するには `--os-family` オプションを使用します。 `--os-family` オプションと `--image-*` オプションの両方を指定することはできません。
 
 プールの[アプリケーション パッケージ](batch-application-packages.md)と、[開始タスク](batch-api-basics.md#start-task)のコマンド ラインを指定できます。 ただし、開始タスクのリソース ファイルを指定するには、代わりに [JSON ファイル](#json-files)を使用する必要があります。
 
@@ -192,11 +195,11 @@ Batch アカウントにジョブを追加して、そのタスクを実行す�
 
     azure batch task list --job-id "job001" --filter-clause "startswith(id, 'renderTask')"
 
-Batch CLI は、Batch サービスがサポートしている 3 つの句すべてをサポートします。
+Batch CLI は、Batch サービスがサポートしている&3; つの句すべてをサポートします。
 
 * `--select-clause [select-clause]` 各エンティティのプロパティのサブセットを返します
 * `--filter-clause [filter-clause]` 指定した OData 式に一致するエンティティのみを返します
-* `--expand-clause [expand-clause]` 基になる 1 つの REST 呼び出しのエンティティ情報を取得します。 現時点では、expand 句は `stats` プロパティのみをサポートしています。
+* `--expand-clause [expand-clause]` 基になる&1; つの REST 呼び出しのエンティティ情報を取得します。 現時点では、expand 句は `stats` プロパティのみをサポートしています。
 
 3 つの句とこれらを使用したリスト クエリの詳細については、「 [効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)」を参照してください。
 
@@ -222,7 +225,7 @@ Batch CLI は、Batch サービスがサポートしている 3 つの句すべ�
     azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
 ### <a name="deploy-an-application-package"></a>アプリケーション パッケージをデプロイする
-新しいプールの作成時に、デプロイ用の 1 つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
+新しいプールの作成時に、デプロイ用の&1; つ以上のアプリケーション パッケージを指定できます。 プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。 ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
 
 プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`--app-package-ref` オプションを指定してプールを作成します。 `--app-package-ref` オプションには、コンピューティング ノードにデプロイする一連のアプリケーションの ID をセミコロン区切りで指定できます。
 
@@ -270,9 +273,4 @@ Batch CLI は、Batch サービスがサポートしている 3 つの句すべ�
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

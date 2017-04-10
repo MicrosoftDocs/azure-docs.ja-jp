@@ -1,12 +1,12 @@
 ---
-title: Registration Management
-description: This topic explains how to register devices with notification hubs in order to receive push notifications.
+title: "登録管理"
+description: "ここでは、プッシュ通知を受信するために通知ハブにデバイスを登録する方法について説明します。"
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -14,28 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
+
 
 ---
-# <a name="registration-management"></a>Registration management
-## <a name="overview"></a>Overview
-This topic explains how to register devices with notification hubs in order to receive push notifications. The topic describes registrations at a high level, then introduces the two main patterns for registering devices: registering from the device directly to the notification hub, and registering through an application backend. 
+# <a name="registration-management"></a>登録管理
+## <a name="overview"></a>概要
+ここでは、プッシュ通知を受信するために通知ハブにデバイスを登録する方法について説明します。 また、登録の概要、デバイスを登録するための 2 つの主要パターン (デバイスから通知ハブに直接登録する方法と、アプリケーション バックエンド経由で登録する方法) についても説明します。 
 
-## <a name="what-is-device-registration"></a>What is device registration
-Device registration with a Notification Hub is accomplished using a **Registration** or **Installation**.
+## <a name="what-is-device-registration"></a>デバイス登録の概要
+Notification Hub にデバイスを登録するには、**登録**または**インストール**を使用します。
 
-#### <a name="registrations"></a>Registrations
-A registration associates the Platform Notification Service (PNS) handle for a device with tags and possibly a template. The PNS handle could be a ChannelURI, device token, or GCM registration id. Tags are used to route notifications to the correct set of device handles. For more information, see [Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md). Templates are used to implement per-registration transformation. For more information, see [Templates](notification-hubs-templates-cross-platform-push-messages.md).
+#### <a name="registrations"></a>登録
+登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。 タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
 
-#### <a name="installations"></a>Installations
-An Installation is an enhanced registration that includes a bag of push related properties. It is the latest and best approach to registering your devices. However, it is not supported by client side .NET SDK ([Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) as of yet.  This means if you are registering from the client device itself, you would have to use the [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) approach to support installations. If you are using a backend service, you should be able to use [Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+#### <a name="installations"></a>インストール
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
-The following are some key advantages to using installations:
+次に、インストールを使用する方法の主な利点について説明します。
 
-* Creating or updating an installation is fully idempotent. So you can retry it without any concerns about duplicate registrations.
-* The installation model makes it easy to do individual pushes - targeting specific device. A system tag **"$InstallationId:[installationId]"** is automatically added with each installation based registration. So you can call a send to this tag to target a specific device without having to do any additional coding.
-* Using installations also enables you to do partial registration updates. The partial update of an installation is requested with a PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). This is particularly useful when you want to update tags on the registration. You don't have to pull down the entire registration and then resend all the previous tags again.
+* インストールの作成または更新は、完全にべき等です。 そのため、重複した登録について心配することなく、再試行できます。
+* インストール モデルを使用すると、特定のデバイスを対象にした個別のプッシュを簡単に実行できるようになります。 システム タグ **"$InstallationId:[installationId]"** は、インストール ベースの登録ごとに自動的に追加されます。 そのため、コードを追加することなく、特定のデバイスを対象にしてこのタグに対する送信を呼び出すことができます。
+* また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは登録時にタグを更新するときに特に便利です。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-An installation can contain the the following properties. For a complete listing of the installation properties see, [Create or Overwrite an Installation with REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) or [Installation Properties](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) for the .
+インストールには、次のプロパティを含めることができます。 インストールのプロパティの一覧については、[REST API を使用してインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストールのプロパティに関するページ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)をご覧ください。
 
     // Example installation format to show some supported properties
     {
@@ -73,37 +77,37 @@ An installation can contain the the following properties. For a complete listing
 
 
 
-It is important to note that registrations and installations by default no longer expire.
+登録とインストールが既定では期限切れにならなくなった点に注意してください。
 
-Registrations and installations must contain a valid PNS handle for each device/channel. Because PNS handles can only be obtained in a client app on the device, one pattern is to register directly on that device with the client app. On the other hand, security considerations and business logic related to tags might require you to manage device registration in the app back-end. 
+登録とインストールには、各デバイス/チャネルの有効な PNS ハンドルを含める必要があります。 PNS ハンドルはデバイスのクライアント アプリでのみ取得できるので、クライアント アプリを使用してそのデバイスに直接登録する方法があります。 一方、タグに関連するセキュリティの考慮事項とビジネス ロジックによっては、アプリのバックエンドでデバイス登録を管理する作業が必要になる可能性があります。 
 
-#### <a name="templates"></a>Templates
-If you want to use [Templates](notification-hubs-templates-cross-platform-push-messages.md), the device installation also hold all templates associated with that device in a JSON format (see sample above). The template names help target different templates for the same device.
+#### <a name="templates"></a>テンプレート
+[テンプレート](notification-hubs-templates-cross-platform-push-messages.md)を使用する場合、デバイスのインストールには、そのデバイスに関連付けるすべてのテンプレートも JSON 形式で含める必要があります (前述の例を参照してください)。 テンプレート名は、1 つのデバイスに複数のテンプレートを対象にすることができます。
 
-Note that each template name maps to a template body and an optional set of tags. Moreover, each platform can have additional template properties. For Windows Store (using WNS) and Windows Phone 8 (using MPNS), an additional set of headers can be part of the template. In the case of APNs, you can set an expiry property to either a constant or to a template expression. For a complete listing of the installation properties see, [Create or Overwrite an Installation with REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) topic.
+各テンプレート名は、テンプレートの本文とオプションのタグ セットにマッピングされます。 さらに、各プラットフォームには、テンプレート プロパティが他にもある場合があります。 (WNS を使用する) Windows ストアと (MPNS を使用する) Windows Phone 8 の場合、その他のヘッダー セットをテンプレートに含めることができます。 APNs の場合、expiry プロパティを定数またはテンプレート式に設定することができます。 インストール プロパティの一覧については、インストール プロパティの一覧については、 [REST でインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx) に関するトピックを参照してください。
 
-#### <a name="secondary-tiles-for-windows-store-apps"></a>Secondary Tiles for Windows Store Apps
-For Windows Store client applications, sending notifications to secondary tiles is the same as sending them to the primary one. This is also supported in installations. Note that secondary tiles have a different ChannelUri, which the SDK on your client app handles transparently.
+#### <a name="secondary-tiles-for-windows-store-apps"></a>Windows ストア アプリのセカンダリ タイル
+Windows ストア クライアント アプリケーションの場合、セカンダリ タイルに通知を送信する処理は、プライマリ タイルに送信する場合と同じです。 この処理もインストールでサポートされています。 セカンダリ タイルの ChannelUri は異なります。クライアント アプリの SDK は ChannelUri を透過的に処理します。
 
-The SecondaryTiles dictionary uses the same TileId that is used to create the SecondaryTiles object in your Windows Store app.
-As with the primary ChannelUri, ChannelUris of secondary tiles can change at any moment. In order to keep the installations in the notification hub updated, the device must refresh them with the current ChannelUris of the secondary tiles.
+SecondaryTiles ディクショナリは、Windows ストア アプリで SecondaryTiles オブジェクトを作成するために使用されたものと同じ TileId を使用します。
+プライマリ タイルの ChannelUri と同様に、セカンダリ タイルの ChannelUris は常に変化する可能性があります。 通知ハブのインストールを最新の状態に保つには、デバイスがセカンダリ タイルの最新の ChannelUris を使用して更新する必要があります。
 
-## <a name="registration-management-from-the-device"></a>Registration management from the device
-When managing device registration from client apps, the backend is only responsible for sending notifications. Client apps keep PNS handles up to date, and register tags. The following picture illustrates this pattern.
+## <a name="registration-management-from-the-device"></a>デバイスからの登録管理
+クライアント アプリからデバイス登録を管理する場合、バックエンドは通知の送信のみを担当します。 クライアント アプリは、PNS ハンドルを最新の状態に保ち、タグを登録します。 このパターンについて次の図で説明します。
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-The device first retrieves the PNS handle from the PNS, then registers with the notification hub directly. After the registration is successful, the app backend can send a notification targeting that registration. For more information about how to send notifications, see [Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md).
-Note that in this case, you will use only Listen rights to access your notification hubs from the device. For more information, see [Security](notification-hubs-push-notification-security.md).
+デバイスは、まず PNS から PNS ハンドルを取得してから、通知ハブに直接登録します。 登録に成功すると、アプリ バックエンドからその登録に対して通知を送信できるようになります。 通知の送信方法の詳細については、 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)に関するページを参照してください。
+この場合、デバイスから通知ハブにアクセスする際にリッスン権限のみを使用します。 詳細については、 [セキュリティ](notification-hubs-push-notification-security.md)に関するページを参照してください。
 
-Registering from the device is the simplest method, but it has some drawbacks.
-The first drawback is that a client app can only update its tags when the app is active. For example, if a user has two devices that register tags related to sport teams, when the first device registers for an additional tag (for example, Seahawks), the second device will not receive the notifications about the Seahawks until the app on the second device is executed a second time. More generally, when tags are affected by multiple devices, managing tags from the backend is a desirable option.
-The second drawback of registration management from the client app is that, since apps can be hacked, securing the registration to specific tags requires extra care, as explained in the section “Tag-level security.”
+デバイスからの登録が最も簡単な方法ですが、いくつか欠点があります。
+1 つ目の欠点は、クライアント アプリがアクティブな場合にのみ、クライアント アプリからタグを更新できることです。 たとえば、ユーザーがスポーツ チームに関連するタグを登録しているデバイスを 2 台持っている状態で、1 台目のデバイスが追加のタグ (Seahawks など) を登録すると、2 台目のデバイスを次に実行するまで、Seahawks に関する通知は 2 台目のデバイスに送信されません。 さらに一般的には、タグが複数のデバイスの影響を受ける場合、バックエンドからのタグ管理が推奨される選択肢です。
+クライアント アプリから登録を管理する場合の 2 つ目の欠点は、アプリはハッキングされる可能性があるので、セクション「タグレベルのセキュリティ」で説明されているように、特定のタグへの登録をセキュリティで保護するために追加の対応が必要になることです。
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Example code to register with a notification hub from a device using an installation
-At this time, this is only supported using the [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx).
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>インストールを使用してデバイスから通知ハブに登録するコード例
+現時点では、 [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx)を使用する必要があります。
 
-You can also use the PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) for updating the installation.
+また、インストールを更新する場合は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) の PATCH メソッドを使用することもできます。
 
     class DeviceInstallation
     {
@@ -182,8 +186,8 @@ You can also use the PATCH method using the [JSON-Patch standard](https://tools.
 
 
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Example code to register with a notification hub from a device using a registration
-These methods create or update a registration for the device on which they are called. This means that in order to update the handle or the tags, you must overwrite the entire registration. Remember that registrations are transient, so you should always have a reliable store with the current tags that a specific device needs.
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>登録を使用してデバイスから通知ハブに登録するコード例
+これらのメソッドで、呼び出すデバイスの登録を作成または更新します。 つまり、ハンドルまたはタグを更新するには、登録全体を上書きする必要があります。 登録は一時的なものなので、そのデバイスに必要な最新のタグを保存できる信頼性の高いストアを常に用意する必要があります。
 
     // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
@@ -235,17 +239,17 @@ These methods create or update a registration for the device on which they are c
     }
 
 
-## <a name="registration-management-from-a-backend"></a>Registration management from a backend
-Managing registrations from the backend requires writing additional code. The app from the device must provide the updated PNS handle to the backend every time the app starts (along with tags and templates), and the backend must update this handle on the notification hub. The following picture illustrates this design.
+## <a name="registration-management-from-a-backend"></a>バックエンドからの登録管理
+バックエンドから登録を管理するには、追加のコードを作成する必要があります。 デバイスのアプリは、アプリが起動するたびに、最新の PNS ハンドル (タグとテンプレートも) をバックエンドに提供する必要があります。また、バックエンドは、通知ハブでそのハンドルを更新する必要があります。 この設計について次の図で説明します。
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-The advantages of managing registrations from the backend include the ability to modify tags to registrations even when the corresponding app on the device is inactive, and to authenticate the client app before adding a tag to its registration.
+バックエンドから登録を管理する利点として、デバイスの対応するアプリがアクティブではない場合でも、登録に対してタグを変更できることと、タグを登録に追加する前にクライアント アプリを認証できることがあります。
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Example code to register with a notification hub from a backend using an installation
-The client device still gets its PNS handle and relevant installation properties as before and calls a custom API on the backend that can perform the registration and authorize tags etc. The backend can leverage the [Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>インストールを使用してバックエンドから通知ハブに登録するコード例
+前述のように、クライアント デバイスは、PNS ハンドルと関連するインストール プロパティを取得し、バックエンドで、登録やタグの承認などを行うカスタム API を呼び出すことができます。バックエンドは、[バックエンド操作に Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を利用できます。
 
-You can also use the PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) for updating the installation.
+また、インストールを更新する場合は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) の PATCH メソッドを使用することもできます。
 
     // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
@@ -288,8 +292,8 @@ You can also use the PATCH method using the [JSON-Patch standard](https://tools.
     }
 
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Example code to register with a notification hub from a device using a registration id
-From your app backend, you can perform basic CRUDS operations on registrations. For example:
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>登録 ID を使用してデバイスから通知ハブに登録するコード例
+アプリ バックエンドから、登録に対して基本の CRUDS 操作を実行できます。 次に例を示します。
 
     var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
@@ -312,8 +316,11 @@ From your app backend, you can perform basic CRUDS operations on registrations. 
     await hub.DeleteRegistrationAsync(r);
 
 
-The backend must handle concurrency between registration updates. Service Bus offers optimistic concurrency control for registration management. At the HTTP level, this is implemented with the use of ETag on registration management operations. This feature is transparently used by Microsoft SDKs, which throw an exception if an update is rejected for concurrency reasons. The app backend is responsible for handling these exceptions and retrying the update if required.
+バックエンドは、登録の更新が複数ある場合の並行処理に対応する必要があります。 Service Bus は、登録管理向けにオプティミスティック同時実行制御を提供しています。 HTTP レベルでは、この処理は登録管理操作に対して ETag を使用して実装されます。 この機能は、Microsoft SDK から透過的に使用されます。並行処理の理由で更新が拒否された場合は、例外がスローされます。 このような例外に対応し、必要に応じて更新を再試行する処理は、アプリ バックエンドの役割です。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

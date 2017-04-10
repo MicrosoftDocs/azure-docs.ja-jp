@@ -2,11 +2,11 @@
 title: Create and publish a Marketplace item in Azure Stack | Microsoft Docs
 description: Create and publish a Marketplace item in Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: rupisure
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: rupisure
+translationtype: Human Translation
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 20925a3f6532b9aa0dccbee3f3965c5aa6303ee4
+
 
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Create and publish a Marketplace item
@@ -27,11 +31,11 @@ ms.author: rupisure
        /Contoso.TodoList/Icons/
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
-3. [Create an Azure Resource Manager template](../resource-group-authoring-templates.md) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
+3. [Create an Azure Resource Manager template](../azure-resource-manager/resource-group-authoring-templates.md) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
 4. Test the template with the Microsoft Azure Stack APIs to make sure that the resource can be deployed successfully.
 5. If your template relies on a virtual machine image, follow the instructions to [add a virtual machine image to Azure Stack](azure-stack-add-vm-image.md).
 6. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
-7. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the Small, Medium, Large, and Wide naming convention for icons. See [Marketplace item UI reference](## Reference: Marketplace item UI) for a detailed description.
+7. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the Small, Medium, Large, and Wide naming convention for icons. See [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description.
    
    > [!NOTE]
    > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
@@ -50,9 +54,9 @@ ms.author: rupisure
 10. Replace **My Marketplace Items** with a list of the categories where your Marketplace item should appear.
     
              "categories":[
-                "My Marketplace Items"
+                 "My Marketplace Items"
               ],
-11. For any further edits to manifest.json, refer to [Reference: Marketplace item manifest.json](## Reference: Marketplace item manifest.json).
+11. For any further edits to manifest.json, refer to [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 12. Open a command prompt and run the following command to package the folders into an .azpkg file:
     
         AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
@@ -90,7 +94,7 @@ ms.author: rupisure
    > 
    > 
 
-## <a name="reference:-marketplace-item-manifest.json"></a>Reference: Marketplace item manifest.json
+## <a name="reference-marketplace-item-manifestjson"></a>Reference: Marketplace item manifest.json
 ### <a name="identity-information"></a>Identity information
 | Name | Required | Type | Constraints | Description |
 | --- | --- | --- | --- | --- |
@@ -143,7 +147,7 @@ For any field that allows HTML, the following elements and attributes are allowe
 
 h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i
 
-## <a name="reference:-marketplace-item-ui"></a>Reference: Marketplace item UI
+## <a name="reference-marketplace-item-ui"></a>Reference: Marketplace item UI
 Icons and text for Marketplace items as seen in the Azure Stack portal are as follows.
 
 ### <a name="create-blade"></a>Create blade
@@ -152,6 +156,9 @@ Icons and text for Marketplace items as seen in the Azure Stack portal are as fo
 ### <a name="marketplace-item-details-blade"></a>Marketplace item details blade
 ![Marketplace item details blade](media/azure-stack-marketplace-item-ui-reference/image3.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

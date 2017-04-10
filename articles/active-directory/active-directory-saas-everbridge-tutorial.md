@@ -1,22 +1,26 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Everbridge の統合 | Microsoft Docs'
-description: Azure Active Directory と Everbridge の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Everbridge の統合 | Microsoft Docs"
+description: "Azure Active Directory と Everbridge の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/14/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: d31201fa2ad57006d5181ee808020cea80446557
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-everbridge"></a>チュートリアル: Azure Active Directory と Everbridge の統合
+# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル: Azure Active Directory と EverBridge の統合
 このチュートリアルの目的は、Everbridge と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Everbridge と Azure AD の統合には、次の利点があります。
@@ -41,12 +45,12 @@ Azure AD と Everbridge の統合を構成するには、次のものが必要�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Everbridge の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -104,13 +108,13 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
     ![Configure Single Sign-On](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_03.png) 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_04.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_04.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://sso.everbridge.net/{<company name>}` のパターンを使用して URL を入力します。
    
     b. **[応答 URL]** ボックスに、`https://manager.everbridge.net/saml/SSO/{<company name>}/alias/defaultAlias` のパターンを使用して URL を入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
 4. **[Everbridge でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_05.png)
@@ -168,22 +172,23 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-everbridge-tutorial/create_aaduser_06.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-everbridge-tutorial/create_aaduser_06.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-everbridge-tutorial/create_aaduser_07.png)
@@ -248,6 +253,6 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

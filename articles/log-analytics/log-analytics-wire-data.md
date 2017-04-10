@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のワイヤ データ ソリューション | Microsoft Docs
-description: ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
+title: "Log Analytics のワイヤ データ ソリューション | Microsoft Docs"
+description: "ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 01/02/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
+
 
 ---
 # <a name="wire-data-solution-in-log-analytics"></a>Log Analytics のワイヤ データ ソリューション
@@ -21,8 +25,8 @@ ms.author: banders
 
 > [!NOTE]
 > ワイヤ データ ソリューションは、現在、ワークスペースに追加できません。 ワイヤ データ ソリューションを既に有効にしているユーザーは、ワイヤ データ ソリューションを引き続き使用できます。
-> 
-> 
+>
+>
 
 既定では、OMS は、Windows に組み込まれているカウンターから CPU、メモリ、ディスク、ネットワークのパフォーマンス データについてログに記録されたデータを収集します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。 [ログ] タブの [設定] ページでは、その他のパフォーマンス カウンターを追加できます。
 
@@ -76,7 +80,7 @@ ms.author: banders
 2. **[WireData の一般的なクエリ]** の一覧で **[プロセスごとのネットワーク トラフィックの量 (バイト単位)]** をクリックして、返されるプロセスの一覧を参照します。
     ![WireData のクエリ](./media/log-analytics-wire-data/oms-wiredata-01.png)
 3. プロセスの一覧が長すぎて見づらい場合は、次の例と同じように検索クエリを変更できます。
-   
+
     ```
     Type WireData | measure count() by ProcessName | where AggregatedValue <40
     ```
@@ -85,24 +89,26 @@ ms.author: banders
 4. 一覧として返されたデータから、名前付きプロセスをクリックします。 この例では、DancingPigs.exe をクリックしました。 次に示す結果では、各種プロトコルでの送信などのネットワーク トラフィックの種類が示されています。
     ![名前付きプロセスが表示された WireData の結果](./media/log-analytics-wire-data/oms-wiredata-03.png)
 5. セキュリティと監査ソリューションがインストールされているため、検索クエリの IN 演算子と DISTINCT 演算子を使って検索クエリの結果を絞り込むと、ProcessName フィールドの値が同じセキュリティ イベントを調べることができます。 これを行うことができるのは、ワイヤ データと他のソリューション ログの値がどちらも同じ形式である場合です。 次の例と同じように検索クエリを変更します。
-   
+
     ```
     Type=SecurityEvent ProcessName IN {Type:WireData "DancingPigs.exe" | distinct ProcessName}
     ```    
-   
+
     ![wiredata results showing combined data](./media/log-analytics-wire-data/oms-wiredata-04.png)
 6. 上記の結果には、アカウント情報が示されます。 これで、次の例と同じように、検索クエリを絞り込み、そのアカウントがプロセスによって使われた頻度を、セキュリティと監査のデータから示すことができます。        
-   
+
     ```
     Type=SecurityEvent ProcessName IN {Type:WireData "DancingPigs.exe" | distinct ProcessName} | measure count() by Account
     ```
-   
+
     ![wiredata results showing account data](./media/log-analytics-wire-data/oms-wiredata-05.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [ログを検索](log-analytics-log-searches.md) して、詳細なワイヤ データ検索レコードを確認します。
 * Dan の「 [Using Wire Data in Operations Management Suite Log Search (Operations Management Suite Log Search でのワイヤ データの使用)](http://blogs.msdn.com/b/dmuscett/archive/2015/09/09/using-wire-data-in-operations-management-suite.aspx) 」というブログ投稿では、データが収集される頻度や、Operations Manager エージェントの収集プロパティを変更する方法について、付加的な情報が提供されています。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

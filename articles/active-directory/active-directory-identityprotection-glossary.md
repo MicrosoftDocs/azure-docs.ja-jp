@@ -1,164 +1,170 @@
 ---
-title: Azure Active Directory Identity Protection Glossary | Microsoft Docs
-description: Azure Active Directory Identity Protection Glossary
+title: "Azure Active Directory Identity Protection 用語集 | Microsoft Docs"
+description: "Azure Active Directory Identity Protection 用語集"
 services: active-directory
-keywords: azure active directory identity protection, cloud app discovery, managing applications, security, risk, risk level, vulnerability, security policy, glossary
-documentationcenter: ''
+keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/24/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f31188ed3216034ef8ec056023472844ec4debd6
+
 
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
-### <a name="at-risk-user"></a>At risk (User)
-A user with one or more active risk events. 
+# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
+### <a name="at-risk-user"></a>危険 (ユーザー)
+1 つ以上のアクティブなリスク イベントを持つユーザーです。 
 
-### <a name="atypical-signin-location"></a>Atypical sign-in location
-A sign-in from a geographic location that is not typical for the specific user, similar users, or the tenant.
+### <a name="atypical-sign-in-location"></a>特殊なサインインの場所
+特定のユーザー、類似ユーザーまたはテナントに対して一般的ではない地域からのサインインです。
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-A security module of Azure Active Directory that provides a consolidated view into risk events and potential vulnerabilities affecting an organization’s identities.
+リスク イベントや組織のユーザーに影響する潜在的な脆弱性に、統合されたビューを提供する Azure Active Directory のセキュリティ モジュールです。
 
-### <a name="conditional-access"></a>Conditional access
-A policy for securing access to resources. Conditional access rules are stored in the Azure Active Directory and are evaluated by Azure AD before granting access to the resource.  Example rules include restricting access based on user location, device health or user authentication method.
+### <a name="conditional-access"></a>条件付きアクセス
+リソースへのアクセスを保護するためのポリシー。 条件付きアクセス規則は、Azure Active Directory に格納され、リソースへのアクセス権を付与する前に Azure AD によって評価されます。  規則の例には、ユーザーの場所、デバイスの正常性またはユーザーの認証方法に基づいたアクセス権の制限が含まれます。
 
-### <a name="credentials"></a>Credentials
-Information that includes identification and proof of identification that is used to gain access to local and network resources. Examples of credentials are user names and passwords, smart cards, and certificates.
+### <a name="credentials"></a>資格情報
+ID およびローカル リソースとネットワーク リソースへのアクセス権を取得するために使用する ID の証明を含む情報です。 資格情報には、ユーザー名とパスワード、スマート カードおよび証明書などがあります。
 
-### <a name="event"></a>Event
-A record of an activity in Azure Active Directory.
+### <a name="event"></a>イベント
+Azure Active Directory 内のアクティビティのレコードです。
 
-### <a name="falsepositive-risk-event"></a>False-positive (risk event)
-A risk event status set manually by an Identity Protection user, indicating that the risk event was investigated and was incorrectly flagged as a risk event.
+### <a name="false-positive-risk-event"></a>誤検知 (リスク イベント)
+Identity Protection ユーザーが手動で設定するリスク イベントの状態です。リスク イベントが調査され、リスク イベントとして誤ってフラグが付けられたことを示します。
 
-### <a name="identity"></a>Identity
-A person or entity that must be verified by means of authentication, based on criteria such as password or a certificate.
+### <a name="identity"></a>ID
+パスワードまたは証明書などの条件に基づいて、認証を使用して検証する必要のある個人またはエンティティです。
 
-### <a name="identity-risk-event"></a>Identity risk event
-AAD event that was flagged as anomalous by Identity Protection, and may indicate that an identity has been compromised.
+### <a name="identity-risk-event"></a>ID リスク イベント
+Identity Protection が異常としてフラグを付けた AAD イベントです。ID が侵害されていることを示す可能性があります。
 
-### <a name="ignored-risk-event"></a>Ignored (risk event)
-A risk event status set manually by an Identity Protection user, indicating that the risk event is closed without taking a remediation action.
+### <a name="ignored-risk-event"></a>無視 (リスク イベント)
+Identity Protection ユーザーが手動で設定するリスク イベントの状態です。修復アクションを実行することなく、リスク イベントが閉じられたことを示します。
 
-### <a name="impossible-travel-from-atypical-locations"></a>Impossible travel from atypical locations
-A risk event triggered when two sign-ins for the same user are detected, where at least one of them is from an atypical sign-in location, and where the time between the sign-ins is shorter than the minimum time it would take to physically travel between these locations.  
+### <a name="impossible-travel-from-atypical-locations"></a>特殊な場所からのあり得ない移動
+同じユーザーに 2 回のサインインが検出される場合、少なくともその 1 回が特殊なサインインの場所からの場合、およびサインインの間隔がこれらの場所を物理的に移動する最短時間よりも短い場合にトリガーされるリスク イベントです。  
 
-### <a name="investigation"></a>Investigation
-The process of reviewing the activities, logs, and other relevant information related to a risk event to decide whether remediation or mitigation steps are necessary, understand if and how the identity was compromised, and understand how the compromised identity was used.
+### <a name="investigation"></a>調査
+修復または対応策の手順が必要であるかどうかを決定し、ID が侵害を受けているかどうか、およびどのように侵害されたかを理解し、侵害された ID がどのように使用されたかを理解するために、アクティビティ、ログ、およびリスク イベントに関連するその他の関連情報を確認するプロセスです。
 
-### <a name="leaked-credentials"></a>Leaked credentials
-A risk event triggered when current user credentials (user name and password) are found posted publicly in the Dark   web by our researchers.
+### <a name="leaked-credentials"></a>漏洩した資格情報
+現在のユーザー資格情報 (ユーザー名とパスワード) が、悪質な Web に公開投稿されたことを調査員が発見した場合にトリガーされるリスク イベントです。
 
-### <a name="mitigation"></a>Mitigation
-An action to limit or eliminate the ability of an attacker to exploit a compromised identity or device without restoring the identity or device to a safe state. A mitigation does not resolve previous risk events associated with the identity or device.
+### <a name="mitigation"></a>対応策
+ID またはデバイスを安全な状態に復元せずに、侵害された ID またはデバイスを悪用されないように、攻撃者の能力を制限または排除するアクションです。 対応策では、ID またはデバイスと関連付けられた以前のリスク イベントを解決することはありません。
 
-### <a name="multifactor-authentication"></a>Multi-factor authentication
-An authentication method that requires two or more authentication methods, which may include something the user has, such a certificate; something the user knows, such as user names, passwords, or pass phrases; physical attributes, such as a thumbprint; and personal attributes, such as a personal signature.
+### <a name="multi-factor-authentication"></a>多要素認証
+2 つ以上の認証方法を必要とする認証方法です。これには、ユーザーの所有物 (証明書など)、ユーザーが知っている内容 (ユーザー名、パスワードまたはパス フレーズなど)、物理属性 (拇印など)、個人属性 (署名など) が含まれる場合があります。
 
-### <a name="offline-detection"></a>Offline detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt after the fact, for an event that has already happened.
+### <a name="offline-detection"></a>オフラインの検出
+既に発生したイベントの事後のサインイン試行など、イベントのリスクの評価と異常の検出です。
 
-### <a name="policy-condition"></a>Policy condition
-A part of a security policy which defines the entities (groups, users, apps, device platforms, Device states, IP ranges, client types) included in the policy or excluded from it.
+### <a name="policy-condition"></a>ポリシーの条件
+ポリシーに含まれる、またはポリシーから除外されるエンティティ (グループ、ユーザー、アプリケーション、デバイスのプラットフォーム、デバイスの状態、IP 範囲、クライアントの種類) を定義するセキュリティ ポリシーの一部です。
 
-### <a name="policy-rule"></a>Policy rule
-The part of a security policy which describes the circumstances that would trigger the policy, and the actions taken when the policy is triggered.
+### <a name="policy-rule"></a>ポリシー規則
+ポリシーをトリガーする状況と、ポリシーがトリガーされたときに実行されるアクションを説明するセキュリティ ポリシーの一部です。
 
-### <a name="prevention"></a>Prevention
-An action to prevent damage to the organization through abuse of an identity or device suspected or know to be compromised. A prevention action does not secure the device or identity, and does not resolve previous risk events.
+### <a name="prevention"></a>防止
+侵害の疑いがある、または侵害が検知された ID またはデバイスの不正使用によって、組織の被害を防ぐためのアクション。 防止アクションでは、デバイスまたは ID を保護しません。また、以前のリスク イベントを解決することもありません。
 
-### <a name="privileged-user"></a>Privileged (user)
-A user that at the time of a risk event, had permanent or temporary admin permissions to one or more resource in Azure Active Directory, such as a Global Administrator, Billing Administrator, Service Administrator, User administrator, and Password Administrator. 
+### <a name="privileged-user"></a>特権 (ユーザー)
+Azure Active Directory に 1 つ以上のリソースへの永続的または一時的な管理者アクセス許可を所有するリスク イベント時のユーザーです。全体管理者、課金管理者、サービス管理者,ユーザー管理者、パスワード管理者など。 
 
-### <a name="realtime"></a>Real-time
-See Real-time detection.
+### <a name="real-time"></a>リアルタイム
+リアルタイムの検出を参照してください。
 
-### <a name="realtime-detection"></a>Real-time detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt before the event is allowed to proceed.
+### <a name="real-time-detection"></a>リアルタイムの検出
+イベントの続行が許可される前にサインインを試行するなど、イベントのリスクの評価および異常の検出です。
 
-### <a name="remediated-risk-event"></a>Remediated (risk event)
-A risk event status set automatically by Identity Protection, indicating that the risk event was remediated using the standard remediation action for this type of risk event. For example, when the user password is reset, many risk events that indicate that the previous password was compromised are automatically remediated.
+### <a name="remediated-risk-event"></a>修復済み (リスク イベント)
+Identity Protection から自動的に設定されるリスク イベントの状態です。この種類のリスク イベントに対する標準的な修復アクションを使用して、リスク イベントが修復されたことを示します。 たとえば、ユーザーのパスワードがリセットされると、以前のパスワードが侵害されたことを示す多くのリスク イベントは自動的に修復されます。
 
-### <a name="remediation"></a>Remediation
-An action to secure an identity or a device that were previously suspected or known to be compromised. A remediation action restores the identity or device to a safe state, and resolves previous risk events associated with the identity or device.
+### <a name="remediation"></a>修復
+以前に侵害の疑いがある、または侵害を検知した ID またはデバイスをセキュリティで保護するアクションです。 修復アクションでは、ID またはデバイスを安全な状態に復元し、ID またはデバイスに関連付けられた以前のリスク イベントを解決します。
 
-### <a name="resolved-risk-event"></a>Resolved (risk event)
-A risk event status set manually by an Identity Protection user, indicating that the user took an appropriate remediation action outside Identity Protection, and that the risk event should be considered closed.
+### <a name="resolved-risk-event"></a>解決 (リスク イベント)
+Identity Protection ユーザーが手動で設定するリスク イベントの状態です。ユーザーが Identity Protection 以外で適切な修復アクションを実行し、リスク イベントが閉じられたと見なされることを示します。
 
-### <a name="risk-event-status"></a>Risk event status
-A property of a risk event, indicating whether the event is active, and if closed, the reason for closing it.
+### <a name="risk-event-status"></a>リスク イベントの状態
+リスク イベントのプロパティで、イベントがアクティブかどうか、およびイベントが閉じられている場合は閉じた理由を示します。
 
-### <a name="risk-event-type"></a>Risk event type
-A category for the risk event, indicating the type of anomaly that caused the event to be considered risky.
+### <a name="risk-event-type"></a>リスク イベントの種類
+リスク イベントのカテゴリで、危険と見なされるイベントの原因となった異常の種類を示します。
 
-### <a name="risk-level-risk-event"></a>Risk level (risk event)
-An indication (High, Medium, or Low) of the severity of the risk event to help Identity Protection users prioritize the actions they take to reduce the risk to their organization. 
+### <a name="risk-level-risk-event"></a>リスク レベル (リスク イベント)
+Identity Protection ユーザーが、組織のリスクを低減するアクションに優先順位を付けるために役立つリスク イベントの重大度 (高、中、低) を示します。 
 
-### <a name="risk-level-signin"></a>Risk level (sign-in)
-An indication (High, Medium, or Low) of the likelihood that for a specific sign-in, someone else is attempting to use the user’s identity.
+### <a name="risk-level-sign-in"></a>リスク レベル (サインイン)
+他のユーザーがユーザーの ID を使用しようとする、特定のサインインの可能性 (高、中、低) を示します。
 
-### <a name="risk-level-user-compromise"></a>Risk level (user compromise)
-An indication (High, Medium, or Low) of the likelihood that an identity has been compromised.
+### <a name="risk-level-user-compromise"></a>リスク レベル (ユーザーの侵害)
+ID が侵害されている可能性 (高、中、低) を示します。
 
-### <a name="risk-level-vulnerability"></a>Risk level (vulnerability)
-An indication (High, Medium, or Low) of the severity of the vulnerability to help Identity Protection users prioritize the actions they take to reduce the risk to their organization.
+### <a name="risk-level-vulnerability"></a>リスク レベル (脆弱性)
+Identity Protection ユーザーが、組織のリスクを低減するアクションに優先順位を付けるために役立つ脆弱性の重大度 (高、中、低) を示します。
 
-### <a name="secure-identity"></a>Secure (identity)
-Take remediation action such as a password change or machine reimaging to restore a potentially compromised identity to an uncompromised state.
+### <a name="secure-identity"></a>セキュア (ID)
+パスワードの変更やマシンの再イメージ化などの修復アクションを実行し、侵害された可能性のある ID を侵害されていない状態に復元します。
 
-### <a name="security-policy"></a>Security policy
-A collection of policy rules and condition. A policy can be applied to entities such as users, groups, apps, devices, device platforms, device states, IP ranges, and Auth2.0 client types. When a policy is enabled, it is evaluated whenever an entity included in the policy is issued a token for a resource.
+### <a name="security-policy"></a>セキュリティ ポリシー
+ポリシー規則と条件のコレクションです。 ポリシーは、ユーザー、グループ、アプリ、デバイス、デバイスのプラットフォーム、デバイスの状態、IP 範囲、および Auth2.0 クライアントの種類などのエンティティに適用できます。 ポリシーが有効化されると、ポリシーに含まれるエンティティがリソースのトークンを発行するたびに評価されます。
 
-### <a name="sign-in-v"></a>Sign in (v)
-To authenticate to an identity in Azure Active Directory.
+### <a name="sign-in-v"></a>サインイン (動詞)
+Azure Active Directory 内で ID を認証することです。
 
-### <a name="signin-n"></a>Sign-in (n)
-The process or action of authenticating an identity in Azure Active Directory, and the event that captures this operation.
+### <a name="sign-in-n"></a>サインイン (名詞)
+Azure Active Directory で ID を認証するプロセスとアクション、およびこの操作をキャプチャするイベントです。
 
-### <a name="signin-from-anonymous-ip-address"></a>Sign-in from anonymous IP address
-A risk event triggered after a successful sign-in from IP address that has been identified as an anonymous proxy IP address.
+### <a name="sign-in-from-anonymous-ip-address"></a>匿名の IP アドレスからのサインイン
+匿名のプロキシ IP アドレスとして識別されている IP アドレスからのサインインに成功した後にトリガーされるリスク イベントです。
 
-### <a name="signin-from-infected-device"></a>Sign-in from infected device
-A risk event triggered when a sign-in originates from an IP address which is known to be used by one or more compromised devices, which are actively attempting to communicate with a bot server.
+### <a name="sign-in-from-infected-device"></a>感染したデバイスからのサインイン
+侵害された 1 つ以上のデバイスから使用されることが知られている IP アドレス、ボット サーバーとの通信をアクティブに試行している IP アドレスから、サインインを始めた場合に、トリガーされるリスク イベントです。
 
-### <a name="signin-from-ip-address-with-suspicious-activity"></a>Sign-in from IP address with suspicious activity
-A risk event triggered after a successful sign-in from an IP address with a high number of failed login attempts across multiple user accounts over a short period of time.
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>不審なアクティビティのある IP アドレスからのサインイン
+短期間に複数のユーザー アカウントで大量のログイン試行の失敗が見られる IP アドレスから正常にサインインされた後にトリガーされるリスク イベントです。
 
-### <a name="signin-from-unfamiliar-location"></a>Sign-in from unfamiliar location
-A risk event triggered when a user successfully signs in from a new location (IP, Latitude/Longitude and ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>不明な場所からのサインイン
+ユーザーが新しい場所 (IP、緯度と経度、および ASN) から正常にサインインしたときにトリガーされるリスク イベントです。
 
-### <a name="signin-risk"></a>Sign-in risk
-See Risk level (sign-in)
+### <a name="sign-in-risk"></a>サインイン リスク
+リスク レベル (サインイン) を参照してください
 
-### <a name="signin-risk-policy"></a>Sign-in risk policy
-A conditional access policy that evaluates the risk to a specific sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="sign-in-risk-policy"></a>サインインのリスク ポリシー
+事前定義された条件と規則に基づいて、特定のサインインのリスクを評価し、対応策に適用する条件付きアクセス ポリシー。
 
-### <a name="user-compromise-risk"></a>User compromise risk
-See Risk level (user compromise)
+### <a name="user-compromise-risk"></a>ユーザーの侵害リスク
+リスク レベル (ユーザーの侵害) を参照してください。
 
-### <a name="user-risk"></a>User risk
-See Risk level (user compromise).
+### <a name="user-risk"></a>ユーザー リスク
+リスク レベル (ユーザーの侵害) を参照してください。
 
-### <a name="user-risk-policy"></a>User risk policy
-A conditional access policy that considers the sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="user-risk-policy"></a>ユーザー リスクのポリシー
+事前定義された条件と規則に基づいて、サインインを考慮し、対応策に適用する条件付きアクセス ポリシー。
 
-### <a name="users-flagged-for-risk"></a>Users flagged for risk
-Users that have risk events which are either active or remediated
+### <a name="users-flagged-for-risk"></a>リスクのフラグ付きユーザー
+アクティブまたは修復済みのいずれかのリスク イベントを持つユーザーです。
 
-### <a name="vulnerability"></a>Vulnerability
-A configuration or condition in Azure Active Directory which makes the directory susceptible to exploits or threats.
+### <a name="vulnerability"></a>脆弱性
+ディレクトリが悪用または脅威の影響を受けやすくする Azure Active Directory の構成または条件です。
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "SQL Database を試す: C# を使用して SQL Database を作成する | Microsoft Docs"
+title: "C#: Azure SQL Database の概要 | Microsoft Docs"
 description: "SQL Database で SQL および C# アプリケーションを開発し、C# と SQL Database Library for .NET を使用して、Azure SQL Database を作成します。"
 keywords: "sql を試す, sql c#"
 services: sql-database
@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
+ms.custom: single databases
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: csharp
@@ -16,20 +17,15 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0ffe433d9899610d5ff83c66b6cdaaecd16e9c57
+ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
+ms.openlocfilehash: bc1a78a2891c73df23bc2a57cec67e6b73414165
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>SQL Database を試す: C# を使用して SQL Database Library for .NET で SQL Database を作成する
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-get-started.md)
-> * [C#](sql-database-get-started-csharp.md)
-> * [PowerShell](sql-database-get-started-powershell.md)
-> 
-> 
+# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>C# を使用して SQL Database Library for .NET で SQL データベースを作成する
 
-C# で [Microsoft Azure SQL Management Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用して Azure SQL データベースを作成する方法について説明します。 この記事では、SQL と C# を使って単一のデータベースを作成する方法について説明します。 エラスティック データベース プールを作成するには、 [エラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)に関する記事を参照してください。
+C# で [Microsoft Azure SQL Management Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用して Azure SQL データベースを作成する方法について説明します。 この記事では、SQL と C# を使って単一のデータベースを作成する方法について説明します。 エラスティック プールを作成するには、[エラスティック プールの作成](sql-database-elastic-pool-manage-csharp.md)に関する記事を参照してください。
 
 Azure SQL Database Management Library for .NET は、[Resource Manager ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ベースの API を提供します。
 
@@ -56,16 +52,16 @@ Azure SQL Database Management Library for .NET は、[Resource Manager ベース
 C# を使用して SQL データベースを作成するために、( [パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console)を使用して) 必要な管理ライブラリを読み込みます。
 
 1. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
-2. 「`Install-Package Microsoft.Azure.Management.Sql –Pre`」と入力して最新の [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) をインストールします。
-3. 「 `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` 」と入力して [Microsoft Azure Resource Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)をインストールします。
-4. 「 `Install-Package Microsoft.Azure.Common.Authentication –Pre` 」と入力して [Microsoft Azure 一般認証ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)をインストールします。 
+2. 「`Install-Package Microsoft.Azure.Management.Sql -Pre`」と入力して最新の [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) をインストールします。
+3. 「 `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` 」と入力して [Microsoft Azure Resource Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)をインストールします。
+4. 「 `Install-Package Microsoft.Azure.Common.Authentication -Pre` 」と入力して [Microsoft Azure 一般認証ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)をインストールします。 
 
 > [!NOTE]
 > この記事の例では、各 API 要求の同期フォームを使用し、基になるサービスでの REST 呼び出しが完了するまでブロックします。 非同期の手法も利用できます。
 > 
 > 
 
-## <a name="create-a-sql-database-server-firewall-rule-and-sql-database-c-example"></a>SQL Database サーバー、ファイアウォール規則、SQL データベースの作成 (C# のサンプル)
+## <a name="create-a-sql-database-server-firewall-rule-and-sql-database---c-example"></a>SQL Database サーバー、ファイアウォール規則、SQL データベースの作成 (C# のサンプル)
 次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、SQL データベースを作成します。 「[リソースにアクセスするためのサービス プリンシパルの作成](#create-a-service-principal-to-access-resources)」を参照し、変数 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` を取得してください。
 
 **Program.cs** の内容を次のとおりに書き換え、実際のアプリの値で `{variables}` を更新します (`{}` は含めません)。
@@ -228,7 +224,7 @@ C# を使用して SQL データベースを作成するために、( [パッケ
 
 
 ## <a name="create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルの作成
-次の PowerShell スクリプトを実行すると、Active Directory (AD) アプリケーションのほか、C# アプリの認証に必要なサービス プリンシパルが作成されます。 このスクリプトによって、上記の C# のサンプルに必要な値が出力されます。 詳細については、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md)」を参照してください。
+次の PowerShell スクリプトを実行すると、Active Directory (AD) アプリケーションのほか、C# アプリの認証に必要なサービス プリンシパルが作成されます。 このスクリプトによって、上記の C# のサンプルに必要な値が出力されます。 詳細については、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md)」を参照してください。
 
     # Sign in to Azure.
     Add-AzureRmAccount
@@ -289,9 +285,4 @@ C# を使用して SQL データベースを作成するために、( [パッケ
 [7]: ./media/sql-database-get-started-csharp/add-application.png
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

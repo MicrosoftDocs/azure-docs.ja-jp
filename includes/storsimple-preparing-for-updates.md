@@ -1,10 +1,10 @@
 <!--author=jgerend last changed: 03/16/16-->
 
-## 更新プログラムの準備
+## <a name="preparing-for-updates"></a>更新プログラムの準備
 更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。
 
 1. デバイス データのクラウド スナップショットを取得します。
-2. コントローラーの固定 IP アドレスがルーティング可能でインターネットに接続できることを確認します。これらの固定 IP は、デバイスに更新プログラムを提供するために使用されます。デバイスの Windows PowerShell インターフェイスから、各コントローラーで次のコマンドレットを実行してこれをテストできます。
+2. コントローラーの固定 IP アドレスがルーティング可能でインターネットに接続できることを確認します。 これらの固定 IP は、デバイスに更新プログラムを提供するために使用されます。 デバイスの Windows PowerShell インターフェイスから、各コントローラーで次のコマンドレットを実行してこれをテストできます。
    
      `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
    
@@ -30,4 +30,8 @@
 
 これらの手動の事前チェックが正常に完了した後で、更新プログラムのスキャンとインストールを開始できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

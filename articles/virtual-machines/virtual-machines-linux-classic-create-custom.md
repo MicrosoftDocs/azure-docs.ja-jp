@@ -1,38 +1,10 @@
 ---
-title: Linux VM の作成 | Microsoft Docs
-description: Linux オペレーティング システムを実行するクラシック デプロイ モデルを使用してカスタム仮想マシンを作成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: iainfoulds
-manager: timlt
-editor: tysonn
-tags: azure-service-management
-
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 08/23/2016
-ms.author: iainfou
+redirect_url: /azure/virtual-machines/linux/classic/create-custom
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: fce9706dee48545e82508af01a93c02aee40c7f0
+ms.lasthandoff: 03/27/2017
 
 ---
-# カスタム Linux VM を作成する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-このトピックでは、クラシック デプロイメント モデルを使用して Azure CLI でカスタム仮想マシン (VM) を作成する方法について説明します。ここでは、Azure 上の使用可能な**イメージ**にある Linux イメージを使用します。Azure CLI コマンドでは、次のような構成を選択できます。
-
-* 仮想ネットワークと VM との接続
-* 既存のクラウド サービスへの VM の追加
-* 既存のストレージ アカウントへの VM の追加
-* 可用性セットまたは場所への VM の追加
-
-> [!IMPORTANT]
-> 仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
-> 
-> 
-
-## クラシック デプロイ モデルを使用して Linux 仮想マシンを作成する方法
-[!INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
-
-<!---HONumber=AcomDC_0824_2016-->

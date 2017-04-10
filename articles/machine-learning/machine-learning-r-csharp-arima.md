@@ -1,54 +1,68 @@
 ---
-title: 予測 - 自己回帰統合の移動平均 (ARIMA) | Microsoft Docs
-description: 予測 - 自己回帰統合の移動平均 (ARIMA)
+title: "(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA) - Azure | Microsoft Docs"
+description: "(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA)"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: yijichen
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 1e0d525f-8a9e-4b42-87e0-c9423f059f8c
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/15/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
+translationtype: Human Translation
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 169331fc08c8d378fbb0c9869e69a9eb132224ba
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# 予測 - 自己回帰統合の移動平均 (ARIMA)
-この[サービス](https://datamarket.azure.com/dataset/aml_labs/arima)は、自己回帰統合の移動平均 (ARIMA) を実装し、ユーザーが指定した履歴データに基づく予測を生成します。今年、特定の製品の需要が増加するでしょうか。 クリスマス シーズンの製品販売を予測して、効果的な在庫計画を策定できるでしょうか。 予測モデルは、このような質問に答えることができます。これらのモデルは、過去のデータを指定すると、隠れた傾向や季節性を検証し、将来の傾向を予測します。
+# <a name="deprecated-forecasting---autoregressive-integrated-moving-average-arima"></a>(非推奨) 予測 - 自己回帰統合の移動平均 (ARIMA)
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。この API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が多数提供されています。 ギャラリーの詳細については、「[Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
+
+この [サービス](https://datamarket.azure.com/dataset/aml_labs/arima) は、自己回帰統合の移動平均 (ARIMA) を実装し、ユーザーが指定した履歴データに基づく予測を生成します。 今年、特定の製品の需要が増加するでしょうか。 クリスマス シーズンの製品販売を予測して、効果的な在庫計画を策定できるでしょうか。 予測モデルは、このような質問に答えることができます。 これらのモデルは、過去のデータを指定すると、隠れた傾向や季節性を検証し、将来の傾向を予測します。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+> この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。 この Web サービスのもう&1; つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。 数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。 この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 > 
 > 
 
-## Web サービスの使用
-このサービスは、4 つの引数を使用して、ARIMA 予測を計算します。入力引数は、次のとおりです。
+## <a name="consumption-of-web-service"></a>Web サービスの使用
+このサービスは、4 つの引数を使用して、ARIMA 予測を計算します。
+入力引数は、次のとおりです。
 
 * Frequency - 生データの頻度 (毎日/毎週/毎月/毎四半期/毎年) を示します。
 * Horizon - 将来の予測時間枠
 * Date - 時間の新しい時系列データを追加します。
 * Value - 新しい時系列データの値を追加します。
 
-このサービスの出力は、計算された予測値です。
+このサービスの出力は、計算された予測値です。 
 
-入力例は以下のとおりです。
+入力例は以下のとおりです。 
 
 * Frequency - 12
 * Horizon - 12
 * Date - 1/15/2012;2/15/2012;3/15/2012;4/15/2012;5/15/2012;6/15/2012;7/15/2012;8/15/2012;9/15/2012;10/15/2012;11/15/2012;12/15/2012; 1/15/2013;2/15/2013;3/15/2013;4/15/2013;5/15/2013;6/15/2013;7/15/2013;8/15/2013;9/15/2013;10/15/2013;11/15/2013;12/15/2013; 1/15/2014;2/15/2014;3/15/2014;4/15/2014;5/15/2014;6/15/2014;7/15/2014;8/15/2014;9/15/2014
 * Value - 3.479;3.68;3.832;3.941;3.797;3.586;3.508;3.731;3.915;3.844;3.634;3.549;3.557;3.785;3.782;3.601;3.544;3.556;3.65;3.709;3.682;3.511; 3.429;3.51;3.523;3.525;3.626;3.695;3.711;3.711;3.693;3.571;3.509
 
-> Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
+> Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。 
 > 
 > 
 
 自動でサービスを使用するための複数の方法があります ([ここ](http://microsoftazuremachinelearning.azurewebsites.net/ArimaForecasting.aspx)にアプリケーション例があります)。
 
-### Web サービスを使用する C# コードを開始します。
+### <a name="starting-c-code-for-web-service-consumption"></a>Web サービスを使用する C# コードを開始します。
     public class Input
     {
         public string frequency;
@@ -78,21 +92,21 @@ ms.author: yijichen
           var scoreResult = result.ReadAsStringAsync().Result;
       }
 
-## Web サービスの作成
-> この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+## <a name="creation-of-web-service"></a>Web サービスの作成
+> この Web サービスは、Azure Machine Learning を使用して作成されました。 無料試用版の場合は、実験の作成と [Web サービスの発行](machine-learning-publish-a-machine-learning-web-service.md)に関する入門ビデオのほか、[azure.com/ml](http://azure.com/ml) もご覧ください。 Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 > 
 > 
 
-Azure Machine Learning 内で、新しい空白の実験が作成されました。入力データのサンプルは、事前定義済みのデータ スキーマにアップロードされました。データ スキーマには [R スクリプトの実行][execute-r-script]モジュールがリンクされ、R の 'auto.arima' と 'forecast' 関数を使用して、ARIMA の予測モデルを生成します。
+Azure Machine Learning 内で、新しい空白の実験が作成されました。 入力データのサンプルは、事前定義済みのデータ スキーマにアップロードされました。 データ スキーマには [R スクリプトの実行][execute-r-script]モジュールがリンクされ、R の 'auto.arima' と 'forecast' 関数を使用して、ARIMA の予測モデルを生成します。 
 
-### 実験フロー:
+### <a name="experiment-flow"></a>実験フロー:
 ![Create workspace][2]
 
-#### モジュール 1:
+#### <a name="module-1"></a>モジュール 1:
     # Add in the CSV file with the data in the format shown below 
-![Create workspace][3]
+![Create workspace][3]    
 
-#### モジュール 2:
+#### <a name="module-2"></a>モジュール 2:
     # data input
     data <- maml.mapInputPort(1) # class: data.frame
     library(forecast)
@@ -120,11 +134,11 @@ Azure Machine Learning 内で、新しい空白の実験が作成されました
     maml.mapOutputPort("data.forecast");
 
 
-## 制限事項
-これは、ARIMA 予測のきわめて簡単な例です。上のコード例からわかるように、エラーのキャッチは実装されません。このサービスは、すべての変数が連続した正の値で、頻度を 1 より大きい整数にする必要があります。日付と値のベクターの長さは同じにします。日付変数の形式は、'/mm/dd/yyyy' とします。
+## <a name="limitations"></a>制限事項
+これは、ARIMA 予測のきわめて簡単な例です。 上のコード例からわかるように、エラーのキャッチは実装されません。このサービスは、すべての変数が連続した正の値で、頻度を 1 より大きい整数にする必要があります。 日付と値のベクターの長さは同じにします。 日付変数の形式は、'/mm/dd/yyyy' とします。
 
-## FAQ
-Web サービスの使用や Marketplace への発行に関するよく寄せられる質問については、[ここ](machine-learning-marketplace-faq.md)をご覧ください。
+## <a name="faq"></a>FAQ
+Web サービスの使用や Marketplace への発行に関するよく寄せられる質問については、 [ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 [1]: ./media/machine-learning-r-csharp-arima/arima-img1.png
 [2]: ./media/machine-learning-r-csharp-arima/arima-img2.png
@@ -135,4 +149,3 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
 
-<!---HONumber=AcomDC_0914_2016-->

@@ -1,17 +1,31 @@
 ---
+title: "Azure Storage のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウド上で Azure Storage (BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージ) を使用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: storage
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
-ms.openlocfilehash: 34ead7be5278478047f8c6e56c56dfb977ca1d7c
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8c76eaa6681b10370fd4db3df88e0c50c46df44d
+ms.lasthandoff: 03/14/2017
 
 ---
-#<a name="storage-documentation"></a>ストレージのドキュメント
 
-Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  これは、拡張性に優れ、柔軟性があり、グローバルにアクセスでき、トラフィックに基づいて自動的にデータの負荷を分散します。  Azure Storage には、アプリケーションのニーズを満たす 4 つのサービスとして Blob Storage、Table Storage、Queue Storage、File Storage が用意されています。
+# <a name="storage-documentation"></a>Storage のドキュメント
+
+耐久性、可用性、拡張性に優れたクラウド ストレージ サービスである Azure Storage の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、BLOB、テーブル、キュー、ファイル、仮想マシン ディスクの各ストレージをセットアップして管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/storage/storage-introduction/ ">
+        <a href="/azure/storage/storage-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +61,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
         </a>
     </li>
     <li>
-        <a href="/azure/storage/storage-getting-started-guide/ ">
+        <a href="/azure/storage/storage-getting-started-guide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,39 +99,59 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 </ul>
 
 ---
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/storage">PowerShell</a></p>
+                        <p><a href="/cli/azure/storage">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET: リソース マネージャー</a></p>
+                        <p><a href="/dotnet/api/microsoft.windowsazure.storage.datamovement">.NET: データの移動</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET: BLOB、キュー、テーブル、ファイル</a></p>
+                        <p><a href="/java/api/">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-node">Node.JS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
+                        <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
+                        <p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">BLOB、キュー、テーブル、ファイル</a></p>
+                        <p><a href="/rest/api/storagerp">リソース プロバイダー</a></p>
+                        <p><a href="/rest/api/storageimportexport">Import/Export</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">ストレージ データ REST API</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>リファレンス
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs)
-
-###<a name="azure-cli"></a>Azure CLI 
-[Azure CLI のリファレンスを使用する Storage](/cli/azure/storage)
-
-###<a name="java"></a>Java 
-[Java リファレンスの Storage](/java/api/)
-
-###<a name="net"></a>.NET 
-[Storage に関する管理リファレンス API](https://msdn.microsoft.com/library/azure/mt347887) 
-
-###<a name="rest"></a>REST () 
-[Storage REST API リファレンス](/rest/api/storageservices) 
-[Storage Resource Provider REST API リファレンス](/rest/api/storagerp)  
-
-
-
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-Storage のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

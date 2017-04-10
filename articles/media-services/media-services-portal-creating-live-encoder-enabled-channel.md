@@ -12,19 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: e764936afda8bd498f97a8dc3426136815c18a5a
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
@@ -54,9 +54,7 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
    
     この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 5. イベントまたはプログラムを作成します (その際、資産も作成します)。 
-6. イベントを発行します (関連付けられた資産の OnDemand ロケーターも作成します)。  
-   
-    コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+6. イベントを発行します (関連付けられた資産の OnDemand ロケーターも作成します)。    
 7. ストリーミングとアーカイブを開始する準備ができたら、イベントを開始します。
 8. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
 9. イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントを停止します。
@@ -65,13 +63,12 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 このチュートリアルでは、Azure ポータルを使用して、次のタスクを実行します。 
 
-1. ストリーミング エンドポイントを構成します。
-2. ライブ エンコードを実行できるチャネルを作成します。
-3. ライブ エンコーダーに提供する取り込み URL を取得します。 ライブ エンコーダーはこの URL を使用して、ストリームをチャネルに取り込みます。 に関するページを参照してください。
-4. イベントまたはプログラム (および資産) を作成します。
-5. 資産の公開、およびストリーミング URL の取得  
-6. コンテンツの再生 
-7. クリーンアップしています
+1. ライブ エンコードを実行できるチャネルを作成します。
+2. ライブ エンコーダーに提供する取り込み URL を取得します。 ライブ エンコーダーはこの URL を使用して、ストリームをチャネルに取り込みます。
+3. イベントまたはプログラム (および資産) を作成します。
+4. アセットを公開し、ストリーミング URL を取得します。  
+5. コンテンツの再生
+6. クリーンアップします。
 
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
@@ -80,28 +77,6 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
   詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 * シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
-
-## <a name="configure-streaming-endpoints"></a>ストリーミング エンドポイントの構成
-Media Services には動的パッケージ化機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
-
-動的パッケージ化機能を活用するには、コンテンツの配信元となるストリーミング エンドポイントのストリーミング ユニットを 1 つ以上取得する必要があります。  
-
-ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com/) にログインして AMS アカウントを選択します。
-2. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。 
-3. 既定のストリーミング エンドポイントをクリックします。 
-   
-    **[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
-4. ストリーミング ユニットの数を指定するには、 **[ストリーミング ユニット]** のスライダーを動かします。
-   
-    ![[ストリーミング ユニット]](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-streaming-units.png)
-5. **[保存]** をクリックして、変更を保存します。
-   
-   > [!NOTE]
-   > 新しいユニットの割り当てが完了するまでに最大 20 分かかる場合があります。
-   > 
-   > 
 
 ## <a name="create-a-channel"></a>チャネルの作成
 1. [Azure Portal](https://portal.azure.com/) で [Media Services] を選択し、Media Services アカウント名をクリックします。
@@ -172,6 +147,9 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 ### <a name="createstartstop-events"></a>イベントの作成、開始、停止
 ストリームがチャネルに流れ始めると、資産、プログラム、およびストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、ストリーミング エンドポイントを介して視聴者がストリームを使用できるようになります。 
 
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+
 イベントを開始するには、次の 2 つの方法があります。 
 
 1. **[チャネル]** ページで **[ライブ イベント]** をクリックし、新しいイベントを追加します。
@@ -216,7 +194,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 ## <a name="considerations"></a>考慮事項
 * 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
-* コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+* コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
@@ -229,6 +207,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

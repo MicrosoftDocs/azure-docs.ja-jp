@@ -1,6 +1,10 @@
 > [!IMPORTANT]
-> このコンテンツは廃止されているため、更新されていません。Azure に関する Oracle サポートの概要については、[サポートの説明](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)を参照してください。
+> このコンテンツは廃止されているため、更新されていません。  Azure に関する Oracle サポートの概要については、 [サポートの説明](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)
 > 
 > 
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

@@ -1,135 +1,125 @@
 ---
-title: Azure アプリケーションの公開ウィザード | Microsoft Docs
-description: Azure アプリケーションの公開ウィザード
+title: "Visual Studio の Azure アプリケーションの公開ウィザードの使用 | Microsoft Docs"
+description: "Visual Studio の Azure アプリケーションの公開ウィザードで、さまざまな設定を構成する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.service: multiple
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2016
+ms.date: 03/21/2017
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 4d9e1564c3fcbdfd59edb0e24158df9954c26026
+ms.lasthandoff: 03/22/2017
+
 
 ---
-# Azure アプリケーションの公開ウィザード
-## Overview
-Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスにより簡単に発行できます。最初のセクションではウィザードの使用にあたって行う必要のある手順について説明し、残りのセクションではウィザードの機能について説明します。
+# <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Visual Studio の Azure アプリケーションの公開ウィザードの使用
+Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスに発行できます。 
 
 > [!NOTE]
-> このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、[Azure の Web サイトのデプロイ方法](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false)に関するページを参照してください。
+> このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。 Web サイトへのデプロイの詳細については、 [Azure の Web サイトのデプロイ方法](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false)に関するページを参照してください。
 > 
 > 
 
-## 前提条件
-Azure に Web アプリケーションを発行する前に、Microsoft アカウントと Azure サブスクリプションを取得して、Web アプリケーションを Azure クラウド サービスに関連付ける必要があります。これらのタスクを既に完了している場合は、次のセクションに進むことができます。
+## <a name="accessing-the-publish-azure-application-wizard"></a>Azure アプリケーションの公開ウィザードへのアクセス
 
-1. Microsoft アカウントと Azure サブスクリプションを取得します。[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間無料の Azure サブスクリプションを試すことができます。
-2. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。
-3. Azure 用の Web アプリケーションを有効にします。Web アプリケーションを Visual Studio から Azure に発行できるようにするには、Visual Studio で Azure クラウド サービス プロジェクトに関連付ける必要があります。関連付けられたクラウド サービス プロジェクトを作成するには、Web アプリケーションのプロジェクトのショートカット メニューを開き、[変換]、**[Azure クラウド サービス プロジェクトに変換]** の順に選択します。
-4. クラウド サービス プロジェクトをソリューションに追加したら、ショートカット メニューをもう一度開き、**[発行]** を選択します。Azure のアプリケーションを有効にする方法の詳細については、「[方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)」を参照してください。
+Azure アプリケーションの公開ウィザードには、使用する Visual Studio プロジェクトの種類に応じて、2 とおりの方法でアクセスできます。
 
-> [!NOTE]
-> 必ず、管理者の資格情報 (管理者として実行) で Visual Studio を開始するようにしてください。
-> 
-> 
+**Azure クラウド サービス プロジェクトを使用する場合:**
 
-1. アプリケーションを発行する準備ができたら、Azure クラウド サービス プロジェクトのショートカット メニューを開き、**[発行]** を選択します。次の手順では、Azure アプリケーションの公開ウィザードを示します。
+1. Visual Studio で Azure クラウド サービス プロジェクトを開くか新たに作成します。
 
-## サブスクリプションの選択
-### サブスクリプションを選択するには
-1. ウィザードを初めて使用する際は、サインインする必要があります。**[サインイン]** リンクをクリックします。Azure ポータルにサインインするように求められたらサインインして、Azure のユーザー名とパスワードを入力します。
+1. **ソリューション エクスプローラー**でそのプロジェクトを右クリックし、コンテキスト メニューの **[発行]** を選択します。
+
+**Azure で有効になっていない Web アプリケーション プロジェクトを使用する場合:**
+
+1. Visual Studio で Azure クラウド サービス プロジェクトを開くか新たに作成します。
+
+1. **ソリューション エクスプローラー**でそのプロジェクトを右クリックし、コンテキスト メニューの **[変換]** > **[Microsoft Azure クラウド サービス プロジェクトに変換]** を選択します。 
+
+1. **ソリューション エクスプローラー**で新しく作成された Azure プロジェクトを右クリックし、コンテキスト メニューの **[発行]** を選択します。
+
+## <a name="sign-in-page"></a>サインイン ページ
+
+![サインイン ページ](./media/vs-azure-tools-publish-azure-application-wizard/sign-in.png)
+
+**アカウント** - アカウント ドロップダウン リストでアカウントを選択するか、**[アカウントの追加]** を選択します。
+
+**[サブスクリプションの選択]** - デプロイに使用するサブスクリプションを選択します。
    
-    ![This is one of the publishing wizard screens](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
+## <a name="settings-page---common-settings-tab"></a>設定ページ - [共通設定] タブ   
+
+![[共通設定]](./media/vs-azure-tools-publish-azure-application-wizard/settings-common-settings.png)
+
+**[クラウド サービス]** - ドロップダウンを使用して、既存のクラウド サービスを選択するか、**[&lt;新規作成>]** を選択してクラウド サービスを作成します。 クラウド サービスごとに、データ センターがかっこ内に表示されます。 クラウド サービスのデータ センターの場所は、ストレージ アカウントのデータ センターの場所 ([詳細設定]) と同じであることが推奨されます。  
+
+**[環境]** - **[運用]** または **[ステージング]** を選択します。 アプリケーションをテスト環境にデプロイする場合は、ステージング環境を選択します。 
+
+**[ビルド構成]** - **[デバッグ]** または **[リリース]** を選択します。
+
+**[サービス構成]** - **[クラウド]** または **[ローカル]** を選択します。
    
-    サブスクリプションの一覧に、アカウントに関連付けられたサブスクリプションが表示されます。以前にインポートしたサブスクリプション ファイルからサブスクリプションが表示される場合もあります。
-2. **[サブスクリプションの選択]** の一覧で、このデプロイに使用するサブスクリプションを選択します。
+**[すべてのロールのリモート デスクトップを有効にする]** - サービスにリモート接続できるようにする場合は、このチェック ボックスをオンにします。 このオプションは、主にトラブルシューティングのために使用されます。 このチェック ボックスをオンにすると、 **[リモート デスクトップ構成]** ダイアログ ボックスが表示されます。 構成を変更するには、**[設定]** リンクをクリックします。
    
-   **[<管理…>]** を選択した場合、**[サブスクリプションの管理]** ダイアログ ボックスが表示され、使用するサブスクリプションとユーザー アカウントを選択できます。**[アカウント]** タブにはすべてのアカウントが表示され、**[サブスクリプション]** タブにはアカウントに関連付けられているすべてのサブスクリプションが表示されます。Azure リソースを使用するリージョンを選択できるほか、Azure ポータルからサブスクリプションの証明書を作成したり、インポートしたりすることもできます。サブスクリプションをサブスクリプション ファイルからインポートした場合は、関連付けられている証明書が **[証明書]** タブに表示されます。終了したら、**[閉じる]** をクリックします。
+**[すべての Web ロールの Web 配置を有効にする]** - サービスで Web デプロイを有効にするには、このチェック ボックスをオンにします。 この機能を使用するには、**[すべてのロールのリモート デスクトップを有効にする]** をオンにする必要があります。 詳細については、[[Visual Studio 使用した Azure クラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx)に関するページをご覧ください。 
+
+## <a name="settings-page---advanced-settings-tab"></a>設定ページ - [詳細設定] タブ
+
+![詳細設定](./media/vs-azure-tools-publish-azure-application-wizard/settings-advanced-settings.png)
+
+**[デプロイ ラベル]** - 既定の名前をそのまま使用するか、独自の名前を入力します。 デプロイ ラベルに日付を付加するには、チェック ボックスをオンのままにします。 
    
-    ![Manage subscriptions](./media/vs-azure-tools-publish-azure-application-wizard/IC799160.png)
+**[ストレージ アカウント]** - このデプロイに使用するストレージ アカウントを選択するか、**[&lt;新規作成>] を選択してストレージ アカウントを作成します。 ストレージ アカウントごとに、データ センターがかっこ内に表示されます。 ストレージ アカウントのデータ センターの場所は、クラウド サービスのデータ センターの場所 ([共通設定]) と同じであることが推奨されます。  
+   
+Azure ストレージ アカウントには、アプリケーション デプロイのパッケージが格納されます。 アプリケーションのデプロイ後、パッケージはストレージ アカウントから削除されます。
+
+**[失敗時に配置を削除]**- 発行中にエラーが発生した場合にデプロイを削除するには、このチェック ボックスをオンにします。 クラウド サービスの固定仮想 IP アドレスを保持する場合は、これをオフにする必要があります。
+
+**[配置の更新]** - 更新されたコンポーネントだけをデプロイする場合は、このチェック ボックスをオンにします。 このデプロイは、完全なデプロイより高速な場合があります。 クラウド サービスの固定仮想 IP アドレスを保持する場合は、これをオンにする必要があります。 
+
+**[配置の更新] - [設定]** - このダイアログは、ロールの更新方法をさらに詳しく指定するときに使用します。 **[増分更新]** を選択した場合は、アプリケーションのインスタンスが 1 つずつ更新されるので、アプリケーションをいつでも利用できます。 **[同時更新]** を選択した場合は、アプリケーションのすべてのインスタンスが同時に更新されます。 同時更新の方が高速ですが、更新処理中はサービスが利用できない可能性があります。 
+
+![[配置の設定]](./media/vs-azure-tools-publish-azure-application-wizard/deployment-settings.png)
+
+**[IntelliTrace を有効にする]** - IntelliTrace を有効にするかどうかを指定します。 IntelliTrace を使用すると、ロール インスタンスを Azure で実行する際に広範なデバッグ情報を記録できます。 問題の原因を調べる必要がある場合は、IntelliTrace ログを使用して、コードが Azure で実行されているかのように Visual Studio から調査することができます。 IntelliTrace の使用方法の詳細については、「[Visual Studio と IntelliTrace を使用した発行済みの Azure クラウド サービスのデバッグ](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)」をご覧ください。 
+
+**[プロファイルを有効にする]** - パフォーマンス プロファイルを有効にするかどうかを指定します。 Virtual Studio プロファイラーを使用すると、クラウド サービスの実行方法について計算的側面から詳細な分析が得られます。 Visual Studio プロファイラーの使用方法の詳細については、[Azure クラウド サービスのパフォーマンスのテスト](./vs-azure-tools-performance-profiling-cloud-services.md)に関する記事をご覧ください。
+
+**[すべてのロールのリモート デバッガーを有効にする]** - リモート デバッグを有効にするかどうかを指定します。 Visual Studio を使用したクラウド サービスのデバッグの詳細については、「[Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ](./vs-azure-tools-debug-cloud-services-virtual-machines.md)」をご覧ください。
+
+## <a name="diagnostics-settings-page"></a>[診断設定] ページ
+
+![診断設定](./media/vs-azure-tools-publish-azure-application-wizard/diagnostic-settings.png)
+
+診断を使用して、Azure クラウド サービス (または Azure 仮想マシン) のトラブルシューティングを行うことができます。 診断については、「[Azure クラウド サービスおよび仮想マシン用の診断の構成](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)」をご覧ください。 Application Insights については、「[Application Insights とは何か?](./application-insights/app-insights-overview.md)」をご覧ください。
+
+## <a name="summary-page"></a>概要ページ
+
+![概要](./media/vs-azure-tools-publish-azure-application-wizard/summary.png)
+
+**[ターゲット プロファイル]** - 選択した設定から発行プロファイルを作成できます。 たとえば、テスト環境用と運用環境用に 1 つずつプロファイルを作成できます。 このプロファイルを保存するには、 **[保存]** アイコンをクリックします。 ウィザードでプロファイルが作成され、Visual Studio プロジェクトに保存されます。 プロファイル名を変更するには、**[ターゲット プロファイル]** の一覧を開き、**[<管理…>]** を選択します。
    
    > [!NOTE]
-   > A subscription file can contain more than one subscription.
-   > 
-   > 
-3. **[次へ]** をクリックして続行します。
-   
-    サブスクリプションにクラウド サービスがない場合は、プロジェクトをホストするクラウド サービスを Azure で作成する必要があります。**[クラウド サービスとストレージ アカウントの作成]** ダイアログ ボックスが表示されます。
-   
-    クラウド サービスの新しい名前を指定します。この名前は Azure 内で一意である必要があります。次に、自分またはほとんどのクライアントの近くにあるデータ センターのリージョンまたはアフィニティ グループを指定します。この名前は、Azure でクラウド サービスに対して作成される新しいストレージ アカウントにも使用されます。
-4. このデプロイの設定を変更し、**[発行]** をクリックしてこのデプロイを発行します (次のセクションでは、さまざまな設定の詳細について説明します)。発行する前に設定を確認するには、**[次へ]** をクリックします。
-   
-   > [!NOTE]
-   > この手順で [発行] をクリックした場合は、Visual Studio でこのデプロイの状態を監視できます。
+   > 発行プロファイルが Visual Studio のソリューション エクスプローラーに表示され、プロファイル設定が .azurePubxml という拡張子を持つファイルに書き込まれます。 設定は、XML タグの属性として保存されます。
    > 
    > 
 
-**Azure アプリケーションの公開**ウィザードを使用して、デプロイの共通設定と詳細設定の両方を変更できます。たとえば、リリースする前にアプリケーションをテスト環境にデプロイする設定を選択できます。次の図は、Azure デプロイの **[共通設定]** タブを示しています。
+## <a name="publishing-your-application"></a>アプリケーションの発行
 
-![Common Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC749013.png)
+プロジェクトのデプロイのすべての設定を構成したら、ダイアログの下部にある **[発行]** をクリックします。 Visual Studio の **[出力]** ウィンドウでプロセスの状態を監視できます。
 
-## 発行設定の構成
-### 発行設定を構成するには
-1. **[クラウド サービス]** ボックスで、次の一連の手順のいずれかを実行します。
-   
-   1. ドロップダウン ボックスで、既存のクラウド サービスを選択します。このサービスのデータ センターの場所が表示されます。この場所をメモし、ストレージ アカウントの場所が同じデータ センター内にあるかどうかを確認します。
-      
-      1. **[新規作成]** を選択し、Azure がホストするクラウド サービスを作成します。**[クラウド サービスの作成]** ダイアログ ボックスで、サービスの名前を指定し、リージョンまたはアフィニティ グループを指定して、このクラウド サービスをホストするデータ センターの場所を指定します。この名前は Azure 内で一意である必要があります。
-2. **[環境]** の一覧で、**[実稼働]** と **[ステージング]** のどちらかを選択します。アプリケーションをテスト環境にデプロイする場合は、ステージング環境を選択します。後でアプリケーションを運用環境に移動できます。
-3. **[ビルド構成]** の一覧で、**[デバッグ]** と **[リリース]** のどちらかを選択します。
-4. **[サービス構成]** の一覧で、**[クラウド]** と **[ローカル]** のどちらかを選択します。
-   
-    サービスにリモート接続できるようにする場合は、**[すべてのロールのリモート デスクトップを有効にする]** チェック ボックスをオンにします。このオプションは、主にトラブルシューティングのために使用されます。このチェック ボックスをオンにすると、**[リモート デスクトップ構成]** ダイアログ ボックスが表示されます。構成を変更するには、[設定] リンクをクリックします。
-   
-    **[すべての Web ロールの Web 配置を有効にする]** チェック ボックスをオンにすると、このサービスで Web デプロイが有効になります。この機能を使用するには、リモート デスクトップを有効にする必要があります。詳細については、「[[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx)」を参照してください。Web デプロイの詳細については、「[[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx)」を参照してください。
-5. **[詳細設定]** タブをクリックします。**[デプロイ ラベル]** フィールドで、既定の名前をそのまま使用するか、独自の名前を入力します。デプロイ ラベルに日付を付加するには、チェック ボックスをオンのままにします。
-   
-    ![Third screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749014.png)
-6. **[ストレージ アカウント]** の一覧で、このデプロイに使用するストレージ アカウントを選択します。クラウド サービスとストレージ アカウント用のデータ センターの場所を比較します。これらの場所が同じになるようにしてください。
-   
-   > [!NOTE]
-   > Azure ストレージ アカウントには、アプリケーション デプロイのパッケージが格納されます。アプリケーションのデプロイ後、パッケージはストレージ アカウントから削除されます。
-   > 
-   > 
-7. 更新されたコンポーネントのみをデプロイする場合は、**[配置の更新]** チェック ボックスをオンにします。このデプロイは、完全なデプロイより高速な場合があります。下記の図に示すように、**[設定]** リンクをクリックして **[配置の更新設定]** ダイアログ ボックスを開きます。
-   
-    ![Deployment Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC617060.png)
-   
-    デプロイの更新では、増分デプロイと同時デプロイのどちらかを選択できます。増分デプロイでは、デプロイ済みのインスタンスが 1 つずつ更新されます。このため、アプリケーションはオンラインのままで、ユーザーが利用できます。同時デプロイは、一度にすべてのデプロイ済みのインスタンスを更新します。同時更新は増分更新よりも高速ですが、このオプションを選択した場合、アプリケーションは更新プロセス中に利用できない場合があります。
-   
-    デプロイの更新が失敗した場合に、自動的に完全なデプロイを実行するには、[デプロイを更新できない場合は、完全なデプロイを実行する] チェック ボックスをオンにします。完全なデプロイでは、クラウド サービスの仮想 IP (VIP) アドレスがリセットされます。詳細については、「[方法: クラウド サービスの固定仮想 IP アドレスを保持する](https://msdn.microsoft.com/library/azure/jj614593.aspx)」を参照してください。
-8. サービスをデバッグするには、**[IntelliTrace を有効にする]** チェック ボックスをオンにします。**デバッグ**構成をデプロイして、Azure でクラウド サービスをデバッグする場合は、**[すべてのロールのリモート デバッガーを有効にする]** チェック ボックスをオンにして、リモート デバッグ サービスをデプロイします。
-9. このアプリケーションをプロファイリングするには、**[プロファイルを有効にする]** チェック ボックスをオンにし、**[設定]** リンクをクリックしてプロファイルのオプションを表示します。
-
-    >[AZURE.NOTE] Visual Studio Ultimate を使用して IntelliTrace または階層相互作用プロファイリング (TIP) を有効にする必要がありますが、同時に両方を有効にすることはできません。
-
-    詳細については、「[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ff683671.aspx)」および「[クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)」を参照してください。
-
-1. アプリケーションの概要ページを表示するには、**[次へ]** をクリックします。
-
-## アプリケーションの発行
-1. 選択した設定から発行プロファイルを作成することができます。たとえば、テスト環境用と運用環境用に 1 つずつプロファイルを作成できます。このプロファイルを保存するには、**[保存]** アイコンをクリックします。ウィザードでプロファイルが作成され、Visual Studio プロジェクトに保存されます。プロファイル名を変更するには、**[ターゲット プロファイル]** の一覧を開き、**[<管理…>]** を選択します。
-   
-    ![Summary screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
-   
-   > [!NOTE]
-   > 発行プロファイルが Visual Studio のソリューション エクスプローラーに表示され、プロファイル設定が .azurePubxml という拡張子を持つファイルに書き込まれます。設定は、XML タグの属性として保存されます。
-   > 
-   > 
-2. **[発行]** をクリックしてアプリケーションを発行します。Visual Studio の **[出力]** ウィンドウでプロセスの状態を監視できます。
-
-## 関連項目
-[方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)
-
-[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)
-
-[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ff683671.aspx)
-
-[クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)
-
-<!---HONumber=AcomDC_0817_2016-->
+## <a name="next-steps"></a>次のステップ
+- [Visual Studio から Azure クラウド サービスに Web アプリケーションを移行および発行する](./vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)
+- [Visual Studio を使用して Azure クラウド サービスを発行する方法を確認する](./vs-azure-tools-publishing-a-cloud-service.md)
+- [Visual Studio と IntelliTrace を使用して発行済みの Azure クラウド サービスをデバッグする](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)
+- [Azure クラウド サービスのパフォーマンスをテストする](./vs-azure-tools-performance-profiling-cloud-services.md)
+- [Azure クラウド サービスおよび仮想マシン用の診断を構成する](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 
+- [Application Insights とは何か?](./application-insights/app-insights-overview.md)

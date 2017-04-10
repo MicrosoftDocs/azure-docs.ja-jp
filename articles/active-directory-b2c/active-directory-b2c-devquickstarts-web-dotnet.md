@@ -1,59 +1,63 @@
 ---
 title: Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C を使用してサインイン、サインアップ、プロファイル管理を行う Web アプリケーションを構築する方法。
+description: "Azure Active Directory B2C を使用してサインイン、サインアップ、プロファイル管理を行う Web アプリケーションを構築する方法。"
 services: active-directory-b2c
 documentationcenter: .net
 author: dstrockis
-manager: msmbaldwin
-editor: ''
-
+manager: mbaldwin
+editor: 
+ms.assetid: 0b1c6ede-de0a-4c32-92b3-5c813dc26804
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
+ms.openlocfilehash: a0e03bda81d26dbc28706b45ee974359337573f0
+
 
 ---
-# Azure AD B2C: .NET Web アプリを構築する
+# <a name="azure-ad-b2c-build-a-net-web-app"></a>Azure AD B2C: .NET Web アプリを構築する
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順で Web アプリに追加できます。この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Model-View-Controller (MVC) web アプリの作成方法について説明します。このアプリには、ユーザー名または電子メールと、Facebook や Google などのソーシャル アカウントを使用した、サインアップとサインインのサポートが含まれます。
+Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順で Web アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Model-View-Controller (MVC) web アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールと、Facebook や Google などのソーシャル アカウントを使用した、サインアップとサインインのサポートが含まれます。
 
-## Azure AD B2C ディレクトリの取得
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md)してください。
+## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。  まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してください。
 
-## アプリケーションの作成
-次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。次を行ってください。
+## <a name="create-an-application"></a>アプリケーションの作成
+次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。  次を行ってください。
 
 * アプリケーションに **Web アプリまたは Web API** を含めます。
-* **[リダイレクト URI]** として「`https://localhost:44316/`」と入力します。これはこのサンプル コードで使用する既定の URL です。
-* アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。この情報は後で必要になります。
+* **[リダイレクト URI]** として「`https://localhost:44316/`」と入力します。 これはこのサンプル コードで使用する既定の URL です。
+* アプリケーションに割り当てられた **アプリケーション ID** をメモしておきます。  この情報は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。
+## <a name="create-your-policies"></a>ポリシーの作成
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。
 
 > [!NOTE]
-> このチュートリアルでは取り上げていませんが、Azure AD B2C では、サインアップまたはサインイン複合ポリシーもサポートしています。サインアップまたはサインイン ポリシーについては、[こちらの対応するチュートリアル](active-directory-b2c-devquickstarts-web-dotnet-susi.md)に記載されています。
-> 
-> 
+> このチュートリアルでは取り上げていませんが、Azure AD B2C では、サインアップまたはサインイン複合ポリシーもサポートしています。  サインアップまたはサインイン ポリシーについては、 [こちらの対応するチュートリアル](active-directory-b2c-devquickstarts-web-dotnet-susi.md)に記載されています。
+>
+>
 
 3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * ID プロバイダーのブレードで、**[User ID sign-up (ユーザー ID サインアップ)]** または **[Email sign-up (電子メール サインアップ)]** を選択します。
-* サインアップ ポリシーで、**[表示名]** と他のサインアップ属性を選択します。
-* すべてのポリシーで、アプリケーション要求として **[表示名]** を選択します。その他のクレームも選択できます。
-* ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。これらのポリシー名は後で必要になります。
+* サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
+* すべてのポリシーで、アプリケーション要求として **[表示名]** を選択します。 その他のクレームも選択できます。
+* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 これらのポリシー名は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-3 つのポリシーを作成した後は、いつでもアプリをビルドできます。
+3 つのポリシーを作成した後は、いつでもアプリをビルドできます。  
 
-## コードのダウンロードと認証の構成
-このサンプルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
+## <a name="download-the-code-and-configure-authentication"></a>コードのダウンロードと認証の構成
+このサンプルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)で管理されています。 手順に従ってサンプルを構築するには、 [スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)します。 スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -63,7 +67,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Ope
 
 サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。
 
-アプリは、認証メッセージを送信することで、Azure AD B2C と通信します。このとき、HTTP 要求の一環として実行するポリシーを指定します。.NET Web アプリケーションの場合、Microsoft の OWIN ミドルウェアを使用して OpenID Connect 認証要求の送信や、ポリシーの実行、ユーザーのセッションの管理などができます。
+アプリは、認証メッセージを送信することで、Azure AD B2C と通信します。このとき、HTTP 要求の一環として実行するポリシーを指定します。 .NET Web アプリケーションの場合、Microsoft の OWIN ミドルウェアを使用して OpenID Connect 認証要求の送信や、ポリシーの実行、ユーザーのセッションの管理などができます。
 
 まず、Visual Studio のパッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージをプロジェクトに追加します。
 
@@ -95,7 +99,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 [!INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-次に、OWIN スタートアップ クラスを `Startup.cs` プロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順に選択して、"OWIN" を検索します。 **クラスの宣言は `public partial class Startup` に変更してください**。このクラスの一部は別のファイルに実装してあります。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。このメソッドでは、`ConfigureAuth(...)` を呼び出します。ここでアプリの認証をセットアップします。
+次に、OWIN スタートアップ クラスを `Startup.cs` プロジェクトに追加します。 プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順に選択して、"OWIN" を検索します。 **クラスの宣言は `public partial class Startup` に変更してください**。 このクラスの一部は別のファイルに実装してあります。 アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。 このメソッドでは、`ConfigureAuth(...)` を呼び出します。ここでアプリの認証をセットアップします。
 
 ```C#
 // Startup.cs
@@ -109,7 +113,7 @@ public partial class Startup
 }
 ```
 
-ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。`OpenIdConnectAuthenticationOptions` に指定するパラメーターは、アプリが Azure AD と通信するための調整役として機能します。Cookie 認証を設定する必要もあります。特に、OpenID Connect ミドルウェアは、ユーザー セッションを維持するために Cookie を使用します。
+ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。  `OpenIdConnectAuthenticationOptions` に指定するパラメーターは、アプリが Azure AD と通信するための調整役として機能します。 Cookie 認証を設定する必要もあります。 特に、OpenID Connect ミドルウェアは、ユーザー セッションを維持するために Cookie を使用します。
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -185,10 +189,10 @@ public partial class Startup
 }
 ```
 
-## Azure AD への認証要求の送信
-ここまでの手順で、アプリは OpenID Connect 認証プロトコルを使用して Azure AD B2C と通信するよう適切に構成されています。OWIN は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての処理を実行します。残りは、各ユーザーのフローを開始する処理です。
+## <a name="send-authentication-requests-to-azure-ad"></a>Azure AD への認証要求の送信
+ここまでの手順で、アプリは OpenID Connect 認証プロトコルを使用して Azure AD B2C と通信するよう適切に構成されています。  OWIN は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての処理を実行します。  残りは、各ユーザーのフローを開始する処理です。
 
-ユーザーが Web アプリの **[Sign up (サインアップ)]**、**[Sign in (サインイン)]**、または **[Edit profile (プロファイルの編集)]** を選択すると、関連付けられているアクションが `Controllers\AccountController.cs` で呼び出されます。いずれの場合にも、組み込みの OWIN メソッドを使用して適切なポリシーをトリガーできます。
+ユーザーが Web アプリの **[Sign up (サインアップ)]**、**[Sign in (サインイン)]**、または **[Edit profile (プロファイルの編集)]** を選択すると、関連付けられているアクションが `Controllers\AccountController.cs` で呼び出されます。 いずれの場合にも、組み込みの OWIN メソッドを使用して適切なポリシーをトリガーできます。
 
 ```C#
 // Controllers\AccountController.cs
@@ -224,7 +228,7 @@ public void Profile()
 }
 ```
 
-また、コントローラーで `[Authorize]` タグを使用して、ユーザーがサインイン済みでない場合に特定のポリシーの実行を要求することもできます。`Controllers\HomeController.cs` を開いて、`[Authorize]` タグを要求コントローラーに追加します。OWIN は、Authorize タグが呼び出されたときに、最後に構成されたポリシーを選択して実行します。
+また、コントローラーで `[Authorize]` タグを使用して、ユーザーがサインイン済みでない場合に特定のポリシーの実行を要求することもできます。 `Controllers\HomeController.cs` を開いて、`[Authorize]` タグを要求コントローラーに追加します。  OWIN は、Authorize タグが呼び出されたときに、最後に構成されたポリシーを選択して実行します。
 
 ```C#
 // Controllers\HomeController.cs
@@ -236,7 +240,7 @@ public ActionResult Claims()
   ...
 ```
 
-アプリからのユーザーのサインアウトにも OWIN を使用できます。`Controllers\AccountController.cs` で、次のように記述します。
+アプリからのユーザーのサインアウトにも OWIN を使用できます。 `Controllers\AccountController.cs`で、次のように記述します。  
 
 ```C#
 // Controllers\AccountController.cs
@@ -253,10 +257,10 @@ public void SignOut()
 }
 ```
 
-## ユーザー情報を表示する
-OpenID Connect を使用してユーザーを認証すると、Azure AD は、**要求**が含まれる ID トークンをアプリに返します。これらは、ユーザーに関するアサーションです。要求を使用して、アプリを個人向けにカスタマイズすることができます。
+## <a name="display-user-information"></a>ユーザー情報を表示する
+OpenID Connect を使用してユーザーを認証すると、Azure AD は、 **要求**が含まれる ID トークンをアプリに返します。 これらは、ユーザーに関するアサーションです。 要求を使用して、アプリを個人向けにカスタマイズすることができます。  
 
-`Controllers\HomeController.cs` ファイルを開きます。`ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー要求にアクセスできます。
+`Controllers\HomeController.cs` ファイルを開きます。 `ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー要求にアクセスできます。
 
 ```C#
 // Controllers\HomeController.cs
@@ -270,26 +274,26 @@ public ActionResult Claims()
 }
 ```
 
-同じ方法で、アプリケーションが受け取るすべての要求にアクセスできます。アプリが受信するすべての要求の一覧が、**[Claims (要求)]** ページに表示されます。
+同じ方法で、アプリケーションが受け取るすべての要求にアクセスできます。  アプリが受信するすべての要求の一覧が、 **[Claims (要求)]** ページに表示されます。
 
-## サンプル アプリを実行する
-最後に、アプリを構築して実行できます。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。サインアウトし、同じユーザーとしてもう一度サインインします。そのユーザーのプロファイルを編集します。サインアウトし、別のユーザーとしてサインアップします。**[Claims (要求)]** タブに表示される情報が、ポリシーで構成した情報に対応していることを確認してください。
+## <a name="run-the-sample-app"></a>サンプル アプリを実行する
+最後に、アプリを構築して実行できます。 電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。 サインアウトし、同じユーザーとしてもう一度サインインします。 そのユーザーのプロファイルを編集します。 サインアウトし、別のユーザーとしてサインアップします。 **[Claims (要求)]** タブに表示される情報が、ポリシーで構成した情報に対応していることを確認してください。
 
-## ソーシャル IDP を追加する
-現時点では、このアプリは**ローカル アカウント**を使用したユーザーのサインアップとサインインのみをサポートしています。これらは、ユーザー名とパスワードを使用する B2C ディレクトリに格納されているアカウントです。Azure AD B2C を使用すると、コードを変更せずに、その他の **ID プロバイダー** (IDP) のサポートを追加することができます。
+## <a name="add-social-idps"></a>ソーシャル IDP を追加する
+現時点では、このアプリは **ローカル アカウント**を使用したユーザーのサインアップとサインインのみをサポートしています。 これらは、ユーザー名とパスワードを使用する B2C ディレクトリに格納されているアカウントです。 Azure AD B2C を使用すると、コードを変更せずに、その他の **ID プロバイダー** (IDP) のサポートを追加することができます。
 
-ソーシャル IDP をアプリに追加するには、まず、以下の記事に記載されている詳細な手順に従います。サポートする IDP ごとに、そのシステムでアプリケーションを登録してクライアント ID を取得する必要があります。
+ソーシャル IDP をアプリに追加するには、まず、以下の記事に記載されている詳細な手順に従います。 サポートする IDP ごとに、そのシステムでアプリケーションを登録してクライアント ID を取得する必要があります。
 
 * [Facebook を IDP として設定する](active-directory-b2c-setup-fb-app.md)
 * [Google を IDP として設定する](active-directory-b2c-setup-goog-app.md)
 * [Amazon を IDP として設定する](active-directory-b2c-setup-amzn-app.md)
 * [LinkedIn を IDP として設定する](active-directory-b2c-setup-li-app.md)
 
-ID プロバイダーを B2C ディレクトリに追加した後、3 つのポリシーをそれぞれ編集し、[ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。ポリシーを保存した後、再度アプリを実行します。各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
+ID プロバイダーを B2C ディレクトリに追加した後、3 つのポリシーをそれぞれ編集し、 [ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。 ポリシーを保存した後、再度アプリを実行します。  各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
 
-いろいろなポリシーを試して、サンプル アプリへの影響を確認できます。ID を追加または削除したり、アプリケーションの要求を操作したり、サインアップ属性を変更してみます。ポリシー、認証要求、および OWIN すべてが互いにどのように結び付いているかを理解できるまで、いろいろ試してみてください。
+いろいろなポリシーを試して、サンプル アプリへの影響を確認できます。 ID を追加または削除したり、アプリケーションの要求を操作したり、サインアップ属性を変更してみます。 ポリシー、認証要求、および OWIN すべてが互いにどのように結び付いているかを理解できるまで、いろいろ試してみてください。
 
-参考のため、完成済みサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。GitHub から複製することもできます。
+参考のため、完成済みサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。 GitHub から複製することもできます。
 
 ```
 git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -307,4 +311,8 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Dec16_HO5-->
+
+

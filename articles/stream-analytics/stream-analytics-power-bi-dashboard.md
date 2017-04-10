@@ -1,179 +1,159 @@
 ---
-title: Stream Analytics の Power BI ダッシュ ボード | Microsoft Docs
-description: リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。
-keywords: 分析ダッシュボード、リアルタイム ダッシュボード
+title: "Azure Stream Analytics の Power BI ダッシュボード | Microsoft Docs"
+description: "リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
+keywords: "分析ダッシュボード、リアルタイム ダッシュボード"
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 03/28/2017
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 3dbc49d35def6d7b12ade529d1dd1156dee9d75b
+ms.openlocfilehash: 09c54f8cce119c1cbe6a08e969236612447d9e17
+ms.lasthandoff: 02/27/2017
+
 
 ---
-# Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
-Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである、Microsoft Power BI を利用することができます。ここでは、Azure Stream Analytics を使用して、大量のストリーミング データを分析し、リアルタイム Power BI 分析ダッシュボードで確認する方法を説明します。
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
+Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの&1; つである Microsoft Power BI を利用することができます。 ここでは、Azure Stream Analytics を使用して、大量のストリーミング データを分析し、リアルタイム Power BI 分析ダッシュボードで確認する方法を説明します。
 
-[Microsoft Power BI](https://powerbi.com/) を使用すると、ライブ ダッシュボードがすぐに作成されます。[このシナリオを示したビデオをご覧ください](https://www.youtube.com/watch?v=SGUpT-a99MA)。
+[Microsoft Power BI](https://powerbi.com/) を使用すると、ライブ ダッシュボードがすぐに作成されます。 [このシナリオを紹介する動画](https://www.youtube.com/watch?v=SGUpT-a99MA)をご覧ください。
 
-この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成し、リアルタイム ダッシュボードを活用する方法について説明します。
+この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを利用する方法についても説明します。
 
-## 前提条件
-* Microsoft Azure アカウント
-* ストリーミング データの使用元となる Stream Analytics ジョブの入力。Stream Analytics は、Azure Event Hubs または Azure BLOB ストレージストアからの入力を受け入れます。
-* Power BI 用の会社または学校のアカウント
+## <a name="prerequisites"></a>前提条件
+* Microsoft Azure アカウント。
+* Power BI の職場アカウントまたは学校アカウント。
+* 「[リアルタイムの不正行為の検出](stream-analytics-real-time-fraud-detection.md)」の作業を実施済みであること。 本記事は、「[リアルタイムの不正行為の検出](stream-analytics-real-time-fraud-detection.md)」で説明されているワークフローをベースとして、Power BI のストリーミング データセット出力に関する情報を補足する形式で執筆されています。
 
-## Azure Stream Analytics ジョブの作成
-[Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]、[Data Services]、[Stream Analytics]、[簡易作成]** の順にクリックします。
+## <a name="add-power-bi-output"></a>Power BI 出力の追加
+ジョブの入力が存在するため、Power BI への出力を定義できます。
 
-次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
+1. ジョブ ダッシュボードの中央にある **[出力]** ボックスを選択します。 次に、**[+ 追加]** を選択して目的の出力を作成します。
 
-* **[ジョブ名]** - ジョブ名を入力します。たとえば、**DeviceTemperatures** にします。
-* **[リージョン]** - ジョブを配置するリージョンを選択します。パフォーマンスを確実に向上し、リージョン間のデータ転送にコストがかからないようにするために、ジョブとイベント ハブを同じリージョンに配置することを検討してください。
-* **[ストレージ アカウント]** - このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用するストレージ アカウントを選択します。既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。
+    ![出力を追加する](./media/stream-analytics-power-bi-dashboard/create-pbi-output.png)
 
-Stream Analytics ジョブの一覧を表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。
+2. **[出力のエイリアス]** を指定します。 参照しやすいように出力のエイリアスを設定できます。 この出力のエイリアスは、ジョブに複数出力を設定する場合に便利です。 その場合、クエリ内でこの出力を参照することができます。 たとえば、出力エイリアス値 = "StreamAnalyticsRealTimeFraudPBI" を使用しましょう。
 
-![図 1][graphic1]
+3. **[承認]** を選択します。
 
-> [!TIP]
-> 新しいジョブは、**[未開始]** の状態で表示されます。ページの下部にある **[開始]** ボタンが無効になっていることがわかります。ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があるため、これは予期された動作です。
-> 
-> 
+    ![承認を追加する](./media/stream-analytics-power-bi-dashboard/pbi-authorize.png)
 
-## ジョブの入力の指定
-このチュートリアルでは、JSON シリアル化と UTF-8 エンコードによる入力としてイベント ハブを使用することを前提としています。
+4. Azure の資格情報 (職場または学校アカウント) を指定するためのウィンドウが開きます。 この資格情報によって、Power BI 領域へのアクセス権が Azure ジョブにも付与されます。
 
-* ジョブの名前をクリックします。
-* ページ上部にある **[入力]** をクリックし、**[入力の追加]** をクリックします。表示されたダイアログ ボックスには、入力を設定する手順がいくつか表示されます。
-* **[データ ストリーム]** を選択し、右側のボタンをクリックします。
-* **[イベント ハブ]** を選択してから、右側のボタンをクリックします。
-* 3 ページ目で、次の値を入力または選択します。
-  * **[入力のエイリアス]** - このジョブの入力のフレンドリ名を入力します。後でクエリでこの名前を使用します。
-  * **[イベント ハブ]** - 作成したイベント ハブが Stream Analytics ジョブと同じサブスクリプションにある場合は、イベント ハブがある名前空間を選択します。
-* イベント ハブが他のサブスクリプションにある場合、**[別のサブスクリプションのイベント ハブを使用]** を選択し、**[Service Bus 名前空間]**、**[イベント ハブ名]**、**[イベント ハブ ポリシー名]**、**[イベント ハブ ポリシー キー]**、**[イベント ハブ パーティション数]** の情報を手動で入力します。
+    ![フィールドを承認する](./media/stream-analytics-power-bi-dashboard/authorize-area.png)
 
-> [!NOTE]
-> このサンプルでは、既定のパーティション数 16 を使用します。
-> 
-> 
+5. 必要な情報を指定すると承認画面が消えます。 **[新規出力]** 領域には、**[データセット名]** フィールドと **[テーブル名]** フィールドがあります。
 
-* **[イベント ハブ名]** - 所有する Azure イベント ハブの名前を選択します。
-* **[イベント ハブ ポリシー名]** - 使用しているイベント ハブのイベント ハブ ポリシーを選択します。このポリシーに管理アクセス許可があることを確認します。
-* **[イベント ハブ コンシューマー グループ]** - 空にしておくことも、イベント ハブ上にあるコンシューマー グループを指定することもできます。イベント ハブの各コンシューマー グループに同時に含めることができる閲覧者は 5 名までであることに注意してください。したがって、それに応じて、ジョブに適したコンシューマー グループを決定してください。フィールドを空白のままにすると、既定のコンシューマー グループが使用されます。
-* 右側のボタンをクリックします。
-* 次の値を指定します。
-  * **[イベント シリアライザー形式]** - JSON
-  * **[エンコード]** - UTF8
-* チェック ボタンをクリックしてこのソースを追加し、Stream Analytics からイベント ハブに正常に接続できることを確認します。
+    ![PBI ワークスペース](./media/stream-analytics-power-bi-dashboard/pbi-workspace.png)
 
-## Power BI 出力の追加
-1. ページの上部にある **[出力]** をクリックしてから、**[出力の追加]** をクリックします。Power BI が出力オプションとして表示されます。
-   
-   ![図 2][graphic2]
-2. **[Power BI]** を選択してから、右のボタンをクリックします。
-3. 次のような画面が表示されます。
-   
-   ![図 3][graphic3]
-4. この手順では、Stream Analytics ジョブ出力用の会社または学校のアカウントを指定します。既に Power BI アカウントがある場合は、**[今すぐ承認]** を選択します。ない場合は、**[今すぐサインアップ]** を選択します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
-   
-   ![図 11][graphic11]
-5. 次のような画面が表示されます。
-   
-   ![図 4][graphic4]
+6. フィールドは次のように定義します。
+    * **[グループ ワークスペース]**: データセットの作成先となる Power BI テナントのワークスペースを選択します。
+    * **[データセット名]**: Power BI 出力に設定するデータセット名を入力します。 たとえば、"StreamAnalyticsRealTimeFraudPBI" を使用しましょう。
+    * **[テーブル名]**: Power BI 出力のデータセットの下にテーブル名を入力します。 たとえば、"StreamAnalyticsRealTimeFraudPBI" を使用しましょう。 現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に&1; つのテーブルのみを保持できます。
 
-次に示すように値を入力します。
-
-* **[出力のエイリアス]** - 簡単に参照できるように出力のエイリアスを設定できます。この出力のエイリアスは、ジョブに複数出力を設定する場合に特に便利です。その場合は、クエリ内でこの出力を参照する必要があります。たとえば、出力のエイリアス値として "OutPbi" を使用します。
-* **[データセット名]** - Power BI 出力に設定するデータセット名を入力します。たとえば、"pbidemo" を使用します。
-* **[テーブル名]** - Power BI 出力のデータセットの下にテーブル名を入力します。たとえば、"pbidemo" という名前にします。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
-* **[ワークスペース]** – データセットを作成する Power BI テナント内のワークスペースを選択します。
-
-> [!NOTE]
-> お使いの Power BI アカウントでこのデータセットとテーブルを明示的に作成しないでください。これらは、Stream Analytics ジョブを開始し、そのジョブによって出力が Power BI に流し込まれるときに自動的に作成されます。ジョブ クエリから結果が返されない場合、データセットとテーブルは作成されません。
-> 
-> 
-
-* **[OK]**、**[接続のテスト]** の順にクリックします。これで、出力の構成は完了です。
+7. **[作成]**を選択します。 出力の構成はこれで完了です。
 
 > [!WARNING]
-> また、この Stream Analytics ジョブで提供したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされますので注意してください。
-> 
-> 
+> この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされます。
+> なお、このデータセットとテーブルは Power BI アカウントに明示的に作成しないことをお勧めします。 Stream Analytics ジョブを開始すると自動的に作成され、Power BI への出力が開始されます。 ジョブ クエリで結果が返されない場合、データセットとテーブルは作成されません。
+>
+>
 
-## クエリの記述
-ジョブの **[クエリ]** タブに移動します。Power BI で目的の出力を得るためのクエリを記述します。たとえば、次の SQL クエリのようなクエリを記述します。
+データセットは、次の設定で作成されます。
+* **defaultRetentionPolicy: BasicFIFO**: データは FIFO で、最大行数は 200,000 です。
+* **defaultMode: pushStreaming**: ストリーミング タイルと従来のレポートベース ビジュアル (プッシュ) の両方をサポートしています。
 
-    SELECT
-        MAX(hmdt) AS hmdt,
-        MAX(temp) AS temp,
-        System.TimeStamp AS time,
-        dspl
-    INTO
-        OutPBI
-    FROM
-        Input TIMESTAMP BY time
-    GROUP BY
-        TUMBLINGWINDOW(ss,1),
-        dspl
+現時点では、他のフラグでデータセットを作成することはできません。
+
+Power BI データセットの詳細については、[Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) リファレンスを参照してください。
 
 
+## <a name="write-query"></a>クエリの記述
+ジョブの **[クエリ]** タブに移動します。 Power BI で目的の出力を得るためのクエリを記述します。 たとえば、次の SQL クエリのようなクエリを記述して、電気通信業界で SIM 不正行為をキャッチします。
 
-ジョブを開始します。イベント ハブがイベントを受け取り、クエリによって予期された結果が生成されることを確認します。クエリによって行が出力されない場合、Power BI データセットとテーブルは自動的に作成されません。
 
-## Power BI でのダッシュボードの作成
-[Powerbi.com](https://powerbi.com) にアクセスして、会社または学校の ID でログインします。Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります。
+```
+/* Our criteria for fraud:
+ Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-![図 5][graphic5]
+ SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+ INTO "StreamAnalyticsRealTimeFraudPBI"
+ FROM "StreamAnalyticsRealTimeFraudInput" CS1 TIMESTAMP BY CallRecTime
+ JOIN "StreamAnalyticsRealTimeFraudInput" CS2 TIMESTAMP BY CallRecTime
 
-ダッシュ ボードを作成するために、[ダッシュボード] オプションに移動し、新しいダッシュボードを作成します。
+/* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+ ON CS1.CallingIMSI = CS2.CallingIMSI
 
-![図 6][graphic6]
+/* ...and date between CS1 and CS2 is between one and five seconds */
+ AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-この例では、"Demo Dashboard" というラベルを付けます。
+/* Where the switch location is different */
+ WHERE CS1.SwitchNum != CS2.SwitchNum
+ GROUP BY TumblingWindow(Duration(second, 1))
+```
 
-ここで、Stream Analytics ジョブによって作成されたデータセット (現在の例では pbidemo) をクリックします。このデータセットを基にグラフを作成するページが表示されます。作成できるレポートの一例を次に示します。
+## <a name="create-the-dashboard-in-power-bi"></a>Power BI でのダッシュボードの作成
 
-[Σ temp] フィールドと [time] フィールドを選択します。これらは、自動的にグラフの値と軸に設定されます。
+1. [Powerbi.com](https://powerbi.com) にアクセスして、職場または学校のアカウントでサインインします。 Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります (下図参照)。
 
-![図 7][graphic7]
+    ![ストリーミング データセット](./media/stream-analytics-power-bi-dashboard/streaming-dataset.png)
 
-これにより、次に示すようなグラフが自動的に表示されます。
+2. **[タイルの追加]** を選択し、カスタム ストリーミング データを選択します。
 
-![図 8][graphic8]
+    ![カスタム ストリーミング データセット](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-[値] セクションで、[temp] のドロップダウンをクリックして、温度の **[平均]** を選択し、グラフ上で **[視覚化]** をクリックして **[折れ線グラフ]** を選択します。
+3. 次に、一覧からデータセットを選択します。
 
-![図 9][graphic9]
+    ![カスタム ストリーミング データセット](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-これで、平均の推移の折れ線グラフが表示されます。次に示すようにピン オプションを使用して、以前に作成したダッシュボードにレポートをピン留めできます。
+4. 視覚化カードを作成します。 そのうえで **[fraudulentcalls]** フィールドを選択してください。
 
-![図 10][graphic10]
+    ![不正行為を追加する](./media/stream-analytics-power-bi-dashboard/add-fraud.png)
 
-これで、このレポートがピン留めされたダッシュボードを表示すると、レポートがリアルタイムに更新されることがわかります。イベント内のデータを変更してみます (温度の急上昇など)。その結果がダッシュボードにリアルタイムに反映されることがわかります。
+    不正行為カウンターができました。
 
-このチュートリアルでは、データセットに 1 種類のグラフを作成する方法を示しましたが、Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
+    ![不正行為カウンター](./media/stream-analytics-power-bi-dashboard/fraud-counter.png)
 
-Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、「[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」を参照してください。
+5. タイルを再度追加します。 ただし今回選択するのは折れ線グラフです。 値として **[fraudulentcalls]** を、軸として **[windowend]** を追加します。 次のスクリーンショットに示したように、ここでは過去 10 分を選択しました。
 
-## 制限事項とベスト プラクティス
-Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
+![不正行為の呼び出し](./media/stream-analytics-power-bi-dashboard/fraud-calls.png)
 
-そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データ プッシュが最大 1 プッシュ/秒になり、クエリがスループット要件の範囲内に収まるようにするために、TumblingWindow または HoppingWindow を使用することをお勧めします。次の式を使用して、現在のウィンドウに設定する値 (秒単位) を計算できます。
 
-![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
+このチュートリアルで紹介している方法では、1 つのデータセットに対して作成しているグラフは&1; 種類だけです。 Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。 Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
 
-たとえば、1 秒ごとにデータを送信する 1,000 台のデバイスがあるとします。1,000,000 行/時に対応する Power BI Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 台のデバイスにつき最大 4 秒ごとに 1 回プッシュできます (次の式を参照)。
+Power BI 出力の構成と Power BI グループの利用の詳細については、[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")のページにある「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションをご覧ください。 また、「[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」もぜひ参考にしてください。
 
-![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
+## <a name="learn-about-limitations-and-best-practices"></a>制限事項とベスト プラクティスについて
+Power BI には、同時実行性とスループットに関して制約があります。[Power BI に関するこちらのページ](https://powerbi.microsoft.com/pricing "Power BI の価格")をご覧ください。
 
-つまり、元のクエリが次のように変更されます。
+現在、Power BI は、およそ&1; 秒に&1; 回呼び出すことができます。 ストリーミング ビジュアルでは、15 KB のパケットがサポートされます。 これを超えると、ストリーミング ビジュアルは失敗します (ただし、プッシュは動作し続けます)。
+
+このような制限から必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。
+1 秒あたりのデータ プッシュを&1; 回以内に抑え、かつスループットの要件の範囲内にクエリを抑えるために、タンブリング ウィンドウやホッピング ウィンドウの使用をお勧めします。
+
+必要な期間 (秒) の値は、次の数式を使用して計算することができます。
+
+![式&1;](./media/stream-analytics-power-bi-dashboard/equation1.png)  
+
+For example:
+- 1 秒間隔でデータを送信するデバイスが 1,000 台。
+- 1 時間あたり 1,000,000 行をサポートする Power BI Pro SKU を使用。
+- デバイスごとの平均データ量を Power BI に発行する。
+
+これを式に当てはめると次のようになります。
+
+![式&2;](./media/stream-analytics-power-bi-dashboard/equation2.png)  
+
+つまり、最初のクエリは次のように変更できます。
 
     SELECT
         MAX(hmdt) AS hmdt,
@@ -188,50 +168,21 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
         TUMBLINGWINDOW(ss,4),
         dspl
 
-### PowerBI ビューの更新
-よくある質問に、「PowerBI でダッシュボードが自動更新されないのはなぜか?」があります。
 
-これを実現するには、PowerBI で Q & A を利用して、「タイムスタンプが今日の一時的な最大値」などの質問をし、そのタイルをダッシュボードにピン留めします。
+### <a name="renew-authorization"></a>承認の更新
+ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure Multi-Factor Authentication が構成されている場合は、Power BI の承認を&2; 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "ユーザー認証エラー" が記録されたりする現象が生じる可能性があります。
 
-### 承認の更新
-ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。Azure Active Directory (AAD) テナント上で Multi-Factor Authentication (MFA) が構成されている場合は、Power BI の承認を 2 週間ごとに更新することも必要になります。この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
+同様に、トークンの期限が切れた後に、ジョブを開始しようとすると、エラーが発生し、ジョブは開始できません。 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。 データの損失を避けるには、**[承認の更新]** リンクを選択し、**[最後に停止した時刻]** からジョブを再開します。
 
-![図 12][graphic12]
+Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
-同様に、トークンの期限が切れているときに、ジョブを開始しようとすると、エラーが発生し、ジョブは開始できません。エラーは次のようになります。
+## <a name="get-help"></a>問い合わせ
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-![PowerBI 検証エラー](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-expire.png)
-
-この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。[承認の更新] リンクをクリックし、データの損失を避けるため、"最後に停止した時刻" からジョブを再開します。
-
-![PowerBI 検証更新](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renew.png)
-
-Power BI で認証が更新されたら、承認の領域に緑色のアラートが表示されます。
-
-![PowerBI 検証更新](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renewed.png)
-
-## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-[graphic1]: ./media/stream-analytics-power-bi-dashboard/1-stream-analytics-power-bi-dashboard.png
-[graphic2]: ./media/stream-analytics-power-bi-dashboard/2-stream-analytics-power-bi-dashboard.png
-[graphic3]: ./media/stream-analytics-power-bi-dashboard/3-stream-analytics-power-bi-dashboard.png
-[graphic4]: ./media/stream-analytics-power-bi-dashboard/4-stream-analytics-power-bi-dashboard.png
-[graphic5]: ./media/stream-analytics-power-bi-dashboard/5-stream-analytics-power-bi-dashboard.png
-[graphic6]: ./media/stream-analytics-power-bi-dashboard/6-stream-analytics-power-bi-dashboard.png
-[graphic7]: ./media/stream-analytics-power-bi-dashboard/7-stream-analytics-power-bi-dashboard.png
-[graphic8]: ./media/stream-analytics-power-bi-dashboard/8-stream-analytics-power-bi-dashboard.png
-[graphic9]: ./media/stream-analytics-power-bi-dashboard/9-stream-analytics-power-bi-dashboard.png
-[graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
-[graphic11]: ./media/stream-analytics-power-bi-dashboard/11-stream-analytics-power-bi-dashboard.png
-[graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
-[graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
-
-<!---HONumber=AcomDC_0928_2016-->

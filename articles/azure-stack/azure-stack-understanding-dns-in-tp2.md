@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 03/01/2017
 ms.author: scottnap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bb60161cd23df2d1d493d48ef3859c3b1afdfb0d
+ms.sourcegitcommit: 1171ea5fbbeb7963e5e837b68f911277efc7e52c
+ms.openlocfilehash: c7eabe2c8f1e1675fcc7e0fd495afbfcfa16e6ce
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -48,7 +49,7 @@ In the image above, Azure will create an “A” record in DNS for the DNS name 
 
 In TP2, Azure Stack only supports iDNS for internal name registration, so it cannot do the following.
 
-* Create a DNS record under an existing hosted DNS zone (for example, azurestack.local).
+* Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external).
 * Create a DNS zone (such as Contoso.com).
 * Create a record under your own custom DNS zone.
 * Support the purchase of domain names.
@@ -67,10 +68,5 @@ If you created a VM via a template with your own image, you had to add the **DHC
 ![Screenshot of DHCPOptions property](media/azure-stack-understanding-dns-in-tp2/image2.png)
 
 In TP2, you no longer need to make these changes to your VM templates to allow your VMs to resolve Internet names. They should just work.
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

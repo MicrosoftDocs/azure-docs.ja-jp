@@ -1,99 +1,93 @@
 ---
-title: Manage compute power in Azure SQL Data Warehouse (Azure portal) | Microsoft Docs
-description: Azure portal tasks to manage compute power. Scale compute resources by adjusting DWUs. Or, pause and resume compute resources to save costs.
+title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (Azure Portal ) | Microsoft Docs"
+description: "コンピューティング能力を管理するための Azure ポータルのタスク。 DWU を調整することで、コンピューティング リソースをスケーリングします。 また、コストを節約するために、コンピューティング リソースを一時停止および再開します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 233b0da5-4abd-4d1d-9586-4ccc5f50b071
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: manage
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
+ms.lasthandoff: 01/20/2017
+
 
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Manage compute power in Azure SQL Data Warehouse (Azure portal)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (Azure ポータル)
 > [!div class="op_single_selector"]
-> * [Overview](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
+> * [概要](sql-data-warehouse-manage-compute-overview.md)
+> * [ポータル](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
+> * [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
-> 
-> 
+>
+>
 
-Scale performance by scaling out compute resources and memory to meet the changing demands of your workload. Save costs by scaling back resources during non-peak times or pausing compute altogether. 
 
-This collection of tasks uses the Azure portal to:
-
-* Scale compute
-* Pause compute
-* Resume compute
-
-For more information, see [Manage compute overview][Manage compute overview].
-
-<a name="scale-performance-bk"></a>
-<a name="scale-compute-bk"></a>
-
-## <a name="scale-compute-power"></a>Scale compute power
+## <a name="scale-compute-power"></a>コンピューティング能力のスケーリング
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-To change compute resources:
+コンピューティング リソースを変更するには、次の手順に従います。
 
-1. Open the [Azure portal][Azure portal], open your database, and click **Scale**.
-   
-    ![Click Scale][1]
-2. In the Scale blade, move the slider left or right to change the DWU setting.
-   
-    ![Move Slider][2]
-3. Click **Save**. A confirmation message appears. Click **yes** to confirm or **no** to cancel.
-   
-    ![Click Save][3]
+1. [Azure Portal][Azure portal] を開き、データベースを開いて、**[スケール]** をクリックします。
+
+    ![[スケール] をクリックします。][1]
+2. [スケール] ブレードで、スライダーを左または右に移動して DWU 設定を変更します。
+
+    ![スライダーの移動][2]
+3. **[Save]**をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
+
+    ![[保存] をクリックします。][3]
 
 <a name="pause-compute-bk"></a>
 
-## <a name="pause-compute"></a>Pause compute
+## <a name="pause-compute"></a>コンピューティングの一時停止
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-To pause a database:
+データベースを一時停止するには、次の手順に従います。
 
-1. Open the [Azure portal][Azure portal] and open your database. Notice that the Status is **Online**. 
-   
-    ![Online status][6]
-2. To suspend compute and memory resources, click **Pause**, and then a confirmation message appears. Click **yes** to confirm or **no** to cancel.
-   
-    ![Confirm pause][7]
-3. While SQL Data Warehouse is starting the database, the status is **Pausing**.
-4. When the status is **Paused**, the pause operation is done and you are no longer being charged for DWUs.
-   
-    ![Pause status][4]
+1. [Azure Portal][Azure portal] を開き、データベースを開きます。 [状態] が **[オンライン]**になっていることがわかります。
+
+    ![オンライン状態][6]
+2. コンピューティング リソースとメモリ リソースを一時停止するには、**[一時停止]** をクリックします。確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
+
+    ![一時停止の確認][7]
+3. SQL Data Warehouse がデータベースを起動している間、状態が **[一時停止中]**になります。
+4. 状態が **[一時停止]**になると、一時停止操作が完了し、DWU に対して課金されなくなります。
+
+    ![一時停止状態][4]
 
 <a name="resume-compute-bk"></a>
 
-## <a name="resume-compute"></a>Resume compute
+## <a name="resume-compute"></a>コンピューティングの再開
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-To resume a database:
+データベースを再開するには、次の手順に従います。
 
-1. Open the [Azure portal][Azure portal] and open your database. Notice that the Status is **Paused**. 
-   
-    ![Pause database][4]
-2. To resume the database click **Start**, and then a confirmation message appears. Click **yes** to confirm or **no** to cancel.
-   
-    ![Confirm resume][5]
-3. While SQL Data Warehouse is starting the database, the status is "Resuming".
-4. When the status is **online**, the database is ready.
-   
-    ![Online status][6]
+1. [Azure Portal][Azure portal] を開き、データベースを開きます。 状態が **[一時停止]**になっていることがわかります。
+
+    ![データベースの一時停止][4]
+2. データベースを再開するには、**[開始]** をクリックします。確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
+
+    ![再開の確認][5]
+3. SQL Data Warehouse がデータベースを起動している間、状態が [再開中] になります。
+4. 状態が **[オンライン]**になったら、データベースをいつでも使用できます。
+
+    ![オンライン状態][6]
 
 <a name="next-steps-bk"></a>
 
-## <a name="next-steps"></a>Next steps
-For more information, see [Management overview][Management overview].
+## <a name="next-steps"></a>次のステップ
+詳しくは、「[管理の概要][Management overview]」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-manage-compute-portal/click-scale.png
@@ -114,9 +108,4 @@ For more information, see [Management overview][Management overview].
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

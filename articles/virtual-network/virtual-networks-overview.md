@@ -1,99 +1,92 @@
 ---
-title: "Azure Virtual Network (VNet) の概要"
-description: "Azure 仮想ネットワーク (VNet) について"
+title: Azure Virtual Network | Microsoft Docs
+description: "Azure Virtual Network の概念と機能について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: tysonn
+manager: timlt
+editor: 
+tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2016
+ms.date: 03/23/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e08966567a8545c1b37ec856f836b976b5a9ab2a
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 186b8331d2fcfc16bd41eb08badb200e2abf9e30
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="virtual-network-overview"></a>Virtual Network の概要
-Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。  サブスクリプション専用に Azure クラウドが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をさらにサブネットに分割し、Azure IaaS 仮想マシン (VM) や [クラウド サービス (PaaS ロール インスタンス)](../cloud-services/cloud-services-choose-me.md)を起動できます。 また、Azure のいずれかの[接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site)を使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。 つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
+# <a name="azure-virtual-network"></a>Azure Virtual Network
 
-VNet をより詳しく説明するために、次の図に簡略化されたオンプレミスのネットワークを示します。
+Azure Virtual Network サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 VNet は、オンプレミス ネットワークに接続することもできます。 次の図は、Azure Virtual Network サービスの機能の一部を示しています。
 
-![オンプレミス ネットワーク](./media/virtual-networks-overview/figure01.png)
+![ネットワーク図](./media/virtual-networks-overview/virtual-network-overview.png)
 
-上の図は、ルーターを経由してパブリック インターネットに接続されたオンプレミスのネットワークを示します。 また、ルーターと、DNS サーバーおよび Web サーバー ファームをホストしている DMZ との間にファイアウォールがあります。 Web サーバー ファームは、インターネットに公開されるハードウェア ロード バランサーを使用して負荷分散され、内部サブネットからリソースを消費します。 内部サブネットは、別のファイアウォールによって DMZ から分離され、Active Directory ドメイン コント ローラー サーバー、データベース サーバー、アプリケーション サーバーをホストします。
+次の Azure Virtual Network の機能の詳細については、各機能をクリックしてください。
+- **[分離:](#isolation)** VNet は相互に分離されています。 同じ CIDR アドレス ブロックを使用する開発、テスト、運用環境に個別の VNet を作成できます。 逆に、異なる CIDR アドレス ブロックを使用する複数の VNet を作成し、ネットワークをまとめて接続することもできます。 VNet は、複数のサブネットに分割することができます。 Azure では、VNet に接続されている VM ロール インスタンスと Cloud Services ロール インスタンス用に内部名前解決が用意されています。 必要に応じて、Azure の内部名前解決を使用する代わりに、独自の DNS サーバーを使用するよう VNet を構成できます。
+- **[インターネット接続:](#internet)** VNet に接続されているすべての Azure Virtual Machines (VM) ロール インスタンスと Cloud Services ロール インスタンスは、既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。
+- **[Azure リソース接続:](#within-vnet)** クラウド サービスや VM などの Azure リソースを同じ VNet に接続できます。 リソースは、異なるサブネットに存在する場合でも、プライベート IP アドレスを使用して相互に接続できます。 Azure では、サブネット、VNet、オンプレミス ネットワークの間に既定のルーティングを提供しているため、ルートの構成と管理は必要ありません。
+- **[VNet 接続:](#connect-vnets)** VNet は相互接続が可能なため、任意の VNet に接続されているリソースは他の VNet 上の任意のリソースと通信できます。
+- **[オンプレミス接続:](#connect-on-premises)** VNet は、自身のネットワークと Azure の間のプライベート ネットワーク接続、またはインターネットを介したサイト間 VPN 接続を使用して、オンプレミス ネットワークに接続できます。
+- **[トラフィック フィルタリング:](#filtering)** VM ロール インスタンスと Cloud Services ロール インスタンスのネットワーク トラフィックは、着信、送信方向ともに、送信元の IP アドレスとポート、送信先の IP アドレスとポート、およびプロトコルでフィルター処理できます。
+- **[ルーティング:](#routing)** 必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングを上書きできます。
 
-次の図のように、同じネットワークを Azure でホストできます。
+## <a name = "isolation"></a>ネットワークの分離とセグメント化
 
-![Azure の仮想ネットワーク](./media/virtual-networks-overview/figure02.png)
+各 Azure サブスクリプションと Azure リージョン内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
+- パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、VNet に接続されているリソースに、割り当てたアドレス空間のプライベート IP アドレスを割り当てます。
+- VNet を 1 つ以上のサブネットに分割し、各サブネットに VNet のアドレス空間の一部を割り当てる。
+- Azure で提供される名前解決を使用するか、VNet に接続されたリソースで使用するために独自の DNS サーバーを指定する。 VNet での名前解決の詳細については、[VM と Cloud Services の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
 
-Azure インフラストラクチャが VNet からパブリック インターネットへのアクセスを有効にするルーターのロールを担っていることがわかります。構成を行う必要はありません。 ファイアウォールは、個々のサブネットに適用されたネットワーク セキュリティ グループ (NSG) に置き換えることができます。 すべての物理ロード バランサーは Azure でインターネットに接続する内部ロード バランサーに置き換えられます。
+## <a name = "internet"></a>インターネットへの接続
+VNet に接続されているすべてのリソースは、既定で、インターネットに送信接続されています。 リソースのプライベート IP アドレスは、Azure インフラストラクチャによりプライベート IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続の詳細については、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)」を参照してください。 カスタム ルーティングとトラフィック フィルタリングを実装することで、既定の接続を変更できます。
 
-> [!NOTE]
-> Azure には、クラシック (サービス管理とも呼ばれます) と Azure リソース マネージャー (ARM) の 2 つのデプロイ モードがあります。 クラシック VNet はアフィニティ グループに追加するか、リージョン VNet として作成できます。 アフィニティ グループに VNet がある場合は、 [リージョン VNet に移行する方法](virtual-networks-migrate-to-regional-vnet.md)がお勧めです。
-> 
-> 
+インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスの詳細については、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」を参照してください。
 
-## <a name="virtual-network-benefits"></a>Virtual Network のメリット
-* **分離**。 VNet は、相互に完全に分離されているため、 同じ CIDR アドレス ブロックを使用する、開発、テスト、実稼働環境用に切り離されたネットワークを作成できます。
-* **パブリック インターネットへのアクセス**。 VNet 内のすべての IaaS VM と PaaS ロール インスタンスは、既定でパブリック インターネットにアクセスできます。 ネットワーク セキュリティ グループ (NSG) を使用してアクセスを制御することもできます。
-* **VNet 内の VM へのアクセス**。 PaaS ロール インスタンスと IaaS VM は、異なるサブネットに配置されている場合でも、ゲートウェイを構成したり Public IP Addresses を使用したりせずに、同じ仮想ネットワークに配置し、プライベート IP アドレスを使用して相互に接続できます。
-* **名前解決**。 Azure には、VNet にデプロイされた IaaS VM と PaaS ロール インスタンス用に内部の名前解決が用意されています。 独自の DNS サーバーをデプロイし、それを使用するよう VNet を構成することもできます。
-* **セキュリティ**。 ネットワーク セキュリティ グループを使用して、仮想マシンと VNet の PaaS ロール インスタンスが送受信するトラフィックを制御できます。
-* **接続**。 VNet は、ネットワーク ゲートウェイまたは VNet ピアリングを使用して相互に接続することができます。 VNet は、サイト間 VPN ネットワークまたは Azure ExpressRoute を介してオンプレミス データ センターに接続することができます。 サイト間 VPN 接続について詳しくは、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site)」をご覧ください。 ExpressRoute について詳しくは、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」をご覧ください。 VNet ピアリングについて詳しくは、「[VNET ピアリング](virtual-network-peering-overview.md)」をご覧ください。
-  
-  > [!NOTE]
-  > Azure 環境に IaaS VM や PaaS ロール インスタンスをデプロイする前に、VNet を作成するようにしてください。 ARM ベースの VM には VNet が必要です。既存の VNet を指定しない場合、Azure が既定の VNet を作成します。この VNet には、独自のオンプレミス ネットワークと競合する CIDR アドレス ブロックが含まれる場合があります。 この場合、VNet からオンプレミスのネットワークに接続できなくなります。
-  > 
-  > 
+## <a name="within-vnet"></a>Azure リソースの接続
+VNet には、仮想マシン (VM)、クラウド サービス、App Service 環境、仮想マシン スケール セットなど、複数の Azure リソースを接続できます。 VM は、ネットワーク インターフェイス (NIC) を経由して VNet 内のサブネットに接続します。 NIC の詳細については、「[ネットワーク インターフェイス](virtual-network-network-interface.md)」を参照してください。
 
-## <a name="subnets"></a>サブネット
-サブネットは、VNet 内の IP アドレスの範囲で、VNet は組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、サブネットへのルート テーブルおよび NSG も構成できます。
+## <a name="connect-vnets"></a>仮想ネットワークの接続
 
-## <a name="ip-addresses"></a>IP アドレス
-Azure のリソースには、"*パブリック*" と "*プライベート*" の 2 種類の IP アドレスが割り当てられています。 Azure は、パブリック IP アドレスで、インターネットや [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) など、Azure の公開されている他のサービスと通信できます。 プライベート IP アドレスを使用すると、インターネット経由でルーティング可能な IP アドレスを使用する必要なく、仮想ネットワーク内のリソースまたは VPN 経由で接続されているリソースが通信できるようになります。
+VNet を相互に接続できるため、一方の VNet に接続されているリソースは、VNet をまたいで相互に通信できます。 次のオプションのいずれかまたは両方を使用して、複数の VNet を相互に接続できます。
+- **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングの詳細については、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」を参照してください。
+- **VNet 間接続:** 同じまたは異なる Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を有効にします。 ピアリングとは異なり、VNet 間での帯域幅は制限されます。これは、トラフィックが Azure VPN ゲートウェイを通過する必要があるためです。 VNet 間接続を使用した VNet 接続の詳細については、[VNet 間接続の構成](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 
-Azure 内の IP アドレスの詳細については、「 [仮想ネットワークの IP アドレス](virtual-network-ip-addresses-overview-arm.md)
+## <a name="connect-on-premises"></a>オンプレミス ネットワークへの接続
 
-## <a name="azure-load-balancers"></a>Azure ロード バランサー
-仮想ネットワーク内の仮想マシンとクラウド サービスは、Azure ロード バランサーを使用してインターネットに公開することができます。 公開されていない基幹業務アプリケーションは、内部ロード バランサーを使用してのみ負荷分散できます。
+オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
+- **ポイント対サイト仮想プライベート ネットワーク (VPN):** ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。これは暗号化されています。
+- **サイト間 VPN:** VPN デバイスと Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPSec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
+- **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 ExpressRoute 接続の待ち時間は予測可能です。これは、トラフィックがインターネットを経由せず、暗号化されていないためです。
 
-* **外部ロード バランサー**:  外部ロード バランサーを使用すると、パブリック インターネットからアクセスする IaaS VM と PaaS ロール インスタンスに高可用性を提供できます。
-* **内部ロード バランサー**:  内部ロード バランサーを使用すると、VNet の他のサービスからアクセスする IaaS VM と PaaS ロール インスタンスに高可用性を提供できます。
+ここまでに説明したすべての接続オプションの詳細については、「[接続トポロジの図](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams)」を参照してください。
 
-Azure の負荷分散の詳細については、「 [ロード バランサーの概要](../load-balancer/load-balancer-overview.md)」をご覧ください。
+## <a name="filtering"></a>ネットワーク トラフィックのフィルター処理
+<!---Get confirmation that a UDR on the gateway subnet is supported. Need to provide some additional info as to the key differences between the two options.--->
 
-## <a name="network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG)
-NSG を作成すると、ネットワーク インターフェイス (NIC)、VM、サブネットへの着信と発信アクセスを制御できます。 各 NSG には、発信元 IP アドレス、送信元ポート、接続先 IP アドレス、宛先ポートに基づいてトラフィックを承認するか、拒否するかを指定する 1 つ以上のルールが含まれます。 NSG の詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](virtual-networks-nsg.md)」をご覧ください。
+次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
+- **ネットワーク セキュリティ グループ (NSG):** 各 NSG には、送信元と送信先の IP アドレス、ポート、およびプロトコルでトラフィックをフィルター処理できるようにする受信と送信のセキュリティ規則を複数含めることができます。 NSG は VM の各 NIC に適用できます。 NSG は、NIC または他の Azure リソースが接続されているサブネットに適用することもできます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事をご覧ください。
+- **ネットワーク仮想アプライアンス (NVA):** NVA とは、ファイアウォールなどのネットワーク機能を実行するソフトウェアが動作している VM です。 入手可能な NVA の一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) を参照してください。 WAN の最適化やその他のネットワーク トラフィック機能を提供する NVA も入手できます。 通常、NVA はユーザー定義ルートまたは BGP ルートで使用されます。 また、NVA を使用して、VNet 間のトラフィックをフィルター処理することもできます。
 
-## <a name="virtual-appliances"></a>仮想アプライアンス: 
-仮想アプライアンスは、ファイアウォール、WAN の最適化、不正侵入検出などのソフトウェア ベースのアプライアンス機能を実行する VNet 内の別の VM です。 仮想アプライアンス経由で VNet トラフィックをルーティングしてこの機能を使用するためのルートを Azure で作成できます。
+## <a name="routing"></a>ネットワーク トラフィックのルーティング
 
-たとえば、NSG を使用して VNet にセキュリティを確保できます。 ただし、NSG では、受信と送信パケットにレイヤー 4 の Access Control リスト (ACL) を提供します。 レイヤー 7 のセキュリティ モデルが必要な場合は、ファイアウォール アプライアンスを使用する必要があります。
-
-仮想アプライアンスは、 [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)によって異なります。
-
-## <a name="limits"></a>制限
-サブスクリプションで許可される Virtual Network 数には制限があります。詳細については、[Azure ネットワークの制限](../azure-subscription-service-limits.md#networking-limits)に関するセクションを参照してください。
+Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
+- **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。
+- **BGP のルート:** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して VNet をオンプレミス ネットワークに接続する場合、BGP ルートを VNet に伝達できます。
 
 ## <a name="pricing"></a>価格
-Azure では追加のコストの必要なく Virtual Network を使用できます。 Vnet 内で開始されたコンピューティング インスタンスは、「 [Azure VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」で説明されている標準の価格が課せられます。 VNet で使用されている [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) と [Public IP Addresses](https://azure.microsoft.com/pricing/details/ip-addresses/) にも標準の価格が課せられます。
+
+仮想ネットワーク、サブネット、ルート テーブル、ネットワーク セキュリティ グループには料金がかかりません。 送信インターネット帯域幅の使用量、パブリック IP アドレス、仮想ネットワーク ピアリング、VPN ゲートウェイ、ExpressRoute それぞれには、独自の料金体系が用意されています。 詳細については、[Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway)、[ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) の価格に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
-* [VNet を作成する](virtual-networks-create-vnet-arm-pportal.md) 。
-* [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)。
-* [NSG](virtual-networks-nsg.md)について。
-* [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+- 「[最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
+- [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、VNet に対するポイント対サイト接続を作成します。
 

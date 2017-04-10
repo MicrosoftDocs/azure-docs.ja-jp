@@ -1,84 +1,88 @@
 ---
-title: Archive the Azure Activity Log | Microsoft Docs
-description: Learn how to archive your Azure Activity Log for long-term retention in a storage account.
+title: "Azure アクティビティ ログのアーカイブ | Microsoft Docs"
+description: "ストレージ アカウントの長期保持に関する Azure アクティビティ ログをアーカイブする方法を説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 12/09/2016
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
+ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
+
 
 ---
-# <a name="archive-the-azure-activity-log"></a>Archive the Azure Activity Log
-In this article, we show how you can use the Azure portal, PowerShell Cmdlets, or Cross-Platform CLI to archive your [**Azure Activity Log**](monitoring-overview-activity-logs.md) in a storage account. This option is useful if you would like to retain your Activity Log longer than 90 days (with full control over the retention policy) for audit, static analysis, or backup. If you only need to retain your events for 90 days or less you do not need to set up archival to a storage account, since Activity Log events are retained in the Azure platform for 90 days without enabling archival.
+# <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
+この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
 
-## <a name="prerequisites"></a>Prerequisites
-Before you begin, you need to [create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account) to which you can archive your Activity Log. We highly recommend that you do not use an existing storage account that has other, non-monitoring data stored in it so that you can better control access to monitoring data. However, if you are also archiving Diagnostic Logs and metrics to a storage account, it may make sense to use that storage account for your Activity Log as well to keep all monitoring data in a central location. The storage account you use must be a general purpose storage account, not a blob storage account.
+## <a name="prerequisites"></a>前提条件
+開始する前に、アクティビティ ログのアーカイブ先の[ストレージ アカウントを作成](../storage/storage-create-storage-account.md#create-a-storage-account)する必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、診断ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、アクティビティ ログのそのストレージ アカウントも使用するのが適切であることがあります。 使用するストレージ アカウントは、BLOB ストレージ アカウントではなく、一般的な目的のストレージ アカウントである必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
-## <a name="log-profile"></a>Log Profile
-To archive the Activity Log using any of the methods below, you set the **Log Profile** for a subscription. The Log Profile defines the type of events that are stored or streamed and the outputs—storage account and/or event hub. It also defines the retention policy (number of days to retain) for events stored in a storage account. If the retention policy is set to zero, events are stored indefinitely. Otherwise, this can be set to any value between 1 and 2147483647. [You can read more about log profiles here](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles).
+## <a name="log-profile"></a>ログ プロファイル
+以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが&0; に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。 [ログ プロファイルの詳細については、こちらを参照してください](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles)。 
 
-## <a name="archive-the-activity-log-using-the-portal"></a>Archive the Activity Log using the portal
-1. In the portal, click the **Activity Log** link on the left-side navigation. If you don’t see a link for the Activity Log, click the **More Services** link first.
+## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
+1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[More Services (詳細なサービス)]** リンクをクリックします。
    
-    ![Navigate to Activity Log blade](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
-2. At the top of the blade, click **Export**.
+    ![[アクティビティ ログ] ブレードに移動します。](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
+2. ブレードの上部にある、 **[エクスポート]**をクリックします。
    
-    ![Click the Export button](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
-3. In the blade that appears, check the box for **Export to a storage account** and select a storage account.
+    ![[エクスポート] ボタンをクリックします。](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+3. 表示されるブレードで、 **[Export to a storage account (ストレージ アカウントへのエクスポート)]** チェック ボックスをオンにし、ストレージ アカウントを選択します。
    
-    ![Set a storage account](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
-4. Using the slider or text box, define a number of days for which Activity Log events should be kept in your storage account. If you prefer to have your data persisted in the storage account indefinitely, set this number to zero.
-5. Click **Save**.
+    ![ストレージ アカウントを設定します。](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
+4. スライダーまたはテキスト ボックスを使用して、アクティビティ ログのイベントをストレージ アカウント内で保持する必要がある日数を定義します。 データがストレージ アカウントに無期限に保持されるようにする場合は、この数を&0; に設定します。
+5. [ **Save**] をクリックします。
 
-## <a name="archive-the-activity-log-via-powershell"></a>Archive the Activity Log via PowerShell
+## <a name="archive-the-activity-log-via-powershell"></a>PowerShell を使用したアクティビティ ログのアーカイブ
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
 ```
 
-| Property | Required | Description |
+| プロパティ | 必須 | Description |
 | --- | --- | --- |
-| StorageAccountId |No |Resource ID of the Storage Account to which Activity Logs should be saved. |
-| Locations |Yes |Comma-separated list of regions for which you would like to collect Activity Log events. You can view a list of all regions [by visiting this page](https://azure.microsoft.com/en-us/regions) or by using [the Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| RetentionInDays |Yes |Number of days for which events should be retained, between 1 and 2147483647. A value of zero stores the logs indefinitely (forever). |
-| Categories |Yes |Comma-separated list of event categories that should be collected. Possible values are Write, Delete, and Action. |
+| StorageAccountId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が&0; の場合、ログは無期限に (いつまでも) 保存されます。 |
+| カテゴリ |はい |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
-## <a name="archive-the-activity-log-via-cli"></a>Archive the Activity Log via CLI
+## <a name="archive-the-activity-log-via-cli"></a>CLI を使用したアクティビティ ログのアーカイブ
 ```
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
 ```
 
-| Property | Required | Description |
+| プロパティ | 必須 | Description |
 | --- | --- | --- |
-| name |Yes |Name of your log profile. |
-| storageId |No |Resource ID of the Storage Account to which Activity Logs should be saved. |
-| locations |Yes |Comma-separated list of regions for which you would like to collect Activity Log events. You can view a list of all regions [by visiting this page](https://azure.microsoft.com/en-us/regions) or by using [the Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Yes |Number of days for which events should be retained, between 1 and 2147483647. A value of zero will store the logs indefinitely (forever). |
-| categories |Yes |Comma-separated list of event categories that should be collected. Possible values are Write, Delete, and Action. |
+| name |はい |ログ プロファイルの名前。 |
+| storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が&0; の場合、ログは無期限に (いつまでも) 保存されます。 |
+| categories |はい |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
-## <a name="storage-schema-of-the-activity-log"></a>Storage schema of the Activity Log
-Once you have set up archival, a storage container will be created in the storage account as soon as an Activity Log event occurs. The blobs within the container follow the same format across the Activity Log and Diagnostic Logs. The structure of these blobs is:
+## <a name="storage-schema-of-the-activity-log"></a>アクティビティ ログのストレージ スキーマ
+アーカイブの設定後、アクティビティ ログ イベントが発生するとすぐに、ストレージ コンテナーは、ストレージ アカウントに作成されます。 コンテナー内の BLOB は、アクティビティ ログおよび診断ログ全体で同じ形式に従います。 これらのBLOB の構造は次のとおりです。
 
-> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{subscription ID}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
+> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{サブスクリプション ID}/y={4 桁の年数値}/m={2 桁の月数値}/d={2 桁の日数値}/h={2 桁の 24時制の時間数値}/m=00/PT1H.json
 > 
 > 
 
-For example, a blob name might be:
+たとえば、BLOB の名前は次のようになります。
 
 > insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 > 
 > 
 
-Each PT1H.json blob contains a JSON blob of events that occurred within the hour specified in the blob URL (e.g. h=12). During the present hour, events are appended to the PT1H.json file as they occur. The minute value (m=00) is always 00, since Activity Log events are broken into individual blobs per hour.
+各 PT1H.json BLOB には、BLOB の URL で指定された時間内に発生したイベントの JSON BLOB が含まれます (例: h =&12;)。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 分の値 (m = 00) は常に 00 です。アクティビティ ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。
 
-Within the PT1H.json file, each event is stored in the “records” array, following this format:
+PT1H.json ファイル内では、各イベントは、この形式に従って “レコード” 配列で保存されます。
 
 ```
 {
@@ -137,33 +141,36 @@ Within the PT1H.json file, each event is stored in the “records” array, foll
 ```
 
 
-| Element name | Description |
+| 要素名 | Description |
 | --- | --- |
-| time |Timestamp when the event was generated by the Azure service processing the request corresponding the event. |
-| resourceId |Resource ID of the impacted resource. |
-| operationName |Name of the operation. |
-| category |Category of the action, eg. Write, Read, Action. |
-| resultType |The type of the result, eg. Success, Failure, Start |
-| resultSignature |Depends on the resource type. |
-| durationMs |Duration of the operation in milliseconds |
-| callerIpAddress |IP address of the user who has performed the operation, UPN claim, or SPN claim based on availability. |
-| correlationId |Usually a GUID in the string format. Events that share a correlationId belong to the same uber action. |
-| identity |JSON blob describing the authorization and claims. |
-| authorization |Blob of RBAC properties of the event. Usually includes the “action”, “role” and “scope” properties. |
-| level |Level of the event. One of the following values: “Critical”, “Error”, “Warning”, “Informational” and “Verbose” |
-| location |Region in which the location occurred (or global). |
-| properties |Set of `<Key, Value>` pairs (i.e. Dictionary) describing the details of the event. |
+| time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
+| operationName |操作の名前。 |
+| カテゴリ |アクションのカテゴリ。例:  Write、Read、Action |
+| resultType |結果の種類。例:  Success、Failure、Start |
+| resultSignature |リソースの種類によって異なります。 |
+| durationMs |操作時間 (ミリ秒) |
+| callerIpAddress |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの IP アドレス。 |
+| correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
+| ID |承認および要求を記述する JSON BLOB。 |
+| authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
+| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| location |発生した場所のリージョン (またはグローバル)。 |
+| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
-> The properties and usage of those properties can vary depending on the resource.
+> プロパティとそのプロパティの使用方法については、リソースによって異なることがあります。
 > 
 > 
 
-## <a name="next-steps"></a>Next steps
-* [Download blobs for analysis](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
-* [Stream the Activity Log to Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
-* [Read more about the Activity Log](monitoring-overview-activity-logs.md)
+## <a name="next-steps"></a>次のステップ
+* [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
+* [詳細については、アクティビティ ログに関するセクションをご覧ください](monitoring-overview-activity-logs.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,29 +1,34 @@
 ---
-title: Azure Resource Manager と Azure ポータルを使用して ExpressRoute 回線を作成および変更する | Microsoft Docs
-description: この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
+title: "ExpressRoute 回線の作成および変更: Azure Portal | Microsoft Docs"
+description: "この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
+manager: timlt
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
-ms.author: cherylmc
+ms.date: 03/07/2017
+ms.author: cherylmc;ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 4880d63223055026a4fb1a906fb15f263d2a16df
+ms.lasthandoff: 03/24/2017
+
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
-> [Azure Portal - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
-> [PowerShell - クラシック](expressroute-howto-circuit-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 この記事では、Azure ポータルと Azure Resource Manager デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 以下の手順では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
@@ -35,12 +40,13 @@ ms.author: cherylmc
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 * [Azure ポータル](https://portal.azure.com)に対するアクセスできることを確認します。
 * 新しいネットワーク リソースを作成するアクセス許可があることを確認します。 適切なアクセス許可がない場合は、アカウント管理者に連絡してください。
+* 手順をより理解するため、開始する前に[ビデオを確認](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
-### <a name="1.-sign-in-to-the-azure-portal"></a>1.Azure ポータルにサインインします。
+### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure ポータルにサインインします。
 ブラウザーから [Azure ポータル](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-### <a name="2.-create-a-new-expressroute-circuit"></a>2.新しい ExpressRoute 回線を作成する
+### <a name="2-create-a-new-expressroute-circuit"></a>2.新しい ExpressRoute 回線を作成する
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
 > 
@@ -61,7 +67,7 @@ ms.author: cherylmc
 > 
 > 
 
-### <a name="3.-view-the-circuits-and-properties"></a>3.回線とプロパティを表示する
+### <a name="3-view-the-circuits-and-properties"></a>3.回線とプロパティを表示する
 **すべての回線を表示する**
 
 左側のメニューで **[すべてのリソース]** を選択すると、作成したすべての回線を表示できます。
@@ -74,32 +80,32 @@ ms.author: cherylmc
 
 ![プロパティの表示](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
-### <a name="4.-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
 このブレードの **[プロバイダーの状態]** は、サービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供します。 **[回線の状態]** は、Microsoft 側での状態を提供します。 回線のプロビジョニング状態に関する詳細については、 [ワークフロー](expressroute-workflows.md#expressroute-circuit-provisioning-states) に関する記事を参照してください。
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
 プロバイダーの状態: 未プロビジョニング<BR>
- 回線の状態: 有効
+回線の状態: 有効
 
 ![プロビジョニング プロセスの開始](./media/expressroute-howto-circuit-portal-resource-manager/viewstatus.png)
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
 プロバイダーの状態: プロビジョニング中<BR>
- 回線の状態: 有効
+回線の状態: 有効
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
 プロバイダーの状態: プロビジョニング済み<BR>
- 回線の状態: 有効
+回線の状態: 有効
 
-### <a name="5.-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.回線キーのステータスと状態を定期的に確認する
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.回線キーのステータスと状態を定期的に確認する
 関心のある回線を選択し、その回線のプロパティを表示できます。 **[プロバイダーの状態]** が **[プロビジョニング済み]** になっていることを確認してから続行します。
 
 ![回線とプロバイダーの状態](./media/expressroute-howto-circuit-portal-resource-manager/viewstatusprovisioned.png)
 
-### <a name="6.-create-your-routing-configuration"></a>6.ルーティング構成を作成する
+### <a name="6-create-your-routing-configuration"></a>6.ルーティング構成を作成する
 回線ピアリングの作成と変更の詳しい手順については、「 [PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-portal-resource-manager.md) 」を参照してください。
 
 > [!IMPORTANT]
@@ -107,7 +113,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 > 
 > 
 
-### <a name="7.-link-a-virtual-network-to-an-expressroute-circuit"></a>7.ExpressRoute 回線への仮想ネットワークのリンク
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7.ExpressRoute 回線への仮想ネットワークのリンク
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイメント モデルを使用するときは、「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md) 」を参照してください。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>ExpressRoute 回線の状態の取得
@@ -116,16 +122,31 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 ![ExpressRoute 回線の状態](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>ExpressRoute 回線の変更
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 現在、Azure ポータルを使用して ExpressRoute 回線のプロパティを変更することはできません。 ただし、PowerShell を使用すれば回線のプロパティを変更できます。 詳細については、「 [PowerShell を使用した ExpressRoute 回線の変更](expressroute-howto-circuit-arm.md#modify)」セクションを参照してください
+ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。
 
 ダウンタイムなく、次を実行できます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。
-* ExpressRoute 回線の帯域幅を増やす。 回線の帯域幅のダウングレードはサポートされていないことに注意してください。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていないことに注意してください。 
 * 課金プランを従量制課金データから無制限データに変更します。 無制限データから従量制課金データへの課金プランの変更はサポートされていないことに注意してください。
-* **従来の操作の許可**を有効または無効にできます。
+* *従来の操作の許可*を有効または無効にできます。
 
 制限と制約事項の詳細は、「 [ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
+
+ExpressRoute 回線を変更するには、下の図に示すように **[構成]** をクリックします。
+
+![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+
+帯域幅、SKU、課金モデルを変更し、構成ブレード内の従来の操作を許可することができます。
+
+> [!IMPORTANT]
+> 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
+>
+> 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
+> 
+> Standard 回線で許可されるリソースより多くのリソースを使用する場合、Premium アドオンの無効化操作が失敗することがあります。
+> 
+> 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>ExpressRoute 回線のプロビジョニング解除と削除
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 以下の点に注意してください。
@@ -139,7 +160,5 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-portal-resource-manager.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

@@ -1,13 +1,14 @@
-## Application Gateway
-Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。アプリケーションの負荷分散では、HTTP に基づくネットワーク トラフィックのルーティング ルールを使用できます。<BR>
+## <a name="application-gateway"></a>Application Gateway
+Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。 アプリケーションの負荷分散では、HTTP に基づくネットワーク トラフィックのルーティング ルールを使用できます。 
+<BR>
 
 | プロパティ | 説明 |
 | --- | --- |
-| **backendAddressPools** |バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP またはプライベート IP である必要があります。 |
-| **backendHttpSettingsCollection** |すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。 |
-| **frontendPorts** |このポートは、アプリケーション ゲートウェイに開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。 |
+| **backendAddressPools** |バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP またはプライベート IP である必要があります。 |
+| **backendHttpSettingsCollection** |すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。 |
+| **frontendPorts** |このポートは、アプリケーション ゲートウェイに開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。 |
 | **httpListeners** |リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 |
-| **requestRoutingRules** |ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが送られるバックエンド サーバー プールを定義します。現在はラウンド ロビンとしてのみ機能します |
+| **requestRoutingRules** |ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが送られるバックエンド サーバー プールを定義します。 現在はラウンド ロビンとしてのみ機能します |
 
 アプリケーション ゲートウェイ Json テンプレートの例:
 
@@ -215,7 +216,11 @@ Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管
     }
 
 
-### その他のリソース
-詳細については、「[Azure Application Gateway REST API Reference (Azure Application Gateway REST API リファレンス)](https://msdn.microsoft.com/library/azure/mt299388.aspx)」を参照してください。
+### <a name="additional-resources"></a>その他のリソース
+詳細については、「 [ Azure Application Gateway REST API Reference (Azure Application Gateway REST API リファレンス)](https://msdn.microsoft.com/library/azure/mt299388.aspx) 」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

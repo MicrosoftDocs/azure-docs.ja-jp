@@ -1,19 +1,24 @@
 ---
-title: プログラムによる Machine Learning のモデルの再トレーニング | Microsoft Docs
-description: Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+title: "プログラムによる Machine Learning のモデルの再トレーニング | Microsoft Docs"
+description: "Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: raymondlaghaeian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
+ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.lasthandoff: 03/02/2017
+
 
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>プログラムによる Machine Learning のモデルの再トレーニング
@@ -21,12 +26,12 @@ ms.author: raymondl;garye;v-donglo
 
 モデルを再トレーニングしたら、次のチュートリアルで、予測 Web サービスでのモデルの更新方法を確認してください。
 
-* 従来の Web サービスを Machine Learning Web サービス ポータルでデプロイした場合は、「[Retrain a Classic Web service (従来の Web サービスの再トレーニング)](machine-learning-retrain-a-classic-web-service.md)」をご覧ください。 
-* 新しい Web サービスをデプロイした場合は、「[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)」をご覧ください。
+* 従来の Web サービスを Machine Learning Web サービス ポータルでデプロイした場合は、「[従来の Web サービスの再トレーニング](machine-learning-retrain-a-classic-web-service.md)」を参照してください。 
+* 新しい Web サービスをデプロイした場合は、[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)に関するページをご覧ください。
 
 再トレーニング プロセスの概要については、「[Retrain a Machine Learning Model (Machine Learning モデルの再トレーニング)](machine-learning-retrain-machine-learning-model.md)」をご覧ください。
 
-既存の新しい Azure Resource Manager ベースの Web サービスを使用して開始するには、「[Retrain an existing Predictive Web service (既存の予測 Web サービスの再トレーニング)](machine-learning-retrain-existing-resource-manager-based-web-service.md)」をご覧ください。
+既存の新しい Azure Resource Manager ベースの Web サービスを使用して開始するには、「[Retrain an existing Predictive Web service (既存の予測 Web サービスの再トレーニング)](machine-learning-retrain-existing-resource-manager-based-web-service.md)」を参照してください。
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
 この例では、Microsoft Azure Machine Learning のサンプル "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" を使用します。 
@@ -40,17 +45,21 @@ ms.author: raymondl;garye;v-donglo
 5. 「Census Model」と入力します。
 6. 実験キャンバスの下部で、 **[実行]**をクリックします。
 7. **[Set Up Web Service (Web サービスの設定)]** をクリックして、**[Retraining Web Service (Web サービスの再トレーニング)]** を選択します。 
+
+初期状態の実験を次に示します。
    
    ![最初の実験。][2]
 
-図 2: 最初の実験。
 
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>予測実験を作成して Web サービスとして発行する
 次に、予測実験を作成します。
 
 1. 実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Predictive Web Service (予測 Web サービス)]** を選択します。 これによりモデルがトレーニング済みのモデルとして保存され、Web サービス入力モジュールと Web サービス出力モジュールが追加されます。 
 2. **[実行]**をクリックします。 
-3. 実験の実行が終了したら **[Deploy Web Service [Classic](Web サービスのデプロイ \[従来\].md)]** または **Deploy Web Service [New](Web サービスのデプロイ \[新規\].md)** を選択します。
+3. 実験の実行が終了したら **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] (Web サービスのデプロイ [新規])]** を選択します。
+
+> [!NOTE] 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>トレーニング実験をトレーニング Web サービスとしてデプロイする
 トレーニング済みのモデルを再トレーニングするには、再トレーニング Web サービスとして作成したトレーニング実験をデプロイする必要があります。 この Web サービスでは、"*[トレーニング モデル][train-model]*" モジュールにつながっている "*Web サービス出力*" モジュールが必要です。これにより新しいトレーニング済みのモデルを生成できます。
@@ -58,24 +67,24 @@ ms.author: raymondl;garye;v-donglo
 1. トレーニング実験に戻るには、左側のウィンドウの実験アイコンをクリックし、Census Model という名前の実験をクリックします。  
 2. [Search Experiment Items (実験項目の検索)] 検索ボックスに、「Web サービス」と入力します。 
 3. "*Web サービス入力*" モジュールを実験キャンバスにドラッグし、その出力を、"*見つからないデータのクリーンアップ*" モジュールに接続します。  こうすると、再トレーニング データが最初のトレーニング データと同じ方法で処理されます。
-4. 2 つの " *Web サービス出力* " モジュールを実験キャンバスにドラッグします。 "*モデルのトレーニング*" モジュールの出力を一方に、"*モデルの評価*" モジュールの出力をもう一方に接続します。 **モデルのトレーニング** の Web サービス出力により、新しいトレーニング済みのモデルを使用できます。 **モデルの評価** に関連付けられている出力は、そのモジュールのモデルの評価出力 (パフォーマンス結果) を返します。
+4. 2 つの "*Web サービス出力*" モジュールを実験キャンバスにドラッグします。 "*モデルのトレーニング*" モジュールの出力を一方に、"*モデルの評価*" モジュールの出力をもう一方に接続します。 **モデルのトレーニング**の Web サービス出力により、新しいトレーニング済みのモデルを使用できます。 **モデルの評価** に関連付けられている出力は、そのモジュールのモデルの評価出力 (パフォーマンス結果) を返します。
 5. **[実行]**をクリックします。 
 
 次に、トレーニング実験を Web サービスとしてデプロイし、トレーニング済みのモデルとモデル評価の結果を生成する必要があります。 ここでは、次の一連の操作は、従来の Web サービスを使用するか、新しい Web サービスを使用するかに依存します。  
 
 **従来の Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic](Web サービスのデプロイ \[従来\].md)]** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 **新しい Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [Classic](Web サービスのデプロイ \[従来\].md)]** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy Web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、 **[デプロイ]**をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、**[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 いずれの場合でも、実験の実行が完了すると、ワークフローは次のようになります。
 
 ![実行後のワークフロー。][4]
 
-図 3: 実行後のワークフロー。
+
 
 ## <a name="retrain-the-model-with-new-data-using-bes"></a>BES を使用して新しいデータでモデルを再トレーニングする
 この例では、C# を使用して再トレーニング アプリケーションを作成します。 Python または R サンプル コードを使用してこのタスクを行うこともできます。
@@ -84,13 +93,13 @@ ms.author: raymondl;garye;v-donglo
 
 1. Visual Studio で C# コンソール アプリケーションを作成します ([新規] -> [プロジェクト] -> [Windows デスクトップ] -> [コンソール アプリケーション])。
 2. Machine Learning Web サービス ポータルにサインインします。
-3. 従来の Web サービスを使用する場合は、 **[Classic Web Services (従来の Web サービス)]**をクリックします。
+3. 従来の Web サービスを使用する場合は、**[Classic Web Services (従来の Web サービス)]** をクリックします。
    1. 使用する Web サービスをクリックします。
    2. 既定のエンドポイントをクリックします。
    3. **[Consume (使用)]**をクリックします。
    4. **[Consume (使用)]** ページの下部の **[Sample Code (サンプル コード)]** セクションで **[Batch]** をクリックします。
    5. この手順の手順 5. に進みます。
-4. 新しい Web サービスを使用する場合は、 **[Web サービス]**をクリックします。
+4. 新しい Web サービスを使用する場合は、**[Web サービス]** をクリックします。
    1. 使用する Web サービスをクリックします。
    2. **[Consume (使用)]**をクリックします。
    3. [Consume (使用)] ページの下部の **[Sample Code (サンプル コード)]** セクションで **[Batch]** をクリックします。
@@ -142,7 +151,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
         },
 
 > [!NOTE]
-> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は 2 つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
+> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は&2; つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
 > 
 > 
 
@@ -160,11 +169,11 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 出力結果から *BaseLocation*、*RelativeLocation*、*SasBlobToken* をコピーします。これは、後で再トレーニング プロセスで使用します。
 
 ## <a name="next-steps"></a>次のステップ
-[従来の Web サービスの再トレーニング](machine-learning-retrain-a-classic-web-service.md)
+**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** をクリックして予測 Web サービスをデプロイした場合は、「[従来の Web サービスの再トレーニング](machine-learning-retrain-a-classic-web-service.md)」を参照してください。
 
-[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)
+**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックして予測 Web サービスをデプロイした場合は、[Machine Learning Management コマンドレットを使用した新しい Web サービスの再トレーニング](machine-learning-retrain-new-web-service-using-powershell.md)に関するページをご覧ください。
 
-<!-- Retrain a New Web service using the Machine Learning Management REST API -->
+<!-- Retrain a New web service using the Machine Learning Management REST API -->
 
 
 [1]: ./media/machine-learning-retrain-models-programmatically/machine-learning-retrain-models-programmatically-IMAGE01.png
@@ -178,8 +187,4 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-<!--HONumber=Oct16_HO2-->
-
 

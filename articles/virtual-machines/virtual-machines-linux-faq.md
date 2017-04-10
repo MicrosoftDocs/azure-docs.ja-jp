@@ -1,61 +1,66 @@
 ---
-title: FAQ for Linux VMs | Microsoft Docs
-description: Provides answers to some of the common questions about Linux virtual machines created with the Resource Manager model.
+title: "Azure の Linux VM に関してよく寄せられる質問 | Microsoft Docs"
+description: "Resource Manager モデルで作成された Linux 仮想マシンについてよく寄せられる質問への回答を示します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-management
-
+ms.assetid: 3648e09c-1115-4818-93c6-688d7a54a353
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 03/14/2017
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: bfbd08b40e7d16efd5784497512f9063eb17d808
+ms.lasthandoff: 03/22/2017
+
 
 ---
-# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Frequently asked question about Linux Virtual Machines
-This article addresses some common questions about Linux virtual machines created in Azure using the Resource Manager deployment model. For the Windows version of this topic, see [Frequently asked question about Windows Virtual Machines](virtual-machines-windows-faq.md)
+# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
+この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-## <a name="what-can-i-run-on-an-azure-vm?"></a>What can I run on an Azure VM?
-All subscribers can run server software on an Azure virtual machine. For more information, see [Linux on Azure-Endorsed Distributions](virtual-machines-linux-endorsed-distros.md)
+## <a name="what-can-i-run-on-an-azure-vm"></a>Azure VM では何を実行できますか。
+すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 詳細については、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-## <a name="how-much-storage-can-i-use-with-a-virtual-machine?"></a>How much storage can I use with a virtual machine?
-Each data disk can be up to 1 TB. The number of data disks you can use depends on the size of the virtual machine. For details, see [Sizes for Virtual Machines](virtual-machines-linux-sizes.md).
+## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
+各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-An Azure storage account provides storage for the operating system disk and any data disks. Each disk is a .vhd file stored as a page blob. For pricing details, see [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/).
+Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-## <a name="how-can-i-access-my-virtual-machine?"></a>How can I access my virtual machine?
-Establish a remote connection to log on to the virtual machine, using Secure Shell (SSH). See the instructions on how to connect [from Windows](virtual-machines-linux-ssh-from-windows.md) or [from Linux and Mac](virtual-machines-linux-mac-create-ssh-keys.md). By default, SSH allows a maximum of 10 concurrent connections. You can increase this number by editing the configuration file.
+## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
+Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立します。 [Windows から](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順、または [Linux および Mac から](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順を参照します。 SSH では、既定で最大 10 の同時接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
 
-If you’re having problems, check out [Troubleshoot Secure Shell (SSH) connections](virtual-machines-linux-troubleshoot-ssh-connection.md).
+問題がある場合は、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-## <a name="can-i-use-the-temporary-disk-(/dev/sdb1)-to-store-data?"></a>Can I use the temporary disk (/dev/sdb1) to store data?
-Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can’t be recovered.
+## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>データの格納時に一時ディスク (/dev/sdb2) を使用できますか。
+データの格納に一時ディスク (/dev/sdb1) を使用しないでください。 一時ディスクは一時的なストレージでしかなく、 データ損失の発生時にデータを復旧できない恐れがあります。
 
-## <a name="can-i-copy-or-clone-an-existing-azure-vm?"></a>Can I copy or clone an existing Azure VM?
-Yes. For instructions, see [How to create a copy of a Linux virtual machine in the Resource Manager deployment model](virtual-machines-linux-copy-vm.md).
+## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>既存の Azure VM をコピーまたは複製できますか。
+はい。 詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager?"></a>Why am I not seeing Canada Central and Canada East regions through Azure Resource Manager?
-The two new regions of Canada Central and Canada East are not automatically registered for virtual machine creation for existing Azure subscriptions. This registration is done automatically when a virtual machine is deployed through the Azure portal to any other region using Azure Resource Manager. After a virtual machine is deployed to any other Azure region, the new regions should be available for subsequent virtual machines.
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
+カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
 
-## <a name="can-i-add-a-nic-to-my-vm-after-it's-created?"></a>Can I add a NIC to my VM after it's created?
-No. Adding a NIC can only be done at creation time.
+## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>VM の作成後、NIC を VM に追加できますか。
+はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
-## <a name="are-there-any-computer-name-requirements?"></a>Are there any computer name requirements?
-Yes. The computer name can be a maximum of 64 characters in length. See [Infrastructure naming guidelines](virtual-machines-linux-infrastructure-naming-guidelines.md) for more information around naming your resources.
+## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
+はい。 コンピューター名は最大 64 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
 
-## <a name="what-are-the-username-requirements-when-creating-a-vm?"></a>What are the username requirements when creating a VM?
-Usernames must be 1 - 64 characters in length.
+## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>VM を作成する際のユーザー名の要件は何ですか。
+ユーザー名は 1 ～ 64 文字の長さにする必要があります。
 
-The following usernames are not allowed:
+次のユーザー名を指定することはできません。
 
 <table>
     <tr>
-        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
+        <td style="text-align:center">administrator </td><td style="text-align:center"> 管理者 </td><td style="text-align:center"> ユーザー </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
         <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
@@ -81,15 +86,15 @@ The following usernames are not allowed:
 </table>
 
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm?"></a>What are the password requirements when creating a VM?
-Passwords must be 6 - 72 characters in length and meet 3 out of the following 4 complexity requirements:
+## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>VM を作成する際のパスワードの要件は何ですか。
+パスワードは 6 ～ 72 文字の長さにし、次の 4 つの複雑性要件のうち 3 つを満たしている必要があります。
 
-* Have lower characters
-* Have upper characters
-* Have a digit
-* Have a special character (Regex match [\W_])
+* 小文字を含む
+* 大文字を含む
+* 数字を含む
+* 特殊文字を含む ([\W_] に一致する正規表現)
 
-The following passwords are not allowed:
+次のパスワードを指定することはできません。
 
 <table>
     <tr>
@@ -107,9 +112,4 @@ The following passwords are not allowed:
         <td style="text-align:center">iloveyou!</td>
     </tr>
 </table>
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

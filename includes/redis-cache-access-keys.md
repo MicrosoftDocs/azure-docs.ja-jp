@@ -1,4 +1,4 @@
-Azure Redis Cache のインスタンスに接続するには、キャッシュ クライアントにキャッシュのホスト名、ポート、およびキーが必要です。 一部のクライアントは、若干異なる名前で、これらの項目を参照できます。 これらの項目を取得するには、[Azure Portal](https://portal.azure.com) でキャッシュを[参照](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)し、**[設定]** または **[すべての設定]** をクリックします。 
+Azure Redis Cache のインスタンスに接続するには、キャッシュ クライアントにキャッシュのホスト名、ポート、およびキーが必要です。 一部のクライアントは、若干異なる名前で、これらの項目を参照できます。 これらの項目を取得するには、[Azure Portal](https://portal.azure.com) でキャッシュを[参照](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)し、**[リソース] メニュー**で目的のアイテムをクリックします。 
 
 ![Redis cache settings](media/redis-cache-access-keys/redis-cache-settings.png)
 
@@ -14,6 +14,6 @@ Azure Redis Cache のインスタンスに接続するには、キャッシュ �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

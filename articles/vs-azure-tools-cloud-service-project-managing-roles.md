@@ -1,37 +1,57 @@
 ---
-title: Visual Studio を使用した Azure クラウド サービス プロジェクト内のロールの管理 | Microsoft Docs
-description: Visual Studio を使用して、Azure クラウド サービス プロジェクトに新しいロールを追加したり、既存のロールを削除する方法について説明します。
+title: "Visual Studio での Azure クラウド サービスのロールの管理 | Microsoft Docs"
+description: "Visual Studio で Azure クラウド サービスのロールを追加または削除する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 5ec9ae2e-8579-4e5d-999e-8ae05b629bd1
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 03/21/2017
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: d46c2b846f5790db1e1b0e06a12184fe7bed7c34
+ms.lasthandoff: 03/22/2017
+
 
 ---
-# Visual Studio を使用した Azure クラウド サービス プロジェクト内のロールの管理
-Azure クラウド サービス プロジェクトを作成した後、そのプロジェクトに新しいロールを追加したり、プロジェクトから既存のロールを削除できます。既存のプロジェクトをインポートし、ロールに変換することもできます。たとえば、ASP.NET Web アプリケーションをインポートし、そのアプリケーションを Web ロールとして指定できます。
+# <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Visual Studio での Azure クラウド サービスのロールの管理
+Azure クラウド サービスを作成した後、サービスに新しいロールを追加したり、サービスから既存のロールを削除したりできます。 既存のプロジェクトをインポートし、ロールに変換することもできます。 たとえば、ASP.NET Web アプリケーションをインポートし、そのアプリケーションを Web ロールとして指定できます。
 
-## ロールの追加または削除
-**ロールを追加するには**
+## <a name="adding-a-role-to-an-azure-cloud-service"></a>Azure クラウド サービスにロールを追加する
+Visual Studio で Azure クラウド サービス プロジェクトに Web ロールまたは worker ロールを追加するには、次の手順に従います。
 
-**ソリューション エクスプローラー**で、クラウド サービス プロジェクトの **[ロール]** ノードのショートカット メニューを開き、**[追加]** を選択します。現在のソリューションから既存の Web ロールや worker ロールを選択したり、新しい Web ロール プロジェクトや worker ロール プロジェクトを作成できます。または、ASP.NET Web アプリケーション プロジェクトなどの適切なプロジェクトを選択して、ロール プロジェクトに関連付けることができます。
+1. Visual Studio で Azure クラウド サービス プロジェクトを開くか新たに作成します。
 
-**ロールの関連付けを削除するには**
+1. **ソリューション エクスプローラー**でプロジェクト ノードを展開します。
 
-ソリューション エクスプローラーのクラウド サービス プロジェクトの **[ロール]** ノードで、削除するロールのショートカット メニューを開き、**[削除]** を選択します。
+1. **[ロール]** ノードを右クリックして、コンテキスト メニューを表示します。 コンテキスト メニューの **[追加]** を選択し、現在のソリューションから既存の Web ロールまたは worker ロールを選択するか、Web ロール プロジェクトまたは worker ロール プロジェクトを作成します。 ASP.NET Web アプリケーション プロジェクトなどの適切なプロジェクトを選択し、ロール プロジェクトに関連付けることもできます。
 
-## クラウド サービスでのロールの削除と追加
-クラウド サービス プロジェクトからロールを削除し、後からそのロールをプロジェクトに戻す場合は、エンドポイントや診断情報など、ロールの宣言と基本属性のみが追加されます。ServiceDefinition.csdef ファイルや ServiceConfiguration.cscfg ファイルには、追加のリソースや参照は追加されません。この情報を追加するには、手動でこれらのファイルに情報を追加し直す必要があります。
+    ![Azure クラウド サービス プロジェクトにロールを追加するメニュー オプション](media/vs-azure-tools-cloud-service-project-managing-roles/add-role.png)
 
-たとえば、Web サービス ロールを削除した後、このロールを再度ソリューションに追加することになったとします。これを実行すると、エラーが発生します。このエラーを回避するには、次の XML に示す `<LocalResources>` 要素を ServiceDefinition.csdef ファイルに追加し直す必要があります。プロジェクトに追加し直した Web サービス ロールの名前を **<LocalStorage>** 要素の名前属性の一部として使用します。この例では、Web サービス ロールの名前は **WCFServiceWebRole1** です。
+## <a name="removing-a-role-from-an-azure-cloud-service"></a>Azure クラウド サービスからロールを削除する
+Visual Studio で Azure クラウド サービス プロジェクトから Web ロールまたは worker ロールを削除するには、次の手順に従います。
+
+1. Visual Studio で Azure クラウド サービス プロジェクトを開くか新たに作成します。
+
+1. **ソリューション エクスプローラー**でプロジェクト ノードを展開します。
+
+1. **[ロール]** ノードを展開します。
+
+1. 削除するノードを右クリックし、コンテキスト メニューの **[削除]** を選択します。 
+
+    ![Azure クラウド サービスにロールを追加するメニュー オプション](media/vs-azure-tools-cloud-service-project-managing-roles/remove-role.png)
+
+## <a name="readding-a-role-to-an-azure-cloud-service-project"></a>Azure クラウド サービス プロジェクトにロールを再度追加する
+クラウド サービス プロジェクトからロールを削除し、後からそのロールをプロジェクトに戻す場合は、エンドポイントや診断情報など、ロールの宣言と基本属性のみが追加されます。 `ServiceDefinition.csdef` ファイルまたは `ServiceConfiguration.cscfg` ファイルにリソースや参照は追加されません。 この情報を追加する場合は、これらのファイルに手動で情報を追加し直す必要があります。
+
+たとえば、Web サービス ロールを削除した後、このロールを再度ソリューションに追加することになったとします。 これを実行すると、エラーが発生します。 このエラーを回避するには、次の XML に示す `<LocalResources>` 要素を `ServiceDefinition.csdef` ファイルに追加し直す必要があります。 プロジェクトに追加し直した Web サービス ロールの名前を **<LocalStorage>** 要素の名前属性の一部として使用します。 次の例では、Web サービス ロールの名前は **WCFServiceWebRole1** です。
 
     <WebRole name="WCFServiceWebRole1">
         <Sites>
@@ -52,7 +72,6 @@ Azure クラウド サービス プロジェクトを作成した後、そのプ
        </LocalResources>
     </WebRole>
 
-## 次のステップ
-「[Visual Studio を使用した Azure クラウド サービスのロールの構成](vs-azure-tools-configure-roles-for-cloud-service.md)」を読み、Visual Studio でのロールの構成方法を理解する。
+## <a name="next-steps"></a>次のステップ
+- [Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)
 
-<!---HONumber=AcomDC_0817_2016-->

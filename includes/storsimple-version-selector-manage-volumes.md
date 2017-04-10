@@ -1,7 +1,11 @@
 > [!div class="op_single_selector"]
 > * [Update 2](../articles/storsimple/storsimple-manage-volumes-u2.md)
-> * [Update 1 & earlier](../articles/storsimple/storsimple-manage-volumes.md)
+> * [Update 1 以前 ](../articles/storsimple/storsimple-manage-volumes.md)
 > 
 > 
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

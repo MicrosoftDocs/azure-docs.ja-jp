@@ -1,15 +1,15 @@
 
-Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを都度収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
+Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを都度収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
 
 > [!NOTE]
-> ログに記録されるほとんどの情報の説明は、http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp で参照できます。
+> ログに記録される主な情報については、http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp を参照してください。
 > 
 > 
 
 収集モードは 2 つあり、どちらが使用されるかは、収集するファイルの種類によって異なります。
 
-* Azure ゲスト エージェント ログのみ (GA)。Azure のゲスト エージェントとその他の Azure コンポーネントに関連したすべてのログが対象となります。
-* すべてのログ (Full)。GA モードで収集されるすべてのファイルに加え、次のファイルが収集されます。
+* Azure ゲスト エージェント ログのみ (GA)。 Azure のゲスト エージェントとその他の Azure コンポーネントに関連したすべてのログが対象となります。
+* すべてのログ (Full)。 GA モードで収集されるすべてのファイルに加え、次のファイルが収集されます。
   
   * システムとアプリケーションのイベント ログ
   * HTTP エラー ログ
@@ -21,23 +21,23 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 * **Name**: 収集の名前。収集対象となる zip ファイル内のサブフォルダーの名前として使用されます。
 * **Location**: 収集されたファイルが格納される、仮想マシン上のフォルダーのパス。
-* **SearchPattern**: 収集対象ファイル名のパターン。既定値は “*” です。
+* **SearchPattern**: 収集対象ファイル名のパターン。 既定値は “*” です。
 * **Recursive**: 指定されたフォルダー内のファイルを再帰的に収集するかどうか。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 * 生成された zip ファイルを保存するための、拡張機能のストレージ アカウントを所有している必要があります。
-* Azure PowerShell コマンドレット V0.8.0 以降を使用している必要があります。詳細については、[Azure のダウンロード](https://azure.microsoft.com/downloads/)に関するページを参照してください。
+* Azure PowerShell コマンドレット V0.8.0 以降を使用している必要があります。 詳細については、 [Azure のダウンロード](https://azure.microsoft.com/downloads/)に関するページを参照してください。
 
-## 拡張機能の追加
+## <a name="add-the-extension"></a>拡張機能の追加
 AzureLogCollector 拡張機能は、[Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) コマンドレットまたは [Service Management REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用して追加することができます。
 
-Cloud Services に関しては、**Set-AzureServiceExtension** という既存の Azure PowerShell コマンドレットを使用して、クラウド サービス ロール インスタンス上で拡張機能を有効にすることができます。このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、選択したロールの選択したロール インスタンス上でログ収集が開始されます。
+Cloud Services に関しては、 **Set-AzureServiceExtension**という既存の Azure PowerShell コマンドレットを使用して、クラウド サービス ロール インスタンス上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、選択したロールの選択したロール インスタンス上でログ収集が開始されます。
 
-Virtual Machines に関しては、**Set-AzureVMExtension** という既存の Azure PowerShell コマンドレットを使用して、Virtual Machines 上で拡張機能を有効にすることができます。このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、各インスタンス上でログ収集が開始されます。
+Virtual Machines に関しては、 **Set-AzureVMExtension**という既存の Azure PowerShell コマンドレットを使用して、Virtual Machines 上で拡張機能を有効にすることができます。 このコマンドレットを使ってこの拡張機能を有効にすると、そのたびに、各インスタンス上でログ収集が開始されます。
 
-この拡張機能の内部では、JSON ベースの PublicConfiguration と PrivateConfiguration が使用されています。以下に示したのは、パブリック構成とプライベート構成に使用されるサンプル JSON のレイアウトです。
+この拡張機能の内部では、JSON ベースの PublicConfiguration と PrivateConfiguration が使用されています。 以下に示したのは、パブリック構成とプライベート構成に使用されるサンプル JSON のレイアウトです。
 
-### PublicConfiguration
+### <a name="publicconfiguration"></a>PublicConfiguration
     {
         "Instances":  "*",
         "Mode":  "Full",
@@ -59,19 +59,19 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
         ]
     }
 
-### PrivateConfiguration
+### <a name="privateconfiguration"></a>PrivateConfiguration
     {
 
     }
 
 > [!NOTE]
-> この拡張機能に **privateConfiguration** は必要ありません。**–PrivateConfiguration** 引数には空の構造体を指定してください。
+> この拡張機能に **privateConfiguration**は必要ありません。 **–PrivateConfiguration** 引数には空の構造体を指定してください。
 > 
 > 
 
 以下に示すいずれかの手順に従い、選択したロールのクラウド サービスまたは仮想マシンのインスタンスに AzureLogCollector を追加すると、それぞれの VM でログ収集が開始され、収集されたファイルが指定の Azure アカウントに送信されます。
 
-## サービス拡張機能として追加
+## <a name="adding-as-a-service-extension"></a>サービス拡張機能として追加
 1. 適切な手順に従って Azure PowerShell を自分のサブスクリプションに接続します。
 2. AzureLogCollector 拡張機能を追加して有効にするサービスの名前、スロット、ロール、ロール インスタンスを指定します。
    
@@ -110,11 +110,11 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-5. 次のように SetAzureServiceLogCollector.ps1 (記事の最後に記載) を呼び出して、クラウド サービスの AzureLogCollector 拡張機能を有効にします。実行後、アップロードされたファイルは `https://YouareStorageAccountName.blob.core.windows.net/vmlogs` で確認できます。
+5. 次のように SetAzureServiceLogCollector.ps1 (記事の最後に記載) を呼び出して、クラウド サービスの AzureLogCollector 拡張機能を有効にします。 実行後、アップロードされたファイルは `https://YouareStorageAccountName.blob.core.windows.net/vmlogs` で確認できます。
    
         .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
 
-以下に示したのは、スクリプトに渡すパラメーターの定義です。(この定義が、以下のスクリプト ファイルにも使用されています。)
+以下に示したのは、スクリプトに渡すパラメーターの定義です。 (この定義が、以下のスクリプト ファイルにも使用されています。)
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -147,15 +147,20 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
 * *ServiceName*: クラウド サービスの名前。
 * *Roles*: 一連のロール (“WebRole1”、”WorkerRole1” など)。
 * *Instances*: 一連のロール インスタンスの名前をコンマで区切って指定します。すべてのロール インスタンスを指定するときは、ワイルドカード文字列 (“*”) を使用してください。
-* *Slot*: スロット名。“Production” または “Staging”。
-* *Mode*: 収集モード。“Full” または “GA”。
+* *Slot*: スロット名。 “Production” または “Staging”。
+* *Mode*: 収集モード。 “Full” または “GA”。
 * *StorageAccountName*: 収集されたデータを格納するための Azure ストレージ アカウントの名前。
 * *StorageAccountKey*: Azure ストレージ アカウント キーの名前。
 * *AdditionalDataLocationList*: 次の構造体のリスト。
   
-      { String Name, String Location, String SearchPattern, Bool Recursive }
+      {
+      String Name,
+      String Location,
+      String SearchPattern,
+      Bool   Recursive
+      }
 
-## VM 拡張機能として追加
+## <a name="adding-as-a-vm-extension"></a>VM 拡張機能として追加
 適切な手順に従って Azure PowerShell を自分のサブスクリプションに接続します。
 
 1. サービスの名前、VM、収集モードを指定します。
@@ -185,9 +190,9 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-3. 次のように SetAzureVMLogCollector.ps1 (記事の最後に記載) を呼び出して、クラウド サービスの AzureLogCollector 拡張機能を有効にします。実行後、アップロードされたファイルは https://YouareStorageAccountName.blob.core.windows.net/vmlogs で確認できます。
+3. 次のように SetAzureVMLogCollector.ps1 (記事の最後に記載) を呼び出して、クラウド サービスの AzureLogCollector 拡張機能を有効にします。 実行が完了すると、アップロードされたファイルを https://YouareStorageAccountName.blob.core.windows.net/vmlogs で見つけることができます。
 
-以下に示したのは、スクリプトに渡すパラメーターの定義です。(この定義が、以下のスクリプト ファイルにも使用されています。)
+以下に示したのは、スクリプトに渡すパラメーターの定義です。 (この定義が、以下のスクリプト ファイルにも使用されています。)
 
     [CmdletBinding(SupportsShouldProcess = $true)]
 
@@ -213,7 +218,7 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
 
 * ServiceName: クラウド サービスの名前。
 * VMName: VM の名前。
-* Mode: 収集モード。“Full” または “GA”。
+* Mode: 収集モード。 “Full” または “GA”。
 * StorageAccountName: 収集されたデータを格納するための Azure ストレージ アカウントの名前。
 * StorageAccountKey: Azure ストレージ アカウント キーの名前。
 * AdditionalDataLocationList: 次の構造体のリスト。
@@ -227,7 +232,7 @@ Virtual Machines に関しては、**Set-AzureVMExtension** という既存の A
       }
 ```
 
-## 拡張機能の PowerShell スクリプト ファイル
+## <a name="extention-powershell-script-files"></a>拡張機能の PowerShell スクリプト ファイル
 SetAzureServiceLogCollector.ps1
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -475,7 +480,11 @@ SetAzureVMLogCollector.ps1
       Write-Output "VM name is not specified, the extension cannot be enabled"
     }
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 ログは、すっきりと 1 か所から調査またはコピーすることができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

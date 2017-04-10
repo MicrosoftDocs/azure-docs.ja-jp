@@ -1,86 +1,95 @@
 ---
-title: 'クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Docs'
-description: Azure Machine Learning Recommendations - クイック スタート ガイド
+title: "クイック スタート: Azure Machine Learning Recommendations API (バージョン  1) | Microsoft Docs"
+description: "Azure Machine Learning Recommendations - クイック スタート ガイド"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: LuisCabrer
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 5bce1a4a-1ad6-473f-812b-84f800fdc09a
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 02/07/2017
 ms.author: luisca
+translationtype: Human Translation
+ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
+ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
+ms.lasthandoff: 01/31/2017
+
 
 ---
-# Machine Learning の Recommendations API のクイック スタート ガイド
+# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>Machine Learning Recommendations API (バージョン 1) のクイック スタート ガイド
+
 > [!NOTE]
-> このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
+> このバージョンの代わりに [Recommendations API Cognitive Service](https://www.microsoft.com/cognitive-services/recommendations-api) の使用を開始することをお勧めします。 このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。 Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。
+>
+> 詳細については、[新しい Cognitive Service への移行](http://aka.ms/recomigrate)に関するページを参照してください。
 > 
 > 
 
-このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。Recommendations API の詳細については、[ギャラリー](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)を参照してください。
+このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。 Recommendations API の詳細については、[Cortana Intelligence Gallery ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2)を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 概要
+## <a name="general-overview"></a>概要
 Azure Machine Learning の Recommendations を使用するには、次の手順を実行する必要があります。
 
 * モデルの作成 – モデルは、使用状況データ、カタログ データ、推奨モデルのコンテナーです。
-* カタログ データのインポート - カタログには、項目に関するメタデータ情報が含まれます。
+* カタログ データのインポート - カタログには、項目に関するメタデータ情報が含まれます。 
 * 使用状況データのインポート – 使用状況データは、2 つの方法のいずれか (または両方) でアップロードできます。
   * 使用状況データを含むファイルをアップロードする。
-  * データ取得イベントを送信する。通常は、使用状況ファイルをアップロードして初期の推奨モデル (ブートストラップ) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
-* 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。ビルドをトリガーすると、ビルドの ID を取得します。Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。
+  * データ取得イベントを送信する。
+    通常は、使用状況ファイルをアップロードして初期の推奨モデル (ブートストラップ) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
+* 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。 この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。 ビルドをトリガーすると、ビルドの ID を取得します。 Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。
 * 推奨の使用 – 特定の項目や項目一覧に対する推奨を取得します。
 
-これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。[ギャラリー](http://1drv.ms/1xeO2F3)では、これらの各手順を実装するサンプル アプリケーションをダウンロードすることもできます。
+これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。  [ギャラリー](http://1drv.ms/1xeO2F3)
 
-## 制限事項
+## <a name="limitations"></a>制限事項
 * サブスクリプションごとのモデルの最大数は 10 です。
 * カタログが保持できる項目の最大数は 100,000 です。
-* 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+* 保持される使用状況ポイントの最大数は ~5,000,000 です。 新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+* 無効な推奨モデルのビルドの&1; 秒あたりのトランザクションの数は ~2TPS です。 有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
-## 統合
-### 認証
-Micosoft Azure Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。アカウント キーは、[アカウント設定](https://datamarket.azure.com/account/keys)のマーケットプレース内のキーに移動すると簡単に見つけることができます。
+## <a name="integration"></a>統合
+### <a name="authentication"></a>認証
+Microsoft Azure Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。 アカウント キーは、 [アカウント設定](https://datamarket.azure.com/account/keys)のマーケットプレース内のキーに移動すると簡単に見つけることができます。 
 
-#### 基本認証
-承認ヘッダーの追加:
+#### <a name="basic-authentication"></a>基本認証
+承認ヘッダーの追加: 
 
     Authorization: Basic <creds>
 
     Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 
-Base 64 に変換 (c#)
+Base&64; に変換 (c#)
 
     var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
     var creds = Convert.ToBase64String(bytes);
 
-Base 64 に変換 (JavaScript)
+Base&64; に変換 (JavaScript)
 
     var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 
 
 
 
-### サービス URI
-Azure Machine Learning Recommendations API のサービス ルート URI は、[ここ](https://api.datamarket.azure.com/amla/recommendations/v2/)です。
+### <a name="service-uri"></a>サービス URI
+Azure Machine Learning Recommendations API のサービス ルート URI は、 [ここ](https://api.datamarket.azure.com/amla/recommendations/v2/)
 
 サービス URI はすべて、OData 仕様の要素を使用して表されます。
 
-### API バージョン
+### <a name="api-version"></a>API バージョン
 各 API 呼び出しでは、最後に apiVersion というクエリ パラメーターを「1.0」に設定する必要があります。
 
-### ID には大文字小文字の区別がある
-API のいずれかにより返される ID は大文字と小文字の区別があり、後続の API 呼び出しにパラメーターとして渡されるときにはそのとおりに使用する必要があります。たとえば、モデル ID およびカタログ ID では、大文字と小文字が区別されます。
+### <a name="ids-are-case-sensitive"></a>ID には大文字小文字の区別がある
+API のいずれかにより返される ID は大文字と小文字の区別があり、後続の API 呼び出しにパラメーターとして渡されるときにはそのとおりに使用する必要があります。 たとえば、モデル ID およびカタログ ID では、大文字と小文字が区別されます。
 
-### モデルの作成
+### <a name="create-a-model"></a>モデルの作成
 "モデルの作成" 要求を作成します。
 
 | HTTP メソッド | URI |
@@ -89,8 +98,8 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelName |英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 |
-| apiVersion |1\.0 |
+| modelName |英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダースコア (_) のみが許可されます。<br>最大長: 20 |
+| apiVersion |1.0 |
 |  | |
 | 要求本文 |なし |
 
@@ -98,7 +107,8 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 HTTP 状態コード: 200
 
-* `feed/entry/content/properties/id` – モデル ID が含まれます。**注**: モデル ID は大文字小文字を区別します。
+* `feed/entry/content/properties/id` – モデル ID が含まれます。
+  モデル ID では、大文字と小文字が区別されます。
 
 OData XML
 
@@ -131,8 +141,8 @@ OData XML
     </feed>
 
 
-### カタログ データのインポート
-複数の呼び出しで同じモデルに複数のカタログ ファイルがアップロードされた場合は、新しいカタログ項目のみを挿入します。既存の項目は、元の値でそのまま残ります。
+### <a name="import-catalog-data"></a>カタログ データのインポート
+複数の呼び出しで同じモデルに複数のカタログ ファイルがアップロードされた場合は、新しいカタログ項目のみを挿入します。 既存の項目は、元の値でそのまま残ります。
 
 | HTTP メソッド | URI |
 |:--- |:--- |
@@ -140,11 +150,11 @@ OData XML
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelId |モデルの一意識別子 (大文字小文字を区別する) |
-| filename |カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
-| apiVersion |1\.0 |
+| modelId |モデルの一意識別子 (大文字と小文字が区別されます) |
+| filename |カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダースコア (_) のみが許可されます。<br>最大長: 50 |
+| apiVersion |1.0 |
 |  | |
-| 要求本文 |カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>はい</td><td>英数字、最大長 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>はい</td><td>英数字、最大長 255</td><td>項目名</td></tr><tr><td>項目カテゴリ</td><td>はい</td><td>英数字、最大長 255</td><td>この項目 (料理ブック、ドラマなど) が属しているカテゴリ</td></tr><tr><td>説明</td><td>いいえ</td><td>英数字、最大長 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB。<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> |
+| 要求本文 |カタログ データ。 形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>Description</th></tr><tr><td>項目 ID</td><td>はい</td><td>英数字、最大長は 50 文字</td><td>項目の一意識別子</td></tr><tr><td>Item Name</td><td>あり</td><td>英数字、最大長は 255 文字</td><td>項目名</td></tr><tr><td>Item Category</td><td>はい</td><td>英数字、最大長は 255 文字</td><td>この項目が属しているカテゴリ (例: 料理本、ドラマ...)</td></tr><tr><td>Description</td><td>なし</td><td>英数字、最大長は 4000 文字</td><td>この項目の説明</td></tr></table><br>ファイルの最大サイズは、200 MB です。<br><br>例:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
 
 **応答**:
 
@@ -177,9 +187,9 @@ OData XML
     </feed>
 
 
-### 使用状況データのインポート
-#### ファイルのアップロード
-このセクションでは、ファイルを使用して使用状況データをアップロードする方法を示します。この API は使用状況データと共に何度も呼び出すことができます。すべての呼び出しですべての使用状況データが保存されます。
+### <a name="import-usage-data"></a>使用状況データのインポート
+#### <a name="uploading-a-file"></a>ファイルのアップロード
+このセクションでは、ファイルを使用して使用状況データをアップロードする方法を示します。 この API は使用状況データと共に何度も呼び出すことができます。 すべての呼び出しですべての使用状況データが保存されます。
 
 | HTTP メソッド | URI |
 |:--- |:--- |
@@ -187,11 +197,11 @@ OData XML
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelId |モデルの一意識別子 (大文字小文字を区別する) |
-| filename |カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
-| apiVersion |1\.0 |
+| modelId |モデルの一意識別子 (大文字と小文字が区別されます) |
+| filename |カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダースコア (_) のみが許可されます。<br>最大長: 50 |
+| apiVersion |1.0 |
 |  | |
-| 要求本文 |使用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英数字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英数字、最大長 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>日付の形式: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200 MB。<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| 要求本文 |使用状況データ。 形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>Description</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英数字</td><td>ユーザーの一意識別子</td></tr><tr><td>項目 ID</td><td>はい</td><td>英数字、最大長は 50 文字</td><td>項目の一意識別子</td></tr><tr><td>Time</td><td>なし</td><td>YYYY/MM/DDTHH:MM:SS 形式の日付 (例: 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>ファイルの最大サイズは、200 MB です。<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -226,7 +236,7 @@ OData XML
     </feed>
 
 
-#### データ取得の使用
+#### <a name="using-data-acquisition"></a>データ取得の使用
 このセクションでは、Web サイトから Azure Machine Learning Recommendations にリアルタイムでイベントを送信する方法を示します。
 
 | HTTP メソッド | URI |
@@ -235,9 +245,9 @@ OData XML
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| apiVersion |1\.0 |
+| apiVersion |1.0 |
 |  | |
-| 要求本文 |送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。 |
+| 要求本文 |送信する各イベントのイベント データ エントリ。 同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。 (以下のイベントの本文のサンプルを参照してください)。 |
 
 * 'Click' のイベントの例:
   
@@ -326,16 +336,16 @@ OData XML
 
 **応答**: HTTP 状態コード: 200
 
-### 推奨モデルの構築
+### <a name="build-a-recommendation-model"></a>推奨モデルの構築
 | HTTP メソッド | URI |
 |:--- |:--- |
 | POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27` |
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelId |モデルの一意識別子 (大文字小文字を区別する) |
-| userDescription |カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
-| apiVersion |1\.0 |
+| modelId |モデルの一意識別子 (大文字と小文字が区別されます) |
+| userDescription |カタログを表すテキスト形式の識別子。 空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。 (上記の例を参照)。<br>最大長: 50 |
+| apiVersion |1.0 |
 |  | |
 | 要求本文 |なし |
 
@@ -343,7 +353,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-これは、非同期 API です。応答として、ビルド ID が表示されます。ビルドがいつ終了したかを知るには、「モデルのビルド状態を取得する」API を呼び出し、応答でこのビルド ID を検索する必要があります。データのサイズによっては、ビルドが数分から数時間かかる可能性があることに注意してください。
+これは、非同期 API です。 応答として、ビルド ID が表示されます。 ビルドがいつ終了したかを知るには、「モデルのビルド状態を取得する」API を呼び出し、応答でこのビルド ID を検索する必要があります。 データのサイズによっては、ビルドが数分から数時間かかる可能性があることに注意してください。
 
 ビルドが終了するまで推奨事項を使用することはできません。
 
@@ -354,10 +364,10 @@ HTTP 状態コード: 200
 * Building – モデルをビルドしています。
 * Success - ビルドが正常に終了しました。
 * Error – ビルドでエラーが発生して終了しました。
-* Cancelled – ビルドが取り消されました。
-* Cancelling – ビルドが取り消されます。
+* Canceled – ビルドが取り消されました。
+* Canceling – ビルドを取り消しています。
 
-ビルド ID は、次のパスの下にあります：`Feed\entry\content\properties\Id`
+ビルド ID は、次のパスの下にあります： `Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -398,30 +408,30 @@ OData XML
       </entry>
     </feed>
 
-### モデルのビルド状態の取得
+### <a name="get-build-status-of-a-model"></a>モデルのビルド状態の取得
 | HTTP メソッド | URI |
 |:--- |:--- |
 | GET |`<rootURI>/GetModelBuildsStatus?modelId=%27<modelId>%27&onlyLastBuild=<bool>&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27&onlyLastBuild=true&apiVersion=%271.0%27` |
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelId |モデルの一意識別子 (大文字小文字を区別する) |
+| modelId |モデルの一意識別子 (大文字と小文字が区別されます) |
 | onlyLastBuild |モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
-| apiVersion |1\.0 |
+| apiVersion |1.0 |
 
 **応答**:
 
 HTTP 状態コード: 200
 
-応答には、ビルドごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+応答には、ビルドごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `feed/entry/content/properties/UserName` – ユーザーの名前。
 * `feed/entry/content/properties/ModelName` – モデルの名前。
 * `feed/entry/content/properties/ModelId` – モデルの一意識別子。
-* `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされている (アクティブなビルド) かどうか。
+* `feed/entry/content/properties/IsDeployed` - ビルドがデプロイされている ( アクティブなビルド) かどうか。
 * `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
 * `feed/entry/content/properties/BuildType` - ビルドの種類。
-* `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success
+* `feed/entry/content/properties/Status` – ビルド状態。 次のいずれか: Error、Building、Queued、Canceling、Canceled、Success
 * `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
 * `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
 * `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
@@ -436,12 +446,12 @@ HTTP 状態コード: 200
 * Building - ビルドが処理中です。
 * Success - ビルドが正常に終了しました。
 * Error – ビルドでエラーが発生して終了しました。
-* Cancelled – ビルドが取り消されました。
-* Cancelling – ビルドが取り消されます。
+* Canceled – ビルドが取り消されました。
+* Canceling – ビルドを取り消しています。
 
 ビルドの種類における有効な値:
 
-* Rank - 順番付けのビルド。(順位付けのビルドの詳細については、「Machine Learning Recommendation API のドキュメント」を参照してください。)
+* Rank - 順番付けのビルド。 (順位付けのビルドの詳細については、「Machine Learning Recommendation API のドキュメント」を参照してください。)
 * Recommendation - 推奨事項のビルド。
 * Fbt - Frequently Bought Together ビルド。
 
@@ -481,24 +491,24 @@ OData XML
     </feed>
 
 
-### 推奨の取得
+### <a name="get-recommendations"></a>推奨の取得
 | HTTP メソッド | URI |
 |:--- |:--- |
 | GET |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27` |
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| modelId |モデルの一意識別子 (大文字小文字を区別する) |
-| itemIds |<br> の推奨項目のコンマ区切りの一覧。最大の長さ: 1024 |
-| numberOfResults |必要な結果の数 |
+| modelId |モデルの一意識別子 (大文字と小文字が区別されます) |
+| itemIds |推奨項目のコンマ区切りの一覧。<br>最大長: 1024 |
+| numberOfResults |必要な結果の数  |
 | includeMetatadata |将来的に利用 (常に false) |
-| apiVersion |1\.0 |
+| apiVersion |1.0 |
 
 **応答:**
 
 HTTP 状態コード: 200
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+応答には、推奨項目ごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `Feed\entry\content\properties\Id` - 推奨項目の ID。
 * `Feed\entry\content\properties\Name` - 項目の名前。
@@ -658,8 +668,9 @@ OData XML
       </entry>
     </feed>
 
-### モデルの更新
-モデルの説明またはアクティブなビルド ID を更新できます。*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
+### <a name="update-model"></a>モデルの更新
+モデルの説明またはアクティブなビルド ID を更新できます。
+*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。 アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。 アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。 推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
 
 このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
@@ -669,10 +680,10 @@ OData XML
 
 | パラメーター名 | 有効な値 |
 |:--- |:--- |
-| id |モデルの一意識別子 (大文字小文字を区別する) |
-| apiVersion |1\.0 |
+| id |モデルの一意識別子 (大文字と小文字が区別されます) |
+| apiVersion |1.0 |
 |  | |
-| 要求本文 |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。 |
+| 要求本文 |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能です。 Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。 |
 
 **応答**:
 
@@ -689,9 +700,7 @@ OData XML
       <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;apiVersion='1.0'" />
     </feed>
 
-## 法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。
-使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。
-このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
+## <a name="legal"></a>法的情報
+このドキュメントは "現状のまま" 提供されます。 このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。 使用している例は、例示のみを目的に提供された、架空のものです。 実際の関連やつながりはなく、推測によるものです。 このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。 お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。 © 2014 Microsoft. All rights reserved. 
 
-<!---HONumber=AcomDC_0914_2016-->
+

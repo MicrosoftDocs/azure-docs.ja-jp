@@ -1,19 +1,24 @@
 ---
-title: Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する | Microsoft Docs
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
+title: "Azure Machine Learning Web サービス ポータルを使用する | Microsoft Docs"
+description: "Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/28/2017
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: ad1314aa4b504bd2cb3285789073d4f1de1f545d
+ms.lasthandoff: 03/02/2017
+
 
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
@@ -22,12 +27,25 @@ Microsoft Azure Machine Learning Web サービス ポータルを使用して、
 Machine Learning Web サービス ポータルでは、次のことができます。
 
 * Web サービスの使用状況を監視する。
-* 説明を設定する、Web サービスのキーを更新する (新しい Web サービスのみ)、ストレージ アカウント キーを更新する (新しい Web サービスのみ)、ログ記録を有効にする (クラシック Web サービスのみ)、サンプル データを有効または無効にする。
+* 説明を設定する、Web サービスのキーを更新する (新しい Web サービスのみ)、ストレージ アカウント キーを更新する (新しい Web サービスのみ)、ログ記録を有効にする、サンプル データを有効または無効にする。
 * Web サービスを削除する。
 * 課金プランを作成、削除、または更新する (新しい Web サービスのみ)。
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>新しいリソース マネージャー ベースの Web サービスを管理するためのアクセス許可
+
+新しい Web サービスは、Azure リソースとしてデプロイされます。 そのため、新しい Web サービスをデプロイおよび管理するための適切なアクセス許可が必要です。  New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーを共同作成者または管理者ロールに割り当てる必要があります。 
+
+ユーザーが Azure Machine Learning Web サービス ポータル内のリソースにアクセスするための適切なアクセス許可を持っていない場合、Web サービスをデプロイしようとすると、次のような内容のエラーが表示されます。
+
+*Web サービスのデプロイに失敗しました。このアカウントには、ワークスペースを含む Azure サブスクリプションへの十分なアクセス権がありません。Web サービスを Azure にデプロイするには、同じアカウントをワークスペースに招待し、ワークスペースを含む Azure サブスクリプションへのアクセス権を付与する必要があります。*
+
+ワークスペースの作成方法について詳しくは、「[Azure Machine Learning ワークスペースの作成と共有](machine-learning-create-workspace.md)」をご覧ください。
+
+アクセス許可の設定について詳しくは、「[Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー](../active-directory/role-based-access-control-manage-assignments.md)」をご覧ください。
+
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する
 新しい Web サービスを管理するには、次のようにします。
@@ -44,7 +62,7 @@ Web サービスを管理するには、[Web サービス]をクリックしま�
 * Web サービスを削除する。
 * Web サービスをコピーして別のリージョンにデプロイする。
 
-Web サービスをクリックしたときに、Web サービスの [クイック スタート] ページが開きます。 Web サービスの [クイック スタート] ページには、Web サービスを管理するための 2 つのメニュー オプションがあります。
+Web サービスをクリックしたときに、Web サービスの [クイック スタート] ページが開きます。 Web サービスの [クイック スタート] ページには、Web サービスを管理するための&2; つのメニュー オプションがあります。
 
 * **ダッシュボード** - Web サービスの使用状況を表示できます。
 * **構成** - 説明のテキストの追加、Web サービスに関連付けられたストレージ アカウントのキーの更新、サンプル データの有効化と無効化を行うことができます。
@@ -88,8 +106,8 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 * **プランの説明** プランに関連付けられているコストと容量に関する情報が表示されます。
 * **プランの使用量** プランに対して課金されたコンピューティング時間とトランザクション数が表示されます。
 * **Web サービス数** このプランを使用している Web サービスの数が表示されます。
-* **呼び出し数によるトップ Web サービス** プランに対して課金される呼び出しを行っている上位 4 つの Web サービスが表示されます。
-* **コンピューティング時間数によるトップ Web サービス** プランに対して課金されるコンピューティング リソースを使用している上位 4 つの Web サービスが表示されます。
+* **呼び出し数によるトップ Web サービス** プランに対して課金される呼び出しを行っている上位&4; つの Web サービスが表示されます。
+* **コンピューティング時間数によるトップ Web サービス** プランに対して課金されるコンピューティング リソースを使用している上位&4; つの Web サービスが表示されます。
 
 ## <a name="manage-classic-web-services"></a>クラシック Web サービスを管理する
 > [!NOTE]
@@ -111,7 +129,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 
 [Classic Web Service endpoint (クラシック Web サービス エンドポイント)] ページで、サービスのエンドポイントの追加と削除を行うことができます。 エンドポイントの追加の詳細については、「 [エンドポイントを作成する](machine-learning-create-endpoint.md)」をご覧ください。
 
-いずれかのエンドポイントをクリックして、Web サービスの [クイック スタート] ページを開きます。 [クイック スタート] ページには、Web サービスを管理するための 2 つのメニュー オプションがあります。
+いずれかのエンドポイントをクリックして、Web サービスの [クイック スタート] ページを開きます。 [クイック スタート] ページには、Web サービスを管理するための&2; つのメニュー オプションがあります。
 
 * **ダッシュボード** - Web サービスの使用状況を表示できます。
 * **構成** - 説明のテキストの追加、エラーのログ記録のオンとオフ、Web サービスに関連付けられたストレージ アカウントのキーの更新、サンプル データの有効化と無効化を行うことができます。
@@ -170,7 +188,5 @@ Machine Learning Studio のワークスペースにアクセスできる追加�
 > **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。 Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。 ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
 > 
 > 
-
-<!--HONumber=Oct16_HO2-->
 
 

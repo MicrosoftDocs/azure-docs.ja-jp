@@ -1,72 +1,93 @@
 ---
-title: Introduction to App Service on Linux | Microsoft Docs
-description: Learn about App Service on Linux.
-keywords: azure app service, linux, oss
+title: "App Service on Linux の概要 | Microsoft Docs"
+description: "App Service on Linux について説明します。"
+keywords: Azure App Service, Linux, OSS
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: naziml
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
+translationtype: Human Translation
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 9ed502efadbc27ca507fa5be455f32c3bd1b9eee
+ms.lasthandoff: 03/10/2017
+
 
 ---
-# <a name="introduction-to-app-service-on-linux"></a>Introduction to App Service on Linux
-App Service on Linux is currently in Public Preview and supports running web apps natively on Linux. 
+# <a name="introduction-to-app-service-on-linux"></a>App Service on Linux の概要
+Azure App Service on Linux は、現在パブリック プレビューの段階です。Linux 上での Web アプリのネイティブな実行をサポートしています。
 
 ## <a name="overview"></a>Overview
-Customers can use App Service on Linux to host web apps natively on Linux for supported application stacks. The following features section lists the currently supported application stacks.
+顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。 
 
-## <a name="features"></a>Features
-App Service on Linux currently supports the following application stacks
+## <a name="features"></a>Features (機能)
+App Service on Linux は現在、次のアプリケーション スタックをサポートしています。
 
 * Node.js
+    * 4.5.0
+    * 4.4.7
+    * 6.2.2
+    * 6.6.0
+    * 6.9.3
 * PHP
+    * 5.6.23
+    * 7.0.6
+* .NET Core
+    * 1.0
+* Ruby
+    * 2.3
 
-Customers can deploy their applications using
+顧客は次のものを使用してアプリケーションをデプロイすることができます。
 
-* FTP.
-* Local Git.
-* GitHub or BitBucket.
+* FTP
+* ローカル Git
+* GitHub
+* Bitbucket
 
-For application scaling
+アプリケーションのスケーリング方法は次のとおりです。
 
-* Customers can scale their web app up and down by changing the tier in their App Service Plan. 
-* Customers can scale out their applications out and run their app across multiple instances within the confines of their SKU.
+* 顧客は、App Service プランのレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
+* 顧客は、SKU の範囲内で、アプリケーションをスケールアウトして、複数のアプリ インスタンスを実行することができます。
 
-For Kudu some of the basic functionality will work
+Kudu の場合、基本的な機能の一部を次のもので使用できます。
 
-* Environment.
-* Deployments.
-* Basic console.
+* 環境
+* デプロイメント
+* 基本的なコンソール
 
-## <a name="limitations"></a>Limitations
-The Azure management portal will only show currently supported features for App Service on Linux and hide the rest. As our team enabling more features we will keep reflecting this on the management portal. Some features like VNET integration and AAD / third-party authentication or Kudu site extensions do not currently work. But as we get these working we will update our documentation and blog about changes.
+## <a name="limitations"></a>制限事項
+Azure Portal では、App Service on Linux で現在使用できる機能のみが表示され、残りは非表示となります。 さらに機能を有効にすると、その機能がポータルに表示されます。
 
-This public preview is currently only available in the following regions
+仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの一部の機能は、完成していません。 これらの機能が完成したら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-* West US.
-* West Europe.
-* Southeast Asia.
+このパブリック プレビューは現在、次のリージョンでのみご利用いただけます。
 
-Web app on Linux is only supported in Dedicated App Service Plans and does not have a Free or Shared tier. Also, app service plans for regular and Linux web apps are mutually exclusive, so you cannot create a Linux web app in a non-Linux app service plan.
+* 米国西部
+* 西ヨーロッパ 
+* 東南アジア
 
-Web app on Linux must be created in a resource group that does not contain non-Linux web apps in the same region.
+Web Apps on Linux は専用 App Service プランでのみサポートされており、Free レベルまたは Shared レベルは存在しません。 また、標準の Web アプリと Linux 向け Web アプリの App Service プランは相互に排他的であり、Linux 向けでない App Service プラン内で Linux 向け Web アプリを作成することはできません。
 
-Due to the lack of overlapped recycling of the web apps, customers should expect a small downtime in the event of a web app got restarted. 
+Web Apps on Linux は、Linux 向けでない Web アプリが同じリージョンにないリソース グループ内で作成される必要があります。
 
-## <a name="next-steps"></a>Next Steps
-Follow the following links to get started with App Service on Linux. Please post questions and concerns on [our forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Linux 上の Web Apps では、コンパイルされていないソースからの .NET Core アプリのデプロイはまだサポートされていません。 最初に .NET Core アプリをローカルで発行/コンパイルした後、発行されたサイト ビットをアプリにプッシュする必要があります。
 
-* [Creating Web Apps in App Service on Linux](app-service-linux-how-to-create-a-web-app.md)
-* [Using PM2 Configuration for Node.js in Web Apps on Linux](app-service-linux-using-nodejs-pm2.md)
+## <a name="next-steps"></a>次のステップ
+App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-<!--HONumber=Oct16_HO2-->
+* [App Service on Linux での Web Apps の作成](app-service-linux-how-to-create-a-web-app.md)
+* [App Service on Linux 向けにカスタム Docker イメージを使用する方法](app-service-linux-using-custom-docker-image.md)
+* [Web Apps on Linux での Node.js 向け PM2 構成の使用](app-service-linux-using-nodejs-pm2.md)
+* [Azure App Service Web Apps on Linux での .NET Core の使用](app-service-linux-using-dotnetcore.md)
+* [Azure App Service Web Apps on Linux での Ruby の使用](app-service-linux-using-ruby.md)
+* [Azure App Service Web Apps on Linux のFAQ](app-service-linux-faq.md)
 
 

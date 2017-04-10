@@ -1,23 +1,27 @@
-
 ---
-title: REST API を使用した Media Services エンティティの管理 | Microsoft Docs
-description: REST API を使用して Media Services エンティティを管理する方法について説明します。
+title: "REST による Media Services エンティティの管理 | Microsoft Docs"
+description: "REST API を使用して Media Services エンティティを管理する方法について説明します。"
 author: juliako
-manager: dwrede
-editor: ''
+manager: erikre
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 95262a32-0f2a-4286-b9e2-1a1ca6399b5b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/09/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
+ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
+ms.lasthandoff: 02/10/2017
+
 
 ---
-# <a name="managing-media-services-entities-with-rest-api"></a>REST API を使用した Media Services エンティティの管理
+# <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理 
 > [!div class="op_single_selector"]
 > * [REST ()](media-services-rest-manage-entities.md)
 > * [.NET](media-services-dotnet-manage-entities.md)
@@ -26,18 +30,20 @@ ms.author: juliako
 
 Microsoft Azure Media Services は、OData v3 上に構築された REST ベースのサービスです。 このため、他の OData サービスで行うのとほとんど同じ方法で、エンティティの追加、照会、更新、削除を行うことができます。 該当する場合には例外が呼び出されます。 OData の詳細については、 [Open Data Protocol に関するドキュメント](http://www.odata.org/documentation/)を参照してください。
 
-* エンティティの追加 
-* エンティティの照会 
-* 大規模なコレクションのエンティティの列挙
-* エンティティの更新 
-* エンティティの削除 
+このトピックでは、REST で Azure Media Services エンティティを管理する方法を説明します。
+
+
+>[!NOTE]
+> 2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。
+
+## <a name="considerations-when-working-with-ams-rest"></a>AMS REST を使うときの考慮事項
+
+Media Services REST API を使用する場合は、次のことに考慮します。
 
 > [!NOTE]
-> Media Services REST API を使用する場合は、次のことに考慮します。
-> 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
 > 
 > 
 
@@ -174,7 +180,5 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-<!--HONumber=Oct16_HO2-->
 
 

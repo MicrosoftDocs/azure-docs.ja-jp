@@ -3,7 +3,7 @@
 2. **[デバイス]** ページに移動します。 **[デバイス]** ページの下部にある **[仮想デバイスの作成]** をクリックします。
 3. **[仮想デバイスの作成]**ダイアログ ボックスで、次のように詳細を指定します。
    
-     ![StorSimple 仮想デバイスの作成
+    ![StorSimple 仮想デバイスの作成
 ](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
    
    1. **[名前]** – 仮想デバイスの一意の名前。
@@ -29,6 +29,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

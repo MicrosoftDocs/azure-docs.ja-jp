@@ -1,28 +1,33 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SanSan の統合 | Microsoft Docs'
-description: Azure Active Directory と SanSan の間でシングル サインオンを構成する方法について確認します。
+title: "チュートリアル: Azure Active Directory と SanSan の統合 | Microsoft Docs"
+description: "Azure Active Directory と SanSan の間でシングル サインオンを構成する方法について確認します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/16/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 87236d58018cd6696a97fad5d1413fa0975519b0
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-sansan"></a>チュートリアル: Azure Active Directory と SanSan の統合
+# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>チュートリアル: Azure Active Directory と SanSan の統合
 このチュートリアルでは、SanSan と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 SanSan と Azure AD の統合には、次の利点があります。
 
 * SanSan にアクセスできる Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に SanSan にサインオン (シングル サインオン) できるようにすることが可能です。
+* ユーザーが自分の Azure AD アカウントで自動的に SanSan にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -31,25 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 SanSan と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* SanSan でのシングル サインオンが有効なサブスクリプション
+* SanSan でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Microsoft Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Microsoft Azure AD のシングル サインオンをテストします。 
+
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの SanSan の追加
-2. Microsoft Azure AD シングル サインオンの構成とテスト
+2. Microsoft Azure AD SSO の構成とテスト
 
-## <a name="adding-sansan-from-the-gallery"></a>ギャラリーからの SanSan の追加
+## <a name="add-sansan-from-the-gallery"></a>ギャラリーからの SanSan の追加
 Azure AD への SanSan の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SanSan を追加する必要があります。
 
 **ギャラリーから SanSan を追加するには、次の手順を実行します。**
@@ -74,21 +80,23 @@ Azure AD への SanSan の統合を構成するには、ギャラリーから管
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_06.png)
 
-## <a name="configuring-and-testing-microsoft-azure-ad-single-sign-on"></a>Microsoft Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SanSan で Microsoft Azure AD のシングル サインオンを構成し、テストします。
+## <a name="configure-and-test-microsoft-azure-ad-single-sign-on"></a>Microsoft Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SanSan で Microsoft Azure AD の SSO を構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する SanSan ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SanSan の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する SanSan ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SanSan の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を SanSan の **[Username]** の値として割り当てます。
 
-SanSan で Microsoft Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+SanSan で Microsoft Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Microsoft Azure AD のシングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Microsoft Azure AD シングル サインオンをテストします。
 3. **[SanSan のテスト ユーザーの作成](#creating-an-sansan-test-user)** - SanSan で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Microsoft Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-microsoft-azure-ad-single-sign-on"></a>Microsoft Azure AD のシングル サインオンの構成
+### <a name="configure-microsoft-azure-ad-sso"></a>Microsoft Azure AD SSO の構成
+
 このセクションでは、クラシック ポータルで Microsoft Azure AD のシングル サインオンを有効にして、SanSan アプリケーションでシングル サインオンを構成します。
 
 **SanSan で Microsoft Azure AD シングル サインオンを構成するには、次の手順に従います。**
@@ -101,47 +109,37 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
     ![[シングル サインオンの構成]](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_03.png) 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_04.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_04.png)    
+  1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-   
-   | 環境 | URL |
-   |:--- |:--- |
-   | PC Web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
-   | ネイティブ モバイル アプリ |`https://internal.api.sansan.com/saml2/<company name>/acs` |
-   | モバイル ブラウザーの設定 |`https://ap.sansan.com/s/saml2/<company name>/acs` |
+    | 環境 | URL |
+    |:--- |:--- |
+    | PC Web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
+    | ネイティブ モバイル アプリ |`https://internal.api.sansan.com/saml2/<company name>/acs` |
+    | モバイル ブラウザーの設定 |`https://ap.sansan.com/s/saml2/<company name>/acs` 
+  2. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
-
-      | 環境             | URL |
-      | :--                     | :-- |
-      | PC Web                  | `https://ap.sansan.com/v/saml2/<company name>`|
-      | ネイティブ モバイル アプリ       | `https://internal.api.sansan.com/saml2/<company name>` |
-      | モバイル ブラウザーの設定 | `https://ap.sansan.com/s/saml2/<company name>` |
-
-
-    c. **[次へ]** をクリックします。
+    | 環境             | URL |
+    | :--                     | :-- |
+    | PC Web                  | `https://ap.sansan.com/v/saml2/<company name>`|
+    | ネイティブ モバイル アプリ       | `https://internal.api.sansan.com/saml2/<company name>` |
+    | モバイル ブラウザーの設定 | `https://ap.sansan.com/s/saml2/<company name>` |
+  3. **[次へ]**をクリックします。
 
 1. **[SanSan でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_05.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]** をクリックします。
+  1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+  2. **[次へ]**をクリックします。
 2. アプリケーション用に構成された SSO を入手するには、SanSan のサポート チームに問い合わせてください。SSO 構成のサポートを受けられます。 次のものを情報として提供してください。
    
-   • ダウンロードした **証明書**
-   
-   • **ID プロバイダーの ID**
-   
-   • **SAML SSO URL**
-   
-   • **シングル サインアウト サービス URL**
+  * ダウンロードした**証明書**
+  * **ID プロバイダーの ID**   
+  * **SAML SSO URL**
+  * **シングル サインアウト サービス URL**
 
-> [!NOTE]
-> PC のブラウザーの設定は、PC Web だけでなく、モバイル アプリおよびモバイル ブラウザーでも機能します。 
-> 
+>[!NOTE]
+>PC のブラウザーの設定は、PC Web だけでなく、モバイル アプリおよびモバイル ブラウザーでも機能します。  
 > 
 
 1. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
@@ -151,9 +149,10 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
-ユーザーの一覧で **[Britta Simon]**を選択します。
+
+* ユーザーの一覧で **[Britta Simon]**を選択します。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -171,46 +170,35 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_05.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]** をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_05.png)  
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。 
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]** をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. **[完了]** をクリックします。   
+   1. **[新しいパスワード]** の値を書き留めます。
+   2. **[完了]** をクリックします。   
 
-### <a name="creating-an-sansan-test-user"></a>SanSan のテスト ユーザーの作成
+### <a name="create-an-sansan-test-user"></a>SanSan テスト ユーザーの作成
 このセクションでは、SanSan で Britta Simon というユーザーを作成します。 SanSan アプリケーションでは、SSO を実行する前に、ユーザーをアプリケーションにプロビジョニングする必要があります。 
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合、またはユーザーのバッチを作成する必要がある場合は、SanSan のサポート チームにお問い合わせください。
-> 
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合、またはユーザーのバッチを作成する必要がある場合は、SanSan のサポート チームにお問い合わせください。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションでは、Britta Simon に SanSan へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザーの割り当て][200] 
@@ -231,8 +219,9 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションでは、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストします。
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、アクセス パネルを使用して Microsoft Azure AD の SSO 構成をテストします。
+
 アクセス パネルで [SanSan] タイルをクリックすると、SanSan アプリケーションに自動的にサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -256,9 +245,4 @@ SanSan で Microsoft Azure AD のシングル サインオンを構成してテ�
 [203]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

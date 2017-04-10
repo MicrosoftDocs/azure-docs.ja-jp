@@ -1,46 +1,393 @@
 ---
-title: Azure Government documentation | Microsoft Docs
-description: Provides and overview of the available services in Azure Government
-services: Azure-Government
+title: "Azure Government のコンプライアンス | Microsoft Docs"
+description: "Azure Government で利用可能なコンプライアンス サービスの概要を説明します。"
+services: azure-government
 cloud: gov
-documentationcenter: ''
-author: ryansoc
+documentationcenter: 
+author: jomolesk
 manager: zakramer
-editor: ''
-
-ms.service: multiple
+ms.assetid: 1d2e0938-482f-4f43-bdf6-0a5da2e9a185
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/06/2016
-ms.author: ryansoc
+ms.date: 12/07/2016
+ms.author: jomolesk
+translationtype: Human Translation
+ms.sourcegitcommit: 474ee83dfc8532f8410b79c6426af3cad6f3d320
+ms.openlocfilehash: cd54456c8f9e0f37f53973fca80b8bd3514b62d1
+
 
 ---
-# <a name="azure-government-compliance"></a>Azure Government Compliance
-## <a name="blueprint-customer-responsibilities-matrix:-streamlining-ato-processes"></a>Blueprint Customer Responsibilities Matrix:  Streamlining ATO processes
-The Azure Blueprint program, allows customers to access documentation to assist their agency or system-specific authorization to operate (ATO) processes. This article provides a deeper look at the Azure Blueprint Customer Responsibilities Matrix (CRM) and how security personnel can leverage this document.
+# <a name="azure-government-compliance"></a>Azure Government のコンプライアンス
 
-The Azure Blueprint CRM is designed for utility. It is a spreadsheet format that defines ONLY the control requirements where the customer building in Azure must implement the security control.
+## <a name="azure-blueprint"></a>Azure Blueprint
+
+Azure Blueprint プログラムは、政府機関および政府に代わってシステム構築を行うサード パーティ プロバイダーのために、Azure のコンプライアンスを確保した安全な使用を促進することを目的としています。 Azure Government のお客様は、Azure Government の FedRAMP JAB Provisional Authority to Operate (P-ATO) または DoD Provisional Authorization (PA) を利用することで、Azure ベースのシステムでお客様が責任を負うセキュリティ管理の範囲を狭めることができます。 Azure Government からセキュリティ管理の実装を継承することにより、お客様は Azure に構築された IaaS、PaaS、SaaS の各環境に固有のセキュリティ管理の実装に注力できます。
 
 > [!NOTE]
-> Within the context of Azure Blueprint, "customer" references the organization building directly within the Azure IaaS/PaaS environment. Azure customers could include third-party ISVs building on behalf of government or government agencies building directly on Azure.
-> 
-> 
+> Azure Blueprint では、"お客様" は Azure 内で直接システム構築を行う組織を指します。 Azure のお客様には、政府に代わってシステム構築を行うサードパーティ ISV や、Azure で直接システム構築を行う政府機関も含まれます。
 
-The CRM provides the explicit <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"> NIST SP 800-53 Revision 4 </a> controls that include a customer responsibility. This includes controls that are fully the responsibility of the customer, as well as controls that have a shared responsibility between the customer and Azure. Controls are broken down to the granularity of control sub requirements to be as explicit as possible.
+## <a name="blueprint-customer-responsibilities-matrix"></a>Blueprint Customer Responsibilities Matrix
 
-For example, AC-1 requires access control  policies and procedures be documented for the system seeking ATO. For this control, Azure has internal policies and procedures regarding access control mechanisms used to manage the Azure Infrastructure and Platform. Customers must also create their own Access Control policies and procedures used within their specific system built on Azure. The CRM documents control parts AC-1a, which requires the policies and procedures to include specific content, as well as AC-1b, which requires customers to review and update these documents on at least an annual basis. 
+Azure Blueprint Customer Responsibilities Matrix (CRM) は、Azure 内でシステム固有のセキュリティ管理を実装し、実装したセキュリティ管理を文書化する Azure Government のお客様を支援することを目的としています。 CRM には、顧客実装要件を含む、FedRAMP および DISA ベースラインのすべての [NIST SP 800-53](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf) セキュリティ管理要件が明確に示されています。 これには、Azure と Azure のお客様の共同責任による管理と、Azure のお客様が全面的に実装する必要がある管理が含まれています。 必要に応じて、より具体的なガイダンスを提供するために、管理のサブ要件の粒度でセキュリティ管理の詳細が示されています。
 
-For access to the CRM as well as the Azure Blueprint System Security Plan Template, please e-mail AzureBlueprint@microsoft.com.
+CRM フォーマットは実用的に設計されており、実装されるセキュリティ管理の顧客部分のみに焦点を合わせて文書化されています。
 
-We value any feedback on the CRM as it is pivotal to our iteration of the document to make it as effective as possible in streamlining customer ATO processes.
+たとえば、ATO を必要とするシステム向けに、control AC-1 ではアクセス制御ポリシーと手順の文書化を求めています。 このセキュリティ管理の場合、Microsoft には、Azure のインフラストラクチャとプラットフォームの管理に使用されるアクセス制御メカニズムに関する Azure 固有の内部ポリシーと手順があります。 お客様は、Azure に構築された特定のシステム内で使用される独自のアクセス制御ポリシーと手順も作成する必要があります。 CRM には、ポリシーと手順に特定の内容が含まれていることを求める control AC-1a と、これらのドキュメントを年に&1; 回見直して更新することをお客様に求める control AC-1b が示されています。
 
-## <a name="next-steps"></a>Next Steps
-<a href="https://www.microsoft.com/en-us/TrustCenter/Compliance/itar"> Microsoft Trust Center - ITAR web page </a>
+FedRAMP Moderate および High ベースラインと、DISA Cloud Computing SRG L4 および L5 ベースラインの Blueprint CRM は、Microsoft Excel ワークブックとして入手できます。
 
-<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government Blog. </a>
+Azure Blueprint CRM のコピーをご希望の場合や、フィードバックをお寄せいただく場合は、[AzureBlueprint@microsoft.com](mailto:AzureBlueprint@microsoft.com) まで電子メールでお送りください。
 
-<!--HONumber=Oct16_HO2-->
+## <a name="blueprint-system-security-plan"></a>Blueprint System Security Plan
+
+Azure Blueprint System Security Plan (SSP) テンプレートは顧客重視であり、お客様によるセキュリティ管理の実装と Azure から継承した管理の両方を文書化する SSP の策定に使用できるように設計されています。 お客様の責任を含むセキュリティ管理には、コンプライアンスへの対応を徹底した管理の実装の文書化に関するガイダンスが含まれます。 Azure からの継承のセクションでは、お客様に代わって Azure でセキュリティ管理がどのように実装されているかを示しています。
+
+Azure Blueprint SSP は、FedRAMP Moderate および High ベースラインと、DISA Cloud Computing SRG L4 および L5 ベースラインに使用できます。 
+
+Azure Blueprint SSP のコピーをご希望の場合や、フィードバックをお寄せいただく場合は、[AzureBlueprint@microsoft.com](mailto:AzureBlueprint@microsoft.com) まで電子メールでお送りください。
+
+## <a name="azure-blueprint-implementation-guidance"></a>Azure Blueprint 実装ガイダンス
+
+Azure Blueprint 実装ガイダンスは、クラウド ソリューション設計者とセキュリティ担当者が、Azure Government のサービスと機能をデプロイして、お客様が責任を負う FedRAMP および DoD のセキュリティ管理のサブセットを実装する方法を理解しやすくすることを目的としています。 Azure のサービスと機能のセキュリティで保護されたデプロイを支援する多数のドキュメント、ツール、テンプレート、その他のリソースが用意されています。 Azure リソースは、Azure Resource Manager テンプレートの[構成要素](https://github.com/mspnp/template-building-blocks)、コミュニティが提供する Azure [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)、または[お客様が作成した](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) JSON ベースの Resource Manager テンプレートを使用してデプロイできます。 Azure での基本的なデプロイのアーキテクチャには、コンピューティング、ネットワーク、ストレージの各リソースが含まれます。 この実装ガイダンスでは、セキュリティ管理の実装要件を満たすことができる方法でこれらのリソースをデプロイする方法について説明します。
+
+### <a name="virtual-machines"></a>[Virtual Machines]
+
+Azure Resource Manager テンプレートを使用して、米国政府および業界のセキュリティ技術実装ガイド (STIG) に対応し、セキュリティ ベンチマークを満たす構成済みの仮想マシンをデプロイできます。 既存の構成済みのマシンを使用してカスタムの Azure 仮想マシンを作成するか、新しい仮想マシンをデプロイし、Active Directory (ドメインに参加しているマシンの場合) またはローカル グループ ポリシー オブジェクト ユーティリティ (スタンドアロンのマシンの場合) を使用してセキュリティ ポリシーを適用できます。 これらのデプロイ後の構成タスクは、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して管理できます。
+
+Windows 仮想マシン構成におけるセキュリティ管理の実装例を以下に示します。
+
+- システム使用通知と同意 [NIST SP 800-53 control AC-8]
+
+  > AC-8 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、ユーザーがログオン前に同意する必要がある適切なシステム使用通知の使用など、組織の要件に合わせてカスタマイズします (CIS ベンチマークのセクション 2.3.7.4、2.3.7.5 を参照)。*
+
+- アカウント ロックアウトによる [NIST SP 800-53 control AC-7] 同時セッション制御 [NIST SP 800-53 control AC-10]、セッション ロック [NIST SP-800-53 control AC-11]、認証子の管理 [NIST SP 800-53 control IA-5] などのローカル コンピューター アカウントの制限
+
+  > AC-7 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、ログオン試行に連続して失敗した後のアカウント ロックの開始など、組織の要件に合わせてカスタマイズします (CIS ベンチマークのセクション 1.2.1、1.2.2、1.2.3 を参照。注: CIS ベンチマークの既定値を変更して、FedRAMP および DoD のパラメーター要件を満たす必要があります)。*
+
+  > AC-10 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、FedRAMP および DoD の要件を満たすために、ユーザーを 1 つのリモート デスクトップ サービス セッションに制限するなど、組織の要件に合わせてカスタマイズします (CIS ベンチマークのセクション 18.9.48.3.2 を参照)。*
+
+  > AC-11 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、ユーザーが再認証されるまで非アクティブな状態のまま 900 秒 (15 分) 経過した後にセッション ロックを開始するなど、組織の要件に合わせてカスタマイズします (CIS ベンチマークのセクション 2.3.7.3、19.1.3.1、19.1.3.3 を参照)。*
+
+  > IA-5 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、FedRAMP の要件を満たすために、最短 (1 日) および最長 (60 日) 有効期間の制限、再利用の条件 (24 個のパスワード)、長さ (14 文字)、および複雑さの要件を適用するローカル アカウント パスワードの制限など、組織の要件に合わせてカスタマイズします (CIS ベンチマークのセクション 1.1.1、1.1.2.、1.1.3.、1.1.4、1.1.5 を参照。注: CIS ベンチマークの既定値を変更して、DoD のパラメーター要件を満たす必要があります)。*
+
+- 最小限の機能を含む構成設定 [NIST SP 800-53 controls CM-6、CM-7]
+
+  > CM-6 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシン用に保持します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、システムの運用ニーズに固有の組織の要件に合わせてカスタマイズします。他の構成リソースに加え、このグループ ポリシー オブジェクトを作成して、構成設定の実装を文書化し、一貫性のある実装を確保します。*
+
+  > CM-7 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシン用に保持します。グループ ポリシー オブジェクトは、Windows Server 2012 R2 の CIS ベンチマークに従って構成し、システムの運用ニーズに固有の組織の要件に合わせてカスタマイズします。グループ ポリシー オブジェクトを使用して、Azure 内のすべての Windows 仮想マシン用に保持され、システムの運用に不可欠な機能のみを提供する Windows マシンの構成を反映した、ベースライン仮想マシン イメージを確立します。*
+
+  セキュリティ ベースライン改善ツールには、構成済みのグループ ポリシー オブジェクト (GPO) (Windows マシン用) とシェル スクリプト (Linux マシン用) が含まれています。このツールは、[Microsoft](https://technet.microsoft.com/itpro/windows/keep-secure/windows-security-baselines) (Windows マシン用のみ)、および [Center for Internet Security](https://benchmarks.cisecurity.org/) と [Defense Information Systems Agency (DISA)](http://iase.disa.mil/stigs) (Windows マシン用と Linux マシン用の両方) から入手できます。  
+
+保存情報を保護するためのセキュリティ管理要件を満たすために、Azure 仮想マシンを暗号化できます [NIST SP 800-53 control SC-28]。 Azure クイックスタート テンプレートでは、[新規](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)および既存の [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) 仮想マシンと [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) 仮想マシンに暗号化をデプロイできます。 
+
+> SC-28 セキュリティ管理の実装例に関する記述: *Azure 内の顧客が管理する仮想マシンでは、保存情報の機密性と整合性を保護するためにディスク暗号化を実装します。 Windows の Azure Disk Encryption は Windows の BitLocker 機能を使用して実装され、Linux 仮想マシンのディスク暗号化は Linux の DM-Crypt 機能を使用して実装されます。
+
+セキュリティ管理要件を満たすために、複数の Azure 仮想マシン拡張機能をデプロイできます。 [Microsoft マルウェア対策仮想マシン拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、新規および既存の仮想マシンにデプロイできます。 マルウェア対策拡張機能では、リアルタイム保護とスケジュールされた定期的スキャンを有効にすることができます [NIST SP 800-53 control SI-3]。
+
+> SI-3 セキュリティ管理の実装例に関する記述: *Azure 内の顧客が管理する Windows 仮想マシンのホストベースのマルウェア対策は、Microsoft マルウェア対策仮想マシン拡張機能を使用して実装されます。この拡張機能は、リアルタイム スキャンと定期的スキャン (週&1; 回)、マルウェア対策エンジンと保護シグネチャの自動更新、自動修復アクション、Azure 診断による通知の提供を実行するように構成されています。*
+
+*その他のツールとリソース*
+
+Azure Resource Manager テンプレートの[構成要素](https://github.com/mspnp/template-building-blocks)をカスタマイズし、Azure リソースのデプロイ ([仮想マシン](https://github.com/mspnp/template-building-blocks/tree/master/templates/buildingBlocks/multi-vm-n-nic-m-storage)や[仮想マシン拡張機能](https://github.com/mspnp/template-building-blocks/tree/master/templates/buildingBlocks/virtualMachine-extensions)のデプロイなど) に使用できます。 
+
+### <a name="virtual-network"></a>仮想ネットワーク
+
+Azure Virtual Network (VNet) では、サブネット、ネットワーク セキュリティ グループ、ユーザー定義ルートをデプロイし、構成することによって、仮想ネットワーク アーキテクチャ内でセキュリティ ポリシーとルーティングを完全に制御できます。 サブネットまたは個々のマシンにネットワーク セキュリティ グループを適用することで、多層アーキテクチャに基づいて、またはその他の目的で、ワークロードごとにリソースを論理的に分離できます。 次のリファレンス アーキテクチャでは、Web、ビジネス、データの各層ごとのサブネット、Active Directory リソースのサブネット、管理用のサブネットにリソースがグループ化されています。 ネットワーク セキュリティ グループは、仮想ネットワーク内でネットワーク トラフィックを制限するために、サブネットごとに適用されます。 
+ 
+![Microsoft Azure を使用した N 層アーキテクチャ](./media/documentation-government-plan-compliance/compute-n-tier.png)
+
+ネットワーク セキュリティ グループにより、リソース間の通信パスを完全に制御できます [NIST SP 800-53 control AC-4]。
+
+> AC-4 セキュリティ管理の実装例に関する記述: *Web、ビジネス、データの各層の機能を実装した Azure 内の顧客が管理する仮想マシンをサブネットによって分離します。ネットワーク層の情報フローを情報システム機能に最低限必要なものだけに制限するネットワーク セキュリティ グループを定義し、サブネットごとに適用します。*
+
+ネットワーク セキュリティ グループは、サブネットおよび仮想マシンからの送信方向の通信に適用できます。 これにより、Azure 内の情報システム コンポーネントと外部情報システム間の通信を完全に制御できます [NIST SP 800-53 control CA-3 (5)]。 ネットワーク セキュリティ グループのルール処理は、「すべてを拒否し、例外を許可する」機能として実装されます。 さらに、ファイアウォールや IDS/IPS などの仮想アプライアンスを使用して、特定のサブネットや仮想マシンからの受信方向と送信方向の両方の通信をルーティングするようにユーザー定義ルートを構成することで、システム通信の管理を強化できます。
+
+> CA-3 (5) セキュリティ管理の実装例に関する記述: *FedRAMP および DoD L4 の要件を満たすために、情報システム機能をサポートするために明示的に許可されたトラフィックを除くすべてのトラフィックを拒否する送信ルールセットで構成されたネットワーク セキュリティ グループを実装することによって、Azure 内の顧客が管理するリソースからのすべての送信方向の通信を制限します。さらに、承認済みの外部情報システムとの通信のみを許可するルールセットで構成された仮想ファイアウォール アプライアンスを使用してすべての送信トラフィックをルーティングするようにユーザー定義ルートを構成します。*
+
+上記のリファレンス アーキテクチャは、セキュリティ機能とそれ以外の機能を確実に分離するために、ネットワーク セキュリティ グループのルールセットを適用して、Azure リソースを個別のサブネットに論理的にグループ化する方法を示しています。 この例では、3 つの Web アプリケーション層が Active Directory サブネットと管理サブネットから分離されています。これにより、情報システムとセキュリティ管理ツールおよびリソースをホストできます [NIST SP 800-53 control SC-3]。
+
+> SC-3 セキュリティ管理の実装例に関する記述: *サブネットとこれらのサブネットに適用するネットワーク セキュリティ グループを実装することにより、顧客が管理する Azure 環境内でセキュリティ機能をそれ以外の機能から分離します。Web アプリケーションの Web、ビジネス、データの各層専用の情報システム リソースを、情報システムのセキュリティ関連タスクが実行される管理サブネットから論理的に分離します。*
+
+このリファレンス アーキテクチャでは、情報システムへのリモート アクセス用に、管理されたアクセス制御ポイントも実装しています [NIST SP 800-53 control AC-17 (3)]。 Web アプリケーションへの受信インターネット トラフィックを分散するために、インターネットに接続するロード バランサーがデプロイされています。また、管理サブネットには、システムへの管理関連のすべてのリモート アクセスを制御するジャンプボックス (要塞ホスト) が含まれています。 ネットワーク セキュリティ グループは、外部トラフィックが指定された公開リソースにのみルーティングされるようにすることで、仮想ネットワーク内のトラフィックを制限します。
+
+> AC-17 (3) セキュリティ管理の実装例に関する記述: *Azure 内の情報システムの顧客が管理するコンポーネントへのリモート アクセスを、2 つの管理されたネットワーク アクセス制御ポイントに制限します。1) Web アプリケーションの指定されたインターネット トラフィックは、トラフィックを Web 層のリソースに分散する、インターネットに接続するロード バランサーによって管理されます。2) 管理リモート アクセスは、環境内の分離されたサブネット上の要塞ホストによって管理されます。ジャンプボックスが存在する管理サブネットに適用されたネットワーク セキュリティ グループにより、許可リストに登録されたパブリック IP アドレスからの接続のみが許可され、リモート デスクトップ トラフィックのみに制限されます。*
+
+ネットワーク セキュリティ グループにより、Azure リソースと外部ホストおよびシステム間、および内部サブネットとホスト間の通信を完全に制御することが可能となり、パブリックにアクセス可能として指定されている情報システム コンポーネントとそれ以外のコンポーネントを分離できます。 上記のリファレンス アーキテクチャのソリューションに加え、Azure ではファイアウォールや IDS/IPS ソリューションなどの仮想アプライアンスをデプロイすることもできます。これらをユーザー定義ルートと併用すれば、Azure リソースと外部ネットワークおよび外部情報システム間の接続のセキュリティと管理を強化できます [NIST SP 800-53 control SC-7]。
+
+> SC-7 セキュリティ管理の実装例に関する記述: *Azure 内の顧客が管理するリソースは、複数のデプロイ済みの境界保護メカニズムによって保護されます。情報システム境界と仮想ネットワーク内の両方でトラフィックを制限するネットワーク セキュリティ グループを定義し、ネットワーク サブネットに適用します。ネットワーク セキュリティ グループには、サブネットおよび仮想マシンとの間のトラフィックを制御するアクセス制御リスト (ACL) ルールが含まれます。受信インターネット トラフィックを特定のリソースに分散するために、ロード バランサーをデプロイします。サブネットにより、パブリックにアクセス可能な情報システム コンポーネントを非パブリック リソースから論理的に分離できます。*
+
+ネットワーク セキュリティ グループのルールセットにより、特定のネットワーク ポートとプロトコルの制限が可能になります。これは、不可欠な機能のみを提供する方法で情報システムを実装できるようにする重要な要素です [NIST SP 800-53 control CM-7]。
+
+> CM-7 セキュリティ管理の実装例に関する記述: *顧客が管理する Azure 環境でサブネットと仮想マシンに適用するネットワーク セキュリティ グループは、「すべてを拒否し、例外を許可する」アプローチを使用して実装します。これにより、明示的に承認されたポートとプロトコルを介したネットワーク トラフィックのみが許可されるため、最小限の機能の概念に対応できます。*
+
+*その他のツールとリソース*
+
+上記のリファレンス アーキテクチャに関するドキュメントは、Azure [ドキュメント サイト](https://docs.microsoft.com/azure/guidance/guidance-compute-n-tier-vm)で入手できます。 リファレンス アーキテクチャをデプロイするための Azure Resource Manager テンプレートも同じページに用意されています。 Azure ドキュメント サイトには、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)と[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する詳細情報も含まれています。
+
+### <a name="storage"></a>Storage
+
+Azure Storage に格納されたデータは、高可用性を確保するためにレプリケートされます。 複数のレプリケーション オプションが用意されていますが、geo 冗長ストレージ (GRS) と読み取りアクセス geo 冗長ストレージ (RA-GRS) では、データをセカンダリ リージョンにレプリケートできます。 プライマリ リージョンとセカンダリ リージョンを組み合わせてデータ センター間に必要な距離を確保することで、領域全体の障害や災害が発生した場合に高可用性が確保されます [NIST SP 800-53 control CP-9]。 geo 冗長高可用性ストレージの場合、新しいストレージ アカウントの作成時に、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) のいずれかを選択します。 
+
+> CP-9 セキュリティ管理の実装例に関する記述: *Azure 内の顧客が管理するすべてのストレージ アカウントで geo 冗長ストレージを実装します。これにより、2 つのデータ センターの個々のノードですべてのデータの&6; つのコピーを保持できます。*
+
+Azure Storage Service Encryption (SSE) により、Azure Storage アカウント内の保存データが保護されます [NIST SP 800-53 controls SC-28、SC-28 (1)]。 SSE を有効にすると、ストレージに永続化する前にデータが自動的に暗号化されます。 データは、256 ビット AES 暗号化を使用して暗号化されます。 SSE では、ブロック BLOB、追加 BLOB、ページ BLOB をサポートしています。
+
+> SC-28、SC-28 (1) セキュリティ管理の実装例に関する記述: *顧客が管理する Azure 環境でのすべてのストレージ BLOB の機密性と整合性は、すべての保存データに対して 256 ビット AES 暗号化を使用する Azure SSE を使用して保護します。*
+
+*その他のツールとリソース*
+
+Azure ドキュメント サイトで、[Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) と[ストレージのレプリケーション](https://docs.microsoft.com/azure/storage/storage-redundancy)に関する詳細情報を入手できます。 
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+Azure Active Directory は、Microsoft Azure で実行されている情報システムに ID およびアクセス機能を提供します。 ディレクトリ サービス、セキュリティ グループ、グループ ポリシーを使用することによって、Azure Active Directory を使用するマシンのアクセス ポリシーとセキュリティ ポリシーを制御できます。 情報システムへのアクセスは、アカウントとセキュリティ グループを使用して管理できます。 グループ ポリシーにより、構成要件を確実に満たすことができます。
+
+Azure Active Directory のセキュリティ グループとディレクトリ サービスにより、ロールベースのアクセス制御 (RBAC) のアクセス制御スキームを実装し、情報システムへのアクセスを制御できます。 セキュリティ管理の実装例を以下に示します。
+
+- アカウント管理 [NIST SP 800-53 control AC-2]
+
+  > AC-2.a セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、Active Directory グループを使用したロールベールのアクセス制御を実装することによってアクセスを管理します。AAD によってサポートされるドメインでのアカウント管理とアカウントへのアクセスに関する要件が定められています。ドメインのメンバー サーバーへのアクセスは、セキュリティ グループによってのみサポートされます。グループごとにプライマリ所有者とセカンダリ所有者が存在します。これらの所有者は、グループのメンバーシップ、アクセス許可、および説明の正確さを維持する役割を担います。*
+
+  > AC&2;.c セキュリティ管理の実装例に関する記述: *ユーザーがセキュリティ グループへのアクセスを要求した場合、メンバーシップに定義されている条件に基づいて、そのグループの所有者が要求を承認する必要があります。アカウントの条件は、セキュリティ グループ所有者によって決定されます。*
+
+  > AC-2.f セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、情報システムへの制御アクセスを管理します。アカウント管理者は、アカウント管理ポリシーに従って、必要に応じてアカウントの作成、有効化、変更、無効化、または削除を行います。*
+
+  > AC-2 (1) セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、Active Directory グループを使用したロールベールのアクセス制御を実装することによってアクセスを管理します。AAD によってサポートされるドメインでのアカウント管理とアカウントへのアクセスに関する要件が定められています。ドメインのメンバー サーバーへのアクセスは、セキュリティ グループによってのみサポートされます。グループごとにプライマリ所有者とセカンダリ所有者が存在します。これらの所有者は、グループのメンバーシップ、アクセス許可、および説明の正確さを維持する役割を担います。*
+
+  > AC-2 (2) セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、情報システムへの制御アクセスを管理します。アカウント管理者は、アカウント管理ポリシーに従って一時的なアカウントを作成します。これらの一時的なアカウントには、ポリシーの要件に沿って有効期限を設定する必要があります。*
+
+  > AC-2 (3) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、情報システムへの制御アクセスを管理します。アカウント管理者は、アカウント管理ポリシーに従って一時的なアカウントを作成します。これらの一時的なアカウントには、ポリシーの要件に沿って有効期限を設定する必要があります。*
+
+  >AC-2 (7) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、情報システム特権をセキュリティ グループに割り当てられたロールにまとめるロールベースのアクセス スキームに従って、情報システムへの制御アクセスを管理します。セキュリティ グループ管理者は、ユーザーを適切なセキュリティ グループに割り当てるために、ユーザーにアクセス権を付与する役割を担います。各セキュリティ グループには、タスクを適切に実行するための最小限の適切なアクセス権が設定されたアクセス許可が割り当てられます。*
+
+  > AC-2 (11) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、Azure 内の情報システムへの制御アクセスを管理します。セキュリティ ポリシーで要求される使用制限は、アカウント管理者が Azure Active Directory 内で定義し、適用します。*
+
+- アクセス権の適用 [NIST SP 800-53 control AC-3]
+
+  > AC-3 セキュリティ管理の実装例に関する記述: *Azure Active Directory では、ロールベースのアクセス制御を使用して顧客環境に承認済みのアクセス権限を適用します。Azure Active Directory セキュリティ グループへのアクセスは、セキュリティ グループ管理者が管理します。最小限の特権の原則に従って、ロールに基づいて適切なセキュリティ グループにユーザーを配置します。*
+
+- 最小限の特権 [NIST SP 800-53 control AC-6]
+
+  > AC-6 (10) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、ロールベースのアクセス制御を使用して顧客環境に承認済みのアクセス権限を適用します。Azure Active Directory セキュリティ グループへのアクセスは、セキュリティ グループ管理者が管理します。特権のないユーザーには、セキュリティ保護対策の無効化、回避、または変更を許可するアクセス許可を含む、特権機能へのアクセスを許可するセキュリティ グループへのアクセス権は付与されません。*
+
+- リモート アクセス [NIST SP 800-53 control AC-17]
+
+  > AC-17 (1) セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、すべてのリモート アクセスを監視および制御します。Azure Active Directory には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。*
+
+- 監査情報の保護 [NIST SP 800-53 control AU-9]
+
+  > AU-9 セキュリティ管理の実装例に関する記述: *厳密に管理されたアクセス制御を使用して、未承認のアクセス、変更、および削除から監査情報と監査ツールを保護します。Azure Active Directory では、Active Directory ポリシーとロールベースのグループ メンバーシップを使用したアクセス承認と論理制御のレイヤー アプローチを使用して、ユーザーに承認済みの論理アクセスを適用します。監査情報の表示と監査ツールの使用は、これらのアクセス許可を必要とするユーザーに制限されます。*
+
+  > AU-9 (4) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、監査機能の管理は適切なセキュリティ グループのメンバーに制限されます。監査機能の管理へのアクセスを特に必要とするユーザーにのみ、これらのアクセス許可を付与します。*
+
+- 変更に関するアクセス制限 [NIST SP 800-53 control CM-5]
+
+  > CM-5 セキュリティ管理の実装例に関する記述: *Azure Active Directory で適用される RBAC を使用して、変更に関連する論理アクセス制限を定義、文書化、承認、および適用します。システム内で作成されるアカウントはすべてロールベースです。ユーザーは、アカウント管理者にアクセスを要求し、要求が承認されると、ロールに基づいて適切なセキュリティ グループに配置されます。承認後、特定のセキュリティ グループのメンバーにのみ、運用環境へのアクセスが許可されます。*
+
+  > CM-5 (1) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、セキュリティ グループ メンバーシップによって論理アクセス制限を適用します。そのために、セキュリティ グループ所有者は特定のセキュリティ グループへのアクセス権を付与する必要があります。*
+
+- ユーザーの識別と認証 [NIST SP 800-53 control IA-2]
+
+  > IA-2 セキュリティ管理の実装例に関する記述: *情報システム環境にアクセスするユーザーは、ユーザー名で一意に識別され、Azure Active Directory を使用して認証されます。情報システムにアクセスするには、Azure Active Directory に対する認証が必要となります。*
+
+  > IA-2 (8) セキュリティ管理の実装例に関する記述: *運用環境へのアクセスは、Azure Active Directory の組み込みの Kerberos 機能によってリプレイ攻撃から保護されます。Kerberos 認証では、クライアントから送信された認証子に、暗号化された IP リスト、クライアントのタイムスタンプ、チケットの有効期間などの追加データが含まれています。パケットが再生されると、タイムスタンプが確認されます。タイムスタンプが以前の認証子より古い場合または以前の認証子と同じである場合、パケットは拒否されます。*
+
+  > IA-2 (9) セキュリティ管理の実装例に関する記述: *すべてのアカウントは、Azure Active Directory の組み込みの Kerberos 機能によってリプレイ攻撃から保護されます。Kerberos 認証では、クライアントから送信された認証子に、暗号化された IP リスト、クライアントのタイムスタンプ、チケットの有効期間などの追加データが含まれています。パケットが再生されると、タイムスタンプが確認されます。タイムスタンプが以前の認証子より古い場合または以前の認証子と同じである場合、パケットは拒否されます。*
+
+- 識別子の管理 [NIST SP 800-53 control IA-4]
+
+  > IA-4.b セキュリティ管理の実装例に関する記述: *Azure Active Directory のアカウント識別子は、ユーザーの識別に使用されます。これらの一意の識別子は再利用されません。*
+
+  > IA-4.c セキュリティ管理の実装例に関する記述: *Azure Active Directory は、サービス環境へのアクセスを提供するために使用されるアカウントの中央リポジトリです。Azure Active Directory でアカウントが作成されると、ユーザーの一意の識別子がユーザーに割り当てられます。*
+
+  > IA&4;.d セキュリティ管理の実装例に関する記述: *一意のユーザー識別子が再利用されることはありません。これは、Azure Active Directory によって強制されます。*
+
+  > IA&4;.e セキュリティ管理の実装例に関する記述: *Azure Active Directory 内のすべてのアカウントは、非アクティブになってから 35 日後に自動的に無効化されるように構成されています。*
+
+  > IA-4 (4) セキュリティ管理の実装例に関する記述: *Azure Active Directory では、Azure Active Directory の一意の資格情報に適用される名前付け規則を使用して、契約者とベンダーを表します。*
+
+- 認証子の管理 [NIST SP 800-53 control IA-5]
+
+  > IA-5.b セキュリティ管理の実装例に関する記述: *Azure Active Directory では、初期アカウントの作成時に、一意の ID とポリシーの要件を満たすランダムな一時パスワードを割り当てます。Azure Active Directory では、アカウントの有効期間にわたって、アカウントに関連付けられた一意の ID が保持されます。Azure Active Directory でアカウント ID が再利用されることはありません。*
+
+  > IA-5.c セキュリティ管理の実装例に関する記述: *Azure Active Directory では、発行されたパスワードがパスワードの複雑さに関するポリシーの要件を満たしていることを確認します。*
+
+  > IA-5.d セキュリティ管理の実装例に関する記述: *初期認証子配布手順は、アカウント管理者が処理します。ユーザー アカウントのアクセス権の変更は、AC-2 で定義されたアカウント管理プロセスに従います。認証子が失われたり侵害されたりした場合、アカウント管理者は定義されたプロセスに従って、必要に応じて、認証子のリセット、再発行、または取り消しを行います。*
+
+  > IA-5 (1).c セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、すべてのパスワードを保存中および転送中に暗号化によって保護することができます。Azure Active Directory で保存されるパスワードは、Azure Active Directory の機能の一部として自動的にハッシュされます。*
+
+  > IA-5 (1).f セキュリティ管理の実装例に関する記述: *Azure Active Directory を使用して、情報システムへの制御アクセスを管理します。アカウントが最初に作成されたとき、または一時パスワードが生成されたときには、Azure Active Directory を使用して、次回ログイン時にユーザーにパスワードの変更を要求します。*
+
+  > IA-5 (4) セキュリティ管理の実装例に関する記述: *Azure Active Directory は、パスワード認証子が、IA-5 (1) に定められたパスワードの長さ、複雑さ、循環、および有効期間の制限を満たす十分な強度であるかどうかを確認するために使用される自動ツールです。Azure Active Directory では、作成時のパスワード認証子の強度がこれらの基準を満たしていることを確認します。*
+
+Azure Active Directory グループ ポリシーの構成を使用して、特定のセキュリティ要件を満たすセキュリティ ポリシーをデプロイできます。 Azure Active Directory により、Azure 仮想マシンにこれらのポリシーを適用できます。
+Azure Active Directory グループ ポリシーの構成におけるセキュリティ管理の実装例を以下に示します。
+
+- 最小限の特権 [NIST SP 800-53 control AC-6]
+
+  > AC-6 (9) セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。特権機能の実行の監査など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+- 失敗したログイン試行 [NIST SP 800-53 control AC-7]
+
+  > AC-7 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。ログオン試行に連続して失敗した後のアカウント ロックの開始など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+- 同時セッション制御 [NIST SP 800-53 control AC-10]、セッション ロック [NIST SP 800-53 control AC-11]、セッションの終了 [NIST SP 800-53 control AC-12]
+
+  > AC-10 セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP および DoD の要件を満たすために、ユーザーを&1; つのリモート デスクトップ サービス セッションに制限するなど、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > AC-11. セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。ユーザーが再認証されるまで非アクティブな状態のまま 900 秒 (15 分) 経過した後にセッション ロックを開始するなど、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > AC-12 セキュリティ管理の実装例に関する記述: *Windows は、顧客ユーザーからログアウト要求を受信すると、リモート デスクトップ セッションを自動的に終了します。また、構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。非アクティブになってから 900 秒 (15 分) 後にリモート デスクトップ セッションを終了するなど、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+- 認証子の管理 [NIST SP 800-53 control IA-5]
+
+  > IA-5.f セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP の要件を満たすために、最短 (1 日) および最長 (60 日) 有効期間の制限、再利用の条件 (24 個のパスワード)、長さ (14 文字)、および複雑さの要件を適用するローカル アカウント パスワードの制限など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > IA-5.g セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP の要件を満たすために、最長 (60 日) 有効期間の制限を適用するローカル アカウント パスワードの制限など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > IA-5 (1).a セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP の要件を満たすために、複雑さの要件など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > IA-5 (1).b セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP の要件を満たすために、複雑さの要件など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+  > IA-5 (1).d セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。 FedRAMP の要件を満たすために、最短 (1日) および最長 (60 日) 有効期間の制限を適用するローカル アカウント パスワードの制限など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。
+
+  > IA-5 (1).e セキュリティ管理の実装例に関する記述: *構成によって制御されたグループ ポリシー オブジェクト (GPO) を、Azure 内の顧客が管理するすべての Windows マシンに適用します。FedRAMP の要件を満たすために、再利用の条件 (24 個のパスワード) の制限など、組織の要件に合わせてグループ ポリシー オブジェクトをカスタマイズします。*
+
+*その他のツールとリソース*
+
+Azure のサービスと機能のセキュリティで保護されたデプロイを支援するドキュメント、ツール、テンプレート、その他のリソースが用意されています。 Azure Active Directory の使用を開始する場合は、[Microsoft Azure Docs](https://docs.microsoft.com/azure/active-directory/) を参照してください。
+
+### <a name="key-vault"></a>Key Vault
+
+Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護します。 Azure Key Vault を使用して、キーとシークレットを作成、管理、保護することができます。 セキュリティで保護されたコンテナー (資格情報コンテナー) を使用して、暗号化キーとシークレットを安全に格納し、管理できます。 Azure Key Vault では、FIPS 140-2 レベル 2 で検証済みの HSM を使用して暗号化キーを生成できます。
+
+Azure Key Vault コンテナーは高可用性を備えており、暗号化キーを安全に格納できます。 セキュリティ管理の実装例を以下に示します。
+
+-   認証子の保護 [NIST SP 800-53 control IA-5 (7)]
+
+  > IA-5 (7) セキュリティ管理の実装例に関する記述: *アプリケーション、アクセス スクリプト、またはファンクション キーに組み込まれた暗号化されていない静的認証子の使用は明示的に禁止されています。認証子を使用するスクリプトやアプリケーションでは、使用前に毎回 Azure Key Vault コンテナーを呼び出します。Azure Key Vault コンテナーへのアクセスは監査されるため、サービス アカウントを使用して Azure Key Vault コンテナーの対応する呼び出しなしにシステムにアクセスした場合に、この禁止の違反を検出できます。*
+
+- 暗号化キーの確立と管理 [NIST SP 800-53 control SC-12 (1)]
+
+  > SC-12 (1) セキュリティ管理の実装例に関する記述: *Azure Key Vault を使用して、暗号化キーとシークレットを格納します。このサービスでは、シークレットへのアクセスを追跡および監視します。このサービスを使用すると、シークレットが失われないようにすることができます。*
+
+Azure Key Vault では、FIPS 140-2 レベル 2 で検証済みの HSM を使用して暗号化キーを作成できます。 Azure Active Directory グループ ポリシーの構成におけるセキュリティ管理の実装例を以下に示します。
+
+- 暗号化キーの確立と管理 [NIST SP 800-53 control SC-12 (2)]
+
+  > SC-12 (2) セキュリティ管理の実装例に関する記述: *Azure Key Vault を使用して、暗号化キーを生成、制御、および配布します。これらのキーは、FIPS 140-2 レベル 2 で検証済みの HSM を使用して生成されます。これらのキーは、Azure Key Vault 内の暗号化されたコンテナーに安全に格納され、管理されます。*
+
+*その他のツールとリソース*
+
+Azure のサービスと機能のセキュリティで保護されたデプロイを支援するドキュメント、ツール、テンプレート、その他のリソースが用意されています。 Azure Key Vault の使用を開始する場合は、[Microsoft Azure Docs](https://docs.microsoft.com/azure/key-vault/) を参照してください。
+
+### <a name="operations-management-suite"></a>Operations Management Suite
+
+Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 セキュリティとコンプライアンスのソリューションを使用して、インフラストラクチャに対するセキュリティ上のリスクを特定、評価し、軽減することができます。 OMS のこれらの機能は、ログ データを分析し、セキュリティ構成を監視する Log Analytics など、複数のソリューションを通じて実装されます。
+
+OMS 対応のセキュリティおよび監査サービスは、アカウントの監視とログ記録を実装できます。 セキュリティ管理の実装例を以下に示します。
+
+- アカウント管理 [NIST SP 800-53 control AC-2]
+
+  > AC-2.g セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、システム アカウントの使用状況を監視します。OMS ではシステム アカウントの監査ログを作成します。OMS の分析機能を使用してこの監査ログを分析し、定義済みの一連の条件に基づいてアラートを生成できます。*
+
+  > AC-2 (4) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、アカウントの作成、変更、有効化、無効化、削除の各アクションなど、アカウント管理機能の監査ログを生成します。OMS を使用して、上記のいずれかのアクションが実行された場合にシステム所有者にアラートを送信します。*
+
+  > AC-2 (12) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、通常とは異なる使用についてシステム アカウントの使用状況を監視します。OMS ではシステム アカウントの監査ログを作成します。OMS の分析機能を使用してこの監査ログを分析し、定義済みの一連の条件に基づいて、適切な担当者にアラートを送信できます。*
+
+- 最小限の特権 [NIST SP 800-53 control AC-6]
+
+  > AC-6 (9) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、特権機能の実行を監視します。OMS では指定された機能の監査ログを作成します。OMS の分析機能を使用してこの監査ログを分析し、定義済みの一連の条件に基づいてアラートを生成できます。*
+
+ - リモート アクセス [NIST SP 800-53 control AC-17]
+
+  > AC-17 (1) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、リモート アクセスを監視および制御します。OMS には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。*
+
+- イベントの監査 [NIST SP 800-53 control AU-2]
+
+  > AU-2 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、成功および失敗したアカウント ログオン イベント、アカウント管理イベント、オブジェクト アクセス、ポリシーの変更、特権機能、プロセス追跡、およびシステム イベントを監査します。Web アプリケーションの場合、すべての管理者アクティビティ、認証チェック、承認チェック、データの削除、データ アクセス、データの変更、アクセス許可の変更を監査します。顧客が定義したその他の一連のイベントも監査します。*
+
+- 監査レコードの内容 [NIST SP 800-53 control AU-3]
+
+  > AU-3 (2) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、ネットワーク、ストレージ、コンピューティングの各機器によって生成されるすべての監査レコードを一元的に管理し、構成します。*
+
+- 監査ストレージの容量 [NIST SP 800-53 control AU-4]
+
+  > AU-4 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、ネットワーク、ストレージ、コンピューティングの各機器によって生成されるすべての監査レコードを一元的に管理し、構成します。一元管理ツールを使用して、監査レコードのストレージ容量を構成します。*
+
+- 監査処理エラーへの対応 [NIST SP 800-53 control AU-5]
+
+  > AU-5 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、組織で定められた担当者に監査処理エラーを通知します。*
+
+  > AU-5 (1) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、監査レコードのストレージが組織で定められたリポジトリの最大容量の割合に達したことを、組織で定められた期間内に組織で定められた担当者に通知します。*
+
+  > AU-5 (2) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、組織のポリシーで定義された監査可能なイベントが失敗したときに、組織で定められた担当者にリアルタイムで通知します。*
+
+- 監査の確認、分析、およびレポート [NIST SP 800-53 control AU-6]
+
+  > AU-6 (3) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Log Analytics ソリューションと共に使用して、さまざまな監査ログ リポジトリを分析し、組織全体の状況を把握します。分析ツールを使用して監査ログのレポートを作成し、状況を把握します。*
+
+  > AU-6 (4) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) を使用して、すべての監査レコードを一元的に管理し、構成します。一元管理ツールにより、あらゆるソースからの監査レコードを確認および分析できます。*
+
+  > AU-6 (5) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Log Analytics ソリューションと共に使用して、脆弱性スキャン データ、情報システム監視データ、およびパフォーマンス関連のデータから生成されたさまざまなセキュリティ関連データを分析します。これらのさまざまなリソースの分析により、不審なアクティビティを特定する能力を高めることができます。*
+
+- 監査の削減とレポートの生成 [NIST SP 800-53 control AU-7]
+
+  > AU-7 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Log Analytics ソリューションと共に使用して、人間が判読できるオンデマンドのレポートを生成することにより、セキュリティ インシデントの事後調査を可能にします。Microsoft Log Analytics ツールの使用によって、元の監査レコードの内容や時間順序が永続的または不可逆的に変更されることはありません。*
+
+  > AU-7 (1) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、組織で定義された監査可能なイベントを照会します。*
+
+- 監査情報の保護 [NIST SP 800-53 control AU-9]
+
+  > AU-9 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティ グループと共に使用して、監査情報および監査ツールへのアクセスを管理することによって、監査レコードの未承認のアクセス、変更、および削除を防ぎます。監査情報の表示と監査ツールの使用は、これらのアクセス許可を必要とするユーザーに制限されます。*
+
+  > AU-9 (2) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Azure Backup と共に使用して、監査ログを Azure にバックアップします。その後、データの信頼性と可用性を実現するためにデータをレプリケートします。Azure Backup は、監査対象のシステム以外のシステム上で監査ログを保存するセキュリティで保護された場所を提供します。* 
+
+  > AU-9 (4) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティ グループと共に使用して、監査情報および監査ツールへのアクセスを管理します。監査機能の管理へのアクセスを特に必要とするユーザーにのみ、これらのアクセス許可を付与します。*
+
+- 監査レコードのリテンション期間 [NIST SP 800-53 control AU-11]
+
+  > AU-11 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、監査ログのリテンション期間を構成します。監査ログのリテンション期間は、少なくとも 90 日間、監査データを保持するように構成します。*
+
+- 監査の生成 [NIST SP 800-53 control AU-12]
+
+  > AU-12 セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションと共に使用して、AU-02 で定義された監査可能なイベントを情報システム コンポーネントから収集します。組織で定められた担当者は、OMS のセキュリティと監査ソリューションを使用して、特定のデバイスから収集する監査可能なイベントを定義します。*
+
+  > AU-12 (1) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Log Analytics ソリューションと共に使用して、タイムスタンプで並べ替えてシステム全体の監査証跡を作成できるシステム コンポーネントから監査レコードをコンパイルします。*
+
+- 変更に関するアクセス制限 [NIST SP 800-53 control CM-5]
+
+  > CM-5 (1) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよび Active Directory と共に使用して、セキュリティ グループ メンバーシップによる論理アクセス制限を適用します。これらのセキュリティ グループによって実行されるアクションは、OMS による監査の対象となります。*
+
+- 情報システム コンポーネント インベントリ [NIST SP 800-53 control CM-8]
+
+  > CM-8 (3) セキュリティ管理の実装例に関する記述: *Microsoft の Operation Management Suite (OMS) をセキュリティと監査ソリューションおよびマルウェア対策ソリューションと共に使用して、不正なソフトウェアの存在を検出します。OMS は、不正なソフトウェアを検出すると、感染したコンポーネントを無効にし、組織で定められた担当者にアラートを送信します。*
+
+Azure のサービスと機能のセキュリティで保護されたデプロイを支援するドキュメント、ツール、テンプレート、その他のリソースが用意されています。 Operation Management Suite の使用を開始する場合は、[Microsoft Azure Docs](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview/) を参照してください。
+
+### <a name="additional-implementation-guidance"></a>その他の実装ガイダンス
+
+前述の Azure のコア サービスに加え、複数の組み込み機能を使用することで、組織はセキュリティ管理のコンプライアンス要件を満たすことができます。 すべての Azure リソースはリソース グループにまとめられています。 タグを適用することで、資産をさらに細かく整理することができます。タグは、カテゴリやその他のプロパティでリソースを特定するためにお客様が選択できるキーと値のペアです。 Azure リソース グループにより、Azure 内にデプロイされたすべての顧客リソースを完全に識別し、追跡することができます [NIST SP 800-53 control CM-8]。 
+
+> CM-8 セキュリティ管理の実装例に関する記述: *Azure 内にデプロイされた顧客が管理するすべてのリソースは、"顧客リソース" リソース グループに属しています。Azure Portal では、デプロイされたすべての資産は、正確な最新のインベントリを確保するリソース グループ ブレード内で識別されます。追跡およびレポートの要件を満たすために、必要に応じてリソースにタグを適用します。*
+
+Azure Resource Manager テンプレートを使用して、Azure デプロイ内のリソースの構成を定義できます。 Resource Manager テンプレートは JSON ベースであり、宣言型の構文を使用して、リソースや構成パラメーターなどの Azure 環境の側面を文書化します。 Azure Portal から Azure ソリューションをデプロイすると、Resource Manager テンプレートが自動的に生成されます。また、Resource Manager テンプレートを手動で作成し、特定のニーズに合わせて編集することもできます。 これらの Resource Manager テンプレートを使用して、情報システムのベースライン構成を表すことができます [NIST SP 800-53 control CM-2]。 デプロイのニーズに合わせて、既存の Resource Manager テンプレート (先述のビルディング ブロックなど) をカスタマイズできます。
+
+> CM-2 セキュリティ管理の実装例に関する記述: *情報システムのベースライン構成のコンポーネントとして、Azure Resource Manager テンプレートを構成管理の下で保持し、Azure 内にデプロイされた、情報システム コンポーネントの顧客が管理するリソースと構成を表します。これらのテンプレートでは、(顧客の Azure 環境を出入りするネットワーク トラフィックや顧客の Azure 環境内のネットワーク トラフィックを制御するネットワーク リソースの構成も含め) 仮想マシン、ストレージ、ネットワーク リソースなどのデプロイされたリソースをキャプチャします。*
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Blueprint、FedRAMP、DoD、Agency ATO プロセスまたはコンプライアンスのその他の支援に関するお問い合わせや、Blueprint に関するフィードバックについては、[AzureBlueprint@microsoft.com](mailto:AzureBlueprint@microsoft.com) まで電子メールでお送りください。
+
+[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/Compliance/default.aspx)
+
+[Microsoft Azure Government ブログ](https://blogs.msdn.microsoft.com/azuregov/)
+
+
+
+<!--HONumber=Jan17_HO4-->
 
 

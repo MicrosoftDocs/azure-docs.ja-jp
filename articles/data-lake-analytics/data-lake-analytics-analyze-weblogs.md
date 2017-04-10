@@ -1,49 +1,53 @@
 ---
-title: Azure Data Lake Analytics を使用して Web サイトのログを分析する | Microsoft Docs
-description: Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。
+title: "Azure Data Lake Analytics を使用して Web サイトのログを分析する | Microsoft Docs"
+description: "Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。 "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
+ms.openlocfilehash: e820ca068bd9be151c4241bb233806847855933c
+
 
 ---
-# チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する
+# <a name="tutorial-analyze-website-logs-using-azure-data-lake-analytics"></a>チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する
 Data Lake Analytics を使用して Web サイトのログを分析する方法について、特に、Web サイトへのアクセスを試みたときにエラーが発生した参照元の特定に重点を置いて説明します。
 
 > [!NOTE]
-> アプリケーションが動作していることだけを確認する場合は、「[Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)」を参照すると時間を短縮できます。このチュートリアルでは、同じシナリオと同じコードを使用します。このチュートリアルは、Data Lake Analytics アプリケーションの作成と実行の作業全体を開発者に体験してもらうことを目的としています。
-> 
-> 
+> アプリケーションが動作していることだけを確認する場合は、「 [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)」を参照すると時間を短縮できます。 このチュートリアルでは、同じシナリオと同じコードを使用します。 このチュートリアルは、Data Lake Analytics アプリケーションの作成と実行の作業全体を開発者に体験してもらうことを目的としています。
+>
+>
 
-## 前提条件:
+## <a name="prerequisites"></a>前提条件:
 * **Visual Studio 2015、Visual Studio 2013 Update 4、または Visual Studio 2012 (Visual C++ インストール済み)**。
-* **Microsoft Azure SDK for .NET バージョン 2.5 以上**。[Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
+* **Microsoft Azure SDK for .NET バージョン 2.5 以上**。  [Web Platform Installer を使用してインストールします](http://www.microsoft.com/web/downloads/platform.aspx)。
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。
-  
+
     Data Lake Tools for Visual Studio がインストールされると、Visual Studio に **[Data Lake]** メニューが表示されます。
-  
+
     ![U-SQL Visual Studio のメニュー](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
-* **Data Lake Analytics と Data Lake Tools for Visual Studio の基本的な知識**。作業を開始するには、次のトピックをご覧ください。
-  
+* **Data Lake Analytics と Data Lake Tools for Visual Studio の基本的な知識**。 作業を開始するには、次のトピックをご覧ください。
+
   * [チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
   * [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
-* **Data Lake Analytics アカウント。** [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)に関するページをご覧ください。
-  
-    Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure ポータル、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。
-* **Data Lake Analytics アカウントへのサンプル データのアップロード。** [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account)に関するページをご覧ください。
-  
-    Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
+* **Data Lake Analytics アカウント。**  [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)に関するセクションを参照してください。
 
-## Azure への接続
+    Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。  そのため、Azure ポータル、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。
+* **Data Lake Analytics アカウントへのサンプル データのアップロード。** 「[サンプル データ ファイルをコピーするには](data-lake-analytics-get-started-portal.md#prepare-source-data)」を参照してください。
+
+    Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。 Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
+
+## <a name="connect-to-azure"></a>Azure への接続
 U-SQL スクリプトをビルドしてテストするには、Azure に接続しておく必要があります。
 
 **Data Lake Analytics に接続するには**
@@ -56,25 +60,25 @@ U-SQL スクリプトをビルドしてテストするには、Azure に接続�
 **Data Lake Analytics アカウントを参照するには**
 
 1. Visual Studio で、**Ctrl + Alt + S** キーを押して、**サーバー エクスプローラー**を開きます。
-2. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
+2. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。 Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。 Studio で Data Lake Analytics アカウントを作成することはできません。 アカウントを作成する場合は、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
 
-## U-SQL アプリケーションの作成
-U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-SQL の詳細については、[U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
+## <a name="develop-u-sql-application"></a>U-SQL アプリケーションの作成
+U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U-SQL の詳細については、 [U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
 
-アプリケーションにはユーザー定義演算子を追加できます。詳細については、「[Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」をご覧ください。
+アプリケーションにはユーザー定義演算子を追加できます。  詳細については、「 [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」をご覧ください。
 
 **Data Lake Analytics ジョブを作成して送信するには**
 
 1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 2. プロジェクトの種類として、[U-SQL プロジェクト] を選択します。
-   
+
     ![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. **[OK]** をクリックします。Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
+3. **[OK]**をクリックします。 Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
 4. 次のスクリプトを Script.usql ファイルに入力します。
-   
+
         // Create a database for easy reuse, so you don't need to read from a file every time.
         CREATE DATABASE IF NOT EXISTS SampleDBTutorials;
-   
+
         // Create a Table valued function. TVF ensures that your jobs fetch data from the weblog file with the correct schema.
         DROP FUNCTION IF EXISTS SampleDBTutorials.dbo.WeblogsView;
         CREATE FUNCTION SampleDBTutorials.dbo.WeblogsView()
@@ -102,7 +106,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
         )
         AS
         BEGIN
-   
+
             @result = EXTRACT
                 s_date DateTime,
                 s_time string,
@@ -127,7 +131,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
             USING Extractors.Text(delimiter:' ');
             RETURN;
         END;
-   
+
         // Create a table for storing referrers and status
         DROP TABLE IF EXISTS SampleDBTutorials.dbo.ReferrersPerDay;
         @weblog = SampleDBTutorials.dbo.WeblogsView();
@@ -137,7 +141,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
             CLUSTERED(Year ASC)
             PARTITIONED BY HASH(Year)
         ) AS
-   
+
         SELECT s_date.Year AS Year,
             s_date.Month AS Month,
             s_date.Day AS Day,
@@ -148,43 +152,43 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
         GROUP BY s_date,
                 cs_referer,
                 sc_status;
-   
-    U-SQL を理解するには、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」をご覧ください。
+
+    U-SQL を理解するには、「 [チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」をご覧ください。    
 5. 新しい U-SQL スクリプトをプロジェクトに追加し、以下を入力してください。
-   
+
         // Query the referrers that ran into errors
         @content =
             SELECT *
             FROM SampleDBTutorials.dbo.ReferrersPerDay
             WHERE sc_status >=400 AND sc_status < 500;
-   
+
         OUTPUT @content
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
-6. 最初の U-SQL スクリプトに戻り、**[送信]** ボタンの横に、Analytics アカウントを指定します。
-7. **ソリューション エクスプローラー**で、**Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。[出力] ウィンドウで結果を確認します。
-8. **ソリューション エクスプローラー**で、**Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
-9. **[Analytics アカウント]** にジョブを実行するアカウントが設定されていることを確認し、**[送信]** をクリックします。送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
-10. ジョブが正常に完了するまで待機します。ジョブが失敗した場合、ソース ファイルがない可能性があります。このチュートリアルの「前提条件」を参照してください。トラブルシューティングの詳細については、[Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関するページをご覧ください。
-    
+6. 最初の U-SQL スクリプトに戻り、 **[送信]** ボタンの横に、Analytics アカウントを指定します。
+7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[Build Script (スクリプトのビルド)]** をクリックします。 [出力] ウィンドウで結果を確認します。
+8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[Submit Script (スクリプトの送信)]** をクリックします。
+9. **[Analytics Account (Analytics アカウント)]** にジョブを実行するアカウントが設定されていることを確認し、**[送信]** をクリックします。 送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
+10. ジョブが正常に完了するまで待機します。  ジョブが失敗した場合、ソース ファイルがない可能性があります。  このチュートリアルの「前提条件」を参照してください。 トラブルシューティングの詳細については、 [Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関するページをご覧ください。
+
     ジョブが完了すると、次の画面が表示されます。
-    
+
     ![Data Lake Analytics による Web サイトのログ (weblogs) の分析](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
-11. 次に、**Script1.usql** の手順 7 ～ 10 を繰り返します。
+11. 次に、 **Script1.usql**の手順 7 ～ 10 を繰り返します。
 
 > [!NOTE]
-> 同じスクリプトで作成または変更された U-SQL テーブルに対する読み取りと書き込みは実行できません。 これが、この例で 2 つのスクリプトを使用する利用です。
-> 
-> 
+> 同じスクリプトで作成または変更された U-SQL テーブルに対する読み取りと書き込みは実行できません。  これが、この例で 2 つのスクリプトを使用する利用です。
+>
+>
 
 **ジョブの出力を表示するには**
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake ストレージ アカウントを右クリックして **[エクスプローラー]** をクリックします。
+1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、使用する Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake Storage アカウントを右クリックして **[エクスプローラー]** をクリックします。
 2. **[サンプル]** をダブルクリックしてフォルダーを開き、**[出力]** をダブルクリックします。
-3. **UnsuccessfulResponsees.log** をダブルクリックします。
+3. **UnsuccessfulResponsees.log**をダブルクリックします。
 4. ジョブのグラフ ビューで出力ファイルをダブルクリックして、出力ファイルに直接移動することもできます。
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下をご覧ください。
 
 * [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
@@ -197,4 +201,8 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
 * [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 * [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

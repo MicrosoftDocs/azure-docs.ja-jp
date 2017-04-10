@@ -1,79 +1,80 @@
 ---
-title: "IIS 認証と Azure Multi-Factor Authentication Server"
+title: "IIS 認証と Azure MFA Server | Microsoft Docs"
 description: "IIS 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
+editor: yossib
 ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/04/2016
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 71ba44c00036b3ed45518f58fa534a1767ab8c34
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="iis-authentication"></a>IIS 認証
-Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure Multi-Factor Authentication Server は、Azure Multi-Factor Authentication に追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインをインストールします。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを 2 要素認証から除外できます。
+# <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
+
+Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを&2; 要素認証から除外できます。
 
 ![IIS 認証](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server でフォームベースの IIS 認証を使用する
-フォームベースの認証を使用する IIS Web アプリケーションを保護するには、IIS Web サーバーに Azure Multi-Factor Authentication Server をインストールし、次の手順で Server を構成します。
+## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でフォームベースの IIS 認証を使用する
+フォームベースの認証を使用する IIS Web アプリケーションをセキュリティで保護するには、IIS Web サーバーに Azure Multi-Factor Authentication Server をインストールし、次の手順に従って Server を構成します。
 
-1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
-2. [フォーム ベース] タブをクリックします。
-3. [追加]  ボタンを選択します。
-4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォーム ベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://localhost/contoso/auth/login.aspx) を入力し、[OK] をクリックします。
-5. すべてのユーザーが Server にインポート済みである、またはインポート予定であり、多要素認証の対象となる場合は、[Multi-Factor Authentication のユーザー照合が必要] ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
-6. ページ変数を自動で検出できなかった場合には、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの [手動で指定]  ボタンをクリックします。
-7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、ログイン ページの URL を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。 [送信 URL] の詳細については、ヘルプ ファイルを参照してください。
-8. 適切な要求の形式を選択します。 これは、ほとんどの Web アプリケーションでは、"POST または GET" に設定されます。
-9. ユーザー名変数、パスワード変数、およびドメイン変数を入力します ([ログイン] ページに表示される場合)。 場合によっては、Web ブラウザーでログイン ページに移動し、ページを右クリックし、[ソースの表示] を選択して、ページ内の入力ボックスの名前を確認する必要があります。
-10. すべてのユーザーがサーバーにインポートされている、またはインポートされ、多要素認証を受ける場合、[Multi-Factor Authentication のユーザー照合が必要] ボックスにチェック マークを付けます。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。 この機能の追加情報については、ヘルプ ファイルを参照してください。
-11. [詳細…] ボタンをクリックして詳細設定を確認します。 詳細設定では、カスタム拒否ページ ファイルの選択、Web サイトに対して成功した認証の Cookie を使用した一定期間のキャッシュ、プライマリ資格情報の認証対象 (Windows ドメイン、LDAP ディレクトリ、または RADIUS サーバー) の選択などを実行できます。 完了したら、[OK] ボタンをクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。 詳細設定の詳細については、ヘルプ ファイルを参照してください。
-12. [OK] ボタンをクリックします。
-13. URL とページの変数が検出または入力されれば、Web サイトのデータがフォーム ベースのパネルに表示されます。
-14. この後の「Azure Multi-Factor Authentication Server の IIS プラグインを有効にする」の項を参照して、IIS 認証の構成を完了してください。
+1. Azure Multi-Factor Authentication Server で、左側のメニューの [IIS 認証] アイコンをクリックします。
+2. **[フォームベース]** タブをクリックします。
+3. **[追加]**をクリックします。
+4. ユーザー名、パスワード、ドメイン変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://localhost/contoso/auth/login.aspx) を入力し、**[OK]** をクリックします。
+5. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
+6. ページ変数を自動的に検出できない場合は、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定]** をクリックします。
+7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、ログイン ページの URL を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。 
+8. 適切な要求の形式を選択します。 ほとんどの Web アプリケーションでは、これは **POST または GET** に設定されます。
+9. ユーザー名変数、パスワード変数、ドメイン変数を入力します ([ログイン] ページに表示される場合)。 入力ボックスの名前を検索するには、Web ブラウザーでログイン ページに移動し、ページを右クリックして **[ソースの表示]** を選択します。
+10. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。 
+11. **[詳細設定]** をクリックして、次の詳細設定を確認します。
 
-## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>統合 Windows 認証と Azure Multi-Factor Authentication Server を使用する
-統合 Windows HTTP 認証を使用する IIS Web アプリケーションを保護するには、IIS Web サーバーに Azure Multi-Factor Authentication Server をインストールし、次の手順で Server を構成します。
+  - カスタム拒否ページ ファイルの選択
+  - Cookie を使用して、Web サイトへの成功した認証を一定期間キャッシュします。
+  - Windows ドメイン、LDAP ディレクトリ、または RADIUS サーバーに対してプライマリ資格情報を認証するかどうかを 選択します。
 
-1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
-2. [HTTP] タブをクリックします。 [フォーム ベース] タブをクリックします。
-3. [追加]  ボタンを選択します。
-4. [基本 URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: http://localhost/owa) を [基本 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+12. **[OK]** をクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。 
+13. **[OK]**をクリックします。
+14. URL とページの変数が検出または入力されたら、フォームベースのパネルにその Web サイトのデータが表示されます。
+
+## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>統合 Windows 認証と Azure Multi-Factor Authentication Server を使用する
+統合 Windows HTTP 認証を使用する IIS Web アプリケーションをセキュリティで保護するには、IIS Web サーバーに Azure MFA Server をインストールし、次の手順で Server を構成します。
+
+1. Azure Multi-Factor Authentication Server で、左側のメニューの [IIS 認証] アイコンをクリックします。
+2. **[HTTP]** タブをクリックします。 
+3. **[追加]**をクリックします。
+4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: http://localhost/owa) を入力し、アプリケーション名 (省略可能) を指定します。 アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 5. 既定値では不十分な場合は、アイドル状態のタイムアウトと最大セッション時間を調整します。
-6. すべてのユーザーが Server にインポート済みである、またはインポート予定であり、多要素認証の対象となる場合は、[Multi-Factor Authentication のユーザー照合が必要] ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。 この機能の追加情報については、ヘルプ ファイルを参照してください。
-7. 必要な場合は、[クッキーのキャッシュ] ボックスをオンにします。
-8. [OK] ボタンをクリックします。
-9. この後の「 [Azure Multi-Factor Authentication Server の IIS プラグインを有効にする](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) 」の項を参照して、IIS 認証の構成を完了してください。
+6. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。 
+7. 必要に応じて、**[Cookie のキャッシュ]** チェック ボックスをオンにします。
+8. **[OK]**をクリックします。
 
-## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
-フォームベースまたは HTTP 認証 URL と設定を構成した後、Azure Multi-Factor Authentication の IIS プラグインを読み込んで IIS で有効になる場所を選択する必要があります。 次の手順に従います。
+## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
+フォームベースまたは HTTP 認証 URL と設定を構成したら、Azure Multi-Factor Authentication の IIS プラグインを読み込んで IIS で有効にする必要がある場所を選択します。 次の手順に従います。
 
-1. IIS 6 で実行する場合は、[ISAPI] タブをクリックし、Web アプリケーションが実行される Web サイト (例: 既定の Web サイト) を選択し、そのサイトに対して Azure Multi-Factor Authentication の ISAPI フィルター プラグインを有効にします。
-2. IIS 7 以降で実行する場合は、[ネイティブ モジュール] タブをクリックし、サーバー、Web サイト、またはアプリケーションを選択して、必要なレベルで IIS プラグインを有効にします。
-3. 画面上部にある [IIS 認証を有効にする] ボックスをクリックします。 これで、Azure Multi-Factor Authentication で、選択された IIS アプリケーションが保護されるようになりました。 ユーザーが Server にインポートされていることを確認してください。 内部 IP アドレスをホワイトリストに登録し、それらの場所から Web サイトにログインする際に2 要素認証を不要にするには、以下の「信頼される IP」のセクションを参照してください。
+1. IIS 6 で実行する場合は、**[ISAPI]** タブをクリックします。 Web アプリケーションが実行される Web サイト (例: 既定の Web サイト) を選択して、そのサイトに対して Azure Multi-Factor Authentication の ISAPI フィルター プラグインを有効にします。
+2. IIS 7 以降で実行する場合は、**[ネイティブ モジュール]** タブをクリックします。 希望のレベルで IIS プラグインを有効にするサーバー、Web サイト、またはアプリケーションを選択します。
+3. 画面上部にある **[IIS 認証を有効にする]** ボックスをクリックします。 これで、Azure Multi-Factor Authentication で、選択された IIS アプリケーションが保護されるようになりました。 ユーザーが Server にインポートされていることを確認してください。
 
 ## <a name="trusted-ips"></a>信頼できる IP
-信頼される IP は、特定の IP アドレスまたはサブネットから発生する Web サイト要求に関して、ユーザーが Azure Multi-Factor Authentication をバイパスできるようにします。 たとえば、社内からのログイン中は、Azure Multi-Factor Authentication からユーザーを除外することもできます。 その場合、社内のサブネットを信頼される IP エントリとして指定します。 信頼できる IP を構成するには、次の手順に従います。
+信頼される IP は、特定の IP アドレスまたはサブネットから発生する Web サイト要求に関して、ユーザーが Azure Multi-Factor Authentication をバイパスできるようにします。 たとえば、社内からのログイン中は、Azure Multi-Factor Authentication からユーザーを除外することもできます。 そのためには、社内のサブネットを信頼できる IP エントリとして指定します。 信頼できる IP を構成するには、次の手順に従います。
 
-1. [IIS 認証] セクションで、[信頼される IP] タブをクリックします。
-2. [追加]  ボタンを選択します。
-3. [信頼される IP の追加] ダイアログ ボックスが表示された場合、[単一 IP]、[IP の範囲] または [サブネット] ラジオ ボタンのいずれかを選択します。
-4. ホワイト リストに登録する IP アドレス、IP アドレスまたはサブネットの範囲を入力します。 サブネットを入力する場合は、適切なネットマスクを選択し、[OK] ボタンをクリックします。 これでホワイト リストが追加されました。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+1. [IIS 認証] セクションで、**[信頼できる IP]** タブをクリックします。
+2. **[追加]**をクリックします。
+3. [信頼できる IP の追加] ダイアログ ボックスが表示されたら、**[単一 IP]**、**[IP 範囲]**、または **[サブネット]** をクリックします。
+4. ホワイト リストに登録する IP アドレス、IP アドレスの範囲、またはサブネットを入力します。 サブネットを入力する場合は、適切なネットマスクを選択し、**[OK]** をクリックします。 これでホワイト リストが追加されました。
 
 

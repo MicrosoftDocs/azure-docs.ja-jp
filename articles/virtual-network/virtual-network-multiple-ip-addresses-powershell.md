@@ -1,260 +1,332 @@
 ---
-title: 仮想マシンの複数の IP アドレス - PowerShell | Microsoft Docs
-description: Azure PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。
+title: "Azure 仮想マシンの複数の IP アドレス - PowerShell | Microsoft Docs"
+description: "PowerShell を使用して Resource Manager で仮想マシンに複数の IP アドレスを割り当てる方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: ''
+manager: timlt
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/05/2016
+ms.date: 03/24/2017
 ms.author: jdial;annahar
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: e37c2d1591fbb4a0fbc198697846e2bce73b085b
+ms.lasthandoff: 03/27/2017
+
 
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines"></a>仮想マシンに複数の IP アドレスを割り当てる
-Azure 仮想マシン (VM) には、1 つ以上ネットワーク インターフェイス (NIC) をアタッチできます。 各 NIC には、1 つ以上のパブリックまたはプライベート IP アドレスを割り当てることができます。 Azure 内の IP アドレスの詳細については、「 [Azure 内の IP アドレス](virtual-network-ip-addresses-overview-arm.md) 」の記事をご覧ください。 この記事では、Azure Resource Manager デプロイメント モデルで Azure PowerShell を使用して、NIC に複数の IP アドレスを割り当てる方法について説明します。
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
-NIC に複数の IP アドレスを割り当てると、VM で次のことが可能になります。
+[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-* 異なる IP アドレスと SSL 証明書を持つ複数のウェブサイトやサービスを、1つのサーバーでホストする。
-* ファイアウォールやロード バランサーのような、ネットワーク仮想アプライアンスとして機能する。
+この記事では、PowerShell を使用して Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法を説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-プレビューに登録するには、 [複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) まで、メールでサブスクリプション ID と使用目的をご連絡ください。
+## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
-## <a name="scenario"></a>シナリオ
-この記事では、ネットワーク インターフェイスに 3 つの IP 構成を関連付けます。
-次のように、3 つのプライベート IP アドレスと 1 つのパブリック IP アドレスが割り当てられた構成が作成され、NIC に割り当てられます。
+以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 変数値は実際の実装に合わせて変更してください。
 
-* IPConfig-1: 動的なプライベート IP アドレス (既定値) と、PIP1 という名前のパブリック IP アドレス リソースからのパブリック IP アドレス。
-* IPConfig-2: 静的なプライベート IP アドレス。パブリック IP アドレスなし。
-* IPConfig-3: 動的なプライベート IP アドレス。パブリック IP アドレスなし。
-  
-    ![イメージ テキスト](./media/virtual-network-multiple-ip-addresses-powershell/OneNIC-3IP.png)
+1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 」の手順を実行してください。
+2. `login-azurermaccount` コマンドを使用してアカウントにログインします。
+3. *myResourceGroup* と *westus* を任意の名前と場所に置き換えます。 リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-このシナリオでは、*RG1* というリソース グループがあり、その中に *VNet1* という VNet と *Subnet1* というサブネットがあると想定しています。 さらに、*VM1* という VM と、これに関連付けられている *VM1-NIC1* というネットワーク インターフェイスがあり、*PIP1* というパブリック IP アドレスがあると想定しています。
+    ```powershell
+    $RgName   = "MyResourceGroup"
+    $Location = "westus"
 
-上記のリソースをまだ作成していない場合は、[こちらの記事](../virtual-machines/virtual-machines-windows-ps-create.md)で作成方法を確認してください。
+    New-AzureRmResourceGroup `
+    -Name $RgName `
+    -Location $Location
+    ```
 
-## <a name="<a-name-=-"create"></a>create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
-1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](../powershell-install-configure.md) 」の手順を実行してください。
-2. 次の $ 変数の "値" を、仮想ネットワークがある Azure の[場所](https://azure.microsoft.com/regions)、[リソースグループ](../resource-group-overview.md#resource-groups)の名前、リソース グループ内にある VNet、NIC の接続先であるサブネット、NIC の名前に変更します。
-   
-        $Location = "westcentralus"
-        $RgName   = "RG1"
-        $VNetName   = "VNet1"
-        $SubnetName = "Subnet1"
-        $NicName     = "VM1-NIC1"
-        $PIP = "PIP"
-   
-    既存の Azure の場所やリソース グループの名前がわからない場合は、次のコマンドを入力します。
-   
-        Get-AzureRmLocation      | Format-Table Location
-        Get-AzureRmResourceGroup | Format-Table ResourceGroupName
-   
-    <a name="subnet"></a>NIC は、既存の Azure 仮想ネットワーク (VNet) 内のサブネットに接続する必要があります。 3 つのコンポーネント (NIC、サブネット、VNet) はすべて同じリージョンと[サブスクリプション](../azure-glossary-cloud-terminology.md#subscription)に存在する必要があります。  VNet の詳細については、「[仮想ネットワークの概要](virtual-networks-overview.md)」の記事を、作成方法については、「[VNet を作成する](virtual-networks-create-vnet-arm-ps.md)」の記事を参照してください。
-   
-    既存の VNet の名前がわからない場合は、次のコマンドを入力し、前の変数の *VNet1* を VNet の名前で置き換えます。
-   
-        Get-AzureRmVirtualNetwork | Format-Table Name
-   
-    返される一覧が空の場合は、VNet を作成する必要があります。 方法については、「 [仮想ネットワークを作成する](virtual-networks-create-vnet-arm-ps.md) 」記事をご覧ください。
-   
-    VNet 内の既存のサブネットの名前を取得するには、次のコマンドを入力し、*Subnet1* をサブネットの名前に置き換えます。
-   
-        $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RgName
-        $VNet.Subnets | Format-Table Name, AddressPrefix
-3. 次のコマンドを入力してサブネットを取得し、変数に代入します。
-   
-        $Subnet = $VNet.Subnets | Where-Object { $_.Name -eq $SubnetName }
-4. <a name="ipconfigs"></a>NIC に割り当てる IP 構成を定義します。 各構成には、1 つの静的または動的なプライベート IP アドレスを割り当てることができ、静的アドレスまたは動的アドレスのパブリック IP アドレス リソースを 1 つ関連付けられます。
-   
-    NIC に関連付ける IP アドレスの数と設定の内容に応じて、構成の数を追加または削除します。
-   
-    **IPConfig 1**
-   
-    *PIP1* の値を、NIC を作成する場所に存在し、別の NIC に関連付けられていない既存のパブリック IP アドレス リソースの名前に変更します。 *RG1* を、パブリック IP アドレス リソースのあるリソース グループの名前に変更します。 *IPConfig-1* を、最初の IP 構成に付ける名前に変更します。 次のコマンドを入力します。
-   
-        $PIP1 = Get-AzureRmPublicIPAddress -Name "PIP1" -ResourceGroupName $RgName
-   
-        $IpConfigName1 = "IPConfig-1"
-        $IPConfig1     = New-AzureRmNetworkInterfaceIpConfig -Name $IPConfigName1 -Subnet $Subnet -PublicIpAddress $PIP1 -Primary
-   
-    *-Primary* スイッチにご注意ください。 NIC に複数の IP 構成を割り当てる場合は、1 つの構成を *プライマリ*として割り当てる必要があります。 既存のパブリック IP アドレス リソースの名前がわからない場合は、次のコマンドを入力します。
-   
-        Get-AzureRMPublicIPAddress |Format-Table Name, Location, IPAddress, IpConfiguration
-   
-    返された出力の **IPConfiguration** 列に値がない場合、パブリック IP アドレス リソースは既存の NIC に関連付けられていないため、使用できます。 リストが空または使用できるパブリック IP アドレス リソースがない場合は、 **New-AzureRmPublicIPAddress** コマンドを使用して作成できます。
-   
-   > [!NOTE]
-   > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。
-   > 
-   > 
-   
-    **IPConfig-2**
-   
-    *IPConfig-2* を、2 番目の IP 構成に付ける名前に変更し、*10.0.0.5* を NIC の割り当て先のサブネットの未使用の有効な IP アドレスに変更します。 次のコマンドを入力します。
-   
-        $IPConfigName2 = "IPConfig-2"
-        $IPAddress = 10.0.0.5
-   
-        $IPConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $IPConfigName2 -Subnet $Subnet -PrivateIpAddress $IPAddress
-   
-    サブネットに割り当てられた IP アドレスの範囲がわからない場合は、次のコマンドを入力します。
-   
-        $VNet.Subnets | Format-Table Name, AddressPrefix
-   
-    **IPConfig-3**
-   
-    *IPConfig-3* を、3 番目の IP 構成に付ける名前に変更し、次のコマンドを入力します。
-   
-        $IPConfigName3 = "IPConfig-3"
-        $IPConfig3 = New-AzureRmNetworkInterfaceIpConfig -Name $IPConfigName3 -Subnet $Subnet
-   
-   > [!NOTE]
-   > 最大 250 個のプライベート IP アドレスを NIC に割り当てることができます。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 詳細については、「 [Azure 制限](../azure-subscription-service-limits.md#networking-limits---azure-resource-manager) 」の記事をご覧ください。
-   > 
-   > 
-5. 前の手順で定義した IP 構成を使用して NIC を作成します。
-   
-        $nic = New-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $RgName -Location $Location -IpConfiguration $IpConfig1,$IpConfig2,$IpConfig3
-6. 「 [VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md) 」記事にある手順に従って VM を作成するときに、NIC をアタッチします。 記事では Windows Server を実行する VM を作成していますが、Linux VM の場合も、選択するオペレーティング システムが異なる以外の手順は同じです。 記事の手順 1～3 を完了します。 記事の手順 4 と 5 をスキップし、手順 6 を完了します。
-   
-   > [!WARNING]
-   > この記事の手順 6 で $nic という名前の変数を変更した場合、またはこの記事の前の手順を完了していない場合は、「VM を作成する」の記事の手順 6 は失敗します。
-   > 
-   > 
-7. 次のコマンドを入力して、Azure DHCP が NIC に割り当てたプライベート IP アドレスと、NIC に割り当てられたパブリック IP アドレスを表示します。
-   
-        $nic.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
-8. <a name="os"></a>すべてのセカンダリ プライベート IP アドレス (前の手順の出力で *[Primary]* 列が「 **False** 」になっている IP アドレス) を、オペレーティング システムの TCP/IP 構成に手動で追加します。 手順 5 で *IPConfig-1* に割り当てられたプライベート IP アドレスは、*プライマリ*の構成になるため、Azure DHCP を介してオペレーティング システムに自動的に割り当てられます。
+4. リソース グループと同じ場所に、仮想ネットワーク (VNet) とサブネットを作成します。
 
-**Windows**
-
-1. コマンド プロンプトで、「 *ipconfig /all*」と入力します。  *プライマリ* の IP アドレス (DHCP 経由) のみを表示できます。
-2. 次に、コマンド プロンプト ウィンドウで「*ncpa.cpl*」と入力します。 これにより、新しいウィンドウが開きます。
-3. **[ローカル エリア接続]** のプロパティを開きます。
-4. インターネット プロトコル バージョン 4 (IPv4) をダブルクリックします。
-5. **[次の IP アドレスを使う]** を選択して、次の値を入力します。
-   
-   * **IP アドレス**: *プライマリ* のプライベート IP アドレスを入力します。
-   * **サブネット マスク**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
-   * **デフォルト ゲートウェイ**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
-   * **[次の DNS サーバーのアドレスを使う]** をクリックし、次の値を入力します。
-     * **優先 DNS サーバー:** 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  使用している場合は、DNS サーバーの IP アドレスを入力します。
-   * **[詳細]** ボタンをクリックし、他の IP アドレスを追加します。 手順 8 にある各セカンダリ プライベート IP アドレスを、プライマリ IP アドレスに指定されたのと同じサブネットの NIC に追加します。
-   * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで、RDP 接続が再確立されます。
-6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示され、DHCP が無効になります。
-
-**Linux (Ubuntu)**
-
-1. ターミナル ウィンドウを開きます。
-2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーになっていない場合は、次のコマンドを使います。
-   
-            sudo -i
-3. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
-   
-   * DHCP の既存の行アイテムを保持します。 これによって、以前と同様にプライマリ IP アドレスが設定されます。
-   * 次のコマンドを使用して、追加の静的 IP アドレスの構成を追加します。
-     
-               cd /etc/network/interfaces.d/
-               ls
-     
-       .cfg ファイルが表示されます。
-4. ファイルを開きます: vi *filename*。
-   
-    ファイルの末尾に次の行が表示されます。
-   
-            auto eth0
-            iface eth0 inet dhcp
-5. このファイルの行の最後に、次の行を追加します。
-   
-            iface eth0 inet static
-            address <your private IP address here>
-6. 次のコマンドを使用して、ファイルの内容を保存します。
-   
-            :wq
-7. 次のコマンドを使用して、ネットワーク インターフェイスをリセットします。
-   
-           sudo ifdown eth0 && sudo ifup eth0
-   
-   > [!IMPORTANT]
-   > リモート接続を使用する場合は、同じ行で ifdown と ifup の両方を実行します。
-   > 
-   > 
-8. 次のコマンドを使用して、IP アドレスがネットワーク インターフェイスに追加されたことを確認します。
-   
-            ip addr list eth0
-   
-    追加した IP アドレスが、リストの一部として表示されます。
-
-**Linux (Redhat、CentOS、その他)**
-
-1. ターミナル ウィンドウを開きます。
-2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーになっていない場合は、次のコマンドを使います。
-   
-            sudo -i
-3. パスワードを入力し、画面の指示に従います。 ルート ユーザーになったら、次のコマンドを使用して、ネットワーク スクリプト フォルダーに移動します。
-   
-            cd /etc/sysconfig/network-scripts
-4. 次のコマンドを使用して、関連する ifcfg ファイルをリストアップします。
-   
-            ls ifcfg-*
-   
-    ファイルのうちの 1 つに *ifcfg-eth0* があります。
-5. 次のコマンドを使用して、*ifcfg-eth0* ファイルをコピーし、名前を *ifcfg-eth0:0* に変更します。
-   
-            cp ifcfg-eth0 ifcfg-eth0:0
-6. 次のコマンドを使って、 *ifcfg-eth0:0* ファイルを編集します。
-   
-            vi ifcfg-eth1
-7. 次のコマンドを使って、ファイル内のデバイスを適切な名前 (ここでは *eth0:0* ) に変更します。
-   
-            DEVICE=eth0:0
-8. *IPADDR = YourPrivateIPAddress* 行を、IP アドレスを反映するように変更します。
-9. 次のコマンドを使用して、ファイルの内容を保存します。
-   
-            :wq
-10. ネットワーク サービスを再起動し、次のコマンドを実行して、変更が成功したかどうかを確認します。
+    ```powershell
     
-            /etc/init.d/network restart
-            Ipconfig
+    # Create a subnet configuration
+    $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+    -Name MySubnet `
+    -AddressPrefix 10.0.0.0/24
+
+    # Create a virtual network
+    $VNet = New-AzureRmVirtualNetwork `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -Name MyVNet `
+    -AddressPrefix 10.0.0.0/16 `
+    -Subnet $subnetConfig
+
+    # Get the subnet object
+    $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
+    ```
+
+5. ネットワーク セキュリティ グループ (NSG) と規則を作成します。 NSG は、受信と送信の規則を使用して VM をセキュリティで保護します。 この場合、受信規則はポート 3389 に作成され、受信リモート デスクトップ接続を許可します。
+
+    ```powershell
     
-    返されるリストに、追加した IP アドレス「 *eth0:0*」が表示されることを確認します。
+    # Create an inbound network security group rule for port 3389
 
-## <a name="<a-name="add"></a>add-ip-addresses-to-an-existing-vm"></a><a name="add"></a>既存の VM に IP アドレスを追加する
-既存の NIC に IP アドレスを追加するには、次の手順を完了します。
+    $NSGRule = New-AzureRmNetworkSecurityRuleConfig `
+    -Name MyNsgRuleRDP `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 1000 `
+    -SourceAddressPrefix * `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389 -Access Allow
+    
+    # Create a network security group
+    $NSG = New-AzureRmNetworkSecurityGroup `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -Name MyNetworkSecurityGroup `
+    -SecurityRules $NSGRule
+    ```
 
-1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](../powershell-install-configure.md) 」の手順を実行してください。
-2. 次の $ 変数の "値" を、IP アドレスを追加する NIC の名前、リソース グループ、NIC の場所に変更します。
-   
-        $NicName     = "RG1-VM1-NIC1"
-        $RgName   = "RG1"
-        $NicLocation = "westcentralus"
-   
+6. NIC のプライマリ IP 構成を定義します。 以前に定義した値を使用しなかった場合は、10.0.0.4 を作成済みのサブネットの有効なアドレスに変更します。 静的 IP アドレスを割り当てる前に、そのアドレスがまだ使用されていないことを確認しておくことをお勧めします。 `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` コマンドを入力します。 このアドレスを使用できる場合、出力で *True* が返されます。 使用できない場合は、出力で *False* が返され、使用可能なアドレスの一覧が返されます。 
+
+    次のコマンドで、**<replace-with-your-unique-name> を使用する一意の DNS 名に置き換えます。** この名前は、Azure リージョン内のすべてのパブリック IP アドレス間で一意である必要があります。 これは省略可能なパラメーターです。 パブリック IP アドレスを使用して VM に接続するだけである場合は削除してかまいません。
+
+    ```powershell
+    
+    # Create a public IP address
+    $PublicIP1 = New-AzureRmPublicIpAddress `
+    -Name "MyPublicIP1" `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -DomainNameLabel <replace-with-your-unique-name> `
+    -AllocationMethod Static
+        
+    #Create an IP configuration with a static private IP address and assign the public IP ddress to it
+    $IpConfigName1 = "IPConfig-1"
+    $IpConfig1     = New-AzureRmNetworkInterfaceIpConfig `
+    -Name $IpConfigName1 `
+    -Subnet $Subnet `
+    -PrivateIpAddress 10.0.0.4 `
+    -PublicIpAddress $PublicIP1 `
+    -Primary
+    ```
+
+    NIC に複数の IP 構成を割り当てるときは、1 つの構成を *-Primary* として割り当てる必要があります。
+
+    > [!NOTE]
+    > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+
+7. NIC のセカンダリ IP 構成を定義します。 構成は、必要に応じて追加または削除できます。 各 IP 構成には、プライベート IP アドレスが割り当てられている必要があります。 必要に応じて、各構成にパブリック IP アドレスを 1 つ割り当てることもできます。
+
+    ```powershell
+    
+    # Create a public IP address
+    $PublicIP2 = New-AzureRmPublicIpAddress `
+    -Name "MyPublicIP2" `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -AllocationMethod Static
+        
+    #Create an IP configuration with a static private IP address and assign the public IP ddress to it
+    $IpConfigName2 = "IPConfig-2"
+    $IpConfig2     = New-AzureRmNetworkInterfaceIpConfig `
+    -Name $IpConfigName2 `
+    -Subnet $Subnet `
+    -PrivateIpAddress 10.0.0.5 `
+    -PublicIpAddress $PublicIP2
+        
+    $IpConfigName3 = "IpConfig-3"
+    $IpConfig3 = New-AzureRmNetworkInterfaceIpConfig `
+    -Name $IPConfigName3 `
+    -Subnet $Subnet `
+    -PrivateIpAddress 10.0.0.6
+    ```
+
+8. NIC を作成し、3 つの IP 構成を関連付けます。
+
+    ```powershell
+    
+    $NIC = New-AzureRmNetworkInterface `
+    -Name MyNIC `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -NetworkSecurityGroupId $NSG.Id `
+    -IpConfiguration $IpConfig1,$IpConfig2,$IpConfig3
+    ```
+
+    >[!NOTE]
+    >この記事では、すべての構成を 1 つの NIC に割り当てていますが、複数の IP 構成を VM に接続された各 NIC に割り当てることもできます。 複数の NIC が接続された VM の作成方法については、[複数の NIC が接続された VM の作成](virtual-network-deploy-multinic-arm-ps.md)に関する記事をご覧ください。
+
+9. 次のコマンドを入力して VM を作成します。
+
+    ```powershell
+    
+    # Define a credential object. When you run these commands, you're prompted to enter a sername and password for the VM you're reating.
+    $cred = Get-Credential
+    
+    # Create a virtual machine configuration
+    $VmConfig = New-AzureRmVMConfig `
+    -VMName MyVM `
+    -VMSize Standard_DS1_v2 | `
+    Set-AzureRmVMOperatingSystem -Windows `
+    -ComputerName MyVM `
+    -Credential $cred | `
+    Set-AzureRmVMSourceImage `
+    -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer `
+    -Skus 2016-Datacenter `
+    -Version latest | `
+    Add-AzureRmVMNetworkInterface `
+    -Id $NIC.Id
+    
+    # Create the VM
+    New-AzureRmVM `
+    -ResourceGroupName $RgName `
+    -Location $Location `
+    -VM $VmConfig
+    ```
+
+10. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載されたご使用のオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
+
+## <a name="add"></a>VM に IP アドレスを追加する
+
+プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#Scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
+
+1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 」の手順を実行してください。
+2. 次の $ 変数の "値" を、IP アドレスを追加する NIC の名前、NIC が属するリソース グループ、NIC の場所に変更します。
+
+    ```powershell
+    $NicName  = "MyNIC"
+    $RgName   = "MyResourceGroup"
+    $Location = "westus"
+    ```
+
     変更する NIC の名前がわからない場合は、次のコマンドを入力してから、前述の変数の値を変更します。
-   
-        Get-AzureRmNetworkInterface | Format-Table Name, ResourceGroupName, Location
+
+    ```powershell
+    Get-AzureRmNetworkInterface | Format-Table Name, ResourceGroupName, Location
+    ```
 3. 変数を作成し、次のコマンドを入力して、既存の NIC に設定します。
-   
-        $nic = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $RgName
-4. この記事の「複数の IP アドレスを持つ VM を作成する」セクションの [手順 3](#subnet) を完了して、NIC の接続先のサブネット ID を取得します。
-5. この記事の「複数の IP アドレスを持つ VM を作成する」セクションの [手順 5](#ipconfigs) の手順に従って、ネットワークに追加する IP 構成を作成します。
-6. *$IPConfigName4* を、前の手順で作成した IP 構成の名前に変更します。 構成を追加するには、次のコマンドを入力します。
-   
-        Add-AzureRmNetworkInterfaceIpConfig -Name $IPConfigName4 -NetworkInterface $nic -Subnet $Subnet1
-7. NIC に IP 構成を設定するには、次のコマンドを入力します。
-   
-        Set-AzureRmNetworkInterface -NetworkInterface $nic
-8. この記事の「複数の IP アドレスを持つ VM を作成する」セクションの [手順 9](#os) の手順に従って、NIC に追加した IP アドレスを、VM オペレーティング システムに追加します。
 
-<!--HONumber=Oct16_HO2-->
+    ```powershell
+    $MyNIC = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $RgName
+    ```
+4. 次のコマンドで、*MyVNet* と *MySubnet* を VNet の名前と NIC の接続先のサブネットの名前にそれぞれ変更します。 VNet オブジェクトと NIC の接続先のサブネット オブジェクトを取得するコマンドを入力します。
 
+    ```powershell
+    $MyVNet = Get-AzureRMVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
+    $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
+    ```
+    VNet 名または NIC の接続先のサブネット名がわからない場合は、次のコマンドを入力します。
+    ```powershell
+    $MyNIC.IpConfigurations
+    ```
+    出力で、次の出力例のようなテキストを探します。
+    
+    ```
+    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
+    ```
+    この出力では、*MyVnet* が VNet、*MySubnet* が NIC の接続先のサブネットです。
+
+5. 要件に基づいて、以下のいずれかのセクションの手順を実行します。
+
+    **プライベート IP アドレスを追加する**
+
+    NIC にプライベート IP アドレスを追加するには、IP 構成を作成する必要があります。 次のコマンドでは、静的 IP アドレス 10.0.0.7 が割り当てられた構成を作成します。 静的 IP アドレスを指定するときは、サブネットの未使用のアドレスを指定する必要があります。 まず `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` コマンドを入力してアドレスをテストし、このアドレスが使用可能かどうかを確認することをお勧めします。 この IP アドレスを使用できる場合、出力で *True* が返されます。 使用できない場合は、出力で *False* が返され、使用可能なアドレスの一覧が返されます。
+
+    ```powershell
+    Add-AzureRmNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
+    $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
+    ```
+    一意の構成名とプライベート IP アドレス (静的 IP アドレスを使用する構成の場合) を使用して、必要な数だけ構成を作成します。
+
+    この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載された、お使いのオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。
+
+    **パブリック IP アドレスを追加する**
+
+    パブリック IP アドレスを追加するには、新しい IP 構成または既存の IP 構成にパブリック IP アドレス リソースを関連付けます。 必要に応じて、以下のいずれかのセクションの手順を実行します。
+
+    > [!NOTE]
+    > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+    >
+
+    - **パブリック IP アドレス リソースを新しい IP 構成に関連付ける**
+    
+        すべての IP 構成にプライベート IP アドレスが必要であるため、パブリック IP アドレスを新しい IP 構成に追加するときは、必ずプライベート IP アドレスも追加する必要があります。 既存のパブリック IP アドレス リソースを追加することも、新しいリソースを作成することもできます。 新しいパブリック IP アドレス リソースを作成するには、次のコマンドを入力します。
+    
+        ```powershell
+        $myPublicIp3 = New-AzureRmPublicIpAddress `
+        -Name "myPublicIp3" `
+        -ResourceGroupName $RgName `
+        -Location $Location `
+        -AllocationMethod Static
+        ```
+
+         静的プライベート IP アドレスと、関連付けられた *myPublicIp3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
+
+        ```powershell
+        Add-AzureRmNetworkInterfaceIpConfig `
+        -Name IPConfig-4 `
+        -NetworkInterface $myNIC `
+        -Subnet $Subnet `
+        -PrivateIpAddress 10.0.0.7 `
+        -PublicIpAddress $myPublicIp3
+        ```
+
+    - **パブリック IP アドレス リソースを既存の IP 構成に関連付ける**
+
+        パブリック IP アドレス リソースは、このリソースがまだ関連付けられていない IP 構成にのみ関連付けることができます。 IP 構成にパブリック IP アドレスが関連付けられているかどうかを確認するには、次のコマンドを入力します。
+
+        ```powershell
+        $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
+        ```
+
+        次のような出力が表示されます。
+
+        ```        
+        Name       PrivateIpAddress PublicIpAddress                                           Primary
+        
+        IPConfig-1 10.0.0.4         Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress    True
+        IPConfig-2 10.0.0.5         Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress   False
+        IpConfig-3 10.0.0.6                                                                     False
+        ```
+
+        *IpConfig-3* の **PublicIpAddress** 列が空白であるため、現在、この構成にはパブリック IP アドレス リソースは関連付けられていません。 IpConfig-3 に既存のパブリック IP アドレス リソースを追加することも、次のコマンドを入力して新しいリソースを作成することもできます。
+
+        ```powershell
+        $MyPublicIp3 = New-AzureRmPublicIpAddress `
+        -Name "MyPublicIp3" `
+        -ResourceGroupName $RgName `
+        -Location $Location -AllocationMethod Static
+        ```
+
+        パブリック IP アドレス リソースを、*IPConfig-3* という名前の既存の IP 構成に関連付けるには、次のコマンドを入力します。
+    
+        ```powershell
+        Set-AzureRmNetworkInterfaceIpConfig `
+        -Name IpConfig-3 `
+        -NetworkInterface $mynic `
+        -Subnet $Subnet `
+        -PublicIpAddress $myPublicIp3
+        ```
+
+6. 次のコマンドを入力して、新しい IP 構成で NIC を設定します。
+
+    ```powershell
+    Set-AzureRmNetworkInterface -NetworkInterface $MyNIC
+    ```
+
+7. 次のコマンドを入力して、NIC に割り当てられたプライベート IP アドレスとパブリック IP アドレス リソースを表示します。
+
+    ```powershell   
+    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
+    ```
+8. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載された、お使いのオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
+
+[!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
 

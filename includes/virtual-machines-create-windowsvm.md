@@ -1,28 +1,56 @@
-1. [クラシック ポータル](http://manage.windowsazure.com)にサインインします。 
-2. ウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
-3. **[Compute]** で、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
-   
-    ![Navigate to From Gallery in the Command Bar](./media/virtual-machines-create-WindowsVM/fromgallery.png)
-4. この操作を行った後の最初の画面の **[イメージの選択]** で、利用できるイメージの一覧から仮想マシンのイメージを選択できますイメージは、ギャラリーから選択することも、アップロード済みのイメージおよびディスクの中から選択することもできます。利用できるイメージは、使用しているサブスクリプションによって異なる場合があります。
-5. 2 番目の画面では、コンピューターの名前、サイズ、管理ユーザーの名前とパスワードを選択します。アプリやワークロードの実行に必要な階層とサイズを選択してください。いくつかのヒントを次に示します。
-   
-   * **[仮想マシン名]** には、文字、数字、ハイフンのみを使用できます。また、仮想マシン名は、文字で始まり、文字または数字で終わる必要があります。
-   * **[新しいユーザー名]** とは、サーバーの管理に使用する管理アカウントの名前です。パスワードは、8 ～ 123 文字で指定する必要があります。また、小文字、大文字、数字、特殊文字のうち、少なくとも 3 つを含める必要があります。**仮想マシンに接続してログオンする際に、このユーザー名とパスワードが必要になります。**
-   * 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。
-6. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。いくつかのヒントを次に示します。
-   
-   * **[クラウド サービス DNS 名]** は、仮想マシンへの接続に使用する URI の一部となるグルーバル DNS 名です。クラウド サービス名は Azure 上で一意な名前にする必要があるため、独自のクラウド サービス名を考えてください。クラウド サービスは、[複数の仮想マシン](../articles/virtual-machines/virtual-machines-windows-classic-connect-vms.md)を使用するシナリオで重要となります。
-   * **[リージョン/アフィニティ グループ/仮想ネットワーク]** では、現在の場所に対応するリージョンを指定します。代わりに仮想ネットワークを指定することもできます。
-   * 仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する**必要があります**。仮想マシンの作成後に VM を仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
-   * エンドポイントの構成の詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
-7. 4 番目の構成画面では、VM エージェントをインストールし、使用可能な一部の拡張機能を構成できます。
-   
-   > [!NOTE]
-   > VM エージェントには、仮想マシンの操作と管理に役立つ拡張機能をインストールするための環境が用意されています。詳細については、「[Azure VM エージェントおよび VM 拡張機能](../articles/virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
-   > 
-   > 
-8. 仮想マシンが作成されると、旧ポータルの **[Virtual Machines]** に新しい仮想マシンが一覧表示されます。対応するクラウド サービスとストレージ アカウントも作成され、それぞれのセクションに表示されます。仮想マシンとクラウド サービスが自動的に起動し、その状態がいずれも "**実行中**" として表示されます。
-   
-    ![VM エージェントと仮想マシンのエンドポイントを構成します](./media/virtual-machines-create-WindowsVM/vmcreated.png)
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-<!---HONumber=AcomDC_0608_2016-->
+2. 左上の **[新規] > [コンピューティング] > [Windows Server 2016 Datacenter]** をクリックします。
+
+    ![ポータルで Azure VM イメージに移動する](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
+
+3. [Windows Server 2016 Datacenter] で、クラシック デプロイ モデルを選択します。 [作成] をクリックします。
+
+    ![ポータルで使用できる Azure VM イメージを示すスクリーンショット](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
+
+## <a name="1-basics-blade"></a>1.[基本] ブレード
+
+[基本] ブレードでは、仮想マシンの管理情報を入力する必要があります。
+
+1. 仮想マシンの**名前**を入力します。 この例では、_HeroVM_ が仮想マシンの名前です。 名前は 1 ～ 15 文字とし、特殊文字を含めることはできません。
+
+2. VM にローカル アカウントを作成する際に使用する**ユーザー名**と強力な**パスワード**を入力します。 VM へのサインインと VM の管理にはローカル アカウントを使用します。 この例では、_azureuser_ がユーザー名です。
+
+ パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。 [ユーザー名とパスワードの要件](../articles/virtual-machines/windows/faq.md)に関するページで詳細を確認してください。
+
+3. **サブスクリプション**は省略可能です。 一般的な設定の 1 つは "従量料金制" です。
+
+4. 既存の**リソース グループ**を選択するか、新しいリソース グループの名前を入力します。 この例では、_HeroVMRG_ がリソース グループの名前です。
+
+5. VM を実行する Azure データセンターの**場所**を選択します。 この例では、**米国東部** が場所です。
+
+6. 完了したら、**[次へ]** をクリックして次のブレードに進みます。
+
+    ![Screenshot that shows the settings on the Basics blade for configuring an Azure VM](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
+
+## <a name="2-size-blade"></a>2.[サイズ] ブレード
+
+[サイズ] ブレードには、VM の構成の詳細が示されます。OS、プロセッサ数、ディスク ストレージの種類、毎月の推定利用コストなどのさまざまな選択肢が表示されます。  
+
+VM サイズを選択し、**[選択]** をクリックして続行します。 この例では、_DS1_\__V2 Standard_ が VM サイズです。
+
+  ![Screenshot of the Size blade that shows the Azure VM sizes that you can select](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
+
+
+## <a name="3-settings-blade"></a>手順 3.[設定] ブレード
+
+[設定] ブレードでは、ストレージとネットワークのオプションを指定します。 既定の設定をそのまま使用できます。 必要に応じて適切なエントリが作成されます。
+
+Azure Premium Storage をサポートする仮想マシン サイズを選択した場合は、[ディスクの種類] の [Premium (SSD)] を選択することで、Premium Storage を試用できます。
+
+変更が済んだら **[OK]**をクリックします。
+
+## <a name="4-summary-blade"></a>4.[概要] ブレード
+
+[概要] ブレードには、前の各ブレードで指定した設定が表示されます。 イメージを作成する準備が完了したら、**[OK]** をクリックします。
+
+ ![仮想マシンの指定した設定を示す [概要] ブレードのレポート](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
+
+仮想マシンが作成されると、ポータルの **[すべてのリソース]** に新しい仮想マシンが表示され、ダッシュボードに仮想マシンのタイルが表示されます。 対応するクラウド サービスとストレージ アカウントも作成され、表示されます。 仮想マシンとクラウド サービスが自動的に起動し、その状態がいずれも " **実行中**" として表示されます。
+
+ ![VM エージェントと仮想マシンのエンドポイントを構成します](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)

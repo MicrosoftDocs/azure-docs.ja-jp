@@ -10,7 +10,7 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-powershell
 articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 -->
-コストを節約するために、オンデマンドでコンピューティング リソースを一時停止および再開できます。たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。データベースが一時停止されている間は、DWU に対して課金されません。
+コストを節約するために、オンデマンドでコンピューティング リソースを一時停止および再開できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 データベースが一時停止されている間は、DWU に対して課金されません。
 
 データベースを一時停止している場合
 
@@ -19,4 +19,8 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.m
 * データ ストレージは影響を受けず、データはそのまま残ります。 
 * SQL Data Warehouse では、実行中またはキューに格納されたすべての操作を取り消します。
 
-<!---HONumber=AcomDC_0427_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

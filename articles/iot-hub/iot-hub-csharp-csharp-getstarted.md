@@ -1,6 +1,6 @@
 ---
-title: "C# で Azure IoT Hub を使用する方法 | Microsoft Docs"
-description: "C# で Azure IoT Hub を使用する方法についてわかりやすく説明します。 Azure IoT Hub と C#、Microsoft Azure IoT SDK を使用して IoT ソリューションを実装します。"
+title: "Azure IoT Hub の使用 (.NET) | Microsoft Docs"
+description: "Azure IoT SDK for .NET を使用して Azure IoT Hub デバイスでデバイスからクラウドへのメッセージを送信する方法。 メッセージを送信するシミュレーション対象デバイス アプリ、ID レジストリにデバイスを登録するサービス アプリ、およびデバイスからクラウドへのメッセージを IoT Hub から読み取るサービス アプリを作成します。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,52 +12,54 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2016
+ms.date: 03/16/2017
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97c5d3c3e78ce6ec23f260bd26a0b41dc7c7197a
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 969e6bd55ca69e293f13b66f1a51f1d5fd1996b7
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-net"></a>Azure IoT Hub for .NET の使用
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>.NET を使用してシミュレーション対象デバイスを IoT Hub に接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
+このチュートリアルの最後には、次の&3; つの .NET コンソール アプリが完成します。
 
-* **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
-* **ReadDeviceToCloudMessages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、AMQP プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
+* **ReadDeviceToCloudMessages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
+* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して&1; 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
-> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 SDK については、「[IoT Hub SDK][lnk-hub-sdks]」を参照してください。
+> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
 > 
 > 
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* Visual Studio 2015 または Visual Studio 2017。
+* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-IoT Hub の作成は以上です。以降の作業に必要なホスト名と接続文字列が得られました。
+IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
 
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Windows コンソール アプリケーションを作成します。 IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]のデバイス ID レジストリに関するセクションを参照してください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する .NET コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateDeviceIdentity**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを新しいソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateDeviceIdentity** という名前を付け、ソリューションに **IoTHubGetStarted** という名前を付けます。
    
     ![New Visual C# Windows Classic Desktop project][10]
 2. ソリューション エクスプローラーで **CreateDeviceIdentity** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
    
-    ![Nuget Package Manager window][11]
+    ![NuGet Package Manager window][11]
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Common.Exceptions;
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成した IoT Hub の接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -78,7 +80,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
    
-    これは、**myFirstDevice** という ID でデバイス ID を作成するメソッドです  (そのデバイス ID が既にレジストリに存在する場合は、単にその既存のデバイス情報を取得します)。続けてその ID のプライマリ キーが表示されます。 シミュレーション対象デバイスでこのキーを使用し、IoT ハブに接続します。
+    これは、**myFirstDevice** という ID でデバイス ID を作成するメソッドです  (そのデバイス ID が既に ID レジストリに存在する場合は、単にその既存のデバイス情報を取得します)。続けてその ID のプライマリ キーが表示されます。 シミュレーション対象デバイス アプリでこのキーを使用し、IoT Hub に接続します。
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -89,28 +91,28 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
     ![Device key generated by the application][12]
 
 > [!NOTE]
-> IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]を参照してください。
+> IoT Hub の ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID のみが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。
 > 
 > 
 
-## <a name="receive-devicetocloud-messages"></a>デバイスからクラウドへのメッセージの受信
-このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み込む Windows コンソール アプリケーションを作成します。 IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[Azure Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルをご覧ください。 Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。 このチュートリアルは、IoT Hub の Event Hub 対応エンドポイントで応用できます。
+## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
+このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み取る .NET コンソール アプリケーションを作成します。 IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[Azure Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。 Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。 このチュートリアルは、IoT Hub の Event Hub 対応エンドポイントで応用できます。
 
 > [!NOTE]
 > Event Hub 対応エンドポイントは、常に、デバイスからクラウドへのメッセージを読み取るために AMQP プロトコルを使用します。
 > 
 > 
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **ReadDeviceToCloudMessages**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **ReadDeviceToCloudMessages**という名前を付けます。
    
-    ![New Visual C# Windows Classic Desktop project][10]
+    ![New Visual C# Windows Classic Desktop project][10a]
 2. ソリューション エクスプローラーで **ReadDeviceToCloudMessages** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。 この手順により、[Azure Service Bus][lnk-servicebus-nuget] のダウンロードとインストールが実行され、その参照とすべての依存関係が追加されます。 このパッケージは、アプリケーションが IoT Hub でイベント ハブと互換性のあるエンドポイントに接続できるようにします。
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.ServiceBus.Messaging;
         using System.Threading;
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、「IoT Hub の作成」セクションで作成した IoT Hub の接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、「IoT Hub の作成」セクションで作成したハブの接続文字列に置き換えてください。
    
         static string connectionString = "{iothub connection string}";
         static string iotHubD2cEndpoint = "messages/events";
@@ -156,13 +158,13 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
         Task.WaitAll(tasks.ToArray());
 
 ## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
-このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Windows コンソール アプリを作成します。
+このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリを作成します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **SimulatedDevice**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **SimulatedDevice**という名前を付けます。
    
-    ![New Visual C# Windows Classic Desktop project][10]
+    ![New Visual C# Windows Classic Desktop project][10b]
 2. ソリューション エクスプローラーで **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。その後、**[インストール]** を選択し、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT - Device SDK Nuget package][lnk-device-nuget] パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。その後、**[インストール]** を選択し、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK NuGet パッケージ][lnk-device-nuget]への参照とその依存関係が追加されます。
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices.Client;
@@ -194,47 +196,47 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
    
-                Task.Delay(1000).Wait();
+                await Task.Delay(1000);
             }
         }
    
-    このメソッドは、デバイスからクラウドへの新しいメッセージを 1 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
+    このメソッドは、デバイスからクラウドへの新しいメッセージを&1; 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         Console.WriteLine("Simulated device\n");
-        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
+        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
    
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
    
-   既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。 HTTP プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。 HTTP プロトコルを使用する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
+   既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。 MQTT または HTTP プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。 HTTP プロトコルを使用する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
 
-このチュートリアルでは、IoT Hub デバイス クライアントを作成する手順について説明します。 Visual Studio 拡張機能である [Connected Service for Azure IoT Hub][lnk-connected-service] を使用して、デバイス クライアント アプリケーションに必要なコードを追加することもできます。
+このチュートリアルでは、IoT Hub シミュレーション対象デバイス アプリを作成する手順について説明します。 Visual Studio 拡張機能である [Connected Service for Azure IoT Hub][lnk-connected-service] を使用して、デバイス アプリに必要なコードを追加することもできます。
 
 > [!NOTE]
-> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害処理)][lnk-transient-faults]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 > 
 > 
 
-## <a name="run-the-applications"></a>アプリケーションの実行
-これで、アプリケーションを実行する準備が整いました。
+## <a name="run-the-apps"></a>アプリの実行
+これで、アプリを実行する準備が整いました。
 
 1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**をクリックします。 **[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトのアクションとして、どちらも **[開始]** を選択します。
    
     ![Startup project properties][41]
-2. **F5** キーを押して両方のアプリケーションを実行します。 シミュレーション対象デバイスから IoT Hub に送信されたメッセージは、 **SimulatedDevice** アプリのコンソール出力に表示されます。 IoT Hub が受信したメッセージは、 **ReadDeviceToCloudMessages** アプリのコンソール出力に表示されます。
+2. **F5** キーを押して両方のアプリケーションを実行します。 シミュレーション対象デバイス アプリから IoT Hub に送信されたメッセージは、**SimulatedDevice** アプリのコンソール出力に表示されます。 IoT Hub が受信したメッセージは、 **ReadDeviceToCloudMessages** アプリのコンソール出力に表示されます。
    
     ![Console output from apps][42]
-3. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
+3. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、IoT Hub に送信されたメッセージ数が表示されます。
    
     ![Azure portal Usage tile][43]
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Portal で IoT Hub を構成し、ハブの ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージをハブに送信できるようにするために、このデバイス ID を使用しました。 また、ハブで受け取ったメッセージを表示するアプリを作成しました。 
+このチュートリアルでは、Azure Portal で IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。 
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
-* [デバイスの接続][lnk-connect-device]
+* [デバイスを接続する][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
 * [IoT Gateway SDK の概要][lnk-gateway-SDK]
 
@@ -245,6 +247,8 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
 [10]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp1.png
+[10a]: ./media/iot-hub-csharp-csharp-getstarted/create-receive-csharp1.png
+[10b]: ./media/iot-hub-csharp-csharp-getstarted/create-device-csharp1.png
 [11]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp2.png
 [12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
 
@@ -264,12 +268,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

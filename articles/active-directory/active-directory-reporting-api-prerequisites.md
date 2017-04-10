@@ -1,12 +1,12 @@
 ---
-title: Azure AD Reporting API にアクセスするための前提条件。 | Microsoft Docs
-description: Azure AD Reporting API にアクセスするための前提条件の詳細
+title: "Azure AD Reporting API にアクセスするための前提条件。  | Microsoft Docs"
+description: "Azure AD Reporting API にアクセスするための前提条件の詳細"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
+
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Azure AD Reporting API にアクセスするための前提条件
@@ -111,7 +115,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
    
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites/12.png) 
 
-### <a name="get-the-application's-client-id"></a>アプリケーションのクライアント ID の取得
+### <a name="get-the-applications-client-id"></a>アプリケーションのクライアント ID の取得
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites/01.png) 
@@ -129,7 +133,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
    
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites/13.png)
 
-### <a name="get-the-application's-client-secret"></a>アプリケーションのクライアント シークレットの取得
+### <a name="get-the-applications-client-secret"></a>アプリケーションのクライアント シークレットの取得
 アプリケーションのクライアント シークレットを取得するには、新しいキーを作成し、その新しいキーを保存するときにその値を保存する必要があります。これは、後でこの値を取得することができないためです。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
@@ -161,6 +165,9 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 * プログラムによる方法で Azure AD Reporting API からデータにアクセスしますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を確認してください。
 * Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

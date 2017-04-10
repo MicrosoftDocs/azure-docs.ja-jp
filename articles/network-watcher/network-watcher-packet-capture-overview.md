@@ -1,0 +1,79 @@
+---
+title: "Azure Network Watcher のパケット キャプチャの概要 | Microsoft Docs"
+description: "このページでは、Network Watcher のパケット キャプチャ機能の概要を説明します。"
+services: network-watcher
+documentationcenter: na
+author: georgewallace
+manager: timlt
+editor: 
+ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/22/2017
+ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: 211c33ceb8e3b9adc9ad75cf18aa459ad5523c18
+ms.openlocfilehash: 1478e5bb08b29e083861b63e4ca999a38fab8452
+ms.lasthandoff: 02/22/2017
+
+
+---
+
+# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure Network Watcher の可変パケット キャプチャの概要
+
+Network Watcher の可変パケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
+パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。 監視したいトラフィックを確実にキャプチャするために、キャプチャ セッション用のフィルターが用意されています。 フィルターは 5 組 (プロトコル、ローカル IP アドレス、リモート IP アドレス、ローカル ポート、リモート ポート) の情報に基づいています。 キャプチャしたデータは、ローカル ディスクまたはストレージ BLOB に格納されます。
+
+![パケット キャプチャの概要][1]
+
+> [!IMPORTANT]
+> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-windows-extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/virtual-machines-linux-extensions-nwa.md)に関する記事を参照してください。
+
+キャプチャする情報を減らし、必要な情報だけを取得するために、パケット キャプチャ セッション用の次のオプションを利用できます。
+
+**キャプチャの構成**
+
+|プロパティ|説明|
+|---|---|
+|**[1 パケットあたりの最大バイト数] (バイト単位)** | 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。 IPv4 ヘッダーだけが必要な場合、ここでは 60 を指定してください。 |
+|**[1 セッションあたりの最大バイト数] (バイト単位)** | キャプチャされるバイト数の合計値です。この値に達すると、セッションが終了します。|
+|**[制限時間 (秒)]** | パケット キャプチャ セッションに時間制限を設定します。 既定値は 18,000 秒 (5 時間) です。|
+
+**フィルター処理 (省略可能)**
+
+|プロパティ|Description|
+|---|---|
+|**プロトコル** | パケット キャプチャをフィルター処理するためのプロトコルです。 使用可能な値は、[TCP]、[UDP]、[すべて] のいずれかです。|
+|**[ローカル IP アドレス]** | この値でパケット キャプチャをフィルター処理すると、ローカル IP アドレスがこのフィルターの値と一致するパケットだけが出力されます。|
+|**[ローカル ポート]** | この値でパケット キャプチャをフィルター処理すると、ローカル ポートがこのフィルターの値と一致するパケットだけが出力されます。|
+|**[リモート IP アドレス]** | この値でパケット キャプチャをフィルター処理すると、リモート IP アドレスがこのフィルターの値と一致するパケットだけが出力されます。|
+|**[リモート ポート]** | この値でパケット キャプチャをフィルター処理すると、リモート ポートがこのフィルターの値と一致するパケットだけが出力されます。|
+
+### <a name="next-steps"></a>次のステップ
+
+ポータルを使用する場合は [Azure Portal でのパケット キャプチャの管理](network-watcher-packet-capture-manage-portal.md)に関するページ、PowerShell を使用する場合は [PowerShell でのパケット キャプチャの管理](network-watcher-packet-capture-manage-powershell.md)に関するページを参照して、パケット キャプチャを管理する方法を確認する
+
+[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートに基づいて事前にパケット キャプチャを作成する方法を確認する
+
+<!--Image references-->
+[1]: ./media/network-watcher-packet-capture-overview/figure1.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+

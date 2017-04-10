@@ -1,9 +1,25 @@
 ---
+title: "Azure Security Center のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Azure リソースのセキュリティの監視とポリシーの管理の設定方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントを提供します。"
+services: security-center
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Security Center Documentation
+ms.assetid: 
+ms.service: security-center
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 75d2819ed673b6283221d1e09507dd9f18a1bc99
+ms.openlocfilehash: 324192324831cbda13f23b784b37efcfd14808d3
 
-Security Center helps you prevent, detect, and respond to threats with increased visibility into and control over the security of your Azure resources. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a broad ecosystem of security solutions.
+---
+# <a name="security-center-documentation"></a>Security Center のドキュメント
+
+Security Center を使用して、Azure リソースのセキュリティの可視化と制御を行う方法について説明します。  チュートリアルや REST API リファレンスなどのドキュメントでは、セキュリティ ソリューションの広範なエコシステムと連動する、セキュリティの監視とポリシーの管理を設定する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ Security Center helps you prevent, detect, and respond to threats with increased
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Security Center</h3>
+                        <h3>Azure Security Center の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +41,7 @@ Security Center helps you prevent, detect, and respond to threats with increased
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=security-center">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=security-center">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +51,7 @@ Security Center helps you prevent, detect, and respond to threats with increased
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Security Center Video Library</h3>
+                        <h3>Azure Security Center のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ Security Center helps you prevent, detect, and respond to threats with increased
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Security Center</h3>
+                        <h3>Azure Security Center の概要</h3>
                     </div>
                 </div>
             </div>
@@ -63,17 +79,27 @@ Security Center helps you prevent, detect, and respond to threats with increased
 </ul>
 
 ---
-## Reference
 
-### REST
-[Security Center REST API Reference](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100))
-
----
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security-center.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Security Center Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+</ul>    
+
+
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

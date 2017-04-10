@@ -2,27 +2,32 @@
 title: Deploy templates with PowerShell in Azure Stack | Microsoft Docs
 description: Learn how to deploy a virtual machine using a Resource Manager template and PowerShell.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: heathl17
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 12fe32d7-0a1a-4c02-835d-7b97f151ed0f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/3/2016
 ms.author: helaw
+translationtype: Human Translation
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: c5ac70a25e3b80a50c01464895c400f83d1d124d
+ms.lasthandoff: 03/04/2017
+
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-powershell"></a>Deploy templates in Azure Stack using PowerShell
 Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack POC.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Run AzureRM PowerShell cmdlets
-In this example, you run a script to deploy a virtual machine to Azure Stack POC using a Resource Manager template.  Before proceeding, ensure you have [installed and configured PowerShell](azure-stack-connect-powershell.md)  
+In this example, you run a script to deploy a virtual machine to Azure Stack POC using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure.md)  
 
-The VHD used in this example template is a default marketplace image (WindowsServer-2012-R2-Datacenter).
+The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
 
 1. Go to <http://aka.ms/AzureStackGitHub>, search for the **101-simple-windows-vm** template, and save it to the following location: c:\\templates\\azuredeploy-101-simple-windows-vm.json.
 2. In PowerShell, run the following deployment script. Replace *username* and *password* with your username and password. On subsequent uses, increment the value for the *$myNum* parameter to prevent overwriting your deployment.
@@ -50,13 +55,11 @@ The VHD used in this example template is a default marketplace image (WindowsSer
    ```
 3. Open the Azure Stack portal, click **Browse**, click **Virtual machines**, and look for your new virtual machine (*myDeployment001*).
 
-## <a name="video-example:-hybrid-virtual-machine-deployment"></a>Video example: hybrid virtual machine deployment
-[!VIDEO https://channel9.msdn.com/Blogs/azurestack/Microsoft-Azure-Stack-TP1-POC-Hybrid-VM-Deployment/player]
+## <a name="video-example-hybrid-virtual-machine-deployment"></a>Video example: hybrid virtual machine deployment
+>[!VIDEO https://channel9.msdn.com/Blogs/azurestack/Microsoft-Azure-Stack-TP1-POC-Hybrid-VM-Deployment/player]
 
 
 ## <a name="next-steps"></a>Next steps
 [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

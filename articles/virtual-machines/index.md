@@ -1,14 +1,25 @@
 ---
+title: "Azure Virtual Machines のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Windows または Linux 仮想マシンを作成、デプロイ、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: virtual-machines
+author: carolz
+manager: carolz
 layout: LandingPage
-toc_rel: breadcrumb.json
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
-ms.openlocfilehash: ca5d39641a251dcbc650907d08ce11c6c7124f66
+ms.sourcegitcommit: ff1cc256ff9ba84504a9df16c33888a920f62cd6
+ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
 
 ---
-#<a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
+# <a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
 
-Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし仮想マシンのメンテナンス &mdash; つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。
+Azure 仮想マシンの作成方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Windows と Linux 仮想マシンのほか、複雑な VM テンプレートを作成してデプロイする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -49,32 +60,10 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
     </li>    
 </ul>
 
----
-
-##<a name="reference"></a>リファレンス
-
-###<a name="net"></a>.NET 
-[Virtual Machines に関する管理リファレンス API](/dotnet/api/) 
-
-###<a name="rest"></a>REST () 
-[Virtual Machine REST API リファレンス](/rest/api/) 
-
-###<a name="azure-cli"></a>Azure CLI 
-[Virtual Machines 向け Azure CLI](/cli/azure/)
-
-###<a name="java"></a>Java 
-[Virtual Machines の PowerShell コマンドレット](/java/api/)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
-        <div class="img"></div>
-        <div class="text">
-仮想マシンのドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

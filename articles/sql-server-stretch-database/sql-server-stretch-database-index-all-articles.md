@@ -1,12 +1,12 @@
 ---
-title: SQL Server Stretch Database サービスに関するすべてのトピック | Microsoft Docs
-description: http://azure.microsoft.com/documentation/articles/ にある SQL Server Stretch Database という名前の Azure サービスに関するすべてのトピックの一覧 (タイトルと説明)。
+title: "SQL Server Stretch Database サービスに関するすべてのトピック | Microsoft Docs"
+description: "http://azure.microsoft.com/documentation/articles/ にある SQL Server Stretch Database という名前の Azure サービスに関するすべてのトピックの一覧 (タイトルと説明)。"
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
-
+ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
 ms.service: sql-server-stretch-database
 ms.workload: sql-server-stretch-database
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
+
 
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database サービスに関するすべてのトピック
@@ -54,6 +58,9 @@ ms.author: DouglasL
 | 14 |[Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md) |Stretch が有効なデータベースをバックアップする方法について説明します。 |
 | 15 |[Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md) |Stretch が有効なデータベースを復元する方法について説明します。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

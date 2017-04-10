@@ -1,13 +1,13 @@
 ---
-title: How to add multiple VPN gateway Site-to-Site connections to a virtual network for the Resource Manager deployment model using the Azure portal | Microsoft Docs
-description: Add multi-site S2S connections to a VPN gateway that has an existing connection
+title: "Azure Portal を使用して、Resource Manager デプロイメント モデルの仮想ネットワークに複数のVPN ゲートウェイ サイト間接続を追加する方法 | Microsoft Docs"
+description: "マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,82 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
+
 
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Add a Site-to-Site connection to a VNet with an existing VPN gateway connection
+# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 > [!div class="op_single_selector"]
-> * [Resource Manager - Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [Classic - PowerShell](vpn-gateway-multi-site.md)
+> * [Resource Manager - ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [クラシック - PowerShell](vpn-gateway-multi-site.md)
 > 
 > 
 
-This article walks you through using the Azure portal to add Site-to-Site (S2S) connections to a VPN gateway that has an existing connection. This type of connection is often referred to as a "multi-site" configuration. 
+この記事では、Azure Portal を使用して、既存の接続がある VPN ゲートウェイにサイト間 (S2S) 接続を追加する方法について説明します。 この種類の構成は、一般に "マルチサイト" 構成と呼ばれます。 
 
-You can use this article to add a S2S connection to a VNet that already has a S2S connection, Point-to-Site connection, or VNet-to-VNet connection. There are some limitations when adding connections. Check the [Before you begin](#before) section in this article to verify before you start your configuration. 
+この記事の説明で、既にサイト間接続、ポイント対サイト接続、またはVNet 間接続のある VNet にサイト間接続を追加できます。 接続を追加する際には、制限があります。 構成を始める前に、この記事の「[開始する前に](#before)」セクションで内容をご確認ください。 
 
-This article applies to VNets created using the Resource Manager deployment model that have a RouteBased VPN gateway. These steps do not apply to ExpressRoute/Site-to-Site coexisting connection configurations. See [ExpressRoute/S2S coexisting connections](../expressroute/expressroute-howto-coexist-resource-manager.md) for information about coexisting connections.
+この記事は、ルートベースの VPN Gateway のある Resource Manager デプロイメント モデルを使用して作成された VNet を対象としています。 次の手順は、ExpressRoute/サイト間の共存接続の構成には適用されません。 共存接続の詳細については、「[クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する](../expressroute/expressroute-howto-coexist-resource-manager.md)」を参照してください。
 
-### <a name="deployment-models-and-methods"></a>Deployment models and methods
+### <a name="deployment-models-and-methods"></a>デプロイメント モデルおよび方法
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-We update this table as new articles and additional tools become available for this configuration. When an article is available, we link directly to it from this table.
+以下の表は、この構成について新しい記事、追加のツールが利用できるようになったら更新されるものです。 記事が利用できるようになったら、表から直接リンクできるようにします。
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="<a-name="before"></a>before-you-begin"></a><a name="before"></a>Before you begin
-Verify the following items:
+## <a name="a-namebeforeabefore-you-begin"></a><a name="before"></a>開始する前に
+次の項目についてご確認ください。
 
-* You are not creating an ExpressRoute/S2S coexisting connection.
-* You have a virtual network that was created using the Resource Manager deployment model with an existing connection.
-* The virtual network gateway for your VNet is RouteBased. If you have a PolicyBased VPN gateway, you must delete the virtual network gateway and create a new VPN gateway as RoutBased.
-* None of the address ranges overlap for any of the VNets that this VNet is connecting to.
-* You have compatible VPN device and someone who is able to configure it. See [About VPN Devices](vpn-gateway-about-vpn-devices.md). If you aren't familiar with configuring your VPN device, or are unfamiliar with the IP address ranges located in your on-premises network configuration, you need to coordinate with someone who can provide those details for you.
-* You have an externally facing public IP address for your VPN device. This IP address cannot be located behind a NAT.
+* ExpressRoute/S2S と共存する接続の作成ではない。
+* 既存の接続のある Resource Manager デプロイメント モデルを使用して作成した仮想ネットワークがある。
+* VNet の仮想ネットワーク ゲートウェイがルートベースである。 PolicyBased の VPN ゲートウェイである場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
+* この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
+* 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
+* VPN デバイスの外部接続用パブリック IP アドレスがある。 この IP アドレスを NAT の内側に割り当てることはできません。
 
-## <a name="<a-name="part1"></a>part-1---configure-a-connection"></a><a name="part1"></a>Part 1 - Configure a connection
-1. From a browser, navigate to the [Azure portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
-2. Click **All resources** and locate your **virtual network gateway** from the list of resources and click it.
-3. On the **Virtual network gateway** blade, click **Connections**.
+## <a name="a-namepart1apart-1---configure-a-connection"></a><a name="part1"></a>パート 1 - 接続の構成
+1. ブラウザーから [Azure Portal](http://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
+2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
+3. **[仮想ネットワーク ゲートウェイ]**のブレードで、**[接続]** をクリックします。
    
-    ![Connections blade](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Connections blade")<br>
-4. On the **Connections** blade, click **+Add**.
+    ![[接続] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Connections blade")<br>
+4. **[接続]** ブレードで、**[追加]** をクリックします。
    
-    ![Add connection button](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
-5. On the **Add connection** blade, fill out the following fields:
+    ![接続の追加ボタン](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
+5. **[接続追加]** ブレードで、次のフィールドを入力します。
    
-   * **Name:** The name you want to give to the site you are creating the connection to.
-   * **Connection type:** Select **Site-to-site (IPsec)**.
+   * **[名前]:** 作成している接続先のサイトに付ける名前です。
+   * **[接続の種類]:** **[サイト間 (IPsec)]** を選択します。
      
-     ![Add connection blade](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
+     ![接続の追加ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
 
-## <a name="<a-name="part2"></a>part-2---add-a-local-network-gateway"></a><a name="part2"></a>Part 2 - Add a local network gateway
-1. Click **Local network gateway** ***Choose a local network gateway***. This will open the **Choose local network gateway** blade.
+## <a name="a-namepart2apart-2---add-a-local-network-gateway"></a><a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
+1. **[ローカル ネットワーク ゲートウェイ]**、***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ブレードが開きます。
    
-    ![Choose local network gateway](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
-2. Click **Create new** to open the **Create local network gateway** blade.
+    ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
+2. **[新規作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ブレードを開きます。
    
-    ![Create local network gateway blade](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Create local network gateway")<br>
-3. On the **Create local network gateway** blade, fill out the following fields:
+    ![ローカル ネットワーク ゲートウェイの作成ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Create local network gateway")<br>
+3. **[ローカル ネットワーク ゲートウェイの作成]** ブレードで、次のフィールドを入力します。
    
-   * **Name:** The name you want to give to the local network gateway resource.
-   * **IP address:** The public IP address of the VPN device on the site that you want to connect to.
-   * **Address space:** The address space that you want to be routed to the new local network site.
-4. Click **OK** on the **Create local network gateway** blade to save the changes.
+   * **[名前]:** ローカル ネットワーク ゲートウェイ リソースに付ける名前です。
+   * **[IP アドレス]:** 接続先のサイト上の VPN デバイスのパブリック IP アドレスです。
+   * **[アドレス空間]:** 新しいローカル ネットワーク サイトにルーティングするアドレス空間です。
+4. **[ローカル ネットワーク ゲートウェイの作成]** ブレードで **[OK]** をクリックして変更を保存します。
 
-## <a name="<a-name="part3"></a>part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>Part 3 - Add the shared key and create the connection
-1. On the **Add connection** blade, add the shared key that you want to use to create your connection. You can either get the shared key from your VPN device, or make one up here and then configure your VPN device to use the same shared key. The important thing is that the keys are exactly the same.
+## <a name="a-namepart3apart-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>パート 3 - 共有キーを追加して接続を作成する
+1. **[接続の追加]** ブレードで、接続の作成に使用する共有キーを追加します。 VPN デバイスから共有キーを取得するか、新しく作成して同じ共有キーを使用するよう VPN デバイスを構成します。 キーが完全に同一であることが重要です。
    
-    ![Shared key](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
-2. At the bottom of the blade, click **OK** to create the connection.
+    ![共有キー](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
+2. ブレード下部の **[OK]** をクリックすると、接続が作成されます。
 
-## <a name="<a-name="part4"></a>part-4---verify-the-vpn-connection"></a><a name="part4"></a>Part 4 - Verify the VPN connection
-You can verify your VPN connection either in the portal, or by using PowerShell.
+## <a name="a-namepart4apart-4---verify-the-vpn-connection"></a><a name="part4"></a>パート 4: VPN 接続の確認
+VPN 接続の確認はポータルで行えるほか、PowerShell を使って確認することもできます。
 
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
-## <a name="next-steps"></a>Next steps
-* Once your connection is complete, you can add virtual machines to your virtual networks. See the virtual machines [learning path](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) for more information.
+## <a name="next-steps"></a>次のステップ
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、仮想マシンの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

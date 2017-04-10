@@ -1,12 +1,12 @@
 ---
-title: Runbook の入力パラメーター | Microsoft Docs
-description: Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。
+title: "Runbook の入力パラメーター | Microsoft Docs"
+description: "Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。"
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 4d3dff2c-1f55-498d-9a0e-eee497e5bedb
 ms.service: automation
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sngun
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0f8308b73a70fc3758a53063bc69d16480df8f02
+
 
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
@@ -264,6 +268,9 @@ Webhook を利用して Runbook を実行すると、定義した入力パラメ
 * テキスト Runbook を編集する方法については、「 [テキスト Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
 * グラフィカル Runbook を編集する方法については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

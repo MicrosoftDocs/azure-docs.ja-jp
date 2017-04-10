@@ -1,13 +1,13 @@
 ---
-title: MySQL を Linux VM にセットアップする | Microsoft Docs
-description: Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。
+title: "Azure で MySQL を Linux VM にセットアップする | Microsoft Docs"
+description: "Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: SuperScottz
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 153bae7c-897b-46b3-bd86-192a6efb94fa
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,26 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
+translationtype: Human Translation
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 84722fffc5419f866250d4093250839066c54c46
+
 
 ---
-# MySQL を Azure でインストールする方法
+# <a name="how-to-install-mysql-on-azure"></a>MySQL を Azure でインストールする方法
 この記事では、Linux を実行している Azure 仮想マシンに MySQL をインストールして構成する方法を説明します。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## 仮想マシンに MySQL をインストールする
+## <a name="install-mysql-on-your-virtual-machine"></a>仮想マシンに MySQL をインストールする
 > [!NOTE]
-> このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-quick-create-cli.md)を見て、VM 名を`mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
+> このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。 続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を見て、VM 名を `mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
 > 
 > 
 
-この例では、MySQL ポートとしてポート 3306 を使用します。
+この例では、MySQL ポートとしてポート 3306 を使用します。  
 
-putty を使用して作成した Linux VM に接続します。初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、[こちら](virtual-machines-linux-mac-create-ssh-keys.md)を参照してください。
+putty を使用して作成した Linux VM に接続します。 初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、 [こちら](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
 
-この記事では、例として MySQL5.6 のインストールにパッケージのリポジトリを使用します。実際、MySQL5.6 は、MySQL5.5 よりもパフォーマンスが向上しています。詳細情報は[こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)です。
+この記事では、例として MySQL5.6 のインストールにパッケージのリポジトリを使用します。 実際、MySQL5.6 は、MySQL5.5 よりもパフォーマンスが向上しています。  詳細情報は [こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)です。
 
-### Ubuntu で MySQL 5.6 をインストールする方法
+### <a name="how-to-install-mysql56-on-ubuntu"></a>Ubuntu で MySQL&5;.6 をインストールする方法
 ここでは、Azure の Ubuntu Linux VM を使用します。
 
 * 手順 1. MySQL Server 5.6 をインストールし、ユーザー `root` に切り替える
@@ -52,11 +56,12 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
     確認のため、もう一度パスワードを入力します。
 
-    ![イメージ](./media/virtual-machines-linux-mysql-install/virtual-machines-linux-install-mysql-p2.png)
+    ![image](./media/virtual-machines-linux-mysql-install/virtual-machines-linux-install-mysql-p2.png)
 
 * 手順 2. MySQL サーバー にログインする
   
-    MySQL サーバー のインストールが完了したら、MySQL サービスが自動的に開始されます。MySQL サーバーには、ユーザー `root` としてログインできます。以下のコマンドを使用してログインし、パスワードを入力します。
+    MySQL サーバー のインストールが完了したら、MySQL サービスが自動的に開始されます。 MySQL サーバーには、ユーザー `root` としてログインできます。
+    以下のコマンドを使用してログインし、パスワードを入力します。
   
              #[root@mysqlnode ~]# mysql -uroot -p
 * 手順 3. MySQL サービスの実行を管理する
@@ -77,7 +82,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
   
              #[root@mysqlnode ~]# service mysql restart
 
-### Cent OS、Oracle Linux など、Red Hat OS ファミリに MySQL をインストールする方法
+### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>Cent OS、Oracle Linux など、Red Hat OS ファミリに MySQL をインストールする方法
 ここでは CentOS または Oracle Linux と Linux VM を使用します。
 
 * 手順 1. MySQL Yum リポジトリ スイッチを追加して、ユーザー `root` に切り替える
@@ -94,7 +99,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
   
     このファイルの各値を以下のように更新します。
   
-        # *Enable to use MySQL 5.6*
+        \# *Enable to use MySQL 5.6*
   
         [mysql56-community]
         name=MySQL 5.6 Community Server
@@ -129,17 +134,17 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
            #[root@mysqlnode ~]#service mysqld stop
 
-    (e) 次回システム起動時に MySQL を開始するよう設定する
+    (e) 次回システム起動時に MySQL を開始するよう設定する 
 
            #[root@mysqlnode ~]#chkconfig mysqld on
 
 
-### MySQL を Suse LinuX にインストールする方法
+### <a name="how-to-install-mysql-on-suse-linux"></a>MySQL を Suse LinuX にインストールする方法
 ここでは、OpenSUSE と Linux 仮想マシンを使用します。
 
 * 手順 1. MySQL Server をダウンロードしてインストールする
   
-    以下のコマンドを使用し、ユーザー `root` に切り替えます。
+    以下のコマンドを使用し、ユーザー `root` に切り替えます。  
   
            #sudo su -
   
@@ -166,11 +171,16 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
            #[root@mysqlnode ~]# rcmysql stop
 
-    (e) 次回システム起動時に MySQL を開始するよう設定する
+    (e) 次回システム起動時に MySQL を開始するよう設定する 
 
            #[root@mysqlnode ~]# insserv mysql
 
-### 次のステップ
-MySQL の使用法などの情報は[こちら](https://www.mysql.com/)です。
+### <a name="next-step"></a>次のステップ
+MySQL の使用法などの情報は [こちら](https://www.mysql.com/)です。
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Jan17_HO5-->
+
+

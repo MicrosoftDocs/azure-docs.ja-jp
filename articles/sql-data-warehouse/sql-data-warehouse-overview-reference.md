@@ -1,22 +1,26 @@
 ---
-title: SQL Data Warehouse 参照トピック | Microsoft Docs
-description: SQL Data Warehouse の参照コンテンツ リンク。
+title: "SQL Data Warehouse 参照トピック | Microsoft Docs"
+description: "SQL Data Warehouse の参照コンテンツ リンク。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: abecd886-77bd-484f-b006-93600533a044
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/08/2016
-ms.author: barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9395c092411ebc056a8b3145a29f3a0c56b2a3cd
+
 
 ---
-# SQL Data Warehouse の参照トピック
+# <a name="reference-topics-for-sql-data-warehouse"></a>SQL Data Warehouse の参照トピック
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
 
 * [Transact-SQL 言語要素][Transact-SQL 言語要素]
@@ -24,8 +28,8 @@ ms.author: barbkess;sonyama
 * [Transact-SQL システム ビュー][Transact-SQL システム ビュー]
 * [PowerShell コマンドレット][PowerShell コマンドレット]
 
-## 次のステップ
-詳細については、[開発の概要][開発の概要]に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
+開発に関する詳細については、[「開発の概要」][開発の概要] をご覧ください。
 
 <!--Image references-->
 
@@ -39,4 +43,8 @@ ms.author: barbkess;sonyama
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

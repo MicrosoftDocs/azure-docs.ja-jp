@@ -1,28 +1,32 @@
 ---
-title: Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs
-description: Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
+title: "Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs"
+description: "Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。"
 author: johnkemnetz
 manager: rboucher
-editor: ''
+editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-
+ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 2/2/2017
 ms.author: johnkem
+translationtype: Human Translation
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
+
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
-この記事では、 [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
+この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
 
 基本的な手順は次のとおりです。
 
 1. アラートの作成方法が記述された JSON ファイルとしてテンプレートを作成します。
-2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../resource-group-template-deploy.md)します。
+2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)します。
 
 ここでは、Resource Manager テンプレートを作成して 1 つのアラートを作成する方法を説明してから、他のリソースを作成しながらアラートを作成する方法を説明します。
 
@@ -139,7 +143,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
             "type": "Microsoft.Insights/alertRules",
             "name": "[parameters('alertName')]",
             "location": "[resourceGroup().location]",
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2016-03-01",
             "properties": {
                 "name": "[parameters('alertName')]",
                 "description": "[parameters('alertDescription')]",
@@ -149,9 +153,9 @@ Resource Manager テンプレートを使用してアラートを作成するに
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
                         "resourceUri": "[parameters('resourceId')]",
-                        "metricName": "[parameters('metricName')]",
-                        "operator": "[parameters('operator')]"
+                        "metricName": "[parameters('metricName')]"
                     },
+                    "operator": "[parameters('operator')]",
                     "threshold": "[parameters('threshold')]",
                     "windowSize": "[parameters('windowSize')]",
                     "timeAggregation": "[parameters('aggregation')]"
@@ -361,7 +365,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
                 "[variables('vmID')]"
             ],
             "location": "[variables('location')]",
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2016-03-01",
             "properties": {
                 "name": "[variables('alertName')]",
                 "description": "variables('alertDescription')",
@@ -371,9 +375,9 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
                         "resourceUri": "[variables('vmID')]",
-                        "metricName": "[variables('metricName')]",
-                        "operator": "[variables('operator')]"
+                        "metricName": "[variables('metricName')]"
                     },
+                    "operator": "[parameters('operator')]",
                     "threshold": "[variables('threshold')]",
                     "windowSize": "[variables('windowSize')]",
                     "timeAggregation": "[variables('aggregation')]"
@@ -397,9 +401,12 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートの詳細を確認します](../azure-portal/insights-receive-alert-notifications.md)
+* [アラートの詳細を確認します](insights-receive-alert-notifications.md)
 * [診断の設定を追加](monitoring-enable-diagnostic-logs-using-template.md) します
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

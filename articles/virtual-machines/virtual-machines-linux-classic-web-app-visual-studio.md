@@ -1,25 +1,10 @@
 ---
-title: Web アプリケーション用の仮想マシンを作成する | Microsoft Docs
-description: Visual Studio と Linux を使用した Web プロジェクト用の VM の作成
-services: virtual-machines-linux
-documentationcenter: ''
-author: TomArcher
-manager: timlt
-editor: ''
-tags: azure-service-management
-
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: dotnet
-ms.topic: article
-ms.date: 08/15/2016
-ms.author: tarcher
+redirect_url: /azure/virtual-machines/linux/classic/web-app-visual-studio
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 741c949e789dd10687c56b0cb3f2a539b403a99d
+ms.lasthandoff: 03/27/2017
 
 ---
-# Visual Studio での Web アプリケーション用仮想マシンの作成
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-[!INCLUDE [virtual-machines-common-classic-web-app-visual-studio](../../includes/virtual-machines-common-classic-web-app-visual-studio.md)]
-
-<!---HONumber=AcomDC_0824_2016-->

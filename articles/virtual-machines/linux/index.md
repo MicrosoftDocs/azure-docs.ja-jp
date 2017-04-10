@@ -1,17 +1,76 @@
 ---
+title: "Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "選択した Linux ディストリビューションを使用して仮想マシンを作成する方法について説明します。 ドキュメントでは、VM テンプレートを作成するさまざまな方法を紹介します。"
+services: virtual-machines\linux
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: virtual-machines\linux
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 8125aca5030c869476499a07b17c8e21fcb76ef6
-ms.openlocfilehash: e5640566e8781441713ca5491abee1d9334b3970
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a83884a61475d6bc06e405bc7c72d4ac2435c398
+ms.lasthandoff: 03/18/2017
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
+# <a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
 
-Azure Virtual Machines により、Azure のコンピューティング、ネットワーク、ストレージ インフラストラクチャ上で Linux 仮想マシンを作成して実行することができます。  数千台のマシンに規模を拡大してインターネット全体にデプロイすることも、1 台のマシンを実行してある程度重要な計算を数分間で行うことも可能です。どちらの場合でも、高速かつ一貫性が保たれます。
+<div class="introHolder">
+    <div class="intro">
+選択した Linux ディストリビューションを使用して Azure Virtual Machines を実行する方法について説明します。 ドキュメント、API リファレンス、サンプルでは、VM テンプレートを作成してデプロイするさまざまな方法を紹介します。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" /> 無料の PluralSight ビデオ トレーニング - Microsoft Azure を使用したインフラストラクチャの管理 </a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/cli.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure CLI 2.0 を使用して Linux VM を作成する</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/portal.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ポータルを使用して VM を作成する</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,112 +105,53 @@ Azure Virtual Machines により、Azure のコンピューティング、ネッ
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>ポータルを使用して VM を作成する</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure の Linux VM と Mac for Linux VM に SSH キーを作成する</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/xplat-cli-install">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure CLI のインストール</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>CLI を使用した Azure での Linux VM の作成</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 ---
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.JS</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/compute">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>リファレンス
-
-###<a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/vm)
-
-###<a name="net"></a>.NET
-[管理リファレンス API のリファレンス](/dotnet/api/)
-
-###<a name="java-sdk"></a>Java SDK
-[Java](/java/api/)
-
-###<a name="rest-compute"></a>REST (コンピューティング)
-[Compute REST API リファレンス](/rest/api/compute)
-
-###<a name="rest-network"></a>REST (ネットワーク)
-[Network REST API リファレンス](https://msdn.microsoft.com/library/mt163658.aspx)
-
-###<a name="rest-storage"></a>REST (ストレージ)
-[Storage REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
-        <div class="img"></div>
-        <div class="text">
-Linux 仮想マシンのドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

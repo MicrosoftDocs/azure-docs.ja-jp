@@ -1,12 +1,12 @@
 ---
-title: Azure SDK for .NET 2.5.1 リリース ノート
-description: Azure SDK for .NET 2.5.1 リリース ノート
+title: "Azure SDK for .NET 2.5.1 リリース ノート"
+description: "Azure SDK for .NET 2.5.1 リリース ノート"
 services: app-service
 documentationcenter: .net,nodejs,java
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8d3d815f-bb58-447e-8ff0-f9b9603c7b00
 ms.service: app-service
 ms.devlang: multiple
 ms.topic: article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
+
 
 ---
-# <a name="azure-sdk-for-.net-2.5.1-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
+# <a name="azure-sdk-for-net-251-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
 このドキュメントには、Azure SDK for .NET 2.5.1 リリースのリリース ノートが含まれます。 
 
-## <a name="azure-sdk-for-.net-2.5.1-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
+## <a name="azure-sdk-for-net-251-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
 Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 
 * **Web ツールの拡張機能**に関連する新機能とシナリオ。 
@@ -42,7 +46,7 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
     
     詳細については、「 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
-## <a name="<a-id="known_issues_2_5_1"></a>azure-sdk-for-.net-2.5.1-known-issues-and-limitations"></a><a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 の既知の問題と制限事項
+## <a name="a-idknownissues251aazure-sdk-for-net-251-known-issues-and-limitations"></a><a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 の既知の問題と制限事項
 * Azure の API アプリは、モバイル アプリのデプロイメント ターゲットとして表示されます。 今後のリリースまで、Web アプリがモバイル アプリの唯一のデプロイ先である必要があります。 
 * Azure の API アプリのプロビジョニングが成功しても、Azure App Service の [アクティビティ] ウィンドウでの進行状況の更新が断続的に失敗することがあります。 回避策として、Azure ポータルの新しい Azure API アプリで状況を確認します。 
 * [ファイル]、[新しいプロジェクト]、[API アプリ] と移動して F5 キーを押すと、default/index.html がないため、HTTP エラーが発生します。 回避策として、/api/values URL を手動で参照します。 
@@ -59,6 +63,9 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 * API アプリのプロジェクト テンプレートは C# でのみ利用できます。
 * コンテキスト メニューの [Azure API アプリ クライアントの追加] を使用した API アプリの使用は、C# でのみサポートされます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

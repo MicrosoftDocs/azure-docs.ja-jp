@@ -1,19 +1,24 @@
 ---
-title: Hudson と BLOB ストレージを使用する方法 | Microsoft Docs
-description: Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。
+title: "Hudson と Blob Storage を使用する方法 | Microsoft Docs"
+description: "Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
-
+ms.assetid: 119becdd-72c4-4ade-a439-070233c1e1ac
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dinesh
+ms.date: 02/28/2017
+ms.author: seguler
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 37ad86ce34d7f9ed6642e6f0fa98cf5fbf26e8bc
+ms.lasthandoff: 11/17/2016
+
 
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
@@ -46,6 +51,7 @@ Hudson CI ソリューションで BLOB サービスを使用するには、次�
   2. コマンド プロンプトを開いて Hudson WAR が格納されているフォルダーに移動し、Hudson WAR を実行します。 たとえば、version 3.1.2 をダウンロードした場合は、次のコマンドを実行します。
      
       `java -jar hudson-3.1.2.war`
+
   3. ブラウザーで `http://localhost:8080/`を開きます。 これで Hudson ダッシュボードが開かれます。
   4. Hudson を初めて使用するときに、 `http://localhost:8080/`で初期セットアップを完了します。
   5. 初期セットアップの完了後、Hudson WAR の実行中のインスタンスを取り消し、Hudson WAR を再度起動します。次に、Azure Storage プラグインのインストールと構成を行うために、Hudson ダッシュボード (`http://localhost:8080/`) を再度開きます。
@@ -91,12 +97,15 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 2. ジョブの名前を **MyJob** に設定し、**[Build a free-style software job]**、**[OK]** の順にクリックします。
 3. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックした後、**[Execute Windows batch command]** を選択します。
 4. **[Command]**で次のコマンドを使用します。
-   
+
+    ```   
         md text
         cd text
         echo Hello Azure Storage from Hudson > hello.txt
         date /t > date.txt
         time /t >> date.txt
+    ```
+
 5. ジョブ構成の **[Post-build Actions]** セクションで **[Upload artifacts to Microsoft Azure Blob storage]** をクリックします。
 6. **[Storage Account Name]**では、使用するストレージ アカウントを選択します。
 7. **[Container Name]**では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「**${JOB_NAME}**」と入力します。
@@ -161,7 +170,3 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、 [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
-
-<!--HONumber=Oct16_HO2-->
-
-

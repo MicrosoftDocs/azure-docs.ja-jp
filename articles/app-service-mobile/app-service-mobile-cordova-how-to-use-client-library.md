@@ -1,19 +1,24 @@
 ---
-title: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
-description: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
+title: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
+description: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
 services: app-service\mobile
 documentationcenter: javascript
 author: adrianhall
-manager: erikre
-editor: ''
-
+manager: adrianha
+editor: 
+ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 10/30/2016
 ms.author: adrianha
+translationtype: Human Translation
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
+ms.lasthandoff: 02/07/2017
+
 
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
@@ -21,16 +26,15 @@ ms.author: adrianha
 
 このガイドでは、最新の [Azure Mobile Apps 向け Apache Cordova プラグイン]を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの Apache Cordova プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の Apache Cordova プラグインに重点を置いています。
 
-## <a name="supported-platforms"></a>サポートされているプラットフォーム
+## <a name="supported-platforms"></a>サポートされるプラットフォーム
 この SDK は、iOS、Android、Windows の各デバイスで Apache Cordova v6.0.0 以降をサポートしています。  プラットフォームのサポートは次のとおりです。
 
 * Android API 19 ～ 24 (KitKat から Nougat)
 * iOS バージョン 8.0 以降
-* Windows Phone 8.0
 * Windows Phone 8.1
 * ユニバーサル Windows プラットフォーム
 
-## <a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="Setup"></a>セットアップと前提条件
+## <a name="Setup"></a>セットアップと前提条件
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。 このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。 さらに、Apache Cordova プラグインがコードに追加済みであることを前提とします。  まだこれらの操作を行っていない場合は、次のコマンド ラインで Apache Cordova プラグインをプロジェクトに追加します。
 
 ```
@@ -39,9 +43,35 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 Apache Cordova アプリを初めて作成する場合は、 [こちら]のドキュメントを参照してください。
 
+## <a name="ionic"></a>Ionic v2 アプリのセットアップ
+
+Ionic v2 プロジェクトを適切に構成するには、最初に基本的なアプリを作成してから、Cordova プラグインを追加します。
+
+```
+ionic start projectName --v2
+cd projectName
+ionic plugin add cordova-plugin-ms-azure-mobile-apps
+```
+
+次の行を `app.component.ts` に追加してクライアント オブジェクトを作成します。
+
+```
+declare var WindowsAzure: any;
+var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
+```
+
+これで、ブラウザーでプロジェクトを構築して実行できます。
+
+```
+ionic platform add browser
+ionic run browser
+```
+
+Azure Mobile Apps の Cordova プラグインは、Ionic v1 アプリと Ionic v2 アプリの両方をサポートしています。  Ionic v2 アプリの場合のみ、追加で `WindowsAzure` オブジェクトの宣言が必要です。
+
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="<a-name="auth"></a>how-to:-authenticate-users"></a><a name="auth"></a>方法: ユーザーを認証する
+## <a name="auth"></a>方法: ユーザーを認証する
 Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
 
 Apache Cordova アプリで認証を使用する場合は、次の Cordova プラグインが使用できる状態になければなりません。
@@ -49,11 +79,11 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 * [cordova-plugin-device]
 * [cordova-plugin-inappbrowser]
 
-サーバー フローとクライアント フローの 2 つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
+サーバー フローとクライアント フローの&2; つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="<a-name="configure-external-redirect-urls"></a>how-to:-configure-your-mobile-app-service-for-external-redirect-urls."></a><a name="configure-external-redirect-urls"></a>方法: 外部リダイレクト URL 用に Mobile App Service を構成する
+### <a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の Apache Cordova アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  既定では認証サービスで認識されるのはサービスの利用方法だけであるため、localhost 上の OAuth UI フローによって問題が発生します。  問題のある OAuth UI フローの例は次のとおりです。
 
 * Ripple エミュレーター
@@ -70,12 +100,12 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
 6. **[編集]**
 7. "allowedExternalRedirectUrls" 要素を探します。  この要素は、null または値の配列に設定できます。  値を次の値に変更します。
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     URL をご使用のサービスの URL に置き換えます。  例には、"http://localhost:3000" (Node.js サンプル サービス用)、または "http://localhost:4400" (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
 8. 画面の右上隅にある **[読み取り/書き込み]** ボタンをクリックします。
 9. 緑色の **[PUT]** ボタンをクリックします。
@@ -93,7 +123,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 新しい設定が有効になるまで約 10 ～ 15 秒かかります。
 
-## <a name="<a-name="register-for-push"></a>how-to:-register-for-push-notifications"></a><a name="register-for-push"></a>方法: プッシュ通知に登録する
+## <a name="register-for-push"></a>方法: プッシュ通知に登録する
 プッシュ通知を処理するには、 [phonegap-plugin-push] をインストールします。  このプラグインは、コマンド ラインで `cordova plugin add` コマンドを使用するか、Visual Studio 内で Git プラグイン インストーラーを使用することで簡単に追加できます。  Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
 
 ```
@@ -135,11 +165,15 @@ pushHandler.on('error', function (error) {
 
 プッシュ通知は、Notification Hubs SDK を使用してサーバーから送信します。  プッシュ通知をクライアントから直接送信しないでください。 この操作は、Notification Hubs または PNS に対するサービス拒否攻撃のトリガーに使用される可能性があります。  このような攻撃が発生すると、PNS はトラフィックを禁止する可能性があります。
 
+## <a name="more-information"></a>詳細情報
+
+API の詳細については、[API に関するドキュメント](http://azure.github.io/azure-mobile-apps-js-client/)を参照してください。
+
 <!-- URLs. -->
 [Azure ポータル]: https://portal.azure.com
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure Mobile Apps 向け Apache Cordova プラグイン]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [こちら]: http://cordova.apache.org/#getstarted
@@ -147,10 +181,5 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query オブジェクトのドキュメント]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
-
-
-
-<!--HONumber=Oct16_HO2-->
-
+[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 

@@ -1,10 +1,10 @@
 ---
-title: "クラシック デプロイメント モデルで Azure CLI を使用して内部ロード バランサーを作成する | Microsoft Docs"
+title: "内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs"
 description: "クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
@@ -13,26 +13,31 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
-
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
+ms.lasthandoff: 03/21/2017
 
 ---
+
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
-[!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
+
+> [!div class="op_single_selector"]
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-classic-cli.md)
+> * [クラウド サービス](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a>仮想マシンの内部ロード バランサー セットを作成するには
+
 内部ロード バランサー セットと、このセットにトラフィックを送信するサーバーを作成するには、次の手順を実行する必要があります。
 
 1. 負荷分散セットのサーバー間で負荷分散される着信トラフィックのエンドポイントとなる内部負荷分散のインスタンスを作成します。
@@ -40,18 +45,22 @@ ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
 3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するように負荷分散されたトラフィックを送信するサーバーを構成します。
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>CLI を使用した内部ロード バランサーの作成手順
+
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、 **azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
-   
-        azure config mode asm
-   
+
+    ```azurecli
+    azure config mode asm
+    ```
+
     予想される出力:
-   
+
         info:    New mode is asm
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>エンドポイントとロード バランサー セットの作成
+
 シナリオでは、mytestcloud と呼ばれるクラウド サービス内に仮想マシン DB1 および DB2 があることを前提としています。 両方の仮想マシンは、サブネット subnet-1 付きの testvnet と呼ばれる仮想ネットワークを使用します。
 
 このガイドでは、ポート 1433 をプライベート ポートとして、また 1433 をローカル ポートとして、内部ロード バランサー セットを作成します。
@@ -59,16 +68,12 @@ ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
 これは、内部ロード バランサーを使用して SQL 仮想マシンをバック エンドに配置し、パブリック IP アドレスを直接使用してデータベース サーバーが公開されないようにするための一般的なシナリオです。
 
 ### <a name="step-1"></a>手順 1
+
 `azure network service internal-load-balancer add`を使用して、内部ロード バランサー セットを作成します。
 
-     azure service internal-load-balancer add -r mytestcloud -n ilbset -t subnet-1 -a 192.168.2.7
-
-使用されるパラメーター:
-
-**-r** - クラウド サービス名<BR>
-**-n** - 内部ロード バランサー名<BR>
-**-t** - サブネット名 (内部ロード バランサーに追加する仮想マシンと同じサブネット)<BR>
-**-a** - (オプション) 静的プライベート IP アドレスを追加する<BR>
+```azurecli
+azure service internal-load-balancer add --serviceName mytestcloud --internalLBName ilbset --subnet-name subnet-1 --static-virtualnetwork-ipaddress 192.168.2.7
+```
 
 詳細については、「 `azure service internal-load-balancer --help` 」を参照してください。
 
@@ -85,28 +90,25 @@ ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
     info:    service internal-load-balancer list command OK
 
 
-## <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>手順 2.
+
 最初のエンドポイントの追加時に、内部ロード バランサー セットを構成します。 この手順では、エンドポイント、仮想マシン、およびプローブ ポートを内部ロード バランサーに関連付けます。
 
-    azure vm endpoint create db1 1433 -k 1433 tcp -t 1433 -r tcp -e 300 -f 600 -i ilbset
+```azurecli
+azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
+```
 
-使用されるパラメーター:
+### <a name="step-3"></a>手順 3.
 
-**-k** - 仮想マシンのローカル ポート<BR>
-**-t** - プローブ ポート<BR>
-**-r** - プローブ プロトコル<BR>
-**-e** - プローブの間隔 (秒)<BR>
-**-f** - タイムアウトまでの時間 (秒) <BR>
-**-i** - 内部ロード バランサー名 <BR>
+`azure vm show` *仮想マシン名*
 
-## <a name="step-3"></a>手順 3.
- `azure vm show` *仮想マシン名*
-
-    azure vm show DB1
+```azurecli
+azure vm show DB1
+```
 
 次のように出力されます。
 
-        azure vm show DB1
+    azure vm show DB1
     info:    Executing command vm show
     + Getting virtual machines
     data:    DNSName "mytestcloud.cloudapp.net"
@@ -153,31 +155,29 @@ ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
     data:    Network Endpoints 2 loadBalancerName "ilbset"
     info:    vm show command OK
 
-
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>仮想マシン用のリモート デスクトップ エンドポイントの作成
+
 `azure vm endpoint create`を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
-    azure vm endpoint create web1 54580 -k 3389
-
+```azurecli
+azure vm endpoint create web1 54580 -k 3389
+```
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>ロード バランサーからの仮想マシンの削除
+
 仮想マシンを内部ロード バランサー セットから削除するには、関連付けられたエンドポイントを削除します。 エンドポイントを削除すると、その仮想マシンはそのロード バランサー セットには属さなくなります。
 
- 前述の例を使用して、 `azure vm endpoint delete`コマンドを使用して、内部ロード バランサー ilbset から仮想マシン "DB1" に作成したエンドポイントを削除できます。
+前述の例を使用して、 `azure vm endpoint delete`コマンドを使用して、内部ロード バランサー ilbset から仮想マシン "DB1" に作成したエンドポイントを削除できます。
 
-    azure vm endpoint delete DB1 tcp-1433-1433
-
+```azurecli
+azure vm endpoint delete DB1 tcp-1433-1433
+```
 
 詳細については、「 `azure vm endpoint --help` 」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

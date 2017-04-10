@@ -1,20 +1,25 @@
 ---
-title: 'DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs'
-description: DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。
-keywords: ソーシャル メディア アプリ
+title: "DocumentDB の設計パターン: ソーシャル メディア アプリ | Microsoft Docs"
+description: "DocumentDB のストレージの柔軟性と他の Azure サービスを活用したソーシャル ネットワークの設計パターンについて説明します。"
+keywords: "ソーシャル メディア アプリ"
 services: documentdb
 author: ealsur
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 03/17/2017
 ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
+ms.lasthandoff: 03/17/2017
+
 
 ---
 # <a name="going-social-with-documentdb"></a>DocumentDB によるソーシャル化
@@ -34,7 +39,7 @@ ms.author: mimig
 
 誤解しないでください。私は SQL データベースを長年使用してきました。SQL データベースは優れていますが、他のあらゆるパターン、手法、ソフトウェア プラットフォームと同様に、すべてのシナリオに最適というわけではありません。
 
-このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために 8 つのテーブルを結合してクエリを実行しなければなりません。 動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
+このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
 
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
@@ -60,7 +65,7 @@ ms.author: mimig
 
 また、投稿を 1 つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
-Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な[自動インデックス作成機能](documentdb-indexing.md)によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
+Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な自動インデックス作成機能によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
 投稿へのコメントは、親プロパティを持つ他の投稿と同様に処理できます (これにより、オブジェクト マッピングが簡素化されます)。 
 
@@ -98,13 +103,13 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#where-clause)を使用して DocumentDB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して DocumentDB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Services](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service-web/web-sites-create-web-jobs.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。 
 
 この同じ手法を使用して最終的に一貫した環境を構築することで、投稿に対する評価と「いいね」を遅延的に処理できます。
 
-フォロワーの処理はさらに複雑です。 DocumentDB には 512 KB のドキュメント サイズ制限があるため、次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
+フォロワーの処理はさらに複雑です。 DocumentDB にはドキュメントの最大サイズの制限があり、サイズの大きいドキュメントの読み取りと書き込みは、アプリケーションのスケーラビリティに影響を与えます。 よって次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -117,7 +122,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         ]
     }
 
-この方法では、フォロワーが数千人のユーザーであれば問題なく機能しますが、セレブのユーザーを加えることになった場合、最終的にはドキュメント サイズの制限に達することになります。
+この方法では、フォロワーが数千人のユーザーであれば問題なく機能しますが、セレブのユーザーを加えることになった場合、ドキュメント サイズが大きくなり、最終的にはドキュメント サイズの制限に達することになります。
 
 これを解決するには、混成方式を使います。 ユーザー統計情報ドキュメントの一部として、次のようにフォロワーの数を保存します。
 
@@ -131,7 +136,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする [拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) を使用して、Azure Storage テーブルに保存することができます。 この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き DocumentDB を使用します。
 
-## <a name="the-“ladder”-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
+## <a name="the-ladder-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。 皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
 
 クエリの高速化を可能するために、データの重複が発生しています。 この副作用による問題は、何らかの操作によってユーザーのデータが変更された場合に、そのユーザーがこれまでに実行したすべてのアクティビティを見つけ、そのすべてを更新する必要があることです。 あまり現実的ではなさそうですよね。
@@ -164,7 +169,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 最大の段が "拡張ユーザー" です。 拡張ユーザーには、すべての重要なユーザー情報と、実際には迅速に読み取る必要のないデータや (ログイン プロセスのように) 最終的に使用するデータが含まれます。 このデータは、DocumentDB の外部、Azure SQL Database、または Azure Storage Tables に保存できます。
 
-ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は[無限ではない](documentdb-limits.md)からであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるためです。 ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。 データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。 DocumentDB に保存されたユーザーは次のようになります。
+ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は無限ではないからであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるからです。 ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。 データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。 DocumentDB に保存されたユーザーは次のようになります。
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -196,7 +201,7 @@ Azure DocumentDB を使用しているので、 [Azure Search](https://azure.mic
 
 これが非常に簡単なのはなぜでしょうか。
 
-Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](documentdb-search-indexer.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
+Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](../search/search-howto-index-documentdb.md)がサポートされています。 DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。 
 
 Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検索のためのヒッチハイカー ガイド)](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
 
@@ -215,6 +220,27 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
 
+## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
+最後に触れなければならない重要なトピックは**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 DocumentDB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
+
+DocumentDB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](documentdb-partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
+
+特筆すべきは、DocumentDB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
+
+トラフィックやリソースの消費量 ([RU](documentdb-request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザーベースが拡大し、ユーザーによるコンテンツの作成や読み取りが多くなり始めると、ご自身の読み書きの頻度も増えるため、**スループットの拡張**機能が重要になってきます。 RU は非常に簡単に増やすことができます。RU を増やすには、Azure Portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)します。
+
+![スケールアップとパーティション キーの定義](./media/documentdb-social-media-apps/social-media-apps-scaling.png)
+
+状況がこのまま好転し続け、ご自身のプラットフォームが、他のリージョン、国、または大陸のユーザーの目に留まり、使われるようになったらどうでしょう。嬉しい驚きですね。
+
+でも、待ってください... やがては、プラットフォームのユーザー エクスペリエンスが最適ではないことに気が付きます。自分のリージョンからかなり離れた場所にユーザーがいる場合、その待ち時間は相当なものになります。でも、そのユーザーにはプラットフォームの使用をやめてほしくありません。 簡単に**グローバル展開**できる手段さえあれば、と思うでしょう... ところが、手段はあるのです。
+
+DocumentDB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](documentdb-portal-global-replication.md)し、使用可能なリージョンの中で、[クライアント コード](documentdb-developing-with-multiple-regions.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](documentdb-regional-failovers.md)を確保できることも意味します。 
+
+データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service のクローンを作成して、[パフォーマンス構成](../app-service-web/web-sites-traffic-manager.md)を使用しながら、拡張されたグローバル カバレッジをサポートできます。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの DocumentDB レプリカに接続されます。
+
+![ソーシャル プラットフォームへのグローバル カバレッジの追加](./media/documentdb-social-media-apps/social-media-apps-global-replicate.png)
+
 ## <a name="conclusion"></a>まとめ
 この記事では、低コストのサービスを使用して Azure で完全なソーシャル ネットワークを構築し、多層ストレージ ソリューションと "ラダー" と呼ばれるデータ分散の使用を促進することによって優れた結果をもたらす代替手段を明らかにすることを試みています。
 
@@ -226,7 +252,5 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 データのモデル化の詳細については、「 [DocumentDB のデータのモデル化](documentdb-modeling-data.md) 」をご覧ください。 DocumentDB の他のユース ケースに関心がある場合は、「 [DocumentDB の一般的なユース ケース](documentdb-use-cases.md)」をご覧ください。
 
 または、 [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
-
-<!--HONumber=Oct16_HO2-->
 
 

@@ -1,22 +1,28 @@
 ---
-title: Log Analytics でのカスタム ダッシュボードの作成| Microsoft Docs
-description: このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
+title: "Azure Log Analytics でのカスタム ダッシュボードの作成| Microsoft Docs"
+description: "このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a8c9766bf066a7f0dfd28ebb4e41bf0eaf3f05bd
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# <a name="create-a-custom-dashboard-in-log-analytics"></a>Log Analytics でのカスタム ダッシュボードの作成
+# <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
 
 ![サンプルのダッシュ ボード](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
@@ -28,7 +34,7 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ![モバイル ダッシュボード](./media/log-analytics-dashboards/oms-search-mobile.png)
 
-## <a name="how-do-i-create-my-dashboard?"></a>ダッシュ ボードの作成方法。
+## <a name="how-do-i-create-my-dashboard"></a>ダッシュ ボードの作成方法。
 まず OMS の概要ページに移動します。 左側に **[マイ ダッシュボード]** タイルが表示されます。 クリックしてダッシュボードへドリルダウンします。
 
 ![概要](./media/log-analytics-dashboards/oms-dashboards-overview.png)
@@ -55,8 +61,8 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ![タイルの編集](./media/log-analytics-dashboards/oms-dashboards-pictorial05.png)
 
-### <a name="tile-visualizations#"></a>タイルの視覚化
-タイルの視覚化は、次の 3 種類から選択できます。
+### <a name="tile-visualizations"></a>タイルの視覚化
+タイルの視覚化は、次の&3; 種類から選択できます。
 
 | グラフの種類 | 実行内容 |
 | --- | --- |
@@ -79,7 +85,4 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。
-
-<!--HONumber=Oct16_HO2-->
-
 

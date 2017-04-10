@@ -1,3 +1,0 @@
-台湾新竹市にある輸血サービス センターの献血者データベースから提供されたデータのサブセットです。<p> </p>献血データには、最後の献血からの経過月数、頻度、献血の合計回数、最後の献血からの経過期間、献血量が含まれます。<p> </p><b>使用法:</b> 目標は、2007 年 3 月に献血者が献血を実施したかどうかの分類に基づいて予測を実行することです。1 は対象期間に献血をした人、0 はしなかった人を示しています。<p></p><b>関連の研究:</b> Yeh, I.C. (2008 年)。UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 <p> </p>Yeh, I-Cheng、Yang、King-Jang、Ting、Tao-Ming、「Knowledge discovery on RFM model using Bernoulli sequence」、Expert Systems with Applications、2008 年、<a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
-
-<!---HONumber=Oct15_HO3-->

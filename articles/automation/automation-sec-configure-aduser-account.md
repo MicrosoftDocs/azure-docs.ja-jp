@@ -1,6 +1,6 @@
 ---
 title: "Azure AD ユーザー アカウントを構成する | Microsoft Docs"
-description: "この記事では、ARM および ASM に対して認証される、Azure Automation の Runbook のために Azure AD ユーザー アカウントを構成する方法について説明します。"
+description: "この記事では、Azure Automation の Runbook が認証を受ける際に使用する Azure AD ユーザー アカウントを構成する方法について説明します。"
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 11/14/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: db4eb96b3354d83864a7869c1fd08e9bb2884a1f
+ms.sourcegitcommit: 0078d544d5c30e31874d75fece62ca560d2aa2d6
+ms.openlocfilehash: 0544d4df8f50db2182375aec8ec2a0a9d47ed644
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-service-management-and-resource-manager"></a>Azure サービス管理と Azure リソース マネージャーによる Runbook の認証
-この記事では、Azure サービス管理 (ASM) および Azure リソース マネージャー (ARM) のリソースに対して実行する Azure Automation Runbook のために Azure AD ユーザー アカウントを構成するのに必要な手順を説明します。  このアカウントは ARM ベースの Runbook の認証 ID として引き続きサポートされますが、新しい Azure 実行アカウントを使用する方法を推奨します。       
+この記事では、Azure サービス管理および Azure Resource Manager のリソースに対して実行する Azure Automation Runbook 用に Azure AD ユーザー アカウントを構成するための手順を説明します。  Azure Resource Manager ベースの Runbook では、このアカウントを引き続き認証 ID として使用できますが、新しい Azure 実行アカウントを使用することが推奨されます。       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>新しい Azure Active Directory ユーザーを作成する
 1. 管理する Azure サブスクリプションのサービス管理者として Azure クラシック ポータルにログインします。
@@ -39,12 +39,12 @@ ms.openlocfilehash: db4eb96b3354d83864a7869c1fd08e9bb2884a1f
 12. ログアウトして、先ほど作成したアカウントで再度 Azure にログインする。 ユーザーのパスワードを変更するように促されます。
 
 ## <a name="create-an-automation-account-in-azure-classic-portal"></a>Azure クラシック ポータルで Automation アカウントを作成する
-このセクションでは、以下の手順を実行して、ASM および ARM モードにてリソースを管理する Runbook で使用される新しい Azure Automation アカウントを Azure ポータルで作成します。  
+このセクションでは、以下の手順を実行して、Azure サービス管理および Azure Resource Manager モードでリソースを管理する Runbook 用の Azure Automation アカウントを Azure Portal で新規作成します。  
 
 > [!NOTE]
 > Azure クラシック ポータルで作成した Automation アカウントは、Azure クラシック ポータルおよび Azure ポータルの両方で、どちらのコマンドレット セットでも管理できます。 アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。 引き続き Azure クラシック ポータルを使用する場合、Automation アカウントの作成には Azure ポータルではなく、Azure クラシック ポータルを使用することをお勧めします。
->
->
+> 
+> 
 
 1. 管理する Azure サブスクリプションのサービス管理者として Azure クラシック ポータルにログインします。
 2. **[Automation]**を選択します。
@@ -60,7 +60,7 @@ ms.openlocfilehash: db4eb96b3354d83864a7869c1fd08e9bb2884a1f
 12. 次の **[資格情報の定義]** ページで、前に作成した AD ユーザー アカウントのユーザー名を **[ユーザー名]** フィールドに入力し、**[パスワード]** および **[パスワードの確認]** フィールドにパスワードを入力します。 **[OK]** をクリックして変更を保存します。
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>Azure ポータルで Automation アカウントを作成する
-このセクションでは、以下の手順を実行して、ARM モードでリソースを管理する Runbook で使用される新しい Azure Automation アカウントを Azure ポータルで作成します。  
+このセクションでは、以下の手順を実行して、Azure Resource Manager モードでリソースを管理する Runbook 用の Azure Automation アカウントを Azure Portal で新規作成します。  
 
 1. 管理する Azure サブスクリプションのサービス管理者として Azure Portal にログインします。
 2. **[Automation アカウント]**を選択します。
@@ -68,12 +68,12 @@ ms.openlocfilehash: db4eb96b3354d83864a7869c1fd08e9bb2884a1f
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
 5. 複数のサブスクリプションがある場合は、新しいアカウントに対していずれかを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**も指定します。
 6. **[Azure 実行アカウントの作成]** オプションで **[いいえ]** を選択し、**[作成]** ボタンをクリックします。  
-
+   
    > [!NOTE]
-   > 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。  アカウントが作成されてサブスクリプションの **共同作成者** ロールに割り当てられますが、サブスクリプションのディレクトリ サービス内の対応する認証 ID が割り当てられないため、サブスクリプション内のリソースにアクセスすることはできません。  このアカウントを参照する Runbook は認証を通過できず、ARM リソースに対するタスクを実行することができません。
-   >
-   >
-
+   > 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。  アカウントが作成されてサブスクリプションの **共同作成者** ロールに割り当てられますが、サブスクリプションのディレクトリ サービス内の対応する認証 ID が割り当てられないため、サブスクリプション内のリソースにアクセスすることはできません。  このアカウントを参照する Runbook は認証を通過できず、Azure Resource Manager リソースに対するタスクを実行することができません。
+   > 
+   > 
+   
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
 7. Azure によって Automation アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。
 
@@ -93,6 +93,7 @@ Runbook のすべての [チェックポイント](http://technet.microsoft.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

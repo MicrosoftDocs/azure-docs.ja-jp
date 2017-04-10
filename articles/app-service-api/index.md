@@ -1,10 +1,25 @@
 ---
+title: "Azure App Service - API Apps のドキュメント - チュートリアル | Microsoft Docs"
+description: "Azure App Service の API Apps を使用して、クラウドとオンプレミスで API を開発、ホスト、使用する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントを提供します。"
+services: app-service\api
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\api
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 741a6f2be3c8c689884cdeb180ff10dac046032b
+ms.openlocfilehash: b1a568d7a8f856c7d17aa7ebd14148452c1d29db
 
 ---
-# App Service - API Apps Documentation
+# <a name="app-service---api-apps-documentation"></a>App Service - API Apps のドキュメント
 
-Azure App Service is a cloud service that's designed to solve the practical problems that engineers face today. API apps in Azure App Service offer features that make it easier to develop, host, and consume APIs in the cloud and on-premises. With API apps, you get enterprise grade security, simple access control, hybrid connectivity, automatic SDK generation, and seamless integration with Logic Apps. Azure App Service is a fully managed platform for web, mobile, and integration scenarios. API Apps is one of four app types offered by Azure App Service.
+Azure App Service の API Apps を使用して、クラウドとオンプレミスで API を開発、ホスト、使用する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、API アプリを作成してデプロイする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +33,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about API Apps</h3>
+                        <h3>API Apps について</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +51,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>App Service のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +69,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with API Apps, ASP.NET adn Swagger in Azure App Service</h3>
+                        <h3>Azure App Service で API Apps、ASP.NET、Swagger を使用する</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +87,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Java API app in Azure App Service</h3>
+                        <h3>Azure App Service で Java API アプリを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +105,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Node.js API</h3>
+                        <h3>Node.js API を作成する</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +123,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an API app from JavaScript using CORS</h3>
+                        <h3>CORS を使用して JavaScript から API アプリを作成する</h3>
                     </div>
                 </div>
             </div>
@@ -117,13 +132,10 @@ Azure App Service is a cloud service that's designed to solve the practical prob
     </li>     
 </ul>
 
----
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Mobile Apps Documentation
-        </div>
-    </a>
-</div>
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

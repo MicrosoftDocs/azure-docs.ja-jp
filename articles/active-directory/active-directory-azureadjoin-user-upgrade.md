@@ -1,20 +1,24 @@
 ---
-title: Windows 10 デバイスを [設定] メニューから Azure AD に設定する | Microsoft Docs
-description: ユーザーが [設定] メニューで Azure AD に参加する方法について説明します。
+title: "Windows 10 デバイスを [設定] メニューから Azure AD に設定する | Microsoft Docs"
+description: "ユーザーが [設定] メニューで Azure AD に参加する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: b844e1d9-ad43-4e4a-a398-5c4a43bf2f5c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 70610ec2c5a056d63ed854b33d84e29951940c2f
+
 
 ---
 # <a name="set-up-a-windows-10-device-with-azure-ad-from-settings"></a>Windows 10 デバイスを [設定] メニューから Azure AD に設定する
@@ -43,6 +47,9 @@ Windows 7 または Windows 8 を使用しているコンピューターやデ�
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 * [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

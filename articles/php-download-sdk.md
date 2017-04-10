@@ -1,12 +1,12 @@
 ---
-title: Azure SDK for PHP をダウンロードする
-description: Azure SDK for PHP をダウンロードしてインストールする方法について説明します。
+title: "Azure SDK for PHP をダウンロードする"
+description: "Azure SDK for PHP をダウンロードしてインストールする方法について説明します。"
 documentationcenter: php
 services: app-service\web
 author: allclark
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: bac355ac-4c25-42f4-8273-c5112eafa8d4
 ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,16 +14,21 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
+translationtype: Human Translation
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
+ms.lasthandoff: 03/21/2017
+
 
 ---
-# Azure SDK for PHP をダウンロードする
-## 概要
-Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発、デプロイ、管理するためのコンポーネントが用意されています。Azure SDK for PHP には次のコンポーネントが用意されています。
+# <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
+## <a name="overview"></a>概要
+Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発、デプロイ、管理するためのコンポーネントが用意されています。 Azure SDK for PHP には次のコンポーネントが用意されています。
 
-* **Azure 用 PHP クライアント ライブラリ**。これらのクラス ライブラリには、データ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。  
-* **Mac、Linux、Windows の Azure コマンド ライン インターフェイス (Azure CLI)**これは、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンドのセットです。Azure CLI は、Mac、Linux、Windows など、すべてのプラットフォームで動作します。
-* **Azure PowerShell (Windows のみ)**。これは、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。
-* **Azure エミュレーター (Windows のみ)**。コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。Azure エミュレーターは Windows 上でのみ動作します。
+* **Azure 用 PHP クライアント ライブラリ**。 これらのクラス ライブラリには、データ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。  
+* **Mac、Linux、Windows の Azure コマンド ライン インターフェイス (Azure CLI)** これは、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンドのセットです。 Azure CLI は、Mac、Linux、Windows など、すべてのプラットフォームで動作します。
+* **Azure PowerShell (Windows のみ)**。 これは、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。
+* **Azure エミュレーター (Windows のみ)**。 コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。 Azure エミュレーターは Windows 上でのみ動作します。
 
 以下のセクションでは、上に示したコンポーネントをダウンロードおよびインストールする方法を説明します。
 
@@ -34,13 +39,13 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 > 
 > 
 
-## Microsoft Azure 用 PHP クライアント ライブラリ
-Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。これらのライブラリは、Composer からインストールできます。
+## <a name="php-client-libraries-for-azure"></a>Microsoft Azure 用 PHP クライアント ライブラリ
+Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。 これらのライブラリは、Composer からインストールできます。
 
 Azure 用 PHP クライアント ライブラリを使用する方法については、「[BLOB サービスの使用方法][blob-service]」、「[テーブル サービスの使用方法][table-service]」、および「[キュー サービスの使用方法][queue-service]」を参照してください。
 
-### Composer 経由でインストールする
-1. [Git をインストールします][install-git]。
+### <a name="install-via-composer"></a>Composer 経由でインストールする
+1. [Git をインストール][install-git]します。
 
     > [AZURE.NOTE] Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
@@ -56,18 +61,18 @@ Azure 用 PHP クライアント ライブラリを使用する方法につい�
    
         php composer.phar install
 
-## Azure PowerShell と Azure エミュレーター
-Azure PowerShell は、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。Azure エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのエミュレーターです。これらのコンポーネントは、Windows のみでサポートされています。
+## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell と Azure エミュレーター
+Azure PowerShell は、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。 Azure エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのエミュレーターです。 これらのコンポーネントは、Windows のみでサポートされています。
 
-Azure PowerShell と Azure エミュレーターは、[Microsoft Web プラットフォーム インストーラー][download-wpi]を使用してインストールすることをお勧めします。PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
+Azure PowerShell と Azure エミュレーターは、[Microsoft Web プラットフォーム インストーラー][download-wpi]を使用してインストールすることをお勧めします。 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
 
 Azure PowerShell の使用方法については、「[Azure PowerShell の使用方法][powershell-tools]」を参照してください。
 
-## Azure CLI
-Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。Azure CLI のインストール方法については、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+## <a name="azure-cli"></a>Azure CLI
+Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。 Azure CLI のインストール方法については、「 [Azure CLI のインストール](cli-install-nodejs.md)」を参照してください。
 
-## 次のステップ
-詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
@@ -84,4 +89,3 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=AcomDC_0601_2016-->

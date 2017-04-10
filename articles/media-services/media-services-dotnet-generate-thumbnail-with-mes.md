@@ -1,12 +1,12 @@
 ---
-title: .NET で Media Encoder Standard を使用してサムネイルを生成する方法
-description: このトピックでは、.NET で Media Encoder Standard を使用して、資産をエンコードするのと同時にサムネイルを生成する方法を説明します。
+title: ".NET で Media Encoder Standard を使用してサムネイルを生成する方法"
+description: "このトピックでは、.NET で Media Encoder Standard を使用して、資産をエンコードするのと同時にサムネイルを生成する方法を説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
+
 
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-.net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法
 このトピックでは、Media Services .NET SDK で Media Encoder Standard を使用して、資産をエンコードしサムネイルを生成する方法を説明します。 このトピックでは、エンコードと同時にサムネイルを生成するタスクの作成に使用できる XML および JSON サムネイル プリセットを定義します。 [この](https://msdn.microsoft.com/library/mt269962.aspx) ドキュメントには、これらのプリセットで使用される要素の説明があります。
 
 必ず「 [考慮事項](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) 」セクションを確認してください。
@@ -168,7 +172,7 @@ ms.author: juliako
             }
         }
 
-## <a name="<a-id="json"></a>thumbnail-json-preset"></a><a id="json"></a>サムネイル JSON プリセット
+## <a name="a-idjsonathumbnail-json-preset"></a><a id="json"></a>サムネイル JSON プリセット
 スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
 
     {
@@ -270,7 +274,7 @@ ms.author: juliako
     }
 
 
-## <a name="<a-id="xml"></a>thumbnail-xml-preset"></a><a id="xml"></a>サムネイル XML プリセット
+## <a name="a-idxmlathumbnail-xml-preset"></a><a id="xml"></a>サムネイル XML プリセット
 スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
 
     <?xml version="1.0" encoding="utf-16"?>
@@ -353,7 +357,7 @@ ms.author: juliako
   
   * 負ではない整数の場合は、フレーム番号 (例: "Start": "120")
   * % サフィックス付きで表現される場合は、ソース期間に対する相対値 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現される場合は、タイムスタンプ。 format. 例: "Start" : "00:01:00")
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  ( 例: "Start" : "00:01:00")
     
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
     
@@ -370,6 +374,9 @@ ms.author: juliako
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

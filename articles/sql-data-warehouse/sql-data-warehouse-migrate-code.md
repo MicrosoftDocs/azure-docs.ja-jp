@@ -1,33 +1,36 @@
 ---
-title: SQL Data Warehouse への SQL コードの移行 | Microsoft Docs
-description: ソリューション開発のための Azure SQL Data Warehouse への SQL コードの移行に関するヒント
+title: "SQL Data Warehouse への SQL コードの移行 | Microsoft Docs"
+description: "ソリューション開発のための Azure SQL Data Warehouse への SQL コードの移行に関するヒント"
 services: sql-data-warehouse
 documentationcenter: NA
-author: lodipalm
-manager: barbkess
-editor: ''
-
+author: jrowlandjones
+manager: jhubbard
+editor: 
+ms.assetid: 19c252a3-0e41-4eec-9d3e-09a68c7e7add
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/02/2016
-ms.author: lodipalm;barbkess;sonyama;jrj
+ms.date: 01/30/2017
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
+ms.openlocfilehash: 0c9a7792331b4662a93a78fe5dd08ab037b466db
+
 
 ---
-# SQL Data Warehouse への SQL コードの移行
-他のデータベースから SQL Data Warehouse にコードを移行するときは、多くの場合、コード ベースに変更を加える必要があります。一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
+# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
+他のデータベースから SQL Data Warehouse にコードを移行するときは、多くの場合、コード ベースに変更を加える必要があります。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
 
-## 一般的な T-SQL の制限事項
-Azure SQL Data Warehouse でサポートされていない一般的な機能を次に示します。リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
+## <a name="common-t-sql-limitations"></a>一般的な T-SQL の制限事項
+Azure SQL Data Warehouse でサポートされていない一般的な機能を次に示します。 リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
-* [更新での ANSI の JOIN][更新での ANSI の JOIN]
-* [削除での ANSI の JOIN][削除での ANSI の JOIN]
-* [MERGE ステートメント][MERGE ステートメント]
+* [ANSI JOIN を使用した更新][ANSI joins on updates]
+* [ANSI JOIN を使用した削除][ANSI joins on deletes]
+* [MERGE ステートメント][merge statement]
 * 複数データベースの JOIN
-* [カーソル][カーソル]
-* [SELECT..INTO][SELECT..INTO]
+* [カーソル][cursors]
 * [INSERT..EXEC][INSERT..EXEC]
 * OUTPUT 句
 * インライン ユーザー定義関数
@@ -42,53 +45,53 @@ Azure SQL Data Warehouse でサポートされていない一般的な機能を�
 * コミット/ロールバック処理
 * トランザクションの保存
 * 実行コンテキスト (EXECUTE AS)
-* [rollup / cube / grouping セット オプションによる句ごとのグループ化][rollup / cube / grouping セット オプションによる句ごとのグループ化]
-* [8 を超えるの入れ子のレベル][8 を超えるの入れ子のレベル]
-* [ビューを使用した更新][ビューを使用した更新]
-* [変数代入のための SELECT の使用][変数代入のための SELECT の使用]
-* [動的 SQL 文字列の MAX 以外のデータ型][動的 SQL 文字列の MAX 以外のデータ型]
+* [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]
+* [8 を超える入れ子のレベル][nesting levels beyond 8]
+* [ビューを使用した更新][updating through views]
+* [変数代入のための SELECT の使用][use of select for variable assignment]
+* [動的 SQL 文字列の MAX 以外のデータ型][no MAX data type for dynamic SQL strings]
 
-こうした制限の大部分は回避できます。上記の関連する開発記事に説明が記載されています。
+こうした制限の大部分は回避できます。 上記の関連する開発記事に説明が記載されています。
 
-## サポートされる CTE 機能
-SQL Data Warehouse では、共通テーブル式 (CTE) が部分的にサポートされています。現時点でサポートされている CTE 機能を次に示します。
+## <a name="supported-cte-features"></a>サポートされる CTE 機能
+SQL Data Warehouse では、共通テーブル式 (CTE) が部分的にサポートされています。  現時点でサポートされている CTE 機能を次に示します。
 
 * CTE は、SELECT ステートメントで指定できます。
 * CTE は、CREATE VIEW ステートメントで指定できます。
-* CTE は、CREATE TABLE AS SELECT (CTAS) ステートメントで指定できます。
+* CTE は、CREATE TABLE  AS SELECT (CTAS) ステートメントで指定できます。
 * CTE は、CREATE REMOTE TABLE AS SELECT (CRTAS) ステートメントで指定できます。
 * CTE は、CREATE EXTERNAL TABLE AS SELECT (CETAS) ステートメントで指定できます。
 * リモート テーブルは、CTE から参照できます。
 * 外部テーブルは、CTE から参照できます。
 * 複数の CTE クエリ定義は、CTE で定義できます。
 
-## CTE の制限事項
+## <a name="cte-limitations"></a>CTE の制限事項
 SQL Data Warehouse での共通テーブル式の制限事項を次に示します。
 
-* CTE の後ろには単一の SELECT ステートメントを続ける必要があります。INSERT、UPDATE、DELETE、MERGE ステートメントはサポートされていません。
+* CTE の後ろには単一の SELECT ステートメントを続ける必要があります。 INSERT、UPDATE、DELETE、MERGE ステートメントはサポートされていません。
 * 自己参照を含む共通テーブル式 (再帰共通テーブル式) は、サポートされていません (以下のセクションを参照してください)。
-* CTE で、複数の WITH 句を指定することはできません。たとえば、CTE\_query\_definition にサブクエリが含まれている場合、そのサブクエリに、別の CTE を定義する入れ子になった WITH 句を含めることはできません。
-* TOP 句が指定されている場合を除き、ORDER BY 句は、CTE\_query\_definition で使用できません。
+* CTE で、複数の WITH 句を指定することはできません。 たとえば、CTE_query_definition にサブクエリが含まれている場合、そのサブクエリに、別の CTE を定義する入れ子になった WITH 句を含めることはできません。
+* TOP 句が指定されている場合を除き、ORDER BY 句は、CTE_query_definition で使用できません。
 * バッチの一部であるステートメントで CTE を使用する場合は、前のステートメント末尾にセミコロンを付ける必要があります。
-* Sp\_prepare によって作成されるステートメントで使用される場合、CTE は PDW の他の SELECT ステートメントと同様に動作します。ただし、CTE が sp\_prepare で準備される CETAS の一部として使用される場合、バインドを sp\_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp\_prepare はエラーを検出せずに渡されますが、代わりに sp\_execute でエラーがスローされます。
+* Sp_prepare によって作成されるステートメントで使用される場合、CTE は PDW の他の SELECT ステートメントと同様に動作します。 ただし、CTE が sp_prepare で準備される CETAS の一部として使用される場合、バインドを sp_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。 CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp_prepare はエラーを検出せずに渡されますが、代わりに sp_execute でエラーがスローされます。
 
-## 再帰 CTE
-再帰 CTE は、SQL Data Warehouse ではサポートされていません。再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][group by 句と rollup / cube / grouping sets オプション]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
+## <a name="recursive-ctes"></a>再帰 CTE
+再帰 CTE は、SQL Data Warehouse ではサポートされていません。  再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。 通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。 一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。 [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]に関する記事でも、`GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
-## サポートされていないシステム関数
-また、サポートされていないシステム関数もいくつかあります。データ ウェアハウジングで一般的に使用されている主なものを次に示します。
+## <a name="unsupported-system-functions"></a>サポートされていないシステム関数
+また、サポートされていないシステム関数もいくつかあります。 データ ウェアハウジングで一般的に使用されている主なものを次に示します。
 
 * NEWSEQUENTIALID()
 * @@NESTLEVEL()
 * @@IDENTITY()
 * @@ROWCOUNT()
-* ROWCOUNT\_BIG
-* ERROR\_LINE()
+* ROWCOUNT_BIG
+* ERROR_LINE()
 
 これらの問題の一部は回避できます。
 
-## @@ROWCOUNT の回避策
-@@ROWCOUNT がサポートされていない問題を回避するには、sys.dm\_pdw\_request\_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
+## <a name="rowcount-workaround"></a>@@ROWCOUNT 対処法
+@@ROWCOUNT, がサポートされていない問題を回避するには、sys.dm_pdw_request_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
 
 ```sql
 CREATE PROCEDURE LastRowCount AS
@@ -110,29 +113,31 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ;
 ```
 
-## 次のステップ
-サポートされているすべての T-SQL ステートメントの一覧については、「[Transact-SQL トピック][Transact-SQL トピック]」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+サポートされているすべての T-SQL ステートメントの一覧については、「[Transact-SQL トピック][Transact-SQL topics]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[更新での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
-[削除での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
-[MERGE ステートメント]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[ANSI joins on updates]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[ANSI joins on deletes]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[merge statement]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
 [INSERT..EXEC]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[Transact-SQL トピック]: ./sql-data-warehouse-reference-tsql-statements.md
+[Transact-SQL topics]: ./sql-data-warehouse-reference-tsql-statements.md
 
-[カーソル]: ./sql-data-warehouse-develop-loops.md
-[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md#selectinto
-[group by 句と rollup / cube / grouping sets オプション]: ./sql-data-warehouse-develop-group-by-options.md
-[rollup / cube / grouping セット オプションによる句ごとのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
-[8 を超えるの入れ子のレベル]: ./sql-data-warehouse-develop-transactions.md
-[ビューを使用した更新]: ./sql-data-warehouse-develop-views.md
-[変数代入のための SELECT の使用]: ./sql-data-warehouse-develop-variable-assignment.md
-[動的 SQL 文字列の MAX 以外のデータ型]: ./sql-data-warehouse-develop-dynamic-sql.md
+[cursors]: ./sql-data-warehouse-develop-loops.md
+[group by clause with rollup / cube / grouping sets options]: ./sql-data-warehouse-develop-group-by-options.md
+[nesting levels beyond 8]: ./sql-data-warehouse-develop-transactions.md
+[updating through views]: ./sql-data-warehouse-develop-views.md
+[use of select for variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
+[no MAX data type for dynamic SQL strings]: ./sql-data-warehouse-develop-dynamic-sql.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Jan17_HO5-->
+
+

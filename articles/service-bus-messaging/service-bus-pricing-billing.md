@@ -1,153 +1,154 @@
 ---
-title: Service Bus pricing and billing | Microsoft Docs
-description: Overview of Service Bus pricing structure.
-services: service-bus
+title: "Service Bus の料金と課金 | Microsoft Docs"
+description: "Service Bus の料金体系の概要です。"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2016
+ms.date: 02/16/2017
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: bd042908fec2dcf499dd1cb5230f62ec4be9fdea
+ms.lasthandoff: 02/10/2017
+
 
 ---
-# <a name="service-bus-pricing-and-billing"></a>Service Bus pricing and billing
-Service Bus is offered in Basic, Standard, and [Premium](service-bus-premium-messaging.md) tiers. You can choose a service tier for each Service Bus service namespace that you create, and this tier selection applies across all entities created within that namespace.
+# <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
+Service Bus は、Basic、Standard、[Premium](service-bus-premium-messaging.md) の各階層で提供されます。 作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのエンティティにこの階層選択が適用されます。
 
 > [!NOTE]
-> For detailed information about current Service Bus pricing, see the [Azure Service Bus pricing page](https://azure.microsoft.com/pricing/details/service-bus/), and the [Service Bus FAQ](service-bus-faq.md#service-bus-pricing).
-> 
-> 
+> Service Bus の現在の価格については、「[Azure Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」および「[Service Bus に関する FAQ](service-bus-faq.md#pricing)」を参照してください。
+>
+>
 
-Service Bus uses the following two meters for queues and topics/subscriptions:
+Service Bus では、キューとトピック/サブスクリプションに次の&2; つのメーターが使用されます。
 
-1. **Messaging Operations**: Defined as API calls against queue or topic/subscription service endpoints. This meter will replace messages sent or received as the primary unit of billable usage for queues and topics/subscriptions.
-2. **Brokered Connections**: Defined as the peak number of persistent connections open against queues, topics, or subscriptions during a given one-hour sampling period. This meter will only apply in the Standard tier, in which you can open additional connections (previously, connections were limited to 100 per queue/topic/subscription) for a nominal per-connection fee.
+1. **メッセージング操作**: キューまたはトピック/サブスクリプションのサービス エンドポイントに対する API 呼び出しとして定義されます。 このメーターは、キューおよびトピック/サブスクリプションの課金対象の使用における主要な単位として、送受信されるメッセージを置き換えます。
+2. **仲介型接続**: 特定の&1; 時間のサンプリング期間中にキュー、トピックまたはサブスクリプションに対して開かれた永続的接続の最大数として定義されます。 このメーターは Standard 階層においてのみ適用され、接続ごとの標準料金に対して追加の接続を開くことができます (以前は、接続はキュー/トピック/サブスクリプションあたり 100 に制限されていました)。
 
-The **Standard** tier introduces graduated pricing for operations performed with queues and topics/subscriptions, resulting in volume-based discounts of up to 80% at the highest usage levels. There is also a Standard tier base charge of $10 per month, which enables you to perform up to 12.5 million operations per month at no additional cost.
+**Standard** 階層ではキューおよびトピック/サブスクリプションで実行される操作に対する段階的料金が導入され、最高の使用レベルでボリューム ベースの割引は最高 80% になります。 また、Standard 階層には 1 か月あたり 10 ドルの基本料金があり、1 か月間に 1250 万操作を追加コストなしで実行できます。
 
-The **Premium** tier provides resource isolation at the CPU and memory layer so that each customer workload runs in isolation. This resource container is called a *messaging unit*. Each premium namespace is allocated at least one messaging unit. You can purchase 1, 2, or 4 messaging units for each Service Bus Premium namespace. A single workload or entity can span multiple messaging units and the number of messaging units can be changed at will, although billing is in 24-hour or daily rate charges. The result is predictable and repeatable performance for your Service Bus-based solution. Not only is this performance more predictable and available, but it is also faster. Azure Service Bus Premium messaging builds on the storage engine introduced in Azure Event Hubs. With Premium messaging, peak performance is much faster than the Standard tier.
+**Premium** 階層では、各顧客のワークロードが個別に実行されるように、CPU およびメモリ層でのリソースの分離が提供されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを購入できます。 1 つのワークロードまたはエンティティは、複数のメッセージング ユニットにまたがることができます。課金は 24 時間単位、すなわち日単位ですが、メッセージング ユニットの数は自由に変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。 このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。 Azure Service Bus Premium メッセージングは、Azure Event Hubs に導入されたストレージ エンジンが基盤になっています。 Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
 
-Note that the standard base charge is charged only once per month per Azure subscription. This means that after you create a single Standard or Premium tier Service Bus namespace, you will be able to create as many additional Standard or Premium tier namespaces as you want under that same Azure subscription, without incurring additional base charges.
+標準の基本料金は、Azure サブスクリプションごとに毎月&1; 回だけ課金されることに注意してください。 つまり、Standard または Premium 階層の Service Bus 名前空間を&1; つ作成した後は、その同じ Azure サブスクリプションの下に必要なだけいくつでも Standard または Premium 階層の名前空間を追加作成でき、追加の基本料金はかかりません。
 
-All existing Service Bus namespaces created prior to November 1, 2014 were automatically placed into the Standard tier. This ensures that you continue to have access to all features currently available with Service Bus. Subsequently, you can use the [Azure classic portal][Azure classic portal] to downgrade to the Basic tier if desired.
+2014 年 11 月 1 日より前に作成された既存の Service Bus 名前空間はすべて、Standard 階層に自動的に配置されます。 これにより、Service Bus で現在利用可能なすべての機能に引き続きアクセスできます。 その後、必要であれば、[Azure クラシック ポータル][Azure classic portal]を使って、Basic 階層にダウングレードできます。
 
-The following table summarizes the functional differences between the Basic and Standard/Premium tiers.
+次の表は、Basic 階層と Standard/Premium 階層の機能の違いをまとめたものです。
 
-| Capability | Basic | Standard/Premium |
+| 機能 | 基本 | Standard/Premium |
 | --- | --- | --- |
-| Queues |Yes |Yes |
-| Scheduled messages |Yes |Yes |
-| Topics/Subscriptions |No |Yes |
-| Relays |No |Yes |
-| Transactions |No |Yes |
-| De-Duplication |No |Yes |
-| Sessions |No |Yes |
-| Large messages |No |Yes |
-| ForwardTo |No |Yes |
-| SendVia |No |Yes |
-| Brokered connections (included) |100 per Service Bus namespace |1,000 per Azure subscription |
-| Brokered connections (overage allowed) |No |Yes (billable) |
+| キュー |はい |はい |
+| スケジュール設定されたメッセージ |はい |はい |
+| トピック/サブスクリプション |なし |はい |
+| リレー |なし |はい |
+| トランザクション |なし |はい |
+| 重複除去 |なし |はい |
+| セッション |なし |はい |
+| 大きいメッセージ |なし |はい |
+| ForwardTo |なし |はい |
+| SendVia |なし |はい |
+| 仲介型接続 (付属) |Service Bus 名前空間あたり&100; |Azure サブスクリプションあたり&1;,000 |
+| 仲介型接続 (超過の許容) |なし |はい (課金対象) |
 
-## <a name="messaging-operations"></a>Messaging operations
-As part of the new pricing model, billing for queues and topics/subscriptions is changing. These entities are transitioning from billing per message to billing per operation. An "operation" refers to any API call made against a queue or topic/subscription service endpoint. This includes management, send/receive, and session state operations.
+## <a name="messaging-operations"></a>メッセージング操作
+新しい料金モデルの一部として、キューおよびトピック/サブスクリプションに対する課金が変更されます。 これらのエンティティは、メッセージごとの課金から操作ごとの課金に変更されます。 「操作」とは、キューまたはトピック/サブスクリプションのサービス エンドポイントに対して行われたすべての API 呼び出しのことです。 これには、管理、送信/受信、およびセッション状態の操作が含まれます。
 
-| Operation Type | Description |
+| 操作の種類 | Description |
 | --- | --- |
-| Management |Create, Read, Update, Delete (CRUD) against queues or topics/subscriptions. |
-| Messaging |Sending and receiving messages with queues or topics/subscriptions. |
-| Session state |Getting or setting session state on a queue or topic/subscription. |
+| 管理 |キューまたはトピック/サブスクリプションに対する作成、読み取り、更新、削除 (CRUD)。 |
+| メッセージング |キューまたはトピック/サブスクリプションでのメッセージの送信および受信。 |
+| セッションの状態 |キューまたはトピック/サブスクリプションでのセッション状態の取得または設定。 |
 
-The following prices were effective starting November 1, 2014:
+次の料金は、2014 年 11 月 1 日から有効になりました。
 
-| Basic | Cost |
+| 基本 | コスト |
 | --- | --- |
-| Operations |$0.05 per million operations |
+| 操作 |0.05 ドル/100 万操作 |
 
-| Standard | Cost |
+| Standard | コスト |
 | --- | --- |
-| Base charge |$10/month |
-| First 12.5 million operations/month |Included |
-| 12.5-100 million operations/month |$0.80 per million operations |
-| 100 million-2,500 million operations/month |$0.50 per million operations |
-| Over 2,500 million operations/month |$0.20 per million operations |
+| 基本料金 |10 ドル/月 |
+| 最初の 1250 万操作/月 |あり |
+| 1250 万～&1; 億操作/月 |0.80 ドル/100 万操作 |
+| 1 ～&25; 億操作/月 |0.50 ドル/100 万操作 |
+| 25 億超操作/月 |0.20 ドル/100 万操作 |
 
-| Premium | Cost |
+| プレミアム | コスト |
 | --- | --- |
-| Daily |$11.13 fixed rate per Message Unit |
+| 毎日 |メッセージ単位あたり&11;.13 ドルの固定レート |
 
-## <a name="brokered-connections"></a>Brokered connections
-*Brokered connections* accommodate customer usage patterns that involve a large number of "persistently connected" senders/receivers against queues, topics, or subscriptions. Persistently connected senders/receivers are those that connect using either AMQP or HTTP with a non-zero receive timeout (for example, HTTP long polling). HTTP senders and receivers with an immediate timeout do not generate brokered connections.
+## <a name="brokered-connections"></a>仲介型接続
+*仲介型接続*は、キュー、トピックまたはサブスクリプションに対して "永続的に接続された" 多数の送信者/受信者を含む顧客使用パターンに対応します。 永続的に接続された送信者/受信者とは、0 以外の受信タイムアウトで AMQP または HTTP を使用して接続しているユーザーです (たとえば、HTTP ロング ポーリング)。 即時タイムアウトする HTTP の送信者および受信者は、仲介型接続になりません。
 
-Previously, queues and topics/subscriptions had a limit of 100 concurrent connections per URL. The current billing scheme removes the per-URL limit for queues and topics/subscriptions, and implements quotas and metering on brokered connections at the Service Bus namespace and Azure subscription levels.
+以前は、キューおよびトピック/サブスクリプションには、URL ごとに 100 同時接続の制限がありました。 現在の課金方式ではキューおよびトピック/サブスクリプションに対する URL 単位の制限はなくなり、Service Bus 名前空間および Azure サブスクリプションのレベルでの仲介型接続に対するクォータと測定が実装されています。
 
-The Basic tier includes, and is strictly limited to, 100 brokered connections per Service Bus namespace. Connections above this number will be rejected in the Basic tier. The Standard tier removes the per-namespace limit and counts aggregate brokered connection usage across the Azure subscription. In the Standard tier, 1,000 brokered connections per Azure subscription will be allowed at no extra cost (beyond the base charge). Using more than a total of 1,000 brokered connections across Standard-tier Service Bus namespaces in an Azure subscription will be billed on a graduated schedule, as shown in the following table.
+Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続が含まれ、厳しく制限されています。 この数を超える接続は、Basic 階層では拒否されます。 Standard 階層では名前空間単位での制限がなくなり、Azure サブスクリプション全体で仲介型接続の使用が集計されます。 Standard では、Azure サブスクリプションあたり 1,000 の仲介型接続が (基本料金を超える) 追加料金なしで許可されます。 Azure サブスクリプションの Standard 階層 Service Bus 名前空間全体で仲介型接続の合計が 1,000 を超える場合は、次の表に示すように段階的に課金されます。
 
-| Brokered connections (Standard tier) | Cost |
+| 仲介型接続の数 (Standard 階層) | コスト |
 | --- | --- |
-| First 1,000/month |Included with base charge |
-| 1,000-100,000/month |$0.03 per connection/month |
-| 100,000-500,000/month |$0.025 per connection/month |
-| Over 500,000/month |$0.015 per connection/month |
+| 最初の 1,000/月 |基本料金に含まれます |
+| 1,000 ～&100;,000/月 |接続あたり&0;.03 ドル/月 |
+| 100,000 ～&500;,000/月 |接続あたり&0;.025 ドル/月 |
+| 500,000 超/月 |接続あたり&0;.015 ドル/月 |
 
 > [!NOTE]
-> 1,000 brokered connections are included with the Standard messaging tier (via the base charge) and can be shared across all queues, topics, and subscriptions within the associated Azure subscription.
-> 
-> 
+> Standard メッセージング階層 (の基本料金) には&1;,000 の仲介型接続が含まれ、関連付けられている Azure サブスクリプションのすべてのキュー、トピックまたはサブスクリプションで共有できます。
+>
+>
 
 <br />
 
 > [!NOTE]
-> Billing is based on the peak number of concurrent connections and is prorated hourly based on 744 hours per month.
-> 
-> 
+> 課金はピーク時の同時接続数に基づき、744 時間/月として時間あたりに配分されます。
+>
+>
 
-| Premium Tier |
+| Premium 階層 |
 | --- |
-| Brokered connections are not charged in the Premium tier. |
+| Premium 階層では、仲介型接続は料金がかかりません。 |
 
-For more information about brokered connections, see the [FAQ](#faq) section later in this topic.
+仲介型接続の詳細については、このトピックの後の「 [FAQ](#faq) 」セクションをご覧ください。
 
-## <a name="relay"></a>Relay
-Relays are available only in Standard tier namespaces. Otherwise, pricing and connection quotas for relays remain unchanged. This means that relays will continue to be charged on the number of messages (not operations), and relay hours.
+## <a name="wcf-relay"></a>WCF リレー
+WCF リレーは、Standard 階層の名前空間でのみ使用できます。 それ以外の階層については、リレーの価格と接続クォータは変更されていません。 つまり、リレーは、引き続き (操作ではなく) メッセージ数およびリレー時間に基づいて課金されます。
 
-| Relay pricing | Cost |
+| WCF リレーの料金 | コスト |
 | --- | --- |
-| Relay hours |$0.10 for every 100 relay hours |
-| Messages |$0.01 for every 10,000 messages |
+| WCF リレー時間 |0.10 ドル/100 リレー時間 |
+| メッセージ |0.01 ドル/10,000 メッセージ |
 
 ## <a name="faq"></a>FAQ
-### <a name="how-is-the-relay-hours-meter-calculated?"></a>How is the Relay Hours meter calculated?
-See [this topic](service-bus-faq.md#how-is-the-relay-hours-meter-calculated).
+### <a name="how-is-the-wcf-relay-hours-meter-calculated"></a>WCF リレー時間のメーターはどのようにして計算されますか
+[こちらのトピック](service-bus-faq.md)をご覧ください。
 
-### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them?"></a>What are brokered connections and how do I get charged for them?
-A brokered connection is defined as one of the following:
+### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>仲介型接続とはどのようなもので、どのように課金されますか
+仲介型接続は、次のいずれかとして定義されます。
 
-1. An AMQP connection from a client to a Service Bus queue or topic/subscription.
-2. An HTTP call to receive a message from a Service Bus topic or queue that has a receive timeout value greater than zero.
+1. クライアントから Service Bus のキュー、またはトピック/サブスクリプションへの AMQP 接続。
+2. Service Bus のトピックまたはキューからメッセージを受信するための、受信タイムアウト値が&0; より大きい HTTP 呼び出し。
 
-Service Bus charges for the peak number of concurrent brokered connections that exceed the included quantity (1,000 in the Standard tier). Peaks are measured on an hourly basis, prorated by dividing by 744 hours in a month, and added up over the monthly billing period. The included quantity (1,000 brokered connections per month) is applied at the end of the billing period against the sum of the prorated hourly peaks.
+階層に含まれる数量 (Standard 階層では&1;,000) を超える分のピーク時同時仲介型接続数に対して、Service Bus により課金されます。 ピークは時間単位で測定され、1 か月を 744 時間として按分されて、毎月の請求期間に追加されます。 含まれる数量 (1 か月あたり&1;,000 仲介型接続) は、請求期間の最後に、按分された時間単位ピークの合計に対して適用されます。
 
-For example:
+次に例を示します。
 
-1. Each of 10,000 devices connects via a single AMQP connection, and receives commands from a Service Bus topic. The devices send telemetry events to an Event Hub. If all devices connect for 12 hours each day, the following connection charges apply (in addition to any other Service Bus topic charges): 10,000 connections * 12 hours * 31 days / 744 = 5,000 brokered connections. After the monthly allowance of 1,000 brokered connections, you would be charged for 4,000 brokered connections, at the rate of $0.03 per brokered connection, for a total of $120.
-2. 10,000 devices receive messages from a Service Bus queue via HTTP, specifying a non-zero timeout. If all devices connect for 12 hours every day, you will see the following connection charges (in addition to any other Service Bus charges): 10,000 HTTP Receive connections * 12 hours per day * 31 days / 744 hours = 5,000 brokered connections.
+1. 10,000 台のデバイスが単一の AMQP 接続経由で接続し、Service Bus トピックからコマンドを受け取ります。 デバイスは、遠隔測定イベントを Event Hub に送信します。 すべてのデバイスが毎日 12 時間接続する場合、次の接続料金が適用されます (他のすべての Service Bus トピック料金に加えて): 10,000 接続 * 12 時間 * 31 日 / 744 = 5,000 仲介型接続 基本料金に含まれる 1,000 仲介型接続を除く 4,000 仲介型接続に対して 0.03 ドル/仲介型接続が課金され、合計 120 ドルになります。
+2. 10,000 台のデバイスが、タイムアウトが&0; ではない HTTP 経由で Service Bus キューからメッセージを受信します。 すべてのデバイスが毎日 12 時間接続する場合、接続料金は次のようになります (他のすべての Service Bus 料金に加えて): 10,000 HTTP 受信接続 * 12 時間/日 * 31 日 / 744 時間 = 5,000 仲介型接続
 
-### <a name="do-brokered-connection-charges-apply-to-queues-and-topics/subscriptions?"></a>Do brokered connection charges apply to queues and topics/subscriptions?
-Yes. There are no connection charges for sending events using HTTP, regardless of the number of sending systems or devices. Receiving events with HTTP using a timeout greater than zero, sometimes called "long polling," generates brokered connection charges. AMQP connections generate brokered connection charges regardless of whether the connections are being used to send or receive. Note that 100 brokered connections are allowed at no charge in a Basic namespace. This is also the maximum number of brokered connections allowed for the Azure subscription. The first 1,000 brokered connections across all Standard namespaces in an Azure subscription are included at no extra charge (beyond the base charge). Because these allowances are enough to cover many service-to-service messaging scenarios, brokered connection charges usually only become relevant if you plan to use AMQP or HTTP long-polling with a large number of clients; for example, to achieve more efficient event streaming or enable bi-directional communication with many devices or application instances.
+### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>仲介型接続の料金はキューおよびトピック/サブスクリプションには適用されますか
+はい。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 0 より大きいタイムアウトを使用する HTTP の受信イベント ("ロング ポーリング" とも呼ばれます) では、仲介型接続料金が発生します。 AMQP 接続では、接続が送信または受信のどちらに使用されるかに関係なく、仲介型接続料金が発生します。 Basic 名前空間では、100 個の仲介型接続は無料で許可されることに注意してください。 また、これは Azure サブスクリプションに対して許可される仲介型接続の最大数です。 Azure サブスクリプションのすべての Standard 名前空間全体で最初の 1,000 個の仲介型接続は、(基本料金を超える) 追加料金なしで含まれます。 これは多くのサービス間メッセージング シナリオに対して十分であり、通常では、仲介型接続料金は多数のクライアントで AMQP または HTTP のロング ポーリングを使用する場合にのみ発生します。たとえば、より効率的なイベントストリーミングを行う場合、あるいは多数のデバイスまたはアプリケーション インスタンスとの双方向通信を有効にする場合などです。
 
-## <a name="next-steps"></a>Next steps
-* For more details about Service Bus pricing, see the [Azure Service Bus pricing page](https://azure.microsoft.com/pricing/details/service-bus/).
-* See the [Service Bus FAQ](service-bus-faq.md#service-bus-pricing) for some common FAQs around Service bus pricing and billing.
+## <a name="next-steps"></a>次のステップ
+* Service Bus の価格の詳細については、 [Azure Service Bus の価格に関するページ](https://azure.microsoft.com/pricing/details/service-bus/)を参照してください。
+* Service Bus の価格および課金に関してよく寄せられる質問については、[「Service Bus に関する FAQ」](service-bus-faq.md#pricing)を参照してください。
 
 [Azure classic portal]: http://manage.windowsazure.com
-
-
-<!--HONumber=Oct16_HO2-->
-
 

@@ -1,63 +1,68 @@
 ---
-title: Upgrade an Standalone Service Fabric cluster on Windows Server | Microsoft Docs
-description: Upgrade the Service Fabric code and/or configuration that runs a standalone Service Fabric cluster, including setting cluster update mode
+title: "Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード | Microsoft Docs"
+description: "スタンドアロン Azure Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします (クラスター アップグレード モードの設定など)。"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2016
+ms.date: 02/02/2017
 ms.author: chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# <a name="upgrade-your-standalone-service-fabric-cluster-on-windows-server"></a>Upgrade your standalone Service Fabric cluster on Windows Server
+# <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード
 > [!div class="op_single_selector"]
-> * [Azure Cluster](service-fabric-cluster-upgrade.md)
-> * [Standalone Cluster](service-fabric-cluster-upgrade-windows-server.md)
-> 
-> 
+> * [Azure クラスター](service-fabric-cluster-upgrade.md)
+> * [スタンドアロン クラスター](service-fabric-cluster-upgrade-windows-server.md)
+>
+>
 
-For any modern system, designing for upgradability is key to achieving long-term success of your product. A Service Fabric cluster is a resource that you own. This article describes how you can make sure that the cluster always runs supported versions of the service fabric code and configurations.
+最新のシステムでは、アップグレードできることが製品の長期的な成功の鍵となります。 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 この記事では、クラスターが Service Fabric のコードと構成のサポートされているバージョンを常に実行できるようにする方法について説明します。
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Controlling the fabric version that runs on your Cluster
-You can set your cluster to download the service fabric updates, when Microsoft releases a new version or choose to select a supported fabric version you want your cluster to be on. 
-
-You do this by setting the "fabricClusterAutoupgradeEnabled" cluster configuration to true or false.
+## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>クラスターで実行される Service Fabric のバージョンの管理
+Microsoft が新しいバージョンをリリースしたときに、クラスターが Service Fabric の更新プログラムをダウンロードするように設定するには、**fabricClusterAutoupgradeEnabled** クラスター構成を true に設定します。 クラスターに適用する Service Fabric のサポートされているバージョンを選択するには、**fabricClusterAutoupgradeEnabled** クラスター構成を false に設定します。
 
 > [!NOTE]
-> Make sure to keep your cluster always running a supported Service Fabric version. As and when we announce the release of a new version of service fabric, the previous version is marked for end of support after a minimum of 60 days from that date. The new releases are announced [on the service fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). The new release is available to choose then. 
-> 
-> 
+> クラスターで Service Fabric のサポートされているバージョンが常に実行されるようにする必要があります。 Microsoft が Service Fabric の新しいバージョンのリリースを発表すると、前のバージョンのサポート期間の終了が発表日から最短で 60 日後に設定されます。 新しいリリースは、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)で発表されます。 その時点で新しいリリースを選択できるようになります。
+>
+>
 
-You can upgrade your cluster to the new version only if you are using a  production-style node configuration, where each Service Fabric node is allocated on a separate physical or virtual machine. If you have a development cluster, where there are more than one service fabric nodes on a single physical or virtual machine, you must tear down your cluster and recreate it with the new version.
+各 Service Fabric ノードが別個の物理または仮想マシンに割り当てられる、運用スタイルのノード構成を使用している場合にのみ、クラスターを新しいバージョンにアップグレードできます。 1 台の物理マシンまたは仮想マシンに複数の Service Fabric ノードが存在する開発クラスターがある場合、新しいバージョンでクラスターを再構築する必要があります。
 
-There are two distinct workflows for upgrading your cluster to the latest or a supported service fabric version. One for clusters that have connectivity to download the latest version automatically and the second one for clusters that are no connectivity to download the latest Service Fabric version.
+2 つの異なるワークフローで、Service Fabric の最新バージョンまたはサポートされているバージョンにクラスターをアップグレードできます。 1 つは、最新バージョンを自動的にダウンロードするための接続を使用できるクラスター向けのワークフローです。 もう 1 つは、Service Fabric の最新バージョンをダウンロードするための接続を使用できないクラスター向けのワークフローです。
 
-### <a name="upgrade-the-clusters-with-connectivity-to-download-the-latest-code-and-configuration"></a>Upgrade the clusters with connectivity to download the latest code and configuration
-Use these steps to upgrade your cluster to a supported version, if your cluster nodes have internet connectivity to [http://download.microsoft.com](http://download.microsoft.com) 
+### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>最新のコードと構成をダウンロードするための接続を使用できるクラスターをアップグレードする
+クラスター ノードが [http://download.microsoft.com](http://download.microsoft.com) にインターネット接続できる場合は、以下の手順でクラスターをサポートされているバージョンにアップグレードします。
 
-For clusters that have connectivity to [http://download.microsoft.com](http://download.microsoft.com), we periodically check for the availability of new service fabric versions.
+[http://download.microsoft.com](http://download.microsoft.com) に接続できるクラスターの場合、Service Fabric の新しいバージョンが利用可能かどうかを Microsoft が定期的に確認します。
 
-When a new service fabric version is available, the package is downloaded locally to the cluster and provisioned for upgrade. Additionally to inform the customer of this new version, the system places an explicit cluster health warning similar to the following:
+Service Fabric の新しいバージョンが利用可能になると、パッケージがローカルのクラスターにダウンロードされ、アップグレードの準備が行われます。 さらに、この新しいバージョンの情報をお客様に伝えるために、クラスターの正常性に関する次のような警告が表示されます。
 
-“The current cluster version [version#] support ends [Date].", Once the cluster is running the latest version, the warning goes away.
+「現在のクラスター バージョン [version #] のサポートは [Date] に終了します。」
 
-#### <a name="cluster-upgrade-workflow."></a>Cluster Upgrade workflow.
-Once you see the cluster health warning, you need to do the following:
+クラスターで最新バージョンが実行されるようになると、この警告は表示されなくなります。
 
-1. Connect to the cluster from any machine that has administrator access to all the machines that are listed as nodes in the cluster. The machine that this script is run on does not have to be part of the cluster
-   
+#### <a name="cluster-upgrade-workflow"></a>クラスターのアップグレード ワークフロー
+クラスターの正常性に関する警告が表示されたら、次の手順を実行します。
+
+1. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
+
     ```powershell
-   
+
     ###### connect to the secure cluster using certs
     $ClusterName= "mysecurecluster.something.com:19000"
-    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3" 
+    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3"
     Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
         -X509Credential `
         -ServerCertThumbprint $CertThumbprint  `
@@ -66,130 +71,139 @@ Once you see the cluster health warning, you need to do the following:
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-2. Get the list of service fabric versions that you can upgrade to
-   
+
+2. アップグレード可能な Service Fabric のバージョンの一覧を取得します。
+
     ```powershell
-   
-    ###### Get the list of available service fabric versions 
+
+    ###### Get the list of available Service Fabric versions
     Get-ServiceFabricRegisteredClusterCodeVersion
     ```
-   
-    you should get an output similar to this:
-   
-    ![get fabric versions][getfabversions]
-3. Kick off a cluster upgrade to one of the versions that is available using the [Start-ServiceFabricClusterUpgrade PowerShell cmd ](https://msdn.microsoft.com/library/mt125872.aspx)
-   
+
+    次のような出力が表示されます。
+
+    ![ファブリックのバージョンを取得する][getfabversions]
+3. [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) PowerShell コマンドを使用して、利用可能なバージョンへのクラスターのアップグレードを開始します。
+
     ```Powershell
-   
+
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
-   
-    ###### Here is a filled out example
-   
+
+    ###### Here is a filled-out example
+
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
-   
+
     ```
-   You can monitor the progress of the upgrade on Service fabric explorer or by running the    following power shell command
-   
+   アップグレードの進捗状況を監視するには、Service Fabric Explorer を使用するか、次の Windows PowerShell コマンドを実行します。
+
     ```powershell
-   
+
     Get-ServiceFabricClusterUpgrade
     ```
-   
-    If the cluster health policies are not met, the upgrade is rolled back. You can specify custom health policies at the time for the Start-ServiceFabricClusterUpgrade command refer to [this document](https://msdn.microsoft.com/library/mt125872.aspx) for details. 
 
-Once you have fixed the issues that resulted in the rollback, you need to initiate the upgrade again, by following the same steps as before.
+    クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。 **Start-ServiceFabricClusterUpgrade** コマンドにカスタム正常性ポリシーを指定する方法については、「[Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx)」をご覧ください。
 
-### <a name="upgrade-the-clusters-with-<u>no-connectivity</u>-to-download-the-latest-code-and-configuration"></a>Upgrade the clusters with <U>no connectivity</u> to download the latest code and configuration
-Use these steps to upgrade your cluster to a supported version, if your cluster nodes **do not have** internet connectivity to [http://download.microsoft.com](http://download.microsoft.com) 
+ロールバックの原因となった問題を解決したら、前述の手順に従って、もう一度アップグレードを開始します。
+
+### <a name="upgrade-clusters-that-have-uno-connectivityu-to-download-the-latest-code-and-configuration"></a>最新のコードと構成をダウンロードするための<U>接続を使用できない</u>クラスターをアップグレードする
+クラスター ノードが [http://download.microsoft.com](http://download.microsoft.com) にインターネット接続できない場合は、以下の手順でクラスターをサポートされているバージョンにアップグレードします。
 
 > [!NOTE]
-> If you are running a cluster that is not internet connected, you will have to monitor the service fabric team blog to get notified of a new release. The system **does not** place any cluster health warning to alert you of it.  
-> 
-> 
+> インターネットに接続されていないクラスターを実行している場合、新しいリリースの情報は Service Fabric チーム ブログで確認する必要があります。 新しいリリースについて通知する、クラスターの正常性に関する警告は表示されません。  
+>
+>
 
-1. Modify your cluster configuration to set the following property to false.
-   
+構成のアップグレードを開始する前に、クラスター構成を変更して次のプロパティを false に設定します。
+
         "fabricClusterAutoupgradeEnabled": false,
 
-and kick off a configuration upgrade. refer to [Start-ServiceFabricClusterUpgrade PS cmd ](https://msdn.microsoft.com/library/mt125872.aspx) for usage details. The cluster manifest version is the version that you have in the clusterConfig.JSON. Make sure to update it before you kick off the configuration upgrade.
+使用方法の詳細については、[Start-ServiceFabricClusterConfigurationUpgrade PS cmd](https://msdn.microsoft.com/en-us/library/mt788302.aspx)を参照してください。 構成のアップグレードを開始する前に、JSON の "clusterConfigurationVersion" を必ず更新してください。
 
 ```powershell
 
-    Start-ServiceFabricClusterUpgrade [-Config] [-ClusterConfigVersion] -FailureAction Rollback -Monitored 
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
 ```
 
-#### <a name="cluster-upgrade-workflow."></a>Cluster Upgrade workflow.
-1. Download the latest version of the package from [Create service fabric cluster for windows server](service-fabric-cluster-creation-for-windows-server.md) document 
-2. Connect to the cluster from any machine that has administrator access to all the machines that are listed as nodes in the cluster. The machine that this script is run on does not have to be part of the cluster 
-   
+#### <a name="cluster-upgrade-workflow"></a>クラスターのアップグレード ワークフロー
+
+1. クラスター内のいずれかのノードから Get-ServiceFabricClusterUpgrade を実行し、TargetCodeVersion を書き留めます。
+2. インターネットに接続されているコンピューターから次のスクリプトを実行して、現在のバージョンとアップグレードの互換性があるすべてのバージョンを一覧表示し、関連付けられたダウンロード リンクから対応するパッケージをダウンロードします。
+
     ```powershell
-   
-    ###### connect to the cluster
-    $ClusterName= "mysecurecluster.something.com:19000"
-    $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3" 
-    Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
-        -X509Credential `
-        -ServerCertThumbprint $CertThumbprint  `
-        -FindType FindByThumbprint `
-        -FindValue $CertThumbprint `
-        -StoreLocation CurrentUser `
-        -StoreName My
+
+    ###### Get list of all upgrade compatible packages  
+    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
-3. Copy the downloaded package into the cluster image store.
-   
+
+3. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
+
     ```powershell
-   
-   ###### Get the list of available service fabric versions
+
+   ###### Get the list of available Service Fabric versions
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file including the path to it> -ImageStoreConnectionString "fabric:ImageStore"
-   
-   ###### Here is a filled out example
+
+   ###### Here is a filled-out example
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
 
     ```
+4. ダウンロードしたパッケージをクラスター イメージ ストアにコピーします。
 
-1. Register the copied package 
-   
+5. コピーしたパッケージを登録します。
+
     ```powershell
-   
-    ###### Get the list of available service fabric versions 
-    Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file> 
-   
-    ###### Here is a filled out example
+
+    ###### Get the list of available Service Fabric versions
+    Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file>
+
+    ###### Here is a filled-out example
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
-   
+
      ```
-2. Kick off a cluster upgrade to one of the versions that is available. 
-   
+6. 利用可能なバージョンへのクラスターのアップグレードを開始します。
+
     ```Powershell
-   
+
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
-   
-    ###### Here is a filled out example
+
+    ###### Here is a filled-out example
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
-   
+
     ```
-   You can monitor the progress of the upgrade on Service fabric explorer or by running the    following power shell command
-   
+   Service Fabric Explorer を使用するか、次の PowerShell コマンドを実行することで、アップグレードの進行状況を監視できます。
+
     ```powershell
-   
+
     Get-ServiceFabricClusterUpgrade
     ```
-   
-    If the cluster health policies are not met, the upgrade is rolled back. You can specify custom health policies at the time for the start-serviceFabricClusterUpgrade command refer to [this document](https://msdn.microsoft.com/library/mt125872.aspx) for details. 
 
-Once you have fixed the issues that resulted in the rollback, you need to initiate the upgrade again, by following the same steps as before.
+    クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。 **Start-ServiceFabricClusterUpgrade** コマンドにカスタム正常性ポリシーを指定する方法については、「[Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx)」をご覧ください。
 
-## <a name="next-steps"></a>Next steps
-* Learn how to customize some of the [service fabric cluster fabric settings](service-fabric-cluster-fabric-settings.md)
-* Learn how to [scale your cluster in and out](service-fabric-cluster-scale-up-down.md)
-* Learn about [application upgrades](service-fabric-application-upgrade.md)
+ロールバックの原因となった問題を解決したら、前述の手順に従って、もう一度アップグレードを開始します。
+
+
+## <a name="upgrade-the-cluster-configuration"></a>クラスター構成のアップグレード
+クラスター構成をアップグレードするには、**Start-ServiceFabricClusterConfigurationUpgrade** を実行します。 構成のアップグレードは、アップグレード ドメインごとに処理されます。
+
+```powershell
+
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+
+```
+
+### <a name="cluster-certificate-config-upgrade"></a>クラスター証明書の構成のアップグレード  
+クラスター証明書はクラスター ノード間での認証で使用されるため、証明書のロール オーバーは特に注意して実行する必要があります。失敗するとクラスター ノード間の通信がブロックされます。  
+技術的には、次の 2 つのオプションがサポートされます。  
+
+1. 証明書のシングル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ...' です。   
+2. 証明書のダブル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ...' です。
+
+
+## <a name="next-steps"></a>次のステップ
+* 一部の [Service Fabric クラスター設定](service-fabric-cluster-fabric-settings.md)をカスタマイズする方法を学習します。
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)を行う方法を学習します。
+* [アプリケーションのアップグレード](service-fabric-application-upgrade.md)を行う方法を学習します。
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

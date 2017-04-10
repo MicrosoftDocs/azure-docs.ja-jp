@@ -1,13 +1,13 @@
 ---
-title: ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs
-description: Azure Resource Manager デプロイメント モデルで、Azure ポータルを使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
+title: "ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs"
+description: "Azure Resource Manager デプロイメント モデルで、Azure ポータルを使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
+
 
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure ポータルを使用したネットワーク セキュリティ グループのトラブルシューティング
@@ -105,7 +109,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    > 
 4. NIC やサブネットに関連付けられている NSG の規則を直接編集できます。 方法については、この記事の「 **View effective security rules for a virtual machine (仮想マシンの有効なセキュリティ規則を表示する)** 」セクションの手順 8 をご覧ください。
 
-## <a name="view-effective-security-rules-for-a-network-security-group-(nsg)"></a>ネットワーク セキュリティ グループ (NSG) の有効なセキュリティ規則を表示する
+## <a name="view-effective-security-rules-for-a-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) の有効なセキュリティ規則を表示する
 NSG 規則を変更する際、特定の VM に追加された規則による影響を確認できます。 NSG が適用されているすべての NIC の有効なセキュリティ規則の完全な一覧は、NSG ブレードからコンテキストを切り替えることなく確認できます。 NSG 内で有効な規則をトラブルシューティングするには、次の手順を実行します。
 
 1. https://portal.azure.com で Azure ポータルにログインします。
@@ -145,6 +149,9 @@ NSG 規則を変更する際、特定の VM に追加された規則による影
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

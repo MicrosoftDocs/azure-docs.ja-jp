@@ -1,28 +1,33 @@
 ---
-title: 'チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs'
-description: Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs"
+description: "Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f6ee8bb3-df43-4c0d-bf84-89f18deac4b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/13/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 3b901bcb08a194f72c3dc75e33f2b94fffea370e
+ms.lasthandoff: 02/17/2017
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
+# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
 このチュートリアルの目的は、StatusPage と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 StatusPage と Azure AD の統合には、次の利点があります。 
 
 * StatusPage にアクセスする Azure AD ユーザーを制御できます。 
-* ユーザーが自分の Azure AD アカウントで自動的に StatusPage にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に StatusPage にサインオン (シングル サインオン (SSO)) できるようにします。
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -31,27 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 StatusPage と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* StatusPage でのシングル サインオンが有効なサブスクリプション
+* StatusPage でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-1. ギャラリーからの StatusPage の追加 
-2. Azure AD シングル サインオンの構成とテスト
+* ギャラリーからの StatusPage の追加 
+* Azure AD SSO の構成とテスト
 
-## <a name="adding-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
+## <a name="add-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
 Azure AD への StatusPage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に StatusPage を追加する必要があります。
 
 **ギャラリーから StatusPage を追加するには、次の手順に従います。**
@@ -76,10 +80,10 @@ Azure AD への StatusPage の統合を構成するには、ギャラリーか�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、StatusPage で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、StatusPage で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する StatusPage ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと StatusPage の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する StatusPage ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと StatusPage の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を StatusPage の **[Username]** の値として割り当てます。
 
@@ -91,10 +95,10 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、StatusPage アプリケーションでシングル サインオンを構成することです。 
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD の SSO を有効にすることと、StatusPage アプリケーションでシングル サインオンを構成することです。 
 
-**StatusPage で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**StatusPage で Azure AD SSO を構成するには、次の手順に従います。**
 
 1. Azure クラシック ポータルの **StatusPage** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -106,49 +110,39 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_04.png) 
    
-   > [!NOTE]
-   > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。
+   >[!NOTE]
+   >シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
    > 
-   > 
+  1. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
+  2. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
+  3. **[次へ]**をクリックします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
-
-    b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
-
-    c. **[次へ]**をクリックします。
-
-
-1. **[StatusPage でのシングル サインオンの構成]** ページで、次の手順に従います。
+4. **[StatusPage でのシングル サインオンの構成]** ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_05.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]** をクリックします。
-2. 別の Web ブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインオンします。
-3. メイン ツール バーで、 **[Manage Account]**をクリックします。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_05.png)   
+  1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+  2. **[次へ]**をクリックします。
+5. 別の Web ブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインオンします。
+6. メイン ツール バーで、 **[Manage Account]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_06.png) 
-4. **[Single Sign-on]** タブをクリックします。 
+7. **[Single Sign-on]** タブをクリックします。 
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_07.png) 
-5. [SSO Setup] ページで、次の手順に従います。
+8. [SSO Setup] ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 Azure クラシック ポータルで、**[StatusPage でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインオン サービス URL]** の値をコピーし、**[SSO Target URL]** ボックスに貼り付けます。 
-   
-    b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
-   
-    c. **[保存]**をクリックします。
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_08.png)  
+  1. Azure クラシック ポータルで、**[StatusPage でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインオン サービス URL]** の値をコピーし、**[SSO Target URL]** ボックスに貼り付けます。 
+  2. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
+  3. **[保存]**をクリックします。
+9. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。 
    
     ![Azure AD のシングル サインオン][10]
-7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
+10. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -167,38 +161,30 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_05.png)  
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]** をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_05.png) 
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。  
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   e. **[次へ]**をクリックします。
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_06.png)  
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-statuspage-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. **[完了]** をクリックします。   
+  1. **[新しいパスワード]** の値を書き留めます。  
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
+### <a name="create-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
 このセクションの目的は、StatusPage で Britta Simon というユーザーを作成することです。
+
 StatusPage では、ジャストインタイム プロビジョニングがサポートされています。 この機能は、「 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」で既に有効にしています。
 
 **StatusPage で Britta Simon というユーザーを作成するには、次の手順に従います。**
@@ -217,8 +203,8 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 6. **[Role]** で **[Client Administrator]** を選択します。
 7. **[Create Account]**をクリックします。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に StatusPage へのアクセスを許可することによって、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に StatusPage へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -238,7 +224,7 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
 アクセス パネルで [StatusPage] タイルをクリックすると、自動的に StatusPage アプリケーションにサインオンします。
@@ -269,10 +255,5 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
 
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

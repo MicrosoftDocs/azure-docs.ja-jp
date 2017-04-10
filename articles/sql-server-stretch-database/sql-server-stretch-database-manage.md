@@ -1,12 +1,12 @@
 ---
-title: Manage and troubleshoot Stretch Database | Microsoft Docs
-description: Learn how to manage and troubleshoot Stretch Database.
+title: "Stretch Database の管理とトラブルシューティング | Microsoft Docs"
+description: "Stretch Database の管理とトラブルシューティングの方法について説明します。"
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 8a43c0fc-64d3-4042-8921-a36542aa8933
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 681ad472e53a17600b589d8354d9fdb5c9c3c574
+
 
 ---
-# <a name="manage-and-troubleshoot-stretch-database"></a>Manage and troubleshoot Stretch Database
-To manage and troubleshoot Stretch Database, use the tools and methods described in this topic .
+# <a name="manage-and-troubleshoot-stretch-database"></a>Stretch Database の管理とトラブルシューティング
+Stretch Database を管理し、問題を解決するには、このトピックで説明するツールと方法を利用します。
 
-## <a name="manage-local-data"></a>Manage local data
-### <a name="a-namelocalinfoaget-info-about-local-databases-and-tables-enabled-for-stretch-database"></a><a name="LocalInfo"></a>Get info about local databases and tables enabled for Stretch Database
-Open the catalog views **sys.databases** and **sys.tables** to see info about Stretch\-enabled SQL Server databases and tables. For more info, see [sys.databases (Transact-SQL)](https://msdn.microsoft.com/library/ms178534.aspx) and [sys.tables (Transact-SQL)](https://msdn.microsoft.com/library/ms187406.aspx).
+## <a name="manage-local-data"></a>ローカル データを管理する
+### <a name="a-namelocalinfoaget-info-about-local-databases-and-tables-enabled-for-stretch-database"></a><a name="LocalInfo"></a>Stretch Database が有効になっているローカルのデータベースとテーブルに関する情報を取得する
+Stretch が有効になっている SQL Server のデータベースとテーブルに関する情報を確認するには、カタログ ビューの **sys.databases** と **sys.tables** を開きます。 詳細については、「[sys.databases (Transact-SQL)](https://msdn.microsoft.com/library/ms178534.aspx)」と「[sys.tables (Transact-SQL)](https://msdn.microsoft.com/library/ms187406.aspx)」をご覧ください。
 
-To see how much space a Stretch\-enabled table is using in SQL Server, run the following statement.
+SQL Server で Stretch を有効にしたテーブルにより使用されている領域の量を表示するには、次のステートメントを実行します。
 
  ```tsql
 USE <Stretch-enabled database name>;
@@ -31,23 +35,23 @@ GO
 EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'LOCAL_ONLY';
 GO
  ```
-## <a name="manage-data-migration"></a>Manage data migration
-### <a name="check-the-filter-function-applied-to-a-table"></a>Check the filter function applied to a table
-Open the catalog view **sys.remote\_data\_archive\_tables** and check the value of the **filter\_predicate** column to identify the function that Stretch Database is using to select rows to migrate. If the value is null, the entire table is eligible to be migrated. For more info, see [sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx) and [Select rows to migrate by using a filter function](sql-server-stretch-database-predicate-function.md).
+## <a name="manage-data-migration"></a>データ移行を管理する
+### <a name="check-the-filter-function-applied-to-a-table"></a>テーブルに適用されているフィルター関数を確認する
+カタログ ビューの **sys.remote\_data\_archive\_tables** を開き、**filter\_predicate** 列の値を確認し、移行する行を選択するために Stretch Database で使用されている関数を特定します。 値が null の場合、テーブル全体が移行の対象になります。 詳細については、「[sys.remote_data_archive_tables (TRANSACT-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」および[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。
 
-### <a name="a-namemigrationacheck-the-status-of-data-migration"></a><a name="Migration"></a>Check the status of data migration
-Select **Tasks | Stretch | Monitor** for a database in SQL Server Management Studio to monitor data migration in Stretch Database Monitor. For more info, see [Monitor and troubleshoot data migration (Stretch Database)](sql-server-stretch-database-monitor.md).
+### <a name="a-namemigrationacheck-the-status-of-data-migration"></a><a name="Migration"></a>データ移行の状態を確認する
+SQL Server Management Studio でデータベースに **[タスク]、[Stretch]、[監視]** を選択して、Stretch Database Monitor でデータ移行を監視します。 詳細については、「 [データ移行の監視とトラブルシューティング (Stretch Database)](sql-server-stretch-database-monitor.md)」を参照してください。
 
-Or, open the dynamic management view **sys.dm\_db\_rda\_migration\_status** to see how many batches and rows of data have been migrated.
+または、**sys.dm\_db\_rda\_migration\_status** 動的管理ビューを開き、移行されたデータのバッチ数と行数を確認します。
 
-### <a name="a-namefirewallatroubleshoot-data-migration"></a><a name="Firewall"></a>Troubleshoot data migration
-For troubleshooting suggestions, see [Monitor and troubleshoot data migration (Stretch Database)](sql-server-stretch-database-monitor.md).
+### <a name="a-namefirewallatroubleshoot-data-migration"></a><a name="Firewall"></a>データ移行のトラブルシューティング
+トラブルシューティングのヒントについては、「 [データ移行の監視とトラブルシューティング (Stretch Database)](sql-server-stretch-database-monitor.md)」を参照してください。
 
-## <a name="manage-remote-data"></a>Manage remote data
-### <a name="a-nameremoteinfoaget-info-about-remote-databases-and-tables-used-by-stretch-database"></a><a name="RemoteInfo"></a>Get info about remote databases and tables used by Stretch Database
-Open the catalog views **sys.remote\_data\_archive\_databases** and **sys.remote\_data\_archive\_tables** to see info about the remote databases and tables in which migrated data is stored. For more info, see [sys.remote_data_archive_databases (Transact-SQL)](https://msdn.microsoft.com/library/dn934995.aspx) and [sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
+## <a name="manage-remote-data"></a>リモート データを管理する
+### <a name="a-nameremoteinfoaget-info-about-remote-databases-and-tables-used-by-stretch-database"></a><a name="RemoteInfo"></a>Stretch Database で使用されるリモートのデータベースとテーブルに関する情報を取得する
+移行されたデータが保存されているリモートのデータベースとテーブルに関する情報を確認するには、**sys.remote\_data\_archive\_databases** カタログ ビューと **sys.remote\_data\_archive\_tables** カタログ ビューを開きます。 詳細については、「[sys.remote_data_archive_databases (Transact-SQL)](https://msdn.microsoft.com/library/dn934995.aspx)」と「[sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」をご覧ください。
 
-To see how much space a Stretch-enabled table is using in Azure, run the following statement.
+Azure で Stretch を有効にしたテーブルにより使用されている領域の量を表示するには、次のステートメントを実行します。
 
  ```tsql
 USE <Stretch-enabled database name>;
@@ -56,50 +60,50 @@ EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'REMOTE_ONLY';
 GO
  ```
 
-### <a name="delete-migrated-data"></a>Delete migrated data
-If you want to delete data that has already been migrated to Azure, follow the steps described in [sys.sp_rda_reconcile_batch](https://msdn.microsoft.com/library/mt707768.aspx).
+### <a name="delete-migrated-data"></a>移行したデータを削除する
+既に Azure に移行されているデータを削除するには、[sys.sp_rda_reconcile_batch](https://msdn.microsoft.com/library/mt707768.aspx) に関する記事の手順に従います。
 
-## <a name="manage-table-schema"></a>Manage table schema
-### <a name="dont-change-the-schema-of-the-remote-table"></a>Don't change the schema of the remote table
-Don't change the schema of a remote Azure table that's associated with a SQL Server table configured for Stretch Database. In particular, don't modify the name or the data type of a column. The Stretch Database feature makes various assumptions about the schema of the remote table in relation to the schema of the SQL Server table. If you change the remote schema, Stretch Database stops working for the changed table.
+## <a name="manage-table-schema"></a>テーブル スキーマを管理する
+### <a name="dont-change-the-schema-of-the-remote-table"></a>リモート テーブルのスキーマは変更しないでください。
+Stretch Database に構成された SQL Server テーブルに関連付けられているリモート Azure テーブルのスキーマは変更しないでください。 特に、列の名前とデータ型は変更しないでください。 Stretch Database 機能では、さまざまな場面で、SQL Server テーブルのスキーマとの関連でリモート テーブルのスキーマを推測します。 リモート スキーマを変更すると、Stretch Database は変更されたテーブルの動作を停止します。
 
-### <a name="reconcile-table-columns"></a>Reconcile table columns
-If you have accidentally deleted columns from the remote table, run **sp_rda_reconcile_columns** to add columns to the remote table that exist in the Stretch\-enabled SQL Server table but not in the remote table. For more info, see [sys.sp_rda_reconcile_columns](https://msdn.microsoft.com/library/mt707765.aspx).  
+### <a name="reconcile-table-columns"></a>テーブル列を調整する
+リモート テーブルから列を間違って削除してしまった場合は、**sp_rda_reconcile_columns** を実行し、Stretch が有効な SQL Server テーブルにあり、リモート テーブルにない列を追加します。 詳細については、[sys.sp_rda_reconcile_columns](https://msdn.microsoft.com/library/mt707765.aspx) に関する記事をご覧ください。  
 
 > [!IMPORTANT]
-> When **sp_rda_reconcile_columns** recreates columns that you accidentally deleted from the remote table, it does not restore the data that was previously in the deleted columns.
+> [!重要] 間違ってリモート テーブルから削除した列を **sp_rda_reconcile_columns** で再作成する場合、削除した列に以前に存在したデータは復元されません。
 > 
 > 
 
-**sp_rda_reconcile_columns** does not delete columns from the remote table that exist in the remote table but not in the Stretch\-enabled SQL Server table. If there are columns in the remote Azure table that no longer exist in the Stretch\-enabled SQL Server table, these extra columns do not prevent Stretch Database from operating normally. You can optionally remove the extra columns manually.  
+**sp_rda_reconcile_columns** を実行しても、リモート テーブルにあり、Stretch が有効な SQL Server テーブルにない列がリモート テーブルから削除されることはありません。 Stretch が有効な SQL Server テーブルにはもう存在しない列がリモート Azure テーブルにあるとしても、そのような列により Stretch Database の通常動作が妨げられることはありません。 余分な列は必要に応じて手動で削除できます。  
 
-## <a name="manage-performance-and-costs"></a>Manage performance and costs
-### <a name="troubleshoot-query-performance"></a>Troubleshoot query performance
-Queries that include Stretch\-enabled tables are expected to perform more slowly than they did before the tables were enabled for Stretch. If query performance degrades significantly, review the following possible problems.
+## <a name="manage-performance-and-costs"></a>パフォーマンスとコストを管理する
+### <a name="troubleshoot-query-performance"></a>クエリ パフォーマンスのトラブルシューティング
+Stretch 対応テーブルが含まれるクエリのパフォーマンスは、テーブルの Stretch を有効にする前に比べて遅くなります。 クエリのパフォーマンスが大幅に低下する場合、次の問題が考えられます。
 
-* Is your Azure server in a different geographical region than your SQL Server? Configure your Azure server to be in the same geographical region as your SQL Server to reduce network latency.
-* Your network conditions may have degraded. Contact your network administrator for info about recent issues or outages.
+* ご利用の Azure サーバーと SQL Server の地理的リージョンが異なっていませんか。 Azure サーバーと SQL Server の地理的リージョンを同じに設定し、ネットワークの待ち時間を減らしてください。
+* ネットワークの状態が低下している可能性があります。 ネットワーク管理者に問い合わせ、最近、問題や機能停止が発生していないか確認してください。
 
-### <a name="increase-azure-performance-level-for-resourceintensive-operations-such-as-indexing"></a>Increase Azure performance level for resource\-intensive operations such as indexing
-When you build, rebuild, or reorganize an index on a large table that's configured for Stretch Database, and you anticipate heavy querying of the migrated data in Azure during this time, consider increasing the performance level of the corresponding remote Azure database for the duration of the operation. For more info about performance levels and pricing, see [SQL Server Stretch Database Pricing](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/).
+### <a name="increase-azure-performance-level-for-resource-intensive-operations-such-as-indexing"></a>Azure のパフォーマンス レベルを上げ、インデックス作成など、リソースが集中的に利用される操作に対応する
+Stretch Database に構成された大規模テーブルでインデックスを作成、再作成、再編成するとき、Azure でその間、移行されたデータに対して大量のクエリが予想される場合、その操作が続く間、対応するリモート Azure データベースのパフォーマンス レベルを上げることを検討してください。 パフォーマンス レベルと価格設定の詳細については、 [SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)ページを参照してください。
 
-### <a name="you-cant-pause-the-sql-server-stretch-database-service-on-azure"></a>You can't pause the SQL Server Stretch Database service on Azure
- Make sure that you select the appropriate performance and pricing level. If you increase the performance level temporarily for a resource\-intensive operation, restore it to the previous level after the operation completes. For more info about performance levels and pricing, see [SQL Server Stretch Database Pricing](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/).  
+### <a name="you-cant-pause-the-sql-server-stretch-database-service-on-azure"></a>Azure で SQL Server Stretch Database サービスを一時停止することはできません
+ 適切なパフォーマンス レベルと価格を選択してください。 リソースを集中的に利用する操作のために一時的にパフォーマンス レベルを上げる場合、操作の完了後、前のレベルに戻します。 パフォーマンス レベルと価格設定の詳細については、 [SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)ページを参照してください。  
 
-## <a name="change-the-scope-of-queries"></a>Change the scope of queries
- Queries against Stretch\-enabled tables return both local and remote data by default. You can change the scope of queries for all queries by all users, or only for a single query by an administrator.  
+## <a name="change-the-scope-of-queries"></a>クエリの範囲を変更する
+ Stretch が有効なテーブルにクエリを実行すると、既定ではローカル データとリモート データの両方が返されます。 すべてのユーザーによるすべてのクエリまたは管理者による 1 回だけのクエリを対象にクエリの範囲を変更できます。  
 
-### <a name="change-the-scope-of-queries-for-all-queries-by-all-users"></a>Change the scope of queries for all queries by all users
- To change the scope of all queries by all users, run the stored procedure **sys.sp_rda_set_query_mode**. You can reduce the scope to query local data only, disable all queries, or restore the default setting. For more info, see [sys.sp_rda_set_query_mode](https://msdn.microsoft.com/library/mt703715.aspx).  
+### <a name="change-the-scope-of-queries-for-all-queries-by-all-users"></a>すべてのユーザーによるすべてのクエリのクエリ範囲を変更する
+ すべてのユーザーによるすべてのクエリの範囲を変更するには、**sys.sp_rda_set_query_mode** ストアド プロシージャを実行します。 ローカル データのみにクエリ範囲を制限したり、すべてのクエリを無効にしたり、初期設定を復元したりできます。 詳細については、[sys.sp_rda_set_query_mode](https://msdn.microsoft.com/library/mt703715.aspx) に関する記事をご覧ください。  
 
-### <a name="a-namequeryhintsachange-the-scope-of-queries-for-a-single-query-by-an-administrator"></a><a name="queryHints"></a>Change the scope of queries for a single query by an administrator
- To change the scope of a single query by a member of the db_owner role, add the **WITH \( REMOTE_DATA_ARCHIVE_OVERRIDE = *value* \)** query hint to the SELECT statement. The REMOTE_DATA_ARCHIVE_OVERRIDE query hint can have the following values.  
+### <a name="a-namequeryhintsachange-the-scope-of-queries-for-a-single-query-by-an-administrator"></a><a name="queryHints"></a>管理者による 1 回だけのクエリのクエリ範囲を変更する
+ db_owner ロールのメンバーによる 1 回だけのクエリの範囲を変更するには、SELECT ステートメントに **WITH \( REMOTE_DATA_ARCHIVE_OVERRIDE = *value* \)** クエリ ヒントを追加します。 REMOTE_DATA_ARCHIVE_OVERRIDE クエリ ヒントには、次の値が入ります。  
 
-* **LOCAL_ONLY**. Query local data only.  
-* **REMOTE_ONLY**. Query remote data only.  
-* **STAGE_ONLY**. Query only the data in the table where Stretch Database stages rows eligible for migration and retains migrated rows for the specified period after migration. This query hint is the only way to query the staging table.  
+* **LOCAL_ONLY**:  ローカル データだけにクエリを実行します。  
+* **REMOTE_ONLY**:  リモート データだけにクエリを実行します。  
+* **STAGE_ONLY**:  Stretch Database が移行対象の行をステージングし、移行後、移行された行を指定の期間だけ保持するテーブルにあるデータのみにクエリを実行します。 このクエリ ヒントは、ステージング テーブルにクエリを実行する唯一の方法です。  
 
-For example, the following query returns local results only.  
+たとえば、次のクエリはローカル結果のみを返します。  
 
  ```tsql  
  USE <Stretch-enabled database name>;
@@ -108,20 +112,23 @@ For example, the following query returns local results only.
  GO
 ```  
 
-## <a name="a-nameadminhintsamake-administrative-updates-and-deletes"></a><a name="adminHints"></a>Make administrative updates and deletes
- By default you can't UPDATE or DELETE rows that are eligible for migration, or rows that have already been migrated, in a Stretch\-enabled table. When you have to fix a problem, a member of the db_owner role can run an UPDATE or DELETE operation by adding the **WITH \( REMOTE_DATA_ARCHIVE_OVERRIDE = *value* \)** query hint to the statement. The REMOTE_DATA_ARCHIVE_OVERRIDE query hint can have the following values.  
+## <a name="a-nameadminhintsamake-administrative-updates-and-deletes"></a><a name="adminHints"></a>管理者による更新と削除
+ 既定では、Stretch が有効なテーブルで、移行対象の行や既に移行されている行を更新したり、削除したりすることはできません。 問題を解消する必要がある場合、db_owner ロールのメンバーとして、ステートメントに **WITH \( REMOTE_DATA_ARCHIVE_OVERRIDE = *value* \)** クエリ ヒントを追加することで更新操作や削除操作を実行できます。 REMOTE_DATA_ARCHIVE_OVERRIDE クエリ ヒントには、次の値が入ります。  
 
-* **LOCAL_ONLY**. Update or delete local data only.  
-* **REMOTE_ONLY**. Update or delete remote data only.  
-* **STAGE_ONLY**. Update or delete only the data in the table where Stretch Database stages rows eligible for migration and retains migrated rows for the specified period after migration.  
+* **LOCAL_ONLY**:  ローカル データのみを更新または削除します。  
+* **REMOTE_ONLY**:  リモート データのみを更新または削除します。  
+* **STAGE_ONLY**:  Stretch Database が移行対象の行をステージングし、移行後、移行された行を指定の期間だけ保持するテーブルにあるデータのみを更新または削除します。  
 
-## <a name="see-also"></a>See also
-[Monitor Stretch Database](sql-server-stretch-database-monitor.md)
+## <a name="see-also"></a>関連項目
+[Stretch Database の監視](sql-server-stretch-database-monitor.md)
 
-[Backup Stretch-enabled databases](sql-server-stretch-database-backup.md)
+[Stretch 対応のデータベースをバックアップする](sql-server-stretch-database-backup.md)
 
-[Restore Stretch-enabled databases](sql-server-stretch-database-restore.md)
+[Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

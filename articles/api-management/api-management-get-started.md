@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
 
 
 ---
@@ -59,7 +59,7 @@ Azure API Management を任意のバックエンドで実行し、それに基�
 
 ## <a name="create-service-instance"> </a>API Management インスタンスの作成
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、[Azure 無料評価版][Azure 無料評価版]のページをご覧ください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][Azure Free Trial]をご覧ください。
 > 
 > 
 
@@ -74,7 +74,7 @@ API Management を使用するにあたって最初に行うことは、サー�
 **[組織名]** に 「**Contoso Ltd.**」と入力し、**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。
 
 > [!NOTE]
-> API Management システムからの通知には、この電子メール アドレスが使用されます。 詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][Azure API Management で通知と電子メール テンプレートを構成する方法]」をご覧ください。
+> API Management システムからの通知には、この電子メール アドレスが使用されます。 詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][How to configure notifications and email templates in Azure API Management]」を参照してください。
 > 
 > 
 
@@ -83,7 +83,7 @@ API Management を使用するにあたって最初に行うことは、サー�
 API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。
 
 > [!NOTE]
-> Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。 Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。 Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。 このチュートリアルは、どのレベルを使用しても完了できます。 API Management レベルの詳細については、「[API Management の価格][API Management の価格]」をご覧ください。
+> Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。 Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。 Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。 このチュートリアルは、どのレベルを使用しても完了できます。 API Management レベルの詳細については、「[API Management の価格][API Management pricing]」を参照してください。
 > 
 > 
 
@@ -199,26 +199,26 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 ## <a name="next-steps"> </a>次のステップ
 * [レート制限で API を保護する](api-management-howto-product-with-rules.md)方法について学習します。
 
-[Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
-[API Management インスタンスの作成]: #create-service-instance
-[API の作成]: #create-api
-[操作の追加]: #add-operation
-[成果物に新しい API を追加する]: #add-api-to-product
-[API を含む成果物のサブスクライブ]: #subscribe
+[Create an API Management instance]: #create-service-instance
+[Create an API]: #create-api
+[Add an operation]: #add-operation
+[Add the new API to a product]: #add-api-to-product
+[Subscribe to the product that contains the API]: #subscribe
 [Call an operation from the Developer Portal]: #call-operation
-[分析結果の表示]: #view-analytics
-[次のステップ]: #next-steps
+[View analytics]: #view-analytics
+[Next steps]: #next-steps
 
 
-[Azure API Management で開発者アカウントを管理する方法]: api-management-howto-create-or-invite-developers.md
-[API 設定の構成]: api-management-howto-create-apis.md#configure-api-settings
-[Azure API Management で通知と電子メール テンプレートを構成する方法]: api-management-howto-configure-notifications.md
-[応答]: api-management-howto-add-operations.md#responses
-[成果物を作成して発行する方法]: api-management-howto-add-products.md
-[API Management の価格]: http://azure.microsoft.com/pricing/details/api-management/
+[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
+[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
+[Responses]: api-management-howto-add-operations.md#responses
+[How create and publish a product]: api-management-howto-add-products.md
+[API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/
 
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 [api-management-management-console]: ./media/api-management-get-started/api-management-management-console.png
 [api-management-create-instance-menu]: ./media/api-management-get-started/api-management-create-instance-menu.png
@@ -257,6 +257,6 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

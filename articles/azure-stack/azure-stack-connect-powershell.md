@@ -1,60 +1,10 @@
 ---
-title: Install PowerShell and connect | Microsoft Docs
-description: Learn how to manage Azure Stack with PowerShell
-services: azure-stack
-documentationcenter: ''
-author: HeathL17
-manager: byronr
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/26/2016
-ms.author: helaw
+redirect_url: /azure/azure-stack/azure-stack-powershell-install
+translationtype: Human Translation
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 2ad74129558e1714459fc06bec734652ea6afb65
+ms.lasthandoff: 03/10/2017
 
 ---
-# <a name="install-powershell-and-connect"></a>Install PowerShell and connect
-In this guide, we walk through the steps for connecting to Azure Stack with PowerShell. Once completed, these steps can also help you manage and deploy resources.
-
-## <a name="install-azure-stack-powershell-cmdlets"></a>Install Azure Stack PowerShell cmdlets
-1. AzureRM cmdlets are installed from the PowerShell Gallery. To begin, open a PowerShell Console on MAS-CON01 and run the following command to return a list of PowerShell repositories available:
-   
-       Get-PSRepository
-   
-     ![Screenshot result of running 4Get-PSRepository with PSGallery listed](./media/azure-stack-connect-powershell/image1.png)
-2. Run the following command to install the AzureRM module:
-   
-       Install-Module -Name AzureRM -RequiredVersion 1.2.6 -Scope CurrentUser
-   
-   > [!NOTE]
-   > *-Scope CurrentUser* is optional. If you want more than the current user to have access to the modules, use an elevated command prompt and leave off the *Scope* parameter.
-   > 
-   > 
-3. To confirm the installation of AzureRM modules, execute the following commands:
-   
-       Get-Command -Module AzureRM.AzureStackAdmin
-
-## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
-A module is available for download which handles configuring the PowerShell connection to Azure Stack for you.  Visit [Azure Stack Tools](http://aka.ms/ConnectToAzureStackPS) for the module and additional steps. 
-
-## <a name="retrieve-a-list-of-subscriptions"></a>Retrieve a list of subscriptions
-In this section, you verify PowerShell cmdlets are running against Azure Stack by retrieving and selecting a subscription for use.
-
-Run the following command to retrieve a list of Azure Stack subscriptions associated with your account:
-
-    Get-AzureRmSubscription
-
-
-## <a name="next-steps"></a>Next steps
-[Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
-
-[Connect with Azure CLI](azure-stack-connect-cli.md)
-
-[Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

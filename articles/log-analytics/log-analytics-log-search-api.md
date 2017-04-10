@@ -1,51 +1,65 @@
 ---
-title: Log Analytics のログ検索 REST API | Microsoft Docs
-description: このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。
+title: "Log Analytics のログ検索 REST API | Microsoft Docs"
+description: "このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: b4e9ebe8-80f0-418e-a855-de7954668df7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: b12f823d723b013755fc868b883faefa2072eb75
+ms.openlocfilehash: 9b21fed003f96dbf7ebd72d6f46fff91acbf039e
+
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics のログ検索 REST API
-このガイドには、Operations Management Suite (OMS) で Log Analytics 検索 REST API を使用する方法に関する基本的な説明と、コマンドの使用方法の例が記載されています。 この記事の例では、一部 Operational Insights という名前が使用されていますが、これは、Log Analytics の旧バージョンの名前です。
+このガイドでは、Log Analytics Search REST API を使用する方法の基本的なチュートリアルについて、例を示しながら説明します。 Log Analytics は Operations Management Suite (OMS) に付属しています。
+
+> [!NOTE]
+> Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、リソース プロバイダーにはその旧称が使用されています。
+>
+>
 
 ## <a name="overview-of-the-log-search-rest-api"></a>ログ検索 REST API の概要
-Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンド ライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を通じて API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 もう 1 つの方法は、Operational Insights 用の Azure PowerShell モジュールを使う方法です。これには検索にアクセスするためのコマンドレットが含まれています。 これらのツールを使用すると、RESTful な Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
+Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager API を使用してアクセスできます。 この記事では、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンド ライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を通じて API にアクセスする例を示します。 Log Analytics Search API には、ARMClient を使用する以外にもさまざまな方法でアクセスできます。 もう 1 つの方法は、Operational Insights 用の Azure PowerShell モジュールを使う方法です。これには検索にアクセスするためのコマンドレットが含まれています。 これらのツールを使用すると、Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
 
 Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/library/azure/dn910477.aspx)や [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx) 経由で使用できます。 詳細はリンク先の Web ページで確認してください。
 
+> [!NOTE]
+> `|measure count()` や `distinct` などの集計コマンドを使用する場合は、検索の呼び出しごとに最大で 500,000 レコードを返すことができます。 集計コマンドを含まない検索の場合は、最大 5,000 レコードが返されます。
+>
+>
+
 ## <a name="basic-log-analytics-search-rest-api-tutorial"></a>Log Analytics 検索 REST API の基本的なチュートリアル
-### <a name="to-use-the-arm-client"></a>ARMClient を使用するには
+### <a name="to-use-armclient"></a>ARMClient を使用するには
 1. [Chocolatey](https://chocolatey.org/) をインストールします。これは、オープン ソースの Windows 用パッケージ マネージャーです。 管理者としてコマンド プロンプト ウィンドウを開き、次のコマンドを実行します。
-   
+
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     ```
 2. 次のコマンドを実行して ARMClient エージェントをインストールします。
-   
+
     ```
     choco install armclient
     ```
 
-### <a name="to-perform-a-simple-search-using-the-armclient"></a>ARMClient を使用して単純な検索を実行するには
-1. Microsoft アカウントまたは OrgID アカウントにログインします。
-   
+### <a name="to-perform-a-search-using-armclient"></a>ARMClient を使用して検索を実行するには
+1. Microsoft アカウントを使用するか、職場または学校アカウントを使用してログインします。
+
     ```
     armclient login
     ```
-   
+
     ログインに成功すると、指定のアカウントに関連付けられているすべてのサブスクリプションが一覧表示されます。
-   
+
     ```
     PS C:\Users\SampleUserName> armclient login
     Welcome YourEmail@ORG.com (Tenant: zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz)
@@ -56,13 +70,13 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 3)
     ```
 2. Operations Management Suite のワークスペースを取得します。
-   
+
     ```
     armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20
     ```
-   
+
     取得の呼び出しが成功すると、サブスクリプションに関連付けられているすべてのワークスペースが出力されます。
-   
+
     ```
     {
     "value": [
@@ -80,12 +94,12 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
     }
     ```
 3. 検索変数を作成します。
-   
+
     ```
     $mySearch = "{ 'top':150, 'query':'Error'}";
     ```
 4. 新しい検索変数を使用して検索します。
-   
+
     ```
     armclient post /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{WORKSPACE NAME}/search?api-version=2015-03-20 $mySearch
     ```
@@ -93,7 +107,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 ## <a name="log-analytics-search-rest-api-reference-examples"></a>Log Analytics 検索 REST API リファレンスの例
 次の例は、検索 API の使用方法を示します。
 
-### <a name="search---action/read"></a>検索 - アクション/読み取り
+### <a name="search---actionread"></a>検索 - アクション/読み取り
 **サンプル URL:**
 
 ```
@@ -179,7 +193,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
     }
 ```
 
-### <a name="search/{id}---action/read"></a>検索/{ID} - アクション/読み取り
+### <a name="searchid---actionread"></a>検索/{ID} - アクション/読み取り
 **保存された検索の内容を要求:**
 
 ```
@@ -187,11 +201,11 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 ```
 
 > [!NOTE]
-> 検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。 検索の結果は 6 分後にキャッシュから削除され、HTTP Gone が返されます。 最初の検索要求によって "Successful" 状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で HTTP Gone は返されません。 HTTP 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
-> 
-> 
+> 検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。 検索の結果は 6 分後にキャッシュから削除され、HTTP Gone が返されます。 最初の検索要求によって "Successful" 状態がすぐに返される場合、結果はキャッシュに追加されません。そのため、クエリを実行すると、この API は HTTP Gone を返します。 HTTP 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
+>
+>
 
-### <a name="saved-searches---rest-only"></a>保存された検索 - REST のみ
+### <a name="saved-searches"></a>保存した検索条件
 **保存された検索の一覧を要求:**
 
 ```
@@ -209,13 +223,13 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 | ID |一意の識別子。 |
 | ETag |**PATCH の場合は必須**。 書き込みごとにサーバーによって更新されます。 更新するには、値を、現在格納されている値と等しくするか、"*"' にする必要があります。 古い値や無効な値の場合は、409 が返されます。 |
 | properties.query |**必須**。 検索クエリ。 |
-| properties.displayName |**必須**。 ユーザー定義のクエリの表示名。 Azure のリソースとしてモデル化されている場合はタグになります。 |
-| properties.category |**必須**。 ユーザー定義のクエリのカテゴリ。 Azure のリソースとしてモデル化されている場合はタグになります。 |
+| properties.displayName |**必須**。 ユーザー定義のクエリの表示名。 |
+| properties.category |**必須**。 ユーザー定義のクエリのカテゴリ。 |
 
 > [!NOTE]
-> Log Analytics 検索 API では現在、保存された検索をワークスペースでポーリングすると、ユーザー作成の保存された検索が返されます。 このとき、ソリューションで提供されている保存された検索は返されません。 この機能は、今後追加される予定です。
-> 
-> 
+> Log Analytics 検索 API では現在、保存された検索をワークスペースでポーリングすると、ユーザー作成の保存された検索が返されます。 ソリューションで提供されている保存された検索は返されません。
+>
+>
 
 ### <a name="create-saved-searches"></a>保存された検索の作成
 **要求:**
@@ -241,7 +255,7 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
 ```
 
 ### <a name="metadata---json-only"></a>メタデータ - JSON のみ
-ここでは、ワークスペースで収集したデータのすべてのログの種類に対応したフィールドを表示する方法を示します。 たとえば、イベントの種類に "Computer" という名前のフィールドがあるかどうかを知りたい場合は、この方法を使用して、検索して確認できます。
+ここでは、ワークスペースで収集したデータのすべてのログの種類に対応したフィールドを表示する方法を示します。 たとえば、イベントの種類に "Computer" という名前のフィールドがあるかどうかを知りたい場合は、このクエリを使用して確認することもできます。
 
 **フィールドの要求:**
 
@@ -341,13 +355,14 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
     }
 ```
 
-上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
+前の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
 ## <a name="computer-groups"></a>コンピューター グループ
 コンピューター グループは特別に保存された検索で、一連のコンピューターを返します。  その他のクエリでコンピューター グループを使用すると、グループ内のコンピューターに結果を制限できます。  コンピューター グループは、コンピューターの値を持つ Group タグが付いた保存済み検索として実装されます。
 
 コンピューター グループの応答の例を次に示します。
 
+```
     "etag": "W/\"datetime'2016-04-01T13%3A38%3A04.7763203Z'\"",
     "properties": {
         "Category": "My Computer Groups",
@@ -356,24 +371,26 @@ Azure Resource Manager は [.NET のライブラリ](https://msdn.microsoft.com/
         "Tags": [{
             "Name": "Group",
             "Value": "Computer"
-        }],
+          }],
     "Version": 1
     }
+```
 
 ### <a name="retrieving-computer-groups"></a>コンピューター グループの取得
-グループ ID と共に Get メソッドを使用すると、コンピューター グループを取得できます。
+コンピューター グループを取得するには、グループ ID と共に Get メソッドを使用します。
 
 ```
 armclient get /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Group ID}`?api-version=2015-03-20
 ```
 
 ### <a name="creating-or-updating-a-computer-group"></a>コンピューター グループの作成または更新
-一意に保存された検索 ID と共に Put メソッドを使用すると、新しいコンピューター グループを作成できます。 既存のコンピューター グループ ID を使用すると、その ID が変更されます。 OMS コンソールでコンピューター グループを作成する場合、グループと名前から ID が作成されます。
+コンピューター グループを作成するには、一意に保存された検索 ID と共に Put メソッドを使用します。 既存のコンピューター グループ ID を使用すると、その ID が変更されます。 Log Analytics ポータルでコンピューター グループを作成すると、グループと名前から ID が作成されます。
 
-グループ定義に使用されるクエリは、正常に機能するグループの一連のコンピューターを返す必要があります。  正しいデータが返されるようにするために、クエリの末尾に "*| 個別のコンピューター名*" を付けることをお勧めします。
+グループ定義に使用されるクエリは、正常に機能するグループの一連のコンピューターを返す必要があります。  正しいデータが返されるようにするために、クエリの末尾に `| Distinct Computer` を付けることをお勧めします。
 
 保存した検索条件の定義には、検索がコンピューター グループとして分類されるように、コンピューターの値を持つ Group という名前のタグを含める必要があります。
 
+```
     $etag=Get-Date -Format yyyy-MM-ddThh:mm:ss.msZ
     $groupName="My Computer Group"
     $groupQuery = "Computer=srv* | Distinct Computer"
@@ -383,9 +400,10 @@ armclient get /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
     $groupJson = "{'etag': 'W/`"datetime\'" + $etag + "\'`"', 'properties': { 'Category': '" + $groupCategory + "', 'DisplayName':'"  + $groupName + "', 'Query':'" + $groupQuery + "', 'Tags': [{'Name': 'Group', 'Value': 'Computer'}], 'Version':'1'  }"
 
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/$groupId`?api-version=2015-03-20 $groupJson
+```
 
 ### <a name="deleting-computer-groups"></a>コンピューター グループの削除
-グループ ID と共に Delete メソッドを使用すると、コンピューター グループを削除できます。
+コンピューター グループを削除するには、グループ ID と共に Delete メソッドを使用します。
 
 ```
 armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/$groupId`?api-version=2015-03-20
@@ -395,6 +413,8 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 ## <a name="next-steps"></a>次のステップ
 * 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO1-->
 
 

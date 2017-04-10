@@ -1,27 +1,32 @@
 ---
-title: Microsoft セキュリティ センター | Microsoft Docs
-description: Microsoft セキュリティ センターは、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。
+title: "Microsoft セキュリティ センターおよび Azure セキュリティ情報 | Microsoft Docs"
+description: "Microsoft セキュリティ センターは、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
 editor: TomSh
-
+ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 01/23/2017
 ms.author: terrylan
+translationtype: Human Translation
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# Microsoft セキュリティ センター
-Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
+# <a name="microsoft-trust-center"></a>Microsoft セキュリティ センター
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
-Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
+Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。 場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
-そうした疑問には、答えることができます。データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
+そうした疑問には、答えることができます。 データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。 データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。 Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
 
 Microsoft セキュリティ センターでは、次のような情報を提供しています。
 
@@ -34,6 +39,5 @@ Microsoft セキュリティ センターでは、次のような情報を提供
 * [最新情報](https://aka.ms/tcwhatsnew) – Microsoft Cloud セキュリティの最新情報を確認できます。
 * [リソース](https://aka.ms/tcresources) – Microsoft セキュリティ センターにあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
 
-[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter)には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
+[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
 
-<!---HONumber=AcomDC_0810_2016-->

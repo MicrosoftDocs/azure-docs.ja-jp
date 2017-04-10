@@ -1,28 +1,32 @@
 ---
-title: Reliable Services の WCF 通信スタック | Microsoft Docs
-description: Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。
+title: "Reliable Services の WCF 通信スタック | Microsoft Docs"
+description: "Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。"
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
 manager: timlt
 editor: vturecek
-
+ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 07/26/2016
+ms.date: 01/25/2017
 ms.author: bharatn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a3b0362f0c3b42e4a61348abe306c3beaa6f0c86
+
 
 ---
-# Reliable Services の WCF ベースの通信スタック
-Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。[CreateServiceReplicaListeners または CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) メソッドから返された **ICommunicationListener** を介し、選択した通信スタックをプラグインできます。フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
+Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。 **CreateServiceReplicaListeners または CreateServiceInstanceListeners** メソッドから返された [ICommunicationListener](service-fabric-reliable-services-communication.md) を介し、選択した通信スタックをプラグインできます。 フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
 
-## WCF 通信リスナー
+## <a name="wcf-communication-listener"></a>WCF 通信リスナー
 **ICommunicationListener** の WCF 固有の実装は、**Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** クラスによって提供されます。
 
-`ICalculator` 型のサービス コントラクトがあるものとします。
+ `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -59,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## WCF の通信スタック用のクライアントの作成
-WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) の WCF 固有の実装である **WcfClientCommunicationFactory** があります。
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>WCF の通信スタック用のクライアントの作成
+WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには **ClientCommunicationFactoryBase**の WCF 固有の実装である [WcfClientCommunicationFactory](service-fabric-reliable-services-communication.md)があります。
 
 ```csharp
 
@@ -114,13 +118,18 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ```
 > [!NOTE]
-> 既定の ServicePartitionResolver は、クライアントがサービスと同じクラスターで実行されているものと想定します。そうでない場合は、ServicePartitionResolver オブジェクトを作成して、クラスター接続エンドポイントを渡します。
+> 既定の ServicePartitionResolver は、クライアントがサービスと同じクラスターで実行されているものと想定します。 そうでない場合は、ServicePartitionResolver オブジェクトを作成して、クラスター接続エンドポイントを渡します。
 > 
 > 
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

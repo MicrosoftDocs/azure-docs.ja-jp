@@ -2,7 +2,7 @@
 
 1. [Azure Portal](https://portal.azure.com) にログオンします。
 2. Portal の左のナビゲーション ウィンドウで、**[Relay]** をクリックします。
-3. ハイブリッド接続を作成する名前空間を選択します。 この例では **mynewns1** です。
+3. ハイブリッド接続を作成する名前空間を選択します。 この例では **mynewns** です。
    
     ![ハイブリッド接続の作成](./media/relay-create-hybrid-connection-portal/create-hc-1.png)
 4. **[Relay 名前空間]** ブレードで、**[ハイブリッド接続]**、**[+ Hybrid Connection (+ ハイブリッド接続)]** の順にクリックします。
@@ -14,7 +14,3 @@
 6. ブレードの下部にある **[作成]**をクリックします。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 
-
-<!--HONumber=Nov16_HO2-->
-
-

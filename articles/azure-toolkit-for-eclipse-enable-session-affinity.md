@@ -1,12 +1,12 @@
 ---
-title: Enable Session Affinity using the Azure Toolkit for Eclipse
-description: Learn how to enable session affinity using the Azure Toolkit for Eclipse.
-services: ''
+title: "Azure Toolkit for Eclipse を使用してセッション アフィニティを有効にする"
+description: "Azure Toolkit for Eclipse を使用してセッション アフィニティを有効にする方法について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 88c595ec-7d85-40bd-9078-8d6be7b3f0fa
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -14,42 +14,43 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
+ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
+
 
 ---
-# <a name="enable-session-affinity"></a>Enable Session Affinity
-Within the Azure Toolkit for Eclipse, you can enable HTTP session affinity, or "sticky sessions", for your roles. The following image shows the **Load Balancing** properties dialog used to enable the session affinity feature:
+# <a name="enable-session-affinity"></a>セッション アフィニティを有効にする
+Azure toolkit for Eclipse の中で、ロールに対する HTTP セッション アフィニティ (スティッキー セッション) を有効にできます。 次の図は、セッション アフィニティ機能を有効にするために使用する **負荷分散** のプロパティ ダイアログを示しています。
 
 ![][ic719492]
 
-## <a name="to-enable-session-affinity-for-your-role"></a>To enable session affinity for your role
-1. Right-click the role in Eclipse's Project Explorer, click **Azure**, and then click **Load Balancing**.
-2. In the **Properties for WorkerRole1 Load Balancing** dialog:
-   1. Check **Enable HTTP session affinity (sticky sessions) for this role.**
-   2. For **Input endpoint to use**, select an input endpoint to use, for example, **http (public:80, private:8080)**. Your application must use this endpoint as its HTTP endpoint. You can enable multiple endpoints for your role, but you can select only one of them to support sticky sessions.
-   3. Rebuild your application.
+## <a name="to-enable-session-affinity-for-your-role"></a>ロールに対するセッション アフィニティを有効にするには
+1. Eclipse の [Project Explorer (プロジェクト エクスプローラー)] でロールを右クリックし、**[Azure]**、**[Load Balancing (負荷分散)]** の順にクリックします。
+2. **[Properties for WorkerRole1 Load Balancing]** ダイアログで次のように操作します。
+   1. **[Enable HTTP session affinity (sticky sessions) for this role]**
+   2. **[Input endpoint to use (使用する入力エンドポイント)]** で、使用する入力エンドポイント (例: **http (パブリック:&80;、プライベート:&8080;)**) を選択します。 アプリケーションは、HTTP エンドポイントとしてこのエンドポイントを使用する必要があります。 ロールに対して複数のエンドポイントを有効にすることができますが、スティッキー セッションをサポートするにはその中の&1; つだけを選択できます。
+   3. アプリケーションをリビルドします。
 
-Once enabled, if you have more than one role instance, HTTP requests coming from a particular client will continue being handled by the same role instance.
+有効にすると、1 つ以上のロール インスタンスがある場合、特定のクライアントからの HTTP 要求は、同じロール インスタンスによって処理され続けます。
 
-The Eclipse Toolkit enables this by installing a special IIS module called Application Request Routing (ARR) into each of your role instances. ARR reroutes HTTP requests to the appropriate role instance. The toolkit automatically reconfigures the selected endpoint so that the incoming HTTP traffic is first routed to the ARR software. The toolkit also creates a new internal endpoint that your Java server is configured to listen to. That is the endpoint used by ARR to reroute the HTTP traffic to the appropriate role instance. This way, each role instance in your multi-instance deployment serves as a reverse proxy for all the other instances, enabling sticky sessions.
+Eclipse Toolkit では、各ロール インスタンスに Application Request Routing (ARR) と呼ばれる特別な IIS モジュールをインストールすることによってこれを可能にします。 ARR は、HTTP 要求を適切なロール インスタンスに再ルーティングします。 ツールキットは、着信 HTTP トラフィックが ARR ソフトウェアに最初にルーティングされるように、選択されたエンドポイントを自動的に再構成します。 さらに、ツールキットは、Java サーバーがリッスンするように構成される新しい内部エンドポイントを作成します。 このエンドポイントが、HTTP トラフィックを適切なロール インスタンスに再ルーティングするためにARR によって使用されます。 このように、マルチインスタンス デプロイの各ロール インスタンスが他のすべてのインスタンスに対するリバース プロキシとして機能することで、スティッキー セッションが有効になります。
 
-## <a name="notes-about-session-affinity"></a>Notes about session affinity
-* Session affinity does not work in the compute emulator. The settings can be applied in the compute emulator without interfering with your build process or compute emulator execution, but the feature itself does not function within the compute emulator.
-* Enabling session affinity will result in an increase in the amount of disk space taken up by your deployment in Azure, as additional software will be downloaded and installed into your role instances when your service is started in the Azure cloud.
-* The time to initialize each role will take longer.
-* An internal endpoint, to function as a traffic rerouter as mentioned above, will be added.
+## <a name="notes-about-session-affinity"></a>セッション アフィニティに関する注意事項
+* セッション アフィニティは、コンピューティング エミュレーターでは機能しません。 設定は、コンピューティング エミュレーターのビルド処理や実行を妨げることなくコンピューティング エミュレーターに適用できますが、機能自体はコンピューティング エミュレーターでは機能しません。
+* セッション アフィニティを有効にすると、Azure でのデプロイで使用されるディスク容量が増加します。これは、Azure クラウドでサービスが開始されたときに、追加ソフトウェアがダウンロードされインストールされるためです。
+* 各ロールの初期化時間が長くなります。
+* 上記のようにトラフィック リルーターとして機能する内部エンドポイントが追加されます。
 
-For an example of how to maintain session data when session affinity is enabled, see [How to Maintain Session Data with Session Affinity][How to Maintain Session Data with Session Affinity].
 
-## <a name="see-also"></a>See Also
+## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Creating a Hello World Application for Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Installing the Azure Toolkit for Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-[How to Maintain Session Data with Session Affinity][How to Maintain Session Data with Session Affinity]
-
-For more information about using Azure with Java, see the [Azure Java Developer Center][Azure Java Developer Center].
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
@@ -67,6 +68,6 @@ For more information about using Azure with Java, see the [Azure Java Developer 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

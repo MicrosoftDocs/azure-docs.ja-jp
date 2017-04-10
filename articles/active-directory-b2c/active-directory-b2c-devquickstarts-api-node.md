@@ -3,7 +3,7 @@ title: "Azure AD B2C: Node.js を使用して Web API をセキュリティで�
 description: "B2C テナントからのトークンを受け付ける Node.JS Web API を作成する方法"
 services: active-directory-b2c
 documentationcenter: 
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 08/30/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
+ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
+ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -27,8 +28,8 @@ Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トーク�
 
 > [!NOTE]
 > このサンプルは、 [iOS B2C サンプル アプリケーション](active-directory-b2c-devquickstarts-ios.md)を使用して接続されるように作成されています。 先に現在のチュートリアルを行った後、そのサンプルに従ってください。
-> 
-> 
+>
+>
 
 **Passport** は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Restify Web アプリケーションに、支障をきたすことなくインストールされます。 包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。 Azure Active Directory (Azure AD) 用の認証手法を開発しました。 このモジュールをインストールし、Azure AD `passport-azure-ad` プラグインを追加します。
 
@@ -42,7 +43,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トーク�
 Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。  ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。  まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](active-directory-b2c-get-started.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
-次に、B2C ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報を Azure AD に提供します。 ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
+次に、B2C ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報を Azure AD に提供します。 ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が&1; つの論理アプリを構成するためです。 アプリを作成するには、 [こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
 * アプリケーションに **Web アプリまたは Web API** を含めます。
 * **[応答 URL]** に「`http://localhost/TodoListService`」と入力します。 これはこのサンプル コードで使用する既定の URL です。
@@ -52,7 +53,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという&2; つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに&1; つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。
 * すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。  その他のクレームも選択できます。
@@ -74,7 +75,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
 ## <a name="download-nodejs-for-your-platform"></a>プラットフォーム用の Node.js のダウンロード
-このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。 
+このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [nodejs.org](http://nodejs.org)からインストールします。
 
@@ -85,8 +86,8 @@ MongoDB を [mongodb.org](http://www.mongodb.org)からインストールしま�
 
 > [!NOTE]
 > このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では `mongodb://localhost`) が使用されることを想定しています。
-> 
-> 
+>
+>
 
 ## <a name="install-the-restify-modules-in-your-web-api"></a>Web API への Restify モジュールのインストール
 REST API のビルドには、Restify を使用します。 Restify は、Express から派生した、最小限の柔軟な Node.js アプリケーション フレームワークです。 Connect 上に REST API を構築するための堅牢な機能のセットが用意されています。
@@ -163,13 +164,13 @@ Restify は、DTrace を使用して REST 呼び出しをトレースする強�
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passportazuread-to-your-web-api"></a>Web API への passport-azuread の追加
+## <a name="add-passport-azuread-to-your-web-api"></a>Web API への passport-azuread の追加
 次に、Azure AD と Passport を接続する戦略のスイートである `passport-azuread`を使用して、OAuth 戦略を追加します。 Rest API サンプルのベアラー トークン用に、この戦略を使用します。
 
 > [!NOTE]
 > OAuth2 は、任意の既知のトークン タイプを発行できるフレームワークを提供しますが、一部のトークン タイプのみが広範に使用されています。 エンドポイントを保護するためのトークンが、ベアラー トークンです。 これが、OAuth2 で最も広く発行されている種類のトークンです。 多くの実装では、ベアラー トークンが、発行される唯一の種類のトークンであると想定されています。
-> 
-> 
+>
+>
 
 コマンド ラインで、ディレクトリを `azuread`に変更します (まだ変更していなかった場合)。
 
@@ -215,7 +216,7 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 * `npm install bunyan`
 
 ## <a name="create-a-serverjs-file-with-your-dependencies"></a>依存関係を持つ server.js ファイルの作成
-`server.js` ファイルは、Web API サーバー用のほとんどの機能を提供します。 
+`server.js` ファイルは、Web API サーバー用のほとんどの機能を提供します。
 
 コマンド ラインで、ディレクトリを `azuread`に変更します (まだ変更していなかった場合)。
 
@@ -258,7 +259,7 @@ clientID: <your client ID for this Web API you created in the portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
 audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
 identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
-tenantName:'<tenant name>', 
+tenantName:'<tenant name>',
 policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
 passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
 };
@@ -270,18 +271,18 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 ### <a name="required-values"></a>必要な値
 `clientID`: Web API アプリケーションのクライアント ID です。
 
-`IdentityMetadata`: これは、`passport-azure-ad` が ID プロバイダーの構成データを探す場所です。 JSON Web トークンを検証するためのキーも探されます。 
+`IdentityMetadata`: これは、`passport-azure-ad` が ID プロバイダーの構成データを探す場所です。 JSON Web トークンを検証するためのキーも探されます。
 
-`audience`: 呼び出し元アプリケーションを識別する、ポータルの Uniform Resource Identifier (URI) です。 
+`audience`: 呼び出し元アプリケーションを識別する、ポータルの Uniform Resource Identifier (URI) です。
 
 `tenantName`: テナントの名前 (例: **contoso.onmicrosoft.com**) です。
 
 `policyName`: サーバーが受け取ったトークンを検証するポリシーです。 クライアント アプリケーションでサインインに対して使用したのと同じポリシーを使用する必要があります。
 
 > [!NOTE]
-> この B2C プレビューでは、クライアントとサーバーの両方の設定に同じポリシーを使用します。 既にチュートリアルを完了していて、これらのポリシーを作成してある場合は、再度作成する必要はありません。 チュートリアルを完了していれば、サイトのクライアント チュートリアル用に新しいポリシーを設定する必要はないためです。
-> 
-> 
+> ここでは、クライアントとサーバーの両方の設定に同じポリシーを使用します。 既にチュートリアルを完了していて、これらのポリシーを作成してある場合は、再度作成する必要はありません。 チュートリアルを完了していれば、サイトのクライアント チュートリアル用に新しいポリシーを設定する必要はないためです。
+>
+>
 
 ## <a name="add-configuration-to-your-serverjs-file"></a>構成を server.js ファイルに追加する
 作成した `config.js` ファイルから値を読み取るには、`.config` ファイルを必須リソースとしてアプリケーションに追加し、グローバル変数を `config.js` ドキュメント内の変数に設定します。
@@ -331,7 +332,7 @@ var log = bunyan.createLogger({
 ```
 
 ## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Mongoose を使用した、MongoDB モデルおよびスキーマ情報の追加
-以前に行った準備は、これらの 3 つのファイルを REST API サービスにまとめるときに役立ちます。
+以前に行った準備は、これらの&3; つのファイルを REST API サービスにまとめるときに役立ちます。
 
 このチュートリアルでは、既に説明したように、タスクを格納するために MongoDB を使用します。
 
@@ -386,7 +387,7 @@ var Task = mongoose.model('Task');
 これで、操作対象のデータベース モデルが作成されたので、REST API サーバー用に使用するルートを追加します。
 
 ### <a name="about-routes-in-restify"></a>Restify でのルートについて
-ルートは、Restify でも、Express スタックを使用する場合と同じように動作します。 ルートは、クライアント アプリが呼び出すことが想定される URI を使用して定義されます。 
+ルートは、Restify でも、Express スタックを使用する場合と同じように動作します。 ルートは、クライアント アプリが呼び出すことが想定される URI を使用して定義されます。
 
 Restify ルートの典型的なパターンを次に示します。
 
@@ -544,7 +545,7 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ## <a name="create-your-server"></a>サーバーの作成
 ここまでで、データベースを定義し、ルートを設定できました。 最後に、呼び出しを管理するサーバー インスタンスを追加します。
 
-Restify と Express では REST API サーバーの詳細なカスタマイズが可能ですが、ここでは最も基本的な設定を使用します。 
+Restify と Express では REST API サーバーの詳細なカスタマイズが可能ですが、ここでは最も基本的な設定を使用します。
 
 ```Javascript
 
@@ -664,7 +665,7 @@ server.listen(serverPort, function() {
 
 });
 
-``` 
+```
 
 ## <a name="add-authentication-to-your-rest-api-server"></a>REST API サーバーへの認証の追加
 実行中の REST API サーバーを用意できたので、Azure AD にとって有益な動作をするように変更できます。
@@ -673,11 +674,11 @@ server.listen(serverPort, function() {
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-that-is-included-with-passportazuread"></a>passport-azure-ad に含まれている OIDCBearerStrategy の使用
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>passport-azure-ad に含まれている OIDCBearerStrategy の使用
 > [!TIP]
 > API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。 サーバーは、ToDo 項目を保存するときに、"owner" フィールドに配置される (token.oid を通して呼び出される) トークン内のユーザーの **oid** に基づいてそれらを保存します。 この値により、そのユーザーだけが自身の ToDo 項目にアクセスできます。 API 内で "owner" が公開されることはないため、外部ユーザーは、他のユーザーの ToDo 項目を、認証される場合でも要求することができます。
-> 
-> 
+>
+>
 
 次に、 `passport-azure-ad`に含まれているベアラー戦略を使用します。
 
@@ -722,8 +723,8 @@ Passport では、すべての戦略に同じパターンを使用します。 �
 
 > [!IMPORTANT]
 > 上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。 このプロセスは、自動登録と呼ばれます。 運用サーバーでは、登録プロセスを先に実行していないユーザーには API へのアクセスを許可しないようにします。 このプロセスは、Facebook を使用した登録を許可するものの、後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。 これがコマンド ライン プログラムでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。 これはサンプルであるため、メモリ内データベースに追加します。
-> 
-> 
+>
+>
 
 ## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>サーバー アプリケーションを実行して自分が拒否されることを確認する
 `curl` を使用して、エンドポイントに対して OAuth2 保護が有効になっていることを確認できます。 返されるヘッダーだけで、正しく操作できていることを確認するには十分です。
@@ -760,10 +761,4 @@ Restify と OAuth を使用して REST API を実装しました。 既に十分
 これ以降は、次のような、さらに高度なトピックに進むことができます。
 
 [B2C で iOS を使用して Web API に接続する](active-directory-b2c-devquickstarts-ios.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

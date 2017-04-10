@@ -1,24 +1,29 @@
 ---
-title: Azure Media Analytics での顔と感情の検出 | Microsoft Docs
-description: このトピックでは、Azure Media Analytics で顔と感情を検出する方法を示します。
+title: "Azure Media Analytics での顔と感情の検出 | Microsoft Docs"
+description: "このトピックでは、Azure Media Analytics で顔と感情を検出する方法を示します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5ca4692c-23f1-451d-9d82-cbc8bf0fd707
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/09/2017
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
+ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
+ms.lasthandoff: 02/10/2017
+
 
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
-## <a name="overview"></a>Overview
-**Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには 2 つの機能があります。 
+## <a name="overview"></a>概要
+**Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには&2; つの機能があります。 
 
 * **顔検出**
   
@@ -44,7 +49,7 @@ ms.author: milanga;juliako;
 
 検出されて追跡される顔に対しては、画像内での顔の位置を示す座標 (左端、上端、幅、高さ、ピクセル単位) と、追跡対象の個人を識別する顔 ID 番号が返されます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 
-### <a name="<a-id="output_elements"></a>elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
+### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 顔の検出と追跡の操作での出力結果は、顔のメタデータが含まれる JSON 形式ファイルです。
 
 顔の検出と追跡の JSON には、次の属性が含まれます。
@@ -52,9 +57,9 @@ ms.author: milanga;juliako;
 | 要素 | 説明 |
 | --- | --- |
 | バージョン |Video API のバージョンを示します。 |
-| タイムスケール |ビデオの 1 秒あたりの "ティック数" です。 |
+| タイムスケール |ビデオの&1; 秒あたりの "ティック数" です。 |
 | Offset |タイムスタンプの時間オフセットです。 Video API のバージョン 1.0 では、これは常に 0 になります。 今後サポートされるシナリオでは、変更される可能性があります。 |
-| Framerate |ビデオの 1 秒あたりのフレーム数です。 |
+| Framerate |ビデオの&1; 秒あたりのフレーム数です。 |
 | Fragments |メタデータは、フラグメントと呼ばれる複数のセグメントに分割されます。 各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。 |
 | 開始 |最初のイベントの開始時間です ("ティック数")。 |
 | 時間 |フラグメントの長さです ("ティック数")。 |
@@ -68,23 +73,27 @@ ms.author: milanga;juliako;
 Face Detector は、フラグメント化 (メタデータを時間に基づいて分割し、必要なものだけをダウンロードできます) およびセグメント化 (イベントが大きくなりすぎた場合に分割されます) の技法を使用します。 簡単な計算でデータを変換できます。 たとえば、イベントが 6300 (ティック) に開始し、タイムスケールが 2997 (ティック/秒)、フレームレートが 29.97 (フレーム/秒) である場合、次のようになります。
 
 * 開始/タイムスケール = 2.1 秒
-* 秒数 x (フレームレート/タイムスケール) = 63 フレーム
-
-顔の検出と追跡のために JSON からフレーム単位の形式を抽出する簡単な例を次に示します。
-
-    var faceDetectionResultJsonString = operationResult.ProcessingResult;
-    var faceDetecionTracking = 
-         JsonConvert.DeserializeObject<FaceDetectionResult>(faceDetectionResultJsonString, settings);
-
+* 秒 x フレームレート = 63 フレーム
 
 ## <a name="face-detection-input-and-output-example"></a>顔検出の入力と出力の例
 ### <a name="input-video"></a>入力ビデオ
 [入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットは、顔検出用だけです。
 
-    {"version":"1.0"}
+    {
+      "version":"1.0"
+      "options":{
+          "TrackingMode": "Faster"
+      }
+    }
+
+#### <a name="attribute-descriptions"></a>属性の説明
+| 属性名 | Description |
+| --- | --- |
+| Mode |Faster: 処理速度は速くなりますが、精度が低下します (既定値)。 <br/>Quality: 追跡の精度が高くなりますが、処理時間が長くなります。 |
+
 
 ### <a name="json-output"></a>JSON 出力
 次の JSON 出力例は途中までです。
@@ -140,7 +149,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ### <a name="input-video"></a>入力ビデオ
 [入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットでは、感情検出に基づく JSON の作成を指定しています。
 
     {
@@ -156,17 +165,17 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | Description |
 | --- | --- |
-| Mode |Faces: 顔検出のみ <br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。 |
+| Mode |Faces: 顔検出のみ。<br/>PerFaceEmotion: 検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
 | AggregateEmotionIntervalMs |AggregateEmotion モードが選択されている場合に使用します。 集計結果を生成する頻度を指定します。 |
 
 #### <a name="aggregate-defaults"></a>集計の既定値
 以下は、集計時間枠と間隔の設定に対して推奨される値です。 AggregateEmotionWindowMs は AggregateEmotionIntervalMs より長くする必要があります。
 
-| 既定値 (秒) | 最大 (秒) | 最小 (秒) |
-| --- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |
-| AggregateEmotionIntervalMs |0.5 |1 |
+|| 既定値 (秒) | 最小 (秒) | 最大 (秒) |
+|--- | --- | --- | --- |
+| AggregateEmotionWindowMs |0.5 |2 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 出力
 感情の集計の JSON 出力 (途中まで):
@@ -513,7 +522,5 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-<!--HONumber=Oct16_HO2-->
 
 

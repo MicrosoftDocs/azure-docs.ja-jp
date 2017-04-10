@@ -1,23 +1,28 @@
 ---
-title: Azure Load Balancer の IPv6 の概要 | Microsoft Docs
-description: Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。
+title: "Azure Load Balancer の IPv6 の概要 | Microsoft Docs"
+description: "Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: ''
-keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
-
+author: kumudd
+manager: timlt
+editor: 
+keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
+ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
-ms.author: sewhee
+ms.author: kumud
+translationtype: Human Translation
+ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
+ms.openlocfilehash: 3326b1ff8d1704b225cfb62886fbc992c6171211
 
 ---
+
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
+
 インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 
 * ロード バランサーを介したパブリック インターネット クライアントと Azure Virtual Machines (VMs) の間のネイティブなエンド ツー エンドの IPv6 接続。
@@ -30,6 +35,7 @@ ms.author: sewhee
 一度デプロイすると、IPv4 または IPv6 対応のインターネット クライアントがインターネットに接続された Azure Load Balancer の IPv4 または IPv6 のパブリック アドレスと通信できるようになります。 ロード バランサーは、ネットワーク アドレス変換 (NAT) を使用して IPv6 のパケットを VM のプライベート IPv6 アドレスにルーティングします。 IPv6 インターネット クライアントは、VM の IPv6 アドレスと直接通信できません。
 
 ## <a name="features"></a>Features (機能)
+
 Azure Resource Manager を介してデプロイされた VM のネイティブ IPv6 サポートは、次の機能を提供します。
 
 1. インターネット上の IPv6 クライアントに対する負荷分散された IPv6 サービス
@@ -38,12 +44,14 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 4. TCP、UDP、HTTP(S) などのサポートされているプロトコルによる幅広いサービス アーキテクチャの有効化
 
 ## <a name="benefits"></a>メリット
+
 この機能により、主に次のようなメリットを享受できます。
 
 * 新しいアプリケーションが IPv6 のみのクライアントにアクセスできることを必要とする政府の規制に対応する
 * モバイルやモノのインターネット (IOT) の開発者がデュアル スタック (IPv4 + IPv6) の Azure Virtual Machines を使用して増え続けるモバイルおよび IOT のマーケットに対応する
 
 ## <a name="details-and-limitations"></a>詳細と制限
+
 詳細
 
 * Azure DNS サービスにはロード バランサー用の IPv4 A と IPV6 AAAA の両方の名前記録が含まれており、2 つの記録を使用して応答します。 どちらのアドレス (IPv4 または IPv6) と通信するかは、クライアントが選択します。
@@ -57,6 +65,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * 既存の VM を IPv6 のアドレスを使用するようにアップグレードしないでください。 新しい VM をデプロイする必要があります。
 * 1 つの IPv6 アドレスは、VM ごとに 1 つのネットワーク インターフェイスに割り当てることができます。
 * パブリック IPv6 アドレスを VM に割り当てることはできません。 ロード バランサーにのみ割り当てることができます。
+* パブリック IPv6 アドレスの DNS 逆引き参照は構成できません。
 * IPv6 アドレスを持つ VM は、Azure Cloud Service のメンバーにすることはできません。 Azure Virtual Network (VNet) に接続して、IPv4 アドレスで互いに通信できます。
 * プライベート IPv6 アドレスはリソース グループ内の個々 の VM 上にデプロイできますが、スケール セットを介してリソース グループにデプロイすることはできません。
 * Azure VMs は IPv6 を介して他の VM、他の Azure サービス、またはオンプレミスのデバイスに接続できません。 Azure Load Balancer とのみ IPv6 を介して通信できます。 ただし、これらの他のリソースとは IPv4 を使用して通信できます。
@@ -65,6 +74,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の IdleTimeout パラメーターの変更は、 **現在サポートされてません**。 既定では 4 分です。
 
 ## <a name="next-steps"></a>次のステップ
+
 IPv6 でロード バランサーをデプロイする方法について説明します。
 
 * [リージョンごとの IPv6 の使用の可否](https://go.microsoft.com/fwlink/?linkid=828357)
@@ -72,6 +82,8 @@ IPv6 でロード バランサーをデプロイする方法について説明�
 * [Azure PowerShell を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-ps.md)
 * [Azure CLI を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-cli.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

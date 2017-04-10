@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute 回線とルーティング ドメイン | Microsoft Docs
-description: このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。
+title: "Azure ExpressRoute 回線とルーティング ドメイン | Microsoft Docs"
+description: "このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-
+manager: timlt
+editor: 
+ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 729c89e26e0c2da3ec88b554645091997dea4552
+ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
+
 
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 回線とルーティング ドメイン
@@ -26,11 +30,11 @@ ms.author: cherylmc
 
 ExpressRoute 回線は物理エンティティにはマップされません。 回線は、サービス キー (s キー) という標準 GUID によって一意に識別されます。 サービス キーは、Microsoft、接続プロバイダー、およびユーザー間で交換される情報のほんの一部です。 s キーは、セキュリティ目的のシークレットではありません。 ExpressRoute 回線と s キーは 1 対 1 で対応しています。
 
-ExpressRoute 回線では、Azure パブリック、Azure プライベート、および Microsoft という最大 3 つの独立したピアリングを使用することができます。 各ピアリングは独立した BGP セッションのペアで、高可用性を実現するためにセッションはそれぞれ冗長的に構成されています。 ExpressRoute 回線とルーティング ドメインは 1 対 N (1 <= N <= 3) で対応しています。 ExpressRoute 回線 は、回線ごとに 1 つ、2 つ、または 3 つすべてのピアリングを使用することができます。
+ExpressRoute 回線では、Azure パブリック、Azure プライベート、および Microsoft という最大&3; つの独立したピアリングを使用することができます。 各ピアリングは独立した BGP セッションのペアで、高可用性を実現するためにセッションはそれぞれ冗長的に構成されています。 ExpressRoute 回線とルーティング ドメインは 1 対 N (1 <= N <= 3) で対応しています。 ExpressRoute 回線 は、回線ごとに&1; つ、2 つ、または&3; つすべてのピアリングを使用することができます。
 
 各接続には固定帯域幅 (50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps) があり、接続プロバイダーとピアリング場所にマップされます。 選択する帯域幅は、この回線のすべてのピアリング間で共有されます。 
 
-### <a name="quotas,-limits,-and-limitations"></a>クォータ、制限、および制限事項
+### <a name="quotas-limits-and-limitations"></a>クォータ、制限、および制限事項
 既定のクォータと制限は、すべての ExpressRoute 回線に適用されます。 クォータに関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md) 」ページをご覧ください。
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute のルーティング ドメイン
@@ -48,7 +52,7 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 
 接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 パブリック ピアリングを有効になると、すべての Azure サービスに接続できるようになります。 ルートをアドバタイズするサービスを選択することはできません。 このピアリングを経由してアドバタイズされるプレフィックスの一覧については、 [Microsoft Azure データセンターの IP 範囲](http://www.microsoft.com/download/details.aspx?id=41653) に関するページを参照してください。 このページは毎週更新されます。
 
-ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。 ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 
+ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。 
 
 パブリック ピアリング ルーティング ドメインでサポートされるサービスの詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 
 
@@ -70,9 +74,9 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 | **ルーティング インターフェイスの IP アドレス** |RFC1918 およびパブリック IP アドレス |ルーティング レジストリに登録されているパブリック IP アドレス。 |ルーティング レジストリに登録されているパブリック IP アドレス。 |
 | **MD5 ハッシュのサポート** |はい |あり |はい |
 
-ExpressRoute 回線の一部として 1 つ以上のルーティング ドメインを有効にするように選択できます。 すべてのルーティング ドメインを 1 つのルーティング ドメインに取り込みたい場合は、同じ VPN 上に配置するように選択できます。 また、上図に似た別のルーティング ドメイン上に配置することもできます。 推奨構成は、プライベート ピアリングをコア ネットワークに直接接続し、パブリック ピアリングと Microsoft ピアリングのリンクを DMZ に接続する構成です。
+ExpressRoute 回線の一部として&1; つ以上のルーティング ドメインを有効にするように選択できます。 すべてのルーティング ドメインを&1; つのルーティング ドメインに取り込みたい場合は、同じ VPN 上に配置するように選択できます。 また、上図に似た別のルーティング ドメイン上に配置することもできます。 推奨構成は、プライベート ピアリングをコア ネットワークに直接接続し、パブリック ピアリングと Microsoft ピアリングのリンクを DMZ に接続する構成です。
 
-3 つのピアリング セッションすべてを使用する場合は、BGP セッションのペアを 3 つ (ピアリングの種類ごとに 1 つのペア) 設定する必要があります。 BGP セッションのペアによって、高可用性リンクが実現されます。 レイヤー 2 接続プロバイダーを経由して接続している場合、ルーティングの構成と管理はお客様の責任となります。 詳細については、ExpressRoute を設定する [ワークフロー](expressroute-workflows.md) を参照してください。
+3 つのピアリング セッションすべてを使用する場合は、BGP セッションのペアを&3; つ (ピアリングの種類ごとに&1; つのペア) 設定する必要があります。 BGP セッションのペアによって、高可用性リンクが実現されます。 レイヤー 2 接続プロバイダーを経由して接続している場合、ルーティングの構成と管理はお客様の責任となります。 詳細については、ExpressRoute を設定する [ワークフロー](expressroute-workflows.md) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * サービス プロバイダーを検索します。 [ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
@@ -82,6 +86,9 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
   * [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO1-->
 
 

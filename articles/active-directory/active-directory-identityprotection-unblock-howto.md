@@ -1,58 +1,60 @@
 ---
-title: Azure Active Directory Identity Protection - How to unblock users | Microsoft Docs
-description: Learn how unblock users that were blocked by an Azure Active Directory Identity Protection policy.
+title: "Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法 | Microsoft Docs"
+description: "Azure Active Directory Identity Protection ポリシーによってブロックされたユーザーのブロックを解除する方法について説明します。"
 services: active-directory
-keywords: azure active directory identity protection, unblock user
-documentationcenter: ''
+keywords: "Azure Active Directory Identity Protection, ユーザーのブロック解除"
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 04/06/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
+ms.openlocfilehash: d17fa0ffb0c55d49487804cd28d8903107069f06
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# <a name="azure-active-directory-identity-protection-how-to-unblock-users"></a>Azure Active Directory Identity Protection - How to unblock users
-With Azure Active Directory Identity Protection, you can configure policies to block users if the configured conditions are satisfied. Typically, a blocked user contacts help desk to become unblocked. This topics explains the steps you can perform to unblock a blocked user.
+# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法
+Azure Active Directory Identity Protection では、構成されている条件が満たされた場合にユーザーをブロックするポリシーを構成できます。 通常、ブロックされたユーザーは、ブロックを状態した状態になるようにヘルプ デスクに連絡します。 このトピックでは、ブロックされたユーザーのブロックを解除するための手順について説明します。
 
-## <a name="determine-the-reason-for-blocking"></a>Determine the reason for blocking
-As a first step to unblock a user, you need to determine the type of policy that has blocked the user because your next steps are depending on it. With Azure Active Directory Identity Protection, a user can be either blocked by a sign-in risk policy or a user risk policy. 
+## <a name="determine-the-reason-for-blocking"></a>ブロックの理由を特定する
+ユーザーのブロックを解除する最初の手順として、ユーザーをブロックしたポリシーの種類を特定する必要があります。これに応じて、次の手順が異なります。
+Azure Active Directory Identity Protection を使用すると、ユーザーをサインイン リスク ポリシーまたはユーザー リスク ポリシーによってブロックすることができます。
 
-You can get the type of policy that has blocked a user from the heading in the dialog that was presented to the user during a sign-in attempt:
+ユーザーをブロックしたポリシーの種類は、サインインの試行中にユーザーに表示されたダイアログ ボックスの見出しからわかります。
 
-| Policy | User dialog |
+| ポリシー | ユーザー ダイアログ |
 | --- | --- |
-| Sign-in risk |![Blocked sign-in](./media/active-directory-identityprotection-unblock-howto/02.png) |
-| User risk |![Blocked account](./media/active-directory-identityprotection-unblock-howto/104.png) |
+| サインイン リスク |![Blocked sign-in](./media/active-directory-identityprotection-unblock-howto/02.png) |
+| ユーザー リスク |![Blocked account](./media/active-directory-identityprotection-unblock-howto/104.png) |
 
-A user that is blocked by:
+ブロックされているユーザーは次のとおりです:
 
-* A sign-in risk policy is also known as suspicious sign-in
-* A user risk policy is also known as an account at risk
+* サインイン リスク ポリシーによってブロックされたユーザーは、不審なサインインとも呼ばれます。
+* ユーザー リスク ポリシーによってブロックされたユーザーは、危険にさらされたアカウントとも呼ばれます。
 
-## <a name="unblocking-suspicious-signins"></a>Unblocking suspicious sign-ins
-To unblock a suspicious sign-in, you have the following options:
+## <a name="unblocking-suspicious-sign-ins"></a>不審なサインインのブロック解除
+不審なサインインのブロックを解除するには、次の方法があります。
 
-1. **Sign-in from a familiar location or device** - A common reason for blocked suspicious sign-ins are sign-in attempts from unfamiliar locations or devices. Your users can quickly determine whether this is the blocking reason by trying to sign-in from a familiar location or device.
-2. **Exclude from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. See [sign-in risk policy](active-directory-identityprotection.md#sign-in-risk-policy) for more details.
-3. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. See [sign-in risk policy](active-directory-identityprotection.md#sign-in-risk-policy) for more details.
+1. **よく使用する場所やデバイスからサインインする** - 不審なサインインがブロックされる一般的な理由は、使用頻度の低い場所やデバイスからのサインイン試行にあります。 ユーザーは、よく使用する場所やデバイスからのサインインを試みることで、これがブロックの理由であるかどうかをすぐに確認できます。
+2. **ポリシーから除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
+3. **ポリシーを無効にする** - ポリシーの構成が原因ですべてのユーザーに問題が発生していると考えられる場合は、ポリシーを無効にすることができます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
 
-## <a name="unblocking-accounts-at-risk"></a>Unblocking accounts at risk
-To unblock an account at risk, you have the following options:
+## <a name="unblocking-accounts-at-risk"></a>危険にさらされたアカウントのブロック解除
+危険にさらされたアカウントのブロックを解除するには、次の方法があります。
 
-1. **Reset password** - You can reset the user's password. See [manual secure password reset](active-directory-identityprotection.md#manual-secure-password-reset) for more details.
-2. **Dismiss all risk events** - The user risk policy blocks a user if the configured user risk level for blocking access has been reached. You can reduce a user's risk level by manually closing reported risk events. For more details, see [closing risk events manually](active-directory-identityprotection.md#closing-risk-events-manually).
-3. **Exclude from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. See [user risk policy](active-directory-identityprotection.md#user-risk-policy) for more details.
-4. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. See [user risk policy](active-directory-identityprotection.md#user-risk-policy) for more details.
+1. **パスワードをリセットする** - ユーザーのパスワードをリセットすることができます。 詳細については、「 [セキュリティ保護されたパスワードの手動リセット](active-directory-identityprotection.md#manual-secure-password-reset) 」を参照してください。
+2. **すべてのリスク イベントを破棄する** - アクセスをブロックするために構成されたユーザー リスク レベルに到達した場合、ユーザー リスク ポリシーによってユーザーがブロックされます。 報告されたリスク イベントを手動で閉じることにより、ユーザーのリスク レベルを下げることができます。 詳細については、「 [リスク イベントの手動クローズ](active-directory-identityprotection.md#closing-risk-events-manually)」を参照してください。
+3. **ポリシーから除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
+4. **ポリシーを無効にする** - ポリシーの構成が原因ですべてのユーザーに問題が発生していると考えられる場合は、ポリシーを無効にすることができます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
 
-## <a name="next-steps"></a>Next steps
- Do you want to know more about Azure AD Identity Protection? Check out [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-
-<!--HONumber=Oct16_HO2-->
-
+## <a name="next-steps"></a>次のステップ
+ Azure AD Identity Protection の詳細については、 「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」を参照してください。
 

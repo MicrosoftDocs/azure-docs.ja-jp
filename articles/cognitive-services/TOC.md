@@ -1,7 +1,8 @@
 
-# Overview
+# 概要
 ## [Cognitive Services とは](https://azure.microsoft.com/services/cognitive-services/)
 # 作業の開始
+## [アカウントの作成](cognitive-services-apis-create-account.md)
 ## [Text Analytics クイック スタート](cognitive-services-text-analytics-quick-start.md)
 ## [Recommendations クイック スタート](cognitive-services-recommendations-quick-start.md)
 
@@ -45,15 +46,10 @@
 ## [Language Understanding Intelligent Service を使用した開発](https://www.luis.ai/Help/)
 
 # リファレンス
-## [PowerShell コマンドレット](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/resourcemanager/azurerm.cognitiveservices/v0.4.1/azurerm.cognitiveservices)
 ## [REST ()](https://docs.microsoft.com/rest/api/cognitiveservices/)
 
 # リソース 
 ## [料金](https://azure.microsoft.com/pricing/details/cognitive-services/)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cognitive-services)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cognitive-services)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

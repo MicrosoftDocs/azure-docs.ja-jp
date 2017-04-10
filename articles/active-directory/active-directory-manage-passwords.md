@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory 内のパスワードを管理する | Microsoft Docs
-description: Azure Active Directory のパスワードを管理する方法。
+title: "Azure Active Directory 内のパスワードを管理する | Microsoft Docs"
+description: "Azure Active Directory のパスワードを管理する方法。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a7679724-0ed5-4973-92e2-bd1285a6ef93
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/13/2017
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: fee05b9cfb176714e3313ea2e969958bb4cb19f8
+
 
 ---
 # <a name="manage-passwords-in-azure-active-directory"></a>Azure Active Directory のパスワードを管理する
@@ -29,8 +33,8 @@ ms.author: curtand
 
 > [!NOTE]
 > Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium を利用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
-> 
-> 
+>
+>
 
 次のリンクを使用して、最も関心のあるドキュメントに移動してください。
 
@@ -43,11 +47,13 @@ ms.author: curtand
 * [Azure AD のパスワード管理に関するトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)
 
-## <a name="what's-next"></a>参照トピック
-* [Administer your Azure AD directory (Azure AD ディレクトリの管理)](active-directory-administer.md)
+## <a name="next-steps"></a>次のステップ
+* [Administer your Azure AD directory](active-directory-administer.md)
 * [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 * [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

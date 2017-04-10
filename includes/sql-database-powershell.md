@@ -1,6 +1,6 @@
 
 ## <a name="start-your-powershell-session"></a>PowerShell セッションの開始
-まず、最新の [Azure PowerShell](https://msdn.microsoft.com/library/mt619274\(v=azure.300\).aspx) をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md)」をご覧ください。
+まず、最新の Azure PowerShell をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 > [!NOTE]
 > SQL Database の新機能の多くは、[Azure Resource Manager デプロイ モデル](../articles/azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。したがって、各例では、Resource Manager の [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)を使用しています。 サービス管理 (クラシック) デプロイ モデルの [Azure SQL Database サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn546723\(v=azure.300\).aspx) は下位互換性を確保するためにサポートされていますが、Resource Manager のコマンドレットを使用することをお勧めします。
@@ -16,6 +16,6 @@
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,20 +1,24 @@
 ---
-title: Microsoft Power BI Embedded の一般的なシナリオ
-description: Microsoft Power BI Embedded の一般的なシナリオ
+title: "Microsoft Power BI Embedded の一般的なシナリオ"
+description: "Microsoft Power BI Embedded の一般的なシナリオ"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 0bf9706c-11bd-432a-bab3-89c04bc4dd1f
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bcfb9370af716756440a09f4f0c2e4ca0af70b45
+
 
 ---
 # <a name="common-power-bi-embedded-scenarios"></a>Power BI Embedded の一般的なシナリオ
@@ -30,6 +34,9 @@ ms.author: asaxton
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 * [サンプルを使ってみる](power-bi-embedded-get-started.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

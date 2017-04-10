@@ -1,19 +1,23 @@
 ---
-title: Visual Studio を使用した Service Fabric クラスターのセットアップ | Microsoft Docs
-description: Visual Studio の Azure リソース グループ プロジェクトで作成した Azure リソース マネージャー テンプレートを使用して Service Fabric クラスターをセットアップする方法について説明します。
+title: "Visual Studio を使用した Service Fabric クラスターのセットアップ | Microsoft Docs"
+description: "Visual Studio の Azure リソース グループ プロジェクトで作成した Azure リソース マネージャー テンプレートを使用して Service Fabric クラスターをセットアップする方法について説明します。"
 services: service-fabric
 documentationcenter: .net
-author: karolz-ms
+author: mikkelhegn
 manager: adegeo
-editor: ''
-
+editor: 
+ms.assetid: bd2c0511-36c9-4828-8dc3-69e4b6a70567
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/06/2016
-ms.author: karolz@microsoft.com
+ms.date: 02/21/2017
+ms.author: mikhegn@microsoft.com
+translationtype: Human Translation
+ms.sourcegitcommit: 0eefa64d6292dec14842c031ebad80fa9094436d
+ms.openlocfilehash: 535e33eec22ed1c488cace9442328084b416b7a8
+
 
 ---
 # <a name="set-up-a-service-fabric-cluster-by-using-visual-studio"></a>Visual Studio による Service Fabric クラスターのセットアップ
@@ -47,15 +51,15 @@ ms.author: karolz@microsoft.com
 | sourceVaultResourceId |クラスターをセキュリティで保護する証明書が格納されている Key Vault の *リソース ID* 。 |
 | certificateUrlValue |クラスターのセキュリティ証明書の URL。 |
 
-Visual Studio Service Fabric リソース マネージャー テンプレートは、証明書によって保護されている、安全なクラスターを作成します。 この証明書は、最後の 3 つのテンプレート パラメーター (`certificateThumbprint`、`sourceVaultValue`、`certificateUrlValue`) によって識別されます。また、証明書は **Azure Key Vault** 内に存在する必要があります。 クラスター セキュリティ証明書を作成する方法の詳細については、[「Service Fabric クラスターのセキュリティに関するシナリオ」](service-fabric-cluster-security.md#x509-certificates-and-service-fabric)をご覧ください。
+Visual Studio Service Fabric リソース マネージャー テンプレートは、証明書によって保護されている、安全なクラスターを作成します。 この証明書は、最後の&3; つのテンプレート パラメーター (`certificateThumbprint`、`sourceVaultValue`、`certificateUrlValue`) によって識別されます。また、証明書は **Azure Key Vault** 内に存在する必要があります。 クラスター セキュリティ証明書を作成する方法の詳細については、[「Service Fabric クラスターのセキュリティに関するシナリオ」](service-fabric-cluster-security.md#x509-certificates-and-service-fabric)をご覧ください。
 
-## <a name="optional:-change-the-cluster-name"></a>省略可能: クラスター名を変更する
+## <a name="optional-change-the-cluster-name"></a>省略可能: クラスター名を変更する
 Service Fabric クラスターにはそれぞれ名前が与えられています。 Fabric クラスターが Azure で作成されると、クラスター名により、(Azure リージョンと共に) クラスターの DNS (ドメイン ネーム システム) が決定されます。 たとえば、クラスターに `myBigCluster` という名前を付け、この新しいクラスターをホストするリソース グループの場所 (Azure リージョン) が米国東部の場合、クラスターの DNS 名は `myBigCluster.eastus.cloudapp.azure.com` になります。
 
 既定では、クラスター名は自動生成されます。"cluster" プレフィックスにランダムなサフィックスを付けることで一意に作成されます。 これにより、**継続的インテグレーション** (CI) システムの一部としてテンプレートを使用することが非常に簡単になります。 自分にとってわかりやすい名前をクラスターに使用する場合は、Resource Manager テンプレート ファイル (`ServiceFabricCluster.json`) の `clusterName` 変数の値を選択した名前に設定します。 そのファイルに定義されている最初の変数です。
 
-## <a name="optional:-add-public-application-ports"></a>省略可能: パブリック アプリケーション ポートを追加する
-デプロイする前に、クラスターのパブリック アプリケーション ポートを変更することもできます。 既定では、テンプレートが開くパブリック TCP ポートは 2 つだけです (80 と 8081)。 アプリケーションにさらに多くのポートが必要な場合は、テンプレート内の Azure Load Balancer の定義を変更します。 定義は、メイン テンプレート ファイル (`ServiceFabricCluster.json`) に保存されています。 そのファイルを開き、 `loadBalancedAppPort`を検索します。 各ポートは、次の 3 つのアーティファクトに関連付けられています。
+## <a name="optional-add-public-application-ports"></a>省略可能: パブリック アプリケーション ポートを追加する
+デプロイする前に、クラスターのパブリック アプリケーション ポートを変更することもできます。 既定では、テンプレートが開くパブリック TCP ポートは 2 つだけです (80 と 8081)。 アプリケーションにさらに多くのポートが必要な場合は、テンプレート内の Azure Load Balancer の定義を変更します。 定義は、メイン テンプレート ファイル (`ServiceFabricCluster.json`) に保存されています。 そのファイルを開き、 `loadBalancedAppPort`を検索します。 各ポートは、次の&3; つのアーティファクトに関連付けられています。
 
 1. ポートの TCP ポート値を定義するテンプレート変数:
    
@@ -98,7 +102,7 @@ Service Fabric クラスターにはそれぞれ名前が与えられていま�
         }
     }
     ```
-   クラスターにデプロイする予定のアプリケーションで追加のポートが必要になる場合、プローブと負荷分散ルール定義を追加作成することで、ポートを追加できます。 Resource Manager テンプレートを使用して Azure Load Balancer を操作する方法の詳細については、「 [テンプレートを使用した内部ロード バランサーの作成の概要](../load-balancer/load-balancer-get-started-ilb-arm-template.md)」をご覧ください。
+   クラスターにデプロイする予定のアプリケーションで追加のポートが必要になる場合、プローブと負荷分散ルール定義を追加作成することで、ポートを追加できます。 Resource Manager テンプレートを使用して Azure Load Balancer を操作する方法の詳細については、[「テンプレートを使用した内部ロード バランサーの作成の概要」](../load-balancer/load-balancer-get-started-ilb-arm-template.md)をご覧ください。
 
 ## <a name="deploy-the-template-by-using-visual-studio"></a>Visual Studio を使用してテンプレートをデプロイする
 必要なパラメーター値すべてを`ServiceFabricCluster.param.dev.json` ファイルに保存したら、テンプレートをデプロイして Service Fabric クラスターを作成できます。 Visual Studio ソリューション エクスプローラーでリソース グループ プロジェクトを右クリックし、 **[デプロイ]、[新しいデプロイ]**の順にクリックします。 必要に応じて、Azure に対する認証を求める **[リソース グループに配置する]** ダイアログ ボックスが表示されます。
@@ -107,7 +111,7 @@ Service Fabric クラスターにはそれぞれ名前が与えられていま�
 
 このダイアログ ボックスでは、クラスターの既存のリソース マネージャー リソース グループを選択したり、新しいグループを作成したりすることができます。 通常は、Service Fabric クラスター用に別のリソース グループを使用することには意味があります。
 
-[配置] ボタンをクリックすると、テンプレート パラメーター値の確認を求めるメッセージが表示されます。 **[保存]** ボタンをクリックします。 永続的な値を持たないパラメーターが 1 つあります。それは、クラスターの管理者アカウント パスワードです。 パスワードの入力を求められたときに、パスワード値を指定する必要があります。
+[配置] ボタンをクリックすると、テンプレート パラメーター値の確認を求めるメッセージが表示されます。 **[保存]** ボタンをクリックします。 永続的な値を持たないパラメーターが&1; つあります。それは、クラスターの管理者アカウント パスワードです。 パスワードの入力を求められたときに、パスワード値を指定する必要があります。
 
 > [!NOTE]
 > Azure SDK 2.9 以降、Visual Studio では、デプロイ中に **Azure Key Vault** からパスワードを読み取る動作をサポートしています。 テンプレート パラメーターのダイアログ ボックスを見ると、`adminPassword` パラメーター テキスト ボックスの右側に小さい "鍵" アイコンが表示されているのがわかります。 このアイコンを使用すると、クラスターの管理者パスワードとして既存のキー コンテナー シークレットを選択することができます。 まず、キー コンテナーの高度なアクセス ポリシーでテンプレートをデプロイするために Azure Resource Manager のアクセスを有効にしてください。 
@@ -142,6 +146,6 @@ Visual Studio の出力ウィンドウで、デプロイ プロセスの進行�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -1,51 +1,56 @@
 ---
-title: Linux データ サイエンス仮想マシンでのデータ サイエンス | Microsoft Docs
-description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
+title: "Linux データ サイエンス仮想マシンでのデータ サイエンス | Microsoft Docs"
+description: "Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 03/24/2017
 ms.author: bradsev;paulsh
+translationtype: Human Translation
+ms.sourcegitcommit: d0075eec26c2131f2019e7aca4c00d2d63cc976b
+ms.openlocfilehash: 80051996b0c39c53da63dc6b7bc75c869f692575
+ms.lasthandoff: 01/06/2017
+
 
 ---
-# Linux データ サイエンス仮想マシンでのデータ サイエンス
-このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。主なソフトウェア コンポーネントは、トピック「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」にまとめられています。この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
+# <a name="data-science-on-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンでのデータ サイエンス
+このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
 
-このチュートリアルで説明するデータ サイエンス タスクは、「[Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」で説明されている手順に従います。このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
+このチュートリアルで説明するデータ サイエンス タスクは、「 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」で説明されている手順に従います。 このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
 
-このチュートリアルでは、[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットを分析します。このデータセットは、スパムまたはハム (スパムではないメール) としてマークされた一連のメールです。メールの内容に関する統計情報も含まれています。含まれている統計情報については、次の次のセクションで説明します。
+このチュートリアルでは、[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットを分析します。 このデータセットは、スパムまたはハム (スパムではないメール) としてマークされた一連のメールです。メールの内容に関する統計情報も含まれています。 含まれている統計情報については、次の次のセクションで説明します。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 Linux データ サイエンス仮想マシンを使用する前に、次を用意する必要があります。
 
-* **Azure サブスクリプション**。Azure サブスクリプションがない場合は、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
-* [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。この VM のプロビジョニング方法については、「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」をご覧ください。
-* [X2Go](http://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。**X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](machine-learning-data-science-linux-dsvm-intro.md#Installing-and-configuring-X2Go-client)」をご覧ください。
-* **AzureML アカウント**。AzureML アカウントがない場合は、[AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。開始する際に役立つ Free レベルがあります。
+* **Azure サブスクリプション**。 Azure サブスクリプションがない場合は、「 [無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
+* [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 この VM のプロビジョニング方法については、「 [Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」をご覧ください。
+* [X2Go](http://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。 
+* **AzureML アカウント**。 AzureML アカウントがない場合は、 [AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 開始する際に役立つ Free レベルがあります。
 
-## spambase データセットをダウンロードする
-[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットは、比較的小さく、4601 例しか含まれていません。このサイズでは、リソース要件が中程度に抑えられるため、データ サイエンス VM の主要な機能をいくつか示す際に便利です。
+## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
+[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットは、比較的小さく、4601 例しか含まれていません。 このサイズでは、リソース要件が中程度に抑えられるため、データ サイエンス VM の主要な機能をいくつか示す際に便利です。
 
 > [!NOTE]
-> このチュートリアルは、D2 v2 サイズの Linux データ サイエンス仮想マシンで作成されました。このサイズの DSVM でこのチュートリアルの手順を処理できます。
-> 
-> 
+> このチュートリアルは、D2 v2 サイズの Linux データ サイエンス仮想マシンで作成されました。 このサイズの DSVM でこのチュートリアルの手順を処理できます。
+>
+>
 
-ストレージ領域がもっと必要な場合は、追加のディスクを作成し、VM に接続できます。これらのディスクでは永続的な Azure Storage を使用します。そのため、サーバーがサイズ変更のために再プロビジョニングされた場合や、シャットダウンされた場合でも、データが保持されます。ディスクを追加し、VM に接続するには、「[Linux VM へのディスクの追加](../virtual-machines/virtual-machines-linux-add-disk.md)」の手順に従ってください。次の手順では、Azure コマンド ライン インターフェイス (Azure CLI) を使用します。Azure CLI は、DSVM に既にインストールされています。そのため、これらの手順をすべて VM 自体から実行できます。ストレージを増やす方法として、[Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。
+ストレージ領域がもっと必要な場合は、追加のディスクを作成し、VM に接続できます。 これらのディスクでは永続的な Azure Storage を使用します。そのため、サーバーがサイズ変更のために再プロビジョニングされた場合や、シャットダウンされた場合でも、データが保持されます。 ディスクを追加し、VM に接続するには、「[Linux VM へのディスクの追加](../virtual-machines/virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の手順に従ってください。 次の手順では、Azure コマンド ライン インターフェイス (Azure CLI) を使用します。Azure CLI は、DSVM に既にインストールされています。 そのため、これらの手順をすべて VM 自体から実行できます。 ストレージを増やす方法として、[Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。
 
 データをダウンロードするには、ターミナル ウィンドウを開き、次のコマンドを実行します。
 
     wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-ダウンロードされたファイルにはヘッダー行がありません。そのため、ヘッダーのある別のファイルを作成します。次のコマンドを実行して、適切なヘッダーを含むファイルを作成します。
+ダウンロードされたファイルにはヘッダー行がありません。そのため、ヘッダーのある別のファイルを作成します。 次のコマンドを実行して、適切なヘッダーを含むファイルを作成します。
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
@@ -56,26 +61,26 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 
 このデータセットには、各メールに関する何種類かの統計情報が含まれています。
 
-* ***word\_freq\_WORD*** という列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。たとえば、*word\_freq\_make* が 1 の場合、メール内の全単語の 1% が *make* です。
+* ***word\_freq\_WORD*** という列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。 たとえば、*word\_freq\_make* が 1 の場合、メール内の全単語の 1% が *make* です。
 * ***char\_freq\_CHAR*** という列は、メール内の全文字のうち *CHAR* と一致する文字の割合を示しています。
 * ***capital\_run\_length\_longest*** は、連続する大文字の最大の長さを示しています。
 * ***capital\_run\_length\_average*** は、連続する大文字の平均の長さを示しています。
 * ***capital\_run\_length\_total*** は、連続する大文字すべての合計の長さを示しています。
 * ***spam*** は、メールがスパムと判断されたかどうかを示しています (1 = スパム、0 = スパムではない)。
 
-## Microsoft R Open でデータセットを探索する
-R を使って、データを確認し、基本的な機械学習を実行してみましょう。データ サイエンス VM には、[Microsoft R Open](https://mran.revolutionanalytics.com/open/) がプレインストールされています。このバージョンの R のマルチスレッドの数式ライブラリは、さまざまなシングルスレッド バージョンよりもパフォーマンスが優れています。また、Microsoft R Open は、CRAN パッケージ リポジトリのスナップショットを使用することで、再現性を保証します。
+## <a name="explore-the-dataset-with-microsoft-r-open"></a>Microsoft R Open でデータセットを探索する
+R を使って、データを確認し、基本的な機械学習を実行してみましょう。データ サイエンス VM には、[Microsoft R Open](https://mran.revolutionanalytics.com/open/) がプレインストールされています。 このバージョンの R のマルチスレッドの数式ライブラリは、さまざまなシングルスレッド バージョンよりもパフォーマンスが優れています。 また、Microsoft R Open は、CRAN パッケージ リポジトリのスナップショットを使用することで、再現性を保証します。
 
-このチュートリアルで使用するコード サンプルのコピーを入手するには、VM にプレインストールされている git を使用して、**Azure-Machine-Learning-Data-Science** リポジトリを複製します。git コマンド ラインから次を実行します。
+このチュートリアルで使用するコード サンプルのコピーを入手するには、VM にプレインストールされている git を使用して、 **Azure-Machine-Learning-Data-Science** リポジトリを複製します。 git コマンド ラインから次を実行します。
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
 ターミナル ウィンドウを開き、R の対話型コンソールを使用して、新しい R セッションを開始します。
 
 > [!NOTE]
-> 次の手順には、RStudio を使用することもできます。RStudio をインストールするには、ターミナルで次のコマンドを実行します。 `./Desktop/DSVM\ tools/installRStudio.sh`
-> 
-> 
+> 次の手順には、RStudio を使用することもできます。 RStudio をインストールするには、ターミナルで次のコマンドを実行します。 `./Desktop/DSVM\ tools/installRStudio.sh`
+>
+>
 
 データをインポートし、環境を設定するには、次を実行します。
 
@@ -92,11 +97,11 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
 実行すると、各変数の型とデータセット内の最初のいくつかの値が表示されます。
 
-*spam* 列は整数として読み取られますが、実際にはカテゴリ変数 (factor) です。型を設定するには、次を実行します。
+*spam* 列は整数として読み取られますが、実際にはカテゴリ変数 (factor) です。 型を設定するには、次を実行します。
 
     data$spam <- as.factor(data$spam)
 
-探索式の分析を行うには、[ggplot2](http://ggplot2.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。次のコマンドを使って、それらの頻度をプロットしてみましょう。
+探索式の分析を行うには、 [ggplot2](http://ggplot2.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
@@ -106,7 +111,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
     email_with_exclamation = data[data$char_freq_exclamation > 0, ]
     ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-興味深い、1 を超える非自明な密度があります。そのデータだけを見てみましょう。
+興味深い、1 を超える非自明な密度があります。 そのデータだけを見てみましょう。
 
     ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
@@ -121,13 +126,13 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
 これらの例を基に、他の列を同じようにプロットして、そこに含まれているデータを探索できます。
 
-## ML モデルをトレーニングおよびテストする
-次は、データセット内のメールをスパムとハムに分類するように、いくつかの機械学習モデルをトレーニングしましょう。このセクションでは、デシジョン ツリー モデルとランダム フォレスト モデルをトレーニングし、その後、それぞれの予測の精度をテストします。
+## <a name="train-and-test-an-ml-model"></a>ML モデルをトレーニングおよびテストする
+次は、データセット内のメールをスパムとハムに分類するように、いくつかの機械学習モデルをトレーニングしましょう。 このセクションでは、デシジョン ツリー モデルとランダム フォレスト モデルをトレーニングし、その後、それぞれの予測の精度をテストします。
 
 > [!NOTE]
 > 次のコードで使用する rpart (Recursive Partitioning and Regression Trees) パッケージは、データ サイエンス VM に既にインストールされています。
-> 
-> 
+>
+>
 
 まず、データセットをトレーニング セットとテスト セットに分割します。
 
@@ -160,7 +165,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-ランダム フォレスト モデルも試してみましょう。ランダム フォレストは、さまざまなデシジョン ツリーをトレーニングし、個々のデシジョン ツリーすべてからの分類のモードであるクラスを出力します。これは、より強力な機械学習アプローチです。トレーニング データセットが過剰適合されるデシジョン ツリー モデルの傾向が修正されます。
+ランダム フォレスト モデルも試してみましょう。 ランダム フォレストは、さまざまなデシジョン ツリーをトレーニングし、個々のデシジョン ツリーすべてからの分類のモードであるクラスを出力します。 これは、より強力な機械学習アプローチです。トレーニング データセットが過剰適合されるデシジョン ツリー モデルの傾向が修正されます。
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -175,23 +180,23 @@ R を使って、データを確認し、基本的な機械学習を実行して
     accuracy
 
 
-## Azure ML にモデルをデプロイする
-[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。AzureML の便利な機能の 1 つに、任意の R 関数を Web サービスとして発行する機能があります。AzureML R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
+## <a name="deploy-a-model-to-azure-ml"></a>Azure ML にモデルをデプロイする
+[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 AzureML の便利な機能の&1; つに、任意の R 関数を Web サービスとして発行する機能があります。 AzureML R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
 
-前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。サインインするには、ワークスペース ID と認証トークンが必要です。これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
+前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
 
-左側のメニューにある **[設定]** を選択します。**[ワークスペース ID]** の値をメモします。![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
+左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]**の値をメモします。 ![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
 
 上部にあるメニューの **[Authorization Tokens (認証トークン)]** を選択し、**[Primary Authorization Token (プライマリ認証トークン)]** の値をメモします。![3](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-token.png)
 
-DSVM の R セッションで、**AzureML** パッケージを読み込み、変数の値にメモしたトークンとワークスペース ID を設定します。
+DSVM の R セッションで、 **AzureML** パッケージを読み込み、変数の値にメモしたトークンとワークスペース ID を設定します。
 
     require(AzureML)
     wsAuth = "<authorization-token>"
     wsID = "<workspace-id>"
 
 
-このデモを実装しやすくするためにモデルを簡略化します。ルートに最も近い 3 つの変数をデシジョン ツリーから選択し、これら 3 つの変数だけを使用して新しいツリーを構築します。
+このデモを実装しやすくするためにモデルを簡略化します。 ルートに最も近い&3; つの変数をデシジョン ツリーから選択し、これら&3; つの変数だけを使用して新しいツリーを構築します。
 
     colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
     smallTrainSet <- trainSet[, colNames]
@@ -225,7 +230,7 @@ DSVM の R セッションで、**AzureML** パッケージを読み込み、変
     consumeDataframe(spamWebService$endpoints[[1]]$PrimaryKey, spamWebService$endpoints[[1]]$ApiLocation, smallTestSet[1:10, 1:3])
 
 
-## 利用できるその他のツールを使用する
+## <a name="use-other-tools-available"></a>利用できるその他のツールを使用する
 残りのセクションでは、Linux データ サイエンス VM にインストールされているツールの一部について、その使用方法を示します。次に説明するツールの一覧を示します。
 
 * XGBoost
@@ -235,7 +240,7 @@ DSVM の R セッションで、**AzureML** パッケージを読み込み、変
 * PostgreSQL と Squirrel SQL
 * SQL Server Data Warehouse
 
-## XGBoost
+## <a name="xgboost"></a>XGBoost
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) は、迅速かつ正確なブースト ツリー実装を提供するツールです。
 
     require(xgboost)
@@ -254,13 +259,13 @@ DSVM の R セッションで、**AzureML** パッケージを読み込み、変
 
 python またはコマンド ラインから呼び出すこともできます。
 
-## Python
+## <a name="python"></a>Python
 Python を使用して開発するために、DSVM には Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。
 
 > [!NOTE]
 > Anaconda ディストリビューションには、[Condas](http://conda.pydata.org/docs/index.html) が含まれています。これを使うと、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
-> 
-> 
+>
+>
 
 scikit-learn のサポート ベクター マシンを使用して、spambase データセットの一部を読み取り、メールを分類してみましょう。
 
@@ -304,26 +309,26 @@ AzureML エンドポイントを発行する方法を示すために、前に R 
     predictSpam.service(1, 1, 1)
 
 > [!NOTE]
-> このコードは python 2.7 でのみ使用できます。3.5 ではまだサポートされていません。**/anaconda/bin/python2.7** で実行します。
-> 
-> 
+> このコードは python 2.7 でのみ使用できます。3.5 ではまだサポートされていません。 **/anaconda/bin/python2.7** で実行します。
+>
+>
 
-## Jupyterhub
-DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Python、R、または Julia のコードと分析を共有するためのクロスプラットフォーム環境) が付属しています。Jupyter Notebook には JupyterHub からアクセスします。ローカルの Linux ユーザー名とパスワードを使用して、***https://\<VM DNS name or IP Address>:8000/*** にサインインします。JupyterHub のすべての構成ファイルは、**/etc/jupyterhub** ディレクトリにあります。
+## <a name="jupyterhub"></a>Jupyterhub
+DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Python、R、または Julia のコードと分析を共有するためのクロスプラットフォーム環境) が付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用して、***https://\<VM の DNS 名または IP アドレス\>:8000/*** にサインインします。 JupyterHub のすべての構成ファイルは、 **/etc/jupyterhub**ディレクトリにあります。
 
 いくつかのサンプル Notebook は、VM に既にインストールされています。
 
-* サンプル Python Notebook については、[IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) をご覧ください。
-* サンプル **R** Notebook については、[IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) をご覧ください。
-* 別のサンプル **Python** Notebook については、[IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb) をご覧ください。
+* サンプル Python Notebook については、 [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) をご覧ください。
+* サンプル [R](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) Notebook については、 **IntroTutorialinR** をご覧ください。
+* 別のサンプル [Python](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb) Notebook については、 **IrisClassifierPyMLWebService** をご覧ください。
 
 > [!NOTE]
 > Linux データ サイエンス VM のコマンド ラインから Julia 言語を使用することもできます。
-> 
-> 
+>
+>
 
-## Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。「[Rattle: A Data Mining GUI for R (Rattle: R 向けのデータ マイニング GUI)](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」では、その機能を示すチュートリアルを提供しています。
+## <a name="rattle"></a>Rattle
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。 直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。  「 [Rattle: A Data Mining GUI for R (Rattle: R 向けのデータ マイニング GUI)](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 」では、その機能を示すチュートリアルを提供しています。
 
 次のコマンドで Rattle をインストールして起動します。
 
@@ -332,18 +337,18 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
     rattle()
 
 > [!NOTE]
-> DSVM には、インストールする必要がありません。ただし、Rattle の読み込み時に、追加のパッケージをインストールするよう求められる場合があります。
-> 
-> 
+> DSVM には、インストールする必要がありません。 ただし、Rattle の読み込み時に、追加のパッケージをインストールするよう求められる場合があります。
+>
+>
 
-Rattle では、タブベースのインターフェイスを使用します。タブのほとんどは、「[データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」の手順に対応しています (データの読み込みや探索など)。データ サイエンス プロセスは、タブの左から右へと進んで行きます。ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、「 [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 
-* ファイルを読み込み、**[Data (データ)]** タブをクリックします。
+* ファイルを読み込み、 **[Data (データ)]** タブをクリックします。
 * **[Filename (ファイル名)]** の横にあるセレクターを選択し、**spambaseHeaders.data** を選択します。
-* ファイルを読み込むには、上部の一連のボタンから **[Execute (実行)]** を選択します。識別されたデータ型 (入力、ターゲット、またはその他の型の変数)、一意の値の数など、各列の概要が表示されます。
-* Rattle では、**spam** 列がターゲットとして正しく識別されます。spam 列を選択し、**[Target Data Type (ターゲットのデータ型)]** を **[Categoric (分類)]** に設定します。
+* ファイルを読み込むには、 上部の一連のボタンから **[Execute (実行)]** を選択します。 識別されたデータ型 (入力、ターゲット、またはその他の型の変数)、一意の値の数など、各列の概要が表示されます。
+* Rattle では、 **spam** 列がターゲットとして正しく識別されます。 spam 列を選択し、**[Target Data Type (ターゲットのデータ型)]** を **[Categoric (分類)]** に設定します。
 
 データを探索するには:
 
@@ -351,65 +356,65 @@ Rattle では、タブベースのインターフェイスを使用します。�
 * **[Summary (概要)]**、**[Execute (実行)]** の順にクリックし、変数の型に関する情報と概要統計情報を表示します。
 * 各変数に関する他の種類の統計情報を表示するには、**[Describe (説明)]** や **[Basics (基本)]** などの他のオプションを選択します。
 
-**[Explore (探索)]** タブでは、洞察力に富んださまざまなプロットを生成することもできます。データのヒストグラムをプロットするには:
+**[Explore (探索)]** タブでは、洞察力に富んださまざまなプロットを生成することもできます。 データのヒストグラムをプロットするには:
 
-* **[Distributions (ディストリビューション)]** を選択します。
-* **word\_freq\_remove** と **word\_freq\_you** の **[Histogram (ヒストグラム)]** チェック ボックスをオンにします。
-* **[Execute (実行)]** を選択します。1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
+* **[Distributions (ディストリビューション)]**を選択します。
+* **word_freq_remove** と **word_freq_you** の **[Histogram (ヒストグラム)]** チェック ボックスをオンにします。
+* **[Execute (実行)]**を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
 
-相関関係プロットも興味深いものです。相関関係プロットを作成するには:
+相関関係プロットも興味深いものです。 相関関係プロットを作成するには:
 
 * **[Type (種類)]** として **[Correlation (相関関係)]** を選択します。
-* **[Execute (実行)]** を選択します。
-* 推奨される変数の最大数が 40 である旨の警告が表示されます。**[Yes (はい)]** を選択して、プロットを表示します。
+* **[Execute (実行)]**を選択します。
+* 推奨される変数の最大数が 40 である旨の警告が表示されます。 **[Yes (はい)]** を選択して、プロットを表示します。
 
-興味深い相関関係が表示されます。たとえば、"technology" が "HP" および "labs" と強力に相関しています。また、"650" とも強力に相関しています。これは、データセットの提供者の市外局番が 650 であるためです。
+興味深い相関関係が表示されます。たとえば、"technology" が "HP" および "labs" と強力に相関しています。 また、"650" とも強力に相関しています。これは、データセットの提供者の市外局番が 650 であるためです。
 
-単語間の相関関係の数値は、[Explore (探索)] ウィンドウで確認できます。興味深いことに、たとえば、"technology" は "your" および "money" と否定的に相関しています。
+単語間の相関関係の数値は、[Explore (探索)] ウィンドウで確認できます。 興味深いことに、たとえば、"technology" は "your" および "money" と否定的に相関しています。
 
-Rattle では、データセットを変換して、一般的な問題の一部を処理することができます。たとえば、特徴のスケール変更、欠落値の補完、外れ値の処理、およびデータが欠落している変数または観測値の削除を行うことができます。また、観測値や変数の間の相関ルールを特定することもできます。これらのタブについては、この入門編のチュートリアルでは詳しく説明しません。
+Rattle では、データセットを変換して、一般的な問題の一部を処理することができます。 たとえば、特徴のスケール変更、欠落値の補完、外れ値の処理、およびデータが欠落している変数または観測値の削除を行うことができます。 また、観測値や変数の間の相関ルールを特定することもできます。 これらのタブについては、この入門編のチュートリアルでは詳しく説明しません。
 
-Rattle では、クラスター分析を実行することもできます。出力を読みやすくするために、いくつかの特徴を除外してみましょう。**[Data (データ)]** タブで、次の 10 個の項目以外の各変数の横にある **[Ignore (無視)]** を選択します。
+Rattle では、クラスター分析を実行することもできます。 出力を読みやすくするために、いくつかの特徴を除外してみましょう。 **[Data (データ)]** タブで、次の&10; 個の項目以外の各変数の横にある **[Ignore (無視)]** を選択します。
 
-* word\_freq\_hp
-* word\_freq\_technology
-* word\_freq\_george
-* word\_freq\_remove
-* word\_freq\_your
-* word\_freq\_dollar
-* word\_freq\_money
-* capital\_run\_length\_longest
-* word\_freq\_business
+* word_freq_hp
+* word_freq_technology
+* word_freq_george
+* word_freq_remove
+* word_freq_your
+* word_freq_dollar
+* word_freq_money
+* capital_run_length_longest
+* word_freq_business
 * spam
 
-次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。**[Execute (実行)]** を選択します。結果が出力ウィンドウに表示されます。1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
+次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。 **[Execute (実行)]**を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
 
 単純なデシジョン ツリーの機械学習モデルを作成するには:
 
 * **[Model (モデル)]** タブをクリックします。
 * **[Type (種類)]** として **[Tree (ツリー)]** を選択します。
 * **[Execute (実行)]** を選択して、出力ウィンドウにテキスト形式でツリーを表示します。
-* **[Draw (描画)]** をクリックして、グラフィカル バージョンを表示します。これは、前に *rpart* を使用して作成したツリーにかなりよく似ています。
+* **[Draw (描画)]** をクリックして、グラフィカル バージョンを表示します。 これは、前に *rpart*を使用して作成したツリーにかなりよく似ています。
 
-Rattle の便利な機能の 1 つに、複数の機械学習メソッドを実行し、それらをすばやく評価する機能があります。手順は次のとおりです。
+Rattle の便利な機能の&1; つに、複数の機械学習メソッドを実行し、それらをすばやく評価する機能があります。 手順は次のとおりです。
 
 * **[Type (種類)]** として **[All (すべて)]** を選択します。
-* **[Execute (実行)]** を選択します。
-* その後で、**[Type (種類)]** で **[SVM]** などのいずれか 1 つをクリックして、結果を表示できます。
-* また、**[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。たとえば、**[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
+* **[Execute (実行)]**を選択します。
+* その後で、**[Type (種類)]** で **[SVM]** などのいずれか&1; つをクリックして、結果を表示できます。
+* また、 **[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。 たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
 * また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
 
-モデルの構築が完了したら、**[Log (ログ)]** タブをクリックして、セッション中に Rattle によって実行された R コードを表示します。**[Export (エクスポート)]** をクリックすると、保存することができます。
+モデルの構築が完了したら、 **[Log (ログ)]** タブをクリックして、セッション中に Rattle によって実行された R コードを表示します。 **[Export (エクスポート)]** をクリックすると、保存することができます。
 
 > [!NOTE]
-> 現在のリリースの Rattle にはバグがあります。スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの「*Export this log ... *」の前に # 文字を挿入する必要があります。
-> 
-> 
+> 現在のリリースの Rattle にはバグがあります。 スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの「 *Export this log ... * 」の前に # 文字を挿入する必要があります。
+>
+>
 
-## PostgreSQL と Squirrel SQL
-DSVM には、PostgreSQL がインストールされています。PostgreSQL は、高度なオープン ソース リレーショナル データベースです。このセクションでは、PostgreSQL にスパム データセットを読み込んでクエリを実行する方法を示します。
+## <a name="postgresql--squirrel-sql"></a>PostgreSQL と Squirrel SQL
+DSVM には、PostgreSQL がインストールされています。 PostgreSQL は、高度なオープン ソース リレーショナル データベースです。 このセクションでは、PostgreSQL にスパム データセットを読み込んでクエリを実行する方法を示します。
 
-データを読み込む前に、ローカル ホストからのパスワード認証を許可する必要があります。コマンド プロンプトで、次を実行します。
+データを読み込む前に、ローカル ホストからのパスワード認証を許可する必要があります。 コマンド プロンプトで、次を実行します。
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
@@ -454,48 +459,48 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-次は、**Squirrel SQL** (JDBC ドライバー経由でデータベースを操作できるグラフィカル ツール) を使用して、データを探索し、いくつかのクエリを実行してみましょう。
+次は、 **Squirrel SQL**(JDBC ドライバー経由でデータベースを操作できるグラフィカル ツール) を使用して、データを探索し、いくつかのクエリを実行してみましょう。
 
-開始するには、[Applications (アプリケーション)] メニューから Squirrel SQL を起動します。ドライバーを設定するには:
+開始するには、[Applications (アプリケーション)] メニューから Squirrel SQL を起動します。 ドライバーを設定するには:
 
 * **[Windows]**、**[View Drivers (ドライバーの表示)]** の順に選択します。
 * **[PostgreSQL]** を右クリックし、**[Modify Driver (ドライバーの変更)]** を選択します。
 * **[Extra Class Path (その他のクラス パス)]**、**[Add (追加)]** の順に選択します。
 * **[File Name (ファイル名)]** に「***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***」と入力します。
-* **[Open (開く)]** を選択します。
+* **[Open (開く)]**を選択します。
 * [List Drivers (ドライバーの一覧)] を選択し、**[Class Name (クラス名)]** で **[org.postgresql.Driver]** を選択して、**[OK]** を選択します。
 
 ローカル サーバーへの接続を設定するには:
 
 * **[Windows]**、**[View Aliases (エイリアスの表示)]** の順に選択します。
-* **[+]** をクリックして、新しいエイリアスを作成します。
+* **+** をクリックして、新しいエイリアスを作成します。
 * 「*Spam database*」という名前を付け、**[Driver (ドライバー)]** ボックスの一覧の **[PostgreSQL]** を選択します。
-* URL を *jdbc:postgresql://localhost/spam* に設定します。
-* *ユーザー名*と*パスワード*を入力します。
-* **[OK]** をクリックします。
+* URL を「*jdbc:postgresql://localhost/spam*」に設定します。
+* "*ユーザー名*" と "*パスワード*" を入力します。
+* **[OK]**をクリックします。
 * **[Connection (接続)]** ウィンドウを開くには、***Spam database*** エイリアスをダブルクリックします。
-* **[接続]** を選択します。
+* **[接続]**を選択します。
 
 クエリを実行するには:
 
 * **[SQL]** タブをクリックします。
 * [SQL] タブの上部にあるクエリ ボックスに `SELECT * from data;` などの単純なクエリを入力します。
-* **Ctrl + Enter** キーを押して、クエリを実行します。既定では、Squirrel SQL はクエリから先頭の 100 行を返します。
+* **Ctrl + Enter** キーを押して、クエリを実行します。 既定では、Squirrel SQL はクエリから先頭の 100 行を返します。
 
-このデータを探索するために実行できるクエリは他にもたくさんあります。たとえば、*make* という単語の出現頻度がスパムとハムでどのように異なるかを調べるには、次のクエリを実行します。
+このデータを探索するために実行できるクエリは他にもたくさんあります。 たとえば、 *make* という単語の出現頻度がスパムとハムでどのように異なるかを調べるには、次のクエリを実行します。
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
-*3d* が頻繁に含まれるメールの特徴を調べるには、次のクエリを実行します。
+*3d*が頻繁に含まれるメールの特徴を調べるには、次のクエリを実行します。
 
     SELECT * from data order by word_freq_3d desc;
 
 *3d* が高い頻度で含まれているメールのほとんどは実際にはスパムです。そのため、これは、メールを分類する予測モデルを構築する際に便利な特徴となります。
 
-PostgreSQL データベースに格納されたデータを使用して機械学習を実行する場合は、[MADlib](http://madlib.incubator.apache.org/) の使用を検討してください。
+PostgreSQL データベースに格納されたデータを使用して機械学習を実行する場合は、 [MADlib](http://madlib.incubator.apache.org/)の使用を検討してください。
 
-## SQL Server Data Warehouse
-Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。詳しくは、「[Azure SQL Data Warehouse の概要](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)」をご覧ください。
+## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
+Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳しくは、「 [Azure SQL Data Warehouse の概要](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 データ ウェアハウスに接続し、テーブルを作成するには、コマンド プロンプトから次のコマンドを実行します。
 
@@ -512,19 +517,18 @@ bcp を使用してデータをコピーします。
 
 > [!NOTE]
 > ダウンロードしたファイルの行の終わりは Windows スタイルですが、bcp は UNIX スタイルを想定しています。そのため、-r フラグを使用して、Windows スタイルであることを bcp に伝える必要があります。
-> 
-> 
+>
+>
 
 sqlcmd を使用してクエリを実行します。
 
     select top 10 spam, char_freq_dollar from spam;
     GO
 
-Squirrel SQL を使用してクエリを実行することもできます。Microsoft MSSQL Server JDBC Driver (***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** で見つけることができます) を使用して、PostgreSQL の同様の手順に従います。
+Squirrel SQL を使用してクエリを実行することもできます。 Microsoft MSSQL Server JDBC Driver (***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** で見つけることができます) を使用して、PostgreSQL の同様の手順に従います。
 
-## 次のステップ
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、[Team Data Science Process](http://aka.ms/datascienceprocess) に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
 
-シナリオごとの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」をご覧ください。これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。
+シナリオごとの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、「 [Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」をご覧ください。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。
 
-<!---HONumber=AcomDC_0914_2016-->

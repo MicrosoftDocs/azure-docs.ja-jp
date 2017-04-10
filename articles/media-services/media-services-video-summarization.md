@@ -1,28 +1,37 @@
 ---
-title: Azure Media Video Thumbnails を使用してビデオ要約を作成する | Microsoft Docs
-description: ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。 これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。
+title: "Azure Media Video Thumbnails を使用してビデオ要約を作成する | Microsoft Docs"
+description: "ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。 これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/16/2017
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 343658944394e7b620bc70aa0d92affada07e91d
+ms.openlocfilehash: 7510c8ab4adadbd7d738ba0b8e2bbdddba8d1048
+ms.lasthandoff: 02/18/2017
+
 
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 **Azure Media Video Thumbnails** メディア プロセッサ (MP) では、長いビデオの要約をプレビューするだけのお客様に役に立つビデオの要約を作成することができます。 たとえば、サムネイルにマウス ポインターを合わせたときに、お客者は短い "要約ビデオ" を参照できます。 構成プリセットを通じて **Azure Media Video Thumbnails** のパラメーターを調整することにより、MP の強力なショット検出と連結テクノロジを使用して、わかりやすいサブクリップをアルゴリズムに生成できます。  
 
 **Azure Media Video Thumbnail** MP は現在プレビュー段階です。
 
-このトピックでは、 **Azure Media Video Thumbnail** の詳細と、Media Services SDK for .NET での使用方法について説明します。
+このトピックでは、**Azure Media Video Thumbnail** の詳細と、Media Services SDK for .NET での使用方法について説明します。
+
+## <a name="limitations"></a>制限事項
+
+場合によっては、ビデオが異なるシーンで構成されていない場合、出力はシングル ショットのみになります。
 
 ## <a name="video-summary-example"></a>ビデオ要約の例
 次に Azure Media Video Thumbnails メディア プロセッサで実行できる例をいくつか示します。
@@ -33,7 +42,7 @@ ms.author: milanga;juliako;
 ### <a name="video-thumbnail-result"></a>ビデオのサムネイル結果
 [ビデオのサムネイル結果](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-(preset)"></a>タスクの構成 (プリセット)
+## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Video Thumbnails**でビデオのサムネイル タスクを作成するときは、構成プリセットを指定する必要があります。 上記のサムネイル サンプルは、次の基本的な JSON 構成で作成されました。
 
     {"version":"1.0"}
@@ -51,7 +60,7 @@ ms.author: milanga;juliako;
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | ビデオの再生時間 |d < 3 分 |3 分 < d < 15 分 |
-| サムネイルの再生時間 |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
+| サムネイルの再生時間 |15 秒 (2 ～&3; シーン) |30 秒 (3 ～&5; シーン) |
 
 次の JSON では、使用可能なパラメーターを設定します。
 
@@ -70,7 +79,7 @@ ms.author: milanga;juliako;
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の JSON プリセットを含む構成ファイルに基づくビデオ サムネイル タスクのジョブを作成します。 
    
-        {               
+        {                
             "version": "1.0",
             "options": {
                 "outputAudio": "true",
@@ -80,7 +89,7 @@ ms.author: milanga;juliako;
         }
 3. 出力ファイルをダウンロードします。 
 
-### <a name=".net-code"></a>.NET コード
+### <a name="net-code"></a>.NET コード
     using System;
     using System.Configuration;
     using System.IO;
@@ -258,7 +267,5 @@ ms.author: milanga;juliako;
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-<!--HONumber=Oct16_HO2-->
 
 

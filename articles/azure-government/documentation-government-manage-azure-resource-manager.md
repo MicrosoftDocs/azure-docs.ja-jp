@@ -1,129 +1,132 @@
 ---
-title: Azure Government documentation | Microsoft Docs
-description: This provides a comparison of features and guidance on developing applications for Azure Government.
-services: Azure-Government
+title: Azure Government Resource Manager | Microsoft Docs
+description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
+services: azure-government
 cloud: gov
-documentationcenter: ''
+documentationcenter: 
 author: brendalee
 manager: zakramer
-editor: ''
-
-ms.service: multiple
+ms.assetid: f270ebe4-dbbb-4e3d-8eba-efe1ca038988
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/10/2016
-ms.author: brendalee
+ms.date: 11/14/2016
+ms.author: brendal
+translationtype: Human Translation
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
+ms.lasthandoff: 11/22/2016
+
 
 ---
-# <a name="azure-resource-manager"></a>Azure Resource Manager
-For detailed information on Resource Manager providers, API versions, and schemas, please refer [here](../resource-manager-supported-services.md). The following tables list which services are supported through Resource Manager in Azure Government.
+# <a name="azure-resource-manager"></a>Azure リソース マネージャー
+Resource Manager のプロバイダー、API のバージョン、およびスキーマの詳細については、[こちら](../azure-resource-manager/resource-manager-supported-services.md)を参照してください。 次の表では、Azure Government の Resource Manager でサポートされているサービスを一覧表示しています。
 
-## <a name="compute"></a>Compute
-| Service | Resource Manager Enabled |
+## <a name="compute"></a>計算
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Batch |Yes |
-| Container |No |
-| Dynamics Lifecycle Services |No |
-| Scale Sets |Yes |
-| Service Fabric |Yes |
-| Virtual Machines |Yes |
+| Batch
+ |はい |
+| コンテナー |いいえ |
+| Dynamics Lifecycle Services |いいえ |
+| スケール セット |はい |
+| Service Fabric |はい |
+| Virtual Machines |○ |
 
-## <a name="networking"></a>Networking
-| Service | Resource Manager Enabled |
+## <a name="networking"></a>ネットワーク
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Application Gateway |Yes |
-| DNS |Yes |
-| ExpressRoute |Yes |
-| Load Balancer |Yes |
-| Traffic Manager |Yes |
-| Virtual Networks |Yes |
-| VPN Gateway |Yes |
+| Application Gateway |○ |
+| DNS |○ |
+| ExpressRoute |はい |
+| Load Balancer |はい |
+| Traffic Manager |はい |
+| Virtual Networks |はい |
+| VPN Gateway |はい |
 
-## <a name="data-&-storage"></a>Data & Storage
-| Service | Resource Manager Enabled |
+## <a name="data--storage"></a>データ + ストレージ
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| DocumentDB |No |
-| Redis Cache |Yes |
-| Search |No |
-| Storage |Yes |
-| SQL Database |Yes |
-| SQL Data Warehouse |Yes |
-| StorSimple |No |
+| DocumentDB |なし |
+| Redis Cache |○ |
+| Search |なし |
+| Storage |はい |
+| SQL Database |はい |
+| SQL Data Warehouse |はい |
+| StorSimple |なし |
 
-## <a name="web-&-mobile"></a>Web & Mobile
-| Service | Resource Manager Enabled |
+## <a name="web--mobile"></a>Web とモバイル
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| API Apps |Yes |
-| API Management |No |
-| Logic Apps |No |
-| Mobile Apps |Yes |
-| Mobile Engagements |No |
-| Web Apps |Yes |
+| API Apps |○ |
+| API Management |なし |
+| Logic Apps |なし |
+| Mobile Apps |はい |
+| Mobile Engagement |なし |
+| Web Apps |○ |
 
-## <a name="analytics"></a>Analytics
-| Service | Resource Manager Enabled |
+## <a name="analytics"></a>[分析]
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Data Catalog |No |
-| Data Factory |No |
-| Data Lake Analytics |No |
-| Data Lake Store |No |
-| HDInsights |No |
-| Machine Learning |No |
-| Power BI |No |
+| Data Catalog |いいえ |
+| Data Factory |なし |
+| Data Lake Analytics |いいえ |
+| Data Lake Store |なし |
+| HDInsights |なし |
+| Machine Learning |いいえ |
+| Power BI |なし |
 
 ## <a name="intelligence"></a>Intelligence
-| Service | Resource Manager Enabled |
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Cognitive Services |No |
+| Cognitive Services |なし |
 
-## <a name="internet-of-things"></a>Internet of Things
-| Service | Resource Manager Enabled |
+## <a name="internet-of-things"></a>モノのインターネット
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Event Hub |Yes |
-| IoTHubs |No |
-| Notification Hubs |No |
+| イベント ハブ |はい |
+| IoTHubs |いいえ |
+| Notification Hubs |なし |
 
-## <a name="media-&-cdn"></a>Media & CDN
-| Service | Resource Manager Enabled |
+## <a name="media--cdn"></a>メディアと CDN
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| CDN |No |
-| Media Service |No |
+| CDN |なし |
+| メディア サービス |いいえ |
 
-## <a name="hybrid-integration"></a>Hybrid Integration
-| Service | Resource Manager Enabled |
+## <a name="hybrid-integration"></a>ハイブリッド統合
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| BizTalk Services |No |
-| Recovery Service |No |
-| Service Bus |Yes |
+| BizTalk Services |なし |
+| Recovery Service |はい (Hyper-V のみ) |
+| Service Bus |はい |
 
-## <a name="developer-services"></a>Developer Services
-| Service | Resource Manager Enabled |
+## <a name="developer-services"></a>開発者サービス
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Application Insights |No |
-| Bing Maps |No |
-| DevTest Labs |No |
-| Visual Studio account |No |
+| アプリケーション インサイト |なし |
+| Bing Maps |なし |
+| DevTest Labs |なし |
+| Visual Studio アカウント |いいえ |
 
-## <a name="management-and-security"></a>Management and Security
-| Service | Resource Manager Enabled |
+## <a name="management-and-security"></a>管理とセキュリティ
+| サービス | リソース マネージャーが有効 |
 | --- | --- |
-| Automation |Yes |
-| Key Vault |Yes |
-| Operational Insights |Yes |
-| Scheduler |Yes |
-| Security (preview) |No |
+| Automation |はい |
+| Key Vault |はい |
+| Operational Insights |あり |
+| Scheduler |はい |
+| セキュリティ (プレビュー) |いいえ |
 
 ## <a name="resource-manager"></a>Resource Manager
-| Feature | Resource Manager Enabled |
+| 機能 | リソース マネージャーが有効 |
 | --- | --- |
-| Authorization |Yes |
-| Resources |Yes |
+| 承認 |はい |
+| リソース |○ |
 
-## <a name="next-steps"></a>Next Steps
-For supplemental information and updates, subscribe to the <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government Blog. </a>
-
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
 
 

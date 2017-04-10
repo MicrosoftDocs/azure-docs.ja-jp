@@ -1,4 +1,4 @@
-#### ExpressRoute の制限
+#### <a name="expressroute-limits"></a>ExpressRoute の制限
 各サブスクリプションの ExpressRoute リソースには、次の制限が適用されます。
 
 | リソース | 既定の制限 |
@@ -13,7 +13,7 @@
 | ExpressRoute Premium アドオンの Azure Microsoft ピアリング用の最大ルート数 |200 |
 | ExpressRoute 回線あたりで許可される仮想ネットワークのリンク数 |次の表を参照 |
 
-#### ExpressRoute 回線あたりの Virtual Network 数
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>ExpressRoute 回線あたりの Virtual Network 数
 | **回線のサイズ** | **Standard での VNET リンク数** | **Premium アドオンでの VNET リンク数** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |
@@ -25,4 +25,8 @@
 | 5 Gbps |10 |75 |
 | 10 Gbps |10 |100 |
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

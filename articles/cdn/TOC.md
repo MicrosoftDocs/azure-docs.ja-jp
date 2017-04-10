@@ -1,5 +1,6 @@
 # [概要](cdn-overview.md)
 ## [Azure CDN とは](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # 作業の開始
 ## [Azure CDN を有効にする](cdn-create-new-endpoint.md)
 
@@ -10,7 +11,8 @@
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
 
-## [管理]
+## Manage
+### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
 ### [PowerShell で管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
@@ -23,6 +25,8 @@
 #### [Premium レベル](cdn-query-string-premium.md)
 ### [キャッシュしたアセットを消去する](cdn-purge-endpoint.md)
 ### [キャッシュしたアセットを事前に読み込む](cdn-preload-endpoint.md)
+### [認証トークン](cdn-token-auth.md)
+### [リソースの監視](cdn-resource-health.md)
 ### [規則に従って動作を上書きする](cdn-rules-engine.md)
 ### [リアルタイムでアラートを受け取る](cdn-real-time-alerts.md)
 
@@ -41,19 +45,24 @@
 ### [ファイル圧縮](cdn-troubleshoot-compression.md)
 
 # リファレンス
-## [PowerShell コマンドレット](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [Azure CDN の POP の場所](cdn-pop-locations.md)
-## [REST ()](https://msdn.microsoft.com/library/mt634456.aspx)
+## [PowerShell](/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn)
+## [.NET](/dotnet/api/microsoft.azure.management.cdn)
+## [Java](/java/api/com.microsoft.azure.management.cdn)
+## [REST ()](/rest/api/cdn/)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
+### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
+### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
+### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
+## [Azure CDN の POP の場所](cdn-pop-locations.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cdn)
+## [料金](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

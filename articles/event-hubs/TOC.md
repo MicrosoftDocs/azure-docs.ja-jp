@@ -1,45 +1,65 @@
-# Overview
-
+# 概要
 ## [Event Hubs とは](event-hubs-what-is-event-hubs.md)
-## [Event Hubs の概要](event-hubs-overview.md)
-## [Event Hubs API 概要](event-hubs-api-overview.md)
-## [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
-
+## [FAQ](event-hubs-faq.md)
 
 # 作業の開始
-## [Event Hubs の使用](event-hubs-csharp-ephcs-getstarted.md)
-## [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
-## [Event Hubs の FAQ](event-hubs-faq.md)
+## [イベント ハブの作成](event-hubs-create.md)
+## 送信イベント
+### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
+### [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
+### [Java](event-hubs-java-get-started-send.md)
+### [C](event-hubs-c-getstarted-send.md)
+## 受信イベント
+### [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md)
+### [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)
+### [Java](event-hubs-java-get-started-receive-eph.md)
+### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## [プログラミング ガイド](event-hubs-programming-guide.md)
 
 # 方法
-## サンプルを実行する
-### [センサーから受信したデータをユーザーに通知する](event-hubs-sensors-notify-users.md)
-### [Event Hubs のサンプル アプリケーション](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097)
-### [Event Hubs のサンプル アプリケーションを使用してイベント処理をスケールアウトする](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)
-## [管理]
-### [Event Hubs Archive](event-hubs-archive-overview.md)
-### [テンプレートを使用して Event Hubs Archive を有効にする](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
+## 計画と設計
+### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
+### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
+### [可用性と一貫性](event-hubs-availability-and-consistency.md)
+## 開発
+### [利用可能な API](event-hubs-api-overview.md)
+#### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
+#### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
+#### [診断ログ](event-hubs-diagnostic-logs.md)
+### [認証と権限承認](../service-bus-messaging/service-bus-sas.md)
+### [AMQP 1.0 プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
+## Manage
+### [Event Hubs 管理ライブラリ](event-hubs-management-libraries.md)
+### アーカイブ
+#### [Event Hubs Archive](event-hubs-archive-overview.md)
+#### [テンプレートを使用して Event Hubs Archive を有効にする](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
+#### [Python を使用して Event Hubs Archive を有効にする](event-hubs-archive-python.md)
 ### [Event Hubs を使用して Azure 診断データをストリーミングする](event-hubs-streaming-azure-diags-data.md)
 ### [Resource Manager テンプレートを使用してイベント ハブを作成およびデプロイする](event-hubs-resource-manager-namespace-event-hub.md)
-### [Python を使用して Event Hubs Archive を有効にする](event-hubs-archive-python.md)
 
 # リファレンス
-## [AMQP1.0 プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
-## [Event Hubs REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790674)
-## [Event Hubs .NET API リファレンス](https://msdn.microsoft.com/library/azure/jj933424)
-## [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging(v=azure.95).aspx)
-## [クォータと制限](event-hubs-quotas.md)
-## [Event Hubs メッセージングの例外](event-hubs-messaging-exceptions.md)
+## .NET
+### [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
+### [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
+### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
+### [Microsoft.Azure.ServiceBus.EventProcessorHost](/dotnet/api/microsoft.azure.servicebus.eventprocessorhost)
+### [Microsoft.Azure.Management.EventHub](/dotnet/api/microsoft.azure.management.eventhub)
+## Java
+### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
+### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
+## [REST ()](/rest/api/eventhub)
+## [例外](event-hubs-messaging-exceptions.md)
+## [クォータ](event-hubs-quotas.md)
 
 # リソース
+## [コード サンプル](event-hubs-samples.md)
+## [料金](https://azure.microsoft.com/pricing/details/event-hubs/)
+## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
-## [Service Bus Explorer で Service Bus および Event Hubs リソースを管理する](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
-## [Event Hubs ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

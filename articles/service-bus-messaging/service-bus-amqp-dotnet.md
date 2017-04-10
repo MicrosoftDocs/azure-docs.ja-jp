@@ -1,48 +1,54 @@
 ---
-title: AMQP 1.0 での Service Bus と .NET | Microsoft Docs
-description: AMQP で .NET から Service Bus を使用する
-services: service-bus
+title: "AMQP 1.0 での Service Bus と .NET | Microsoft Docs"
+description: "AMQP で .NET から Azure Service Bus を使用する"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 01/13/2017
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 220b0f6212268a44226edefa4afc5671306ff295
+ms.openlocfilehash: 9d2ff3ff50aebc3e25f553a86ca13d8a9fe7400c
+ms.lasthandoff: 01/14/2017
+
 
 ---
-# <a name="using-service-bus-from-.net-with-amqp-1.0"></a>AMQP 1.0 で .NET から Service Bus を使用する
-[!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
+# <a name="using-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
 ## <a name="downloading-the-service-bus-sdk"></a>Service Bus SDK のダウンロード
 AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされています。 [NuGet][NuGet] から Service Bus ビットをダウンロードすることによって確実に最新バージョンを入手できます。
 
-## <a name="configuring-.net-applications-to-use-amqp-1.0"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
+## <a name="configuring-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。 既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、Service Bus 接続文字列を明示的に構成する必要があります。 AMQP 1.0 を使用する場合、アプリケーション コードはこの変更以外は変更されません。
 
 現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。 サポートされていない機能については、後ほど「[サポートされていない機能、制限、および動作の違い](#unsupported-features-restrictions-and-behavioral-differences)」セクションに一覧表示します。 そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。
 
-### <a name="configuration-using-app.config"></a>App.config を使用した構成
+### <a name="configuration-using-appconfig"></a>App.config を使用した構成
 アプリケーションの設定は、App.config 構成ファイルを使って保存することをお勧めします。 Service Bus アプリケーションの場合、App.config を使って Service Bus の **ConnectionString** 値の設定を保存できます。 App.config ファイルの例は次のとおりです。
 
-    <?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-        <appSettings>
-            <add key="Microsoft.ServiceBus.ConnectionString"
-                 value="Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp" />
-        </appSettings>
-    </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <appSettings>
+        <add key="Microsoft.ServiceBus.ConnectionString"
+             value="Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp" />
+    </appSettings>
+</configuration>
+```
 
 `Microsoft.ServiceBus.ConnectionString` 設定の値は、Service Bus への接続を構成するために使用される Service Bus 接続文字列です。 その形式は次のとおりです。
 
-    Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
+`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-`[namespace]` と `SharedAccessKey` は、[Azure ポータル][Azure ポータル]から取得されます。 詳細については、[Service Bus キューの使用][Service Bus キューの使用]に関するページをご覧ください。
+`[namespace]` と `SharedAccessKey` は、[Azure ポータル][Azure portal]から取得されます。 詳細については、[Service Bus キューの使用][Get started with Service Bus queues]に関するページをご覧ください。
 
 AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付加します。 この表記により、クライアント ライブラリに対して、AMQP 1.0 を使用して Service Bus に接続するように通知します。
 
@@ -87,7 +93,7 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features,-restrictions,-and-behavioral-differences"></a>サポートされていない機能、制限、および動作の違い
+## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>サポートされていない機能、制限、および動作の違い
 AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サポートされていません。
 
 * トランザクション
@@ -97,14 +103,15 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 
 * [OperationTimeout][OperationTimeout] プロパティは無視されます。
 * `MessageReceiver.Receive(TimeSpan.Zero)` は `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` として実装されます。
+* ロック トークンによるメッセージの完了は、最初にメッセージを受信したメッセージ レシーバーでのみ実行できます。
 
 ## <a name="controlling-amqp-protocol-settings"></a>AMQP プロトコル設定を制御する
-.NET API では、AMQP プロトコルの動作を制御するいくつかの設定が公開されています。
+[.NET API](https://docs.microsoft.com/dotnet/api/) では、AMQP プロトコルの動作を制御するいくつかの設定が公開されています。
 
-* **MessageReceiver.PrefetchCount**: リンクに適用する初期のクレジットを制御します。 既定値は 0 です。
-* **MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize**: 接続オープン時のネゴシエーションで提供される最大 AMQP フレーム サイズを制御します。 既定値は 65,536 バイトです。
-* **MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval**: 転送がバッチ可能である場合、この値でディスポジションを送信する場合の最大遅延が決まります。 既定では、送信側/受信側によって継承されます。 個々の送信側/受信側は、既定値 (20 ミリ秒) を上書きできます。
-* **MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity**: AMQP 接続を SSL 接続で確立するかどうかを制御します。 既定値は **true** です。
+* **[MessageReceiver.PrefetchCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: リンクに適用する初期のクレジットを制御します。 既定値は 0 です。
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: 接続オープン時のネゴシエーションで提供される最大 AMQP フレーム サイズを制御します。 既定値は 65,536 バイトです。
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: 転送がバッチ可能である場合、この値でディスポジションを送信する場合の最大遅延が決まります。 既定では、送信側/受信側によって継承されます。 個々の送信側/受信側は、既定値 (20 ミリ秒) を上書きできます。
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: AMQP 接続を SSL 接続で確立するかどうかを制御します。 既定値は **true** です。
 
 ## <a name="next-steps"></a>次のステップ
 さらに詳しい情報については、 次のリンク先を参照してください。
@@ -113,19 +120,14 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 * [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]
 * [Windows Server 用 Service Bus の AMQP]
 
-[Service Bus キューの使用]: service-bus-dotnet-get-started-with-queues.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx
-[BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
-[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: https://msdn.microsoft.com/library/azure/jj657638.aspx
-[Microsoft.ServiceBus.Messaging.MessagingFactory.CreateMessageSender(System.String,System.String)]: https://msdn.microsoft.com/library/azure/jj657703.aspx
-[OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
+[Get started with Service Bus queues]: service-bus-dotnet-get-started-with-queues.md
+[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
+[OperationTimeout]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
-[Azure ポータル]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-<!--HONumber=Oct16_HO2-->
-
 

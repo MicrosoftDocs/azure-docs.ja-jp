@@ -1,143 +1,151 @@
 ---
-title: Analyze your media using the Azure portal | Microsoft Docs
-description: This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal.
+title: "Azure Portal を使用してメディアを分析する | Microsoft Docs"
+description: "このトピックでは、Azure Portal を使用して Media Analytics メディア プロセッサ (MP) でメディアを処理する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 10/24/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d66b9e4c237ca195e2e0094aead7ce029f4fdf36
+
 
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>Analyze your media using the Azure portal
+# <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
 > [!NOTE]
-> To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
 > 
 
-## <a name="overview"></a>Overview
-Azure Media Services Analytics is a collection of speech and vision components (at enterprise scale, compliance, security and global reach) that make it easier for organizations and enterprises to derive actionable insights from their video files. For more detailed overview of Azure Media Services Analytics see [this](media-services-analytics-overview.md) topic. 
+## <a name="overview"></a>概要
+Azure Media Services Analytics は、組織や企業がビデオ ファイルからアクションにつながる分析データを簡単に得られるようにする、(エンタープライズ向けの規模、コンプライアンス、セキュリティ、グローバルな展開で使用できる) 音声コンポーネントと視覚コンポーネントのコレクションです。 Azure Media Services Analytics の概要について、詳しくは[こちら](media-services-analytics-overview.md)のトピックを参照してください。 
 
-This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal. Media Analytics MPs produce MP4 files or JSON files. If a media processor produced an MP4 file, you can progressively download the file. If a media processor produced a JSON file, you can download the file from the Azure blob storage. 
+このトピックでは、Azure Portal を使用して Media Analytics メディア プロセッサ (MP) でメディアを処理する方法について説明します。 Media Analytics MP によって MP4 または JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。 
 
-## <a name="choose-an-asset-that-you-want-to-analyze"></a>Choose an asset that you want to analyze
-1. In the **Settings** window, select **Assets**.  
-   .
-    ![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-2. Select the asset that you would like to analyze and press the **Analyze** button.
+## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
+1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
+2. **[設定]** ウィンドウで、**[資産]** を選択します。  
+   に関するページを参照してください。
+    ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
+3. 分析する資産を選択し、**[分析]** をクリックします。
    
-    ![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-3. In the **Process media asset with  Media Analytics** window, select the processor. 
+    ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
+4. **[メディア分析を使用したメディア資産の処理]** ウィンドウでプロセッサを選択します。 
    
-    The rest of the article explains why and how to use each processor. 
-4. Press **Create** to the start a job.
+    この記事の残りの部分で、各プロセッサを使用する理由とその方法について説明します。 
+5. **[作成]** をクリックしてジョブを開始します。
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
-The **Azure Media Indexer** media processor enables you to make media files and content searchable, as well as generate closed captioning tracks. This sections gives some details about options that you can specify for this MP.
+**Azure Media Indexer** メディア プロセッサを使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 このセクションでは、この MP に対して指定できるオプションについて詳細を説明します。
 
-![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
+![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
-### <a name="language"></a>Language
-The natural language to be recognized in the multimedia file. For example, English or Spanish. 
+### <a name="language"></a>言語
+マルチメディア ファイル内で認識される自然言語。 たとえば、英語やスペイン語です。 
 
-### <a name="captions"></a>Captions
-You can choose a caption format that will be generated from your content. An indexing job can generate closed caption files in the following formats:  
+### <a name="captions"></a>字幕
+コンテンツから生成される字幕形式を選択できます。 インデックス作成ジョブでは、クローズド キャプション ファイルを次の形式で生成できます。  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Closed Caption (CC) files in these formats can be used to make audio and video files accessible to people with hearing disability.
+これらの形式のクローズド キャプション (CC) ファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。
 
-### <a name="aib-file"></a>AIB file
-Select this option if you would like to generate the Audio Index Blob file for use with the custom SQL Server IFilter. For more information, see [this](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog.
+### <a name="aib-file"></a>AIB ファイル
+カスタム SQL Server IFilter と併用するオーディオ インデックス BLOB ファイルを生成する場合にこのオプションを選択します。 詳細については、 [このブログ](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) をご覧ください。
 
-### <a name="keywords"></a>Keywords
-Select this option if you would like to generate a keywords XML file. This file contains keywords extracted from the speech content, with frequency and offset information.
+### <a name="keywords"></a>キーワード
+キーワード XML ファイルを生成する場合にこのオプションを選択します。 キーワード XML ファイルには音声コンテンツから抽出されるキーワードと、頻度とオフセットの情報が含まれます。
 
-### <a name="job-name"></a>Job name
-A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
+### <a name="job-name"></a>ジョブ名
+ジョブを特定するためのフレンドリ名。 [こちら](media-services-portal-check-job-progress.md)の記事で、ジョブの進行状況を監視する方法について説明しています。 
 
-### <a name="output-file"></a>Output file
-A friendly name that lets you identify the output content. 
+### <a name="output-file"></a>出力ファイル
+出力コンテンツを特定するためのフレンドリ名。 
 
 ## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse is an MP that creates smooth time-lapsed videos from first-person or action-camera content.  For more information, see [this](media-services-hyperlapse-content.md) topic. This sections gives some details about options that you can specify for this MP.
+Azure Media Hyperlapse は、一人称視点またはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成する MP です。  詳細については、[こちらの](media-services-hyperlapse-content.md)トピックを参照してください。 このセクションでは、この MP に対して指定できるオプションについて詳細を説明します。
 
-![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
+![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
-### <a name="speed"></a>Speed
-Specify the speed with which to speed up the input video. The output is a stabilized and time-lapsed rendition of the input video.
+### <a name="speed"></a>速度
+入力ビデオの高速化に使用する速度を指定します。 出力は、入力ビデオの安定した低速度撮影画像となります。
 
-### <a name="job-name"></a>Job name
-A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
+### <a name="job-name"></a>ジョブ名
+ジョブを特定するためのフレンドリ名。 [こちら](media-services-portal-check-job-progress.md)の記事で、ジョブの進行状況を監視する方法について説明しています。 
 
-### <a name="output-file"></a>Output file
-A friendly name that lets you identify the output content. 
+### <a name="output-file"></a>出力ファイル
+出力コンテンツを特定するためのフレンドリ名。 
 
 ## <a name="azure-media-face-detector"></a>Azure Media Face Detector
-The **Azure Media Face Detector** media processor (MP) enables you to count, track movements, and even gauge audience participation and reaction via facial expressions. This service contains two features: 
+**Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには 2 つの機能があります。 
 
-* **Face detection**
+* **顔検出**
   
-    Face detection finds and tracks human faces within a video. Multiple faces can be detected and subsequently be tracked as they move around, with the time and location metadata returned in a JSON file. During tracking, it will attempt to give a consistent ID to the same face while the person is moving around on screen, even if they are obstructed or briefly leave the frame.
+    顔検出は、ビデオの中で人の顔を検出して追跡します。 複数の顔を検出した後、画面内の移動を追跡でき、時間と位置のメタデータが JSON ファイルで返されます。 追跡中、この機能は画面内を移動する同じ人の顔には同じ ID をできる限り設定し、顔が遮られたり一瞬フレームの外に出たりしても維持されます。
   
   > [!NOTE]
-  > This services does not perform facial recognition. An individual who leaves the frame or becomes obstructed for too long will be given a new ID when they return.
+  > このサービスでは、顔認識は実行されません。 顔が遮られたりフレームから外れる時間が長すぎると、戻ったときには新しい ID が設定されます。
   > 
   > 
-* **Emotion detection**
+* **感情検出**
   
-    Emotion Detection is an optional component of the Face Detection Media Processor that returns analysis on multiple emotional attributes from the faces detected, including happiness, sadness, fear, anger, and more. 
+    感情検出は Face Detection メディア プロセッサのオプションのコンポーネントであり、喜び、悲しみ、恐怖、怒りなど、検出された顔から複数の感情的属性の分析を返します。 
 
-![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
+![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
 
-### <a name="detection-mode"></a>Detection mode
-One of the following modes can be used by the processor:
+### <a name="detection-mode"></a>検出モード
+プロセッサでは、次の各モードのいずれかを使用できます。
 
-* face detection
-* per face emotion detection
-* aggregate emotion detection
+* 顔検出
+* 顔ごとの感情認識
+* 感情認識の集計
 
-### <a name="job-name"></a>Job name
-A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
+### <a name="job-name"></a>ジョブ名
+ジョブを特定するためのフレンドリ名。 [こちら](media-services-portal-check-job-progress.md)の記事で、ジョブの進行状況を監視する方法について説明しています。 
 
-### <a name="output-file"></a>Output file
-A friendly name that lets you identify the output content. 
+### <a name="output-file"></a>出力ファイル
+出力コンテンツを特定するためのフレンドリ名。 
 
 ## <a name="azure-media-motion-detector"></a>Azure Media Motion Detector
-The **Azure Media Motion Detector** media processor (MP) enables you to efficiently identify sections of interest within an otherwise long and uneventful video. Motion detection can be used on static camera footage to identify sections of the video where motion occurs. It generates a JSON file containing a metadata with timestamps and the bounding region where the event occurred.
+**Azure Media Motion Detector** メディア プロセッサ (MP) を使用すると、長くて動きの少ないビデオから注目すべき部分を効率よく識別できます。 モーション検出は、ビデオでモーションが発生したセクションを識別するために、静止カメラ映像で使用できます。 この機能は、イベントが発生したタイムスタンプと境界範囲のメタデータを含む JSON ファイルを生成します。
 
-Targeted towards security video feeds, this technology is able to categorize motion into relevant events and false positives such as shadows and lighting changes. This allows you to generate security alerts from camera feeds without being spammed with endless irrelevant events, while being able to extract moments of interest from extremely long surveillance videos.
+セキュリティ ビデオ フィードを対象とするこのテクノロジは、関連するイベントと、影や照明の変化などの誤検出に、モーションを分類できません。 これにより、いつまでも続く関係のないイベントに煩わされることなくカメラ フィードからセキュリティ アラートを生成することができ、非常に長い監視ビデオから関心のある瞬間を抽出できます。
 
-![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
+![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
 
 ## <a name="azure-media-video-thumbnails"></a>Azure Media Video Thumbnails
-This processor can help you create summaries of long videos by automatically selecting interesting snippets from the source video. This is useful when you want to provide a quick overview of what to expect in a long video. For detailed information and examples, see [Use Azure Media Video Thumbnails to Create a Video Summarization](media-services-video-summarization.md)
+このプロセッサにより、ソース ビデオから興味深い部分が自動的に抜粋されるので、長いビデオの要約を簡単に作成することができます。 これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。 詳細と例については、 [Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)
 
-![Analyze videos](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
+![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
 
-### <a name="job-name"></a>Job name
-A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
+### <a name="job-name"></a>ジョブ名
+ジョブを特定するためのフレンドリ名。 [こちら](media-services-portal-check-job-progress.md)の記事で、ジョブの進行状況を監視する方法について説明しています。 
 
-### <a name="output-file"></a>Output file
-A friendly name that lets you identify the output content. 
+### <a name="output-file"></a>出力ファイル
+出力コンテンツを特定するためのフレンドリ名。 
 
-## <a name="next-steps"></a>Next steps
-View Media Services learning paths.
+## <a name="next-steps"></a>次のステップ
+Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Provide feedback
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

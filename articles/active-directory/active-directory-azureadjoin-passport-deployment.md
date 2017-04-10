@@ -1,21 +1,25 @@
 ---
-title: 組織での Microsoft Windows Hello for Business の有効化 | Microsoft Docs
-description: 組織で Microsoft Passport を有効にするためのデプロイメント手順
+title: "組織での Microsoft Windows Hello for Business の有効化 | Microsoft Docs"
+description: "組織で Microsoft Passport を有効にするためのデプロイメント手順"
 services: active-directory
-documentationcenter: ''
-keywords: Microsoft Passport、Microsoft Windows Hello for Business デプロイの構成
+documentationcenter: 
+keywords: "Microsoft Passport、Microsoft Windows Hello for Business デプロイの構成"
 author: MarkusVi
 manager: femila
-editor: ''
 tags: azure-classic-portal
-
+ms.assetid: 7dbbe3c6-1cd7-429c-a9b2-115fcbc02416
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 04/06/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>組織での Microsoft Windows Hello for Business の有効化
@@ -109,7 +113,5 @@ System Center Configuration Manager を使って証明書もデプロイする�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

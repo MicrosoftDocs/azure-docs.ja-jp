@@ -1,13 +1,31 @@
 ---
+title: "Azure Logic Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "オンプレミスとクラウドにまたがるビジネス ワークフローを自動化および簡略化するロジック アプリを開発する方法について説明します。 チュートリアル、テンプレート、および API リファレンスを提供します。"
+services: logic-apps
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Logic Apps Documentation
+ms.assetid: 
+ms.service: logic-apps
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a942b83d1089667a5a9960bfbba849bd243746ec
+ms.lasthandoff: 03/17/2017
 
-Logic Apps provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow. There are many connectors across the cloud and on-premises to quickly integrate across services and protocols. A logic app begins with a trigger (like 'When an account is added to Dynamics CRM') and after firing can begin many combinations actions, conversions, and condition logic.
+---
+
+# <a name="logic-apps-documentation"></a>Logic Apps ドキュメント
+
+クラウド内のスケーラブルなワークフローを簡略化および統合するロジック アプリを開発する方法について説明します。 チュートリアル、テンプレート、API リファレンスは、オンプレミスとクラウドにまたがる自動化されたビジネス ワークフローを設計してデプロイする際に役立ちます。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-what-are-logic-apps">
+        <a href="/azure/logic-apps/logic-apps-what-are-logic-apps">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +35,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Logic Apps</h3>
+                        <h3>Logic Apps について</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +43,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +53,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Librasry</h3>
+                        <h3>App Service のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -43,17 +61,17 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-create-a-logic-app">
+        <a href="/azure/logic-apps/logic-apps-create-a-logic-app">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a new Logic App connecting SaaS services</h3>
+                        <h3>SaaS サービスを接続する新しいロジック アプリの作成</h3>
                     </div>
                 </div>
             </div>
@@ -61,17 +79,17 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-arm-provision">
+        <a href="/azure/logic-apps/logic-apps-arm-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Logic App using a template</h3>
+                        <h3>テンプレートを使用したロジック アプリの作成</h3>
                     </div>
                 </div>
             </div>
@@ -79,17 +97,17 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-create-api-app">
+        <a href="/azure/logic-apps/logic-apps-create-api-app">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a custom API to use with Logic Apps</h3>
+                        <h3>Logic Apps で使用するカスタム API の作成</h3>
                     </div>
                 </div>
             </div>
@@ -100,22 +118,59 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
 
 ---
 
-## Reference
-
-### PowerShell
-[Logic Apps PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### .NET
-[Logic Apps Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
-
-### REST
-[Logic Apps REST API Reference](/rest/api/logic/)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/logic-apps.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Logic Apps Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>スキーマ</h3>
+                        <p><a href="/azure/logic-apps/logic-apps-workflow-definition-language">ワークフロー定義言語</a></p>
+                        <p><a href="/azure/logic-apps/logic-apps-workflow-actions-triggers">ワークフローのアクションとトリガー</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>スキーマの履歴</h3>
+                        <p><a href="/azure/logic-apps/logic-apps-schema-2016-04-01">一般公開</a></p>
+                        <p><a href="/azure/logic-apps/logic-apps-schema-2015-08-01">プレビュー</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/logic/">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+

@@ -1,21 +1,13 @@
 ---
-title: To be submitted | Microsoft Azure
-description: To be submitted.
-services: ''
-documentationcenter: ''
-author: squillace
-manager: timlt
-editor: ''
-tags: billing
-
-ms.assetid: ca7d28fd-337f-4a4d-8326-fd7b8492e38b
-ms.service: value
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/21/2016
-ms.author: tysonn
+redirect_url: /azure/remoteapp/remoteapp-whatis
+translationtype: Human Translation
+ms.sourcegitcommit: f712ee847bb88c6633c5d951a1852eb758722213
+ms.openlocfilehash: 4170d94db8590fc23008170c63e3aae744fd13bc
 
 ---
-# To be submitted.
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

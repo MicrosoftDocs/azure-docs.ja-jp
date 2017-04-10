@@ -1,12 +1,12 @@
 ---
-title: Deploy your offer to the Azure Marketplace | Microsoft Docs
-description: Learn about and walk through the instructions to deploy your offer--virtual machine image, developer service, data service, etc.--to the Azure Marketplace.
+title: "Azure Marketplace へのプランのデプロイ | Microsoft Docs"
+description: "プラン (仮想マシン イメージ、開発者向けサービス、データ サービスなど) を Azure Marketplace にデプロイする方法を手順に従って学習します。"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,69 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
+
 
 ---
-# <a name="deploy-your-offer-to-the-azure-marketplace"></a>Deploy your offer to the Azure Marketplace
-When you are satisfied with your offer (that is, you have tested customer scenarios, marketing content, etc.) and you are ready to launch, request **Push to production** on the **Publish** tab.  
+# <a name="deploy-your-offer-to-the-azure-marketplace"></a>Azure Marketplace へのプランのデプロイ
+プラン (テスト済みの顧客シナリオやマーケティング コンテンツなど) の内容に問題がなく、発行の準備が整ったら、**[発行]** タブで**本番へのプッシュ**を要求します。  
 
-1. The four steps under the WALKTHROUGH page in the Publishing portal should be completed and green. For Virtual Machine offers, ensure that the following guidelines are followed.
+1. 発行ポータルのチュートリアル ページの 4 つの手順が完了済みで、緑色で表示されている必要があります。 Virtual Machine プランについては、次のガイドラインに従っていることを確認します。
    
-    ![drawing][img-pubportal-walkthru-checked]
-2. Select the **Publish** tab from the list on the left side.
+    ![図][img-pubportal-walkthru-checked]
+2. 左側のリストから **[発行]** タブを選択します。
    
-    ![drawing][img-pubportal-menu-publish]
-3. Click the button **Request approval to push to production**. Once the request is made, the approval team executes a final review, and then your offer will be available in the Azure Marketplace.
+    ![図][img-pubportal-menu-publish]
+3. **[Request approval to push to production (本番にプッシュするための承認を要求)]**をクリックします。 要求が行われると、承認チームが最終レビューを実行し、その後、プランが Azure Marketplace で使用できるようになります。
    
-    ![drawing][img-pubportal-publish-pushproduction]
+    ![図][img-pubportal-publish-pushproduction]
 
 > [!IMPORTANT]
-> In case of Virtual Machines, when you click on the button Request approval to push to production, the following steps are performed behind the scene. You will be able to view the progress of each step under the PUBLISH tab in the Publishing portal. You must check this page at regular interval (until the status shows "Listed") for any failure information which need correction from your end.
+> Virtual Machines の場合、[Request approval to push to production (本番にプッシュするための承認を要求)] をクリックすると、次の手順が見えないところで実行されます。 各手順の進行状況は、発行ポータルの [発行] タブで確認できます。 このページは (ステータスが "表示済み" になるまで) 定期的にチェックして、ご自身で修正する必要があるエラーがないかどうかを確認してください。
 > 
-> * At first your production request goes to the certification team who validate the vhd. However, if you are updating your already listed offer and the request has got only marketing change, then the certification step is skipped.
-> * At the next step, the request come to the content validation team who verify the marketing content of the offer.
-> * If the above steps are successful, then the offer is approved in production. At this time, the status become "Listed" in the publishing portal. However, this “Listed” status does not imply that the process is complete. The following steps need to be complete before the offer is available in the Azure Marketplace.
-> * Once the offer is approved in production in the step above, replication of the offer start across all the Azure datacenters. It generally takes 24-48hours for the replication to complete but may take up to a week depending on the size of the vhd. However, if you are updating your already listed offer and it has got only marketing change, then the replication is faster.
-> * When the replication is complete, then the offer will be available in the Azure Marketplace.
+> * 本番要求は、まず、VHD を検証する認定チームに送信されます。 ただし、既に表示されているプランを更新している場合で、マーケティングの変更のみのときは、認定手順はスキップされます。
+> * 次の手順で、要求は、プランのマーケティングコンテンツを確認するコンテンツ検証チームに送信されます。
+> * 前の手順が成功した場合、プランは運用環境で承認されます。 この時点で、発行ポータルでのステータスは "表示済み" になります。 ただし、この "表示済み" ステータスは、プロセスが完了したことを意味するものではありません。 プランを Azure Marketplace で使用できるようにするには、以下の手順を完了する必要があります。
+> * 前の手順によって本番環境でプランが承認されると、すべての Azure データセンターへのプランのレプリケーションが開始されます。 一般的に、レプリケーションの所要時間は 24 ～ 48 時間ですが、VHD のサイズによっては最大で 1 週間かかる場合があります。 ただし、既に表示されているプランを更新している場合で、マーケティングの変更のみのときは、レプリケーションはもっと早く完了します。
+> * レプリケーションが完了したら、Azure Marketplace でプランが使用できるようになります。
 > 
-> You can always delete the offer while it is in a **Draft** status (i.e., never **Push to staging** or **Push to production**). On the **History** tab, click the **Discard draft** button at the bottom of the page to delete a draft.
+> **[ドラフト]** 状態の間は、プランをいつでも削除できます (つまり、**ステージングにプッシュ**や**本番にプッシュ**されていない状態)。 ドラフトを削除するページの下部にある **[履歴]** タブの **[ドラフトの破棄]** ボタンをクリックします。
 > 
 > 
 
-## <a name="production-checklist-for-all-virtual-machine-offers"></a>Production checklist for all Virtual Machine offers
-* Ensure that you are a Microsoft Azure Certified partner
-* Under the SKUs tab, the option "Hide this SKU from the Marketplace because it should always be bought via a solution template" should be marked as YES only if the SKU is a part of a Solution Template. In all the other cases, this option should always be marked as NO.
-* Remember: You should not change the SKU visibility setting once the SKU is listed. We do not support this functionality.
-* Ensure that the logos adhere to the Azure Marketplace logo guidelines given below.
-* Offer and SKU description shouldn’t be same.
-* SKU’s Title and Offer Long summary shouldn’t be same.
-* SKU Title and Offer Summary shouldn’t be same.
-* SKU Titles should not be identical for an offer with multiple SKUs.
+## <a name="production-checklist-for-all-virtual-machine-offers"></a>すべての Virtual Machine プラン用の運用環境チェックリスト
+* Microsoft Azure Certified パートナーであることを確認します
+* [SKUs (SKU)] タブで、[Hide this SKU from the Marketplace because it should always be bought via a solution template (この SKU は、常にソリューション テンプレートを介して購入する必要があるため、Marketplace に表示しない)] オプションは、SKU がソリューション テンプレートに含まれる場合にのみ [はい] とマークします。 それ以外の場合、このオプションは常に [いいえ] としてマークします。
+* 重要: SKU が表示されたら、SKU の可視性の設定は変更しないでください。 この機能はサポートされていません。
+* ロゴが以下で説明する Azure Marketplace ロゴ ガイドラインに従っていることを確認します。
+* プランと SKU の説明は同じにしないでください。
+* SKU のタイトルとプランの長い概要は、同じにしないでください。
+* SKU のタイトルとプランの概要は、同じにしないでください。
+* 複数の SKU が含まれるプランの場合、その SKU のタイトルは同じにしないでください。
 
-**Azure Marketplace logo guidelines**
+**Azure Marketplace のロゴのガイドライン**
 
-* The Azure design has a simple color palette. Keep the number of primary and secondary colors on your logo low.
-* The theme colors of the Azure portal are white and black. Hence avoid using these colors as the background color of your logos. Use some color that would make your logos prominent in the Azure portal. We recommend simple primary colors. If you are using transparent background, then make sure that the logo/text is not white or black.
-* Do not use a gradient background on the logo.
-* Avoid placing text, even your company or brand name, on the logo.
-* The look and feel of your logo should be 'flat' and should avoid gradients.
-* The logo should not be stretched.
+* Azure の設計には簡単なカラー パレットがあります。 ロゴのプライマリ カラーとセカンダリ カラーの数は少なくしてください。
+* Azure ポータルのテーマの色は白黒です。 したがって、この色を、ロゴの背景色として使用しないでください。 Azure ポータルでロゴが目立つ色を背景色として使用します。 背景色としてはシンプルなプライマリ カラーをお勧めします。 透明な背景を使用している場合は、ロゴ/テキストが白または黒ではないことを確認します。
+* ロゴではグラデーションの背景を使用しないでください。
+* ロゴにはテキストを使用しないでください (会社またはブランドの名前であっても)。
+* ロゴのルック アンド フィールは "フラット" にする必要があり、グラデーションは避ける必要があります。
+* ロゴは拡大しないでください。
 
-**Additional guidelines for the Hero logo:**
+**Hero ロゴに関する追加のガイドライン:**
 
-* The Hero logo is optional. The publisher can choose not to upload a Hero logo. **However once uploaded the hero icon cannot be deleted from the Publishing portal. At that time, the partner must follow the Azure Marketplace guidelines for Hero icons else the offer will not be approved to production.**
-* The Publisher Display Name, SKU title and the offer long summary are displayed in white font color. Hence you should avoid keeping any light color in the background of the Hero Icon. Black, white and transparent background is not allowed for Hero icons.
-* The publisher display name, SKU title, the offer long summary and the create button are embedded programmatically inside the Hero logo once the offer goes listed. So you should not enter any text while you are designing the Hero logo. Just leave empty space on the right because the text (i.e. publisher display name, SKU title, the offer long summary) will be included programmatically by us over there. The empty space for the text should be 415x100 on the right (and it is offset by 370px from the left).
+* Hero ロゴはオプションです。 パブリッシャーは、Hero ロゴをアップロードしなくてもかまいません。 **ただし、アップロードされたら、Hero アイコンは発行ポータルから削除できません。その時点で、パートナーは、Hero アイコンの Azure Marketplace ガイドラインに従う必要があります。ガイドラインに従っていない場合、プランは運用環境に対して承認されません。**
+* 発行者表示名、SKU のタイトル、およびプランの長い概要は、白のフォント色で表示されます。 このため、Hero アイコンの背景色には明るい色を使用しないでください。 黒、白、および透明は Hero アイコンの背景では使用できません。
+* プランが表示されると、パブリッシャーの表示名、SKU のタイトル、プランの長い概要、作成ボタンが、Hero ロゴ内にプログラムによって埋め込まれます。 したがって、Hero ロゴのデザイン時にはテキストを入力しないでください。 右側にスペースを空けておくだけで、テキスト (つまり、 パブリッシャーの表示名、SKU のタイトル、プランの長い概要) は、その場所にプログラムによって挿入されます。 右側のテキスト用の空のスペースは 415 x 100 です (また、左から 370 ピクセルだけオフセットされます)。
 
-## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>Additional production checklist for already listed Virtual Machine offers
-* Check if there is already an offer with the same offer name from your company. If yes, then you should add a new version of the SKU in the existing offer instead of creating a new duplicate offer.
-* Data disk should not change between two versions of the same SKU.
-* The Azure Marketplace does not support pricing change of the listed SKUS as it impacts the billing of the existing customers. Ensure that you do not change the pricing of the listed SKUs in the regions where the SKU is available. However, you can add new SKUs or add new regions to an existing SKU.
+## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>既に表示されている Virtual Machine プラン用の追加の運用環境チェックリスト
+* 会社からのプランで同じ名前のものがあるかどうかを確認します。 同じ名前のプランがある場合は、重複するプランを新しく作成するのではなく、既存のプランに新しいバージョンの SKU を追加します。
+* 同じ SKU の 2 つのバージョン間でデータ ディスクを変更しないでください。
+* 表示されている SKU の価格を変更すると、既存のお客様への請求に影響を及ぼすため、Azure Marketplace ではこの価格変更はサポートされていません。 SKU が使用可能なリージョンで、表示されている SKU の価格を変更していないことを確認します。 ただし、新しい SKU を追加したり、既存の SKU に新しいリージョンを追加したりすることはできます。
 
-## <a name="next-steps"></a>Next steps
-Once the offer goes live, test the customer scenarios to validate that all the contracts and functionality work properly in the production environment as tested and validated in the staging environment.
+## <a name="next-steps"></a>次のステップ
+プランが公開されたら、顧客シナリオをテストし、ステージング環境でテストおよび検証したとおりに、運用環境でもすべてのコントラクトと機能が適切に機能することを検証します。
 
-## <a name="see-also"></a>See also
-* [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>関連項目
+* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png
@@ -84,6 +88,6 @@ Once the offer goes live, test the customer scenarios to validate that all the c
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

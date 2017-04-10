@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9fff24dfd2b20a785c6046b6c9700b583c309de4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 
 
 ---
-# <a name="rolebased-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
-## <a name="rolebased-access-control"></a>ロールベースのアクセス制御
+# <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
+## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 [RBAC](../active-directory/role-based-access-control-configure.md)を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 ロールベースのアクセス権をユーザーに付与するには、Azure ポータル、Azure コマンドライン ツール、Azure Management API を使用します。
 
 ## <a name="rbac-in-automation-accounts"></a>Automation アカウントの RBAC
@@ -233,6 +233,6 @@ Automation アカウントに対するロールベースのアクセス制御は
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

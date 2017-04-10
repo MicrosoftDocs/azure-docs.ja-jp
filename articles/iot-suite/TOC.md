@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Azure と IoT](iot-suite-what-is-azure-iot.md)
 ## [IoT Suite とは](iot-suite-overview.md)
 ## [事前に構成されたソリューションとは](iot-suite-what-are-preconfigured-solutions.md)
@@ -19,6 +19,7 @@
 ## [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-logic-apps-tutorial.md)
 ## [構成済みソリューションのカスタマイズ](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-dynamic-telemetry.md)
+## [リモート監視ソリューションでカスタム規則を作成する](iot-suite-custom-rule.md)
 ## [リモート監視ソリューションでのデバイス情報](iot-suite-remote-monitoring-device-info.md)
 
 # リファレンス
@@ -42,6 +43,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

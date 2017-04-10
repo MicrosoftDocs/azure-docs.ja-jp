@@ -1,22 +1,26 @@
 ---
-title: 'チュートリアル: Azure Active Directory と @Task| Microsoft Docs'
-description: Azure Active Directory と @Task の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と @Task| Microsoft Docs の統合"
+description: "Azure Active Directory と @Task の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: aab8bd2f-f9dd-42da-a18e-d707865687d7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 02/22/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-@task"></a>チュートリアル: Azure Active Directory と @Task の統合
+# <a name="tutorial-azure-active-directory-integration-with-task"></a>チュートリアル: Azure Active Directory と @Task の統合
 このチュートリアルの目的は、@Task と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
 @Task と Azure AD の統合には、次の利点があります。 
 
@@ -49,7 +53,7 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 1. ギャラリーからの @Task の追加 
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-@task-from-the-gallery"></a>ギャラリーからの @Task の追加
+## <a name="adding-task-from-the-gallery"></a>ギャラリーからの @Task の追加
 Azure AD への @Task の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に @Task を追加する必要があります。
 
 **ギャラリーから @Task を追加するには、次の手順を実行します。**
@@ -78,7 +82,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、@Task で Azure AD のシングル サインオンを構成し、テストする方法を説明することです。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する @Task ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと @Task の関連ユーザーの間で、リンク関係が確立されている必要があります。   
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を @Task. の **[Username]** の値として割り当てます。
+このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を @Task の **[Username (ユーザー名)]** の値として割り当てます。
 
 @Task, で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -156,21 +160,23 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   e. **[次へ]**をクリックします。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-attask-tutorial/create_aaduser_07.png) 
@@ -182,7 +188,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
    
     b. **[完了]** をクリックします。   
 
-### <a name="creating-an-@task-test-user"></a>@Task テスト ユーザーの作成
+### <a name="creating-an-task-test-user"></a>@Task テスト ユーザーの作成
 このセクションの目的は、@Task で Britta Simon というユーザーを作成することです。
 
 **@Task, で Britta Simon というユーザーを作成するには、次の手順を実行します。**
@@ -268,6 +274,6 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

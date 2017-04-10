@@ -3,7 +3,7 @@ title: "Azure RemoteApp の FAQ | Microsoft Docs"
 description: "Azure RemoteApp についてよく寄せられる質問の回答を確認する。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: swadhwa
 editor: 
 ms.assetid: bad66603-91f9-437f-8a70-236405d2a27f
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
+ms.sourcegitcommit: 9d80640a58171e94440ca02f44a73866f6412997
+ms.openlocfilehash: 296dfaaa05b89cae265a9926fad08495ea02a647
 
 
 ---
@@ -32,32 +32,32 @@ Azure RemoteApp について次のような質問が寄せられています。 
 必要な情報が見つからない場合や、ここでは取り上げられていない不明な点がある場合は、 [Azure RemoteApp フォーラム](http://aka.ms/araforum) にアクセスして質問を投稿してください。 不明点への回答は随時こちらに追加していきます。
 
 ## <a name="what-is-azure-remoteapp"></a>Azure RemoteApp とは
-* **Azure RemoteApp とは**  RemoteApp とは、多くのさまざまなユーザー デバイスからアプリケーションへのセキュリティで保護されたリモート アクセスを提供する際に役立つ Azure サービスです。 詳細については、「[Azure RemoteApp とは](remoteapp-whatis.md)」を参照してください。
-* **デプロイメント オプションにはどのようなものがありますか。**  RemoteApp のコレクションには、クラウドとハイブリッドの 2 つの種類があります。 ドメインへの参加の要不要など、さまざまな要素によって必要なコレクションが決まります。 この決定については、 [こちらのページ](remoteapp-collections.md)で詳しく説明しています。
+* **Azure RemoteApp とは** RemoteApp とは、多くのさまざまなユーザー デバイスからアプリケーションへのセキュリティで保護されたリモート アクセスを提供する際に役立つ Azure サービスです。 詳細については、「[Azure RemoteApp とは](remoteapp-whatis.md)」を参照してください。
+* **デプロイメント オプションにはどのようなものがありますか。** RemoteApp のコレクションには、クラウドとハイブリッドの&amp;2; つの種類があります。 ドメインへの参加の要不要など、さまざまな要素によって必要なコレクションが決まります。 この決定については、 [こちらのページ](remoteapp-collections.md)で詳しく説明しています。
 
 ## <a name="quick-tips-on-using-azure-remoteapp"></a>Azure RemoteApp の使用に関するクイック ヒント
 * **切断されるまでの時間はどのくらいですか。どれくらいアイドル状態が続くとサインアウトされますか。** 4 時間です。 ユーザーのアイドル状態が 4 時間続くと、自動的に Azure RemoteApp からサインアウトされます。 その他の既定の設定については、「[Azure Subscription and Service Limits, Quotas, and Constraints (Azure サブスクリプションとサービスの制限、クォータ、制約)](../azure-subscription-service-limits.md)」を参照してください。
-* **このサービスは無料で試すことができますか。**  はい。 30 日間使える無料試用版があります。 試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに切り替えるか、サービスの使用を終了することができます。 [portal.azure.com](http://portal.azure.com) にアクセスして無料試用版を開始し、RemoteApp の新しいインスタンスを作成してください。 無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
+* **このサービスは無料で試すことができますか。** はい。 30 日間使える無料試用版があります。 試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに切り替えるか、サービスの使用を終了することができます。 [portal.azure.com](http://portal.azure.com) にアクセスして無料試用版を開始し、RemoteApp の新しいインスタンスを作成してください。 無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
   
   ## <a name="azure-remoteapp-subscription-details"></a>Azure RemoteApp サブスクリプションの詳細
-* **サービスの制限とは何ですか。** Azure RemoteApp の既定の設定とサービスの制限については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](」を参照してください。」を参照してください。/azure-subscription-service-limits」を参照してください。md)」を参照してください。 他に質問がある場合は、お知らせください。
-* **必要なユーザー数は、どの程度でしょうか。**  少なくとも 20 ユーザーが必要です。 明確にするために繰り返しますと、最低ユーザー数は 20 となっています。 つまり、20 ユーザー分の代金が課金されることになります。 
-* **RemoteApp の料金についてはどうですか。** 「 [Azure RemoteApp の料金体系について ](https://azure」を参照してください。microsoft」を参照してください。com/pricing/details/remoteapp/)」を参照してください。
-* **コレクションの種類によってはコストがかかるものはありますか。**  コレクションに対する要件によってはそうなる場合があります。 ハイブリッド コレクションの場合、Azure RemoteApp からオンプレミス ネットワークへの接続が必要です。 既存の VNET と Express のルートを使用する場合、追加コストはありません。 ただし、新しい Azure VNET と、ゲートウェイまたは ExpressRoute のいずれかを使用する場合は、[VPN ゲートウェイ](https://azure.microsoft.com/pricing/details/vpn-gateway)または [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/) に対して課金されます。 このコスト (詳細はリンクを参照) が、毎月の Azure の RemoteApp のコストに追加されます。
+* **サービスの制限とは何ですか。** Azure RemoteApp の既定の設定とサービスの制限については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。 他に質問がある場合は、お知らせください。
+* **必要なユーザー数は、どの程度でしょうか。** 少なくとも 20 ユーザーが必要です。 明確にするために繰り返しますと、最低ユーザー数は 20 となっています。 つまり、20 ユーザー分の代金が課金されることになります。 
+* **RemoteApp の料金についてはどうですか。** 「 [Azure RemoteApp の料金体系について ](https://azure.microsoft.com/pricing/details/remoteapp/)」を参照してください。
+* **コレクションの種類によってはコストがかかるものはありますか。** コレクションに対する要件によってはそうなる場合があります。 ハイブリッド コレクションの場合、Azure RemoteApp からオンプレミス ネットワークへの接続が必要です。 既存の VNET と Express のルートを使用する場合、追加コストはありません。 ただし、新しい Azure VNET と、ゲートウェイまたは ExpressRoute のいずれかを使用する場合は、[VPN ゲートウェイ](https://azure.microsoft.com/pricing/details/vpn-gateway)または [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/) に対して課金されます。 このコスト (詳細はリンクを参照) が、毎月の Azure の RemoteApp のコストに追加されます。
 
-## <a name="collections-whats-supported-which-should-you-use-and-others"></a>サポートされているコレクションや使用すべきコレクションなど
-* **カスタム基幹業務 (LOB) アプリケーションはサポートされていますか。**  はい。 Azure RemoteApp でカスタム アプリケーションを使用するには、 [カスタム テンプレート イメージ](remoteapp-create-custom-image.md)を作成し、RemoteApp コレクションにアップロードします。
-* **自社のカスタム LOB アプリケーションは、Azure RemoteApp で動作しますか。**  この質問の回答を見つけ出す最善の方法は、テストすることです。 [RD 互換性センター](http://www.rdcompatibility.com/compatibility/default.aspx)をご確認ください。
-* **組織にとって最適なデプロイメント方法は、クラウドとハイブリッドのどちらですか。**  ハイブリッド コレクションは、シングル サインオン (SSO) との完全な統合、およびセキュリティで保護されたオンプレミスのネットワーク接続を必要としている場合に、最も包括的なエクスペリエンスを提供します。 クラウド コレクションでは、複数の認証方法を使用することにより、アジャイルかつ簡単な方法を使用して、分離されたデプロイメントを構築できます。 デプロイメント オプションの詳細については、「 [Azure RemoteApp とは](remoteapp-whatis.md)」を参照してください。
+## <a name="collections---whats-supported-which-should-you-use-and-others"></a>サポートされているコレクションや使用すべきコレクションなど
+* **カスタム基幹業務 (LOB) アプリケーションはサポートされていますか。** はい。 Azure RemoteApp でカスタム アプリケーションを使用するには、 [カスタム テンプレート イメージ](remoteapp-create-custom-image.md)を作成し、RemoteApp コレクションにアップロードします。
+* **自社のカスタム LOB アプリケーションは、Azure RemoteApp で動作しますか。** この質問の回答を見つけ出す最善の方法は、テストすることです。 [RD 互換性センター](http://www.rdcompatibility.com/compatibility/default.aspx)をご確認ください。
+* **組織にとって最適なデプロイメント方法は、クラウドとハイブリッドのどちらですか。** ハイブリッド コレクションは、シングル サインオン (SSO) との完全な統合、およびセキュリティで保護されたオンプレミスのネットワーク接続を必要としている場合に、最も包括的なエクスペリエンスを提供します。 クラウド コレクションでは、複数の認証方法を使用することにより、アジャイルかつ簡単な方法を使用して、分離されたデプロイメントを構築できます。 デプロイメント オプションの詳細については、「 [Azure RemoteApp とは](remoteapp-whatis.md)」を参照してください。
 * **SQL または別のデータベースが、オンプレミスまたは Azure にあります。どちらの種類のデプロイメントを使用すべきでしょうか。** これは SQL またはバックエンドのデータベースの場所によります。 データベースがプライベート ネットワークにある場合は、ハイブリッド コレクションを使用します。 データベースがインターネットに表示され、クライアント接続で接続できる場合は、クラウド コレクションを使用できます。
-* **ドライブの割り当て、USB とシリアル ポート、クリップボードの共有、およびプリンターのリダイレクトについてはどうでしょうか。**  Azure RemoteApp は、これらのすべての機能についてサポートしています。 クリップボードの共有とプリンターのリダイレクトは、既定で有効になります。 リダイレクトの詳細については、「 [Using redirection in Azure RemoteApp](remoteapp-redirection.md)」を参照してください。 
+* **ドライブの割り当て、USB とシリアル ポート、クリップボードの共有、およびプリンターのリダイレクトについてはどうでしょうか。** Azure RemoteApp は、これらのすべての機能についてサポートしています。 クリップボードの共有とプリンターのリダイレクトは、既定で有効になります。 リダイレクトの詳細については、「 [Using redirection in Azure RemoteApp](remoteapp-redirection.md)」を参照してください。 
 
 ## <a name="template-images"></a>テンプレート イメージ
-* **クラウドまたは既存の仮想マシンを、RemoteApp コレクションのテンプレートとして使用できますか。**  はい。 Azure VM に基づくイメージを作成することも、サブスクリプションに含まれるイメージのいずれかを使用することも、カスタム イメージを作成することもできます。 [RemoteApp のイメージ オプション](remoteapp-imageoptions.md)を参照してみてください。
+* **クラウドまたは既存の仮想マシンを、RemoteApp コレクションのテンプレートとして使用できますか。** はい。 Azure VM に基づくイメージを作成することも、サブスクリプションに含まれるイメージのいずれかを使用することも、カスタム イメージを作成することもできます。 [RemoteApp のイメージ オプション](remoteapp-imageoptions.md)を参照してみてください。
 
 ## <a name="network-options"></a>ネットワーク オプション
 * **ハイブリッド コレクションは、VNET を必要とします。既存の VNET を使用できますか。** 既存の VNET が Azure VNET であれば、使用できます。 詳細については、[ハイブリッド コレクションの手順](remoteapp-create-hybrid-deployment.md)に関するページの「手順 1. 仮想ネットワークをセットアップする」を参照してください。
-* **クラウドのコレクションで VNET を使用できますか。**  はい、できます。 詳細については、「 [クラウド コレクションを作成する](remoteapp-create-cloud-deployment.md)」の特に手順 1 を参照してください。
+* **クラウドのコレクションで VNET を使用できますか。** はい、できます。 詳細については、「 [クラウド コレクションを作成する](remoteapp-create-cloud-deployment.md)」の特に手順 1 を参照してください。
 
 ## <a name="authentication-options"></a>認証オプション
 * **認証については、どの方法がサポートされていますか。** クラウド コレクションは、Office 365 アカウントでもある Microsoft アカウントと Azure Active Directory アカウントをサポートしています。 ハイブリッド コレクションは、([Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) のようなツールを使用して) Windows Server Active Directory のデプロイから同期されている Azure Active Directory アカウント、特にパスワード同期オプションまたは Active Directory フェデレーション サービス (AD FS) の構成済みフェデレーションのいずれかで同期されているアカウントのみをサポートしています。 [Multi-Factor Authentication (MFA)](https://azure.microsoft.com/services/multi-factor-authentication/) を構成することもできます。
@@ -67,13 +67,13 @@ Azure RemoteApp について次のような質問が寄せられています。 
 > 
 > 
 
-* **使用している Azure Active Directory アカウントにアクセス許可を付与できないのはなぜですか。**  Azure Active Directory ユーザーは、サブスクリプションに関連付けられているディレクトリに属している必要があります。 このディレクトリは、ポータルの [設定] タブで表示および変更できます。 詳細については、「 [Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md) 」を参照してください。
+* **使用している Azure Active Directory アカウントにアクセス許可を付与できないのはなぜですか。** Azure Active Directory ユーザーは、サブスクリプションに関連付けられているディレクトリに属している必要があります。 このディレクトリは、ポータルの [設定] タブで表示および変更できます。 詳細については、「 [Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md) 」を参照してください。
 
-## <a name="clients-what-device-can-i-use-to-access-azure-remoteapp"></a>クライアント - Azure RemoteApp へのアクセスにはどのようなデバイスを使用できますか?
+## <a name="clients---what-device-can-i-use-to-access-azure-remoteapp"></a>クライアント - Azure RemoteApp へのアクセスにはどのようなデバイスを使用できますか?
 さまざまなクライアントのインストール手順を含む、クライアントに関するよい情報は、「 [Azure RemoteApp でのアプリへのアクセス](remoteapp-clients.md)」を参照してください。
 
 * **クライアント アプリケーションがサポートするデバイスとオペレーティング システムはどれでしょう。**
-   コンピューターとタブレット: 
+  コンピューターとタブレット: 
   
   * Windows 10 (クライアント プレビュー)
   * Windows 8.1 および Windows 8
@@ -81,25 +81,27 @@ Azure RemoteApp について次のような質問が寄せられています。 
   * Mac OS X
   * Windows RT
   * Android タブレット
-  * iPad と電話:
+  * iPad
+
+    と電話:
   * iPhone
   * Android フォン
   * Windows Phone
     
-    [ダウンロード](https://www.remoteapp.windowsazure.com/Clientダウンロード/AllClients.aspx) 。
-* **Azure RemoteApp はシン クライアントをサポートしますか。**  はい、次の Windows Embedded シン クライアントがサポートされます。
+    [ダウンロード](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) 。
+* **Azure RemoteApp はシン クライアントをサポートしますか。** はい、次の Windows Embedded シン クライアントがサポートされます。
   
   * Windows Embedded Standard 7
   * Windows Embedded 8 Standard
   * Windows Embedded 8.1 Industry Pro
   * Windows 10 IoT Enterprise
-* **リモート デスクトップ セッション ホスト (RDSH) 用にサポートされる Windows Server のバージョンはどれですか。**  Windows Server 2012 R2 です。
+* **リモート デスクトップ セッション ホスト (RDSH) 用にサポートされる Windows Server のバージョンはどれですか。** Windows Server 2012 R2 です。
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
-* **RemoteApp のサポート プランについてはどうですか。**  課金とサブスクリプションの管理は無料でサポートされます。 テクニカル サポートが [Azure のサービス プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。 [Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
-* **フィードバックを発行する方法を教えてください。**  [フィードバック フォーラム](https://feedback」を参照してください。azure」を参照してください。com/forums/247748-azure-remoteapp/)」を参照してください。
+* **RemoteApp のサポート プランについてはどうですか。** 課金とサブスクリプションの管理は無料でサポートされます。 テクニカル サポートが [Azure のサービス プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。 [Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
+* **フィードバックを発行する方法を教えてください。** [フィードバック フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)」を参照してください。
 * **Azure RemoteApp についての問い合わせ先を教えてください。** 質問を投稿するのに最適な場所である[ディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)に加え、RemoteApp に関するあらゆる情報を毎週お届けする、[エキスパートへの質問ウェビナー](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html)にも参加できます。
-* **RemoteApp に関するドキュメントはありますか。**  ご問い合わせありがとうございます。 ポータルのヘルプ ドロアーのヘルプ コンテンツ (ポータルのいずれかのページの **?**  をクリックするだけです) に加えて、RemoteApp のすべてについて詳細に説明する次の資料を参照できます。
+* **RemoteApp に関するドキュメントはありますか。** ご問い合わせありがとうございます。 ポータルのヘルプ ドロアーのヘルプ コンテンツ (ポータルのいずれかのページの **?** をクリックするだけです) に加えて、RemoteApp のすべてについて詳細に説明する次の資料を参照できます。
   
   * **概要:**
     * [Azure RemoteApp とは](remoteapp-whatis.md)
@@ -126,6 +128,6 @@ Azure RemoteApp について次のような質問が寄せられています。 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

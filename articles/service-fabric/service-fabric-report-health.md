@@ -1,19 +1,23 @@
 ---
-title: Service Fabric のカスタム正常性レポートを追加する | Microsoft Docs
-description: Azure Service Fabric の正常性エンティティにカスタム正常性レポートを送信する方法について説明します。 品質正常性レポートの設計と実装の推奨事項を紹介します。
+title: "Service Fabric のカスタム正常性レポートを追加する | Microsoft Docs"
+description: "Azure Service Fabric の正常性エンティティにカスタム正常性レポートを送信する方法について説明します。 品質正常性レポートの設計と実装の推奨事項を紹介します。"
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d986275612b3e5c97636936a5e448dd6d0fcfc4e
+
 
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Service Fabric のカスタム正常性レポートの追加
@@ -156,7 +160,7 @@ GatewayInformation   : {
 
 ただし、上記のケースではレポートが作成され、この状況は、正常性を評価する場合にアプリケーションの正常性に関してキャプチャされます。
 
-## <a name="report-periodically-vs.-on-transition"></a>定期的なレポートと遷移時のレポート
+## <a name="report-periodically-vs-on-transition"></a>定期的なレポートと遷移時のレポート
 正常性レポート モデルを使用して、ウォッチドッグは、定期的に、または遷移時にレポートを送信できます。 コードがはるかに単純で、エラーが生じにくいため、ウォッチドッグ レポートは定期的に行うことをお勧めします。 ウォッチドッグは、正しくないレポートを生成させるバグを回避するために、できるだけ簡単にする必要があります。 正しくない異常 ** レポートは、正常性評価と、アップグレードなどの正常性に基づくシナリオに影響します。 正しくない正常性 ** レポートにより、望ましくないクラスター内の問題が隠されます。
 
 定期的なレポートの場合、ウォッチドッグは、タイマーと共に実装できます。 タイマーのコールバック時に、ウォッチドッグは状態を確認し、現在の状態に基づいて、レポートを送信できます。 以前にどのようなレポートが送信されたかを確認したり、メッセージングに関する最適化を行う必要はありません。 正常性クライアントには、パフォーマンスを支援するバッチ処理ロジックがあります。 正常性クライアントは、動作している間、レポートが正常性ストアによって受信確認されるか、ウォッチドッグが同じエンティティ、プロパティ、およびソースで新しいレポートを生成するまで、内部で再試行します。
@@ -303,6 +307,9 @@ REST と、目的のエンティティに送られ、本体に正常性レポー
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

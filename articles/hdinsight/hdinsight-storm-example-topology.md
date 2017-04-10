@@ -1,24 +1,31 @@
 ---
-title: HDInsight での Apache Storm トポロジの例 | Microsoft Docs
-description: 基本的な C# や Java トポロジなど、HDInsight で Apache Storm を使用して作成、テストされる Storm トポロジの例の一覧と、Event Hubs の使用。
+title: "HDInsight での Apache Storm トポロジの例 | Microsoft Docs"
+description: "基本的な C# や Java トポロジなど、HDInsight で Apache Storm を使用して作成、テストされる Storm トポロジの例の一覧と、Event Hubs の使用。"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: f9b1bdff-5928-4705-a76d-52fd200917cb
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2016
+ms.date: 02/09/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 46bc5b3b70120cd631523fd2b27ad8b9a47e3c6d
+ms.openlocfilehash: 21c25e4579a440b13c3201ee8f6c4e1db7a2aa46
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
-HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、DocumentDB、Power BI、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。一部の例では、SignalR や Socket.IO など、Azure 以外、さらにはマイクロソフト以外のテクノロジを使用する方法についても説明されています。
+# <a name="example-storm-toplogies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
+
+HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。 これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、DocumentDB、Power BI、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。 一部の例では、SignalR や Socket.IO など、Azure 以外、さらにはマイクロソフト以外のテクノロジを使用する方法についても説明されています。
 
 | Description | 対象 | 言語/フレームワーク |
 |:--- |:--- |:--- |
@@ -39,7 +46,8 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 | [HDInsight での Storm および HBase を使用した関連付け](hdinsight-storm-correlation-topology.md) |HBase |C# |
 | [HDInsight の Storm での Python の使用](hdinsight-storm-develop-python-topology.md) |Java および Clojure ベースの Storm トポロジによる Python コンポーネント |Python |
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
+
 * [HDInsight での Apache Storm の使用][2b8c3488]
 * [HDInsight での Apache Storm のデプロイと管理][6eb0d3b8]
 
@@ -58,4 +66,3 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
 
 
-<!---HONumber=AcomDC_0914_2016-->

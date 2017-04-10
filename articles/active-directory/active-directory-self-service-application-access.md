@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理 | Microsoft Docs
-description: この記事では、Azure Active Directory でアプリケーションのセルフ サービス アクセスと委任管理を有効にする方法について説明します。
+title: "Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理 | Microsoft Docs"
+description: "この記事では、Azure Active Directory でアプリケーションのセルフ サービス アクセスと委任管理を有効にする方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 448a7fe8-a162-475e-9ba2-2e3ab59302bc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 57093159c0b9c63b6e2dc0971e3aea645a33aa55
+
 
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理
@@ -21,7 +25,7 @@ ms.author: asmalser
 
 アプリケーションのセルフ サービス アクセスは、ディレクトリ管理者に次のことを許可する [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) の機能です。
 
-* [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+*  [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 * どのアプリケーションへのアクセスをユーザーが申請できるかを設定する
 * アプリケーションへのアクセスをユーザーが自分で割り当てるために承認が必要かどうかを設定する
 * 誰が申請を承認し、各アプリケーションへのアクセスを管理するかを設定する
@@ -83,7 +87,7 @@ ms.author: asmalser
 ### <a name="manage-users"></a>ユーザーの管理
 **[ユーザーの管理]** タイルでは、承認者が、アプリケーションへのアクセス権を持つユーザーを直接更新または削除できます。 
 
-### <a name="configure-password-sso-credentials-(if-applicable)"></a>パスワード SSO 資格情報の構成 (該当する場合)
+### <a name="configure-password-sso-credentials-if-applicable"></a>パスワード SSO 資格情報の構成 (該当する場合)
 **[構成]** タイルは、アプリケーションがパスワードに基づくシングル サインオンを使用するように IT 管理者によって構成されており、管理者が、前述のようにパスワード SSO 資格情報を設定する権限を承認者に付与した場合にのみ表示されます。 このタイルを選択すると、承認者に対して、割り当てたユーザーに資格情報を伝達する方法に関するいくつかのオプションが表示されます。
 
 ![][3]
@@ -102,6 +106,6 @@ ms.author: asmalser
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

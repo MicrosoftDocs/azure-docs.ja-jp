@@ -13,43 +13,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 12/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 284bf43ceae0c42b88d6ea3fe8a2e68e7530e5fe
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="a-nametoc395783175abuild-a-nodejs-web-application-using-documentdb"></a><a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
+# <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
+> * [MongoDB 用 .NET](documentdb-mongodb-application.md)
 > * [Node.JS](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md)
 > 
 > 
 
-この Node.js チュートリアルでは、Azure DocumentDB サービスを使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
-
-まずは、次のビデオを視聴することをお勧めします。このビデオでは、Azure DocumentDB データベース アカウントをプロビジョニングし、JSON ドキュメントを Node.js アプリケーションに格納する方法を学習できます。 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Demo-Getting-started-with-Azure-DocumentDB-on-Nodejs-in-Linux/player]
-> 
-> 
-
-その後でこのs Node.js チュートリアルに戻ると、次の質問の答えを見つけることができます。
-
-* Documentdb npm モジュールを使って DocumentDB を操作する方法
-* Web アプリケーションを Azure Websites にデプロイする方法
-
-このデータベース チュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。 対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
+この Node.js チュートリアルでは、Azure DocumentDB を使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーション (ToDo アプリ) を作成します。 対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。 このチュートリアルでは、アプリの作成とデプロイの手順を示し、各スニペットの動作を説明します。
 
 ![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
 
-チュートリアルを最後まで実施する時間はないが、完成済みのソリューションが必要な場合は、 [GitHub][GitHub] から完全なサンプル ソリューションを入手できます。
+チュートリアルを最後まで実施する時間はないが、完成済みのソリューションが必要な場合は、 [GitHub][GitHub] から完全なサンプル ソリューションを入手できます。 アプリケーションを実行する手順については、[Readme](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md) ファイルを参照してください。
 
-## <a name="a-nametoc395783176aprerequisites"></a><a name="_Toc395783176"></a>前提条件
+## <a name="_Toc395783176"></a>前提条件
 > [!TIP]
 > このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
 > 
@@ -58,37 +47,44 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 * アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+
+   または
+
+   [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) のローカル インストール。
 * [Node.js][Node.js] バージョン v0.10.29 以降
 * [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
-* [Git][Git]
+* [Git][Git]。
 
-## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
-最初に、DocumentDB アカウントを作成します。 既にアカウントを持っている場合は、この手順を省略して「 [手順2: 新しい Node.js アプリケーションの作成](#_Toc395783178)」に進んでください。
+## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
+最初に、DocumentDB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに DocumentDB Emulator を使用する場合は、「[手順 2: 新しい Node.js アプリケーションを作成する](#_Toc395783178)」に進むことができます。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [!INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="a-nametoc395783178astep-2-learn-to-create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
+## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
 それでは、 [Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成する方法を学習しましょう。
 
-1. お使いのターミナルを開きます。
-2. Express ジェネレーターを使用し、 **todo**という名前の新しいアプリケーションを作成します。
+1. Node.js のコマンド プロンプトなどのお好きなターミナルを開きます。
+2. 新しいアプリケーションを保存するディレクトリに移動します。
+3. Express ジェネレーターを使用し、 **todo**という名前の新しいアプリケーションを作成します。
    
         express todo
-3. 新しい **todo** ディレクトリを開き、依存関係をインストールします。
+4. 新しい **todo** ディレクトリを開き、依存関係をインストールします。
    
         cd todo
         npm install
-4. 新しいアプリケーションを実行します。
+5. 新しいアプリケーションを実行します。
    
         npm start
-5. ブラウザーで [http://localhost:3000](http://localhost:3000)に移動すると、新しいアプリケーションを表示できます。
+6. ブラウザーで [http://localhost:3000](http://localhost:3000) に移動すると、新しいアプリケーションを表示できます。
    
     ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image12.png)
 
-## <a name="a-nametoc395783179astep-3-install-additional-modules"></a><a name="_Toc395783179"></a>手順 3: 追加モジュールのインストール
-**package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、後でこのアプリケーションを Azure Websites にデプロイするときに、アプリケーションのサポートのために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルでは、追加で 2 つのパッケージをインストールする必要があります。
+    次に、アプリケーションを停止するために、ターミナル ウィンドウで Ctrl + C キーを押し、**[y]** をクリックして、バッチ ジョブを終了します。
+
+## <a name="_Toc395783179"></a>手順 3: 追加モジュールのインストール
+**package.json** ファイルは、プロジェクトのルートに作成されるファイルの&1; つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、後でこのアプリケーションを Azure Websites にデプロイするときに、アプリケーションのサポートのために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルでは、追加で&2; つのパッケージをインストールする必要があります。
 
 1. ターミナルに戻り、npm で **async** モジュールをインストールします。
    
@@ -98,15 +94,33 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
         npm install documentdb --save
 3. アプリケーションの **package.json** ファイルを簡単に確認すると、追加モジュールが表示されます。 このファイルは、アプリケーションの実行時にどのパッケージをダウンロードし、インストールする必要があるかを Azure に伝えます。 表示される内容は以下の例のようになります。
    
-    ![package.json タブのスクリーン ショット](./media/documentdb-nodejs-application/image17.png)
+        {
+          "name": "todo",
+          "version": "0.0.0",
+          "private": true,
+          "scripts": {
+            "start": "node ./bin/www"
+          },
+          "dependencies": {
+            "async": "^2.1.4",
+            "body-parser": "~1.15.2",
+            "cookie-parser": "~1.4.3",
+            "debug": "~2.2.0",
+            "documentdb": "^1.10.0",
+            "express": "~4.14.0",
+            "jade": "~1.11.0",
+            "morgan": "~1.7.0",
+            "serve-favicon": "~2.3.0"
+          }
+        }
    
     これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
 
-## <a name="a-nametoc395783180astep-4-using-the-documentdb-service-in-a-node-application"></a><a name="_Toc395783180"></a>手順 4: ノード アプリケーションでの DocumentDB サービスの使用
+## <a name="_Toc395783180"></a>手順 4: ノード アプリケーションでの DocumentDB サービスの使用
 最初の設定と構成を行った後は、いよいよ Azure DocumentDB を使ってコードを作成する作業に入ります。
 
 ### <a name="create-the-model"></a>モデルの作成
-1. プロジェクト ディレクトリ内に、 **models**という名前の新しいディレクトリを作成します。
+1. プロジェクト ディレクトリで、package.json ファイルと同じディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
 2. **models** ディレクトリ内に、**taskDao.js** という名前の新しいファイルを作成します。 このファイルには、アプリケーションで作成されるタスクのモデルが格納されます。
 3. 同じ **models** ディレクトリ内に、**docdbUtils.js** という名前の別の新しいファイルを作成します。 このファイルには、アプリケーション全体で使用する、いくつかの便利で再利用可能なコードが含まれます。 
 4. 次のコードを **docdbUtils.js**
@@ -388,16 +402,16 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 
 ### <a name="modify-appjs"></a>app.js の変更
 1. プロジェクト ディレクトリ内の **app.js** ファイルを開きます。 これは、先ほどの Express Web アプリケーション作成時に作成されたファイルです。
-2.  **app.js**
+2. **app.js** の先頭に次のコードを追加します。
    
         var DocumentDBClient = require('documentdb').DocumentClient;
         var config = require('./config');
         var TaskList = require('./routes/tasklist');
         var TaskDao = require('./models/taskDao');
 3. このコードは、使用する構成ファイルを定義し、さらにこのファイルから値を読み取り、それをこれから使用するいくつかの変数に代入します。
-4. **app.js** ファイル内にある次の 2 行を、
+4. **app.js** ファイル内にある次の&2; 行を、
    
-        app.use('/', routes);
+        app.use('/', index);
         app.use('/users', users); 
    
       次のコードに置き換えます。
@@ -416,7 +430,7 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 5. これらの行は、**TaskDao** オブジェクトの新しいインスタンスを DocumentDB への新しい接続によって定義し (**config.js** から読み取った値を使用して)、タスク オブジェクトを初期化して、その後フォーム アクションを **TaskList** コントローラー上のメソッドにバインドします。 
 6. 最後に、 **app.js** ファイルを保存して閉じると、これでほぼ完了です。
 
-## <a name="a-nametoc395783181astep-5-build-a-user-interface"></a><a name="_Toc395783181"></a>手順 5: ユーザー インターフェイスの構築
+## <a name="_Toc395783181"></a>手順 5: ユーザー インターフェイスの構築
 次に、ユーザーがアプリケーションとやり取りするためのユーザー インターフェイスを作成します。 作成した Express アプリケーションでは、ビュー エンジンとして **Jade** を使用しています。 Jade の詳細については、 [http://jade-lang.com/](http://jade-lang.com/)を参照してください。
 
 1. **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使われます。 この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使うようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。 
@@ -424,60 +438,59 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
    
         doctype html
         html
-          head
-            title= title
-            link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
-            link(rel='stylesheet', href='/stylesheets/style.css')
-          body
-            nav.navbar.navbar-inverse.navbar-fixed-top
-              div.navbar-header
-                a.navbar-brand(href='#') My Tasks
-            block content
-            script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
-            script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
+           head
+             title= title
+             link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
+             link(rel='stylesheet', href='/stylesheets/style.css')
+           body
+             nav.navbar.navbar-inverse.navbar-fixed-top
+               div.navbar-header
+                 a.navbar-brand(href='#') My Tasks
+             block content
+             script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
+             script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
 
     このコードでは、アプリケーションの特定の HTML を描画し、コンテンツ ページのレイアウトを指定するための、**content** という名前の**ブロック (block)** を作成することを **Jade** エンジンに指示しています。
     **layout.jade** ファイルを保存して閉じます。
 
-1. アプリケーションが使用するビューである **index.jade** ファイルを開き、そのファイルの中身を次のコードに置き換えます。
+3. アプリケーションが使用するビューである **index.jade** ファイルを開き、そのファイルの中身を次のコードに置き換えます。
    
         extends layout
-   
         block content
-          h1 #{title}
-          br
-   
-          form(action="/completetask", method="post")
-            table.table.table-striped.table-bordered
-              tr
-                td Name
-                td Category
-                td Date
-                td Complete
-              if (typeof tasks === "undefined")
-                tr
-                  td
-              else
-                each task in tasks
-                  tr
-                    td #{task.name}
-                    td #{task.category}
-                    - var date  = new Date(task.date);
-                    - var day   = date.getDate();
-                    - var month = date.getMonth() + 1;
-                    - var year  = date.getFullYear();
-                    td #{month + "/" + day + "/" + year}
-                    td
-                      input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
-            button.btn(type="submit") Update tasks
-          hr
-          form.well(action="/addtask", method="post")
-            label Item Name:
-            input(name="name", type="textbox")
-            label Item Category:
-            input(name="category", type="textbox")
-            br
-            button.btn(type="submit") Add item
+           h1 #{title}
+           br
+        
+           form(action="/completetask", method="post")
+             table.table.table-striped.table-bordered
+               tr
+                 td Name
+                 td Category
+                 td Date
+                 td Complete
+               if (typeof tasks === "undefined")
+                 tr
+                   td
+               else
+                 each task in tasks
+                   tr
+                     td #{task.name}
+                     td #{task.category}
+                     - var date  = new Date(task.date);
+                     - var day   = date.getDate();
+                     - var month = date.getMonth() + 1;
+                     - var year  = date.getFullYear();
+                     td #{month + "/" + day + "/" + year}
+                     td
+                       input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
+             button.btn(type="submit") Update tasks
+           hr
+           form.well(action="/addtask", method="post")
+             label Item Name:
+             input(name="name", type="textbox")
+             label Item Category:
+             input(name="category", type="textbox")
+             br
+             button.btn(type="submit") Add item
    
     これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
    
@@ -486,7 +499,7 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
     2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
    
     アプリケーションが動作するために必要なコードはこれですべてです。
-2. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
+4. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
    
         body {
           padding: 50px;
@@ -508,17 +521,23 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
    
     この **style.css** ファイルを保存して閉じます。
 
-## <a name="a-nametoc395783181astep-6-run-your-application-locally"></a><a name="_Toc395783181"></a>手順 6: ローカルでのアプリケーションの実行
-1. ローカル コンピューターでアプリケーションをテストするには、ターミナルで `npm start` を実行します。アプリケーションが開始し、ブラウザーが起動して次の画像のようなページが開きます。
+## <a name="_Toc395783181"></a>手順 6: ローカルでのアプリケーションの実行
+1. ローカル コンピューターでアプリケーションをテストするには、ターミナルで `npm start` を実行してアプリケーションを起動し、[http://localhost:3000](http://localhost:3000) ブラウザー ページを更新します。 ページは、次の画像のようになります。
    
     ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image18.png)
-2. 表示された [Item]、[Item Name]、および [Category] のフィールドを使用して情報を入力し、 **[Add Item]**をクリックします。
+
+    > [!TIP]
+    > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両方のファイルの最初の&2; 行がスペースなしで左揃えになっていることを確認してください。 最初の&2; 行の前にスペースがある場合は、そのスペースを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
+
+2. [Item]、[Item Name]、[Category] フィールドを使用して新しいタスクを入力し、**[Add Item]** をクリックします。 これらのプロパティに基づいて、DocumentDB にドキュメントが作成されます。 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
     ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image19.png)
-4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。
+4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。 既に作成したドキュメントが更新されます。
 
-## <a name="a-nametoc395783182astep-7-deploy-your-application-development-project-to-azure-websites"></a><a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
+5. アプリケーションを停止するために、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** をクリックしてバッチ ジョブを終了します。
+
+## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。 この手順については、「 [Azure App Service へのローカル Git デプロイ](../app-service-web/app-service-deploy-local-git.md) 」を参照してください。
 2. Git リモートとして Azure Web サイトを追加します。
    
@@ -528,20 +547,19 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
         git push azure master
 4. 数秒すると、Git による Web アプリケーションの発行が完了し、ブラウザーが起動します。作成したアプリケーションが Azure で動作しているようすを確認できます。
 
-## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>次のステップ
-ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
+    お疲れさまでした。 ここでは初めての方を対象に、Azure DocumentDB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
-アプリケーションの完全なソース コードを [GitHub][GitHub] からダウンロードできます。
+    このチュートリアルの完全な参照アプリケーションをダウンロードするか参照する場合は、[GitHub][GitHub] からダウンロードできます。
 
-詳細については、 [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
+## <a name="_Toc395637775"></a>次のステップ
 
-[Node.JS]: http://nodejs.org/
+* DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
+* [DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
+* [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
+* [DocumentDB のドキュメント](https://docs.microsoft.com/en-us/azure/documentdb/)を参照します。
+
+[Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
-[Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+[GitHub]: https://github.com/Azure-Samples/documentdb-node-todo-app
 
 

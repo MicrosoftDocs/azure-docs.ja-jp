@@ -1,11 +1,10 @@
 ---
-title: "Azure CLI を使用したインターネットに接続するクラシック デプロイメント モデルのロード バランサーの作成の開始 | Microsoft Docs"
+title: "インターネットに接続するロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs"
 description: "Azure CLI を使用し、インターネットに接続するクラシック デプロイメント モデルのロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
 ms.service: load-balancer
@@ -13,62 +12,73 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a346c1b2d430eceb4aa1b8bc94fbbe89394556
-
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: da3a908f17ff5c6d3923549a884ecc0a13cb8e9e
+ms.lasthandoff: 03/21/2017
 
 ---
+
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Azure CLI を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
-[!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
+
+> [!div class="op_single_selector"]
+> * [Azure クラシック ポータル](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
+> * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+> [!IMPORTANT]
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの&2; 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>CLI を使用したインターネットに接続するロード バランサーの作成手順
+
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、 **azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
-   
-        azure config mode asm
-   
+
+    ```azurecli
+    azure config mode asm
+    ```
+
     予想される出力:
-   
+
         info:    New mode is asm
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>エンドポイントとロード バランサー セットの作成
+
 このシナリオでは、仮想マシン "web1" と "web2" が作成済みであることを前提としています。
 このガイドでは、ポート 80 をパブリック ポートとして、ポート 80 をローカル ポートとして、ロード バランサー セットを作成します。 ポート 80 には、ロード バランサー セット "lbset" というプローブ ポートも構成されます。
 
 ### <a name="step-1"></a>手順 1
+
 `azure network vm endpoint create` を使用して仮想マシン "web1" 用に最初のエンドポイントとロード バランサー セットを作成します。
 
-    azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset
-
-使用されるパラメーター:
-
-**-k** - 仮想マシンのローカル ポート<br>
-**-o** - プロトコル<BR>
-**-t** - プローブ ポート<BR>
-**-b** - ロード バランサー名<BR>
+```azurecli
+azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
+```
 
 ## <a name="step-2"></a>手順 2.
-ロード バランサー セットに 2 番目の仮想マシン "web2" を追加します。
 
-    azure vm endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
+ロード バランサー セットに&2; 番目の仮想マシン "web2" を追加します。
+
+```azurecli
+azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
+```
 
 ## <a name="step-3"></a>手順 3.
+
 `azure vm show` を使用し、ロード バランサーの構成を確認します。
 
-    azure vm show web1
+```azurecli
+azure vm show web1
+```
 
 次のように出力されます。
 
@@ -115,34 +125,31 @@ ms.openlocfilehash: e8a346c1b2d430eceb4aa1b8bc94fbbe89394556
     info:    vm show command OK
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>仮想マシン用のリモート デスクトップ エンドポイントの作成
+
 `azure vm endpoint create`を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
-    azure vm endpoint create web1 54580 -k 3389
-
+```azurecli
+azure vm endpoint create web1 54580 -k 3389
+```
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>ロード バランサーからの仮想マシンの削除
+
 ロード バランサー セットに関連付けられているエンドポイントを仮想マシンから削除する必要があります。 エンドポイントを削除すると、その仮想マシンはそのロード バランサー セットには属さなくなります。
 
- 前述の例を使用して、`azure vm endpoint delete` コマンドを使用して、ロード バランサー "lbset" から仮想マシン "web1" に作成したエンドポイントを削除できます。
+前述の例を使用して、`azure vm endpoint delete` コマンドを使用して、ロード バランサー "lbset" から仮想マシン "web1" に作成したエンドポイントを削除できます。
 
-    azure vm endpoint delete web1 tcp-80-80
-
+```azurecli
+azure vm endpoint delete web1 tcp-80-80
+```
 
 > [!NOTE]
 > `azure vm endpoint --help` コマンドを使用すると、エンドポイントを管理するオプションをさらに調べることができます。
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
+
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

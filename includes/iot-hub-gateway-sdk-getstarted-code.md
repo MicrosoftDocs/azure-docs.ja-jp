@@ -53,14 +53,46 @@ int main(int argc, char** argv)
         Gateway_LL_Destroy(gateway);
     }
     return 0;
-}
+} 
 ```
 
-JSON 設定ファイルには、読み込むモジュールの一覧が含まれています。 各モジュールについて、以下を指定する必要があります。
+JSON 設定ファイルには、読み込むモジュールとモジュール間のリンクの一覧が含まれています。
+各モジュールについて、以下を指定する必要があります。
 
-* **module_name**: モジュールの一意の名前。
-* **module_path**: モジュールを含むライブラリへのパス。 Linux の場合は .so ファイル、Windows の場合は .dll ファイルです。
+* **name**: モジュールの一意の名前。
+* **loader**: 必要なモジュールを読み込む方法を認識しているローダー。  ローダーは、さまざまな種類のモジュールを読み込むための拡張ポイントです。 ネイティブ C、Node.js、Java、.NET で記述されたモジュールで使用するローダーが提供されます。 Hello World サンプルでは、このサンプル内のすべてのモジュールが C で記述されたダイナミック ライブラリであるため、"ネイティブ" ローダーのみが使用されます。各種言語で記述されたモジュールの使用の詳細については、[Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/)、[Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample)、または [.NET](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample) のサンプルを参照してください。
+    * **name**: モジュールの読み込みに使用されるローダーの名前。  
+    * **entrypoint**: モジュールを含むライブラリへのパス。 Linux の場合は .so ファイル、Windows の場合は .dll ファイルです。 このエントリ ポイントは、使用されているローダーの種類に固有であることに注意してください。 たとえば、Node.js ローダーのエントリ ポイントは.js ファイル、Java ローダーのエントリ ポイントは classpath とクラス名の組み合わせ、.NET ローダーのエントリ ポイントはアセンブリ名とクラス名の組み合わせです。
+
 * **args**: モジュールに必要な構成情報。
+
+次のコードは、Linux 上の Hello World サンプルのすべてのモジュールを宣言するための JSON を示しています。 引数が必要かどうかは、モジュールの設計によって変わります。 この例では、logger モジュールは出力ファイルへのパスを引数として受け取り、Hello World モジュールは引数を受け取りません。
+
+```
+"modules" :
+[
+    {
+        "name" : "logger",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/logger/liblogger.so"
+        }
+        },
+        "args" : {"filename":"log.txt"}
+    },
+    {
+        "name" : "hello_world",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/hello_world/libhello_world.so"
+        }
+        },
+        "args" : null
+    }
+]
+```
 
 JSON ファイルには、ブローカーに渡されるモジュール間のリンクも含まれています。 リンクには、2 つのプロパティがあります。
 
@@ -69,39 +101,20 @@ JSON ファイルには、ブローカーに渡されるモジュール間のリ
 
 各リンクにより、メッセージのルートと方向が定義されます。 モジュール `source` からのメッセージはモジュール `sink` に配信されます。 `source` は "\*" に設定することもできます。これは、モジュールからのメッセージが `sink` によって受信されることを示します。
 
-次の例は、Linux での Hello World サンプルの構成に使用される JSON 設定ファイルを示します。 モジュール `hello_world` から生成されたメッセージは、いずれもモジュール `logger` によって使用されます。 引数が必要かどうかは、モジュールの設計によって変わります。 この例では、logger モジュールは出力ファイルへのパスを引数として受け取り、Hello World モジュールは引数を受け取りません。
+次のコードは、Linux 上の Hello World サンプルで使用されているモジュール間のリンクを構成するための JSON を示しています。 モジュール `hello_world` から生成されたメッセージは、いずれもモジュール `logger` によって使用されます。
 
 ```
-{
-    "modules" :
-    [ 
-        {
-            "module name" : "logger",
-            "loading args": {
-              "module path" : "./modules/logger/liblogger_hl.so"
-            },
-            "args" : {"filename":"log.txt"}
-        },
-        {
-            "module name" : "hello_world",
-            "loading args": {
-              "module path" : "./modules/hello_world/libhello_world_hl.so"
-            },
-            "args" : null
-        }
-    ],
-    "links" :
-    [
-        {
-            "source" : "hello_world",
-            "sink" : "logger"
-        }
-    ]
-}
+"links": 
+[
+    {
+        "source": "hello_world",
+        "sink": "logger"
+    }
+]
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>Hello World モジュールでのメッセージの発行
-"hello world" モジュールでメッセージを発行するコードは、["hello_world.c"][lnk-helloworld-c] ファイル内にあります。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
+"hello world" モジュールでメッセージを発行するコードは、[hello_world.c][lnk-helloworld-c] ファイル内にあります。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
 
 ```
 int helloWorldThread(void *param)
@@ -206,8 +219,8 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 ## <a name="next-steps"></a>次のステップ
 IoT Gateway SDK の使用方法については、以下を参照してください。
 
-* [IoT ゲートウェイ SDK – Linux][lnk-gateway-simulated] を使用してシミュレートされたデバイスから D2C メッセージを送信する。
-* GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]。
+* [IoT ゲートウェイ SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated]
+* GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
@@ -216,6 +229,6 @@ IoT Gateway SDK の使用方法については、以下を参照してくださ�
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

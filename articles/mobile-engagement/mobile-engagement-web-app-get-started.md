@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
 ## <a name="setup-mobile-engagement-for-your-web-app"></a>Web アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集するために必要な最小限のセットである "基本的な統合" について説明します。
 
 統合方法を示すために Visual Studio で基本的な Web アプリを作成しますが、Visual Studio 以外で作成された Web アプリケーションを使用して手順を進めることもできます。 
@@ -65,7 +65,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
    
     ![Visual Studio with js files][1]
 
-## <a name="enable-realtime-monitoring"></a>リアルタイム監視を有効にする
+## <a name="enable-real-time-monitoring"></a>リアルタイム監視を有効にする
 データの送信を開始してユーザーがアクティブであることを確認するには、少なくとも 1 つのアクティビティを Mobile Engagement のバックエンドに送信する必要があります。 Web アプリにおけるアクティビティとは Web ページです。 
 
 1. ソリューションに **home.html** という名前の新しいページを作成し、それを Web アプリの開始ページとして設定します。 
@@ -88,7 +88,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
         </body>
         </html>
 
-## <a name="connect-app-with-realtime-monitoring"></a>リアルタイム監視を使用してアプリを接続する
+## <a name="connect-app-with-real-time-monitoring"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
   ![][2]

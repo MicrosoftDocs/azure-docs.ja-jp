@@ -1,26 +1,32 @@
----
-title: グループ ポリシーと MDM の設定 | Microsoft Docs
-description: 会社所有のデバイスで使用すべきグループ ポリシーとモバイル デバイス管理 (MDM) 設定に関する情報を提供します。 これらのポリシーはユーザーのデバイス全体に適用されます。
-services: active-directory
-keywords: Enterprise State Roaming 用のグループ ポリシーと MDM 設定とは, Enterprise State Roaming, Windows クラウド
-documentationcenter: ''
-author: femila
-manager: swadhwa
-editor: curtand
 
+---
+title: "グループ ポリシーと MDM の設定 | Microsoft Docs"
+description: "会社所有のデバイスで使用すべきグループ ポリシーとモバイル デバイス管理 (MDM) 設定に関する情報を提供します。 これらのポリシーはユーザーのデバイス全体に適用されます。"
+services: active-directory
+keywords: "Enterprise State Roaming 用のグループ ポリシーと MDM 設定とは, Enterprise State Roaming, Windows クラウド"
+documentationcenter: 
+author: tanning
+manager: femila
+editor: curtand
+ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 03/08/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 6bdec7bf35bb4a233200def36c0e697baaf15fec
+ms.openlocfilehash: 5ca48cf3cc4b2f4d86463e36c73de47e386cff25
+ms.lasthandoff: 01/05/2017
+
 
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
 ここで取り上げるグループ ポリシーとモバイル デバイス管理 (MDM) の設定は、会社所有のデバイスに使用を限定してください。これらのポリシーはユーザーのデバイス全体に適用されます。 MDM ポリシーを適用して設定の同期を無効にすると、ユーザー所有のパーソナル デバイスの使用に悪影響が生じます。 加えて、そのデバイスに存在する他のユーザー アカウントにもポリシーの影響が波及します。
 
-会社の管理下にない個人用デバイスのローミングを管理する必要がある場合は、グループ ポリシーや MDM ではなく Azure ポータルを使用して、ローミングを有効または無効にしてください。
+会社の管理下にない個人用デバイスのローミングを管理する必要がある場合は、グループ ポリシーや MDM ではなく Azure Portal を使用して、ローミングを有効または無効にしてください。
 利用可能なポリシー設定を以下の表で説明します。
 
 ## <a name="mdm-settings"></a>MDM の設定
@@ -53,7 +59,6 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 * [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-
-<!--HONumber=Oct16_HO2-->
+* [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 

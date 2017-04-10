@@ -12,26 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5c26aaea6acfab8c4c60478968e0b68543086a9d
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする **チャネル** を作成する手順について説明します。
 
 ライブ エンコード対応のチャネルに関連する概念の詳細情報については、「 [Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
@@ -46,31 +47,32 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
-この手順は、チャネルを作成した後でも実行できます。
+    この手順は、チャネルを作成した後でも実行できます。
 
-1. チャネルを作成し、起動します。
-2. チャネルの取り込み URL を取得します。
+2. チャネルを作成し、起動します。
+3. チャネルの取り込み URL を取得します。
 
-取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
+    取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
 
-1. チャネルのプレビュー URL を取得します。
+4. チャネルのプレビュー URL を取得します。
 
-この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
+    この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 
-1. 資産を作成します。
-2. 再生時に資産を動的に暗号化する場合は、次の手順を実行します。
-3. コンテンツ キーを作成します。
-4. コンテンツ キー承認ポリシーの構成
-5. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
-6. プログラムを作成し、作成した資産を使用するよう指定します。
-7. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
+5. 資産を作成します。
+6. 再生時に資産を動的に暗号化する場合は、次の手順を実行します。
+7. コンテンツ キーを作成します。
+8. コンテンツ キー承認ポリシーの構成
+9. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
+10. プログラムを作成し、作成した資産を使用するよう指定します。
+11. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
 
-コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+    >[!NOTE]
+    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。 
 
-1. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
-2. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
-3. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
-4. プログラムを削除し、資産を削除 (オプション) します。
+12. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
+13. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
+14. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
+15. プログラムを削除し、資産を削除 (オプション) します。
 
 ## <a name="what-youll-learn"></a>学習内容
 このトピックでは Media Services .NET SDK を使用したチャネルとプログラムでさまざまな操作を実行する方法を示します。 多くの操作は実行時間が長いため、長時間の操作を管理する .NET API が使用されます。
@@ -91,7 +93,7 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 * このチュートリアルを完了するには、Azure アカウントが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
 
 * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
@@ -100,7 +102,8 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 ## <a name="considerations"></a>考慮事項
 * 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
-* コンテンツをストリームするストリーミング エンドポイントに少なくとも 1 つのストリーミング予約ユニットがあることを確認します。
+* さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
 
 ## <a name="download-sample"></a>サンプルのダウンロード
 [ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
@@ -129,6 +132,7 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 
 
 ## <a name="code-example"></a>コード例
+
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -524,12 +528,5 @@ Media Services のラーニング パスを確認します。
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>他の情報をお探しですか。
-このトピックに必要な情報が含まれておらず、情報が不足している場合、またはニーズが満たされていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

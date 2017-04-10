@@ -1,12 +1,12 @@
 ---
-title: DMV を利用してワークロードを監視する | Microsoft Docs
-description: DMV を利用してワークロードを監視するについて説明します。
+title: "DMV を利用してワークロードを監視する | Microsoft Docs"
+description: "DMV を利用してワークロードを監視するについて説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6877a54f77a4c0137e4f6a8b2b2fcff41664a4b5
+
 
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
@@ -67,9 +71,9 @@ WHERE   [label] = 'My Query';
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-**中断** 状態のクエリは、同時実行の制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 同時実行の制限の詳細については、 [同時実行とワークロード管理][同時実行とワークロード管理] に関するページをご覧ください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査][リソースを待機しているクエリの調査] に関するトピックをご覧ください。
+**中断** 状態のクエリは、同時実行の制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 同時実行の制限の詳細については、[同時実行とワークロード管理][同時実行とワークロード管理] に関するページをご覧ください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査][リソースを待機しているクエリの調査] に関するトピックをご覧ください。
 
-sys.dm_pdw_exec_requests テーブルのクエリの参照を簡略化するには、[ラベル][ラベル]に関するページを参照して、sys.dm_pdw_exec_requests ビューで参照できるクエリにコメントを割り当てます。
+sys.dm_pdw_exec_requests テーブルのクエリの参照を簡略化するには、[ラベル][ラベル] に関するページを参照して、sys.dm_pdw_exec_requests ビューで参照できるクエリにコメントを割り当てます。
 
 ```sql
 -- Query with Label
@@ -169,8 +173,8 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources**になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted**になります。
 
 ## <a name="next-steps"></a>次のステップ
-DMV の詳細については、「[システム ビュー][システム ビュー]」をご覧ください。
-ベスト プラクティスの詳細について、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]に関するページをご覧ください。
+DMV の詳細については、[「システム ビュー」][システム ビュー] をご覧ください。
+ベスト プラクティスについては、 [「SQL Data Warehouse のベスト プラクティス」][SQL Data Warehouse のベスト プラクティス] をご覧ください。
 
 <!--Image references-->
 
@@ -194,6 +198,6 @@ DMV の詳細については、「[システム ビュー][システム ビュ�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

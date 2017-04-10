@@ -1,13 +1,13 @@
 ---
-title: PowerShell を使用してクラシック モードで静的プライベート IP を設定する方法 | Microsoft Docs
-description: 静的プライベート IP (DIP) とそれらをクラシック モードおよび PowerShell で管理する方法を理解します。
+title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure PowerShell | Microsoft Docs"
+description: "PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,23 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 5da2992fad89a703086b7645c88f6d8e1a39e4b3
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# PowerShell での静的プライベート IP アドレス (クラシック) の設定方法
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-arm-ps.md)こともできます。
+この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-arm-ps.md)こともできます。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-以下のサンプル PowerShell コマンドでは、単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[VNet の作成](virtual-networks-create-vnet-classic-netcfg-ps.md)に関する記事に示されているテスト環境を構築します。
+以下のサンプル PowerShell コマンドでは、単純な環境が既に作成されていると想定します。 このドキュメントに表示されているコマンドを実行する場合は、まず、 [VNet の作成](virtual-networks-create-vnet-classic-netcfg-ps.md)に関する記事に示されているテスト環境を構築します。
 
-## 特定の IP アドレスが使用可能であるかを確認する方法
-IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能かどうかを確認するには、次の PowerShell コマンドを実行して、*IsAvailable* の値を確認します。
+## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>特定の IP アドレスが使用可能であるかを確認する方法
+IP アドレス *192.168.1.101* が *TestVnet* という VNet で使用可能かどうかを確認するには、次の PowerShell コマンドを実行して、*IsAvailable* の値を確認します。
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -43,7 +50,7 @@ IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能か
     OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
     OperationStatus      : Succeeded
 
-## VM 作成時に静的プライベート IP アドレスを指定する方法
+## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する方法
 以下の PowerShell スクリプトによって *TestService* という新しいクラウド サービスが作成され、Azure からイメージが取得されます。次に、その取得されたイメージを使用して *DNS01* という VM が新しいクラウド サービス内に作成され、その VM は *FrontEnd* というサブネットに含まれるように設定され、VM の静的プライベート IP アドレスとして *192.168.1.7* が設定されます。
 
     New-AzureService -ServiceName TestService -Location "Central US"
@@ -62,8 +69,8 @@ IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能か
     New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
-## VM 用の静的プライベート IP アドレス情報を取得する方法
-上記のスクリプトで作成した VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、*IpAddress* の値を確認します。
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
+上記のスクリプトで作成した VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、 *IpAddress*の値を確認します。
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -96,7 +103,7 @@ IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能か
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## VM から静的プライベート IP アドレスを削除する方法
+## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する方法
 上記のスクリプトで VM に追加された静的プライベート IP アドレスを削除するには、次の PowerShell コマンドを実行します。
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
@@ -109,7 +116,7 @@ IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能か
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## 既存の VM に静的プライベート IP アドレスを追加する方法
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
 上記のスクリプトを使用して作成した VM に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
@@ -122,9 +129,9 @@ IP アドレス *192.168.1.101* が *TestVNet* という VNet で使用可能か
     -------------------- -----------                          ---------------
     Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
+* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
 
-<!---HONumber=AcomDC_0817_2016-->
+

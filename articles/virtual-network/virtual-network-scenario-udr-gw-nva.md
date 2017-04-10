@@ -1,12 +1,12 @@
 ---
-title: 2 層アプリケーションを使用するハイブリッド接続 | Microsoft Docs
-description: 仮想アプライアンスと UDR をデプロイして Azure 内に多層アプリケーション環境を作成する方法について説明します。
+title: "2 層アプリケーションを使用するハイブリッド接続 |Microsoft Docs"
+description: "仮想アプライアンスと UDR をデプロイして Azure 内に多層アプリケーション環境を作成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
+
 
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
@@ -65,7 +69,7 @@ ms.author: jdial
   * **AZF2**。 **azsn2** と **azsn3** 間のトラフィックを制御するために使用される内部ファイアウォール。 これも 3-NIC 仮想アプライアンスです。
   * **AZF3**。 管理者がオンプレミス データセンターからアクセスでき、すべてのファイアウォール アプライアンスを管理するために使用される管理サブネットに接続されている管理ファイアウォール。 2-NIC 仮想アプライアンスのテンプレートを Marketplace で探すか、アプライアンス ベンダーに直接要求できます。
 
-## <a name="user-defined-routing-(udr)"></a>ユーザー定義ルーティング (UDR)
+## <a name="user-defined-routing-udr"></a>ユーザー定義ルーティング (UDR)
 Azure の各サブネットは、そのサブネットで開始されたトラフィックをどのようにルーティングするかを定義するために使用される UDR テーブルにリンクすることができます。 UDR が定義されていない場合、Azure では、既定のルートを使用してあるサブネットから別のサブネットにトラフィックが送信されることを許可します。 UDR の理解を深めるには、「 [ユーザー定義ルートと IP 転送](virtual-networks-udr-overview.md#ip-forwarding)」をご覧ください。
 
 上記の要件に基づいて、適切なファイアウォール アプライアンスを経由して通信が行われることを保証するには、UDR を含む次のルート テーブルを **azurevnet**内に作成する必要があります。
@@ -143,7 +147,7 @@ AZF2 は、次のルールを含む Azure の仮想アプライアンスを表�
 * **ルート**: 10.0.0.0/16 (**onpremvnet**) へのすべてのトラフィックを、**port1** 経由で Azure ゲートウェイ IP アドレス (つまり、10.0.0.1) に送信する必要があります。
 * **ポリシー**: **port1** と **port2** 間のすべての双方向トラフィックを許可します。
 
-## <a name="network-security-groups-(nsgs)"></a>ネットワーク セキュリティ グループ (NSG)
+## <a name="network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG)
 ここで説明しているシナリオでは、NSG は使用されていません。 ただし、各サブネットに NSG を適用して、受信トラフィックと送信トラフィックを制限できます。 たとえば、次の NSG ルールを外部 FW サブネットに適用できます。
 
 **受信**
@@ -164,6 +168,9 @@ AZF2 は、次のルールを含む Azure の仮想アプライアンスを表�
 4. **onpremvnet** から **azurevnet** へのトンネルをプロビジョニングします。
 5. すべてのリソースがプロビジョニングされた後、**onpremvm2** にログオンし、10.0.3.101 への ping を実行して、**onpremsn2** と **azsn3** 間の接続をテストします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

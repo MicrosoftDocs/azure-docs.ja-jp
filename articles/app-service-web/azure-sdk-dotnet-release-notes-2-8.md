@@ -1,35 +1,37 @@
-
 ---
-title: Azure SDK for .NET 2.8 リリース ノート
-description: Azure SDK for .NET 2.8 リリース ノート
+title: "Azure SDK for .NET 2.8 リリース ノート"
+description: "Azure SDK for .NET 2.8 リリース ノート"
 services: app-service\web
 documentationcenter: .net
-author: Juliako
-manager: erikre
-editor: ''
-
+author: chrissfanos
+editor: 
+ms.assetid: de7207ff-ba4f-4008-9141-8742fcaa3254
 ms.service: app-service
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/17/2016
+ms.date: 02/24/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 81772fb5801ec620d1c1996509a275e4bb29fb12
+
 
 ---
-# <a name="azure-sdk-for-.net-2.8,-2.8.1-and-2.8.2"></a>Azure SDK for .NET 2.8、2.8.1、2.8.2
+# <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1、2.8.2
 ## <a name="overview"></a>概要
 この記事には、Azure SDK for .NET 2.8、2.8.1、2.8.2 リリースのリリース ノート (既知の問題と重大な変更を含む) が記載されています。 
 
 このリリースの新機能とこのリリースで行われた更新の一覧については、 [Visual Studio 2013 および Visual Studio 2015 用 Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) の発表に関するブログ記事をご覧ください。 
 
-## <a name="azure-sdk-for-.net-2.8"></a>Azure SDK for .NET 2.8
-### <a name="download-azure-sdk-for-.net-2.8"></a>Azure SDK for .NET 2.8 のダウンロード
+## <a name="azure-sdk-for-net-28"></a>Azure SDK for .NET 2.8
+### <a name="download-azure-sdk-for-net-28"></a>Azure SDK for .NET 2.8 のダウンロード
 [Visual Studio 2015 用 Azure SDK for .NET 2.8](http://go.microsoft.com/fwlink/?LinkId=699285) 
 
 [Visual Studio 2013 用 Azure SDK for .NET 2.8](http://go.microsoft.com/fwlink/?LinkId=699287)
 
-### <a name=".net-4.5.2-support"></a>.NET 4.5.2 のサポート
+### <a name="net-452-support"></a>.NET 4.5.2 のサポート
 #### <a name="known-issues"></a>既知の問題
 Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージを作成できます。 ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。 それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。 イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」ページをご覧ください。  November 2015-02 イメージがリリースされたら、クラウド サービス構成ファイル (.cscfg) を更新することでこのイメージを使用できます。 このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26_201511-02" という文字列に設定します。 このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。 自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります。.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
 
@@ -61,13 +63,13 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 
 詳細については、 [Visual Studio 2013 および Visual Studio 2015 用 Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)に関するブログ記事をご覧ください。 
 
-## <a name="azure-sdk-for-.net-2.8.1"></a>Azure SDK for .NET 2.8.1
+## <a name="azure-sdk-for-net-281"></a>Azure SDK for .NET 2.8.1
 ### <a name="known-issues-for-visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 および Visual Studio 2015 の既知の問題
 1. スロットへの WebJob 発行がトリガーされると、エラーが発生し、スケジュールは設定されませんが、WebJob が Azure にプッシュされます。 スケジュールされたジョブを必要としているお客様は、Azure ポータルを使用して WebJob のスケジュールを設定できます。 
 2. Python のお客様には、デバッガーの問題が発生することがあります。 サービス チームがこの修正プログラムのロールアウトを進めていますが、影響を受けたお客様は、フォーラム、またはお知らせブログかリリース ノートのコメント セクションでマイクロソフトにお知らせください。 
 3. 一部のリージョン (インド南部など) のお客様には、App Service のプロビジョニング エラーが発生します。 これはポータルと一致しており、この問題が発生したお客様は、Azure ポータルを使用してこれらの geo リージョンに発行するためのアクセスを要求できます。 これらのリージョンへのアクセスを要求したら、Azure ポータルのプロビジョニングが機能するようになります。 
 
-## <a name="azure-sdk-for-.net-2.8.2"></a>Azure SDK for .NET 2.8.2
+## <a name="azure-sdk-for-net-282"></a>Azure SDK for .NET 2.8.2
 2.8.2 のツールのインストール後、次のような問題が発生する場合があります。         
 
 * Windows 10 を使用していて、Internet Explorer をインストールしていない場合は、"Internet Explorer が見つかりませんでした" というエラーが表示されます。
@@ -85,6 +87,9 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,33 +1,50 @@
 ---
-title: Spark で構築した機械学習モデルのスコア付け | Microsoft Docs
-description: Azure Blob Storage (WASB) に保存されている学習モデルをスコア付けする方法です。
+title: "Spark で構築した機械学習モデルの操作 | Microsoft Docs"
+description: "Python を使用して、Azure Blob Storage (WASB) に保存されている学習モデルを読み込み、スコア付けする方法を説明します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 626305a2-0abf-4642-afb0-dad0f6bd24e9
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# <a name="score-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルのスコア付け
+# <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-このトピックでは、Spark MLlib を使用して構築され、Azure Blob ストレージ (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、やはり WASB に保存されているデータセットを使用してその機械学習モデルをスコア付けする方法を説明します。 入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。 スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
+このトピックでは、HDInsight Spark クラスターで Python 使用して、保存済みの機械学習 (ML) モデルを操作する方法を説明します。 Spark MLlib を使用して構築され、Azure Blob Storage (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、WASB に保存されているデータセットを使用して、それらの機械学習モデルをスコア付けする方法を説明します。 入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。 スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
+
+## <a name="spark-clusters-and-jupyter-notebooks"></a>Spark クラスターと Jupyter Notebook
+このチュートリアルで説明するセットアップ手順と ML モデルを操作するコードは、HDInsight Spark 1.6 クラスターおよび Spark 2.0 クラスター向けです。 これらの手順のコードは、Jupyter Notebook でも提供されます。
+
+### <a name="notebook-for-spark-16"></a>Spark 1.6 向け Notebook
+[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter Notebook では、HDInsight クラスターで Python を使用して、保存済みのモデルを操作する方法を示します。 
+
+### <a name="notebook-for-spark-20"></a>Spark 2.0 向け Notebook
+Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラスターで使用するには、Python コード ファイルを[こちらのファイル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)に置き換えます。 このコードは、Spark 2.0 で作成されたモデルを使用する方法を示しています。
+
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure アカウントと HDInsight Spark が必要となります。このチュートリアルを実行するには HDInsight 3.4 Spark 1.6 クラスターが必要です。 これらの要件を満たすための方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」をご覧ください。 このトピックには、ここで使用する 2013 年 NYC タクシー データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法の説明も含まれています。 このトピックのコード サンプルが含まれた **pySpark-machine-learning-data-science-spark-model-consumption.ipynb** ノートブックは、[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
-2. ここでスコア付けする機械学習モデルは、「 [Spark を使用したデータ探索とモデリング](machine-learning-data-science-spark-data-exploration-modeling.md) 」のチュートリアルでも作成できます。   
+
+1. このチュートリアルを実行するには、Azure アカウントと、Spark 1.6 (または Spark 2.0) HDInsight クラスターが必要です。 これらの要件を満たすための方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」をご覧ください。 このトピックには、ここで使用する 2013 年 NYC タクシー データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法の説明も含まれています。 
+2. ここでスコア付けする機械学習モデルは、Spark 1.6 クラスターまたは Spark 2.0 ノートブックでの「[Spark を使用したデータ探索とモデリング](machine-learning-data-science-spark-data-exploration-modeling.md)」のチュートリアルでも作成できます。 
+3. Spark 2.0 Notebook では、分類タスクに追加のデータセット (よく知られている 2011 ～ 2012 年の航空会社の定刻出発のデータセット) を使用します。 ノートブックの説明およびノートブックへのリンクは、ノートブックが含まれる GitHub リポジトリの [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 内にあります。 また、このページとリンク先のノートブックに記載しているコードは汎用性があり、どの Spark クラスターでも動作します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、そこに保存されている既存データはすべて Spark を使って処理でき、結果も再び WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 *"wasb///"*で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
@@ -174,7 +191,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ## <a name="prepare-data-for-scoring-in-spark"></a>Spark でスコア付けを行うためのデータの準備
 このセクションでは、カテゴリの特徴のインデックスを作成し、エンコードし、スケーリングして、MLlib 監視学習アルゴリズムで分類と回帰分析に使用できるように準備する方法を説明します。
 
-### <a name="feature-transformation:-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特徴の変換: カテゴリの特徴のインデックスを作成してエンコードし、モデルに入力してスコア付けできるようにする
+### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特徴の変換: カテゴリの特徴のインデックスを作成してエンコードし、モデルに入力してスコア付けできるようにする
 このセクションでは、`StringIndexer` を使用してカテゴリ データのインデックスを作成し、`OneHotEncoder` 入力を使って特徴をモデルにエンコードする方法について説明します。
 
 [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) によって、ラベルの文字列型の列をラベル インデックスの列にエンコードします。 インデックスの順序は、ラベルの頻度順になります。 
@@ -393,7 +410,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
     # RECORD START TIME
     timestart = datetime.datetime.now()
 
-    #IMPORT MLLIB LIBRARIES 
+    #IMPORT MLLIB LIBRARIES    
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
@@ -511,7 +528,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Web インターフェイス経由での Spark モデルの利用
-Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、 [Livy を使用した Spark ジョブのリモート送信](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)に関するページを参照してください。 
+Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 
 
 Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。 それには、  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。 **Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。 この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。   
@@ -571,11 +588,9 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 * ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
 * HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 
-![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
+![Logic Apps デザイナー](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="what's-next?"></a>次の手順
+## <a name="whats-next"></a>次の手順
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) 」をご覧ください。
-
-<!--HONumber=Oct16_HO2-->
 
 

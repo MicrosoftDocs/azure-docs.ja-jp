@@ -17,6 +17,6 @@ SKU の選択にあたっては、以下の事項を考慮してください。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

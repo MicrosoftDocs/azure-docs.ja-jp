@@ -1,12 +1,12 @@
 ---
-title: Log Analytics データを Power BI にエクスポートする | Microsoft Docs
-description: Power BI は、さまざまなデータのセットの分析のために豊富な視覚エフェクトとレポートを提供するマイクロソフトのクラウド ベースのビジネス分析サービスです。  Log Analytics は、その視覚エフェクトと分析ツールを活用できるように、OMS リポジトリから Power BI へのデータを継続的にエクスポートできます。  この記事では、一定の間隔で Power BI に自動的にエクスポートする Log Analytics でのクエリの構成方法について説明します。
+title: "Log Analytics データを Power BI にエクスポートする | Microsoft Docs"
+description: "Power BI は、さまざまなデータのセットの分析のために豊富な視覚エフェクトとレポートを提供するマイクロソフトのクラウド ベースのビジネス分析サービスです。  Log Analytics は、その視覚エフェクトと分析ツールを活用できるように、OMS リポジトリから Power BI へのデータを継続的にエクスポートできます。  この記事では、一定の間隔で Power BI に自動的にエクスポートする Log Analytics でのクエリの構成方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7870e2aebf6c142b0f3103a500ca73d691e6d3e6
+
 
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>Log Analytics データを Power BI にエクスポートする
@@ -114,6 +118,9 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 * [ログ検索](log-analytics-log-searches.md) について学習し、Power BI にエクスポートできるクエリを作成します。
 * [Power BI](http://powerbi.microsoft.com) について詳しく学習し、Log Analytics のエクスポートに基づく視覚エフェクトを作成します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

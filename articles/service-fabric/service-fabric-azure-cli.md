@@ -1,19 +1,24 @@
 ---
-title: CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Docs
-description: Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法
+title: "CLI を使用した Service Fabric クラスターの対話操作 | Microsoft Docs"
+description: "Azure CLI を使用して Service Fabric クラスターの対話操作を実行する方法"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3ec8ff3-3b78-420c-a7ea-0c5e443fb10e
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2016
+ms.date: 03/02/2017
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
+ms.openlocfilehash: d61b7a9c8199b15c8bb24e7146ea93a2f67fb0a7
+ms.lasthandoff: 01/05/2017
+
 
 ---
 # <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Azure CLI を使用した Service Fabric クラスターの対話操作
@@ -77,7 +82,8 @@ PublicIPorFQDN タグは、必要に応じて、実際の IP または FQDN に�
 
 Azure Portal を使用して作成した Linux Service Fabric クラスターの対話操作には、PowerShell または CLI を使用できます。 
 
-**注意:** これらのクラスターはセキュリティで保護されていないため、クラスター マニフェストにパブリック IP アドレスを追加すると、ワンボックスを開いている可能性があります。
+> [!WARNING]
+> これらのクラスターはセキュリティで保護されていないため、クラスター マニフェストにパブリック IP アドレスを追加すると、ワンボックスを開いている可能性があります。
 
 ## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>Azure CLI を使用した Service Fabric クラスターへの接続
 セキュリティで保護されたクラスターに接続する方法を以下の Azure CLI コマンドで説明します。 証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。
@@ -93,16 +99,16 @@ azure servicefabric cluster connect --connection-endpoint http://ip:19080 --clie
 ```
 複数の CA がある場合は、区切り記号としてコンマを使用します。
 
-証明書の共通名が接続エンドポイントと一致しない場合は、次のコマンドに示すように、 `--strict-ssl` パラメーターを使用して検証を回避することができます。 
+証明書の共通名が接続エンドポイントと一致しない場合は、次のコマンドに示すように、 `--strict-ssl-false` パラメーターを使用して検証を回避することができます。 
 
 ```
-azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl false 
+azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
-CA 検証を省略したい場合は、次のコマンドに示すように、--reject-unauthorized パラメーターを追加します。 
+CA 検証を省略したい場合は、次のコマンドに示すように、--reject-unauthorized-false パラメーターを追加します。 
 
 ```
-azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized false 
+azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
 接続後、他の CLI コマンドを実行してクラスターの対話操作を実行することができます。 
@@ -145,6 +151,25 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 SFX を使用してアプリケーションのアップグレードを監視できるようになりました。 数分で、アプリケーションが更新されました。  更新されたアプリケーションをエラーで試し、Service Fabric の自動ロールバック機能を確認することもできます。
 
+## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>PFX から PEM または PEM から PFX への変換
+
+別の環境に存在する可能性のあるセキュリティで保護されたクラスターにアクセスするために、ローカル コンピューター (Windows または Linux) に証明書をインストールすることが必要な場合があります。 たとえば、Windows コンピューターからセキュリティで保護された Linux クラスターへのアクセスまたはその逆方向のアクセスを行うときに、PFX から PEM または PEM から PFX に証明書を変換することが必要な場合があります。 
+
+PEM ファイルから PFX ファイルに変換するには、次のコマンドを使用します。
+
+```bash
+openssl pkcs12 -export -out certificate.pfx -inkey mycert.pem -in mycert.pem -certfile mycert.pem
+```
+
+PFX ファイルから PEM ファイルに変換するには、次のコマンドを使用します。
+
+```bash
+openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
+```
+
+詳細については、[OpenSSL のドキュメント](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html)を参照してください。
+
+<a id="troubleshooting"></a>
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>アプリケーション パッケージのコピーが失敗する
 `openssh` がインストールされているかどうかを確認してください。 既定では、Ubuntu Desktop にこれがインストールされていません。 次のコマンドを使用してインストールします。
@@ -172,9 +197,9 @@ SFX を使用してアプリケーションのアップグレードを監視で�
 ```
 (パスワードとは対照的に) SSH 認証のキーの使用はまだサポートされていません (プラットフォームではパッケージのコピーに SSH を使用しているため)。そのため、代わりにパスワード認証を使用してください。
 
+
+
 ## <a name="next-steps"></a>次のステップ
 開発環境を設定し、Linux クラスターに Service Fabric アプリケーションをデプロイします。
-
-<!--HONumber=Oct16_HO2-->
 
 

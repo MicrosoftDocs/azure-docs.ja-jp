@@ -1,13 +1,27 @@
 ---
+title: "Azure IoT Hub のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントを提供します。"
+services: iot-hub
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-hub
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5ea8b5b5fb99fa65a1efd0eeff48af2e39346c
-ms.openlocfilehash: 7e3e54511ef1205d04eef1820a3e20f480386ed1
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e2a0b62ff9eb5e1f8941b4e1f9def7ab9454ce67
+ms.lasthandoff: 04/03/2017
 
 ---
-#<a name="iot-hub-documentation"></a>IoT Hub のドキュメント
 
-Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。  また、デバイス接続の詳細な監視を実現し、よく使われる言語とプラットフォーム向けのデバイス ライブラリが含まれています。 
+# <a name="iot-hub-documentation"></a>IoT Hub のドキュメント
+
+IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントでは、IoT デバイスとソリューション バック エンド間に信頼性のある双方向通信をデプロイする方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -103,32 +117,56 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 </ul>
 
 ---
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/cli/azure/iot">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.devices">.NET (サービス)</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (デバイス)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (サービス)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (デバイス)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.8/index.html">Node (サービス)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.8/index.html">Node (デバイス)</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-gateway-sdk">Gateway SDK</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/iothub/iothubresource">REST (リソース プロバイダー)</a></p>
+                        <p><a href="/rest/api/iothub/deviceapi">REST (デバイス ID)</a></p>
+                        <p><a href="/rest/api/iothub/httpruntime">REST (デバイス メッセージング)</a></p>
+                        <p><a href="/rest/api/iothub/jobapi">REST (ジョブ)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>リファレンス
-
-###<a name="azure-cli"></a>Azure CLI 
-[IoT HuB と Azure CLI](/cli/azure/iot)  
-
-###<a name="net"></a>.NET 
-[.NET に関する管理リファレンス API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Java SDK リファレンス](/java/api/) 
-
-###<a name="rest"></a>REST () 
-[IoT HuB REST API リファレンス](/rest/api/iothub) 
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
-        <div class="img"></div>
-        <div class="text">
-IoT Hub のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

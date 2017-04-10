@@ -1,9 +1,9 @@
 
-1. ソリューション ビュー (または Visual Studio の**ソリューション エクスプローラー**) で、**[Components]** フォルダーを右クリックして **[コンポーネントの取得]** をクリックし、**[Google Cloud Messaging Client]** コンポーネントを検索して、それをプロジェクトに追加します。
+1. ソリューション ビュー (または Visual Studio の**ソリューション エクスプローラー**) で、**[Components]** フォルダーを右クリックして **[コンポーネントをさらに取得する...]** をクリックし、**[Google Cloud Messaging Client]** コンポーネントを検索して、それをプロジェクトに追加します。
 2. ToDoActivity.cs プロジェクト ファイルを開き、次の using ステートメントをクラスに追加します。
    
         using Gcm.Client;
-3. **ToDoActivity** クラスに、次の新しいメソッドを追加します。
+3. **ToDoActivity** クラスに、次の新しいメソッドを追加します。 
    
         // Create a new instance field for this activity.
         static ToDoActivity instance = new ToDoActivity();
@@ -32,12 +32,15 @@
      instance = this;
    
      // Make sure the GCM client is set up correctly.
-     GcmClient.CheckDevice(this);
-     GcmClient.CheckManifest(this);
+     GcmClient.CheckDevice(this); GcmClient.CheckManifest(this);
    
      // Register the app for push notifications.
      GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
-これで、**ToDoActivity** は、プッシュ通知を追加するための準備が整いました。
+これで、 **ToDoActivity** は、プッシュ通知を追加するための準備が整いました。
 
-<!---HONumber=AcomDC_1203_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

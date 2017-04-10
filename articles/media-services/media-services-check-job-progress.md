@@ -1,12 +1,12 @@
 ---
-title: .NET を使用したジョブの進行状況の監視
-description: イベント ハンドラー コードを使用してジョブの進行状況をチェックし、ステータス更新を送信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+title: ".NET を使用したジョブの進行状況の監視"
+description: "イベント ハンドラー コードを使用してジョブの進行状況をチェックし、ステータス更新を送信する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1420c9dbaba1767526fa86a27aacb4fa3b2e2fe0
+
 
 ---
-# .NET を使用したジョブの進行状況の監視
+# <a name="monitor-job-progress-using-net"></a>.NET を使用したジョブの進行状況の監視
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -24,10 +28,10 @@ ms.author: juliako
 > 
 > 
 
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。進行状況は StateChanged イベント ハンドラーを定義する (このトピックで説明) か、Azure キュー ストレージを使用して Media Services ジョブ通知を監視する ([この](media-services-dotnet-check-job-progress-with-queues.md)トピックで説明) ことにより確認できます。
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 進行状況は StateChanged イベント ハンドラーを定義する (このトピックで説明) か、Azure キュー ストレージを使用して Media Services ジョブ通知を監視する ( [この](media-services-dotnet-check-job-progress-with-queues.md) トピックで説明) ことにより確認できます。
 
-## StateChanged イベント ハンドラーを定義してジョブの進行状況を監視する
-次のコード例では、StateChanged イベント ハンドラーを定義しています。このイベント ハンドラーはジョブの進行状況を追跡し、状態によってステータスを更新します。このコードでは、LogJobStop メソッドも定義しています。このヘルパー メソッドは、エラー詳細のログ記録を行います。
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>StateChanged イベント ハンドラーを定義してジョブの進行状況を監視する
+次のコード例では、StateChanged イベント ハンドラーを定義しています。 このイベント ハンドラーはジョブの進行状況を追跡し、状態によってステータスを更新します。 このコードでは、LogJobStop メソッドも定義しています。 このヘルパー メソッドは、エラー詳細のログ記録を行います。
 
     private static void StateChanged(object sender, JobStateChangedEventArgs e)
     {
@@ -106,12 +110,17 @@ ms.author: juliako
 
 
 
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

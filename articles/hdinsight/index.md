@@ -1,13 +1,26 @@
 ---
+title: "Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、HBase、R-Server などを使用して、ビッグ データを処理、分析し、洞察を得る方法について説明します。"
+services: hdinsight
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: hdinsight
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5f6156de634d3e32dd848518d4433a5d2e4b5c
-ms.openlocfilehash: 050d31a70a7dddff1f840235002f9b233dee9059
+ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
+ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
 
 ---
+
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
 
-Azure HDInsight は、クラウドによって機能強化された Apache Hadoop ディストリビューションです。  Azure HDInsight は、Hortonworks Data Platform (HDP) ディストリビューションの Hadoop コンポーネントをクラウドで使用できるようにし、信頼性と可用性を備えた管理されたクラスターをデプロイしてプロビジョニングします。  Azure HDInsight には、Apache Hadoop、Spark、HBase、Storm のクラスター構成が用意されています。  また、スクリプト アクションを使用してカスタム クラスターを使用することもできます。  
+HDInsight のクラウドで Hadoop を使用して、ストリーミング データや履歴データを分析する方法について説明します。 チュートリアルなどのドキュメントでは、クラスターの作成、ビッグ データの処理と分析、Hadoop エコシステムでの Hadoop、Spark、HBase、R-Server、Storm などのテクノロジによるソリューションの開発を行う方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -122,29 +135,54 @@ Azure HDInsight は、クラウドによって機能強化された Apache Hadoo
 </ul>
 
 ---
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt271028.aspx">.NET (Hadoop)</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>
+                        <p><a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library">.NET (Avro)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/hdinsight/">REST API</a></p>
+                        <p><a href="/rest/api/hdinsightspark/">REST API (Spark)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>リファレンス
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-###<a name="rest"></a>REST ()
-[HDInsight REST API リファレンス](/rest/api/hdinsight)
-[Spark for HDInsight REST API リファレンス](/rest/api/hdinsightspark)
-
-###<a name="net"></a>.NET
-[HDInsight に関する管理リファレンス](https://msdn.microsoft.com/library/azure/mt271028)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
-        <div class="img"></div>
-        <div class="text">
-HDInsight のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

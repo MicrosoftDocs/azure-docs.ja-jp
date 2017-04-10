@@ -2,25 +2,40 @@
 title: Tools and PaaS services for Azure Stack | Microsoft Docs
 description: Learn how to get started with PaaS services in Azure Stack.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: ErikjeMS
 manager: byronr
-editor: ''
-
+editor: 
+ms.assetid: 2ce8d7e3-bc5d-4d61-8ab8-e8f61df40675
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/16/2016
 ms.author: erikje
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1b751162631611f43841019d7c3f0af8aa3373c0
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# <a name="tools-for-azure-stack"></a>Tools for Azure Stack
-You can download the tools described below. If you want to be notified of new services and tools, follow #AzureStack on Twitter.
+# <a name="tools-and-paas-services-for-azure-stack"></a>Tools and PaaS services for Azure Stack
+
+You can deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack from Microsoft and other 3rd party providers. You can also download the tools described below. If you want to be notified of new services and tools, follow #AzureStack on Twitter.
+
+## <a name="paas-services"></a>PaaS services
+
+[Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+
+[Add a SQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+
+[Add a MySQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
+
 
 ## <a name="template-tools"></a>Template tools
-### <a name="azure-stack-github-templates"></a>Azure Stack Github templates
+### <a name="azure-stack-github-templates"></a>Azure Stack GitHub templates
 Explore the growing collection of [Azure Stack GitHub Templates](https://github.com/Azure/AzureStack-QuickStart-Templates). Just like [Azure](https://github.com/Azure/azure-quickstart-templates), these “Quick Start” Azure Resource Manager templates aim to get you started with simple building blocks and examples, ready to deploy on the Microsoft Azure Stack Technical Preview Proof of Concept Environment. Included are first party workload examples for [ad-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha), [sql-2014-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha), [sharepoint-2013-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha), as well as several simple 101 templates like [101-simple-windows-vm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm).
 
 ### <a name="marketplace-item-packaging-tool-and-sample"></a>Marketplace item packaging tool and sample
@@ -54,11 +69,9 @@ Quickly install the Azure Command-Line Interface (Azure CLI) to use a set of ope
 [Download the Linux CLI](http://aka.ms/azstack-mac-cli)
 
 > [!NOTE]
-> * If you’re on a Mac or Linux machine, you can also get the CLI by using the command `npm install -g azure-cli@0.9.11`</br>
+> * If you’re on a Mac or Linux machine, you can also get the CLI by using the command `npm install -g azure-cli@0.10.4`</br>
 > * If you're getting certificate validation issues, run the command `set NODE_TLS_REJECT_UNAUTHORIZED=0`
 > 
 > 
-
-<!--HONumber=Oct16_HO2-->
 
 

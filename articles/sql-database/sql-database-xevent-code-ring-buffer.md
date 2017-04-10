@@ -1,62 +1,71 @@
 ---
-title: SQL Database の XEvent リング バッファー コード | Microsoft Docs
-description: Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。
+title: "SQL Database の XEvent リング バッファー コード | Microsoft Docs"
+description: "Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2510fb3f-c8f2-437a-8f49-9d5f6c96e75b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/03/2017
 ms.author: genemi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
+
 
 ---
-# SQL Database での拡張イベント向けリング バッファー ターゲット コード
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。拡張イベントのデータの最も簡単なターゲットは、[リング バッファー ターゲット](http://msdn.microsoft.com/library/ff878182.aspx)です。
+テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](http://msdn.microsoft.com/library/ff878182.aspx)です。
 
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
 1. 表示させるデータでテーブルを作成する。
-2. 既存の拡張イベントのセッション (つまり **sqlserver.sql\_statement\_starting**) を作成する。
+2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting**) を作成する。
    
    * イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’**。
-   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring\_buffer**) に送信するよう選択できる。
+   * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer**) に送信するよう選択できる。
 3. イベント セッションを開始する。
 4. 単純な SQL UPDATE ステートメントをいくつか発行する。
 5. リング バッファーからイベント出力を取得する SQL SELECT を発行する。
    
-   * **sys.dm\_xe\_database\_session\_targets** と他の動的管理ビュー (DMV) を結合する。
+   * **sys.dm_xe_database_session_targets** と他の動的管理ビュー (DMV) を結合する。
 6. イベント セッションを停止する。
 7. リング バッファー ターゲットを削除して、そのリソースを解放する。
 8. イベント セッションとデモ テーブルを削除する。
 
-## 前提条件
-* Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+## <a name="prerequisites"></a>前提条件
+
+* Azure アカウントとサブスクリプション。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * テーブルを作成できるデータベース。
   
-  * 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成できる](sql-database-get-started.md)。
-* SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。最新の ssms.exe をダウンロードすることができる。
+  * 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成](sql-database-get-started.md)できる。
+* SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。 
+  最新の ssms.exe をダウンロードすることができる。
   
-  * 「[SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * 「 [SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
   * [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
 
-## サンプル コード
-わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「\_database」というノード名があることです。次に例を示します。
+## <a name="code-sample"></a>サンプル コード
 
-* sys.dm\_xe**\_database**\_session\_targets
-* sys.dm\_xe\_session\_targets
+わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 次に例を示します。
+
+* sys.dm_xe**_database**_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 
-```
+```tsql
 GO
 ----  Transact-SQL.
 ---- Step set 1.
@@ -209,14 +218,15 @@ GO
 
 &nbsp;
 
-## リング バッファーの内容
+## <a name="ring-buffer-contents"></a>リング バッファーの内容
+
 ここでは、ssms.exe を使用してコード サンプルを実行しました。
 
-結果を表示するために、列ヘッダー **target\_data\_XML** の下のセルをクリックしました。
+結果を表示するために、列ヘッダー **target_data_XML** の下のセルをクリックしました。
 
-結果ウィンドウで、列ヘッダー **target\_data\_XML** の下のセルをクリックしました。これにより、ssms.exe にもう 1 つのファイル タブが作成され、結果のセルの内容が XML として表示されました。
+結果ウィンドウで、列ヘッダー **target_data_XML** の下のセルをクリックしました。 これにより、ssms.exe にもう 1 つのファイル タブが作成され、結果のセルの内容が XML として表示されました。
 
-出力は、次のブロックに示されています。ここに含まれるのは、2 つの **<event>** 要素です。
+出力は、次のブロックに示されています。 ここに含まれるのは、2 つの **<event>** 要素です。
 
 &nbsp;
 
@@ -308,10 +318,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### リング バッファーが保持するリソースの解放
+#### <a name="release-resources-held-by-your-ring-buffer"></a>リング バッファーが保持するリソースの解放
+
 リング バッファーでの作業が終わったら、リング バッファーを削除して、次のように **ALTER** リソースを発行することでリソースを解放できます。
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -319,9 +330,9 @@ GO
 ```
 
 
-イベント セッションの定義は更新されますが、削除はされません。後で、イベント セッションにリング バッファーの別のインスタンスを追加できます。
+イベント セッションの定義は更新されますが、削除はされません。 後で、イベント セッションにリング バッファーの別のインスタンスを追加できます。
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET
@@ -332,12 +343,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 ```
 
 
-## 詳細情報
+## <a name="more-information"></a>詳細情報
+
 Azure SQL Database での拡張イベントに関する主なトピックは次のとおりです。
 
 * [Extended event considerations in SQL Database (SQL Database での拡張イベントに関する考慮事項)](sql-database-xevent-db-diff-from-svr.md)。この記事では、Microsoft SQL Server と Azure SQL Database の間で異なる拡張イベントの一部の機能を比較します。
 
-拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。これにより、変更がサンプル実行に十分であるかを判断できます。
+拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。 ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。 これにより、変更がサンプル実行に十分であるかを判断できます。
 
 * Azure SQL Database のコード サンプル: [Event File target code for extended events in SQL Database (SQL Database での拡張イベントのイベント ファイル ターゲット コード)](sql-database-xevent-code-event-file.md)
 
@@ -348,4 +360,8 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

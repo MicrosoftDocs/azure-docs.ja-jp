@@ -1,44 +1,44 @@
 > [!div class="op_single_selector"]
-> * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
+> * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > 
 > 
 
-## <a name="introduction"></a>Introduction
-Device twins are JSON documents that store device state information (meta-data, configurations, and conditions). IoT Hub persists a device twin for each device that you connect to IoT Hub.
+## <a name="introduction"></a>はじめに
+デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。
 
-Use device twins to:
+次の場合にデバイス ツインを使用します。
 
-* Store device meta-data from your back end.
-* Report current state information such as available capabilities and conditions (for example, the connectivity method used) from your device app.
-* Synchronize the state of long-running workflows (such as firmware and configuration updates) between device app and back end.
-* Query your device meta-data, configuration, or state.
+* ソリューション バックエンドからデバイス メタデータを格納する。
+* デバイス アプリで利用できる機能や状態 (たとえば、使用される接続方法) などの現在の状態に関する情報を報告する。
+* デバイス アプリとバックエンド アプリの間で実行時間の長いワークフロー (ファームウェアや構成の更新など) の状態を同期する。
+* デバイス メタデータ、構成、または状態を照会する。
 
 > [!NOTE]
-> Device twins are designed for synchronization and for querying device configurations and conditions. Use [device-to-cloud messages][lnk-d2c] for sequences of timestamped events (such as telemetry streams of time-based sensor data) and [cloud-to-device methods][lnk-methods] for interactive control of devices, such as turning on a fan from a user-controlled app.
+> デバイス ツインは、同期のほか、デバイスの構成と状態の照会に対応しています。 デバイス ツインを使用するタイミングの詳細については、「[デバイス ツインについて][lnk-twins]」を参照してください。
 > 
 > 
 
-Device twins are stored in an IoT hub and contain:
+デバイス ツインは IoT ハブに格納され、次のものを含みます。
 
-* *tags*, device meta-data accessible only by the back end;
-* *desired properties*, JSON objects modifiable by the back end and observable by the device app; and
-* *reported properties*, JSON objects modifiable by the device app and readable by the back end. Tags and properties cannot contain arrays, but objects can be nested.
+* "*タグ*": ソリューション バックエンドからのみアクセスできるデバイス メタデータです。
+* "*必要なプロパティ*": ソリューション バックエンドから変更でき、デバイス アプリから監視できる JSON オブジェクトです。
+* "*報告されるプロパティ*": デバイス アプリから変更でき、ソリューション バックエンドから読み取り可能な JSON オブジェクトです。 タグとプロパティに配列を含めることはできませんが、オブジェクトは入れ子にできます。
 
 ![][img-twin]
 
-Additionally, the app back end can query device twins based on all the above data.
-Refer to [Understand device twins][lnk-twins] for more information about device twins and to the [IoT Hub query language][lnk-query] reference for querying.
+さらに、ソリューション バックエンドは、上記のすべてのデータに基づいてデバイス ツインに対してクエリを実行できます。
+デバイス ツインの詳細については「[デバイス ツインについて][lnk-twins]」を、クエリについては [IoT Hub クエリ言語][lnk-query]のリファレンスを参照してください。
 
 > [!NOTE]
-> At this time, device twins are accessible only from devices that connect to IoT Hub using the MQTT protocol. Please refer to the [MQTT support][lnk-devguide-mqtt] article for instructions on how to convert existing device app to use MQTT.
+> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事を参照してください。
 > 
 > 
 
-This tutorial shows you how to:
+このチュートリアルでは、次の操作方法について説明します。
 
-* Create a back-end app that adds *tags* to a device twin, and a simulated device that reports its connectivity channel as a *reported property* on the device twin.
-* Query devices from your back end app using filters on the tags and properties previously created.
+* デバイス ツインに "*タグ*" を追加するバックエンド アプリのほか、接続チャネルをデバイス ツインの "*報告されるプロパティ*" として報告するシミュレーション対象デバイス アプリを作成します。
+* 以前に作成したタグとプロパティのフィルターを使用して、バックエンド アプリからデバイスに対してクエリを実行します。
 
 <!-- images -->
 [img-twin]: media/iot-hub-selector-twin-get-started/twin.png
@@ -50,6 +50,6 @@ This tutorial shows you how to:
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

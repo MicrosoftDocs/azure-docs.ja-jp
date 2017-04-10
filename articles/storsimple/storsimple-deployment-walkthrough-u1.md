@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 68f3736069a153e6de9a7ba5f11708a4eb648dbf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8a3f389250920dcdb49a5f88812d2e3b88bfd6c6
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-1"></a>オンプレミスの StorSimple デバイス (Update 1) のデプロイ
+# <a name="deploy-your-on-premises-storsimple-device-update-1"></a>オンプレミスの StorSimple デバイス (Update 1) のデプロイ
 > [!div class="op_single_selector"]
 > * [Update 2](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -131,7 +131,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 * 「 [StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
 
-## <a name="stepbystep-deployment"></a>デプロイの手順
+## <a name="step-by-step-deployment"></a>デプロイの手順
 StorSimple デバイスをデータセンター内にデプロイするには、次の詳細な手順を実行します。
 
 ## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
@@ -270,6 +270,6 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

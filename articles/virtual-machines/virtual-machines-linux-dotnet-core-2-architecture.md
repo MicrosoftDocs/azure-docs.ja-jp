@@ -1,26 +1,33 @@
 ---
-title: Azure Resource Manager テンプレートを使ったコンピューティング リソースのデプロイ | Microsoft Docs
-description: Azure Virtual Machines DotNet Core チュートリアル
+title: "Azure Resource Manager テンプレートを使った Linux コンピューティング リソースのデプロイ | Microsoft Docs"
+description: "Azure Virtual Machines DotNet Core チュートリアル"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 1c4d419e-ba0e-45e4-a9dd-7ee9975a86f9
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/21/2016
+ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 764ef15f631166bf720c846aa3b4f4b6936054d9
+ms.lasthandoff: 03/03/2017
+
 
 ---
-# <a name="application-architecture-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使ったアプリケーション アーキテクチャ
+# <a name="application-architecture-with-azure-resource-manager-templates-for-linux-vms"></a>Linux VM での Azure Resource Manager テンプレートを使用したアプリケーション アーキテクチャ
+
 Azure Resource Manager デプロイを開発する場合は、コンピューティング要件を Azure リソースとサービスにマップする必要があります。 アプリケーションが複数の http エンドポイント、1 つのデータベース、1 つのデータ キャッシュ サービスで構成されている場合は、これらの各コンポーネントをホストする Azure リソースを合理化する必要があります。 たとえば、サンプルのミュージック ストア アプリケーションには、仮想マシンでホストされる Web アプリケーションと Azure SQL Database でホストされる SQL データベースが含まれています。 
 
-このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストアのコンピューティング リソースがどのように構成されているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。
+このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストアのコンピューティング リソースがどのように構成されているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。 
 
 ## <a name="virtual-machine"></a>仮想マシン
 ミュージック ストア アプリケーションには、ユーザーが音楽を閲覧して購入できる Web アプリケーションが含まれています。 Web アプリケーションをホストできる Azure サービスは複数あります。この例では、Virtual Machines を使います。 サンプルのミュージック ストア テンプレートを使うと、仮想マシンがデプロイされ、Web サーバーがインストールされて、ミュージック ストア Web サイトがインストールおよび構成されます。 この記事では、仮想マシンのデプロイについてのみ説明します。 Web サーバーとアプリケーションの構成については、後の記事で説明します。
@@ -29,7 +36,7 @@ Azure Resource Manager デプロイを開発する場合は、コンピューテ
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想マシンの JSON](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L295)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Compute/virtualMachines",
@@ -60,11 +67,11 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 ![仮想マシン](./media/virtual-machines-linux-dotnet-core/vm.png)
 
 ## <a name="storage-account"></a>ストレージ アカウント
-ストレージ アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、ストレージ アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが 1 つ含まれています。 
+ストレージ アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、ストレージ アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが&1; つ含まれています。 
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ストレージ アカウント](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L109)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Storage/storageAccounts",
@@ -76,14 +83,14 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
   "properties": {
     "accountType": "[variables('vhdStorageType')]"
   }
-},
+}
 ```
 
 ストレージ アカウントは、Resource Manager テンプレートの仮想マシンの宣言内で仮想マシンと関連付けられます。 
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想マシンとストレージ アカウントの関連付け](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L341)) をご覧ください。
 
-```none
+```json
 "osDisk": {
   "name": "osdisk",
   "vhd": {
@@ -109,7 +116,7 @@ Azure Storage について詳しくは、 [Azure Storage のドキュメント](
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想ネットワークとサブネット](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L136)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/virtualNetworks",
@@ -151,7 +158,7 @@ Azure Portal では、仮想ネットワークは次の図のように表示さ�
 
  Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ネットワーク インターフェイス](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L166)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/networkInterfaces",
@@ -200,7 +207,7 @@ Azure Portal では、仮想ネットワークは次の図のように表示さ�
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想マシンのネットワーク プロファイル](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L350)) をご覧ください。
 
-```none
+```json
 "networkProfile": {
   "networkInterfaces": [
     {
@@ -217,13 +224,13 @@ Azure Portal では、ネットワーク インターフェイスは次の図の
 Azure Virtual Network について詳しくは、 [Azure Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページをご覧ください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
-ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの 2 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
+ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの&2; 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
 
 Azure SQL データベースを追加するには、Visual Studio の新しいリソースの追加ウィザードを使うか、有効な JSON をテンプレートに挿入します。 SQL Server リソースには、SQL インスタンスの管理者権限が付与されているユーザーの名前とパスワードが含まれています。 また、SQL ファイアウォール リソースが追加されています。 既定では、Azure でホストされるアプリケーションは SQL インスタンスに接続できます。 SQL Server Management Studio などの外部アプリケーションが SQL インスタンスに接続できるようにするには、ファイアウォールを構成する必要があります。 ミュージック ストア デモでは、既定の構成で問題ありません。 
 
-このリンクから、Resource Manager テンプレート内の JSON サンプル [Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401) を参照してください。
+Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ([Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401)) をご覧ください。
 
-```none
+```json
 {
   "apiVersion": "2014-04-01-preview",
   "type": "Microsoft.Sql/servers",
@@ -265,8 +272,6 @@ Azure SQL Database のデプロイについて詳しくは、 [Azure SQL Databas
 ## <a name="next-step"></a>次のステップ
 <hr>
 
-[手順 2 - Azure Resource Manager テンプレートでのアクセスとセキュリティ](virtual-machines-linux-dotnet-core-3-access-security.md)
-
-<!--HONumber=Oct16_HO2-->
+[手順 2 - Azure Resource Manager テンプレートでのアクセスとセキュリティ](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 

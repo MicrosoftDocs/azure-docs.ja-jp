@@ -1,5 +1,2 @@
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2   種類のデプロイ モデルがあります。  [リソース マネージャー デプロイ モデルとクラシック デプロイ モデル](../articles/resource-manager-deployment-model.md)です。  この記事では、リソース マネージャーのデプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、ではなくこのモデルをお勧めします。
-> 
-> 
-
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../articles/azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。

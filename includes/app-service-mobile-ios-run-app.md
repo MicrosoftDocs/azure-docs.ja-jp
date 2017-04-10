@@ -2,12 +2,12 @@
 1. Mac で [Azure ポータル]にアクセスします。 **[すべて参照]** > **[Mobile Apps]** > 作成したバックエンドの順にクリックします。 モバイル アプリの設定で、**[クイック スタート]** > **[iOS (Objective-C)]** の順にクリックします。 Swift を使用する場合は、**[クイック スタート]** > **[iOS (Swift)]** の順にクリックします。 **[Download and run your iOS project (iOS プロジェクトをダウンロードして実行する)]** の下の **[ダウンロード]** をクリックします。 これにより、バックエンドに接続するよう事前に構成されたアプリの完成した Xcode プロジェクトがダウンロードされます。 Xcode を使用してプロジェクトを開きます。
 2. **[Run]** をクリックしてプロジェクトをビルドし、iOS シミュレーターでアプリを起動します。
 3. アプリケーションで、意味のあるテキスト (たとえば、「 *チュートリアルの完了* 」) を入力し、正符号 (**+**) アイコンをクリックします。 これにより、事前にデプロイした Azure バックエンドに POST 要求が送信されます。 バックエンドは要求から取得したデータを TodoItem SQL テーブルに挿入し、新しく格納されたアイテムに関する情報をモバイル アプリに返します。 モバイル アプリでは、このデータが一覧に表示されます。 
-   
-       ![](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
+
+   ![iOS で実行されているクイック スタート アプリ](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
 
 [Azure ポータル]: https://portal.azure.com/
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

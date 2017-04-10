@@ -1,27 +1,10 @@
 ---
-title: 仮想マシン拡張機能の管理 | Microsoft Docs
-description: クラシック デプロイ モデルで、Azure 仮想マシンの拡張機能を追加、検索、更新、および削除する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
-author: squillace
-manager: timlt
-editor: ''
-tags: azure-service-management
-
-ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 08/29/2016
-ms.author: rasquill
+redirect_url: /azure/virtual-machines/windows/classic/manage-extensions
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 6acf78c71a5968cc909c1bb71cc6988080ddad1f
+ms.lasthandoff: 03/25/2017
 
 ---
-# 仮想マシン拡張機能の管理
-Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[!INCLUDE [virtual-machines-common-classic-manage-extensions](../../includes/virtual-machines-common-classic-manage-extensions.md)]
-
-<!---HONumber=AcomDC_0831_2016-->

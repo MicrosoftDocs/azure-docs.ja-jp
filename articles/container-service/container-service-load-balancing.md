@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service クラスターの負荷分散コンテナー | Microsoft Docs"
-description: "Azure Container Service クラスターの複数のコンテナーに負荷を分散します。"
+title: "Azure DC/OS クラスターの負荷分散コンテナー | Microsoft Docs"
+description: "Azure Container Service DC/OS クラスターの複数のコンテナーに負荷を分散します。"
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -11,25 +11,25 @@ keywords: "コンテナー, マクロサービス, DC/OS, Azure"
 ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cf255856302ad5bdb1f6022d231833610acbcac5
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
 
 
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-cluster"></a>Azure Container Service クラスターの負荷分散コンテナー
+# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの負荷分散コンテナー
 この記事では、Marathon-LB を使用して、DC/OS によって管理された Azure Container Service で内部ロード バランサーを作成する方法を見ていきます。 こうすることで、アプリケーションを水平方向にスケーリングすることができます。 また、ロード バランサーをパブリック クラスターに配置し、アプリケーション コンテナーをプライベート クラスターに配置することによって、パブリックおよびプライベート エージェント クラスターを活用することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 オーケストレーターの種類が DC/OS の [Azure Container Service のインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続できるようにします](container-service-connect.md)。 
 
 ## <a name="load-balancing"></a>負荷分散
-作成するコンテナー サービス クラスターには、次に示す 2 つの負荷分散レイヤーがあります。 
+作成するコンテナー サービス クラスターには、次に示す&2; つの負荷分散レイヤーがあります。 
 
 1. Azure Load Balancer は、パブリック エントリ ポイント (エンド ユーザーがアクセスするエントリ ポイント) を提供します。 これは Azure コンテナー サービスによって自動的に提供され、既定ではポート 80、443、8080 を開放するように構成されています。
 2. Marathon Load Balancer (Marathon-LB) は、受信要求を処理するコンテナー インスタンスに、それらの要求をルーティングします。 Web サービスを提供しているコンテナーをスケーリングすると、それに応じて Marathon-LB が動的に変化します。 このロード バランサーは、コンテナー サービスの既定で提供される機能ではありませんが、ごく簡単な方法でインストールできます。
@@ -39,14 +39,14 @@ Marathon Load Balancer は、デプロイされたコンテナーに基づいて
 
 Marathon Load Balancer をインストールするには、DC/OS Web UI またはコマンド ラインを使用します。
 
-### <a name="install-marathonlb-using-dcos-web-ui"></a>DC/OS Web UI を使用して Marathon-LB をインストールする
+### <a name="install-marathon-lb-using-dcos-web-ui"></a>DC/OS Web UI を使用して Marathon-LB をインストールする
 1. [Universe (ユニバース)] をクリックします。
 2. "Marathon-LB" を検索します。
 3. [Install (インストール)] をクリックします。
 
 ![Installing marathon-lb via the DC/OS Web Interface](./media/dcos/marathon-lb-install.png)
 
-### <a name="install-marathonlb-using-the-dcos-cli"></a>DC/OS CLI を使用して Marathon-LB をインストールする
+### <a name="install-marathon-lb-using-the-dcos-cli"></a>DC/OS CLI を使用して Marathon-LB をインストールする
 DC/OS CLI をインストールし、クラスターに接続できることを確認したら、クライアント コンピューターから次のコマンドを実行します。
 
 ```bash
@@ -115,7 +115,7 @@ dcos marathon app add hello-web.json
 ```
 
 ## <a name="azure-load-balancer"></a>Azure Load Balancer
-既定では、Azure Load Balancer はポート 80、8080、443 を公開します。 上の例のように、これらの 3 つのポートのいずれかを使用している場合は、何もする必要がありません。 つまり、エージェント ロード バランサーの FQDN をヒットできるようになり、更新するたびにラウンド ロビン方式で 3 つの Web サーバーのいずれかがヒットします。 ただし、別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。 また、この操作は Azure ポータルからも実行できます。
+既定では、Azure Load Balancer はポート 80、8080、443 を公開します。 上の例のように、これらの&3; つのポートのいずれかを使用している場合は、何もする必要がありません。 つまり、エージェント ロード バランサーの FQDN をヒットできるようになり、更新するたびにラウンド ロビン方式で&3; つの Web サーバーのいずれかがヒットします。 ただし、別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。 また、この操作は Azure ポータルからも実行できます。
 
 ## <a name="additional-scenarios"></a>その他のシナリオ
 公開するサービスに応じて使用するドメインが異なるシナリオもあります。 次に例を示します。
@@ -136,6 +136,6 @@ DC/OS に関するドキュメントで [Marathon-LB](https://dcos.io/docs/1.7/u
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

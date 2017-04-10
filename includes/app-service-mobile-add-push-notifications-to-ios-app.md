@@ -1,7 +1,7 @@
 
 **Objective-C**:
 
-1. **QSAppDelegate.m** で、iOS SDK および **QSTodoService.h** をインポートします。
+1. **QSAppDelegate.m** で、iOS SDK と **QSTodoService.h**をインポートします。
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
@@ -10,7 +10,7 @@
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. **QSAppDelegate.m** で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+3. **QSAppDelegate.m**で、次のハンドラー メソッドを追加します。 これで、アプリケーションがプッシュ通知をサポートするように更新されました。 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -79,7 +79,7 @@
 
 **Swift**:
 
-1. 次の内容を含む **ClientManager.swift** ファイルを追加します。*%AppUrl%* を Azure Mobile App バックエンドの URL に置き換えます。
+1. 次の内容を含む **ClientManager.swift** ファイルを追加します。 *%AppUrl%* を Azure モバイル アプリ バックエンドの URL に置き換えます。
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. **AppDelegate.swift** で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+4. **AppDelegate.swift**で、次のハンドラー メソッドを追加します。 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -139,4 +139,8 @@
    
         }
 
-<!---HONumber=AcomDC_0204_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

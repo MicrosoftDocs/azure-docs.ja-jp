@@ -12,11 +12,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 08/16/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: cdbee52574d0ffbe82ef3dc98f2848f4d00ba2ff
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
 ## <a name="retrieve-the-host-name-and-access-keys"></a>ホスト名とアクセス キーを取得する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-nonssl-endpoint"></a>非 SSL エンドポイントを有効にする
+## <a name="enable-the-non-ssl-endpoint"></a>非 SSL エンドポイントを有効にする
 一部の Redis クライアントは SSL をサポートしていないため、既定では、 [新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています](cache-configure.md#access-ports)。 この記事の執筆時には、 [redis-py](https://github.com/andymccurdy/redis-py) クライアントが SSL をサポートしていません。 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
@@ -64,6 +64,6 @@ ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

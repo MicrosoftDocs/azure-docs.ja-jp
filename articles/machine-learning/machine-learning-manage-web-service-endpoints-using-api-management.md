@@ -1,58 +1,62 @@
 ---
-title: " API Management を使用した AzureML Web サービスの管理方法について説明します | Microsoft Docs"
-description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。
-keywords: Machine Learning、api 管理
+title: "API Management を使用した AzureML Web サービスの管理方法について説明します | Microsoft Docs"
+description: "API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。"
+keywords: "Machine Learning、api 管理"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: roalexan
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/19/2017
 ms.author: roalexan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 444e352f2f3fc7ec9258b16272936c8ed8d4fbf6
+
 
 ---
-# API Management を使用した AzureML Web サービスの管理方法
-## Overview
+# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>API Management を使用した AzureML Web サービスの管理方法
+## <a name="overview"></a>Overview
 このガイドでは、API Management を使用して AzureML Web サービスを管理する方法について簡単に説明します。
 
-## Azure API Management とは
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](https://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](../api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+## <a name="what-is-azure-api-management"></a>Azure API Management とは
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](../api-management/api-management-get-started.md) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
-## Azure ML とは
-AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。[ここ](https://azure.microsoft.com/services/machine-learning/)をクリックして、AzureML の詳細についてご覧ください。
+## <a name="what-is-azureml"></a>Azure ML とは
+AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。 [ここ](https://azure.microsoft.com/services/machine-learning/) をクリックして、AzureML の詳細についてご覧ください。
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
+* Azure アカウント。 Azure アカウントを持っていない場合は、 [ここ](https://azure.microsoft.com/pricing/free-trial/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* AzureML アカウント。 AzureML アカウントを持っていない場合は、 [ここ](https://studio.azureml.net/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 [ここ](machine-learning-create-experiment.md) をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。 [ここ](machine-learning-publish-a-machine-learning-web-service.md) をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
-## API Management インスタンスの作成
-API Management を使用して、AzureML Web サービスを管理する手順を次に示します。まず、サービス インスタンスを作成します。[クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** をクリックします。
+## <a name="create-an-api-management-instance"></a>API Management インスタンスの作成
+API Management を使用して、AzureML Web サービスを管理する手順を次に示します。 まず、サービス インスタンスを作成します。 [クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[新規]** > **[App Services]** > **[API Management]** > **[作成]**をクリックします。
 
 ![create-instance](./media/machine-learning-manage-web-service-endpoints-using-api-management/create-instance.png)
 
-一意の **URL** を指定します。このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。サービス インスタンスの **[サブスクリプション]** と **[リージョン]** を選択します。それらを選択したら、次に進むボタンをクリックします。
+一意の **URL**を指定します。 このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。 サービス インスタンスの **[サブスクリプション]** と **[リージョン]** を選択します。 それらを選択したら、次に進むボタンをクリックします。
 
 ![create-service-1](./media/machine-learning-manage-web-service-endpoints-using-api-management/create-service-1.png)
 
-**[組織名]** の値を指定します。このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。API Management システムからの通知には、この電子メール アドレスが使用されます。
+**[組織名]**の値を指定します。 このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。 **[管理者の電子メール]** フィールドに電子メール アドレスを入力します。 API Management システムからの通知には、この電子メール アドレスが使用されます。
 
 ![create-service-2](./media/machine-learning-manage-web-service-endpoints-using-api-management/create-service-2.png)
 
-チェック ボックスをクリックすると、サービス インスタンスが作成されます。*新しいサービスを作成するまでに最大で 30 分かかります*。
+チェック ボックスをクリックすると、サービス インスタンスが作成されます。 *新しいサービスを作成するまでに最大で 30 分かかります*。
 
-## API の作成
-サービス インスタンスが作成されたら、API を作成します。API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。API の操作は、既存の Web サービスに引き渡されます。このガイドでは、既存の AzureML RRS と BES Web サービスにプロキシする API を作成します。
+## <a name="create-the-api"></a>API の作成
+サービス インスタンスが作成されたら、API を作成します。 API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。 API の操作は、既存の Web サービスに引き渡されます。 このガイドでは、既存の AzureML RRS と BES Web サービスにプロキシする API を作成します。
 
-API は API パブリッシャー ポータルから作成され、構成されます。このポータルには、Azure クラシック ポータルからアクセスします。パブリッシャー ポータルに到達するには、サービス インスタンスを選択します。
+API は API パブリッシャー ポータルから作成され、構成されます。このポータルには、Azure クラシック ポータルからアクセスします。 パブリッシャー ポータルに到達するには、サービス インスタンスを選択します。
 
 ![select-service-instance](./media/machine-learning-manage-web-service-endpoints-using-api-management/select-service-instance.png)
 
@@ -64,43 +68,43 @@ API は API パブリッシャー ポータルから作成され、構成され�
 
 ![api-management-menu](./media/machine-learning-manage-web-service-endpoints-using-api-management/api-management-menu.png)
 
-**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
+**[Web API 名]** として「**AzureML Demo API**」と入力します。 **[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。 **[Web API URL サフィックス]** として「**azureml-demo**」と入力します。 **[Web API URL]** として **[HTTPS]** を選択します。 **[製品]** として **[スターター]** を選択します。 完了したら、**[保存]** をクリックして、API を作成します。
 
 ![add-new-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-new-api.png)
 
-## 操作の追加
+## <a name="add-the-operations"></a>操作の追加
 **[操作の追加]** をクリックして新しい操作を この API に追加します。
 
 ![add-operation](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-operation.png)
 
 **[新しい操作]** ウィンドウが表示され、**[署名]** タブが既定で選択されます。
 
-## RRS 操作の追加
-まず、AzureML RRS サービスの操作を作成します。**[HTTP 動詞]** として **[POST]** を選択します。**[URL template]** として「**/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}**」と入力します。**[表示名]** として「**RRS Execute**」と入力します。
+## <a name="add-rrs-operation"></a>RRS 操作の追加
+まず、AzureML RRS サービスの操作を作成します。 **[HTTP 動詞]** として **[POST]** を選択します。 **[URL template]** として「**/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}**」と入力します。 **[表示名]** として「**RRS Execute**」と入力します。
 
 ![add-rrs-operation-signature](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-左側の **[応答]**、**[追加]** をクリックし、**[200 OK]** を選択します。**[保存]** を選択してこの操作を保存します。
+左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
 
 ![add-rrs-operation-response](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
-## BES 操作の追加
+## <a name="add-bes-operations"></a>BES 操作の追加
 RRS 操作の追加の場合とよく似ているため、BES 操作のスクリーン ショットは用意されていません。
 
-### バッチ実行ジョブの送信 (開始はしない)
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。**[HTTP 動詞]** に **[POST]** を選択します。**[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}**」と入力します。**[表示名]** に「**BES Submit**」を入力します。左側の **[応答]**、**[追加]** をクリックし、**[200 OK]** を選択します。**[保存]** を選択してこの操作を保存します。
+### <a name="submit-but-not-start-a-batch-execution-job"></a>バッチ実行ジョブの送信 (開始はしない)
+**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[POST]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Submit**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
 
-### バッチ実行ジョブを送信する
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。**[HTTP 動詞]** に **[POST]** を選択します。**[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}**」を入力します。**[表示名]** に「**BES Start**」を入力します。左側の **[応答]**、**[追加]** をクリックし、**[200 OK]** を選択します。**[保存]** を選択してこの操作を保存します。
+### <a name="start-a-batch-execution-job"></a>バッチ実行ジョブを送信する
+**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[POST]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Start**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
 
-### バッチ実行ジョブの状態または結果を取得する
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。**[HTTP 動詞]** に **[GET]** を選択します。**[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」を入力します。**[表示名]** に「**BES Status**」と入力します。左側の **[応答]**、**[追加]** をクリックし、**[200 OK]** を選択します。**[保存]** を選択してこの操作を保存します。
+### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>バッチ実行ジョブの状態または結果を取得する
+**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[GET]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Status**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
 
-### バッチ実行ジョブの削除
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。**[HTTP 動詞]** に **[削除]** を選択します。**[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」を入力します。**[表示名]** に「**BES Delete**」と入力します。左側の **[応答]**、**[追加]** をクリックし、**[200 OK]** を選択します。**[保存]** を選択してこの操作を保存します。
+### <a name="delete-a-batch-execution-job"></a>バッチ実行ジョブの削除
+**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[削除]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」と入力します。 **[表示名]** に **[BES Delete]** と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
 
-## 開発者ポータルから操作を呼び出す
-開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。このガイドの手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。クラシック ポータルの右上のメニューから **[開発者ポータル]** をクリックします。
+## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
+開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。 このガイドの手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。 クラシック ポータルの右上のメニューから **[開発者ポータル]** をクリックします。
 
 ![developer-portal](./media/machine-learning-manage-web-service-endpoints-using-api-management/developer-portal.png)
 
@@ -108,68 +112,68 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ![demoazureml-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-操作の **[RRS Execute]** を選択します。**[試用版]** をクリックします。
+操作の **[RRS Execute]** を選択します。 **[試用版]**をクリックします。
 
 ![try-it](./media/machine-learning-manage-web-service-endpoints-using-api-management/try-it.png)
 
-要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュ ボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <AZUREML サービス API キー>**」を入力します。AzureML Web サービスのダッシュ ボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。 AzureML Web サービスのダッシュボードに **API キー**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
 要求本文に「**{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}**」と入力します。
 
 ![azureml-demo-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-**[Send]** をクリックします。
+**[Send]**をクリックします。
 
-![send](./media/machine-learning-manage-web-service-endpoints-using-api-management/send.png)
+![[Send]](./media/machine-learning-manage-web-service-endpoints-using-api-management/send.png)
 
 操作を呼び出すと、バックエンド サービスの**要求された URL**、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
 ![response-status](./media/machine-learning-manage-web-service-endpoints-using-api-management/response-status.png)
 
-## 付録 A - シンプルな AzureML Web サービスを作成しテストする
-### 実験の作成
-シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。For example:
+## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>付録 A - シンプルな AzureML Web サービスを作成しテストする
+### <a name="creating-the-experiment"></a>実験の作成
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 For example:
 
 | テキスト | ハッシュされたテキスト |
 | --- | --- |
 | This is a good day |1 1 2 2 0 2 0 1 |
 
-最初に、任意のブラウザーを使用して、 [https://studio.azureml.net/](https://studio.azureml.net/) に移動し、資格情報を入力してログインします。次に、新しい空白の実験を作成します。
+最初に、任意のブラウザーを使用して、 [https://studio.azureml.net/](https://studio.azureml.net/) に移動し、資格情報を入力してログインします。 次に、新しい空白の実験を作成します。
 
 ![search-experiment-templates](./media/machine-learning-manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-名前を **SimpleFeatureHashingExperiment** に変更します。**[保存されたデータセット]** を展開し、**[Amazon の書評]** を実験にドラッグします。
+名前を **SimpleFeatureHashingExperiment**に変更します。 **[保存されたデータセット]** を展開し、**[Amazon の書評]** を実験にドラッグします。
 
 ![simple-feature-hashing-experiment](./media/machine-learning-manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-**[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。**[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
+**[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
 
 ![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/project-columns.png)
 
-**[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。チェック マークをクリックして、これらの変更を適用します。
+**[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。 チェック マークをクリックして、これらの変更を適用します。
 
 ![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/select-columns.png)
 
-**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。**[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
+**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
 
 ![connect-project-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-**Hashing bitsize** に「**3**」を入力します。これにより、8 (23) 列が作成されます。
+**Hashing bitsize** に「**3**」を入力します。 これにより、8 (23) 列が作成されます。
 
 ![hashing-bitsize](./media/machine-learning-manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
-この時点で、**[実行]** をクリックして実験をテストできます。
+この時点で、 **[実行]** をクリックして実験をテストできます。
 
-![run](./media/machine-learning-manage-web-service-endpoints-using-api-management/run.png)
+![[実行]](./media/machine-learning-manage-web-service-endpoints-using-api-management/run.png)
 
-### Web サービスの作成
-Web サービスを作成します。**[Web サービス]** を展開し、**[入力]** を実験にドラッグします。**[入力]** に **[特徴ハッシュ]** に接続します。**[出力]** を実験にドラッグします。**[出力]** を **[特徴ハッシュ]** に接続します。
+### <a name="create-a-web-service"></a>Web サービスの作成
+Web サービスを作成します。 **[Web サービス]** を展開し、**[入力]** を実験にドラッグします。 **[入力]** を **[特徴ハッシュ]** に接続します。 **[出力]** を実験にドラッグします。 **[出力]** を **[特徴ハッシュ]** に接続します。
 
 ![output-to-feature-hashing](./media/machine-learning-manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
-**[Web サービスの発行]** をクリックします。
+**[Web サービスの発行]**をクリックします。
 
 ![publish-web-service](./media/machine-learning-manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
@@ -177,24 +181,24 @@ Web サービスを作成します。**[Web サービス]** を展開し、**[�
 
 ![yes-to-publish](./media/machine-learning-manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
-### Web サービスをテストする
-AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。RSS は、同期の実行用です。BES は、同期ジョブの実行用です。次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python をインストールする方法](../python-how-to-install.md)」をご覧ください)。
+### <a name="test-the-web-service"></a>Web サービスをテストする
+AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「 [Python をインストールする方法](../python-how-to-install.md)」をご覧ください)。
 
-次のサンプルのソースには、実験の**workspace**、**service**、**api\_key** が必要です。Web サービス ダッシュ ボードの実験の **[要求/応答]** か **[バッチの実行]** をクリックするとワークスペースとサービスが表示されます。
+次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 
 ![find-workspace-and-service](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-Web サービス ダッシュ ボードの実験をクリックすると **api\_key** が表示されます。
+Web サービス ダッシュボードの実験をクリックすると **api_key** が表示されます。
 
 ![find-api-key](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-api-key.png)
 
-#### RRS エンドポイントのテスト
-##### テスト ボタン
+#### <a name="test-rrs-endpoint"></a>RRS エンドポイントのテスト
+##### <a name="test-button"></a>テスト ボタン
 RRS エンドポイントを簡単にテストするには、Web サービス ダッシュ ボードで **[テスト]** をクリックします。
 
 ![test](./media/machine-learning-manage-web-service-endpoints-using-api-management/test.png)
 
-**[col2]** に「**This is a good day**」と入力します。チェック マークをクリックします。
+**[col2]** に「**This is a good day**」と入力します。 チェック マークをクリックします。
 
 ![enter-data](./media/machine-learning-manage-web-service-endpoints-using-api-management/enter-data.png)
 
@@ -202,10 +206,10 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
 ![sample-output](./media/machine-learning-manage-web-service-endpoints-using-api-management/sample-output.png)
 
-##### サンプル コード
-クライアント コードから RRS テストする方法もあります。ダッシュ ボードで **[要求/応答]** をクリックし、と最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文 を含むRRS 要求の構文も表示されます。
+##### <a name="sample-code"></a>サンプル コード
+クライアント コードから RRS テストする方法もあります。 ダッシュボードで **[要求/応答]** をクリックし、最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文を含む RRS 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。
 
     import urllib2
     import json
@@ -234,10 +238,10 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
         print(error.info())
         print(json.loads(error.read()))
 
-#### BES エンドポイントのテスト
-ダッシュ ボードの **[バッチの実行]** をクリックして、最下部までスクロールします。C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
+#### <a name="test-bes-endpoint"></a>BES エンドポイントのテスト
+ダッシュボードの **[バッチ実行]** をクリックして、最下部までスクロールします。 C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。 最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
     import urllib2
     import json
@@ -361,4 +365,8 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
     return
     invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

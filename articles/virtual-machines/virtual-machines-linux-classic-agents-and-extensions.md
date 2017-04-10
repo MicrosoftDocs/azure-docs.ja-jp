@@ -1,25 +1,10 @@
 ---
-title: Azure VM エージェントおよび拡張機能 | Microsoft Docs
-description: エージェントおよび拡張機能の概要と、クラシック デプロイ モデルを使用してエージェントをインストールする方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: squillace
-manager: timlt
-editor: ''
-tags: azure-service-management
-
-ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 08/23/2016
-ms.author: rasquill
+redirect_url: /azure/virtual-machines/linux/classic/agents-and-extensions
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: bc657a6d292a3d026eec08d87a90f4226aed748d
+ms.lasthandoff: 03/27/2017
 
 ---
-# 仮想マシンのエージェントおよび拡張機能について
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-[!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../includes/virtual-machines-common-classic-agents-and-extensions.md)]
-
-<!---HONumber=AcomDC_0824_2016-->

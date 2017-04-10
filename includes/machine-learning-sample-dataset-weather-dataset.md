@@ -1,3 +1,0 @@
-NOAA の 1 時間ごとの陸上の気象観測 (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。<p> </p>気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。Azure ML Studio へアップロードする前に、データセットを次のように処理します。<ul><li>気象観測所 ID を対応する空港 ID にマッピングします。</li><li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li><li>Date 列を Year、Month、Day の列に分割します。</li><li>次の列が選択されます。AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter</li></ul>
-
-<!---HONumber=Oct15_HO3-->

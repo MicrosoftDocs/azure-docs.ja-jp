@@ -1,11 +1,10 @@
 ---
-title: "クラシック デプロイ モデルでのクラウド サービスの内部ロード バランサーの作成 | Microsoft Docs"
+title: "Azure Cloud Services 用の内部ロード バランサーの作成 | Microsoft Docs"
 description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
 ms.service: load-balancer
@@ -13,21 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 85e22954c19d7d51579029c7426f0ee79b780504
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
+ms.lasthandoff: 01/24/2017
 
 ---
 
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
 
-[!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-classic-cli.md)
+> * [クラウド サービス](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>クラウド サービスの内部ロード バランサーを構成する
 
@@ -43,25 +45,25 @@ ms.openlocfilehash: 85e22954c19d7d51579029c7426f0ee79b780504
 Visual Studio でクラウド デプロイのサービス構成ファイル (.cscfg) を開き、ネットワーク構成の最後の "`</Role>`" 項目の下に、内部負荷分散を作成するための次のセクションを追加します。
 
 ```xml
-    <NetworkConfiguration>
-      <LoadBalancers>
-        <LoadBalancer name="name of the load balancer">
-          <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
-        </LoadBalancer>
-      </LoadBalancers>
-    </NetworkConfiguration>
+<NetworkConfiguration>
+    <LoadBalancers>
+    <LoadBalancer name="name of the load balancer">
+        <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
+    </LoadBalancer>
+    </LoadBalancers>
+</NetworkConfiguration>
 ```
 
 ネットワーク構成ファイルの値を追加し、どのようになるか確認しましょう。 この例では、「test_vnet」という名前のサブネットを「test_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。 ロード バランサーの名前は「testLB」になります。
 
 ```xml
-    <NetworkConfiguration>
-      <LoadBalancers>
-        <LoadBalancer name="testLB">
-          <FrontendIPConfiguration type="private" subnet="test_subnet" staticVirtualNetworkIPAddress="10.0.0.4"/>
-        </LoadBalancer>
-      </LoadBalancers>
-    </NetworkConfiguration>
+<NetworkConfiguration>
+    <LoadBalancers>
+    <LoadBalancer name="testLB">
+        <FrontendIPConfiguration type="private" subnet="test_subnet" staticVirtualNetworkIPAddress="10.0.0.4"/>
+    </LoadBalancer>
+    </LoadBalancers>
+</NetworkConfiguration>
 ```
 
 ロード バランサー スキーマの詳細については、「 [ロード バランサーの追加](https://msdn.microsoft.com/library/azure/dn722411.aspx)」を参照してください。
@@ -71,21 +73,21 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 サービス定義 (.csdef) ファイルを変更し、内部負荷分散にエンドポイントを追加します。 ロール インスタンスが作成された直後に、サービス定義ファイルによりそのロール インスタンスが内部負荷分散に追加されます。
 
 ```xml
-    <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
-      <Endpoints>
-        <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
-      </Endpoints>
-    </WorkerRole>
+<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
+    <Endpoints>
+    <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
+    </Endpoints>
+</WorkerRole>
 ```
 
 前の例と同じ値を利用してサービス定義ファイルに値を追加してみましょう。
 
 ```xml
-    <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
-      <Endpoints>
-        <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
-      </Endpoints>
-    </WorkerRole>
+<WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
+    <Endpoints>
+    <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
+    </Endpoints>
+</WorkerRole>
 ```
 
 ネットワーク トラフィックの負荷は testLB ロード バランサーを使用して分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
@@ -95,10 +97,5 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

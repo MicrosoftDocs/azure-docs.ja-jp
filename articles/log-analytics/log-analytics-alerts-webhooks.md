@@ -1,23 +1,29 @@
 ---
-title: Log Analytics のアラートでの Webhook のサンプル
-description: Log Analytics のアラートに対して実行できるアクションの 1 つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。
+title: "OMS Log Analytics の webhook アラート アクション サンプル| Microsoft Docs"
+description: "Log Analytics のアラートに対して実行できるアクションの&1; つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 13c39f0f-fd3c-472d-8324-ddf7538be45e
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/27/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: c8e67f2dcd061e3cd92eec40d6e6bb3de5d73b67
+ms.openlocfilehash: 55b66132f7ec5c26c0a7cac1ec0a5c403dbd1082
+ms.lasthandoff: 03/01/2017
+
 
 ---
-# <a name="webhooks-in-log-analytics-alerts"></a>Log Analytics のアラートでの Webhook
-[Log Analytics のアラート](log-analytics-alerts.md) に対して実行できるアクションの 1 つが *Webhook*であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。  アラートと Webhook の詳細については、「 [Log Analytics のアラート](log-analytics-alerts.md)
+
+# <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>OMS Log Analytics で アラート webhook アクションを作成して、メッセージを Slack に送信する
+[Log Analytics のアラート](log-analytics-alerts.md) に対して実行できるアクションの&1; つが *Webhook*であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。  アラートと Webhook の詳細については、「 [Log Analytics のアラート](log-analytics-alerts.md)
 
 この記事では、メッセージング サービスである Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。
 
@@ -51,7 +57,7 @@ ms.author: bwren
    * **[Webhook]** には **[Yes (はい)]**、他のアクションには **[No (いいえ)]** を選択
 2. **[Webhook URL]** フィールドに Slack の URL を貼り付けます。
 3. **[Include custom JSON payload]**(カスタム JSON ペイロードを含める) オプションを選択します。
-4. Slack では、" *text*" という名前のパラメーターを持つ JSON 形式のペイロードが想定されます。  これは、作成されたメッセージに表示されるテキストです。  次の例に示すように、 *#* シンボルを使用して 1 つ以上のアラート パラメーターを指定できます。
+4. Slack では、" *text*" という名前のパラメーターを持つ JSON 形式のペイロードが想定されます。  これは、作成されたメッセージに表示されるテキストです。  次の例に示すように、 *#* シンボルを使用して&1; つ以上のアラート パラメーターを指定できます。
    
     ```
     {
@@ -105,9 +111,7 @@ Slack では、受信メッセージを広範囲にカスタマイズできま�
 これは、アラートへの応答として作成できるアクションの一例にすぎません。  別の外部サービスを呼び出す Webhook アクション、Azure Automation で Runbook を開始する Runbook アクション、自分または他の受信者に電子メールを送信する電子メール アクションなども作成できます。   
 
 ## <a name="next-steps"></a>次のステップ
-* 他のアクションなど、 [Log Analytics のアラート](log-analytics-alerts.md) の詳細を学習します。
-* [Azure Automation の Runbook を作成](../automation/automation-webhooks.md) します。
+* [Log Analytics のその他のアラート アクション](log-analytics-alerts-actions.md)について学習します。
 
-<!--HONumber=Oct16_HO2-->
 
 

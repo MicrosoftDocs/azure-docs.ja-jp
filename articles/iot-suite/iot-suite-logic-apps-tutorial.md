@@ -1,50 +1,57 @@
 ---
-title: Azure IoT Suite and Logic Apps | Microsoft Docs
-description: A tutorial on how to hook up Logic Apps to Azure IoT Suite for business process.
-services: ''
+title: "Azure IoT Suite と Logic Apps | Microsoft Docs"
+description: "ビジネス プロセスのための Azure IoT Suite への Logic Apps の接続方法に関するチュートリアルです。"
+services: 
 suite: iot-suite
-documentationcenter: ''
-author: aguilaaj
+documentationcenter: 
+author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
-ms.author: araguila
+ms.date: 03/09/2017
+ms.author: corywink
+translationtype: Human Translation
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.lasthandoff: 03/10/2017
+
 
 ---
-# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Connect Logic App to your Azure IoT Suite Remote Monitoring preconfigured solution
-The [Microsoft Azure IoT Suite][lnk-internetofthings] remote monitoring preconfigured solution is a great way to get started quickly with an end-to-end feature set that exemplifies an IoT solution. This tutorial walks you through how to add Logic App to your Microsoft Azure IoT Suite remote monitoring preconfigured solution. These steps demonstrate how you can take your IoT solution even further by connecting it to a business process.
+# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>チュートリアル: ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する
+[Microsoft Azure IoT Suite][lnk-internetofthings] リモート監視構成済みソリューションは、IoT ソリューションを例示するエンド ツー エンド機能をすぐに使い始められる優れた方法です。 このチュートリアルでは、Logic App を Microsoft Azure IoT Suite リモート監視構成済みソリューションに追加する方法を説明します。 これらの手順は、IoT ソリューションをビジネス プロセスに接続してさらに活用できる方法を示すものです。
 
-*If you’re looking for a walkthrough on how to provision a remote monitoring preconfigured solution, see [Tutorial: Get started with the IoT preconfigured solutions][lnk-getstarted].*
+"*リモート監視構成済みソリューションのプロビジョニング方法のチュートリアルについては、「[チュートリアル: IoT 事前構成済みソリューションの使用][lnk-getstarted]」を参照してください。*"
 
-Before you start this tutorial, you should:
+このため、このチュートリアルの前に、以下を行う必要があります。
 
-* Provision the remote monitoring preconfigured solution in your Azure subscription.
-* Create a SendGrid account to enable you to send an email that triggers your business process. You can sign up for a free trial account at [SendGrid](https://sendgrid.com/) by clicking **Try for Free**. After you have registered for your free trial account, you need to create an [API key](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) in SendGrid that grants permissions to send mail. You need this API key later in the tutorial.
+* Azure サブスクリプションでリモート監視の事前構成済みソリューションのプロビジョニングを行います。
+* SendGrid アカウントを作成し、ビジネス プロセスをトリガーする電子メールを送信できるようにします。 [SendGrid](https://sendgrid.com/) で **[無料で試す]**をクリックし、無料試用版アカウントにサインアップできます。 無料試用版アカウントに登録したら、SendGrid でメールを送信するアクセス許可を付与する [API キー](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) を作成する必要があります。 この API キーはチュートリアルの後半で必要になります。
 
-Assuming you’ve already provisioned your remote monitoring preconfigured solution, navigate to the resource group for that solution in the [Azure portal][lnk-azureportal]. The resource group has the same name as the solution name you chose when you provisioned your remote monitoring solution. In the resource group, you can see all the provisioned Azure resources for your solution except for the Azure Active Directory application that you can find in the Azure Classic Portal. The following screenshot shows an example **Resource group** blade for a remote monitoring preconfigured solution:
+このチュートリアルでは、構成済みソリューションのバックエンドのアクションを編集するために Visual Studio 2015 または Visual Studio 2017 が必要となります。
+
+リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure Portal][lnk-azureportal] でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループには、Azure クラシック ポータルにある Azure Active Directory アプリケーション以外の、ソリューション用にプロビジョニングされている Azure リソースがすべて表示されます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
 
 ![](media/iot-suite-logic-apps-tutorial/resourcegroup.png)
 
-To begin, set up the logic app to use with the preconfigured solution.
+作業を開始するには、構成済みソリューションで使用するロジック アプリをセットアップします。
 
-## <a name="set-up-the-logic-app"></a>Set up the Logic App
-1. Click **Add** at the top of your resource group blade in the Azure portal.
-2. Search for **Logic App**, select it and then click **Create**.
-3. Fill out the **Name** and use the same **Subscription** and **Resource group** that you used when you provisioned your remote monitoring solution. Click **Create**.
+## <a name="set-up-the-logic-app"></a>ロジック アプリをセットアップする
+1. Azure ポータルで、リソース グループ ブレードの上部にある **[追加]** をクリックします。
+2. **ロジック アプリ**を検索し、選択してから **[作成]** をクリックします。
+3. **名前**を入力し、リモート監視ソリューションのプロビジョニング時に使用したものと同じ**サブスクリプション**と**リソース グループ**を使用します。 **[作成]**をクリックします。
    
     ![](media/iot-suite-logic-apps-tutorial/createlogicapp.png)
-4. When your deployment completes, you can see the Logic App is listed as a resource in your resource group.
-5. Click the Logic App to navigate to the Logic App blade, select the **Blank Logic App** template to open the **Logic Apps Designer**.
+4. デプロイが完了すると、ロジック アプリがリソース グループにリソースとしてリストされていることがわかります。
+5. [ロジック アプリ] をクリックしてロジック アプリ ブレードに移動し、**空のロジック アプリ** テンプレートを選択して **Logic Apps デザイナー**を開きます。
    
     ![](media/iot-suite-logic-apps-tutorial/logicappsdesigner.png)
-6. Select **Request**. This action specifies that an incoming HTTP request with a specific JSON formatted payload acts as a trigger.
-7. Paste the following into the Request Body JSON Schema:
+6. **[要求]** を選択します。 この操作によって、特定の JSON 形式のペイロードを含む受信 HTTP 要求がトリガーとして機能するようになります。
+7. 要求本文の JSON スキーマには、以下のコードを貼り付けます。
    
     ```
     {
@@ -74,85 +81,85 @@ To begin, set up the logic app to use with the preconfigured solution.
     ```
    
    > [!NOTE]
-   > You can copy the URL for the HTTP post after you save the logic app, but first you must add an action.
+   > ロジック アプリの保存後に HTTP ポストの URL をコピーできますが、まず、アクションを追加する必要があります。
    > 
    > 
-8. Click **+ New step** under your manual trigger. Then click **Add an action**.
+8. 手動トリガーで **[+ 新しいステップ]** をクリックします。 次に、 **[アクションの追加]**をクリックします。
    
     ![](media/iot-suite-logic-apps-tutorial/logicappcode.png)
-9. Search for **SendGrid - Send email** and click it.
+9. **[SendGrid - メールを送信]** を見つけてクリックします。
    
     ![](media/iot-suite-logic-apps-tutorial/logicappaction.png)
-10. Enter a name for the connection, such as **SendGridConnection**, enter the **SendGrid API Key** you created when you set up your SendGrid account, and click **Create**.
+10. **SendGridConnection** などの接続名を入力し、SendGrid アカウントのセットアップ時に作成した **SendGrid API キー**を入力して **[作成]** をクリックします。
     
     ![](media/iot-suite-logic-apps-tutorial/sendgridconnection.png)
-11. Add email addresses you own to both the **From** and **To** fields. Add **Remote monitoring alert [DeviceId]** to the **Subject** field. In the **Email Body** field, add **Device [DeviceId] has reported [measurementName] with value [measuredValue].** You can add **[DeviceId]**, **[measurementName]**, and **[measuredValue]** by clicking in the **You can insert data from previous steps** section.
+11. **[送信元]** と **[宛先]** の両方のフィールドに所有しているメール アドレスを追加します。 **[件名]** フィールドに「**リモート監視アラート [DeviceId]**」と入力します。 **[電子メールの本文]** フィールドには、「**デバイス [DeviceId] が [measuredValue] という値の [measurementName] をレポートしました**」と入力します。 **[DeviceId]**、**[measurementName]**、および **[measuredValue]** は、**[前のステップで使用したデータを挿入できます]** セクションでクリックして追加することができます。
     
     ![](media/iot-suite-logic-apps-tutorial/sendgridaction.png)
-12. Click **Save** in the top menu.
-13. Click the **Request** trigger and copy the **Http Post to this URL** value. You need this URL later in this tutorial.
+12. トップ メニューの **[保存]** をクリックします。
+13. **[要求]** トリガーをクリックして、**[この URL に対する HTTP POST]** の値をコピーします。 この URL はこのチュートリアルの後半で必要になります。
 
 > [!NOTE]
-> Logic Apps enable you to run [many different types of action][lnk-logic-apps-actions] including actions in Office 365. 
+> Logic Apps では、Office 365 でのアクションを含め、[さまざまな種類のアクション][lnk-logic-apps-actions]を実行できます。 
 > 
 > 
 
-## <a name="set-up-the-eventprocessor-web-job"></a>Set up the EventProcessor Web Job
-In this section, you connect your preconfigured solution to the Logic App you created. To complete this task, you add the URL to trigger the Logic App to the action that fires when a device sensor value exceeds a threshold.
+## <a name="set-up-the-eventprocessor-web-job"></a>EventProcessor Web ジョブをセットアップする
+このセクションでは、構成済みのソリューションを、作成したロジック アプリに接続します。 このタスクを完了するには、デバイス センサーの値がしきい値を超えたときにアクションが発生するとロジック アプリをトリガーする URL を追加します。
 
-1. Use your git client to clone the latest version of the [azure-iot-remote-monitoring github repository][lnk-rmgithub]. For example:
+1. git クライアントを使用して、最新バージョンの [azure-iot-remote-monitoring github リポジトリ][lnk-rmgithub]を複製します。 次に例を示します。
    
     ```
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
-2. In Visual Studio, open the **RemoteMonitoring.sln** from the local copy of the repository.
-3. Open the **ActionRepository.cs** file in the **Infrastructure\\Repository** folder.
-4. Update the **actionIds** dictionary with the **Http Post to this URL** you noted from your Logic App as follows:
+2. Visual Studio で、リポジトリのローカル コピーの **RemoteMonitoring.sln** を開きます。
+3. **Infrastructure\\Repository** フォルダーの **ActionRepository.cs** ファイルを開きます。
+4. 以下のように、ロジック アプリからメモした **[この URL に対する HTTP POST]** を使用して **actionIds** ディクショナリを更新します。
    
     ```
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
-        { "Send Message", "<Http Post to this UR>" },
-        { "Raise Alarm", "<Http Post to this UR> }
+        { "Send Message", "<Http Post to this URL>" },
+        { "Raise Alarm", "<Http Post to this URL>" }
     };
     ```
-5. Save the changes in solution and exit Visual Studio.
+5. ソリューションの変更内容を保存して、Visual Studio を終了します。
 
-## <a name="deploy-from-the-command-line"></a>Deploy from the command line
-In this section, you deploy your updated version of the remote monitoring solution to replace the version currently running in Azure.
+## <a name="deploy-from-the-command-line"></a>コマンドラインからデプロイする
+このセクションでは、更新されたバージョンのリモート監視ソリューションをデプロイして、Azure で現在実行中のバージョンを置き換えます。
 
-1. Following the [dev set-up][lnk-devsetup] instructions to set up your environment for deployment.
-2. To deploy locally, follow the [local deployment][lnk-localdeploy] instructions.
-3. To deploy to the cloud and update your existing cloud deployment, follow the [cloud deployment][lnk-clouddeploy] instructions. Use the name of your original deployment as the deployment name. For example if the original deployment was called **demologicapp**, use the following command:
+1. [デプロイのセットアップ][lnk-devsetup]手順に従って、デプロイ用に環境をセットアップします。
+2. ローカルでデプロイする場合は、[ローカル デプロイ][lnk-localdeploy]の手順に従ってください。
+3. クラウドにデプロイし、既存のクラウド デプロイを更新する場合は、[クラウド デプロイ][lnk-clouddeploy]の手順に従ってください。 デプロイ名として、元のデプロイの名前を使用します。 たとえば、元のデプロイ名が **demologicapp**の場合は、以下のコマンドを使用します。
    
    ``
    build.cmd cloud release demologicapp
    ``
    
-   When the build script runs, be sure to use the same Azure account, subscription, region, and Active Directory instance you used when you provisioned the solution.
+   ビルド スクリプトを実行する場合は、ソリューションのプロビジョニング時に使用したものと同じ Azure アカウント、サブスクリプション、リージョン、および Active Directory インスタンスを必ず使用してください。
 
-## <a name="see-your-logic-app-in-action"></a>See your Logic App in action
-The remote monitoring preconfigured solution has two rules set up by default when you provision a solution. Both rules are on the **SampleDevice001** device:
+## <a name="see-your-logic-app-in-action"></a>Logic App の動作を確認する
+リモート監視構成済みソリューションには、ソリューションのプロビジョニング時に既定で&2; つのルールが設定されます。 以下のルールは両方とも **SampleDevice001** デバイスに対するものです。
 
-* Temperature > 38.00
-* Humidity > 48.00
+* 気温 > 38.00
+* 湿度 > 48.00
 
-The temperature rule triggers the **Raise Alarm** action and the Humidity rule triggers the **SendMessage** action. Assuming you used the same URL for both actions the **ActionRepository** class, your logic app triggers for either rule. Both rules use SendGrid to send an email to the **To** address with details of the alert.
+気温ルールは **Raise Alarm** アクションをトリガーし、湿度ルールは **SendMessage** アクションをトリガーします。 両方のアクション ( **ActionRepository** クラス) で同じ URL を使用したと仮定した場合、ロジック アプリはいずれかのルールをトリガーします。 両方のルールで、SendGrid を使用して **宛先** アドレスにアラートの詳細を含むメールを送信します。
 
 > [!NOTE]
-> The Logic App continues to trigger every time the threshold is met. To avoid unnecessary emails, you can either disable the rules in your solution portal or disable the Logic App in the [Azure portal][lnk-azureportal].
+> ロジック アプリはしきい値が満たされるたびにトリガーし続けます。 不要なメールが送信されないようにするために、ソリューション ポータルでルールを無効にするか、[Azure Portal][lnk-azureportal] でロジック アプリを無効にすることができます。
 > 
 > 
 
-In addition to receiving emails, you can also see when the Logic App runs in the portal:
+メールの受信だけでなく、ポータルでは次のように Logic App の実行時間を確認することもできます。
 
 ![](media/iot-suite-logic-apps-tutorial/logicapprun.png)
 
-## <a name="next-steps"></a>Next steps
-Now that you've used a Logic App to connect the preconfigured solution to a business process, you can learn more about the options for customizing the preconfigured solutions:
+## <a name="next-steps"></a>次のステップ
+これで Logic Apps を使用して構成済みソリューションをビジネス プロセスに接続しました。次を参照することで、構成済みソリューションのカスタマイズのオプションについて、さらに理解を深めることができます。
 
-* [Use dynamic telemetry with the remote monitoring preconfigured solution][lnk-dynamic]
-* [Device information metadata in the remote monitoring preconfigured solution][lnk-devinfo]
+* [事前構成済みのリモート監視ソリューションによる動的テレメトリの使用][lnk-dynamic]
+* [リモート監視構成済みソリューションのデバイス情報メタデータ][lnk-devinfo]
 
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
@@ -165,9 +172,4 @@ Now that you've used a Logic App to connect the preconfigured solution to a busi
 [lnk-devsetup]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/dev-setup.md
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

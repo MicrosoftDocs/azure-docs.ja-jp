@@ -1,69 +1,73 @@
 ---
-title: Add a next generation firewall in Azure Security Center | Microsoft Docs
-description: This document shows you how to implement the Azure Security Center recommendations **Add a Next Generation Firewall** and **Route traffice through NGFW only**.
+title: "Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs"
+description: "このドキュメントでは、Azure Security Center の推奨事項、&quot;**次世代ファイアウォールの追加**&quot; および &quot;**NGFW 経由に限定したトラフィックのルーティング**&quot; を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: ''
-
+editor: 
+ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/02/2017
 ms.author: terrylan
+translationtype: Human Translation
+ms.sourcegitcommit: 0046a088f908a8cfdcab2cf6baad62524def6468
+ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
+
 
 ---
-# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Add a Next Generation Firewall in Azure Security Center
-Azure Security Center may recommend that you add a next generation firewall (NGFW) from a Microsoft partner in order to increase your security protections. This document walks you through an example of how to do this.
+# <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Azure Security Center で次世代ファイアウォールを追加する
+Azure Security Center では、セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。 このドキュメントでは、追加方法の例を紹介します。
 
 > [!NOTE]
-> This document introduces the service by using an example deployment.  This is not a step-by-step guide.
-> 
-> 
+> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
+>
+>
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
-1. In the **Recommendations** blade, select **Add a Next Generation Firewall**.
-   ![Add a Next Generation Firewall][1]
-2. In the **Add a Next Generation Firewall** blade, select an endpoint.
-   ![Select an endpoint][2]
-3. A second **Add a Next Generation Firewall** blade opens. You can choose to use an existing solution if available or you can create a new one. In this example there are no existing solutions available so we'll create a new NGFW.
-   ![Create new Next Generation Firewall][3]
-4. To create a new NGFW, select a solution from the list of integrated partners. In this example we will select **Check Point**.
-   ![Select Next Generation Firewall solution][4]
-5. The **Check Point** blade opens providing you information about the partner solution. Select **Create** in the information blade.
+## <a name="implement-the-recommendation"></a>推奨事項の実装
+1. **[推奨事項]** ブレードで、**[次世代のファイアウォールの追加]** を選択します。
+   ![[次世代のファイアウォールの追加]][1]
+2. **[次世代のファイアウォールの追加]** ブレードで、エンドポイントを選択します。
+   ![エンドポイントを選択する][2]
+3. 2 つ目の **[次世代のファイアウォールの追加]** ブレードが開きます。 利用可能な場合は、既存のソリューションを使用することを選択するか、新しいソリューションを作成することができます。 この例では、利用可能な既存のソリューションがないため、NGFW を作成します。
+   ![次世代ファイアウォールを作成する][3]
+4. NGFW を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、**[Check Point]** を選択します。
+   ![次世代ファイアウォール ソリューションを選択する][4]
+5. パートナー ソリューションに関する情報を提供する **[Check Point]** ブレードが開きます。 情報ブレードで **[作成]** をクリックします。
    ![Firewall information blade][5]
-6. The **Create virtual machine** blade opens. Here you can enter information required to spin up a virtual machine (VM) that will run the NGFW. Follow the steps and provide the NGFW information required. Select OK to apply.
-   ![Create virtual machine to run NGFW][6]
+6. **[仮想マシンの作成]** ブレードが開きます。 ここに、NGFW を実行する仮想マシン (VM) の起動に必要な情報を入力できます。 手順を実行し、必要な NGFW 情報を指定します。 [OK] を選択して適用します。
+   ![NGFW を実行する仮想マシンを作成する][6]
 
-## <a name="route-traffic-through-ngfw-only"></a>Route traffic through NGFW only
-Return to the **Recommendations** blade. A new entry was generated after you added a NGFW via Security Center, called **Route traffic through NGFW only**. This recommendation is created only if you installed your NGFW through Security Center. If you have Internet-facing endpoints, Security Center will recommend that you configure Network Security Group rules that force inbound traffic to your VM through your NGFW.
+## <a name="route-traffic-through-ngfw-only"></a>NGFW 経由に限定したトラフィックのルーティング
+**[推奨事項]** ブレードに戻ります。 Security Center から NGFW を追加すると、**[Route traffic through NGFW only (NGFW 経由に限定したトラフィックのルーティング)]** という新しいエントリが生成されます。 この推奨事項は、セキュリティ センターから NGFW をインストールした場合にのみ作成されます。 インターネットに接続するエンドポイントがある場合、Security Center では、VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループの規則を構成するよう推奨します。
 
-1. In the **Recommendations blade**, select **Route traffic through NGFW only**.
-   ![Route traffic through NGFW only][7]
-2. This opens the blade **Route traffic through NGFW only** which lists VMs that you can route traffic to. Select a VM from the list.
+1. **[推奨事項]** ブレードで、**[NGFW 経由のみでトラフィックをルーティングする]** を選択します。
+   ![NGFW 経由に限定したトラフィックのルーティング][7]
+2. **[Route traffic through NGFW only (NGFW 経由に限定したトラフィックのルーティング)]** ブレードが開き、トラフィックのルーティング先として指定できる VM の一覧が表示されます。 一覧から VM を選択します。
    ![Select a VM][8]
-3. A blade for the selected VM opens, displaying related inbound rules. A description provides you with more information on possible next steps. Select **Edit inbound rules** to proceed with editing an inbound rule. The expectation is that **Source** is not set to **Any** for the Internet-facing endpoints linked with the NGFW. To learn more about the properties of the inbound rule, see [NSG rules](../virtual-network/virtual-networks-nsg.md#nsg-rules).
-   ![Configure rules to limit access][9]
-   ![Edit inbound rule][10]
+3. 選択した VM のブレードが開き、関連する受信規則が表示されます。 考えられる次のステップに関する詳細情報が示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。 NGFW にリンクされているインターネット接続エンドポイントの場合、**[ソース]** は **[任意]** に設定されません。 受信規則のプロパティの詳細については、「 [NSG ルール](../virtual-network/virtual-networks-nsg.md#nsg-rules)」をご覧ください。
+   ![アクセスを制限する規則の構成][9]
+   ![受信規則の編集][10]
 
-## <a name="see-also"></a>See also
-This document showed you how to implement the Security Center recommendation "Add a Next Generation Firewall." To learn more about NGFWs and the Check Point partner solution, see the following:
+## <a name="see-also"></a>関連項目
+このドキュメントでは、"次世代ファイアウォールの追加" というセキュリティ センターの推奨事項を実装する方法について説明しました。 NGFW と Check Point パートナー ソリューションの詳細については、次を参照してください。
 
-* [Next-Generation Firewall](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
+* [次世代ファイアウォール](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
 * [Check Point vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
 
-To learn more about Security Center, see the following:
+セキュリティ センターの詳細については、次を参照してください。
 
-* [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies.
-* [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
-* [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
-* [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
+* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png
@@ -79,6 +83,6 @@ To learn more about Security Center, see the following:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

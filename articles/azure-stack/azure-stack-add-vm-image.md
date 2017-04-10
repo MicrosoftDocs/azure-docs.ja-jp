@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: mattmcg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4b9b818ddaff4bb968e140a5fa9ec4f8129330cf
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 06c9c397de52197b6e9d1b247c0433d303cf0ef8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,9 +34,9 @@ If the VM image VHD is available locally on the console VM (or another externall
 
 1. Prepare a Windows or Linux operating system virtual hard disk image in VHD format (not VHDX).
    
-   * For Windows images, the article [Upload a Windows VM image to Azure for Resource Manager deployments](../virtual-machines/virtual-machines-windows-upload-image.md) contains image preparation instructions in the **Prepare the VHD for upload** section.
+   * For Windows images, the article [Upload a Windows VM image to Azure for Resource Manager deployments](../virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) contains image preparation instructions in the **Prepare the VHD for upload** section.
    * For Linux images, follow the steps to prepare the image or use an existing Azure Stack Linux image as described in the article [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md).
-2. Clone the [Azure Stack Tools repository](https://aka.ms/azurestackaddvmimage), and then import the **ComputeAdmin** module
+2. [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md) and then import the **ComputeAdmin** module
    
     ```powershell
     Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
@@ -115,10 +116,5 @@ Follow the steps from [Upload a Windows VM image to Azure for Resource Manager d
    ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
 3. The VM Image status changes to ‘Succeeded’ when the image is successfully added.
 4. Tenants can deploy the VM Image by specifying the publisher, offer, SKU, and version of the VM image in an Azure Resource Manager template. To make the VM image more readily available for tenant consumption in the UI, it is best to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

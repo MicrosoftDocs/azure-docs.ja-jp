@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: 28eddb52c33d9883219f146480b110574f728f89
 
 
 ---
@@ -26,18 +26,18 @@ Power BI JavaScript API を使用すると、Power BI レポートをアプリ�
 
 Power BI レポートをアプリケーションに埋め込むには、アプリケーションの一部としてホストされている iframe を使用します。 iframe は、次の画像でわかるように、アプリケーションとレポートの間の境界として機能します。 
 
-![Power BI embedded iframe without Javascript API](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-1.png)
+![Power BI embedded iframe without Javascript API](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-1.png)
 
 iframe により、埋め込み処理は非常に簡単になりますが、JavaScript API がなければ、レポートとアプリケーションは相互に対話できません。 このように対話が欠如することで、レポートが実際にはアプリケーションの一部ではないように感じる場合があります。 レポートとアプリケーションは、次の画像のように、実際には相互に通信する必要があります。
 
-![Power BI embedded iframe with Javascript API](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-2.png)
+![Power BI embedded iframe with Javascript API](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-2.png)
 
 Power BI JavaScript API を使用すると、iframe の境界を安全に通過するコードを記述することができます。 これにより、アプリケーションは、レポートでの操作をプログラムで実行したり、ユーザーがレポート内で行った操作からのイベントをリッスンしたりできます。
 
 ## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Power BI JavaScript API でできること
 JavaScript API を使用すると、レポートの管理、レポート内でのページの移動、レポートのフィルター処理、埋め込みイベントの処理を実行できます。 次の図は、API の構造を示します。
 
-![Power BI JavaScript API diagram](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
+![Power BI JavaScript API diagram](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-3.png)
 
 ### <a name="manage-reports"></a>レポートの管理
 Javascript API を使用すると、レポート レベルおよびページ レベルで動作を管理できます。
@@ -139,6 +139,6 @@ Power BI JavaScript API の詳細については、次のリンク先を確認�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

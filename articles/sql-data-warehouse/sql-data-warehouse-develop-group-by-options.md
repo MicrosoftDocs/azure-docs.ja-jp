@@ -1,22 +1,26 @@
 ---
-title: SQL Data Warehouse | Microsoft Docs
-description: ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
+title: "SQL Data Warehouse の Group By オプション | Microsoft Docs"
+description: "ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: f95a1e43-768f-4b7b-8a10-8a0509d0c871
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/14/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8c486ca190ae2af650a7fa17843c84538dde8d9
+
 
 ---
-# SQL Data Warehouse の Group By オプション
+# <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
 [GROUP BY][GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
 
 オプションは次のとおりです。
@@ -25,8 +29,8 @@ ms.author: jrj;barbkess;sonyama
 * GROUPING SETS
 * GROUP BY with CUBE
 
-## Rollup および Grouping Sets オプション
-ここで最も簡単なオプションは、`UNION ALL` を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。結果はまったく同じです。
+## <a name="rollup-and-grouping-sets-options"></a>Rollup および Grouping Sets オプション
+ここで最も簡単なオプションは、 `UNION ALL` を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。 結果はまったく同じです。
 
 `ROLLUP` オプションを使用した Group By ステートメントの例は、以下のとおりです。
 
@@ -49,7 +53,7 @@ ROLLUP を使用して、次の集計を要求しました。
 * 国
 * 総計
 
-これを置き換えるには、`UNION ALL` を使用して、同じ結果を返すために明示的に必要な集計を指定します。
+これを置き換えるには、 `UNION ALL`を使用して、同じ結果を返すために明示的に必要な集計を指定します。
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -78,12 +82,12 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 GROUPING SETS の場合、同一のプリンシパルを採用し、見たい集計レベルの UNION ALL セクションのみ作成する必要があります。
 
-## Cube オプション
-UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成することができます。問題は、コードがすぐに複雑で扱いにくくなることです。これを防ぐために、次のより高度なアプローチを使用することができます。
+## <a name="cube-options"></a>Cube オプション
+UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成することができます。 問題は、コードがすぐに複雑で扱いにくくなることです。 これを防ぐために、次のより高度なアプローチを使用することができます。
 
 上記の例を使用してみましょう。
 
-まず、作成したい集計のすべてのレベルを定義する 'cube' を定義します。2 つの派生テーブルに CROSS JOIN と書き込むことが重要です。これによって、すべてのレベルが生成されます。コードの残りの部分は、書式設定用です。
+まず、作成したい集計のすべてのレベルを定義する 'cube' を定義します。 2 つの派生テーブルに CROSS JOIN と書き込むことが重要です。 これによって、すべてのレベルが生成されます。 コードの残りの部分は、書式設定用です。
 
 ```sql
 CREATE TABLE #Cube
@@ -141,7 +145,7 @@ WITH
 ;
 ```
 
-3 番目に、集計を実行する列のキューブをループします。クエリが、#Cube 一時テーブルで行ごとに 1 回実行され、#Results 一時テーブルに結果が格納されます。
+3 番目に、集計を実行する列のキューブをループします。 クエリが、#Cube 一時テーブルで行ごとに 1 回実行され、#Results 一時テーブルに結果が格納されます。
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -176,8 +180,8 @@ ORDER BY 1,2,3
 
 コードをセクションに分割し、ループ構造を生成することによって、コードの管理と保守が容易になります。
 
-## 次のステップ
-開発のその他のヒントについては、[開発の概要][開発の概要]に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+開発に関するその他のヒントについては、[「開発の概要」][開発の概要]をご覧ください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
@@ -191,4 +195,8 @@ ORDER BY 1,2,3
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

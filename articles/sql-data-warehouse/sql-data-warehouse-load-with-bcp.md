@@ -12,11 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: loading
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: e368ae8b249fe3c33371794160440e472b0f35e3
+ms.lasthandoff: 01/30/2017
+
 
 
 ---
@@ -43,7 +46,7 @@ bcp では次のことができます。
 * bcp in コマンドを使用してテーブルにデータをインポートする
 * bcp out コマンドを使用してテーブルからデータをエクスポートする
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
@@ -55,7 +58,7 @@ bcp では次のことができます。
 * インストールされた SQLCMD コマンド ライン ユーティリティ
 
 > [!NOTE]
-> bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft ダウンロード センター]からダウンロードできます。
+> bcp ユーティリティと sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft Download Center]からダウンロードできます。
 > 
 > 
 
@@ -82,7 +85,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][テーブルの概要]に関する記事または [CREATE TABLE 構文][CREATE TABLE 構文]に関するページを参照してください。
+> SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][Table Overview]に関する記事または [CREATE TABLE 構文][CREATE TABLE syntax]に関するページを参照してください。
 > 
 > 
 
@@ -140,7 +143,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの[統計][統計]に関するトピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
 
 sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
 
@@ -184,27 +187,22 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 > 
 
 ## <a name="next-steps"></a>次のステップ
-読み込みの概要については、「[SQL Data Warehouse へのデータの読み込み][SQL Data Warehouse へのデータの読み込み]」を参照してください。
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse の開発の概要]に関するページを参照してください。
+読み込みの概要については、[SQL Data Warehouse へのデータの読み込み][Load data into SQL Data Warehouse]に関するページを参照してください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み) (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
-[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 

@@ -1,187 +1,119 @@
 ---
-title: Log Analytics のアラート | Microsoft Docs
-description: Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。
+title: "OMS Log Analytics のアラートについて | Microsoft Docs"
+description: "Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、さまざまな種類のアラート ルールとその定義方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/22/2016
+ms.date: 03/23/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 76db33674c5a3b9e323a1890c0d48d98dc3f03cf
+ms.lasthandoff: 03/29/2017
+
 
 ---
-# <a name="alerts-in-log-analytics"></a>Log Analytics のアラート
-Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別します。  アラート ルールにより、スケジュールに従って自動的にログ検索が実行され、結果が特定の条件に一致した場合にアラート レコードが作成されます。  さらに、アラートを事前に通知したり、別のプロセスを呼び出したりするために、1 つ以上のアクションを自動的に実行できます。   
+# <a name="understanding-alerts-in-log-analytics"></a>Log Analytics のアラートについて
+
+Log Analytics のアラートは、Log Analytics リポジトリ内の重要な情報を特定します。  この記事では、Log Analytics のアラート ルールのしくみを詳しく紹介します。また、アラート ルールの種類ごとの違いについても説明します。
+
+アラート ルール作成のプロセスについては、以下の記事を参照してください。
+
+- [Azure Portal](log-analytics-alerts-creating.md) を使ってアラート ルールを作成する
+- [Resource Manager テンプレート](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)を使ってアラート ルールを作成する
+- [REST API](log-analytics-api-alerts.md) を使ってアラート ルールを作成する
+
+
+## <a name="alert-rules"></a>アラート ルール
+
+アラートは、ログ検索を一定の間隔で自動的に実行するアラート ルールによって作成されます。  ログ検索の結果が特定の条件に一致すると、アラート レコードが作成されます。  さらに、アラートを事前に通知したり、別のプロセスを呼び出したりするために、1 つ以上のアクションを自動的に実行できます。  この分析では、アラート ルールの種類に応じてさまざまなロジックが使用されます。
 
 ![Log Analytics alerts](media/log-analytics-alerts/overview.png)
 
-## <a name="creating-an-alert-rule"></a>アラート ルールの作成
-アラート ルールを作成するには、まずアラートを呼び出すレコードに対するログ検索を作成します。  それにより、アラート ルールを作成して構成するための **[Alert]** (アラート) ボタンが使用できるようになります。
+アラート ルールは次の内容で定義されます。
 
-1. OMS の [Overview](概要.md) ページで、 **[Log Search]**(ログ検索) をクリックします。
-2. 新しいログ検索クエリを作成するか、保存されているログ検索を選択します。 
-3. ページの上部にある **[アラート]** をクリックして、**[アラート ルールの追加]** 画面を開きます。
-4. アラートを構成するオプションの詳細については、次に示す表を参照してください。
-5. アラート ルールの時間枠を指定すると、その時間枠内で検索条件に一致した既存のレコードの数が表示されます。  これにより、期待する数の結果が得られる頻度を判断できます。
-6. **[Save]** (保存) をクリックして、アラート ルールを完成させます。  すぐに実行が開始されます。
+- **ログ検索**:   これは、アラート ルールが実行されるたびに実行されるクエリです。  このクエリによって返されるレコードを使用して、アラートを作成するかどうかを決定します。
+- **時間枠**:   クエリの時間範囲を指定します。  クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。  5 分から 24 時間までの値を指定できます。 たとえば、時間枠が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが返されます。
+- **[頻度]**:   クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、時間枠の値以下にする必要があります。  この値が時間枠の値よりも大きい場合、レコードを見落とすおそれがあります。<br>たとえば、時間枠が 30 分、頻度が 60 分であるとします。  クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。  次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。  つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。
+- **しきい値**:   ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、アラート ルールの種類によって異なります。
 
-![[Add Alert Rule]](media/log-analytics-alerts/add-alert-rule.png)
+Log Analytics のアラート ルールはいずれも、以下の 2 種類のどちらかに該当します。  どちらについても、後のセクションで詳しく説明します。
 
-| プロパティ | 説明 |
-|:--- |:--- |
-| **Alert information** | |
-| 名前 |アラート ルールを識別する一意の名前。 |
-| 重大度 |このルールによって作成されるアラートの重大度。 |
-| Search query (検索クエリ) |**[Use current search query]** (現在の検索クエリを使用) を選択して現在のクエリを使用するか、または既存の保存した検索条件を一覧から選択します。  クエリの構文がテキスト ボックスに表示され、必要に応じて変更できます。 |
-| Time window (時間枠) |クエリの時間範囲を指定します。  クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。  5 分から 24 時間までの値を指定できます。  アラートの頻度以上の値を指定する必要があります。  <br><br>  たとえば、時間枠が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが返されます。 |
-| **スケジュール** | |
-| しきい値 |アラートを作成する条件。  クエリによって返されるレコード数がこの条件に一致する場合に、アラートが作成されます。 |
-| Alert frequency (アラートの頻度) |クエリの実行頻度を指定します。  5 分から 24 時間までの値を指定できます。  この値は、時間枠の値以下にする必要があります。 |
-| Suppress alerts (アラートの抑制) |アラート ルールの抑制を有効にすると、新しいアラートを作成した後、定義された期間の間、ルールのアクションが無効になります。  ルールは引き続き実行され、条件が満たされればアラート レコードが作成されます。  このオプションは、問題を修正している間、同じアクションが繰り返し実行されるのを防ぐために用意されています。 |
-| **アクション** | |
-| 電子メール通知 |アラートがトリガーされたときに電子メールを送信する場合は、 **[Yes]** (はい) を指定します。 |
-| [件名] |電子メールの件名。  電子メールの本文を変更することはできません。 |
-| Recipients |電子メールのすべての受信者のアドレス。  複数のアドレスを指定する場合は、アドレスをセミコロン (;) で区切ります。 |
-| Webhook |アラートがトリガーされたときに Webhook を呼び出す場合は、 **[Yes]** (はい) を指定します。 |
-| Webhook URL |Webhook の URL。 |
-| Include custom JSON payload (カスタム JSON ペイロードを含める) |既定のペイロードをカスタム ペイロードに置き換える場合は、このオプションを選択します。 |
-| Enter your custom JSON payload (カスタム JSON ペイロードの入力) |Webhook のカスタム ペイロード。  詳細については、前のセクションを参照してください。 |
-| Runbook |アラートがトリガーされたときに Azure Automation の Runbook を開始する場合は、 **[Yes]** (はい) を指定します。 |
-| Select a runbook (Runbook の選択) |Automation ソリューションで構成されているオートメーション アカウントの Runbook から、開始する Runbook を選択します。 |
-| Run on (実行先) |Runbook を Azure クラウドで実行する場合は、 **[Azure]** を選択します。  Runbook をローカル環境の **Hybrid Runbook Worker** で実行する場合は、 [[ハイブリッド worker]](../automation/automation-hybrid-runbook-worker.md) を選択します。 |
+- **[結果の数](#number-of-results-alert-rules)**。 ログ検索によって返されるレコードの数が指定された数を超えた場合に、アラートが 1 回生成されます。
+- **[メトリック測定](#metric-measurement-alert-rules)**。  ログ検索の結果の値が指定されたしきい値を超えた場合に、オブジェクトごとにアラートが生成されます。 
 
-## <a name="manage-alert-rules"></a>アラート ルールの管理
-Log Analytics の **[Settings (設定)]** の **[Alerts (アラート)]** メニューで、すべてのアラート ルールの一覧を表示することができます。  
+この 2 種類のアラート ルールの違いは次のとおりです。
 
-![Manage alerts](./media/log-analytics-alerts/configure.png)
+- **結果の数**のアラート ルールでは常に、アラートが 1 回だけ生成されます。これに対して、**メトリック測定**のアラート ルールでは、しきい値を超えたオブジェクトそれぞれについて、アラートが生成されます。
+- **結果の数**のアラート ルールでは、1 回しきい値を超えた時点でアラートが生成されます。 これに対して、**メトリック測定**のアラート ルールでは、一定期間内にしきい値を一定回数超過した場合に、アラートが生成されます。
 
-1. OMS コンソールで、 **[Settings]** (設定) タイルを選択します。
-2. **[Alerts]**(アラート) を選択します。
+## <a name="number-of-results-alert-rules"></a>結果の数のアラート ルール
+**結果の数**のアラート ルールでは、検索クエリによって返されるレコード数が指定されたしきい値を超えた場合に、1 回だけアラートが生成されます。 
 
-このビューから複数のアクションを実行できます。
+### <a name="threshold"></a>しきい値
+**結果の数**のアラート ルールでは、単に特定の値との大小の比較によって、しきい値に対する抵触の有無を判定します。  ログ検索によって返されるレコード数がこの条件を満たしたときに、アラートが生成されます。
 
-* 横にある **[Off]** (オフ) を選択して、ルールを無効にします。
-* その横にある鉛筆アイコンをクリックして、アラート ルールを編集します。
-* その横にある **[X]** アイコンをクリックして、アラート ルールを削除します。 
+### <a name="scenarios"></a>シナリオ
 
-## <a name="setting-time-windows"></a>時間枠の設定
-### <a name="event-alerts"></a>イベントのアラート
-イベントには、Windows イベント ログ、Syslog、カスタム ログなどのデータ ソースが含まれます。  特定のエラー イベントが作成されたとき、または特定の時間枠内に複数のエラー イベントが作成されたときなどに、アラートを作成することができます。
+#### <a name="events"></a>イベント
+この種類のアラート ルールは、Windows イベント ログ、Syslog、カスタム ログのようなイベントでの使用に最適です。  特定のエラー イベントが作成されたとき、または特定の時間枠内に複数のエラー イベントが作成されたときなどに、アラートを作成することができます。
 
 1 つのイベントに対してアラートを作成するには、結果の数を 0 より大きな値に設定し、頻度と時間枠の両方を 5 分に設定します。  それにより、クエリが 5 分ごとに実行され、前回のクエリ実行後に作成された 1 つのイベントの発生を確認します。  頻度の値を大きくすると、イベントが収集されてアラートが作成される間隔が長くなります。
 
 一部のアプリケーションでは、必ずしもアラートを発生させない偶発的なエラーが記録される場合もあります。  たとえば、エラー イベントを作成したプロセスをアプリケーションが再試行し、次回は成功する場合などがあります。  このような場合は、特定の時間枠内に複数のイベントが作成されない限り、アラートを作成しないようにできます。  
 
-また、イベントが発生しないときにアラートを作成する場合もあります。  たとえば、正しく動作していることを示すために定期的なイベントを記録するプロセスがあります。  そのようなプロセスが特定の時間枠内にそれらのイベントを記録しなかった場合には、アラートを作成する必要があります。  この場合は、しきい値を " *Less than 1*" に設定します。
+また、イベントが発生しないときにアラートを作成する場合もあります。  たとえば、正しく動作していることを示すために定期的なイベントを記録するプロセスがあります。  そのようなプロセスが特定の時間枠内にそれらのイベントを記録しなかった場合には、アラートを作成する必要があります。  この場合は、しきい値を **Less than 1** に設定します。
 
-### <a name="performance-alerts"></a>パフォーマンスのアラート
-[パフォーマンス データ](log-analytics-data-sources-performance-counters.md) は、イベントと同様に OMS リポジトリ内のレコードとして格納されます。  各レコードの値は、過去 30 分の間に測定された平均値です。  パフォーマンス カウンターが特定のしきい値を超えたときにアラートを生成する場合は、クエリにそのしきい値を含める必要があります。
+#### <a name="performance-alerts"></a>パフォーマンスのアラート
+[パフォーマンス データ](log-analytics-data-sources-performance-counters.md) は、イベントと同様に OMS リポジトリ内のレコードとして格納されます。  パフォーマンス カウンターが特定のしきい値を超えたときにアラートを生成する場合は、クエリにそのしきい値を含める必要があります。
 
-たとえば、プロセッサが 30 分間にわたって 90% を超える割合で実行されたときにアラートを発生させるには、"*Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90*" というクエリを使用し、アラート ルールのしきい値を "*Greater than 0*" に設定します。  
+たとえば、プロセッサが 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリにアラート ルールのしきい値 **greater than 0** を含めます。
 
- [パフォーマンス レコード](log-analytics-data-sources-performance-counters.md) は、各カウンターを収集する頻度に関係なく 30 分ごとに集計されるため、時間枠を 30 分より短く設定すると、レコードが返されない場合があります。  時間枠を 30 分に設定すると、接続された各ソースについて、その時間内での平均値を表す 1 つのレコードが取得されるようになります。
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-## <a name="alert-actions"></a>アラート アクション
-アラート レコードを作成するだけでなく、1 つ以上のアクションを自動的に実行するようにアラート ルールを構成できます。  アクションを使用して、アラートが発生したときに通知したり、検出された問題を修正するためのプロセスを開始したりできます。  以降のセクションでは、現在使用できるアクションについて説明します。
+プロセッサが一定の時間内に平均 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリで [measure コマンド](log-analytics-search-reference.md#commands)を使用し、アラート ルールのしきい値 **greater than 0** を含めます。 
 
-### <a name="email-actions"></a>電子メール アクション
-電子メール アクションは、アラートの詳細を記載した電子メールを 1 人以上の受信者に送信します。  電子メールの件名は指定できますが、メールの内容は Log Analytics によって構築された標準の形式となります。  電子メールには、アラートの名前などの概要情報に加えて、ログ検索で返される最大 10 個のレコードの詳細情報が含まれます。  また、そのクエリに基づくレコードのセット全体を返す Log Analytics のログ検索へのリンクも含まれています。   メールの送信者は、"*Microsoft Operations Management Suite チーム &lt;noreply@oms.microsoft.com&gt;*" となります。 
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
-### <a name="webhook-actions"></a>Webhook アクション
-Webhook アクションは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。  呼び出されるサービスは、Webhook をサポートし、受信したペイロードの使用方法を決定できる必要があります。  また、要求に API で認識される形式を使用すれば、Webhook を明示的にはサポートしない REST API も呼び出すことができます。  アラートに対する応答で Webhook を使用する例として、[Slack](http://slack.com) などのサービスを使用してアラートの詳細情報を含むメッセージを送信したり、[PagerDuty](http://pagerduty.com/) などのサービスでインシデントを作成したりできます。  
+## <a name="metric-measurement-alert-rules"></a>メトリック測定のアラート ルール
 
-Webhook でサンプル サービスを呼び出すアラート ルールを作成する詳細なチュートリアルについては、「 [Log Analytics のアラートでの Webhook](log-analytics-alerts-webhooks.md)」を参照してください。
+>[!NOTE]
+> メトリック測定のアラート ルールは、現在パブリック プレビューの段階です。
 
-Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表に示す値が格納されます。  このペイロードは、独自のカスタム ペイロードに置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
+**メトリック測定**のアラート ルールでは、クエリの対象となったオブジェクトが分析され、特定の値が指定されたしきい値を上回っているオブジェクトについて、それぞれ別個にアラートが生成されます。  **結果の数**のアラート ルールとは、以下の点が明確に異なります。
 
-| パラメーター | 変数 | 説明 |
-|:--- |:--- |:--- |
-| AlertRuleName |#AlertRuleName |アラート ルールの名前。 |
-| AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
-| AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
-| LinkToSearchResults |#LinkToSearchResults |アラートを作成したクエリに基づいてレコードを返す Log Analytics ログ検索へのリンク。 |
-| ResultCount |#searchresultcount |検索結果に含まれるレコードの数。 |
-| SearchIntervalEndtimeUtc |#SearchIntervalEndtimeUtc |UTC 形式で記述したクエリの終了時刻。 |
-| SearchIntervalInSeconds |#searchinterval |アラート ルールの時間枠。 |
-| SearchIntervalStartTimeUtc |#SearchIntervalStartTimeUtc |UTC 形式で記述したクエリの開始時刻。 |
-| SearchQuery |#SearchQuery |アラート ルールで使用されるログ検索クエリ。 |
-| SearchResults |以下を参照 |クエリによって返される JSON 形式のレコード。  最初の 5,000 レコードに制限されます。 |
-| WorkspaceID |#WorkspaceID |OMS ワークスペースの ID。 |
+#### <a name="log-search"></a>ログ検索
+**結果の数**のアラート ルールではどのようなクエリでも使用できるのに対し、メトリック測定のアラート ルールの場合にはクエリに一定の要件が存在します。  具体的には、特定のフィールドに関する結果をグループ化するために [measure コマンド](log-analytics-search-reference.md#commands)が 1 つ必要になります。 このコマンドに必要な要素は以下のとおりです。
 
-たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
+- **集計関数**。  実行する計算と、集計の対象となりうる数値フィールドを決める要素です。  たとえば、**count()** であれば、クエリで指定したレコードの件数が返されます。**avg(CounterValue)** であれば、一定期間内の CounterValue フィールドの平均値が返されます。
+- **グループ フィールド**。  このフィールドのインスタンスごとに値を集計したレコードが作成されます。アラートは、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合には、**by Computer** を使用します。   
+- **[間隔]**:   データを集計する間隔を定義する要素です。  たとえば、**5minutes** を指定した場合には、アラートに対して指定した期間にわたり、グループ フィールドの各インスタンスについて、5 分間隔でレコードが作成されます。
 
-    {
-        "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
-    }
+#### <a name="threshold"></a>しきい値
+メトリック測定のアラート ルールのしきい値は、集計値と "抵触" の発生回数の 2 つの要素によって決まります。  ログ検索でいずれかのデータ ポイントが一定の値を超えると、抵触が 1 回発生したと判定されます。  そして、結果に含まれるオブジェクトの抵触の発生回数が指定された値を超えたときに、そのオブジェクトについてアラートが生成されます。
 
-この例のペイロードは、Webhook に送信されると、次のような内容に解決されます。
+#### <a name="example"></a>例
+いずれかのコンピューターでプロセッサの使用率が 90% を超える状態が 30 分間に 3 回発生した場合にアラートを生成するシナリオを考えてみましょう。  この場合、以下のようなアラート ルールを作成します。  
 
-    {
-        "text":"My Alert Rule fired with 18 records over threshold of 10 ."
-    }
+**[クエリ]:** Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
+**[時間枠]: 30 分**<br>
+**[アラートの頻度]:** 5 分<br>
+**[集計値]:** 90 よりも大きい<br>
+**[アラートをトリガーする基準]:** 抵触の発生総数が 5 件より多い<br>
 
-カスタム ペイロードに検索結果を含めるには、json ペイロードの最上位レベルのプロパティとして、次の行を追加します。  
+上のクエリは、5 分間隔で各コンピューターの平均値を計算するものです。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。  コンピューターが 3 台の場合、サンプル データは以下のようになります。
 
-    "IncludeSearchResults":true
+![サンプル クエリの結果](media/log-analytics-alerts/metrics-measurement-sample-graph.png)
 
-たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、次のように入力します。 
-
-    {
-       "alertname":"#alertrulename",
-       "IncludeSearchResults":true
-    }
-
-
-Webhook で外部サービスを開始するアラート ルールを作成する例の全体については、「 [Log Analytics のアラートでの Webhook](log-analytics-alerts-webhooks.md)」にあるサンプルを参照してください。
-
-### <a name="runbook-actions"></a>Runbook アクション
-Runbook アクションは、Azure Automation で Runbook を開始します。  この種類のアクションを使用するためには、OMS ワークスペースに [Automation ソリューション](log-analytics-add-solutions.md) がインストールされ、構成されている必要があります。  まだインストールされていない場合は、新しいアラート ルールを作成するときに、インストールへのリンクが表示されます。  Automation ソリューションで構成されているオートメーション アカウントの Runbook から選択できます。
-
-Runbook アクションは、 [Webhook](../automation/automation-webhooks.md)を使用して Runbook を開始します。  アラート ルールを作成すると、Runbook に対して、" **OMS Alert Remediation** " の後に GUID が付いた名前を持つ新しい Webhook が自動的に作成されます。  
-
-Runbook のパラメーターを直接設定することはできませんが、[$WebhookData パラメーター](../automation/automation-webhooks.md)にアラートの詳細 (それを作成したログ検索の結果を含む) が格納されます。  この Runbook で、アラートのプロパティにアクセスするためのパラメーターとして **$WebhookData** を定義する必要があります。  アラート データは、**$WebhookData** の **RequestBody** プロパティにある **SearchResults** という単一のプロパティから JSON 形式で取得できます。  このデータには、次の表に示したプロパティが存在します。
-
-| ノード | 説明 |
-|:--- |:--- |
-| id |検索のパスと GUID。 |
-| __metadata |アラートに関する情報 (レコードの件数、検索結果の状態を含む)。 |
-| 値 |検索結果のレコードごとのエントリ。  エントリの詳細は、レコードのプロパティおよび値と対応します。 |
-
-たとえば、以下の Runbook では、ログの検索から返されたレコードを抽出し、レコードの種類ごとに異なるプロパティを割り当てています。  Runbook ではまず、JSON 形式の **RequestBody** を PowerShell からオブジェクトとして扱うことができるように変換していることに注目してください。
-
-    param ( 
-        [object]$WebhookData
-    )
-
-    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResults.value
-
-    foreach ($Record in $Records)
-    {
-        $Computer = $Record.Computer
-
-        if ($Record.Type -eq 'Event')
-        {
-            $EventNo    = $Record.EventID
-            $EventLevel = $Record.EventLevelName
-            $EventData  = $Record.EventData
-        }
-
-        if ($Record.Type -eq 'Perf')
-        {
-            $Object    = $Record.ObjectName
-            $Counter   = $Record.CounterName
-            $Instance  = $Record.InstanceName
-            $Value     = $Record.CounterValue
-        }
-    }
-
+この例では、指定された期間内に srv02 と srv03 の 2 台がしきい値 (90 %) に合計 3 回抵触しています。このため、この 2 台について個別にアラートが生成されます。  **[アラートをトリガーする基準]** を **[Consecutive (連続)]** に変更した場合には、3 回連続でしきい値に抵触した srv03 についてのみアラートが生成されます。
 
 ## <a name="alert-records"></a>アラート レコード
 Log Analytics のアラート ルールで作成されるアラート レコードは、**[Type]** が **[Alert]**、**[SourceSystem]** が **[OMS]** に設定されています。  これらのレコードには、次の表に示したプロパティがあります。
@@ -190,21 +122,24 @@ Log Analytics のアラート ルールで作成されるアラート レコー�
 |:--- |:--- |
 | 型 |*アラート:* |
 | SourceSystem |*OMS* |
-| AlertSeverity |アラートの重大度。 |
+| *Object*  | [メトリック測定のアラート](#metric-measurement-alert-rules)には、グループ フィールドのプロパティがあります。  たとえば、ログ検索のグループ分けがコンピューターごとの場合には、アラートのレコードに Computer フィールドが存在します。また、そのフィールドの値はコンピューター名となります。
 | AlertName |アラートの名前。 |
+| AlertSeverity |アラートの重大度。 |
+| LinkToSearchResults |アラートを作成したクエリに基づいてレコードを返す Log Analytics ログ検索へのリンク。 |
 | クエリ |実行されたクエリのテキスト。 |
 | QueryExecutionEndTime |クエリの時間範囲の終了時刻。 |
 | QueryExecutionStartTime |クエリの時間範囲の開始時刻。 |
+| ThresholdOperator | アラート ルールで使用された演算子。 |
+| ThresholdValue | アラート ルールで使用された値。 |
 | TimeGenerated |アラートが作成された日付と時刻。 |
 
 [Alert Management ソリューション](log-analytics-solution-alert-management.md)および [Power BI エクスポート](log-analytics-powerbi.md)では、他の種類のアラート レコードも作成されます。  これらはすべて、**[Type]** が **[Alert]** ですが、それぞれ **[SourceSystem]** によって区別されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Alert Management ソリューション](log-analytics-solution-alert-management.md) をインストールして、Log Analytics で作成されたアラートおよび System Center Operations Manager (SCOM) から収集されたアラートを分析します。
 * アラートを生成する [ログ検索](log-analytics-log-searches.md) の詳細を確認します。
 * アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
 * アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。
-
-<!--HONumber=Oct16_HO2-->
 
 

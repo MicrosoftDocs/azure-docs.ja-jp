@@ -1,28 +1,33 @@
 ---
-title: カスタム テスト シナリオ | Microsoft Docs
-description: グレースフル/非グレースフル エラーに対してサービスを強化する方法
+title: "Azure マイクロサービスでのエラーをシミュレートする | Microsoft Docs"
+description: "グレースフル/非グレースフル エラーに対してサービスを強化する方法"
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/17/2016
+ms.date: 03/01/2017
 ms.author: anmola
+translationtype: Human Translation
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: eefc05c85d07f397261f2230373ad93e07675159
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# サービス ワークロード中のエラーのシミュレーション
-Azure Service Fabric の Testability シナリオにより、開発者は個別のエラーの対応に追われることがなくなります。ただし、クライアント ワークロードやエラーの明示的な割り込みが必要になるシナリオも存在します。サービスはクライアント ワークロードとエラーの割り込みにより、エラーが発生した際に何らかのアクションを確実に実行します。Testability が提供する高度な制御により、ワークロードの実行においてこれらが発生する可能性がある正確なポイントを特定できます。このアプリケーションのさまざまな状態で発生するエラーがバグを発見し、品質の向上につながります。
+# <a name="simulate-failures-during-service-workloads"></a>サービス ワークロード中のエラーのシミュレーション
+Azure Service Fabric の Testability シナリオにより、開発者は個別のエラーの対応に追われることがなくなります。 ただし、クライアント ワークロードやエラーの明示的な割り込みが必要になるシナリオも存在します。 サービスはクライアント ワークロードとエラーの割り込みにより、エラーが発生した際に何らかのアクションを確実に実行します。 Testability が提供する高度な制御により、ワークロードの実行においてこれらが発生する可能性がある正確なポイントを特定できます。 このアプリケーションのさまざまな状態で発生するエラーがバグを発見し、品質の向上につながります。
 
-## サンプルのカスタム シナリオ
-このテストは、[グレースフル エラーと非グレースフル エラー](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)に対するビジネス ワークロードの割り込みについてのシナリオを示します。最適な結果を得るには、サービスの運用中またはコンピューティング中にエラーを発生させる必要があります。
+## <a name="sample-custom-scenario"></a>サンプルのカスタム シナリオ
+このテストは、 [グレースフル エラーと非グレースフル エラー](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)に対するビジネス ワークロードの割り込みについてのシナリオを示します。 最適な結果を得るには、サービスの運用中またはコンピューティング中にエラーを発生させる必要があります。
 
-4 つのワークロード A、B、C、D を公開するサービスの例を見てみましょう。各ワークロードはワークフローのセットに対応し、コンピューティング、ストレージ、またはその両方の可能性があります。わかりやすくするために、例からワークロードを抽出してみましょう。この例では、次のエラーが実行されています。
+4 つのワークロード A、B、C、D を公開するサービスの例を見てみましょう。各ワークロードはワークフローのセットに対応し、コンピューティング、ストレージ、またはその両方の可能性があります。 わかりやすくするために、例からワークロードを抽出してみましょう。 この例では、次のエラーが実行されています。
 
 * RestartNode: コンピューターの再起動をシミュレートするアングレースフル エラー。
 * RestartDeployedCodePackage: サービス ホスト プロセスのクラッシュをシミュレートするアングレースフル エラー。
@@ -155,4 +160,3 @@ class Test
 }
 ```
 
-<!---HONumber=AcomDC_0518_2016-->

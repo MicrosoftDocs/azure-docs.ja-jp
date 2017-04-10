@@ -1,104 +1,111 @@
 ---
-title: How to buy a custom domain name in Azure App Service Web Apps
-description: Learn how to buy a custom domain name with a web app in Azure App Service.
+title: "Azure App Service Web Apps でのカスタム ドメイン名の購入方法"
+description: "Azure App Service の Web アプリでカスタム ドメイン名を購入する方法について説明します。"
 services: app-service\web
-documentationcenter: ''
+documentationcenter: 
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9c5c0b40d796130d93111545c93bedf86c374fd9
+
 
 ---
-# <a name="buy-and-configure-a-custom-domain-name-in-azure-app-service"></a>Buy and Configure a custom domain name in Azure App Service
+# <a name="buy-and-configure-a-custom-domain-name-in-azure-app-service"></a>Azure App Service でのカスタム ドメイン名の購入と構成
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
-When you create a web app, Azure assigns it to a subdomain of azurewebsites.net. For example, if your web app is named **contoso**, the URL is **contoso.azurewebsites.net**. Azure also assigns a virtual IP address.
+Web アプリを作成するときに、Azure は azurewebsites.net のサブドメインにそのアプリを割り当てます。 たとえば、Web アプリの名前が **contoso** の場合、URL は **contoso.azurewebsites.net** になります。 また Azure によって仮想 IP アドレスも割り当てられます。
 
-For a production web app, you probably want users to see a custom domain name. This article explains how to buy and configure a custom domain with [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). 
+運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。 この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを購入して構成する方法について説明します 
 
 [!INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
-## <a name="overview"></a>Overview
-If you don't have a domain name for your web app, you can easily buy one on [Azure Portal](https://portal.azure.com/). During the purchase process you can choose to have WWW and root domain's DNS records be mapped to your web app automatically. You also can manage your domain right inside Azure Portal.
+## <a name="overview"></a>概要
+Web アプリのドメイン名を持っていない場合は、[Azure Portal](https://portal.azure.com/) で簡単に購入できます。 購入プロセス中に、WWW とルート ドメインの DNS レコードを自動的に Web アプリにマップできます。 Azure Portal 内のドメインの権利を管理することもできます。
 
-Use the following steps to buy domain names and assign to your web app.
+次の手順を使用してドメイン名を購入し、Web アプリに割り当てます。
 
-1. In your browser, open the [Azure Portal](https://portal.azure.com/).
-2. In the **Web Apps** tab, click the name of your web app, select **Settings**, and then select **Custom domains**
+1. ブラウザーで、 [Azure ポータル](https://portal.azure.com/)を開きます。
+2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメイン]** の順に選択します。
    
     ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
-3. In the **Custom domains** blade, click **Buy domains**.
+3. **[カスタム ドメイン]** ブレードで **[ドメインの購入]** をクリックします。
    
     ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
-4. In the **Buy Domains** blade, use the text box to type the domain name you want to buy and hit Enter. The suggested available domains will be shown just below the text box. Select what domain you want to buy. You can choose to purchase multiple domains at once. 
+4. **[ドメインの購入]** ブレードで、購入するドメイン名をテキスト ボックスを使用して入力し、Enter キーを押します。 推奨される使用可能なドメインがテキスト ボックスの下に表示されます。 購入したいドメインを選択します。 一度に複数のドメインを購入できます。 
    
    ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
-5. Click the **Contact Information** and fill the domain's contact information form.
+5. **[連絡先情報]** をクリックし、ドメインの連絡先情報フォームに入力します。
    
    ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-3.png)
    
    > [!NOTE]
-   > It is very important that you fill out all required fields with as much accuracy as possible, especially the email address. In case of purchasing the domain without "Privacy protection", you might be asked to verify your email before the domain becomes active. In some cases, incorrect data for contact information will result in failure to purchase domains. 
+   > すべての必須フィールドにできるだけ正確に (特にメール アドレス) 入力することが非常に重要です。 "プライバシー保護" のないドメインを購入する場合は、ドメインがアクティブになる前に、メールの確認が求められる可能性があります。 連絡先情報に誤ったデータを入力した場合は、ドメインを購入できないことがあります。 
    > 
    > 
-6. Now you can choose to,
+6. 次を選択できるようになります。
    
-    a) "Auto renew" your domain every year
+    a) [Auto renew]: ドメインを毎年自動更新します
    
-    b) Opt-in for "Privacy protection" which is included in the purchase price for FREE (Except for TLDs who's registry do not support Privacy. For example: .co.in, .co.uk etc.)  
+    b) [Privacy protection]: 無料の購入価格に含まれる、プライバシー保護のためのオプトインです (レジストリがプライバシーをサポートしていない TLD を除きます。 たとえば、.co.in や .co.uk などです)  
    
-    c) "Assign default hostnames" for WWW and root domain to the current Web App. 
+    c) [Assign default hostnames]: 現在の Web アプリに WWW とルート ドメインの既存のホスト名を割り当てます 
    
    ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.5.png)
    
    > [!NOTE]
-   > Option C configures DNS bindings and Hostname bindings automatically for you.  This way, your Web App can be accessed using custom domain as soon as the purchase is complete (baring DNS propagation delays in few cases). In case, your Web App is behind Azure Traffic Manager, you will not see an option to assign root domain, as A-Records do not work with the Traffic Manager. You can always assign the domains/sub-domains purchased through one Web App to another Web App and vice-versa. See step 8 for more details. 
+   > オプション C は、DNS のバインドとホスト名のバインドを自動的に構成します。  これにより、Web アプリは、購入が完了するとすぐにカスタム ドメインを使用してアクセスできます (DNS の伝達が遅れている場合を除く)。 Web アプリが Azure Traffic Manager の背後にある場合、A レコードは Traffic Manager で使用できないため、ルート ドメインを割り当てるオプションが表示されません。 Web アプリから購入したドメインやサブドメインは、常に別の Web アプリに割り当てることができます。また、その逆の操作も可能です。 詳細については、手順 8. をご覧ください。 
    > 
    > 
-7. Click the **Select** on **Buy Domains** blade, then you will see the purchase information on **Purchase confirmation** blade. If you accept the legal terms and click **Buy**, your order will be submitted and you can monitor the purchasing process on **Notification**. Domain purchase can take few minutes to complete. 
+7. **[ドメインの購入]** ブレードで **[選択]** をクリックすると、**[購入内容の確認]** ブレードに注文情報が表示されます。 法律条項に同意して **[購入]** をクリックすると、注文が送信され、**[通知]** で購入プロセスを確認できます。 ドメインの購入は完了するまでに数分かかります。 
    
    ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-4.png)
    
    ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-5.png)
-8. If you successfully ordered a domain, you can manage the domain and assign to your web app. Click the **"..."** at the right side of your domain. Then you can **Cancel purchase** or **Manage domain**. Click **Manage domain**, then we can bind **subdomain** to our web app on **Manage domain** blade. If you want to bind a  **subdomain** to a different Web App then perform this step from within the context of the respective Web App. Over here you an choose to assign the domain to Traffic manager endpoint (if Web App is behind TM) by simply selecting Traffic manager name from the Drop down menu. By doing this, domain/subdomain will be automatically assigned to all the Web Apps behind that Traffic Manager endpoint. 
+8. ドメインを正常に購入した場合は、ドメインを管理し、Web アプリに割り当てることができます。 ドメインの右側にある **[...]** をクリックします。 **[購入の取り消し]** または **[ドメインの管理]** を選択できます。 **[ドメインの管理]** をクリックし、**[ドメインの管理]** ブレードで**サブドメイン**を Web アプリにバインドします。 **サブドメイン**を別の Web アプリにバインドする場合は、それぞれの Web App のコンテキスト内からこの手順を実行します。 ここでは、ドロップ ダウン メニューから Traffic Manager の名前を選択するだけで、ドメインを Traffic Manager エンドポイントに割り当てることができます (Web App が TM の背後にある場合)。 これにより、ドメインとサブドメインは、Traffic Manager エンドポイントの背後にあるすべての Web Apps に自動的に割り当てられます。 
    
     ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-6.png)
    
    > [!NOTE]
-   > You can "Cancel purchase" within 5 days for full refund. After 5 days you will not be able to "Cancel purchase", instead you will see an option to "Delete" the domain. Deleting the domain will result in releasing it from your subscription without refund and will become available domain. 
+   > 5 日以内であれば全額返金を受けて "購入をキャンセル" できます。 5 日を経過すると "購入をキャンセル" できなくなり、ドメインを "削除" するオプションが表示されます。 ドメインを削除すると、ドメインがサブスクリプションから解除されますが返金されません。また、このドメインは使用可能なドメインになります。 
    > 
    > 
 
-Once configuration has completed, the custom domain name will be listed in the **Hostname bindings** section of your web app.
+構成が完了すると、カスタム ドメイン名が Web アプリの **[ホスト名のバインド]** セクションに表示されます。
 
-At this point, you should be able to enter the custom domain name in your browser and see that it successfully takes you to your web app.
+この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
 
-## <a name="what-happens-to-the-custom-domain-you-bought"></a>What happens to the custom domain you bought
-The custom domain you bought in the **Custom domains and SSL** blade is tied to the Azure subscription. As an Azure resource, this custom domain is separate and independent from the App Service app that you first bought the domain for. This means that:
+## <a name="what-happens-to-the-custom-domain-you-bought"></a>購入したカスタム ドメインはどうなるか
+**[カスタム ドメインおよび SSL]** ブレードで購入したカスタム ドメインは Azure サブスクリプションに関連付けられます。 Azure リソースとしては、このカスタム ドメインは、最初にドメインを購入した App Service アプリとは別であり、独立しています。 これは、次のことを意味します。
 
-* Within the Azure portal, you can use the custom domain you bought for more than one App Service app, and not just for the app that you first bought the custom domain for. 
-* You can manage all the custom domains you bought in the Azure subscription by going to the **Custom domains and SSL** blade of *any* App Service app in that subscription.
-* You can assign any App Service app from the same Azure subscription to a subdomain within that custom domain.
-* If you decide to delete an App Service app, you can choose not to delete the custom domain it is bound to if you want to keep using it for other apps.
+* Azure ポータル内では、購入したカスタム ドメインを、最初にカスタム ドメインを購入したときのアプリだけでなく、複数の App Service アプリに使用できます。 
+* Azure サブスクリプションで購入したすべてのカスタム ドメインは、そのサブスクリプションの "*任意の*" App Service アプリの **[カスタム ドメインおよび SSL]** ブレードで管理できます。
+* そのカスタム ドメイン内のサブドメインに、同じ Azure サブスクリプションからあらゆる App Service アプリを割り当てることができます。
+* App Service アプリを削除する場合、そのアプリに関連付けられているカスタム ドメインを他のアプリで引き続き使用するのであれば、カスタム ドメインを削除しないことを選択できます。
 
-## <a name="if-you-cant-see-the-custom-domain-you-bought"></a>If you can't see the custom domain you bought
-If you have bought the custom domain from within the **Custom domains and SSL** blade, but cannot see the custom domain under **Managed domains**, verify the following things:
+## <a name="if-you-cant-see-the-custom-domain-you-bought"></a>購入したカスタム ドメインが表示されない場合
+**[カスタム ドメインおよび SSL]** ブレード内からカスタム ドメインを購入したのに、**[管理対象ドメイン]** にカスタム ドメインが表示されない場合は、次を確認してください。
 
-* The custom domain creation may not have finished. Check the notification bell at the top of the Azure portal for the progress.
-* The custom domain creation may have failed for some reason. Check the notification bell at the top of the Azure portal for the progress.
-* The custom domain may have succeeded but the blade may not be refreshed yet. Try reopening the **Custom domains and SSL** blade.
-* You may have deleted the custom domain at some point. Check the audit logs by clicking **Settings** > **Audit Logs** from your app's main blade. 
-* The **Custom domains and SSL** blade you're looking in may belong to an app that's created in a different Azure subscription. Switch to another app in a different subscription and check its **Custom domains and SSL** blade.  
-  Within the portal, you won't be able to see or manage custom domains created in a different Azure subscription than the app. However, if you click **Advanced management** in the domain's **Manage domain** blade, you'll be redirected to the domain provider's website, where you'll be able to   [manually configure your custom domain like any external custom domain](web-sites-custom-domain-name.md) 
-    for apps created in a different Azure subscription. 
+* カスタム ドメインの作成が完了していない場合があります。 Azure ポータルの上部にある通知ベルで進捗状況を確認してください。
+* 何らかの理由からカスタム ドメインを作成できなかった可能性があります。 Azure ポータルの上部にある通知ベルで進捗状況を確認してください。
+* カスタム ドメインは作成されましたが、ブレードがまだ更新されていない可能性があります。 **[カスタム ドメインおよび SSL]** ブレードをもう一度開いてください。
+* ある時点でカスタム ドメインを削除した可能性があります。 アプリのメイン ブレードから **[設定]** > **[監査ログ]** の順にクリックし、監査ログを確認してください。 
+* 探している **[カスタム ドメインおよび SSL]** ブレードが、別の Azure サブスクリプションで作成されたアプリに属している可能性があります。 別のサブスクリプションの別のアプリに切り替え、その **[カスタム ドメインおよび SSL]** ブレードを確認してください。  
+    ポータル内では、アプリと異なる Azure サブスクリプションで作成されたカスタム ドメインを表示または管理できません。 ただし、ドメインの **[ドメインの管理]** ブレードの **[詳細管理]** をクリックすると、ドメイン プロバイダーの Web サイトにリダイレクトされます。そのサイトで、別の Azure サブスクリプションで作成されたアプリの  [カスタム ドメインを (任意の外部カスタム ドメインと同様に) 手動で構成](web-sites-custom-domain-name.md)できます。 
+   
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -2,6 +2,6 @@ Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

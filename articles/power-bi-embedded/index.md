@@ -1,9 +1,25 @@
 ---
+title: "Azure Power BI Embedded のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Power BI のデータ視覚化と対話型レポートをアプリに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: power-bi-embedded
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Power BI Embedded Documentation
+ms.assetid: 
+ms.service: power-bi-embedded
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 48f9fe41b94016e54a2ec622df9684b7dcd4dfed
+ms.openlocfilehash: c1e12dc71ce823425971beeb9db1cc5abd2aa12b
 
-Power BI Embedded is an Azure service that enables ISVs and app developers to surface Power BI data experiences within their applications. As a developer, you've built applications, and those applications have their own users and distinct set of features. Those apps may also happen to have some built-in data elements like charts and reports that can now be powered by Microsoft Power BI Embedded. Users don’t need a Power BI account to use your app. They can continue to sign in to your application just like before, and view and interact with the Power BI reporting experience without requiring any additional licensing.
+---
+# <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
+
+Power BI Embedded を使用して、データの視覚化と対話型のレポートをアプリケーションに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Power BI のレポートとダッシュボードをアプリにシームレスに埋め込む方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Power BI Embedded</h3>
+                        <h3>Power BI Embedded の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +41,7 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=power-bi-embedded">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=power-bi-embedded">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +51,7 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Power BI Embedded Video Library</h3>
+                        <h3>Azure Power BI Embedded のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Power BI Embedded</h3>
+                        <h3>Power BI Embedded を使ってみる</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +83,11 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create Power BI reports with the sample gallery</h3>
+                        <h3>サンプル ギャラリーを使用した Power BI レポート作成の概要</h3>
                     </div>
                 </div>
             </div>
@@ -82,24 +98,51 @@ Power BI Embedded is an Azure service that enables ISVs and app developers to su
 
 ---
 
-## Reference
-
-### PowerShell
-[Power BI Embedded PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### .NET
-[Power BI Embedded Managed Reference](/dotnet/api)
-
-### REST
-[Power BI Embedded REST API Reference](/rest/api/powerbiembedded/)
-
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/power-bi-embedded.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Power BI Embedded Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
+                        <p><a href="https://www.nuget.org/profiles/powerbi">.NET SDK ダウンロード</a></p>
+                        <p><a href="https://github.com/Microsoft/PowerBI-JavaScript">JavaScript</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/powerbiembedded/">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

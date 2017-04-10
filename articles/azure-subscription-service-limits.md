@@ -1,35 +1,40 @@
 ---
-title: Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約
-description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。
-services: ''
-documentationcenter: ''
+title: "Azure サブスクリプションの制限とクォータ | Microsoft Docs"
+description: "一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。"
+services: 
+documentationcenter: 
 author: rothja
 manager: jeffreyg
-editor: ''
+editor: 
 tags: billing
-
+ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
-ms.author: btardif
+ms.date: 03/20/2017
+ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 8b4818ccea1ac5025e93fa0939735b3ed606f47c
+ms.lasthandoff: 03/22/2017
+
 
 ---
-# <a name="azure-subscription-and-service-limits,-quotas,-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
-## <a name="overview"></a>Overview
-本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。 すべての Azure サービスを網羅してはいません。 今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
+このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
 
-Azure の価格については、 [Azure の価格の概要](https://azure.microsoft.com/pricing/) に関するページを参照してください。 価格の概要に関するページでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用したり、サービス (たとえば、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) の価格の詳細ページに移動したりして、費用を見積もることができます。
+Azure の価格については、 [Azure の価格の概要](https://azure.microsoft.com/pricing/) に関するページを参照してください。 価格の概要に関するページでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用したり、サービス (たとえば、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) の価格の詳細ページに移動したりして、費用を見積もることができます。 コスト管理に役立つヒントについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing/billing-getting-started.md)」をご覧ください。
 
 > [!NOTE]
-> 「 **既定の制限**」を超える制限の引き上げを希望される場合は、 [オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)してください。 以下の表の「 **上限** 」の値を超える制限の引き上げはできません。 「 **上限** 」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> **既定の制限**を超える制限またはクォータの引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。 次のテーブルにある**上限**の値を超える制限の引き上げはできません。 **上限**列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 
 > 
+> 無料試用版サブスクリプションは、制限およびクォータ引き上げの適用対象外です。 無料試用版をお持ちの場合、 [従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/) のサブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](billing-upgrade-azure-subscription.md)」を参照してください。
 > 
 
 ## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure リソース マネージャー
-複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
 
@@ -44,6 +49,7 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Active Directory](#active-directory-limits)
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
+* [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
@@ -55,11 +61,13 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Cloud Services](#cloud-services-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
+* [Data Lake Store](#data-lake-store-limits)
 * [DNS](#dns-limits)
 * [DocumentDB](#documentdb-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Key Vault](#key-vault-limits)
+* [Log Analytics / Operational Insights](#log-analytics-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -67,7 +75,6 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [ネットワーク](#networking-limits)
 * [Notification Hub Service](#notification-hub-service-limits)
-* [Operational Insights](#operational-insights-limits)
 * [リソース グループ](#resource-group-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
@@ -114,6 +121,9 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 #### <a name="networking-limits"></a>ネットワークの制限
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
+#### <a name="application-gateway-limits"></a>Application Gateway の制限
+[!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
+
 #### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
@@ -122,20 +132,23 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 ### <a name="storage-limits"></a>ストレージの制限
 ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)」を参照してください。
-
+<!--like # storage accts --> 
 #### <a name="storage-service-limits"></a>ストレージ サービスの制限
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-#### <a name="virtual-machine-disk-limits"></a>仮想マシン ディスクの制限
+<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+#### <a name="virtual-machine-disk-limits"></a>仮想マシン ディスクの制限 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-その他の詳細については、「 [仮想マシンのサイズ](virtual-machines/virtual-machines-linux-sizes.md) 」を参照してください。
+その他の詳細については、「 [仮想マシンのサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
 
-**Standard Storage アカウント**
+#### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
+
+[!INCLUDE [azure-storage-limits-vm-disks-managed](../includes/azure-storage-limits-vm-disks-managed.md)]
+
+#### <a name="unmanaged-virtual-machine-disks"></a>非管理対象の仮想マシン ディスク
 
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
-
-**Premium Storage アカウント**
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
@@ -162,9 +175,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="documentdb-limits"></a>DocumentDB の制限
-[!INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
-
-アスタリスク (*) 付きで表示されているクォータは、 [Azure サポートに問い合わせて調整できます](documentdb/documentdb-increase-limits.md)。
+DocumentDB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについて質問がある場合は、askdocdb@microsoft.com に電子メールをお送りください。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement の制限
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -174,7 +185,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 * *Free* : 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
 * *Basic*: 小規模環境で運用ワークロードに対して専用コンピューティング リソースを提供します。高可用性のクエリ ワークロード用に最大 3 つのレプリカを備えています。
-* *Standard (S1、S2、S3、S3 High Density)* : 大規模な運用ワークロード向けです。 Standard レベルは、シナリオごとにリソース構成を選択できるように複数のレベルに分かれています。
+* *Standard (S1、S2、S3、S3 High Density)* : 大規模な運用ワークロード向けです。 Standard レベルは、ワークロード プロファイルに最適なリソース構成を選択できるように、複数のレベルに分かれています。
 
 **サブスクリプションあたりの制限**
 
@@ -184,7 +195,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-ドキュメント サイズ、1 秒あたりのクエリ数、キー数、要求数、応答数など、他の制限の詳細については、「 [Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」をご覧ください。
+ドキュメント サイズ、1 秒あたりのクエリ数、キー数、要求数、応答数などのより細かなレベルでの制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### <a name="media-services-limits"></a>Media Services の制限
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
@@ -216,6 +227,9 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 ### <a name="data-lake-analytics-limits"></a>Data Lake Analytics の制限
 [!INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
+### <a name="data-lake-store-limits"></a>Data Lake Store の制限
+[!INCLUDE [azure-data-lake-store-limits](../includes/azure-data-lake-store-limits.md)]
+
 ### <a name="stream-analytics-limits"></a>Stream Analytics の制限
 [!INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
@@ -228,7 +242,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
-### <a name="operational-insights-limits"></a>Operational Insights の制限
+### <a name="log-analytics-limits"></a>Log Analytics の制限
 [!INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
 ### <a name="backup-limits"></a>Backup の制限
@@ -261,10 +275,8 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 ## <a name="see-also"></a>関連項目
 [Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-linux-sizes.md)
+[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

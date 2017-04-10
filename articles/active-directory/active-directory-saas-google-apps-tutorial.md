@@ -1,22 +1,26 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Google Apps の統合 | Microsoft Docs'
-description: Azure Active Directory で Google Apps を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。
+title: "チュートリアル: Azure Active Directory と Google Apps の統合 | Microsoft Docs"
+description: "Azure Active Directory で Google Apps を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2016
-ms.author: asmalser-msft
+ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 111d2835610262a5c726562df09ecfecae7dbc07
+
 
 ---
-# <a name="tutorial:-how-to-integrate-google-apps-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と Google Apps を統合する方法
+# <a name="tutorial-azure-active-directory-integration-with-google-apps"></a>チュートリアル: Azure Active Directory と Google Apps の統合
 このチュートリアルでは、Azure Active Directory (Azure AD) に Google Apps 環境を接続する方法を説明します。 Google Apps へのシングル サインオンを構成する方法、ユーザー プロビジョニングの自動化を有効にする方法、Google Apps へのアクセス権をユーザーに割り当てる方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -26,14 +30,14 @@ ms.author: asmalser-msft
 ## <a name="video-tutorial"></a>ビデオ チュートリアル
 2 分間で Google Apps へのシングル サインオンを有効にする方法:
 
-> [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enable-single-sign-on-to-Google-Apps-in-2-minutes-with-Azure-AD/player]
+> [!ビデオ https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enable-single-sign-on-to-Google-Apps-in-2-minutes-with-Azure-AD/player]
 > 
 > 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 1. **Q: Chromebook とその他の Chrome デバイスは、Azure AD シングル サインオンと互換性がありますか。**
    
-    A: はい。ユーザーは Azure AD の資格情報を使用して、Chromebook デバイスにサインインすることができます。 ユーザーに資格情報の入力を求めるメッセージが 2 回表示される場合がある理由については、[Google Apps のこちらのサポート記事](https://support.google.com/chrome/a/answer/6060880)をご覧ください。
+    A: はい。ユーザーは Azure AD の資格情報を使用して、Chromebook デバイスにサインインすることができます。 ユーザーに資格情報の入力を求めるメッセージが&2; 回表示される場合がある理由については、[Google Apps のこちらのサポート記事](https://support.google.com/chrome/a/answer/6060880)をご覧ください。
 2. **Q: シングル サインオンを有効にした場合、ユーザーは Google Classroom、GMail、Google Drive、YouTube などの Google 製品にサインインするために Azure AD 資格情報を使用できますか。**
    
     A: はい。[Google アプリ](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)ごとに、組織で有効にするか無効にするかを選択します。
@@ -44,7 +48,7 @@ ms.author: asmalser-msft
    
     A: このシナリオを有効にするには、2 つのオプションがあります。 まず、ユーザーは [Azure Active Directory 参加](active-directory-azureadjoin-overview.md)を通じて Windows 10 デバイスにサインインできます。 また、ユーザーは、 [Active Directory フェデレーション サービス (AD FS)](active-directory-aadconnect-user-signin.md) デプロイを通じて Azure AD へのシングル サインオンが有効になっているオンプレミスの Active Directory にドメイン参加している Windows デバイスにサインインすることもできます。 もちろん、どちらのオプションでも、以下のチュートリアルに従って、Azure AD と Google Apps 間のシングル サインオンを有効にする必要があります。
 
-## <a name="step-1:-add-google-apps-to-your-directory"></a>手順 1. Google Apps をディレクトリに追加する
+## <a name="step-1-add-google-apps-to-your-directory"></a>手順 1. Google Apps をディレクトリに追加する
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Select Active Directory from the left navigation pane.][0]
@@ -65,7 +69,7 @@ ms.author: asmalser-msft
    
     ![Google Apps' Quick Start page in Azure AD][5]
 
-## <a name="step-2:-enable-single-sign-on"></a>手順 2. シングル サインオンを有効にする
+## <a name="step-2-enable-single-sign-on"></a>手順 2. シングル サインオンを有効にする
 1. Azure AD の Google Apps の [クイック スタート] ページで、 **[シングル サインオンの構成]** ボタンをクリックします。
    
     ![The configure single sign-on button][6]
@@ -97,7 +101,7 @@ ms.author: asmalser-msft
    ![Type in your email address.][14]
 8. **[完了]** をクリックしてダイアログを閉じます。 構成をテストするには、この後にある「 [Google Apps にユーザーを割り当てる](#step-4-assign-users-to-google-apps)」というタイトルのセクションを参照してください。
 
-## <a name="optional-step:-manually-configure-single-sign-on"></a>オプションの手順: シングル サインオンを手動で構成する
+## <a name="optional-step-manually-configure-single-sign-on"></a>オプションの手順: シングル サインオンを手動で構成する
 シングル サインオンを手動で設定する場合は、次の手順を実行します。
 
 1. Azure AD の Google Apps の [クイック スタート] ページで、 **[シングル サインオンの構成]** ボタンをクリックします。
@@ -111,7 +115,7 @@ ms.author: asmalser-msft
    > さまざまなシングル サインオンのオプションの詳細については、 [ここをクリック](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
    > 
    > 
-3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、`https://mail.google.com/a/<yourdomain>` の形式を使用して Google Apps テナント URL を入力します。
+3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、`https://mail.google.com/a/<yourdomain>` の形式を使用して、Google Apps テナント URL を入力します。
    
     ![Type in your tenant URL][8]
 4. **[シングル サインオンの自動構成]** ページで、**[シングル サインオン用にこのアプリケーションを手動で構成する]** チェック ボックスをオンにします。 その後、 **[次へ]**をクリックします。
@@ -145,7 +149,7 @@ ms.author: asmalser-msft
     ![Type in your email address.][14]
 12. **[完了]** をクリックしてダイアログを閉じます。 構成をテストするには、この後にある「 [Google Apps にユーザーを割り当てる](#step-4-assign-users-to-google-apps)」というタイトルのセクションを参照してください。
 
-## <a name="step-3:-enable-automated-user-provisioning"></a>手順 3. 自動化されたユーザー プロビジョニングを有効にする
+## <a name="step-3-enable-automated-user-provisioning"></a>手順 3. 自動化されたユーザー プロビジョニングを有効にする
 > [!NOTE]
 > Google Apps へのユーザー プロビジョニングを自動化する方法として、[Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en) を使用して Google Apps にオンプレミスの Active Directory ID をプロビジョニングする方法もありますが、 このチュートリアルでは Azure Active Directory (クラウド) のユーザーとメールが有効なグループを Google Apps にプロビジョニングします。
 > 
@@ -221,7 +225,7 @@ ms.author: asmalser-msft
     ![Confirm permissions.][28]
 12. **[完了]** をクリックしてダイアログを閉じます。
 
-## <a name="step-4:-assign-users-to-google-apps"></a>手順 4. Google Apps にユーザーを割り当てる
+## <a name="step-4-assign-users-to-google-apps"></a>手順 4. Google Apps にユーザーを割り当てる
 1. 構成をテストするために、ディレクトリに新しいテスト アカウントを作成します。
 2. Google Apps の [クイック スタート] ページで **[ユーザーの割り当て]** ボタンをクリックします。
    
@@ -230,7 +234,7 @@ ms.author: asmalser-msft
    
    * 自動化されたユーザー プロビジョニングを有効にしていない場合は、次のような確認メッセージが表示されます。
      
-        ![Confirm the assignment.][30]
+        ![割り当てを確認します。][30]
    * ユーザー プロビジョニングの自動化を有効にしている場合は、ユーザーに必要な Google Apps での役割の種類の定義を要求するプロンプトが表示されます。 新しくプロビジョニングされたユーザーは、数分後に、Google Apps の環境に表示されます。
 4. シングル サインオンの設定をテストするために、アクセス パネル ( [https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインし、 **[Google Apps]**をクリックします。
 
@@ -272,6 +276,6 @@ ms.author: asmalser-msft
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

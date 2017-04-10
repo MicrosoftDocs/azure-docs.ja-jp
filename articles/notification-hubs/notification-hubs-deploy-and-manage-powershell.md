@@ -1,12 +1,12 @@
 ---
-title: PowerShell を使用した Notification Hubs のデプロイと管理
-description: PowerShell を使用して Notification Hubs の作成と管理を自動化する方法
+title: "PowerShell を使用した Notification Hubs のデプロイと管理"
+description: "PowerShell を使用して Notification Hubs の作成と管理を自動化する方法"
 services: notification-hubs
-documentationcenter: ''
+documentationcenter: 
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: powershell
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
+
 
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
@@ -23,7 +27,7 @@ ms.author: yuaxu
 * 通知ハブの作成
 * 資格情報の設定
 
-通知ハブに新しい Service Bus 名前空間を作成する必要がある場合は、「[PowerShell で Service Bus を管理する](../service-bus/service-bus-powershell-how-to-provision.md)」をご覧ください。
+通知ハブに新しい Service Bus 名前空間を作成する必要がある場合は、「[PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-powershell-how-to-provision.md)」をご覧ください。
 
 Notification Hubs は Azure PowerShell に含まれているコマンドレットを使用して直接管理することはできません。 PowerShell からの最良のアプローチは、Microsoft.ServiceBus.dll アセンブリを参照することです。 このアセンブリは、 [Microsoft Azure Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)で配布されます。
 
@@ -34,7 +38,7 @@ Notification Hubs は Azure PowerShell に含まれているコマンドレッ�
 * Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成に関するページ]をご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
-## <a name="including-a-reference-to-the-.net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
 Azure Notification Hubs の管理はまだ Azure PowerShell の PowerShell コマンドレットに含まれていません。 通知ハブをプロビジョニングするには、 [Microsoft Azure Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)に用意されている .NET クライアントを使用できます。
 
 まず、スクリプトが Visual Studio プロジェクトの NuGet パッケージとしてインストールされる **Microsoft.ServiceBus.dll** アセンブリを検出できることを確認します。 柔軟性を持たせるために、スクリプトでは次のステップを実行します。
@@ -142,7 +146,7 @@ else
 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [PowerShell で Service Bus を管理する](../service-bus/service-bus-powershell-how-to-provision.md)
+* [PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
@@ -153,7 +157,7 @@ else
 [購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
 [メンバー プラン]: http://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: http://azure.microsoft.com/pricing/free-trial/
-[Azure PowerShell のインストールと構成]: ../powershell-install-configure.md
+[Azure PowerShell のインストールと構成に関するページ]: /powershell/azureps-cmdlets-docs
 [.NET API for Notification Hubs]: https://msdn.microsoft.com/library/azure/mt414893.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
@@ -162,6 +166,6 @@ else
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

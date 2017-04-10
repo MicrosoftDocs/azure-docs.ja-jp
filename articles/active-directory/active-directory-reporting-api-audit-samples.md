@@ -1,19 +1,23 @@
 ---
-title: Azure Active Directory レポートの監査 API の例 | Microsoft Docs
-description: Azure Active Directory Reporting API の概要について説明します。
+title: "Azure Active Directory レポートの監査 API の例 | Microsoft Docs"
+description: "Azure Active Directory Reporting API の概要について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/28/2016
+ms.date: 01/10/2017
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
+ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+
 
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory レポートの監査 API の例
@@ -27,6 +31,7 @@ Azure AD レポートは、コードまたは関連ツールを使用して監�
 * [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md) 」。
 
 質問、問題点、またはフィードバックについては、 [AAD レポート ヘルプ](mailto:aadreportinghelp@microsoft.com)にお問い合わせください。
+
 
 ## <a name="prerequisites"></a>前提条件
 このトピックに掲載されているサンプルを使用するには、事前に、 [Azure AD レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)を完了する必要があります。  
@@ -54,7 +59,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
     if ($oauth.access_token -ne $null) {   
         $i=0
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-        $url = 'https://graph.windows.net/' + $tenantdomain + 'activities/audit?api-version=beta&`$filter=eventTime gt ' + $7daysago
+        $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&`$filter=activityDate gt ' + $7daysago
 
         # loop through each query page (1 through n)
         Do{
@@ -105,7 +110,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 
     YESTERDAY=$(date --date='1 day ago' +'%Y-%m-%d')
 
-    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=eventTime%20gt%20$YESTERDAY"
+    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=activityDate%20gt%20$YESTERDAY"
 
 
     REPORT=$(curl -s --header "Authorization: $TOKEN_TYPE $ACCESS_TOKEN" $URL)
@@ -145,7 +150,7 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
-    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=eventTime%20gt%20' + yesterday   
+    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=activityDate%20gt%20' + yesterday   
     response = requests.get(request_string, headers = header_params)
 
     if response.status_code is 200:
@@ -162,6 +167,9 @@ EU リージョン内にテナントがある場合、アプリの認証は行�
 * Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
 * Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

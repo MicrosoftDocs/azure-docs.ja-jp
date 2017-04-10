@@ -1,19 +1,23 @@
 ---
-title: SQL Data Warehouse サービスに関するすべてのトピック | Microsoft Docs
-description: http://azure.microsoft.com/documentation/articles/ に存在する SQL Data Warehouse という名前の Azure サービスに関するすべてのトピックの一覧 (タイトルと説明)。
+title: "SQL Data Warehouse サービスに関するすべてのトピック | Microsoft Docs"
+description: "http://azure.microsoft.com/documentation/articles/ に存在する SQL Data Warehouse という名前の Azure サービスに関するすべてのトピックの一覧 (タイトルと説明)。"
 services: sql-data-warehouse
-documentationcenter: ''
+documentationcenter: 
 author: barbkess
 manager: jhubbard
-editor: MightyPen
-
+editor: 
+ms.assetid: a26a6dec-9c08-4415-8f58-4ee1dd41f718
 ms.service: sql-data-warehouse
 ms.workload: sql-data-warehouse
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
+
 
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>Azure SQL Data Warehouse サービスに関するすべてのトピック
@@ -22,9 +26,9 @@ ms.author: barbkess
 ## <a name="new"></a>新規
 | &nbsp; | タイトル | 説明 |
 | ---:|:--- |:--- |
-| 1 |[SQL Data Warehouse のバックアップ](sql-data-warehouse-backup.md) |Azure SQL Data Warehouse を復元ポイントまたは別の地理的な領域に復元できる、SQL Data Warehouse の組み込みデータベースのバックアップについて説明します。 |
+| 1 |[SQL Data Warehouse のバックアップ](sql-data-warehouse-backups.md) |Azure SQL Data Warehouse を復元ポイントまたは別の地理的な領域に復元できる、SQL Data Warehouse の組み込みデータベースのバックアップについて説明します。 |
 
-## <a name="updated-articles,-sql-data-warehouse"></a>更新された記事、SQL Data Warehouse
+## <a name="updated-articles-sql-data-warehouse"></a>更新された記事、SQL Data Warehouse
 このセクションでは、最近、大幅な更新または重要な更新が行われた記事を示します。 更新された各記事について、追加されたマークダウン テキストが大まかに抜粋されています。 これらの記事は、**2016 年 8 月 22 日**～ **2016 年 10 月 5 日**に更新されたものです。
 
 | &nbsp; | 記事 | 更新されたテキスト (抜粋) | 更新日 |
@@ -160,6 +164,9 @@ ms.author: barbkess
 | 86 |[SQL Data Warehouse の容量制限](sql-data-warehouse-service-capacity-limits.md) |SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。 |
 | 87 |[Azure SQL Data Warehouse のトラブルシューティング](sql-data-warehouse-troubleshoot.md) |Azure SQL Data Warehouse のトラブルシューティングを行います。 |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

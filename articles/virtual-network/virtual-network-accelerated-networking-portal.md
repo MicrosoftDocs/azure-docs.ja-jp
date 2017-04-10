@@ -1,13 +1,13 @@
 ---
-title: Accelerated networking for a virtual machine - Portal | Microsoft Docs
-description: Learn how to configure Accelerated Networking for an Azure virtual machine using the Azure Portal.
+title: "仮想マシンの Accelerated Networking - Portal | Microsoft Docs"
+description: "Azure Portal を使用して Azure 仮想マシンで Accelerated Networking を構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: ''
+manager: timlt
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: af4515c6-4377-4d4a-a104-18fe1348252c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,69 +15,73 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: a2e8e0dc40a63c363f295149e35f9823c8e90fa8
+ms.lasthandoff: 02/28/2017
+
 
 ---
-# <a name="accelerated-networking-for-a-virtual-machine"></a>Accelerated networking for a virtual machine
+# <a name="accelerated-networking-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用した仮想マシンの Accelerated Networking
 > [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-accelerated-networking-portal.md)
+> * [Azure ポータル](virtual-network-accelerated-networking-portal.md)
 > * [PowerShell](virtual-network-accelerated-networking-powershell.md)
 > 
 > 
 
-Accelerated Networking enables Single Root I/O Virtualization (SR-IOV) to a virtual machine (VM), greatly improving its networking performance. This high-performance path bypasses the host from the datapath reducing latency, jitter, and CPU utilization for use with the most demanding network workloads on supported VM types. This article explains how to use the Azure Portal to configure Accelerated Networking in the Azure Resource Manager deployment model. You can also create a VM with Accelerated Networking using Azure PowerShell. To learn how, click the PowerShell box at the top of this article.
+Accelerated Networking によって、仮想マシン (VM) でシングルルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待機時間、ジッター、CPU 使用率が軽減されます。 この記事では、Azure Resource Manager デプロイメント モデルで Azure Portal を使用して、Accelerated Networking を構成する方法について説明します。 VM は、Azure PowerShell で Accelerated Networking を使用して作成することもできます。 その方法は、この記事の上部にある PowerShell ボックスをクリックすると表示されます。
 
-The following picture shows communication between two virtual machines (VM) with and without Accelerated Networking:
+次の図は、Accelerated Networking を使用した仮想マシンと、使用していない仮想マシンの間の通信を表しています。
 
-![Comparison](./media/virtual-network-accelerated-networking-portal/image1.png)
+![比較](./media/virtual-network-accelerated-networking-portal/image1.png)
 
-Without Accelerated Networking, all networking traffic in and out of the VM must traverse the host and the virtual switch. The virtual switch provides all policy enforcement, such as network security groups, access control lists, isolation, and other network virtualized services to network traffic. To learn more, read the [Hyper-V Network Virtualization and Virtual Switch](https://technet.microsoft.com/library/jj945275.aspx) article.
+Accelerated Networking を使用しない場合は、VM に出入りするすべてのネットワーク トラフィックがホストと仮想スイッチをスキャンする必要があります。 仮想スイッチでは、ネットワーク セキュリティ グループ、アクセス制御リスト、分離、その他のネットワーク仮想化サービスなど、すべてのポリシーが適用されます。 詳細については、「 [Hyper-V Network Virtualization and Virtual Switch (HYPER-V ネットワーク仮想化と仮想スイッチ)](https://technet.microsoft.com/library/jj945275.aspx) 」の記事をご覧ください。
 
-With Accelerated Networking, network traffic arrives at the network card (NIC) and is then forwarded to the VM. All network policies that the virtual switch applies without Accelerated Networking are offloaded and applied in hardware. Applying policy in hardware enables the NIC to forward network traffic directly to the VM, bypassing the host and the virtual switch, while maintaining all the policy it applied in the host.
+Accelerated Networking を使用したネットワーク トラフィックは、ネットワーク カード (NIC) に到達してから VM に転送されます。 Accelerated Networking がない場合に仮想スイッチによって適用されるネットワークポリシーはすべてオフロードされ、ハードウェアに適用されます。 ハードウェアにポリシーを適用することによって、ホストに適用されるポリシーをすべて維持したまま、ホストや仮想スイッチをバイパスして、NIC からネットワーク トラフィックを直接 VM に転送できます。
 
-The benefits of Accelerated Networking only apply to the VM that it is enabled on. For the best results, it is ideal to enable this feature on at least two VMs connected to the same VNet. When communicating across VNets or connecting on-premises, this feature has a minimal impact to overall latency.
+VM で Accelerated Networking が有効になっている場合のみ、そのメリットを受けられます。 最適な結果を得るには、同じ VNet に接続された&2;台以上の VM でこの機能を有効にしておくことをお勧めします。 複数の VNet またはオンプレミスの間で通信する場合、全体的な待機時間に対してこの機能が与える影響は最小限のものになります。
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-## <a name="benefits"></a>Benefits
-* **Lower Latency / Higher packets per second (pps):** Removing the virtual switch from the datapath removes the time packets spend in the host for policy processing and increases the number of packets that can be processed inside the VM.
-* **Reduced jitter:** Virtual switch processing depends on the amount of policy that needs to be applied and the workload of the CPU that is doing the processing. Offloading the policy enforcement to the hardware removes that variability by delivering packets directly to the VM, removing the host to VM communication and all software interrupts and context switches.
-* **Decreased CPU utilization:** Bypassing the virtual switch in the host leads to less CPU utilization for processing network traffic.
+## <a name="benefits"></a>メリット
+* **待機時間の短縮 /&1; 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
+* **ジッターの削減:** 仮想スイッチの処理は、適用するポリシーの量と、処理を行う CPU のワークロードによって異なります。 ハードウェアへのポリシーの適用をオフロードすると、パケットが直接 VM に配信され、ホストと VM 間の通信とソフトウェアによる干渉やコンテキスト スイッチがなくなるため、そのばらつきはなくなります。
+* **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU の使用率を軽減できます。
 
-## <a name="limitations"></a>Limitations
-The following limitations exist when using this capability:
+## <a name="limitations"></a>制限事項
+この機能を使用する場合は、次の制限事項があります。
 
-* **Network interface creation:** Accelerated networking can only be enabled for a new network interface.  It cannot be enabled on an existing network interface.
-* **VM creation:** A network interface with accelerated networking enabled can only be attached to a VM when the VM is created. The network interface cannot be attached to an existing VM.
-* **Regions:** Offered in the West Central US and West Europe Azure regions only. The set of regions will expand in the future.
-* **Supported operating system:** Microsoft Windows Server 2012 R2 and Windows Server 2016 Technical Preview 5. Linux and Windows Server 2012 support will be added soon.
-* **VM Size:** Standard_D15_v2 and Standard_DS15_v2 are the only supported VM instance sizes. For more information, see the [Windows VM sizes](../virtual-machines/virtual-machines-windows-sizes.md) article. The set of supported VM instance sizes will expand in the future.
+* **ネットワーク インターフェイスの作成:** Accelerated Networking は、新しいネットワーク インターフェイスでのみ有効にできます。  既存のネットワーク インターフェイスで有効にすることはできません。
+* **VM の作成:** Accelerated Networking を有効にしたネットワーク インターフェイスは、VM の作成時にのみ VM にアタッチできます。 ネットワーク インターフェイスを既存の VM にアタッチすることはできません。
+* **リージョン:** 米国中西部と西ヨーロッパの Azure のリージョンでのみ提供されます。 リージョンは今後拡大する予定です。
+* **サポートされているオペレーティング システム:** Microsoft Windows Server 2012 R2、Windows Server 2016 テクニカル プレビュー 5。 Linux と Windows Server 2012 もまもなくサポートされる予定です。
+* **VM サイズ:** サポートされる VM のインスタンス サイズは、Standard_D15_v2 と Standard_DS15_v2 のみです。 詳細については、「 [Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」の記事をご覧ください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
 
-Changes to these limitations will be announced through the [Azure Virtual Networking updates](https://azure.microsoft.com/updates/accelerated-networking-in-preview) page.
+これらの制限に対する変更については、「[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)」のページでお知らせします。
 
-## <a name="create-a-windows-vm-with-accelerated-networking"></a>Create a Windows VM with Accelerated Networking
-1. Register for the preview by sending an email to [Accelerated Networking Subscriptions](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) with your subscription ID and intended use. Do not complete the remaining steps until after you receive an e-mail notifying you that you've been accepted into the preview.
-2. Login to the Azure Portal at http://portal.azure.com.
-3. Create a VM by completing the steps in the [Create a Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) article selecting the following options:
+## <a name="create-a-windows-vm-with-accelerated-networking"></a>Accelerated Networking を使った Windows VM を作成する
+1. プレビューに登録するには、 [Accelerated Networkのサブスクリプション係](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) まで、メールでサブスクリプション ID と使用目的をご連絡ください。 プレビューへの登録が受諾されたことを通知する電子メールを受け取るまでは、残りの手順は実行しないでください。
+2. Azure Portal (http://portal.azure.com) にログインします。
+3. 「[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の記事にある手順で次のオプションを選択し、VM を作成します。
    
-   * Select an operating system listed in the Limitations section of this article.
-   * Select a location (region) listed in the Limitations section of this article.
-   * Select a VM size listed in the Limitations section of this article. If one of the supported sizes isn't listed, click **View all** in the **Choose a size** blade to select a size from an expanded list.
-   * In the **Settings** blade, click *Enabled* for **Accelerated networking**, as shown in the following picture:
+   * この記事の「制限事項」セクションにあるオペレーティング システムを選択します。
+   * この記事の「制限事項」セクションにある場所 (リージョン) を選択します。
+   * この記事の「制限事項」セクションにあるVM サイズを選択します。 サポートされているのに表示されないサイズがある場合は、**[サイズの選択]**ブレードで **[すべて表示]** をクリックし、展開されたリストからサイズを選びます。
+   * **[設定]** ブレードで、下図のように **[Accelerated networking]** で *[有効]* をクリックします。
      
-       ![Settings](./media/virtual-network-accelerated-networking-portal/image3.png)
+       ![[設定]](./media/virtual-network-accelerated-networking-portal/image3.png)
      
      > [!NOTE]
-     > The Accelerated Networking option will only be visible if you've:
+     > Accelerated Networking のオプションは、次の場合にのみ表示されます。
      > 
-     > * Been accepted into the preview
-     > * Selected supported operating system, location, and VM sizes mentioned in the Limitations section of this article.
+     > * プレビューへの登録が受諾されている。
+     > * この記事の「制限事項」セクションに記載されている、サポートされるオペレーティング システム、場所、VM のサイズを選択している。
      > 
      > 
-4. Once the VM is created, download the [Accelerated Networking driver](https://gallery.technet.microsoft.com/Azure-Accelerated-471b5d84), connect and login to the VM, and run the driver installer inside the VM.
-5. Right-click the Windows button and click **Device Manager**. Verify that the **Mellanox ConnectX-3 Virtual Function Ethernet Adapter** appears under the **Network** option when expanded, as shown in the following picture:
+4. VM を作成したら、 [Accelerated Networking ドライバー](https://gallery.technet.microsoft.com/Azure-Accelerated-471b5d84)をダウンロードし、VM に接続してログインし、VM 内でドライバーのインストーラーを実行します。
+5. Windows ボタンを右クリックし、 **[デバイス マネージャー]**をクリックします。 次の図のように、**[ネットワーク]** オプションを展開したときに、**Mellanox ConnectX-3 Virtual Function Ethernet Adapter** が表示されることを確認します。
    
-    ![Device Manager](./media/virtual-network-accelerated-networking-portal/image2.png)
-
-<!--HONumber=Oct16_HO2-->
+    ![[デバイス マネージャー]](./media/virtual-network-accelerated-networking-portal/image2.png)
 
 

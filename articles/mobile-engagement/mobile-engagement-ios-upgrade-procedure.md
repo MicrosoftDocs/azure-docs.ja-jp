@@ -1,19 +1,23 @@
 ---
-title: Azure Mobile Engagement iOS SDK のアップグレード手順 | Microsoft Docs
-description: Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順
+title: "Azure Mobile Engagement iOS SDK のアップグレード手順 | Microsoft Docs"
+description: "Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 72a9e493-3f14-4e52-b6e2-0490fd04b184
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
+ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
+
 
 ---
 # <a name="upgrade-procedures"></a>アップグレードの手順
@@ -21,7 +25,7 @@ ms.author: piyushjo
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-## <a name="from-3.0.0-to-4.0.0"></a>3.0.0 から 4.0.0 に移行
+## <a name="from-300-to-400"></a>3.0.0 から 4.0.0 に移行
 ### <a name="xcode-8"></a>XCode 8
 SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
 
@@ -85,12 +89,15 @@ XCode 8 はアプリケーションのプッシュ機能をリセットする場
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-### <a name="if-you-already-have-your-own-unusernotificationcenterdelegate-implementation"></a>開発者独自の UNUserNotificationCenterDelegate 実装が既にある場合
-SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装があります。 これは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 UNUserNotificationCenter デリゲートはアプリケーションごとに 1 つしか使用できないため、SDK は開発者のデリゲートを検出すると、独自の実装を使用しなくなります。 これは、開発者独自のデリゲートに Engagement ロジックを追加する必要があることを意味します。
+### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>UNUserNotificationCenter デリゲートの競合を解決する
 
-これを実現する方法は 2 つあります。
+*アプリケーションでも、いずれかのサードパーティ ライブラリでも `UNUserNotificationCenterDelegate` を実装しない場合は、この部分をスキップすることができます。*
 
-デリゲート呼び出しを SDK に転送します。
+`UNUserNotificationCenter` デリゲートは、iOS 10 以上で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在可能な `UNUserNotificationCenter` デリゲートは&1; つだけです。 `UNUserNotificationCenter` に追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはそれ以外のサード パーティのデリゲートが検出された場合、独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
+
+これを実現する方法は&2; つあります。
+
+提案 1: 単に、デリゲート呼び出しを SDK に転送します。
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -117,7 +124,7 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
     }
     @end
 
-または、`AEUserNotificationHandler` クラスから継承します。
+提案 2: `AEUserNotificationHandler` クラスから継承します。
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -145,10 +152,18 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 > [!NOTE]
 > 通知が Engagement から送信されたものかどうかを確認するには、`userInfo` ディクショナリをエージェントの `isEngagementPushPayload:` クラス メソッドに渡します。
-> 
-> 
 
-## <a name="from-2.0.0-to-3.0.0"></a>2.0.0 から 3.0.0 に移行
+`UNUserNotificationCenter` オブジェクトのデリゲートがアプリケーション デリゲートの `application:willFinishLaunchingWithOptions:` または `application:didFinishLaunchingWithOptions:` メソッド内のデリゲートに設定されていることを確認します。
+たとえば、上記の提案 1 を実装した場合は、次のようになります。
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
+
+## <a name="from-200-to-300"></a>2.0.0 から 3.0.0 に移行
 iOS 4.X のサポートが終了。 このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
 
 アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
@@ -161,7 +176,7 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## <a name="from-1.16.0-to-2.0.0"></a>1.16.0 から 2.0.0 に移行
+## <a name="from-1160-to-200"></a>1.16.0 から 2.0.0 に移行
 Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
 
@@ -200,6 +215,9 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 * クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 * クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

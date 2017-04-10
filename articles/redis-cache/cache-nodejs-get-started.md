@@ -12,11 +12,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 10/25/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66188b904d9f573e88bc99f185cd1275de31b0c1
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
 
 
 ---
@@ -55,6 +55,10 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
       // Add your cache name and access key.
     var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
 
+> [!NOTE]
+> 新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています。 SSL をサポートしていない別のクライアントを使用している場合は、[非 SSL ポートを有効にする方法](cache-configure.md#access-ports)に関するページをご覧ください。
+> 
+> 
 
 ## <a name="add-something-to-the-cache-and-retrieve-it"></a>キャッシュに何か追加し、取得する
 次の例では、Azure Redis Cache インスタンスに接続し、キャッシュから項目を格納および取得する方法を示しています。 Redis と [node_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[http://redis.js.org/](http://redis.js.org/) を参照してください。
@@ -85,6 +89,6 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 
 
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure ポータルでプライベート テンプレートを使ってみる
-[Azure Resource Manager](../resource-group-authoring-templates.md) テンプレートは、デプロイの定義に使う宣言型のテンプレートです。 ソリューションでデプロイするリソースを定義し、さまざまな環境に応じた値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
+[Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートは、デプロイの定義に使う宣言型のテンプレートです。 ソリューションでデプロイするリソースを定義し、さまざまな環境に応じた値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
 この新しい**テンプレート**機能は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) の拡張機能として、[Azure Portal](https://portal.azure.com) 内で **Microsoft.Gallery** リソース プロバイダーと共に使用できます。この機能を使用すると、ユーザーは個人用ライブラリからプライベート テンプレートを作成、管理、デプロイすることができます。
 
@@ -35,16 +35,16 @@ ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
 * **テンプレート** は、Resource Manager テンプレートと追加のメタデータを保持する、カプセル化したリソースです。 その動作は、Marketplace のアイテムとよく似ています。 主な違いは、これがパブリックの Marketplace アイテムではなく、プライベートなアイテムであるという点です。
 * **テンプレート** ライブラリは、デプロイをカスタマイズする必要があるユーザーに役立ちます。
 * **テンプレート** は、Azure 内に単純なリポジトリを必要とするユーザーに役立ちます。
-* まずは、既存の Resource Manager テンプレートから使用します。 テンプレートは、[GitHub](https://github.com/Azure/azure-quickstart-templates) で探すか、既存のリソース グループから[エクスポート](../resource-manager-export-template.md)してください。
+* まずは、既存の Resource Manager テンプレートから使用します。 テンプレートは、[GitHub](https://github.com/Azure/azure-quickstart-templates) で探すか、既存のリソース グループから[エクスポート](../azure-resource-manager/resource-manager-export-template.md)してください。
 * **テンプレート** は、そのテンプレートを発行したユーザーに関連付けられます。 発行者の名前は、そのテンプレートへの読み取りアクセス権を持つすべてのユーザーに表示されます。
 * **テンプレート** は Resource Manager のリソースであるため、発行後に名前を変更することはできません。
 
 ## <a name="add-a-template-resource"></a>テンプレート リソースの追加
 Azure ポータルで **テンプレート** リソースを作成する方法は 2 とおりあります。
 
-### <a name="method-1-create-a-new-template-resource-from-a-running-resource-group"></a>方法 1: 実行中のリソース グループから新しいテンプレート リソースを作成する
+### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>方法 1: 実行中のリソース グループから新しいテンプレート リソースを作成する
 1. Azure ポータルで既存のリソース グループに移動します。 **[設定]** で **[テンプレートのエクスポート]** を選択します。
-2. Resource Manager テンプレートをエクスポートしたら、**[テンプレートの保存]** ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。 [テンプレートのエクスポート] の詳細については、 [こちら](../resource-manager-export-template.md)を参照してください。
+2. Resource Manager テンプレートをエクスポートしたら、**[テンプレートの保存]** ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。 [テンプレートのエクスポート] の詳細については、 [こちら](../azure-resource-manager/resource-manager-export-template.md)を参照してください。
    <br /><br />
    ![リソース グループのエクスポート](media/rg-export-portal1.PNG)  <br />
 3. **[Save to Template]** (テンプレートに保存) ボタンをクリックします。
@@ -62,7 +62,7 @@ Azure ポータルで **テンプレート** リソースを作成する方法�
    > 
    > 
 
-### <a name="b-method-2-add-a-new-template-resource-from-browse"></a>B. 方法 2: [参照] から新しいテンプレート リソースを追加する
+### <a name="method-2--add-a-new-template-resource-from-browse"></a>方法 2: [参照] から新しいテンプレート リソースを追加する
 新しい**テンプレート**を一から追加することもできます。これには、**[参照]、[テンプレート]** の順に選択して [追加] ボタンをクリックします。 ここでは、名前、説明、Resource Manager テンプレート JSON を入力する必要があります。
 
 ![Add Template](media/add-template-portal1.PNG)  <br />
@@ -129,13 +129,13 @@ Azure ポータルで **テンプレート** リソースを作成する方法�
 > 
 
 ## <a name="next-steps"></a>次のステップ
-* Resource Manager テンプレートの作成の詳細については、 [テンプレートの作成](../resource-group-authoring-templates.md)
-* Resource Manager テンプレートで使用できる関数を理解するには、 [テンプレートの関数](../resource-group-template-functions.md)
-* テンプレートのデザインのガイダンスについては、 [Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../best-practices-resource-manager-design-templates.md)
+* Resource Manager テンプレートの作成の詳細については、 [テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* Resource Manager テンプレートで使用できる関数を理解するには、 [テンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)
+* テンプレートのデザインのガイダンスについては、 [Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

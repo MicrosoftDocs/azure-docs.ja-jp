@@ -6,18 +6,17 @@ keywords: "デバイス ベースの条件付きアクセス, デバイス登録
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd2076f22c6048fda83d6da3b069e2805afb453f
+ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
+ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
 
 
 ---
@@ -48,7 +47,7 @@ Azure Active Directory (Azure AD) のアクセスに関する問題を解決す�
 ### <a name="device-is-not-registered"></a>デバイスが登録されていない
 デバイスが Azure AD には登録されていないものの、アプリケーションがデバイス ベースのポリシーで保護されている場合、次のいずれかのエラー メッセージが表示される可能性があります。
 
-!["You can't get there from here" messages for unregistered devices](./media/active-directory-conditional-access-device-remediation/01.png "Scenario")
+![登録されていないデバイスに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/01.png "シナリオ")
 
 デバイスが社内の Active Directory ドメインに参加している場合は、次の手順を試してください。
 
@@ -122,7 +121,7 @@ Azure AD Join を実行するには、次の手順に従います。ご利用の
 
 次のようなエラー ページが表示されます。
 
-!["You can't get there from here" message for unsupported browsers](./media/active-directory-conditional-access-device-remediation/02.png "Scenario")
+![サポートされていないブラウザーに対する "ここからはアクセスできません" メッセージ](./media/active-directory-conditional-access-device-remediation/02.png "シナリオ")
 
 唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。
 
@@ -132,6 +131,6 @@ Azure AD Join を実行するには、次の手順に従います。ご利用の
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

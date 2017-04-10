@@ -1,78 +1,115 @@
 ---
-title: Create an Azure Search service using the Azure Portal | Microsoft Docs
-description: Learn how to provision an Azure Search service using the Azure Portal.
+title: "ポータルでの Azure Search サービスの作成 | Microsoft Docs"
+description: "ポータルでの Azure Search サービスのプロビジョニング"
 services: search
 manager: jhubbard
-author: ashmaka
-documentationcenter: ''
-
+author: HeidiSteen
+documentationcenter: 
+ms.assetid: c8c88922-69aa-4099-b817-60f7b54e62df
 ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
-ms.author: ashmaka
+ms.date: 03/05/2017
+ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 379bc2e80a89b6d46db3bd536737583d51029328
+ms.lasthandoff: 03/06/2017
+
 
 ---
-# <a name="create-an-azure-search-service-using-the-azure-portal"></a>Create an Azure Search service using the Azure Portal
-This guide will walk you through the process of creating (or provisioning) an Azure Search service using the [Azure Portal](https://portal.azure.com/).
+# <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-This guide assumes that you already have an Azure Subscription and can log into the Azure Portal.
+この記事では、ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 PowerShell での手順については、[PowerShell での Azure Search の管理](search-manage-powershell.md)に関するページをご覧ください。
 
-## <a name="find-azure-search-in-the-azure-portal"></a>Find Azure Search in the Azure Portal
-1. Go to the [Azure Portal](https://portal.azure.com/) and log in.
-2. Click on the plus sign ("+") in the top left corner.
-3. Select **Data + Storage**.
-4. Select **Azure Search**.
+## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
-![](./media/search-create-service-portal/find-search.png)
+[無料の Azure アカウントを開き](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、無料クレジットを使って有料の Azure サービスを試用できます。 このクレジットを使い切った後は、アカウントを保持したまま、Websites などの無料の Azure サービスを使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
 
-## <a name="pick-a-service-name-and-url-endpoint-for-your-service"></a>Pick a service name and URL endpoint for your service
-1. Your service name will be part of your Azure Search service's endpoint URL against which you will make your API calls to manage and use the search service.
-2. Type your service name in the **URL** field. The service name:
-   * must only contain lowercase letters, digits or dashes ("-")
-   * cannot use a dash ("-") as the first 2 characters or last single character
-   * cannot contain consecutive dashes ("--")
-   * is limited between 2 and 60 characters in length
+[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。 
 
-## <a name="select-a-subscription-where-you-will-keep-your-service"></a>Select a subscription where you will keep your service
-If you have more than one subscription, you can select which one will include this Azure Search service.
+## <a name="find-azure-search"></a>Azure Search を探す
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. 左上隅のプラス記号 ("+") をクリックします。
+3. **[Web + Mobile]** > **[Azure Search]** を選択します。
 
-## <a name="select-a-resource-group-for-your-service"></a>Select a resource group for your service
-Create a new resource group or select an existing one. A resource group is a collection of Azure services and resources that are used together. For example, if you are using Azure Search to index a SQL database, then both of these services should be part of the same resource group.
+![](./media/search-create-service-portal/find-search2.png)
 
-## <a name="select-the-location-where-your-service-will-be-hosted"></a>Select the location where your service will be hosted
-As an Azure service, Azure Search is available to be hosted in datacenters around the world. Please note that [prices can differ](https://azure.microsoft.com/pricing/details/search/) by geography.
+## <a name="name-the-service-and-url-endpoint"></a>サービスと URL エンドポイントに名前を付ける
 
-## <a name="select-your-pricing-tier"></a>Select your pricing tier
-[Azure Search is currently offered in multiple pricing tiers](https://azure.microsoft.com/pricing/details/search/): Free, Basic, or Standard. Each tier has its own [capacity and limits](search-limits-quotas-capacity.md). See [Choose a pricing tier or SKU](search-sku-tier.md) for guidance.
+サービス名は、API 呼び出しを発行する対象となる URL エンドポイントの一部です。 **[URL]** フィールドにサービス名を入力します。 
 
-In this case, we have chosen the Standard tier for our service.
+サービス名の要件:
+   * 2 ～ 60 文字である
+   * 小文字、数字、ダッシュ ("-") のみが使われている
+   * 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用していない
+   * 連続するダッシュ ("-") を使用していない
 
-## <a name="select-the-"create"-button-to-provision-your-service"></a>Select the "Create" button to provision your service
-![](./media/search-create-service-portal/create-service.png)
+## <a name="select-a-subscription"></a>サブスクリプションの選択
+サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを&1; つ選択します。 Azure Search では、*インデクサー*経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、DocumentDB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
 
-## <a name="scale-your-service"></a>Scale your service
-After your service is provisioned, you can scale it to meet your needs. If you have chosen the Standard tier for your Azure Search service, you can scale your service in two dimensions: replicas and partitions. If you have chosen the Basic tier, you can only add replicas.
+## <a name="select-a-resource-group"></a>リソース グループの選択
+リソース グループとは、一緒に使用される Azure サービスとリソースのコレクションです。 たとえば、Azure Search を使用して SQL Database のインデックスを作成する場合、これら両方のサービスを同じリソース グループに含める必要があります。
 
-***Partitions*** allow your service to store and search through more documents.
+> [!TIP]
+> リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。 
 
-***Replicas*** allow your service to handle a higher load of search queries - [a service requires 2 replicas to achieve a read-only SLA and requires 3 replicas to achieve a read/write SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+## <a name="select-a-hosting-location"></a>ホストする場所の選択 
+Azure サービスの&1; つである Azure Search は、世界中のデータ センターでホストできます。 地域によって[価格が異なる場合がある](https://azure.microsoft.com/pricing/details/search/)ことにご注意ください。
 
-1. Go to your Azure Search service's management blade in the Azure Portal.
-2. In the **Settings** blade, select **Scale**.
-3. You can scale your service by adding Replicas or Partitions.
-   * You cannot scale your service past 36 search units. Your total number of search units is the product of your replicas and partitions (Replicas * Partitions = Total Search Units).
-   * If you have chosen the Basic tier, you can only scale to 3 replicas. Basic services are bound to a single partition.
+## <a name="select-a-pricing-tier-sku"></a>価格レベルの選択 (SKU)
+[Azure Search は現在、Free、Basic、Standard の複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
 
-![](./media/search-create-service-portal/scale-service.png)
+このチュートリアルでは、サービスに Standard レベルを選択しました。
 
-## <a name="next"></a>Next
-After provisioning an Azure Search service, you will be ready to [define an Azure Search index](search-what-is-an-index.md) so you can upload and search your data.
+## <a name="create-your-service"></a>サービスの作成
 
-See [Get started with Azure Search in the portal](search-get-started-portal.md) for a quick tutorial.
+サインインするたびにアクセスしやすくするために、サービスをダッシュボードにピン留めすることを忘れないでください。
 
-<!--HONumber=Oct16_HO2-->
+![](./media/search-create-service-portal/new-service2.png)
+
+## <a name="scale-your-service"></a>サービスを拡張する
+サービスを作成するのに数分かかる場合があります (レベルによっては&15; 分以上)。 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択しているため、レプリカとパーティションの&2; つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
+
+***パーティション***を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
+
+***レプリカ***を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
+
+> [!Important]
+> サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
+
+1. Azure Portal で検索サービスのブレードを開きます。
+2. 左のナビゲーション ウィンドウで、**[設定]** > **[スケール]** を選択します。
+3. スライダーを使用して、[レプリカ] または [パーティション] を追加します。
+
+![](./media/search-create-service-portal/settings-scale.png)
+
+> [!Note] 
+> 1 つのサービスで許可される検索ユニットの総数の[制限](search-limits-quotas-capacity.md)は、レベルごとに異なります (レプリカ * パーティション数 = 検索ユニット合計)。
+
+## <a name="when-to-add-a-second-service"></a>2 番目のサービスの追加が必要になる状況
+
+大半のお客様は、[リソースの適切なバランス](search-sku-tier.md)を提供する階層に、ただ&1; つのサービスをプロビジョニングします。 1 つのサービスで、相互に分離された複数のインデックスをホストできます。インデックスは、[選択した階層の上限](search-capacity-planning.md)の対象になります。 Azure Search では、要求は&1; つのインデックスにのみ転送でき、同じサービス内の他のインデックスから偶発的または意図的にデータが取得される可能性が最小限に抑えられます。
+
+ほとんどのお客様はサービスを&1; つしか使いませんが、運用要件に次のことが含まれる場合、サービスの冗長性が必要になる場合があります。
+
++ 障害復旧 (データ センターの停止)。 Azure Search では、停止時の即時フェールオーバーは提供されません。 推奨事項とガイダンスについては、「[Azure Portal での Azure Search のサービス管理](search-manage.md)」をご覧ください。
++ マルチ テナント モデルの調査により、サービスを追加するのが最適な設計であると判断された場合。 詳しくは、「[マルチテナント SaaS アプリケーションと Azure Search の設計パターン](search-modeling-multitenant-saas-applications.md)」をご覧ください。
++ グローバルにデプロイされるアプリケーションで、アプリケーションの国際トラフィックの待機時間を最小限に抑えるため、複数のリージョンに Azure Search のインスタンスが必要な場合。
+
+> [!NOTE]
+> Azure Search では、インデックス作成とクエリのワークロードを分離することはできません。このため、ワークロードを分離するために複数のサービスを作成することはありません。 インデックスのクエリは常に、インデックスが作成されたサービスで行われます (あるサービスでインデックスを作成し、それを別のサービスにコピーすることはできません)。
+>
+
+高可用性のために&2; 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも&1; つのレプリカが動作しています。 アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
+
+## <a name="next-steps"></a>次のステップ
+Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [インデックスを定義する](search-what-is-an-index.md)ことができます。
+
+コードまたはスクリプトからサービスにアクセスするには、URL (*サービス名*.search.windows.net) を指定します。 管理者キーはフル アクセスを付与し、クエリ キーは読み取り専用アクセスを付与します。 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関する記事を参照して、作業を開始してください。
+
+ポータル ベースのクイック チュートリアルについては、[最初のインデックスの作成とクエリ](search-get-started-portal.md)に関する記事をご覧ください。
 
 

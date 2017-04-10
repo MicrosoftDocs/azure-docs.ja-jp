@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI を使用した Resource Manager でのインターネットに接続するロード バランサーの作成 | Microsoft Docs"
+title: "インターネットに接続するロード バランサーの作成 - Azure CLI | Microsoft Docs"
 description: "Azure CLI を使用して、リソース マネージャーでインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
@@ -13,22 +13,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
+ms.lasthandoff: 03/21/2017
 
 ---
-# <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサーの作成
+# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Azure CLI を使用したインターネット ロード バランサーの作成
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [テンプレート](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。  [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
+この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -48,7 +53,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>Resource Manager を使用するための CLI のセットアップ
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
     ```azurecli
@@ -59,7 +64,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
 1. *NRPRG* という名前のリソース グループを使用して、米国東部の場所に *NRPVnet* という名前の仮想ネットワーク (VNet) を作成します。
 
@@ -91,7 +96,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
     azure network lb create NRPRG NRPlb eastus
     ```
 
-## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>フロントエンド IP プールとバックエンド アドレス プールの作成
+## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>フロントエンド IP プールとバックエンド アドレス プールの作成
 次の例では、ロード バランサーへの受信ネットワーク トラフィックを受信するフロントエンド IP プールと、負荷分散されたネットワーク トラフィックをフロントエンド プールが送信するバックエンド IP プールを作成する方法を説明します。
 
 1. 前の手順で作成したパブリック IP とロード バランサーを関連付けてフロントエンド IP プールを作成します。
@@ -127,7 +132,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 2. ロード バランサー規則を作成します。
 
     ```azurecli
-        azure network lb rule create --resource-group nrprg nrplb --lb-name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
+        azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
     ```
 
 3. 正常性プローブを作成します。
@@ -304,9 +309,4 @@ azure network lb delete --resource-group nrprg --name nrplb
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -1,54 +1,58 @@
 ---
-title: Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs
-description: Azure Mobile Engagement 関連のトラブルシューティング ガイド - API
+title: "Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs"
+description: "Azure Mobile Engagement 関連のトラブルシューティング ガイド - API"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
-ms.date: 08/19/2016
+ms.date: 10/04/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
+
 
 ---
-# API の問題のトラブルシューティング ガイド
+# <a name="troubleshooting-guide-for-api-issues"></a>API の問題のトラブルシューティング ガイド
 次に説明するのは、管理者が、API を使用して Azure モバイル エンゲージメントを操作する方法に関して発生する可能性のある問題です。
 
-## 構文の問題
-### 問題
+## <a name="syntax-issues"></a>構文の問題
+### <a name="issue"></a>問題
 * 構文エラーは API を使用して (または予期しない動作によって) 発生します。
 
-### 原因
+### <a name="causes"></a>原因
 * 構文の問題:
   * 使用している特定の API の構文を調べて、オプションを使用できることをご確認ください。
-  * API の使用方法に関する一般的な問題は、リーチ API とプッシュ API を混同することです (多くのタスクは、プッシュ API の代わりにリーチ API を使用して実行する必要があります)。
+  * API の使用方法に関する一般的な問題は、リーチ API とプッシュ API を混同することです (多くのタスクは、プッシュ API の代わりにリーチ API を使用して実行する必要があります)。 
   * もう 1 つの SDK の統合と API の使用方法に関する一般的な問題は、SDK キーと API キーを混同することです。
-  * API に接続するスクリプトは、少なくとも 10 分ごとにデータを送信する必要があります。これを行わないと、接続はタイムアウトします (特に、データを待機している監視 API では一般的です)。タイムアウトを回避するために、スクリプトは 10 分ごとに XMPP ping を送信してサーバーとのセッションを維持します。
+  * API に接続するスクリプトは、少なくとも 10 分ごとにデータを送信する必要があります。これを行わないと、接続はタイムアウトします (特に、データを待機している監視 API では一般的です)。 タイムアウトを回避するために、スクリプトは 10 分ごとに XMPP ping を送信してサーバーとのセッションを維持します。
 
-### 関連項目
+### <a name="see-also"></a>関連項目
 * [API ドキュメント][Link 4]
 * [XMPP プロトコル情報](http://xmpp.org/extensions/xep-0199.html)
 
-## Azure モバイル エンゲージメント UI で使用できるアクションと同じアクションを、API を使用して実行できません
-### 問題
+## <a name="unable-to-use-the-api-to-perform-the-same-action-available-in-the-azure-mobile-engagement-ui"></a>Azure モバイル エンゲージメント UI で使用できるアクションと同じアクションを、API を使用して実行できません
+### <a name="issue"></a>問題
 * Azure モバイル エンゲージメント UI から実行するアクションは、関連する Azure モバイル エンゲージメント API では機能しません。
 
-### 原因
+### <a name="causes"></a>原因
 * Azure モバイル エンゲージメント UI から同じアクションを実行できることを確認すると、Azure モバイル エンゲージメントのこの機能と SDK が正しく統合されていることが分かります。
 
-### 関連項目
+### <a name="see-also"></a>関連項目
 * [UI ドキュメント][Link 1]
 
-## エラー メッセージ
-### 問題
+## <a name="error-messages"></a>エラー メッセージ
+### <a name="issue"></a>問題
 * エラー コードは、実行時またはログ中に表示される API を使用します。
 
-### 原因
+### <a name="causes"></a>原因
 * 次に、参照と事前のトラブルシューティングのために、一般的な API 状態コード番号の一覧を示します。
   
         200        Success.
@@ -71,32 +75,32 @@ ms.author: piyushjo
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### 関連項目
+### <a name="see-also"></a>関連項目
 * [API ドキュメント - 特定の API に関する詳細なエラー情報][Link 4]
 
-## サイレント障害
-### 問題
+## <a name="silent-failures"></a>サイレント障害
+### <a name="issue"></a>問題
 * API のアクションは、実行時またはログ中にエラー メッセージが表示されずに失敗します。
 
-### 原因
+### <a name="causes"></a>原因
 * 正しく統合されていない場合は、Azure モバイル エンゲージメント UI の多くの項目が無効になりますが、API からエラー メッセージが表示されません。実行していることを確認するには、UI から同じ機能をテストしてください。
 * Azure モバイル エンゲージメントと、使用する Azure モバイル エンゲージメントの多くの高度な機能を、事前に別の手順で SDK を使用して個別にアプリと統合する必要があります。
 
-### 関連項目
+### <a name="see-also"></a>関連項目
 * [トラブルシューティング ガイド - SDK][Link 25]
 
 <!--Link references-->
-[Link 1]: mobile-engagement-user-interface.md
+[Link 1]: mobile-engagement-user-interface-home.md
 [Link 2]: mobile-engagement-troubleshooting-guide.md
 [Link 3]: mobile-engagement-how-tos.md
 [Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
 [Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
 [Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/en-us/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/en-us/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/en-us/pricing/details/mobile-engagement/
 [Link 12]: mobile-engagement-user-interface-navigation.md
 [Link 13]: mobile-engagement-user-interface-home.md
 [Link 14]: mobile-engagement-user-interface-my-account.md
@@ -117,4 +121,8 @@ ms.author: piyushjo
 [Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

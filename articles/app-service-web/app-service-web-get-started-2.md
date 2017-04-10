@@ -1,27 +1,28 @@
 ---
-title: "初めての Web アプリに機能を追加する"
+title: "初めての Web アプリに機能を追加する | Microsoft Docs"
 description: "初めての Web アプリに便利な機能を数分で追加します。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 542671c2-22f0-4f20-8b4b-fa477264c492
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.date: 05/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
+ms.sourcegitcommit: 9916000ddf38fdda1dcbdcf8818c5833a445efc8
+ms.openlocfilehash: 3f099db9f75466b5571aa732bb60343af7bd86da
+ms.lasthandoff: 01/24/2017
 
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>初めての Web アプリに機能を追加する
-「[初めての Web アプリを Azure に 5 分でデプロイする](app-service-web-get-started.md)」では、サンプル Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしました。 この記事では、デプロイした Web アプリにいくつかの優れた機能をわずかな操作で追加します。 数分間で次のことができます。
+「[初めての Web アプリを Azure に&5; 分でデプロイする](app-service-web-get-started-cli-nodejs.md)」では、サンプル Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしました。 この記事では、デプロイした Web アプリにいくつかの優れた機能をわずかな操作で追加します。 数分間で次のことができます。
 
 * ユーザーへの認証の強制
 * アプリの自動的なスケール
@@ -29,10 +30,10 @@ ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
 
 前の記事でデプロイしたサンプル アプリに関係なく、チュートリアルの手順を実行できます。
 
-このチュートリアルの 3 つのアクティビティは、Web アプリを App Service に配置した場合に利用できる多くの便利な機能のうちの数例に過ぎません。 多くの機能は、**Free** レベル (初めての Web アプリを実行しているレベル) で使用できます。より高い価格レベルを必要とする機能を試すには、試用版のクレジットを使用できます。 明示的に別の価格レベルに変更しない限り、Web アプリは **Free** レベルのままです。
+このチュートリアルの&3; つのアクティビティは、Web アプリを App Service に配置した場合に利用できる多くの便利な機能のうちの数例に過ぎません。 多くの機能は、**Free** レベル (初めての Web アプリを実行しているレベル) で使用できます。より高い価格レベルを必要とする機能を試すには、試用版のクレジットを使用できます。 明示的に別の価格レベルに変更しない限り、Web アプリは **Free** レベルのままです。
 
 > [!NOTE]
-> Azure CLI で作成した Web アプリは、 **Free** レベルで実行されますが、このレベルではリソース クォータを持つ 1 つの共有 VM インスタンスだけが許可されます。 **Free** レベルで使用できるものの詳細については、「 [App Service の制限](../azure-subscription-service-limits.md#app-service-limits)」を参照してください。
+> Azure CLI で作成した Web アプリは、 **Free** レベルで実行されますが、このレベルではリソース クォータを持つ&1; つの共有 VM インスタンスだけが許可されます。 **Free** レベルで使用できるものの詳細については、「 [App Service の制限](../azure-subscription-service-limits.md#app-service-limits)」を参照してください。
 > 
 > 
 
@@ -52,9 +53,9 @@ ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
     変更が正常に完了すると、通知ベルが緑色に変わり、わかりやすいメッセージが表示されます。
 6. アプリのポータル ブレードに戻り、**[URL]** リンク (またはメニュー バーの **[参照]**) をクリックします。 このリンクは HTTP アドレスになっています。  
     ![認証 - URL に移動](./media/app-service-web-get-started/aad-login-browse-click.png)  
-     ただし、URL をクリックして新しいタブでアプリが開くと、数回のリダイレクトを経て、最終的には HTTPS アドレスでアプリが開かれます。 結果として、Azure サブスクリプションにログインした状態になり、アプリで自動的に認証されます。  
+    ただし、URL をクリックして新しいタブでアプリが開くと、数回のリダイレクトを経て、最終的には HTTPS アドレスでアプリが開かれます。 結果として、Azure サブスクリプションにログインした状態になり、アプリで自動的に認証されます。  
     ![認証 - ログイン済み](./media/app-service-web-get-started/aad-login-browse-http-postclick.png)  
-     そのため、認証されていないセッションを別のブラウザーで開いた場合は、同じ URL に移動するときにログイン画面が表示されます。  
+    そのため、認証されていないセッションを別のブラウザーで開いた場合は、同じ URL に移動するときにログイン画面が表示されます。  
     <!-- ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png)  -->
     Azure Active Directory で操作を行ったことがない場合、既定のディレクトリに Azure AD ユーザーが含まれていないことがあります。 その場合、既定のディレクトリに含まれているのは、Azure サブスクリプションのある Microsoft アカウントのみになります。 同一のブラウザーでアプリに自動的にログインされる場合があるのは、このためです。
    その同じ Microsoft アカウントを使用して、このログイン ページにもログインできます。
@@ -73,7 +74,7 @@ App Service には一般的な認証のニーズの一部に対応した設定�
 ## <a name="scale-your-app-automatically-based-on-demand"></a>必要に応じたアプリの自動的なスケール
 次に、アプリを自動スケールして、ユーザーの要求に応じて容量が自動的に調整されるようにしてみましょう (詳細については、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」および「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」を参照してください)。
 
-Web アプリをスケールする方法は、簡単に言うと次の 2 つです。
+Web アプリをスケールする方法は、簡単に言うと次の&2; つです。
 
 * [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): CPU、メモリ、ディスク領域を増やしたり、専用 VM、カスタム ドメインと証明書、ステージング スロット、自動スケールのような拡張機能を追加したりします。 スケールアップするには、アプリが属している App Service プランの価格レベルを変更します。
 * [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): アプリを実行する VM インスタンス数を増やします。
@@ -128,7 +129,7 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 
 これで、アラートが取得されるようになりました。
 
-このアラート設定では CPU 使用率が 5 分ごとにチェックされます。 この数値が 90% を超えると、電子メール アラートが届きます。このアラートは、承認されたすべてのユーザーにも送信されます。 アラートを受信する権限のあるすべてのユーザーを表示するには、アプリのポータル ブレードに戻り、**[アクセス]** をクリックします。  
+このアラート設定では CPU 使用率が&5; 分ごとにチェックされます。 この数値が 90% を超えると、電子メール アラートが届きます。このアラートは、承認されたすべてのユーザーにも送信されます。 アラートを受信する権限のあるすべてのユーザーを表示するには、アプリのポータル ブレードに戻り、**[アクセス]** をクリックします。  
 ![See who gets alerts](./media/app-service-web-get-started/alert-rbac.png)
 
 **サブスクリプション管理者**が既にアプリの**所有者**であることが表示されます。 Azure サブスクリプション (試用版サブスクリプションなど) のアカウント管理者もこのグループに含まれます。 Azure のロールベースのアクセス制御の詳細については、「 [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
@@ -153,10 +154,5 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
   [Tinfoil Security](https://www.tinfoilsecurity.com/) によって提供されるサービスを使用して、Web アプリの最新の脅威をスキャンします。
 * [バックグラウンド ジョブを実行する](../azure-functions/functions-overview.md) - データ処理、レポート作成などのジョブを実行します。
 * [App Service の特長](../app-service/app-service-how-works-readme.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

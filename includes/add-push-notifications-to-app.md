@@ -1,5 +1,5 @@
 
-## <a id="add-push"></a>アプリケーションへのプッシュ通知の追加
+## <a name="a-idadd-pushaadd-push-notifications-to-app"></a><a id="add-push"></a>アプリケーションへのプッシュ通知の追加
 * QSAppDelegate.m で、iOS SDK および QSTodoService.h をインポートします。
 
 ```
@@ -15,7 +15,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
 
-* QSAppDelegate.m で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+* QSAppDelegate.m で、次のハンドラー メソッドを追加します。 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 ```
         // Registration with APNs is successful
@@ -56,4 +56,7 @@
         }
 ```
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Jan17_HO3-->
+
+

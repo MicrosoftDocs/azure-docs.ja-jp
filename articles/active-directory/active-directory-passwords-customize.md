@@ -1,45 +1,54 @@
 ---
-title: 'カスタマイズ: Azure AD Password Management | Microsoft Docs'
-description: ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。
+title: "カスタマイズ: Azure Active Directory のパスワード管理 | Microsoft Docs"
+description: "ニーズに合わせて Azure AD でパスワード管理の外観、動作、および通知をカスタマイズする方法。"
 services: active-directory
-documentationcenter: ''
-author: asteen
+documentationcenter: 
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
-
+ms.assetid: 2cddd150-8747-447a-a7cf-1d7d5775c0b3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
+translationtype: Human Translation
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 06d94b4f0f2c5cc979fe7ecb061fee7d8dde8972
+ms.lasthandoff: 03/28/2017
+
 
 ---
-# <a name="customizing-password-management-to-fit-your-organization's-needs"></a>Password Management を組織のニーズに合わせてカスタマイズする
+# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>組織ニーズに合わせたパスワード管理のカスタマイズ
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+>
+>
 
-ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。 **Azure クラシック ポータル** で、 [[Active Directory 拡張機能]](https://manage.windowsazure.com)の [構成] タブに移動することで、今すぐ調査を開始できます。 このトピックでは、 **Azure クラシック ポータル** の中で、ディレクトリの [[構成]](https://manage.windowsazure.com)タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
+ユーザーに最良のエクスペリエンスを与えるため、パスワード管理の使用可能なすべての構成オプションを調べて試してみることをお勧めします。 **Azure クラシック ポータル** で、 [[Active Directory 拡張機能]](https://manage.windowsazure.com)の [構成] タブに移動することで、今すぐ調査を開始できます。 このトピックでは、**Azure クラシック ポータル**の中で、ディレクトリの [[構成]](https://manage.windowsazure.com) タブから管理者として実行できる各種パスワード管理のカスタマイズについて説明します。
 
-| トピック |  |
-| --- | --- |
-| パスワードのリセットを有効または無効にする方法 |[設定: パスワードのリセットが有効になっているユーザー](#users-enabled-for-password-reset) |
-| パスワードのリセットを一連の特定のユーザーに適用する方法 |[パスワードのリセットを特定のユーザーに制限する](#restrict-access-to-password-reset) |
-| サポートされる認証方法を変更する方法 |[設定: ユーザーが使用できる認証方法](#authentication-methods-available-to-users) |
-| 必要な認証方法の数を変更する方法 |[設定: 必要な認証方法の数](#number-of-authentication-methods-required) |
-| カスタムの秘密の質問を設定する方法 |[設定: カスタムの秘密の質問](#custom-security-questions) |
-| 既定のローカライズされた秘密の質問を設定する方法 |[設定: ナレッジ ベースの秘密の質問](#knowledge-based-security-questions) |
-| 必要な秘密の質問の数を変更する方法 |[設定: 登録またはリセット用の秘密の質問の数](#number-of-questions-required-to-register) |
-| サインイン時にユーザーに登録を強制する方法 |[パスワード リセットの登録ベースのロールアウトの適用](#require-users-to-register-when-signing-in) |
-| 登録内容の定期的な再確認をユーザーに強制する方法 |[設定: ユーザーに認証データの再確認を強制するまでの日数](#number-of-days-before-users-must-confirm-their-contact-data) |
-| ユーザーが管理者に連絡する方法をカスタマイズする方法 |[設定: "管理者に問い合わせてください" リンクをカスタマイズする](#customize-the-contact-your-administrator-link) |
-| パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 |[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| ユーザーのパスワード リセット通知を有効にする方法 |[設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| 管理者のパスワード リセット通知を有効にする方法 |[設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| パスワード リセットの外観をカスタマイズする方法 |[設定: 会社名、ブランド、ロゴ ](#password-management-look-and-feel) |
+## <a name="what-customization-options-are-available"></a>使用可能なカスタマイズ オプション
+以下の表は、Azure Active Directory のパスワード リセットで使用可能なすべてのカスタマイズ オプションの概要を示します。
+
+| トピック | 設定 | 必要なライセンス |
+| --- | --- | --- |
+| パスワードのリセットを有効または無効にする方法 |[設定: パスワードのリセットが有効になっているユーザー](#users-enabled-for-password-reset) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| パスワードのリセットを一連の特定のユーザーに適用する方法 |[パスワードのリセットを特定のユーザーに制限する](#restrict-access-to-password-reset) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| サポートされる認証方法を変更する方法 |[設定: ユーザーが使用できる認証方法](#authentication-methods-available-to-users) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| 必要な認証方法の数を変更する方法 |[設定: 必要な認証方法の数](#number-of-authentication-methods-required) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| カスタムの秘密の質問を設定する方法 |[設定: カスタムの秘密の質問](#custom-security-questions) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| 既定のローカライズされた秘密の質問を設定する方法 |[設定: ナレッジ ベースの秘密の質問](#knowledge-based-security-questions) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| 必要な秘密の質問の数を変更する方法 |[設定: 登録またはリセット用の秘密の質問の数](#number-of-questions-required-to-register) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| サインイン時にユーザーに登録を強制する方法 |[パスワード リセットの登録ベースのロールアウトの適用](#require-users-to-register-when-signing-in) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| 登録内容の定期的な再確認をユーザーに強制する方法 |[設定: ユーザーに認証データの再確認を強制するまでの日数](#number-of-days-before-users-must-confirm-their-contact-data) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| ユーザーが管理者に連絡する方法をカスタマイズする方法 |[設定: "管理者に問い合わせてください" リンクをカスタマイズする](#customize-the-contact-your-administrator-link) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| クラウドの管理エクスペリエンスからパスワード ライトバックを有効および無効にする方法 |[設定: パスワード ライトバックを有効または無効にする](#write-back-passwords-to-on-premises-directory) | <ul><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| パスワードをリセットせずにオンプレミスの AD アカウントのロックを解除することをユーザーに許可する方法 |[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) | <ul><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| ユーザーのパスワード リセット通知を有効にする方法 |[設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |  <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| 管理者のパスワード リセット通知を有効にする方法 |[設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) | <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
+| パスワード リセットの外観をカスタマイズする方法 |[設定: 会社名、ブランド、ロゴ ](#password-management-look-and-feel) |  <ul><li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li><li>Azure AD Basic [クラウド ユーザーのみ]</li><li>Azure AD Premium P1 または P2 [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Mobility Suite [クラウドまたはオンプレミスのユーザー]</li><li>Enterprise Cloud Suite [クラウドまたはオンプレミスのユーザー]</li></ul> |
 
 ## <a name="password-management-look-and-feel"></a>Password Managment の外観
 次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ディレクトリのプロパティ]** セクションで構成できます。
@@ -70,6 +79,15 @@ ms.author: asteen
               </td>
               <td>
                 <p>パスワード リセット メール通信で、ユーザーまたは管理者に対して表示される組織名を決定します。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -98,10 +116,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>パスワード リセット ページにアクセスするユーザーに表示するロゴ (マイクロソフトのロゴまたは独自のカスタム ロゴ) を決定します。  この構成項目は、アクセス パネル ページとサインイン ページにブランド化も追加します。</p>
-                <p>
-
-                </p>
                 <p>テナントのブランド化とカスタマイズ機能については、「<a href="https://technet.microsoft.com/library/dn532270.aspx">サインイン ページとアクセス パネル ページに会社のブランド化を追加</a>」を参照してください。</p>
+                                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -109,9 +133,10 @@ ms.author: asteen
                 </p>
                 <ul>
                   <li class="unordered">
-既定のマイクロソフトのロゴの代わりに、カスタム ロゴをパスワード リセット ポータルの上部に表示するかどうかを決定します。<br><br></li>
-                  <li class="unordered">
-                    <strong>注:</strong> パスワード リセット ページに直接アクセスした場合、パスワード リセット ポータルの最初のページにカスタム ロゴが表示されないことがあります。  ユーザーが自分のユーザー ID を入力して [次へ] をクリックすると、カスタム ロゴが表示されます。  パスワード リセット ページに次のような whr パラメーターを渡すことで、ページを読み込むときにカスタム ロゴを表示させることができます: <a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a><br><br></li>
+既定のマイクロソフトのロゴの代わりに、カスタム ロゴをパスワード リセット ポータルの上部に表示するかどうかを決定します。<br><br>
+                    <strong>注:</strong> パスワード リセット ページに直接アクセスした場合、パスワード リセット ポータルの最初のページにカスタム ロゴが表示されないことがあります。 ユーザーが自分のユーザー名を入力して [次へ] をクリックすると、カスタム ロゴが表示されます。<br><br>
+<code><a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a></code> のようにパスワード リセットのページで <code>whr</code> パラメーターを渡すことで、カスタム ロゴをページの読み込み時に強制的に表示できます。<br><br>
+<code>username</code> パラメーターを渡すことで、ユーザー名フィールドが事前に入力されたリンクを生成できます。 これにより、構成されている場合は組織のロゴ (<code><a href="https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com">https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com</a></code>) も表示されます。</li>
                 </ul>
                 <p>
                   <strong>"管理者に問い合わせてください" メール:</strong>
@@ -131,13 +156,13 @@ ms.author: asteen
             </tr>
           </tbody></table>
 
-## <a name="password-management-behavior"></a>Password Management の動作
+## <a name="password-management-behavior"></a>パスワード管理の動作
 次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションで構成できます。
 
 > [!NOTE]
 > これらのポリシー コントロールを表示するには、使用している管理者アカウントに AAD Premium ライセンスが割り当てられている必要があります。<br><br>これらのポリシー コントロールは、パスワードをリセットするエンド ユーザーにのみ適用されます。管理者には適用されません。  **管理者には、Microsoft が管理者のために指定した連絡用メールと携帯電話の既定のポリシーがあり、これらは変更できません。**
-> 
-> 
+>
+>
 
 <table>
             <tbody><tr>
@@ -165,6 +190,15 @@ ms.author: asteen
               </td>
               <td>
                 <p>このディレクトリのユーザーがパスワードをリセットできるかどうかを決定します。 </p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -199,6 +233,15 @@ ms.author: asteen
               </td>
               <td>
                 <p>特定のユーザー グループのみがパスワードのリセットを使用できるかどうかを決定します  (<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -228,10 +271,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>パスワードをリセットできるエンド ユーザーのグループを決定します  </p>
-                <p>
-
-                </p>
                 <p>(<strong>[パスワード リセットへのアクセスの制限]</strong> が <strong>[はい]</strong> に設定されている場合のみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -268,10 +317,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>ユーザーがパスワードをリセットするために使用できるチャレンジを決定します </p>
-                <p>
-
-                </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -298,7 +353,7 @@ ms.author: asteen
                   <li class="unordered">
 セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。  安全保護のため、現時点では、管理者がこれらの回答を編集または表示する方法はありません。<br><br></li>
                   <li class="unordered">
-                    <strong>注: </strong>既定では、クラウド属性の [会社電話] と [携帯電話] だけが、オンプレミス ディレクトリからクラウド ディレクトリに同期されます。  クラウドに同期されるオンプレミス属性の詳細については、「<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Azure Active Directory に同期される属性」を参照してください 。</a><br><br></li>
+                    <strong>注: </strong>既定では、クラウド属性の [会社電話] と [携帯電話] だけが、オンプレミス ディレクトリからクラウド ディレクトリに同期されます。  クラウドに同期されるオンプレミス属性の詳細については、「<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Azure Active Directory に同期される属性</a>」を参照してください。<br><br></li>
                 </ul>
                 <p>
                   <strong>登録ポータル:</strong>
@@ -328,10 +383,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>ユーザーがパスワードをリセットするために通過する必要がある認証方法の最小数を決定します </p>
-                <p>
-
-                </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -368,6 +429,15 @@ ms.author: asteen
               <td>
                 <p>[セキュリティの質問] オプションを登録するときに、ユーザーが回答する必要がある質問の最小数を決定します </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -398,10 +468,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>ユーザーがパスワードをリセットするときに回答する必要がある質問の最小数を決定します </p>
-                <p>
-
-                </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -432,10 +508,16 @@ ms.author: asteen
               </td>
               <td>
                 <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できる、事前に用意されたセキュリティの質問を定義します。</p>
-                <p>
-
-                </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -483,10 +565,16 @@ Unicode 文字を含む任意の文字セットを使用して回答を定義で
               </td>
               <td>
                 <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できるセキュリティの質問を定義します </p>
-                <p>
-
-                </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -533,31 +621,25 @@ Unicode 文字を含む任意の文字セットを使用して、質問と回答
                 <div id="require-users-to-register-when-signing-in">
                   <p>サインイン時にユーザーに登録を求めますか?</p>
                 </div>
-                <p>
-
-                </p>
               </td>
               <td>
                 <p>ユーザーが次回サインインしたときに、パスワードをリセットするための連絡先情報の登録をユーザーに要求するかどうかを決定します。  
                 </p>
                 <p>この機能は、職場または学校のアカウントを使用するサインイン ページで機能します。  このようなページには、Office 365、Microsoft Azure 管理ポータル、アクセス パネル、Azure AD を使用してサインインするフェデレーション アプリケーションまたはカスタム開発されたアプリケーションがすべて含まれます。
                 </p>
-                <p>
-
-                </p>
                 <p>強制登録は、パスワードのリセットが有効になっているユーザーにのみ適用されます。そのため、[パスワード リセットへのアクセスの制限] 機能を使用し、パスワード リセットを特定のユーザー グループに適用している場合、そのグループのユーザーだけが、サインイン時にパスワード リセットのための登録を求められます。</p>
-                <p>
-
-                </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>注:</strong>
                 </p>
@@ -586,18 +668,18 @@ Unicode 文字を含む任意の文字セットを使用して、質問と回答
               </td>
               <td>
                 <p><strong>[ユーザーに登録を要求しますか?]</strong> がオンになっている場合、この設定は、ユーザーがデータを再確認するまでの経過時間を決定します。 </p>
-                <p>
-
-                </p>
                 <p>(<strong>[ユーザーが初めてアクセス パネルにサインインするときに登録を要求しますか?]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>注:</strong>
                 </p>
@@ -622,10 +704,16 @@ Unicode 文字を含む任意の文字セットを使用して、質問と回答
               </td>
               <td>
                 <p>エラーが発生したとき、またはユーザーの操作が完了しないときに、パスワード リセット ポータルの左側に表示される [管理者に問い合わせてください] リンクが、カスタム URL またはメール アドレスをポイントするかどうかを制御します。</p>
-                <p>
-
-                </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -668,10 +756,16 @@ URL を指定した場合は新しいタブで開きます。<br><br></li>
               </td>
               <td>
                 <p><strong>[管理者に問い合わせてください]</strong> リンクがポイントするメール アドレスまたは URL を制御します  </p>
-                <p>
-
-                </p>
                 <p>(<strong>[" 管理者に連絡" リンクをカスタマイズしますか?]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -702,15 +796,16 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
               </td>
               <td>
                 <p>このディレクトリで Password Writeback が有効になっているかどうかを制御します。書き戻しがオンの場合は、オンプレミスの書き戻しサービスの状態を示します。</p>
-                <p>
-
-                </p>
                 <p>この設定は、Azure AD Connect を再構成せずにサービスを一時的に無効にする場合に便利です。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
                 <p>
                   <strong>注:</strong>
                 </p>
@@ -740,22 +835,25 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
                   <li class="unordered">
 スイッチが <strong>[はい]</strong> に設定されている場合、書き戻しは有効になり、フェデレーション ユーザーとパスワード ハッシュ同期ユーザーは、パスワードをリセットできます。<br><br></li>
                 </ul>
-              </td>
+              </td
             </tr>
              <tr>
               <td>
                 <div id="allow-users-to-unlock-accounts-without-resetting-their-password">
-                  <p>パスワードをリセットせずにアカウントのロックを解除することをユーザーに許可する</p>
+                  <p>パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除することをユーザーに許可する</p>
                 </div>
               </td>
               <td>
-
               <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の 2 つの操作を分離することができます。</p>
-
               <p>[はい] に設定すると、ユーザーはパスワードをリセットし、アカウントのロックを解除するか、パスワードをリセットせずにロックを解除するかを選択できます。 </p>
-
               <p>[いいえ] に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できなくなります。</p>
-
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -764,7 +862,6 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
                 <ul>
                   <li class="unordered">
 この機能を使用するには、2015 年 8 月以降のリリースの Azure AD Connect (バージョン  1.0.8667.0 以上) をインストールする必要があります。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。</a></li>
-
                   <li class="unordered">
                     <strong>注:</strong> この機能をテストするには、パスワード ライトバックを有効にし、(フェデレーション ユーザーやパスワード同期ユーザーなどの) オンプレミスのロックされたアカウントを使用する必要があります。  オンプレミスではなく、ロックされたアカウントを使用していないユーザーには、アカウントのロックを解除するオプションは表示されません。</li>
                 </ul>
@@ -779,7 +876,7 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
             </tr>
           </tbody></table>
 
-## <a name="password-management-notifications"></a>Password Management 通知のカスタマイズ
+## <a name="password-management-notifications"></a>パスワード管理の通知
 次の表は、各コントロールが、パスワード リセット通知を受信するユーザーと管理者のエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[通知]** セクションで構成できます。
 
 <table>
@@ -808,6 +905,15 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
               </td>
               <td>
                 <p>別の種類の管理者がパスワードをリセットしたときに、すべてのグローバル管理者にプライマリ メール アドレスを使用してメールで通知するかどうかを決定します。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -838,6 +944,15 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
               </td>
               <td>
                 <p>パスワードをリセットしたエンド ユーザーまたは管理者が、パスワードがリセットされたことを知らせるメールを受信するかどうかを決定します。</p>
+                <br>
+                <p><b><u>次のいずれかのライセンスが必要 <a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">詳細</a></u></b></p>
+                 <ul>
+                   <li>O365 (有料の SKU すべて) [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Basic [クラウド ユーザーのみ]</li>
+                   <li>Azure AD Premium P1 または P2 [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Mobility Suite [クラウドおよびオンプレミスのユーザー]</li>
+                   <li>Enterprise Cloud Suite [クラウドおよびオンプレミスのユーザー]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -860,10 +975,10 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -873,9 +988,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

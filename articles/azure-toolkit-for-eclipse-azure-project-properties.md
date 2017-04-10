@@ -1,47 +1,51 @@
 ---
-title: Azure Project Properties
-description: Describes the Azure Project Properties settings in the Azure Toolkit for Eclipse.
-services: ''
+title: "Azure プロジェクトのプロパティ"
+description: "Azure Toolkit for Eclipse での Azure プロジェクトのプロパティの設定について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0fce53ec-0c5e-47b9-a453-59a0d4307556
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 480a0f1c15dda00d7335c8d0ff02143a4e37abaa
+
 
 ---
-# <a name="azure-project-properties"></a>Azure Project Properties
-Various settings for your Azure project can be set within the Azure Toolkit for Eclipse.
+# <a name="azure-project-properties"></a>Azure プロジェクトのプロパティ
+Azure Toolkit for Eclipse では、Azure プロジェクトのさまざまな設定を指定できます。
 
-## <a name="configuring-azure-project-properties"></a>Configuring Azure Project Properties
-Configuring your Azure Project Properties is accomplished through the property dialogs for your Azure project. Right-click the project in Eclipse's Project Explorer pane, click **Properties**, and then select the **Azure** sub-menu.
+## <a name="configuring-azure-project-properties"></a>Azure プロジェクトのプロパティを構成する
+Azure プロジェクトのプロパティは、Azure プロジェクトのプロパティ ダイアログ ボックスで構成します。 Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウでプロジェクトを右クリックし、**[Properties (プロパティ)]** をクリックし、**[Azure]** サブメニューを選択します。
 
 ![][ic719480]
 
-Within this property page, you can change the following items: 
+このプロパティ ページでは、次の項目を変更できます。 
 
-* **Service name:** The name for your Azure project.
-* **Build for:** Whether the project is set for building to the compute emulator or deployment to Azure.
-* **Target OS:** The operating system to use when your project is deployed to Azure.
+* **サービス名:** Azure プロジェクトの名前。
+* **ビルド:** プロジェクトがコンピューティング エミュレーターに対するビルド向けか、Azure へのデプロイメント向けかを指定します。
+* **ターゲット OS:** プロジェクトを Azure にデプロイするときに使用するオペレーティング システム。
 
-## <a name="see-also"></a>See Also
+## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Installing the Azure Toolkit for Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-[Creating a Hello World Application for Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Role Properties][Azure Role Properties]
+[Azure ロールのプロパティ][Azure Role Properties]
 
-[Azure Storage Account List][Azure Storage Account List]
+[Azure ストレージ アカウントの一覧][Azure Storage Account List]
 
-For more information about using Azure with Java, see the [Azure Java Developer Center][Azure Java Developer Center].
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
@@ -60,6 +64,6 @@ For more information about using Azure with Java, see the [Azure Java Developer 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

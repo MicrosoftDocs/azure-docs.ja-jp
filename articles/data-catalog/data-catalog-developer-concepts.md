@@ -1,20 +1,24 @@
 ---
-title: Data Catalog 開発者の概念 | Microsoft Docs
-description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
+title: "Data Catalog 開発者の概念 | Microsoft Docs"
+description: "Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/11/2016
+ms.date: 01/19/2017
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9591d7e2dd743e44d228205163ad55cb47992283
+
 
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
@@ -55,7 +59,7 @@ Azure Data Catalog では、ID およびアクセス管理のために Azure Act
 
 注釈の例としては、説明、タグ、スキーマ、ドキュメントなどがあります。資産の型と注釈の型の完全な一覧が、「資産オブジェクト モデル」セクションに示されています。
 
-## <a name="crowdsourcing-annotations-and-user-perspective-(multiplicity-of-opinion)"></a>注釈のクラウド ソーシングとユーザーの観点 (意見の多重度)
+## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>注釈のクラウド ソーシングとユーザーの観点 (意見の多重度)
 Azure Data Catalog の重要な側面は、システム内のメタデータのクラウドソーシングをどのようにサポートするかということです。 1 つの意見しか存在せず、最後の書き込みを優先する wiki アプローチとは異なり、Azure Data Catalog モデルでは、システム内に複数の意見が共存できます。
 
 このアプローチは、所定の資産に対してさまざまなユーザーがさまざまな観点を持ちうるという、企業データの現実世界を反映しています。
@@ -358,6 +362,6 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,19 +1,24 @@
 ---
-title: コピー アクティビティのパフォーマンスとチューニングに関するガイド | Microsoft Docs
-description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
+title: "コピー アクティビティのパフォーマンスとチューニングに関するガイド | Microsoft Docs"
+description: "コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 03/24/2017
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
+ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
+ms.lasthandoff: 01/06/2017
+
 
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
@@ -21,7 +26,7 @@ Azure Data Factory コピー アクティビティは、優れたセキュリテ
 
 Azure によりエンタープライズ クラスのデータ ストレージおよびデータ ウェアハウスのソリューション セットが提供されます。また、コピー アクティビティにより、構成とセットアップが簡単な、大幅に最適化されたデータ読み込み環境がもたらされます。 1 つのコピー アクティビティで次のことを実現できます。
 
-* **Azure SQL Data Warehouse** へのデータの読み込み (**1.2 GBps**)
+* **Azure SQL Data Warehouse** へのデータの読み込み (**1.2 GBps**)。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
 * **Azure Blob Storage** へのデータの読み込み (**1.0 GBps**)
 * **Azure Data Lake Store** へのデータの読み込み (**1.0 GBps**)
 
@@ -33,19 +38,23 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に「 [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) 」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
 ![パフォーマンス マトリックス](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
-注意する点:
+> [!NOTE]
+> 既定の最大データ移動単位 (DMU) は、クラウド間のコピー アクティビティの実行では 8 ですが、これよりも大きい DMU を利用すると、より高いスループットを得ることができます。 たとえば、100 DMU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[クラウド データ移動単位](#cloud-data-movement-units)」セクションを参照してください。 DMU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
+>
+>
 
+**注意する点:**
 * スループットの計算には、[ソースから読み取られたデータ サイズ]/[コピー アクティビティの実行時間] という数式を使用します。
 * 表のパフォーマンスの参照番号は、1 回のコピー アクティビティ実行で [TPC-H](http://www.tpc.org/tpch/) データ セットを使用して測定されました。
 * クラウド データ ストア間のコピーでは、比較のために、 **cloudDataMovementUnits** を 1 と 4 (または 8) に設定します。 **parallelCopies** は指定されていません。 これらの機能の詳細については、「 [並列コピー](#parallel-copy) 」セクションを参照してください。
 * Azure データ ストアでは、ソースとシンクは同じ Azure リージョンにあります。
-* ハイブリッド (オンプレミスからクラウド、またはクラウドからオンプレミス) のデータ移動では、オンプレミス データ ストアとは別のコンピューター上にあるゲートウェイの 1 つのインスタンスが実行されています。 構成の一覧を次の表に示します。 ゲートウェイで 1 つのアクティビティが実行されていた場合、コピー操作で使用されたのは、テスト コンピューターの CPU、メモリ、またはネットワーク帯域幅のごく一部だけでした。
+* ハイブリッド (オンプレミスからクラウド、またはクラウドからオンプレミス) のデータ移動では、オンプレミス データ ストアとは別のコンピューター上にあるゲートウェイの&1; つのインスタンスが実行されています。 構成の一覧を次の表に示します。 ゲートウェイで&1; つのアクティビティが実行されていた場合、コピー操作で使用されたのは、テスト コンピューターの CPU、メモリ、またはネットワーク帯域幅のごく一部だけでした。
     <table>
     <tr>
         <td>CPU</td>
@@ -84,80 +93,83 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | ソースとシンク | サービスによって決定される並列コピーの既定数 |
 | --- | --- |
 | ファイル ベースのストア (Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS) 間のデータのコピー |1 ～ 32 の範囲。 どの数にするかは、ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるクラウド データ移動単位の数 (DMU) またはハイブリッド コピー (オンプレミス データ ストアとの間のデータのコピー) で使用されるゲートウェイ コンピューターの物理構成によって決まります。 |
-|  **任意のソース データ ストアから Azure Table Storage への** |4 |
+| **任意のソース データ ストアから Azure Table Storage への** |4 |
 | その他のすべてのソースとシンクのペア |1 |
 
 通常は、既定の動作で最適なスループットが得られます。 ただし、データ ストアをホストしているコンピューターの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、 **parallelCopies** プロパティの値を指定して、既定値を無視できます。 1 ～ 32 の値 (両端の値を含む) を指定する必要があります。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
 
-    "activities":[  
-        {
-            "name": "Sample copy activity",
-            "description": "",
-            "type": "Copy",
-            "inputs": [{ "name": "InputDataset" }],
-            "outputs": [{ "name": "OutputDataset" }],
-            "typeProperties": {
-                "source": {
-                    "type": "BlobSource",
-                },
-                "sink": {
-                    "type": "AzureDataLakeStoreSink"
-                },
-                "parallelCopies": 8
-            }
+```json
+"activities":[  
+    {
+        "name": "Sample copy activity",
+        "description": "",
+        "type": "Copy",
+        "inputs": [{ "name": "InputDataset" }],
+        "outputs": [{ "name": "OutputDataset" }],
+        "typeProperties": {
+            "source": {
+                "type": "BlobSource",
+            },
+            "sink": {
+                "type": "AzureDataLakeStoreSink"
+            },
+            "parallelCopies": 8
         }
-    ]
-
+    }
+]
+```
 注意する点:
 
-* ファイル ベースのストア間でのデータ コピーの場合、並列処理はファイル レベルで行われます。 単一ファイル内にチャンクはありません。 実行時にコピー操作でデータ移動サービスに使用される並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile**の場合、コピー アクティビティは並列処理を活用できません。
+* ファイル ベースのストア間でデータをコピーする場合は、**parallelCopies** によってファイル レベルでの並列処理が決まります。 単一ファイル内でのチャンク化は裏で自動的かつ透過的に行われます。また、指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、parallelCopies とは独立に並行してデータを読み込むよう設計されています。 実行時にコピー操作でデータ移動サービスに使用される並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** の場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。
 * **parallelCopies** プロパティの値を指定すると、ソースおよびシンク データ ストアで負荷 (ハイブリッド コピーの場合はゲートウェイへの負荷) が増えることを考慮してください。 これは、特に複数のアクティビティがある場合や、同じデータ ストアに対して実行される同じアクティビティの同時実行がある場合によくあります。 データ ストアまたはゲートウェイの負荷の上限に達したことがわかった場合は、 **parallelCopies** の値を減らし、負荷を軽減してください。
 * ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスは **parallelCopies** プロパティを無視します。 並列処理が指定されても、この場合は適用されません。
 
 > [!NOTE]
 > ハイブリッド コピーの実行時に **parallelCopies** 機能を使用するには、Data Management Gateway のバージョン 1.11 以降を使用する必要があります。
-> 
-> 
+>
+>
 
 ### <a name="cloud-data-movement-units"></a>クラウド データ移動単位
-**クラウド データ移動単位 (DMU)** は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 DMU はクラウド間のコピー操作で使用されますが、ハイブリッド コピーでは使用されません。
+**クラウド データ移動単位 (DMU)** は、Data Factory の&1; つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 DMU はクラウド間のコピー操作で使用されますが、ハイブリッド コピーでは使用されません。
 
-既定では、Data Factory は 1 つのクラウド DMU を使用して、1 つのコピー アクティビティを実行します。 この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
+既定では、Data Factory は&1; つのクラウド DMU を使用して、1 つのコピー アクティビティを実行します。 この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
 
-    "activities":[  
-        {
-            "name": "Sample copy activity",
-            "description": "",
-            "type": "Copy",
-            "inputs": [{ "name": "InputDataset" }],
-            "outputs": [{ "name": "OutputDataset" }],
-            "typeProperties": {
-                "source": {
-                    "type": "BlobSource",
-                },
-                "sink": {
-                    "type": "AzureDataLakeStoreSink"
-                },
-                "cloudDataMovementUnits": 4
-            }
+```json
+"activities":[  
+    {
+        "name": "Sample copy activity",
+        "description": "",
+        "type": "Copy",
+        "inputs": [{ "name": "InputDataset" }],
+        "outputs": [{ "name": "OutputDataset" }],
+        "typeProperties": {
+            "source": {
+                "type": "BlobSource",
+            },
+            "sink": {
+                "type": "AzureDataLakeStoreSink"
+            },
+            "cloudDataMovementUnits": 4
         }
-    ]
-
-**cloudDataMovementUnits** プロパティに**使用できる値**は、1 (既定値)、2、4、8 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。 
+    }
+]
+```
+**cloudDataMovementUnits** プロパティに**使用できる値**は、1 (既定値)、2、4、8 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。
 
 > [!NOTE]
-> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、それぞれが 16 MB 以上の複数のファイルを Blob Storage から Blob Storage、Data Lake Store、または Azure SQL Database にコピーする場合のみです。
-> 
-> 
+> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、それぞれが 16 MB 以上の**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
+>
+>
 
-これらの 2 つのプロパティをうまく利用し、データ移動のスループットを向上させるには、 [ユース ケースのサンプル](#case-study-use-parallel-copy)を参照してください。 既定の動作を活用する場合は、 **parallelCopies** を構成する必要はありません。 構成しても **parallelCopies** が小さすぎる場合は、複数のクラウド DMU が十分に活用されない可能性があります。  
+これらの&2; つのプロパティをうまく利用し、データ移動のスループットを向上させるには、 [ユース ケースのサンプル](#case-study-use-parallel-copy)を参照してください。 既定の動作を活用する場合は、 **parallelCopies** を構成する必要はありません。 構成しても **parallelCopies** が小さすぎる場合は、複数のクラウド DMU が十分に活用されない可能性があります。  
 
+### <a name="billing-impact"></a>課金への影響
 **重要** なのは、コピー操作の合計時間に基づいて料金が請求されることです。 これまで 1 回のコピー ジョブに 1 クラウド単位で 1 時間かかっていたのが、4 クラウド単位で 15 分かかるようになった場合、全体的な請求金額はほぼ同じままです。 たとえば、4 クラウド単位を使用するとします。 1 回のコピー アクティビティの実行で、1 つ目のクラウド単位に 10 分、2 つ目に 10 分、3 つ目に 5 分、4 つ目に 5 分かかります。 コピー (データ移動) の合計時間は 10 + 10 + 5 + 5 で 30 分になり、その分の料金が発生します。 **parallelCopies** を使用しても、課金には影響しません。
 
 ## <a name="staged-copy"></a>ステージング コピー
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Blob Storage を使用できます。 ステージングは、特に次のような場合に役立ちます。
 
-1. **PolyBase を使ってさまざまなデータ ストアから SQL Data Warehouse にデータを取り込む**。 SQL Data Warehouse は、大量のデータを読み込むための高スループットのメカニズムとして PolyBase を使用します。 ただし、ソース データが Blob Storage にあることと追加の条件を満たすことが必要です。 Blob Storage 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用してデータを SQL Data Warehouse に読み込みます。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。
+1. **PolyBase を使ってさまざまなデータ ストアから SQL Data Warehouse にデータを取り込む**。 SQL Data Warehouse は、大量のデータを読み込むための高スループットのメカニズムとして PolyBase を使用します。 ただし、ソース データが Blob Storage にあることと追加の条件を満たすことが必要です。 Blob Storage 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用してデータを SQL Data Warehouse に読み込みます。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
 2. **ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアとクラウド データ ストアの間でのコピー) の実行に少し時間がかかる場合がある**。 パフォーマンスを向上させるために、オンプレミスのデータを圧縮することで、クラウド内のステージング データ ストアにデータを移動する時間を短縮できます。 その後、データは、ターゲット データ ストアに読み込む前に、ステージング ストアで圧縮を解除できます。
 3. **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない**。 たとえば、オンプレミス データ ストアから Azure SQL Database シンクまたは SQL Data Warehouse シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ゲートウェイを利用して、まず、データをポート 443 の HTTP または HTTPS 経由で Blob Storage のステージング インスタンスにコピーします。 次に、Blob Storage のステージングから SQL Database または SQL Data Warehouse にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
 
@@ -174,7 +186,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ステージング ストアを使用したデータ移動を有効にすると、ソース データ ストアから中間またはステージング データ ストアにデータを移動する前にデータを圧縮し、中間またはステージング データ ストアからシンク データ ストアにデータを移動する前にそのデータの圧縮を解除するかどうかを指定できます。
 
-現時点では、ステージング ストアを使用して 2 つのオンプレミス データ ストア間でデータをコピーすることはできません。 このオプションは、間もなく利用できるようになる予定です。
+現時点では、ステージング ストアを使用して&2; つのオンプレミス データ ストア間でデータをコピーすることはできません。 このオプションは、間もなく利用できるようになる予定です。
 
 ### <a name="configuration"></a>構成
 コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Blob Storage にステージングするかどうかを指定します。 **enableStaging** を TRUE に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 ステージング用に Azure Storage または Storage Shared Access Signature のリンクされたサービスがない場合は、作成する必要もあります。
@@ -183,37 +195,38 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
-| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/>  パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
+| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
 | **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 
 上の表に記載されているプロパティを持つコピー アクティビティの定義の例を次に示します。
 
-    "activities":[  
-    {
-        "name": "Sample copy activity",
-        "type": "Copy",
-        "inputs": [{ "name": "OnpremisesSQLServerInput" }],
-        "outputs": [{ "name": "AzureSQLDBOutput" }],
-        "typeProperties": {
-            "source": {
-                "type": "SqlSource",
-            },
-            "sink": {
-                "type": "SqlSink"
-            },
-            "enableStaging": true,
-            "stagingSettings": {
-                "linkedServiceName": "MyStagingBlob",
-                "path": "stagingcontainer/path",
-                "enableCompression": true
-            }
+```json
+"activities":[  
+{
+    "name": "Sample copy activity",
+    "type": "Copy",
+    "inputs": [{ "name": "OnpremisesSQLServerInput" }],
+    "outputs": [{ "name": "AzureSQLDBOutput" }],
+    "typeProperties": {
+        "source": {
+            "type": "SqlSource",
+        },
+        "sink": {
+            "type": "SqlSink"
+        },
+        "enableStaging": true,
+        "stagingSettings": {
+            "linkedServiceName": "MyStagingBlob",
+            "path": "stagingcontainer/path",
+            "enableCompression": true
         }
     }
-    ]
-
+}
+]
+```
 
 ### <a name="billing-impact"></a>課金への影響
-コピーの期間とコピーの種類という 2 つのステップに基づいて課金されます。 
+コピーの期間とコピーの種類という&2; つのステップに基づいて課金されます。
 
 * クラウド コピー (クラウド データ ストアから別のクラウド データ ストアへのデータのコピー) でステージングを使用する場合、料金は、"ステップ 1 とステップ 2 のコピー時間の合計" x "クラウド コピーの単価" で計算されます。
 * ハイブリッド コピー (オンプレミス データ ストアからクラウド データ ストアへのデータのコピー) でステージングを使用する場合、料金は、"ハイブリッド コピーの時間" x "ハイブリッド コピーの単価" + "クラウド コピーの時間" x "クラウド コピーの単価" で計算されます。
@@ -222,14 +235,14 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 Data Factory サービスとコピー アクティビティのパフォーマンスをチューニングするには、次の手順を実行することをお勧めします。
 
 1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 Data Factory の [スライシング モデル](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices) を使用することで、操作するデータの量を制限できます。
-   
+
    **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、**[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]**に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
-   
+
    ![アクティビティ実行の詳細](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
-   
+
    この記事の後半で、自分のシナリオのパフォーマンスと構成を、当社のテストに基づくコピー アクティビティの [パフォーマンス リファレンス](#performance-reference) と比較できます。
 2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略しますが、いくつかの一般的な考慮事項を次に示します。
-   
+
    * パフォーマンス機能:
      * [並列コピー](#parallel-copy)
      * [クラウド データ移動単位](#cloud-data-movement-units)
@@ -245,16 +258,16 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 ## <a name="considerations-for-the-source"></a>ソースに関する考慮事項
 ### <a name="general"></a>全般
-基になるデータ ストアが、そこで実行されるその他のワークロードで手一杯になっていないことを確認します。 
+基になるデータ ストアが、そこで実行されるその他のワークロードで手一杯になっていないことを確認します。
 
 Microsoft のデータ ストアの場合は、データ ストアに特化した[監視とチューニングに関するトピック](#performance-reference)を参照してください。このトピックには、データ ストアのパフォーマンス特性に関する説明と、応答時間を短縮しスループットを最大限に高める方法が記載されています。
 
-Blob Storage から SQL Data Warehouse にデータをコピーする場合は、 **PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。
+Blob Storage から SQL Data Warehouse にデータをコピーする場合は、 **PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
 
 ### <a name="file-based-data-stores"></a>ファイル ベースのデータ ストア
 *"(Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS など)"*
 
-* **ファイル サイズとファイル数の平均**: コピー アクティビティはデータを 1 ファイルずつ転送します。 移動するデータ量は同じでも、データが少数の大きなファイルでなく、多数の小さなファイルで構成されている場合、ファイルごとにブートストラップ フェーズが存在するため、全体的なスループットは低下します。 したがって、可能であれば、小さなファイルをまとめて大きなファイルとすることで、スループットを高めてください。
+* **ファイル サイズとファイル数の平均**: コピー アクティビティはデータを&1; ファイルずつ転送します。 移動するデータ量は同じでも、データが少数の大きなファイルでなく、多数の小さなファイルで構成されている場合、ファイルごとにブートストラップ フェーズが存在するため、全体的なスループットは低下します。 したがって、可能であれば、小さなファイルをまとめて大きなファイルとすることで、スループットを高めてください。
 * **ファイルの形式と圧縮**: パフォーマンスを向上させるその他の方法については、「[シリアル化と逆シリアル化に関する考慮事項](#considerations-for-serialization-and-deserialization)」と「[圧縮に関する考慮事項](#considerations-for-compression)」を参照してください。
 * **Data Management Gateway** が必要な**オンプレミスのファイル システム**のシナリオについては、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
 
@@ -267,16 +280,16 @@ Blob Storage から SQL Data Warehouse にデータをコピーする場合は�
 
 ## <a name="considerations-for-the-sink"></a>シンクに関する考慮事項
 ### <a name="general"></a>全般
-基になるデータ ストアが、そこで実行されるその他のワークロードで手一杯になっていないことを確認します。 
+基になるデータ ストアが、そこで実行されるその他のワークロードで手一杯になっていないことを確認します。
 
 Microsoft のデータ ストアについては、データ ストアに特化した [監視とチューニングに関するトピック](#performance-reference) を参照してください。 これらのトピックでは、データ ストアのパフォーマンス特性に関する説明と、応答時間を短縮しスループットを最大限に高める方法が記載されています。
 
-**Blob Storage** から **SQL Data Warehouse** にデータをコピーする場合は、**PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。
+**Blob Storage** から **SQL Data Warehouse** にデータをコピーする場合は、**PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
 
 ### <a name="file-based-data-stores"></a>ファイル ベースのデータ ストア
 *"(Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS など)"*
 
-* **コピー動作**: 別のファイル ベースのデータ ストアからデータをコピーする場合、コピー アクティビティには **copyBehavior** プロパティを使用したオプションが 3 つあります。 それらは、階層の維持、階層の平坦化、およびファイルのマージです。 階層の維持または階層の平坦化では、パフォーマンス オーバーヘッドはほとんどありませんが、ファイルのマージではパフォーマンス オーバーヘッドが増加します。
+* **コピー動作**: 別のファイル ベースのデータ ストアからデータをコピーする場合、コピー アクティビティには **copyBehavior** プロパティを使用したオプションが&3; つあります。 それらは、階層の維持、階層の平坦化、およびファイルのマージです。 階層の維持または階層の平坦化では、パフォーマンス オーバーヘッドはほとんどありませんが、ファイルのマージではパフォーマンス オーバーヘッドが増加します。
 * **ファイルの形式と圧縮**: パフォーマンスを向上させるその他の方法については、「[シリアル化と逆シリアル化に関する考慮事項](#considerations-for-serialization-and-deserialization)」と「[圧縮に関する考慮事項](#considerations-for-compression)」を参照してください。
 * **Blob Storage**: 現在のところ、データ転送およびスループットを最適化するために、ブロック BLOB だけをサポートしています。
 * **Data Management Gateway** を使用する必要がある**オンプレミスのファイル システム**のシナリオについては、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
@@ -286,7 +299,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 * **コピー動作**: コピー アクティビティは、**sqlSink** 用に設定されたプロパティに応じて、さまざまな方法でデータをターゲット データベースに書き込みます。
   * 既定では、データ移動サービスは、一括コピー API を使用して、データを追加モードで挿入します。これにより、最高のパフォーマンスが得られます。
-  * シンク内でストアド プロシージャを構成すると、データベースは一括読み込みは行わず、一度に 1 行ずつデータを適用します。 パフォーマンスは大幅に低下します。 データ セットが大きい場合、代わりに **sqlWriterCleanupScript** プロパティを使用すること (適用できる場合) を検討してください。
+  * シンク内でストアド プロシージャを構成すると、データベースは一括読み込みは行わず、一度に&1; 行ずつデータを適用します。 パフォーマンスは大幅に低下します。 データ セットが大きい場合、代わりに **sqlWriterCleanupScript** プロパティを使用すること (適用できる場合) を検討してください。
   * 各コピー アクティビティ実行の **sqlWriterCleanupScript** プロパティを構成すると、サービスによってスクリプトがトリガーされるので、一括コピー API を使用してデータを挿入します。 たとえば、テーブル全体を最新のデータで上書きするには、ソースから新しいデータを一括で読み込む前にすべてのレコードを削除するためのスクリプトを指定することができます。
 * **データのパターンとバッチ サイズ**:
   * テーブル スキーマは、コピーのスループットに影響を与えます。 同じ量のデータをコピーする場合、行のサイズが小さいよりも行のサイズが大きい方がパフォーマンスは高くなります。これは、データのバッチが少ない方が、データベースがデータを効率的にコミットできるためです。
@@ -297,7 +310,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 *(Table Storage、Azure DocumentDB など)*
 
 * **Table Storage**の場合:
-  * **パーティション**: インターリーブされたパーティションにデータを書き込むと、パフォーマンスが大幅に低下します。 データが複数のパーティションに順次効率よく挿入されるように、パーティション キーでソース データを並べ替えるか、データが 1 つのパーティションに書き込まれるようにロジックを調整します。
+  * **パーティション**: インターリーブされたパーティションにデータを書き込むと、パフォーマンスが大幅に低下します。 データが複数のパーティションに順次効率よく挿入されるように、パーティション キーでソース データを並べ替えるか、データが&1; つのパーティションに書き込まれるようにロジックを調整します。
 * **DocumentDB**の場合:
   * **バッチ サイズ**: **writeBatchSize** プロパティは、ドキュメントを作成する DocumentDB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。DocumentDB に送信される並列要求の数が増えるためです。 ただし、DocumentDB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
 
@@ -319,9 +332,9 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 **コーデック**: コピー アクティビティでは、圧縮の種類として gzip、bzip2、および Deflate がサポートされています。 Azure HDInsight では、3 種類すべてを処理に利用できます。 各圧縮コーデックには、長所があります。 たとえば、bzip2 はコピーのスループットが最も低いのですが、分割して処理できるため、最高の Hive クエリ パフォーマンスを発揮します。 Gzip は最もバランスの取れたオプションであり、最も頻繁に使用されます。 エンド ツー エンドのシナリオに最適なコーデックを選択してください。
 
-**レベル:**各圧縮コーデックに対して、最速圧縮と最適圧縮という 2 つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
+**レベル:**各圧縮コーデックに対して、最速圧縮と最適圧縮という&2; つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
 
-**考慮事項**: オンプレミス ストアとクラウド間で大量のデータをコピーする場合は、中間 Blob Storage と圧縮の使用を検討してください。 企業ネットワークと Azure サービスの帯域幅が制限要因となっていて、入力データ セットと出力データ セットの両方を圧縮されない形式にしたい場合は、中間ストレージを使用すると便利です。 具体的には、1 つのコピー アクティビティを 2 つのコピー アクティビティに分割できます。 最初のコピー アクティビティは、圧縮形式で、ソースから中間またはステージング BLOB へのコピーを行います。 2 番目のコピー アクティビティは、ステージングから圧縮されたデータをコピーし、シンクへの書き込み中に圧縮を解除します。
+**考慮事項**: オンプレミス ストアとクラウド間で大量のデータをコピーする場合は、中間 Blob Storage と圧縮の使用を検討してください。 企業ネットワークと Azure サービスの帯域幅が制限要因となっていて、入力データ セットと出力データ セットの両方を圧縮されない形式にしたい場合は、中間ストレージを使用すると便利です。 具体的には、1 つのコピー アクティビティを&2; つのコピー アクティビティに分割できます。 最初のコピー アクティビティは、圧縮形式で、ソースから中間またはステージング BLOB へのコピーを行います。 2 番目のコピー アクティビティは、ステージングから圧縮されたデータをコピーし、シンクへの書き込み中に圧縮を解除します。
 
 ## <a name="considerations-for-column-mapping"></a>列マッピングに関する考慮事項
 コピー アクティビティの **columnMappings** プロパティを設定して、入力列のすべてまたはサブセットを出力列にマップすることができます。 データ移動サービスは、ソースからデータを読み取った後、データをシンクに書き込む前に、データに対して列マッピングを実行する必要があります。 この追加の処理により、コピーのスループットが低下します。
@@ -329,7 +342,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 ソース データ ストアがクエリ可能な場合 (たとえば、SQL Database や SQL Server のようなリレーショナル ストアであるか、Table Storage や DocumentDB のような NoSQL ストアである場合) は、列マッピングを使用するのでなく、列フィルタリングと順序変更ロジックを **query** プロパティにプッシュすることを検討してください。 そうした場合、データ移動サービスがソース データ ストアからデータを読み取る際にプロジェクションが発生し、効率が大幅に向上します。
 
 ## <a name="considerations-for-data-management-gateway"></a>Data Management Gateway に関する考慮事項
-ゲートウェイのセットアップにおける推奨事項については、「 [Data Management Gateway に関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#Considerations-for-using-Data-Management-Gateway)」を参照してください。
+ゲートウェイのセットアップにおける推奨事項については、「 [Data Management Gateway に関する考慮事項](data-factory-data-management-gateway.md#considerations-for-using-gateway)」を参照してください。
 
 **ゲートウェイ コンピューター環境**: Data Management Gateway をホストする専用のマシンを使用することをお勧めします。 PerfMon などのツールを使用して、ゲートウェイ コンピューター上でのコピー操作中の CPU、メモリ、および帯域幅の使用率を確認します。 CPU、メモリ、またはネットワーク帯域幅がボトルネックになる場合は、より強力なコンピューターに切り替えます。
 
@@ -340,7 +353,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 Data Factory が同じデータ ストアに同時に接続することを必要とするデータ セットの数とコピー アクティビティの数に注意してください。 同時コピー ジョブの数が多いと、データ ストアのスロットルが発生し、パフォーマンスの低下、コピー ジョブの内部的な再試行、場合によっては実行の失敗につながるおそれがあります。
 
-## <a name="sample-scenario:-copy-from-an-on-premises-sql-server-to-blob-storage"></a>サンプル シナリオ: オンプレミス SQL Server から Blob Storage へのコピー
+## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>サンプル シナリオ: オンプレミス SQL Server から Blob Storage へのコピー
 **シナリオ**: オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
 
 **テストと分析**: コピー アクティビティのスループットは 2 MBps 未満で、パフォーマンスのベンチマークをかなり下回っています。
@@ -355,7 +368,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 ![Data flow](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
-次に示す要因の 1 つ以上がパフォーマンスのボトルネックの原因である可能性があります。
+次に示す要因の&1; つ以上がパフォーマンスのボトルネックの原因である可能性があります。
 
 * **ソース**: 負荷が大きいため、SQL Server 自体のスループットが低くなっています。
 * **Data Management Gateway**:
@@ -368,7 +381,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 この場合、bzip2 データ圧縮がパイプライン全体を遅くしている可能性があります。 gzip 圧縮コーデックに切り替えると、このボトルネックが緩和される場合があります。
 
-## <a name="sample-scenarios:-use-parallel-copy"></a>サンプル シナリオ: 並列のコピーを使用します。
+## <a name="sample-scenarios-use-parallel-copy"></a>サンプル シナリオ: 並列のコピーを使用します。
 **シナリオ l:** オンプレミスのファイル システムから Blob Storage に 1 MB のファイルを 1,000 個コピーする。
 
 **分析とパフォーマンスのチューニング**: たとえば、クアッド コア マシン上にゲートウェイをインストール済みの場合、Data Factory は 16 の並列コピーを使用して、ファイル システムから Blob Storage にファイルを同時に移動します。 この並列実行では、高いスループットが得られます。 並列コピーの数を明示的に指定することもできます。 多数の小さなファイルをコピーする場合、並列コピーではリソースがより効果的に活用されるため、スループットが大幅に向上します。
@@ -391,12 +404,9 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
 * Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関する記事
-* Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md#monitoring-performance) し、データベース トランザクション ユニット (DTU) の割合を確認できます。
+* Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md) し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure DocumentDB: 「 「 [DocumentDB のパフォーマンス レベル](../documentdb/documentdb-performance-levels.md)
 * オンプレミスの SQL Server: 「 [Monitor and tune for performance (パフォーマンスの監視とチューニング)](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: 「 [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
-
-<!--HONumber=Oct16_HO2-->
-
 

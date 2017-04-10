@@ -1,20 +1,25 @@
 ---
-title: Stream Analytics を使って IoT ソリューションを構築する | Microsoft Docs
-description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
-keywords: IOT ソリューション, ウィンドウ関数
-documentationcenter: ''
+title: "Stream Analytics を使って IoT ソリューションを構築する | Microsoft Docs"
+description: "料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。"
+keywords: "IOT ソリューション, ウィンドウ関数"
+documentationcenter: 
 services: stream-analytics
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 03/28/2017
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 01850cbf8967fd5f79db64103fb18c6ec01babea
+ms.lasthandoff: 03/06/2017
+
 
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
@@ -32,14 +37,14 @@ ms.author: jeffstok
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルの前提条件は次のとおりです。
 
-* [Azure PowerShell](../powershell-install-configure.md)
-* Visual Studio 2015 または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* Visual Studio 2017、2015、または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 * コンピューターの管理特権
-* [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) (Microsoft ダウンロード センターからダウンロード)
+* [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) (Microsoft ダウンロード センターからダウンロード)
 * 省略可能: [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
 
-## <a name="scenario-introduction:-“hello,-toll!”"></a>シナリオの説明 - "料金所"
+## <a name="scenario-introduction-hello-toll"></a>シナリオの説明 - "料金所"
 有料道路の料金所は一般的な事象です。 世界中の多くの高速道路、橋、トンネルでそれらを目にします。 各料金所には複数の料金所ブースがあります。 手動式の料金所ブースでは、車を停めて通行料金を支払います。 自動式の料金所ブースでは、通過する車両のフロントガラスに貼り付けられた RFID カードを、各ブースの上方に設置されているセンサーがスキャンします。 車両が料金所を通過した事実は、イベント ストリームとして簡単に可視化でき、そのストリームを介して必要な処理を実行することができます。
 
 ![Picture of cars at toll booths](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
@@ -131,11 +136,11 @@ $200 相当の Azure クレジットを利用できるよう、この記事の�
 
 必要なリソースはすべて、GitHub の TollApp フォルダーにある Setup.ps1 スクリプトを使って作成できます。 時間を節約するために、このスクリプトを実行することをお勧めします。 Azure Portal でこれらのリソースを構成する方法については、Azure Portal でチュートリアル リソースを構成する方法について書かれた付録を参照してください。
 
-関連する [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
+関連する [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
 
-**[Microsoft Azure PowerShell]** ウィンドウを " *管理者として*" 開きます。 まだ Azure PowerShell をお持ちでない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」の手順に従ってインストールしてください。
+**[Microsoft Azure PowerShell]** ウィンドウを " *管理者として*" 開きます。 まだ Azure PowerShell をお持ちでない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってインストールしてください。
 
-ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって自動的にブロックされるため、スクリプトを実行する前に、実行ポリシーを設定しておく必要があります。 Azure PowerShell ウィンドウが_管理者権限_で実行されていることを確認してください。 **Set-ExecutionPolicy unrestricted** を実行し、 確認を求められたら「**Y**」と入力します。
+ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって自動的にブロックされるため、スクリプトを実行する前に、実行ポリシーを設定しておく必要があります。 Azure PowerShell ウィンドウが*管理者権限*で実行されていることを確認してください。 **Set-ExecutionPolicy unrestricted** を実行し、 確認を求められたら「**Y**」と入力します。
 
 ![Screenshot of "Set-ExecutionPolicy unrestricted" running in Azure PowerShell window](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image2.png)
 
@@ -168,40 +173,34 @@ ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって
 
 ![Screenshot of "Sending event hub data"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image7.png)
 
-この時点で Azure Portal には、作成されたすべてのリソースが表示されます。 <https://manage.windowsazure.com> にアクセスし、アカウントの資格情報でサインインします。
+この時点で Azure Portal に、リソースが表示されます。 <https://portal.azure.com> にアクセスし、アカウントの資格情報でサインインします。 現在、一部の機能ではクラシック ポータルを利用しています。 その手順を以下に示します。
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Azure Portal の左側にある **[SERVICE BUS]** をクリックすると、前のセクションのスクリプトで作成されたイベント ハブが表示されます。
+Azure Portal で、左側の管理ウィンドウの下部にある **[その他のサービス]** をクリックします。 表示されたフィールドに「**Event hubs**」と入力し、**[イベント ハブ]** をクリックします。 新しいブラウザー ウィンドウが起動され、**クラシック ポータル**に **[Service Bus]** 領域が表示されます。 ここで、Setup.ps1 スクリプトによって作成されたイベント ハブを確認できます。
 
-![[SERVICE BUS]](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
+![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-ご利用のサブスクリプションで使用できる名前空間がすべて表示されます。 *tolldata* で始まる項目をクリックしてください (この例では tolldata4637388511)。 **[イベント ハブ]** タブをクリックします。
+*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。 この名前空間に作成された *entry* と *exit* という&2; つのイベント ハブが表示されます。
 
-![Event Hubs tab in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
-
-この名前空間に作成された *entry* と *exit* という 2 つのイベント ハブが表示されます。
-
-![Screenshot of "entry" and "exit" event hubs in Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
+![クラシック ポータルの [イベント ハブ] タブ](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
 ### <a name="azure-storage-container"></a>Azure Storage コンテナー
-1. Azure Portal の左側にある **[ストレージ]** をクリックすると、チュートリアルで使用する Azure Storage コンテナーが表示されます。
+1. Azure Portal が表示されている、ブラウザーの先ほどのタブに戻ります。 Azure Portal の左側にある **[ストレージ]** をクリックすると、チュートリアルで使用する Azure Storage コンテナーが表示されます。
    
     ![Storage menu item](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. *tolldata* で始まる項目をクリックします (この例では tolldata4637388511)。 **[コンテナー]** タブをクリックすると、作成されたコンテナーが表示されます。
+2. *tolldata* で始まるものをクリックします。 **[コンテナー]** タブをクリックすると、作成されたコンテナーが表示されます。
    
-    ![Containers tab in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+    ![Containers tab in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
 3. **[tolldata]** コンテナーをクリックし、車両の登録データが含まれる、アップロード済みの JSON ファイルを表示します。
    
-    ![Screenshot of the registration.json file in the container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image13.png)
+    ![Screenshot of the registration.json file in the container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
-1. Azure Portal の左側にある **[SQL データベース]** をクリックし、チュートリアルで使う SQL データベースを表示します。
-   
-    ![[SQL データベース]](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image14.png)
-2. **[tolldatadb]**をクリックします。
+1. ブラウザーで表示されている最初のタブで Azure Portal に戻ります。 Azure Portal の左側にある **[SQL データベース]** をクリックしてチュートリアルで使う SQL データベースを表示し、**tolldatadb** をクリックします。
    
     ![Screenshot of the created SQL database](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
-3. ポート番号を除いたサーバー名をコピーします (例:*servername*.database.windows.net)。
+2. ポート番号を除いたサーバー名をコピーします (例:*servername*.database.windows.net)。
+    ![作成した SQL データベースのスクリーンショット](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15a.png)
 
 ## <a name="connect-to-the-database-from-visual-studio"></a>Visual Studio からデータベースに接続する
 出力データベースに格納されているクエリの結果に、Visual Studio を使用してアクセスします。
@@ -214,7 +213,7 @@ Azure Portal の左側にある **[SERVICE BUS]** をクリックすると、前
     ![Change Data Source dialog box](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image16.png)
 3. **[サーバー名]** フィールドで、前のセクションで Azure Portal からコピーした名前を貼り付けます ( *servername*.database.windows.net)。
 4. **[SQL Server 認証を使用する]**をクリックします。
-5. **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに [**123toll!** 」と入力します。
+5. **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに **123toll!** 」と入力します。
 6. **[データベース名の選択または入力]** をクリックし、データベースとして **[TollDataDB]** を選択します。
    
     ![Add Connection dialog box](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
@@ -222,11 +221,11 @@ Azure Portal の左側にある **[SERVICE BUS]** をクリックすると、前
 8. [サーバー エクスプローラー] を開きます。
    
     ![Server Explorer](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-9. TollDataDB データベースの 4 つのテーブルが表示されます。
+9. TollDataDB データベースの&4; つのテーブルが表示されます。
    
     ![Tables in the TollDataDB database](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
 
-## <a name="event-generator:-tollapp-sample-project"></a>イベント ジェネレーター: TollApp サンプル プロジェクト
+## <a name="event-generator-tollapp-sample-project"></a>イベント ジェネレーター: TollApp サンプル プロジェクト
 PowerShell スクリプトは、TollApp というサンプル アプリケーション プログラムを使用して、イベントの送信を自動的に開始します。 別途処理を実行する必要はありません。
 
 ただし、詳しい実装内容に関心がある方は、GitHub の [samples/TollApp](https://aka.ms/azure-stream-analytics-toll-source)で、TollApp アプリケーションのソース コードをご覧いただけます。
@@ -234,82 +233,71 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
 ![Screenshot of sample code displayed in Visual Studio](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
-1. Azure Portal で Stream Analytics を開き、ページの左下隅にある **[新規]** をクリックして、新しい分析ジョブを作成します。
+1. Azure Portal で、ページの左上隅にある緑色の正符号をクリックして、新しい Stream Analytics のジョブを作成します。 **[インテリジェンス + 分析]** を選択し、**[Stream Analytics ジョブ]** をクリックします。
    
     ![[新規] ボタン](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image21.png)
-2. **[簡易作成]**をクリックします。 スクリプトで他のリソースが作成されるのと同じリージョンを選択してください。
-3. **[地域の監視ストレージ アカウント]** の設定で **[新しいストレージ アカウントの作成]** を選択し、一意の名前を選択します。 このアカウントは、今後実行するすべてのジョブの監視情報を保存するために、Azure Stream Analytics によって使用されます。
-4. ページ下部の **[Stream Analytics ジョブの作成]** をクリックします。
+2. ジョブ名を指定し、サブスクリプションが正しいことを確認してから、イベント ハブのストレージと同じリージョンで新しいリソース グループを作成します (スクリプトの既定値は米国中南部です)。
+3. **[ダッシュボードにピン留めする]** をクリックしてから、ページの下部にある **[作成]** をクリックします。
    
     ![Create Stream Analytics Job option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image22.png)
 
 ## <a name="define-input-sources"></a>入力ソースの定義
-1. ポータルで作成した分析ジョブをクリックします。
-   
-    ![Screenshot of the analytics job in the portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image23.jpg)
+1. ジョブが作成され、ジョブのページが開きます。 また、ポータルのダッシュボードで、作成された分析ジョブをクリックすることもできます。
+
 2. **[入力]** タブをクリックしてソース データを定義します。
    
-    ![The Inputs tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.jpg)
+    ![The Inputs tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.png)
 3. **[入力の追加]**をクリックします。
    
     ![The Add an Input option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image25.png)
-4. 最初のページで **[データ ストリーム]** をクリックします。
-   
-    ![The Data Stream option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image26.png)
-5. ウィザードの 2 ページ目で **[イベント ハブ]** をクリックします。
-   
-    ![The Event Hub option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image27.png)
-6. **[入力のエイリアス]** として「**EntryStream**」と入力します。
-7. **[イベント ハブ]** ボックスの一覧をクリックし、"TollData" で始まる項目を選択します (例: TollData9518658221)。
-8. イベント ハブ名として **[entry]** を、イベント ハブ ポリシー名として **[all]** を選択します。
+4. **[入力のエイリアス]** として「**EntryStream**」と入力します。
+5. [ソースの種類] は **[データ ストリーム]** です。
+6. [ソース] は **[イベント ハブ]** です。
+7. **[Service Bus 名前空間]** は、ドロップダウンにある TollData の名前空間を指定します。
+8. **[イベント ハブの名前]** は **[entry (入力)]** に設定する必要があります。
+9. **[イベント ハブ ポリシー名]*は **RootManageSharedAccessKey** です (既定値)。
+10. **[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
    
     設定は次のようになります。
    
     ![Event hub settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image28.png)
-9. 次のページで、**[イベントのシリアル化の形式]** に **[JSON]** を、**[エンコード]** に **[UTF8]** を選択します。
-   
-    ![Serialization settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image29.png)
-10. ページの下部にある **[OK]** をクリックしてウィザードを終了します。
+
+10. ページの下部にある **[作成]** をクリックしてウィザードを終了します。
     
-    ![Screenshot of EntryStream input in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image30.jpg)
-    
-    入口のストリームを作成したら、同じ手順で出口のストリームを作成します。 ウィザードの 3 ページ目で、次のスクリーンショットに従って値を入力してください。
+    入口のストリームを作成したら、同じ手順で出口のストリームを作成します。 次のスクリーンショットに従って値を入力してください。
     
     ![Settings for the exit stream](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image31.png)
     
     以下のように、2 つの入力ストリームを定義しました。
     
-    ![Defined input streams in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.jpg)
+    ![Defined input streams in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.png)
     
     次に、車両登録データの BLOB ファイルに対する参照データ入力を追加します。
-11. **[入力の追加]** をクリックし、**[参照データ]** をクリックします。
-    
-    !["Add an input" options with Reference Data selected](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image33.png)
-12. 次のページで、 **tolldata**から始まるストレージ アカウントを選択します。 コンテナー名は **tolldata**、**[パス パターン]** の下の BLOB 名は **registration.json** とする必要があります。 このファイル名は大文字と小文字が区別されるため、小文字で入力してください。
+11. **[追加]** をクリックして、ストリーム入力と同じ手順に従います。ただし、**[データ ストリーム]** の代わりに **[参照データ]** を選択し、**[入力のエイリアス]** に **[登録]** を指定します。
+
+12. [ストレージ アカウント] には、**tolldata** で始まるものを選択します。 コンテナー名は **tolldata**、**[パス パターン]** は **registration.json** とする必要があります。 このファイル名は大文字と小文字が区別されるため、**小文字**で入力してください。
     
     ![Blog storage settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image34.png)
-13. 次のページで以下のスクリーンショットのように値を選択し、 **[OK]** をクリックしてウィザードを終了します。
-    
-    ![Selection of JSON for "Even serialization format" and UTF8 for "Encoding"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image35.png)
+13. **[作成]** をクリックしてウィザードを終了します。
 
 これで、すべての入力が定義されました。
 
-![Screenshot of the three defined inputs](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image36.jpg)
-
 ## <a name="define-output"></a>出力の定義
-1. **[出力]** タブをクリックし、**[出力の追加]** をクリックします。
+1. [Stream Analytics job (Stream Analytics ジョブの概要)] ウィンドウで、**[出力]** を選択します。
    
-    ![The Output tab and "Add an output" option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.jpg)
-2. **[SQL データベース]**をクリックします。
+    ![The Output tab and "Add an output" option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.png)
+2. **[追加]**をクリックします。
+3. **[出力のエイリアス]** を [出力] に設定し **[シンク]** を **[SQL データベース]** に設定します。
 3. この記事の「Visual Studio からデータベースに接続する」セクションで使用したサーバー名を選択します。 データベース名は **TollDataDB**としてください。
 4. **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに 「**123toll!**」、および **[テーブル]** フィールドに「**TollDataRefJoin**」と入力します。
    
-    ![SQL Database settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.jpg)
+    ![SQL Database settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
+5. **[作成]**をクリックします。
 
 ## <a name="azure-stream-analytics-query"></a>Azure Stream Analytics クエリ
 **[クエリ]** タブには、入力データを変換する SQL クエリが表示されます。
 
-![A query added to the Query tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.jpg)
+![A query added to the Query tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.png)
 
 このチュートリアルでは、通行料金データに伴う実務上の課題を解決していきたいと思います。必要な答えを導くために、Azure Stream Analytics で使用できる Stream Analytics クエリを構築します。
 
@@ -340,18 +328,20 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
 * Exit.json
 * registration.json
 
-## <a name="question-1:-number-of-vehicles-entering-a-toll-booth"></a>テスト 1: 料金所ブースに入る車両の台数
+## <a name="question-1-number-of-vehicles-entering-a-toll-booth"></a>テスト 1: 料金所ブースに入る車両の台数
 1. Azure Portal を開き、先ほど作成した Azure Stream Analytics ジョブに移動します。 **[クエリ]** タブをクリックし、前のセクションからクエリをコピーして貼り付けます。
-   
-    ![Query pasted in the Query tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image40.png)
-2. サンプル データに対してこのクエリを検証するには、 **[テスト]** ボタンをクリックします。 表示されたダイアログ ボックスで、Entry.json ( **EntryTime** イベント ストリームからのサンプル データを含んだファイル) に移動します。
-   
+
+2. サンプル データに対してこのクエリを検証するには、[...] 記号をクリックし、**[ファイルからサンプル データをアップロードする]** を選択して、データを EntryStream 入力にアップロードします。
+
     ![Screenshot of the Entry.json file](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image41.png)
+3. 表示されたウィンドウで、ローカル コンピューター上のファイル (Entry.json) を選択し、**[OK]** をクリックします。 ここで **[テスト]** アイコンが点灯し、クリック可能になります。
+   
+    ![Screenshot of the Entry.json file](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.png)
 3. クエリの出力結果が想定どおりであることを確認します。
    
-    ![Results of the test](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.jpg)
+    ![Results of the test](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.png)
 
-## <a name="question-2:-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>テスト 2: 各車両が料金所ブースを通過するのにかかる総時間を調べる
+## <a name="question-2-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>テスト 2: 各車両が料金所ブースを通過するのにかかる総時間を調べる
 処理効率と顧客満足を評価できるよう、車両が料金所を通過するのにかかる平均時間を調べるとします。
 
 総時間を調べるためには、EntryTime ストリームと ExitTime ストリームを結合する必要があります。 ストリームの結合条件には、TollId 列と LicencePlate 列を指定することにします。 結合したイベントどうしの間隔として許容される時間差を **JOIN** 演算子で指定する必要があります。 **DATEDIFF** 関数を使用し、発生間隔が 15 分以内のイベントに限定する条件を指定します。 また、通行料金の徴収に費やされた実際の時間を計算するために、ExitTime と EntryTime にも **DATEDIFF** 関数を適用します。 **DATEDIFF** を **SELECT** ステートメントで使用する場合と **JOIN** 条件で使用する場合の使い方の違いに注目してください。
@@ -362,50 +352,47 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
     ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
     AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
-1. このクエリをテストするには、ジョブの **[クエリ]** タブでクエリを更新します。
+1. このクエリをテストするには、ジョブの **[クエリ]** でクエリを更新します。 先ほど **EntryStream** を入力した要領で、**ExitStream** のテスト ファイルを追加します。
    
-    ![Updated query in the Query tab](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.jpg)
-2. **[テスト]** をクリックして、EntryTime と ExitTime のサンプル入力ファイルを指定します。
-   
-    ![Screenshot of selected input files](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image44.png)
+2. **[Test]**をクリックします。
+
 3. チェック ボックスをオンにしてクエリをテストし、出力結果を確認します。
    
     ![Output of the test](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image45.png)
 
-## <a name="question-3:-report-all-commercial-vehicles-with-expired-registration"></a>テスト 3: 登録が期限切れとなっているすべての商用車を調べる
+## <a name="question-3-report-all-commercial-vehicles-with-expired-registration"></a>テスト 3: 登録が期限切れとなっているすべての商用車を調べる
 Azure Stream Analytics では、特定の時点の静的データを使用して経時的に発生するデータ ストリームを結合することができます。 この機能のデモとして、次のテストを行います。
 
 料金徴収会社に登録されている商用車は、検査のために停車しなくても料金所ブースを通過することができます。 商用車登録参照テーブルを使用して、登録期限切れとなっているすべての商用車を特定することにしましょう。
 
-    SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN Registration
-    ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = '1'
+```
+SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
+FROM EntryStream TIMESTAMP BY EntryTime
+JOIN Registration
+ON EntryStream.LicensePlate = Registration.LicensePlate
+WHERE Registration.Expired = '1'
+```
 
 参照データを使ってクエリをテストするためには、その参照データの入力ソースを定義する必要がありますが、その作業は既に完了しています。
 
-1. このクエリをテストするには、**[クエリ]** タブにクエリを貼り付けて **[テスト]** をクリックし、次の 2 つの入力ソースを指定します。
+このクエリをテストするには、**[クエリ]** タブにクエリを貼り付けて **[テスト]** をクリックし、2 つの入力ソースと登録サンプル データを指定してから、**[テスト]** をクリックします。  
    
-    ![Screenshot of selected input files](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
-2. クエリの出力結果を確認します。
-   
-    ![Screenshot of query output](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image47.png)
+![Output of the test](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
 
 ## <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始
 では、構成を終了してジョブを開始してみましょう。 テスト 3 で作成したクエリを保存してください。出力テーブル **TollDataRefJoin** のスキーマに適合した出力結果が、このクエリによって生成されます。
 
 ジョブの**ダッシュボード**に移動して **[開始]** をクリックします。
 
-![Screenshot of the Start button in the job dashboard](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.jpg)
+![Screenshot of the Start button in the job dashboard](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.png)
 
-表示されたダイアログ ボックスで、**[出力の開始]** の時刻を **[ユーザー設定時刻]** に変更します。 時間 (時) を編集し、現在時刻の 1 時間前の時刻に設定します。 この変更により、チュートリアルの最初にイベントの生成を開始したとき以降、イベント ハブから受け取ったすべてのイベントが確実に処理されます。 チェック マークをクリックしてジョブを開始してください。
+表示されたダイアログ ボックスで、**[出力の開始]** の時刻を **[ユーザー設定時刻]** に変更します。 時間 (時) を編集し、現在時刻の&1; 時間前の時刻に設定します。 この変更により、チュートリアルの最初にイベントの生成を開始したとき以降、イベント ハブから受け取ったすべてのイベントが確実に処理されます。 ここで、**[開始]** をクリックしてジョブを開始します。
 
 ![Selection of custom time](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image49.png)
 
 ジョブが開始されるまでに数分かかる場合があります。 そのステータスは、Stream Analytics の最上位のページで確認できます。
 
-![Screenshot of the status of the job](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.jpg)
+![Screenshot of the status of the job](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.png)
 
 ## <a name="check-results-in-visual-studio"></a>Visual Studio での結果の確認
 1. Visual Studio のサーバー エクスプローラーを開いて **TollDataRefJoin** テーブルを右クリックします。
@@ -420,30 +407,23 @@ Azure Stream Analytics は、大量のデータ処理に対応できるよう、
     FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
     GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
-1. 現在のジョブを停止し、**[クエリ]** タブでクエリを更新して、**[スケール]** タブを開きます。
+1. 現在のジョブを停止し、**[クエリ]** タブでクエリを更新して、ジョブのダッシュボードで **[設定]** の歯車アイコンを開きます。 **[スケール]**をクリックします。
    
     **ストリーミング ユニット** によって定義されます。
-2. スライダーを 6 に移動します。
+2. ドロップ ダウンを 1 から 6 に変更します。
    
-    ![Screenshot of selecting 6 streaming units](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image52.jpg)
+    ![Screenshot of selecting 6 streaming units](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image52.png)
 3. **[出力]** タブに移動して、SQL テーブルの名前を **TollDataTumblingCountPartitioned** に変更してください。
 
 これでジョブを開始すると、より多くのコンピューティング リソースに処理が分散され、スループットが向上します。 TollApp アプリケーションから送信されるイベントも TollId でパーティション分割されることに注目してください。
 
 ## <a name="monitor"></a>監視
-**[監視]** タブには、実行中のジョブに関する統計情報が表示されます。
+**[監視]** 領域には、実行中のジョブに関する統計情報が表示されます。 ストレージ アカウントを同じリージョン内で使用する場合は、初回の構成 が必要です (このドキュメントの他の部分と同様に toll という名前を付けます)。   
 
-![Screenshot of statistics about running jobs](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image53.png)
+![監視のスクリーンショット](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
 
-**操作ログ**には、**[ダッシュボード]** タブからアクセスできます。
+**アクティビティ ログ**には、ジョブのダッシュボードの **[設定]** 領域からもアクセスできます。
 
-![The "Operation Logs" option](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image54.jpg)
-
-![Screenshot of operation logs where you can see the status of jobs](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image55.png)
-
-特定のイベントに関する詳しい情報を表示するには、そのイベントをクリックし、 **[詳細]** をクリックします。
-
-![Screenshot of details about a selected event](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image56.png)
 
 ## <a name="conclusion"></a>まとめ
 このチュートリアルでは、Azure Stream Analytics サービスについて取り上げました。 デモンストレーションでは、Stream Analytics ジョブの入力と出力の構成方法を説明しました。 イベント データをリアルタイムで扱ううえでの一般的な課題と、Azure Stream Analytics の SQL に似た単純なクエリを使ってそれを解決する方法について、通行料金データを例に説明しました。 その中で触れた SQL 拡張機能の概念は、経時的に発生するデータを扱う際に必要となります。 データ ストリームを結合する方法や、データ ストリームの利用価値を静的な参照データで高める方法、クエリをスケールアウトしてスループットを高める方法についても紹介しました。
@@ -454,16 +434,13 @@ Azure Stream Analytics の詳細については、 [オンライン ドキュメ
 ## <a name="clean-up-your-azure-account"></a>Azure アカウントのクリーンアップ
 1. Azure Portal で Stream Analytics ジョブを停止します。
    
-    Setup.ps1 スクリプトでは、イベント ハブが 2 つと SQL データベースが 1 つ作成されます。 チュートリアルの最後に、次の手順に従ってリソースをクリーンアップしてください。
+    Setup.ps1 スクリプトでは、イベント ハブが&2; つと SQL データベースが&1; つ作成されます。 チュートリアルの最後に、次の手順に従ってリソースをクリーンアップしてください。
 2. PowerShell ウィンドウで「**\\Cleanup.ps1**」と入力します。これにより、チュートリアルで使用したリソースを削除するスクリプトが開始されます。
    
    > [!NOTE]
    > リソースを表す名前が表示されます。 それぞれ慎重に確認してから削除してください。
    > 
    > 
-   
-    ![Screenshot of the cleanup process](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!--HONumber=Oct16_HO2-->
 
 

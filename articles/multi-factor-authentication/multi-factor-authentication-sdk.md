@@ -1,99 +1,102 @@
 ---
-title: オンプレミス ID と Azure Active Directory の統合
-description: これは、Azure AD Connect の内容と使用する理由を説明するページです。
+title: "カスタム アプリ用の MFA ソフトウェア開発キット | Microsoft Docs"
+description: "この記事では、Azure MFA SDK をダウンロードし、それを使用して、カスタム アプリの&2; 段階検証を有効にする方法を示します。"
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
-
+editor: yossib
+ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 02/03/2017
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: e793478028cee273a07e3665d409a669bdadc758
+ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
+ms.lasthandoff: 02/14/2017
+
 
 ---
-# カスタム アプリに Multi-Factor Authentication を構築する (SDK)
+# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>カスタム アプリに Multi-Factor Authentication を構築する (SDK)
+
+Azure Multi-factor Authentication ソフトウェア開発キット (SDK) を使用して、Azure AD テナントのアプリケーションで行われるサインインまたはトランザクション プロセスに&2; 段階認証を直接組み込むことができます。
+
+Multi-factor Authentication SDK では、C#、Visual Basic (.NET)、Java、Perl、PHP、および Ruby を使用できます。 SDK は、2 段階認証を囲む薄いラッパーを提供します。 これには、コメント付きのソース コード ファイル、サンプル ファイル、詳細な ReadMe ファイルなど、コードを記述するために必要なすべてのものが含まれます。 また、各 SDK には、Multi-Factor Authentication プロバイダーに固有のトランザクションを暗号化するための証明書と秘密キーが含まれます。 プロバイダーがある限り、さまざまな言語と形式の SDK を必要な分だけダウンロードできます。
+
+Multi-factor Authentication SDK に含まれる API の構造は単純です。 API に対する関数呼び出しを、多要素認証パラメーター (検証モードなど) とユーザー データ (通話するための電話番号や検証するための PIN 番号など) を指定して実行します。 API は関数呼び出しをクラウド ベースの Azure Multi-Factor Authentication サービスに対する Web サービス要求に変換します。 すべての呼び出しには、各 SDK に含まれるプライベート証明書への参照が含まれている必要があります。
+
+API は Azure Active Directory に登録されたユーザーにアクセスできないため、ファイルまたはデータベースでユーザー情報を提供する必要があります。 また、API には登録機能やユーザー管理機能が用意されていないため、これらのプロセスをアプリケーションに作成する必要があります。
+
 > [!IMPORTANT]
-> SDK をダウンロードする場合は、Azure MFA、AAD Premium、EMS ライセンスを所有していても、Azure Multi-Factor Auth プロバイダーを作成する必要があります。この目的で Azure Multi-Factor Auth プロバイダーを作成する予定で、かつ各種ライセンスを既に所有している場合、プロバイダーを**有効化されたユーザーごと**のモデルで作成し、それを Azure MFA、Azure AD Premium、EMS ライセンスを含むディレクトリにリンクする必要があります。これで、SDK を利用する一意のユーザー数が所有ライセンス数を上回らない限り、課金されないようになります。
-> 
-> 
+> SDK をダウンロードするには、Azure MFA、AAD Premium、または EMS ライセンスを所有している場合でも、Azure多要素認証プロバイダーを作成する必要があります。 この目的のために Azure 多要素認証プロバイダーを作成し、ライセンスを既に所有している場合は、プロバイダーが**有効化されたユーザーごと**のモデルで作成されていることを確認します。 プロバイダーを作成したら、Azure MFA、Azure AD Premium、または EMS のライセンスが保存されているディレクトリにリンクします。 この構成により、所有しているライセンス数よりも SDK を使用する一意のユーザーの数が多い場合でも、適切な課金が行われます。
 
-Azure Multi-Factor Authentication ソフトウェア開発キット (SDK) では、Azure AD テナントにあるアプリケーションのサインインおよびトランザクション プロセスに通話とテキスト メッセージの検証を直接作成することができます。
 
-Multi-Factor Authentication SDK は C#、Visual Basic (.NET)、Java、Perl、PHP および Ruby で使用できます。SDK は、多要素認証の thin ラッパーを提供します。これには、コメント付きのソース コード ファイル、サンプル ファイル、詳細な ReadMe ファイルなど、コードを記述するために必要なすべてのものが含まれます。また、各 SDK には、Multi-Factor Authentication プロバイダーに一意のトランザクションを暗号化するための証明書とプライベート キーも含まれています。プロバイダーがある限り、さまざまな言語と形式の SDK を必要な分だけダウンロードできます。
+## <a name="download-the-azure-multi-factor-authentication-sdk"></a>Azure Multi-Factor Authentication SDK のダウンロード
+Azure Multi-Factor SDK のダウンロードには、 [Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。  これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。  SDK をダウンロードするには、多要素認証管理ポータルに移動します。 このポータルには、多要素認証プロバイダーを直接管理するか、[MFA サービスの設定] ページの **[ポータルに移動する]** リンクをクリックすることでアクセスできます。
 
-Multi-Factor Authentication SDK の API の構造は非常に単純です。API に対する単一の関数呼び出しには、多要素オプション パラメーター (検証モードの場合) やユーザー データ (呼び出し用の電話番号や 検証用の PIN 番号など) を使用します。API は関数呼び出しをクラウド ベースの Azure Multi-Factor Authentication サービスに対する Web サービス要求に変換します。すべての呼び出しには、各 SDK に含まれるプライベート証明書への参照が含まれている必要があります。
-
-API は Azure Active Directory に登録されているユーザーにアクセスできないため、ファイルやデータベースに電話番号や PIN コードなどのユーザー情報を提供する必要があります。また、API には登録機能やユーザー管理機能が用意されていないため、これらのプロセスをアプリケーションに作成する必要があります。
-
-## Azure Multi-Factor Authentication SDK のダウンロード
-Azure Multi-Factor SDK のダウンロードには、[Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。SDK をダウンロードするには、Multi-Factor Auth プロバイダーを直接管理するか、MFA サービスの設定ページで **[ポータルに移動する]** リンクをクリックして、Multi-Factor 管理ポータルに移動する必要があります。
-
-### Azure ポータルから Azure Multi-Factor Authentication SDK をダウンロードするには
-1. Azure ポータルに管理者としてサインインします。
-2. 左側で、[Active Directory] を選択します。
-3. [Active Directory] ページの上部で **[多要素認証プロバイダー]** をクリックします。
-4. 下部で **[管理]** をクリックします。
-5. これにより、新しいページが開きます。左側の下部で、[SDK] をクリックします。
-   <center>![Download](./media/multi-factor-authentication-sdk/download.png)</center>
-6. 言語を選択し、関連するダウンロード リンクのいずれかをクリックします。
+### <a name="to-download-the-azure-multi-factor-authentication-sdk-from-the-azure-classic-portal"></a>Azure クラシック ポータルから Azure Multi-Factor Authentication SDK をダウンロードするには
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
+2. 左側で、 **[Active Directory]**を選択します。
+3. [Active Directory] ページで、上部にある **[多要素認証プロバイダー]** を選択します。
+4. 下部にある **[管理]** を選択します。 新しいページが開きます。
+5. 左側の下部にある **[SDK]** を選択します。
+   <center>![ダウンロード](./media/multi-factor-authentication-sdk/download.png)</center>
+6. 言語を選択し、関連付けられているダウンロード リンクをクリックします。
 7. ダウンロードしたファイルを保存します。
 
-### サービス設定を使用して Azure Multi-Factor Authentication SDK をダウンロードするには
-1. Azure ポータルに管理者としてサインインします。
-2. 左側で、[Active Directory] を選択します。
+### <a name="to-download-the-azure-multi-factor-authentication-sdk-via-the-service-settings"></a>サービス設定を使用して Azure Multi-Factor Authentication SDK をダウンロードするには
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
+2. 左側で、 **[Active Directory]**を選択します。
 3. Azure AD のインスタンスをダブルクリックします。
-4. 上部の **[構成]** をクリックします。
-5. 多要素認証の **[サービス設定の管理]** を選択します。![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
-6. サービス設定ページで、画面の下部にある **[ポータルに移動する]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download3a.png)
-7. これにより、新しいページが開きます。左側の下部で、[SDK] をクリックします。
-8. 言語を選択し、関連するダウンロード リンクのいずれかをクリックします。
+4. 上部にある **[構成]** をクリックします。
+5. [多要素認証] で、**[サービス設定の管理]**を選択します。
+   ![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
+6. サービス設定ページで、画面の下部にある **[ポータルに移動する]**をクリックします。 新しいページが開きます。
+   ![ダウンロード](./media/multi-factor-authentication-sdk/download3a.png)
+7. 左側の下部にある **[SDK]** を選択します。
+8. 言語を選択し、関連付けられているダウンロード リンクをクリックします。
 9. ダウンロードしたファイルを保存します。
 
-## Azure Multi-Factor Authentication SDK の内容
-SDK 内には、次の項目があります。
+## <a name="contents-of-the-azure-multi-factor-authentication-sdk"></a>Azure Multi-Factor Authentication SDK の内容
+SDK には、次のアイテムが含まれています。
 
-* **README**。新規または既存のアプリケーションで、Multi-Factor Authentication API を使用する方法について説明します。
-* Multi-Factor Authentication の**ソース ファイル**
-* Multi-Factor Authentication サービスとの通信に使用する**クライアント証明書**
-* 証明書の**秘密キー**
-* **呼び出し結果。** 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
+* **README**。 新規または既存のアプリケーションで、Multi-Factor Authentication API を使用する方法について説明します。
+* **ソース ファイル** 
+* **クライアント証明書** 
+* **秘密キー** 
+* **呼び出し結果。** 呼び出し結果コードの一覧です。 このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。 呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。 これらは認証ステータス コードではありません。
 * **例。** Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
 
 > [!WARNING]
-> クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。このファイルを共有しないよう、または紛失にはご注意ください。これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
-> 
-> 
+> クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。 このファイルを共有しないよう、または紛失にはご注意ください。 これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
 
-## コード サンプル: 標準モードの通話検証
-このコード サンプルでは、Azure Multi-Factor Authentication SDK で API を使用して、アプリケーションに標準モードの音声通話検証を追加する方法を示します。標準モードとは、ユーザーが # キーを押すことで応答する通話のことです。
+## <a name="code-sample-standard-mode-phone-verification"></a>コード サンプル: 標準モードの通話検証
+このコード サンプルでは、Azure Multi-Factor Authentication SDK で API を使用して、アプリケーションに標準モードの音声通話検証を追加する方法を示します。 標準モードとは、ユーザーが # キーを押すことで応答する通話のことです。
 
-この例では、C# サーバー側ロジックが含まれる基本的な ASP.NET アプリケーションに C# .NET 2.0 Multi-Factor Authentication SDK を使用しますが、そのプロセスは他の言語での単純な実装によく似ています。SDK には実行可能ファイルの代わりにソース ファイルが含まれるため、ファイルを作成してそれらを参照することや、それらをアプリケーションに直接追加することもできます。
+このサンプルでは、C# のサーバー側ロジックがある基本的な ASP.NET アプリケーションで C# .NET 2.0 Multi-Factor Authentication SDK を使用していますが、他の言語でもプロセスはほぼ同じです。 SDK には実行可能ファイルの代わりにソース ファイルが含まれるため、ファイルを作成してそれらを参照することや、それらをアプリケーションに直接追加することもできます。
 
 > [!NOTE]
-> Multi-Factor Authentication を実装する際には、追加の要素をプライマリ認証方法を補完する二次または三次検証として使用します。これらの方法は、プライマリ認証方法として使用するように設計されていません。
-> 
-> 
+> Multi-Factor Authentication を実装する際は、第&2; または第&3; の検証方法として通話またはテキスト メッセージを追加で使用することで、プライマリ (第&1; の) 認証方法 (ユーザー名とパスワード) を補完します。 これらの方法は、プライマリ認証方法として使用するようには設計されていません。
 
-### コード サンプルの概要
-このサンプル コードは、# キーで応答する通話を使用してユーザーの認証を完了する、非常に単純なデモ Web アプリケーションです。この通話要素は、Multi-Factor Authentication では標準モードと呼ばれます。
+### <a name="code-sample-overview"></a>コード サンプルの概要
+単純な Web デモ アプリケーション用のこのサンプル コードでは、通話と # キー応答を使用してユーザーの認証を確認します。 この通話要素は、Multi-Factor Authentication では標準モードと呼ばれます。
 
-クライアント側のコードに Multi-Factor Authentication に固有の要素は含まれません。追加の認証要素はプライマリ認証とは無関係であるため、既存のサインオン インターフェイスを変更することがなく追加することができます。Multi-Factor SDK の API を使用するとユーザー エクスペリエンスをカスタマイズできますが、何も変更しなくても問題ありません。
+クライアント側のコードに Multi-Factor Authentication に固有の要素は含まれません。 追加の認証要素はプライマリ認証とは無関係であるため、既存のサインオン インターフェイスを変更することがなく追加することができます。 Multi-Factor SDK の API を使用するとユーザー エクスペリエンスをカスタマイズできますが、何も変更しなくても問題ありません。
 
-サーバー側のコードでは、手順 2 で標準モード認証を追加します。これにより、標準モード認証に必要なパラメーター (ユーザー名、電話番号、およびモード) を持つ PfAuthParams オブジェクトと、各呼び出しで必要なクライアント証明書へのパス (CertFilePath) が作成されます。PfAuthParams 内のすべてのパラメーターのデモを表示するには、SDK のサンプル ファイルを参照してください。
+サーバー側のコードでは、手順 2 で標準モード認証を追加します。 これにより、標準モード認証に必要なパラメーター (ユーザー名、電話番号、およびモード) を持つ PfAuthParams オブジェクトと、各呼び出しで必要なクライアント証明書へのパス (CertFilePath) が作成されます。 PfAuthParams 内のすべてのパラメーターのデモを表示するには、SDK のサンプル ファイルを参照してください。
 
-次に、コードは PfAuthParams オブジェクトを pf\_authenticate() 関数に渡します。戻り値は認証の成否を示します。out パラメーター (callStatus と errorID) には、呼び出し結果の追加情報が含まれています。呼び出し結果コードは、SDK の呼び出し結果ファイルで説明しています。
+次に、コードは PfAuthParams オブジェクトを pf_authenticate() 関数に渡します。 戻り値は認証の成否を示します。 out パラメーター (callStatus と errorID) には、呼び出し結果の追加情報が含まれています。 呼び出し結果コードは、SDK の呼び出し結果ファイルで説明しています。
 
-この最小実装は、わずか数行で記述できます。ただし、運用環境のコードではより高度なエラー処理、追加のデータベース コード、およびより優れたユーザー エクスペリエンスが含まれます。
+この最も小さな実装は、数行で記述できます。 ただし、運用環境のコードではより高度なエラー処理、追加のデータベース コード、およびより優れたユーザー エクスペリエンスが含まれます。
 
-### Web クライアント コード
+### <a name="web-client-code"></a>Web クライアント コード
 デモ ページの Web クライアント コードを次に示します。
 
-    <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+    <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="\_Default" %>
 
     <!DOCTYPE html>
 
@@ -124,8 +127,8 @@ SDK 内には、次の項目があります。
     </html>
 
 
-### サーバー側コード
-次のサーバー側コードでは、手順 2 でMulti-Factor Authentication を構成して実行します。標準モード (MODE\_STANDARD) とは、ユーザーが # キーを押して応答する通話のことです。
+### <a name="server-side-code"></a>サーバー側コード
+次のサーバー側コードでは、手順 2 でMulti-Factor Authentication を構成して実行します。 標準モード (MODE_STANDARD) とは、ユーザーが # キーを押して応答する通話のことです。
 
     using System;
     using System.Collections.Generic;
@@ -134,7 +137,7 @@ SDK 内には、次の項目があります。
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
-    public partial class _Default : System.Web.UI.Page
+    public partial class \_Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -155,7 +158,7 @@ SDK 内には、次の項目があります。
                 // Add call details from the user database.
                 PfAuthParams pfAuthParams = new PfAuthParams();
                 pfAuthParams.Username = username.Text;
-                pfAuthParams.Phone = "9134884271";
+                pfAuthParams.Phone = "5555555555";
                 pfAuthParams.Mode = pf_auth.MODE_STANDARD;
 
                 // Specify a client certificate
@@ -176,11 +179,10 @@ SDK 内には、次の項目があります。
                 else
                 {
                     lblResult.ForeColor = System.Drawing.Color.Red;
-                    lblResult.Text = " Multi-Factor Authentication failed.";
+                    lblResult.Text = "Multi-Factor Authentication failed.";
                 }
             }
 
         }
     }
 
-<!---HONumber=AcomDC_0921_2016-->

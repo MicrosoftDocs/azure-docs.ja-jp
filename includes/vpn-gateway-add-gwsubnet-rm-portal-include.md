@@ -1,15 +1,15 @@
-1. ポータルで、ゲートウェイを接続する仮想ネットワークに移動します。
+1. ポータルで、Virtual Network ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
 2. VNet のブレードの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ブレードを展開します。
 3. **[サブネット]** ブレードの上部にある **[+ゲートウェイ サブネット]** をクリックします。 **[サブネットの追加]** ブレードが開きます。 
    
-    ![Add the gateway subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/newgwsubnet450.png "Add the gateway subnet")
+    ![ゲートウェイ サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet.png "ゲートウェイ サブネットの追加")
 4. サブネットの **[名前]** は、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。
-   
-    ![Adding the subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet300.png "Adding the subnet")
+
+    ![サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "サブネットの追加")
 5. ブレード下部の **[OK]** をクリックすると、サブネットが作成されます。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

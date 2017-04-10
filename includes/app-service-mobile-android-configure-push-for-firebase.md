@@ -1,12 +1,17 @@
 
-1. In the [Azure portal](https://azure.portal.com/), click **App Services**, locate and click your Mobile App backend, then in the next column under **Mobile** click **Push**.
-2. In Push notification services, click **Google (GCM)**, enter the **Server Key** value that you obtained from Firebase in the previous procedure, then click **Save**.
-   
-    ![Set the GCM API key in the portal](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+1. [Azure Portal](https://portal.azure.com/) で、**[すべて参照]** > **[App Services]** の順にクリックし、Mobile Apps バックエンドをクリックします。 **[設定]** で、**[App Service Push (App Service プッシュ)]**、通知ハブ名の順にクリックします。
+2. **[Google (GCM)]** をクリックし、前の手順で Firebase から取得した **[サーバー キー]** の値を入力し、**[保存]** をクリックします。
 
-The Mobile App backend is now configured to use Firebase Cloud Messaging to send push notifications to your app running on an Android device using the notification hub.
+    ![ポータルで GCM API キーを設定する](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+
+これで、Mobile Apps バックエンドは、Firebase Cloud Messaging を使用するように構成されました。 これにより、通知ハブを使用して、Android デバイスで実行中のアプリにプッシュ通知を送信できます。
 
 <!-- URLs. -->
 
 
 <!-- images -->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

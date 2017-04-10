@@ -1,22 +1,26 @@
 ---
-title: Azure SDK for Node.js を使用して Azure Data Lake Store を管理する | Microsoft Docs
-description: Data Lake Store アカウントとファイル システムを管理する方法について説明します。
+title: "Azure SDK for Node.js で Azure Data Lake Store の使用を開始する | Microsoft Docs"
+description: "Node.js を使用して Data Lake Store アカウントとファイル システムを操作する方法について説明します。"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 2fee173c-69ae-4e1d-8773-48618cda9e16
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/13/2016
+ms.date: 01/31/2017
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 091ab246826c96b9d816c87b27014c1e54039429
+
 
 ---
-# Azure SDK for Node.js を使用して Azure Data Lake Store を管理する
+# <a name="get-started-with-azure-data-lake-store-using-azure-sdk-for-nodejs"></a>Azure SDK for Node.js で Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -25,32 +29,37 @@ ms.author: nitinme
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
+> * [Python](data-lake-store-get-started-python.md)
+>
+> 
+
+> [!NOTE]
+> 大量のデータ (サイズの大きいファイル、多数のファイル、またはその両方) をアップロードおよびダウンロードする場合は、[Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md)、または [Azure PowerShell](data-lake-store-get-started-powershell.md) を使用することをお勧めします。 これらのオプションではスレッドを複数使用してデータ移動が並列化されるため、パフォーマンスが改善されます。
 > 
 > 
 
-Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントとファイル システムの操作を管理できます。
-
-現時点では、以下がサポートされています。
+Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。 現在 SDK では以下のものがサポートされています
 
 * **Node.js のバージョン: 0.10.0 以降**
 * **アカウント用の REST API のバージョン: 2015-10-01-preview**
 * **ファイルシステム用の REST API のバージョン: 2015-10-01-preview**
 
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Azure Active Directory アプリケーションを作成する**。 Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。 Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**があります。 認証方法の手順と詳しい情報については、「 [Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
-## Features (機能)
-* アカウント管理: 作成、取得、一覧表示、更新、および削除。
-* ファイル システムの管理: 作成、取得、アップロード、追加、ダウンロード、読み取り、削除、一覧表示。
-
-## インストール方法
+## <a name="how-to-install"></a>インストール方法
 ```bash
 npm install azure-arm-datalake-store
 ```
 
-## Azure Active Directory を使用して認証する
+## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する
+以下のスニペットは、Azure AD を使用した Data Lake Store での&2; つの別々の認証方法を示したものです。 Data Lake Store での認証に利用できるさまざまな方法の詳細については、[Data Lake Store での Azure Active Directory を使用した認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+
+次のスニペットには、Azure AD ドメイン名や Azure AD アプリのクライアント ID などの入力値も必要です。これらの詳細情報は、作成した Azure AD アプリケーションからすべて取得できます。また、アプリケーションの詳細は上記のリンク先にも記載されています。
+
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
@@ -59,14 +68,14 @@ npm install azure-arm-datalake-store
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## Data Lake Analytics クライアントを作成する
+## <a name="create-the-data-lake-store-clients"></a>Data Lake Store クライアントを作成する
 ```javascript
 var adlsManagement = require("azure-arm-datalake-store");
 var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, "your-subscription-id");
 var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials);
 ```
 
-## Data Lake Store アカウントを作成する
+## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 ```javascript
 var util = require('util');
 var resourceGroupName = 'testrg';
@@ -102,7 +111,7 @@ client.account.create(resourceGroupName, accountName, accountToCreate, function 
 });
 ```
 
-## コンテンツを持つファイルを作成する
+## <a name="create-a-file-with-content"></a>コンテンツを持つファイルを作成する
 ```javascript
 var util = require('util');
 var accountName = 'testadlsacct';
@@ -121,7 +130,7 @@ filesystemClient.fileSystem.listFileStatus(accountName, fileToCreate, options, f
 });
 ```
 
-## ファイルとフォルダーの一覧を取得する
+## <a name="get-a-list-of-files-and-folders"></a>ファイルとフォルダーの一覧を取得する
 ```javascript
 var util = require('util');
 var accountName = 'testadlsacct';
@@ -135,8 +144,13 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 });
 ```
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Feb17_HO1-->
+
+

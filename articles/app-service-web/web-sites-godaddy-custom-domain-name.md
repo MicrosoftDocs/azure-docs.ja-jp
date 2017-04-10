@@ -1,12 +1,12 @@
 ---
-title: Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)
-description: GoDaddy から購入したカスタム ドメイン名を Azure Web Apps で使用する方法
+title: "Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)"
+description: "GoDaddy から購入したカスタム ドメイン名を Azure Web Apps で使用する方法"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: erikre
-manager: wpickett
+manager: erikre
 editor: jimbe
-
+ms.assetid: 33233e30-5846-488f-83f3-b32e5c114564
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
+ms.lasthandoff: 01/20/2017
+
 
 ---
-# <a name="configure-a-custom-domain-name-in-azure-app-service-(purchased-directly-from-godaddy)"></a>Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
+# <a name="configure-a-custom-domain-name-in-azure-app-service-purchased-directly-from-godaddy"></a>Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
@@ -77,13 +82,11 @@ Azure App Service Web Apps からドメインを購入した場合は、「 [Web
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
-## <a name="what's-changed"></a>変更内容
+## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-<!--HONumber=Oct16_HO2-->
 
 

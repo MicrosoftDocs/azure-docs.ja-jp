@@ -1,12 +1,12 @@
 ---
-title: Azure Active Directory プレビューでのエンタープライズ アプリケーションのユーザー プロビジョニング管理 | Microsoft Docs
-description: Azure Active Directory プレビューを使用してエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する方法について説明します
+title: "Azure Active Directory プレビューでのエンタープライズ アプリケーションのユーザー プロビジョニング管理 | Microsoft Docs"
+description: "Azure Active Directory プレビューを使用してエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する方法について説明します"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
+
 
 ---
-# <a name="preview:-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する
+# <a name="preview-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 新しい Azure Portal では、この管理エクスペリエンスは現在パブリック プレビュー中です。この記事では、新機能と、プレビュー期間中に適用されるいくつかの一時的な制限について説明します。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
 
 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
@@ -81,6 +85,6 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO5-->
 
 

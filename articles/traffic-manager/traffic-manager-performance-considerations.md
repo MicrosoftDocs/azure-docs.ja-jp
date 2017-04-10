@@ -1,58 +1,84 @@
 ---
-title: Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Docs
-description: Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。
+title: "Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Docs"
+description: "Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
 services: traffic-manager
-documentationcenter: ''
-author: sdwheeler
-manager: carmonm
-editor: joaoma
-
+documentationcenter: 
+author: kumudd
+manager: timlt
+editor: 
+ms.assetid: 3ba5dfa1-2922-43f1-9a23-d06969c4a516
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/10/2016
-ms.author: sewhee
+ms.date: 03/16/2017
+ms.author: kumud
+translationtype: Human Translation
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
+ms.lasthandoff: 03/18/2017
 
 ---
-# Traffic Manager のパフォーマンスに関する考慮事項
-このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。考えられるシナリオ: 米国リージョンとアジアに Web サイトが 1 つずつあり、それらのいずれかが Traffic Manager プローブの正常性チェックに失敗し、すべてのユーザーが正常なリージョンにリダイレクトされます。この動作はパフォーマンスの問題があるように見えますが、ユーザー要求の距離に基づいて予想される動作になります。
 
-## Traffic Manager の動作に関する重要な注意事項
-* Traffic Manager は基本的に DNS の解決だけを行います。つまり、Traffic Manager が Web サイトに対して与える可能性があるパフォーマンスに関する唯一の影響は、初期 DNS 参照です。
-* Traffic Manager の DNS 参照に関する説明のポイント。Traffic Manager は、ポリシーとプローブの結果に基づいて、通常の Microsoft DNS ルート サーバーを設定し、定期的に更新します。したがって、初期 DNS 参照の間であっても、DNS 要求は通常の Microsoft DNS ルート サーバーによって処理されるため、Traffic Manager による影響はありません。Traffic Manager が「停止」しても (つまり、ポリシーのプローブと DNS の更新を行っている VM での障害)、Microsoft DNS サーバーのエントリは維持されるため、Traffic Manager の DNS 名への影響はありません。唯一の影響は、ポリシーに基づくプローブと更新が行われないことです (つまり、プライマリ サイトがダウンした場合、Traffic Manager は DNS を更新してフェールオーバー サイトを参照できません)。
-* トラフィックは Traffic Manager を通過しません。クライアントと Azure ホステッド サービスの間の仲介者として機能する Traffic Manager サーバーはありません。DNS 参照が終了すると、Traffic Manager はクライアントとサーバーの間の通信から完全に削除されます。
-* DNS 参照は非常に高速で、キャッシュされます。初期 DNS 参照はクライアントとそれに構成されている DNS サーバーに依存し、通常、クライアントは DNS 参照を 50 ミリ秒以下で実行できます (http://www.solvedns.com/dns-comparison/ を参照)。最初の参照が終了すると、結果は DNS TTL の間キャッシュされます。Traffic Manager の場合、既定値は 300 秒です。
-* ユーザーが選択した Traffic Manager のポリシー (パフォーマンス、フェールオーバー、ラウンド ロビン) は、DNS のパフォーマンスに影響を与えません。パフォーマンス ポリシーは、ユーザーのエクスペリエンスに悪影響を与える可能性があります。たとえば、米国のユーザーをアジアでホストされているサービスに送るような場合です。ただし、このようなパフォーマンスの問題は、Traffic Manager が原因ではありません。
+# <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
-## Traffic Manager のパフォーマンスのテスト
-Traffic Manager のパフォーマンスと動作を調べるのに使用できる公開されている Web サイトがいくつかあります。これらのサイトは、DNS の待機時間を判定し、世界各地のユーザーが送られるホステッド サービスを特定するのに役立ちます。これらのツールのほとんどは DNS の結果をキャッシュしないので、テストを繰り返し実行してもそのたびに完全な DNS 参照が行われるのに対し、Traffic Manager エンドポイントに接続しているクライアントが完全な DNS 参照によるパフォーマンスの影響を受けるのは、TTL 期間中に 1 回だけであることに注意してください。
+このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。 次のシナリオで考えてみましょう。
 
-## パフォーマンスを測定するサンプル ツール
-最も簡単なツールの 1 つは WebSitePulse です。URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、他のパフォーマンス統計などの統計情報が表示されます。サイトをテストするには、3 つの異なる場所から選択できます。この例の最初の実行では、最初の DNS 参照には 0.204 秒かかったことがわかります。同じ Traffic Manager エンドポイントで実行した 2 回目のテストでは、DNS 参照時間は 0.002 秒です。これは、結果が既にキャッシュされているためです。
+WestUS と EastAsia のリージョンに Web サイトのインスタンスがあります。 一方のインスタンスが Traffic Manager のプローブの正常性チェックに失敗しました。 アプリケーションのトラフィックは、正常なリージョンの方へ送信されます。 このフェールオーバーは予期された動作ですが、リージョンに達するまでのトラフィックの伝達距離が長くなるため、待機時間という点でパフォーマンスの問題が発生する可能性があります。
 
-http://www.websitepulse.com/help/tools.php
+## <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
-![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+Traffic Manager が Web サイトのパフォーマンスに対して影響を与えることができるのは、初期 DNS 参照のみです。 Traffic Manager プロファイルの名前の DNS 要求は trafficmanager.net ゾーンをホストする Microsoft DNS ルート サーバーによって処理されます。 Traffic Manager は、Traffic Manager ポリシーとプローブの結果に基づいて、Microsoft DNS ルート サーバーを設定し、定期的に更新します。 そのため、初期の DNS lookup 時であっても、DNS クエリが Traffic Manager に送信されることはありません。
 
-キャッシュされているときの DNS 時間:
+Traffic Manager は、DNS ネーム サーバー、API サービス、ストレージ層、エンドポイント監視サービスなど、いくつかのコンポーネントで構成されます。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
 
-![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
+DNS 名前解決は短時間で処理され、結果はキャッシュに保存されます。 初期 DNS lookup の速度は、クライアントが名前解決に使用する DNS サーバーに依存します。 通常、クライアントは DNS lookup を約&50; ミリ秒以内で完了します。 lookup の結果は、DNS の Time-to-live (TTL) に設定されている時間キャッシュに保存されます。 Traffic Manager の TTL の既定値は 300 秒です。
 
-複数の地理的な場所から同時に DNS 解決時間を取得するもう 1 つの本当に便利なツールは、Watchmouse の Check Website ツールです。URL を入力すると、DNS 解決時間、接続時間、および複数の地理的場所からの速度が表示されます。これはまた、Traffic Manager のパフォーマンス ポリシーをテストして、世界各地のユーザーが送られるホステッド サービスを確認するのにも便利です。
+トラフィックは Traffic Manager を通過しません。 DNS lookup が完了すると、クライアントは Web サイトのインスタンスの IP アドレスを持ちます。 クライアントは、Traffic Manager を通過せずに、そのアドレスに直接接続します。 ユーザーが選択した Traffic Manager のポリシーは、DNS のパフォーマンスに影響しません。 ただし、パフォーマンス ルーティング方法が、アプリケーションの動作に悪影響を与えることがあります。 たとえば、ポリシーによってトラフィックが北米からアジアでホストされているインスタンスにリダイレクトされる場合、それらのセッションのネットワーク待機時間がパフォーマンスの問題となることがあります。
 
-http://www.watchmouse.com/en/checkit.php
+## <a name="measuring-traffic-manager-performance"></a>Traffic Manager のパフォーマンスの測定
 
-![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+Traffic Manager プロファイルの動作とパフォーマンスを理解するために使用できる Web サイトが複数あります。 これらのサイトの多くは無料で利用できますが、制限事項がある場合があります。 一部のサイトでは、強化された監視とレポート機能を有料で提供しています。
 
-http://tools.pingdom.com/ – このツールは、Web サイトをテストして、ページ上の各要素のパフォーマンス統計情報をビジュアルなグラフで提供します。[Page Analysis] タブに切り替えると、DNS 参照を行うために使われた時間の割合を確認できます。
+これらのサイトのツールは DNS 待機時間を測定し、世界各地にあるクライアントの場所の解決された IP アドレスを表示します。 これらのツールのほとんどは DNS の結果をキャッシュに保存しません。 そのため、ツールではテストを実行するたびに完全な DNS lookup が表示されます。 独自のクライアントからテストする場合は、完全な DNS lookup のパフォーマンスを TTL 期間中に&1; 回だけテストできます。
 
-http://www.whatsmydns.net/ – このサイトは、20 の異なる地理的な場所から DNS 参照を実行して、結果を地図上に表示します。それを見ると、クライアントが接続されているホステッド サービスがわかります。
+## <a name="sample-tools-to-measure-dns-performance"></a>DNS パフォーマンスを測定するサンプル ツール
 
-http://www.digwebinterface.com – watchmouse サイトと似ていますが、このサイトでは CNAME と A レコードを含む DNS のさらに詳細な情報が表示されます。オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
+* [SolveDNS](http://www.solvedns.com/dns-comparison/)
 
-## 次のステップ
+    SolveDNS には、多くのパフォーマンス ツールが備わっています。 DNS Comparison ツールでは、DNS 名を解決するのにかかる時間と他の DNS サービス プロバイダーとの比較が表示されます。
+
+* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+
+    最も簡単なツールの&1; つは WebSitePulse です。 URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、その他のパフォーマンス統計が表示されます。 3 つの異なるテストの場所から選択できます。 今回の例では、最初の実行時には DNS lookup が 0.204 秒かかっていることが分かります。
+
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+
+    結果がキャッシュに保存されるため、同じ Traffic Manager エンドポイントに対する 2 回目のテストでは、DNS lookup にかかった時間は 0.002 秒になっています。
+
+    ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
+
+* [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
+
+    以前は Watchmouse Check Website と呼ばれていたツールです。複数の地理的な場所から同時に行った場合の DNS 解決時間を表示します。 URL を入力すると、DNS 解決時間、接続時間、および複数の地理的な場所からの速度が表示されます。 このテストを使用すると、世界中のさまざまな場所での、ホストされるサービスの応答の状態が確認できます。
+
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+
+* [Pingdom](http://tools.pingdom.com/)
+
+    このツールでは、Web ページの各要素のパフォーマンス統計値を確認できます。 [Page Analysis] タブには、DNS lookup にかかった時間の割合が表示されます。
+
+* [What's My DNS?](http://www.whatsmydns.net/)
+
+    このサイトは、20 の異なる場所から DNS 参照を実行して、結果を地図上に表示します。
+
+* [Dig Web Interface](http://www.digwebinterface.com)
+
+    このサイトでは CNAME や A レコードなど DNS のさらに詳細な情報が表示されます。 オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
+
+## <a name="next-steps"></a>次のステップ
+
 [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
 [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)
@@ -61,4 +87,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=AcomDC_0824_2016-->
+

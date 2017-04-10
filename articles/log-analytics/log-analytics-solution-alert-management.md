@@ -1,26 +1,38 @@
 ---
-title: Operations Management Suite (OMS) アラート管理ソリューション | Microsoft Docs
-description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。
+title: "Operations Management Suite (OMS) アラート管理ソリューション |Microsoft Docs"
+description: "管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2016
+ms.date: 03/07/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 885de1e94e3ce520621dc8dc7a4a495501f6a429
+ms.openlocfilehash: 35b4c30de20c46312bd7e4524a4264450184138a
+ms.lasthandoff: 02/18/2017
+
 
 ---
-# <a name="alert-management-solution-in-operations-management-suite-(oms)"></a>Operations Management Suite (OMS) アラート管理ソリューション
-![Alert Management icon](media/log-analytics-solution-alert-management/icon.png) 管理対象となる環境内のすべてのアラートは、アラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager (SCOM) 管理グループからのアラートを Log Analytics にインポートすることができます。  複数の管理グループが存在する環境では、すべての管理グループのアラートをアラート管理ソリューションによって一元的に把握することができます。
+# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
+
+![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
+
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があります。[Log Analytics によって作成されたアラート](log-analytics-alerts.md)や、[Nagios や Zabbix からインポートされたアラート](log-analytics-linux-agents.md#linux-alerts)のほか、  アラートは[接続された System Center Operations Manager (SCOM) 管理グループ](log-analytics-om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
-* このソリューションで SCOM からアラートをインポートするためには、「 [Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」に記載されている手順に従って、OMS ワークスペースと SCOM 管理グループとを接続する必要があります。  
+アラート管理ソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
+
+- Log Analytics のアラートの場合は、[アラート ルールを作成](log-analytics-alerts.md)して、リポジトリに直接アラート レコードを作成します。
+- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-linux-agents.md#linux-alerts)して、Log Analytics にアラートを送信します。
+- SCOM のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  SCOM で作成されたアラートはすべて、Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
 [ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順に従って、アラート管理ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
@@ -38,42 +50,38 @@ SCOM 管理グループが OMS ワークスペースに接続されている場�
 
 | 接続されているソース | サポート | 説明 |
 |:--- |:--- |:--- |
-| [Windows エージェント](log-analytics-windows-agents.md) |いいえ |直接の Windows エージェントでは、SCOM アラートは生成されません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) |いいえ |直接の Linux エージェントでは、SCOM アラートは生成されません。 |
-| [SCOM 管理グループ](log-analytics-om-agents.md) |はい |SCOM エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>SCOM エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから OMS リポジトリに転送されます。 |
-| [Azure ストレージ アカウント](log-analytics-azure-storage.md) |いいえ |SCOM のアラートは Azure ストレージ アカウントに保存されません。 |
+| [Windows エージェント](log-analytics-windows-agents.md) | なし |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [SCOM 管理グループ](log-analytics-om-agents.md) |はい |SCOM エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>SCOM エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
+
 
 ### <a name="collection-frequency"></a>収集の頻度
-OMS 内で生成されたアラートはすぐにアラート管理ソリューションから利用できるようになります。  アラート データは 3 分おきに SCOM 管理グループから Log Analytics に送信されます。  
+- アラート レコードは、リポジトリに格納されるとすぐにソリューションで利用可能になります。
+- アラート データは 3 分おきに SCOM 管理グループから Log Analytics に送信されます。  
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 OMS ワークスペースにアラート管理ソリューションを追加すると、OMS ダッシュボードに **[Alert Management]** (アラート管理) タイルが追加されます。  このタイルには、過去 24 時間に生成された現在アクティブなアラートの数とグラフが表示されます。  この時間範囲を変更することはできません。
 
 ![Alert Management tile](media/log-analytics-solution-alert-management/tile.png)
 
-**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位&10; 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | 分割 | 説明 |
 |:--- |:--- |
 | 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
 | 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
-| アクティブ SCOM アラート |*[Closed]* (終了) 状態を除くすべての SCOM アラートが、その生成元ごとにグループ化されて表示されます。 |
+| アクティブ SCOM アラート |SCOM によって収集された *[Closed]* (終了) 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
 | すべてのアクティブなアラート |重大度に関係なくすべてのアラートがその名前別に表示されます。 対象となるのは *[Closed]*(終了) 状態以外の SCOM アラートだけです。 |
 
 右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、アラート データを探すための[ログの検索](log-analytics-log-searches.md)が実行されます。
 
 ![Alert Management dashboard](media/log-analytics-solution-alert-management/dashboard.png)
 
-## <a name="scope-and-time-range"></a>スコープと時間範囲
-既定では、アラート管理ソリューションの分析は、過去 7 日間に生成された接続されているすべての管理グループから収集されたアラートが対象となります。  
-
-![Alert Management scope](media/log-analytics-solution-alert-management/scope.png)
-
-* 分析の対象となる管理グループを変更するには、ダッシュボードの上部にある **[Scope]** (スコープ) をクリックします。  接続されているすべての管理グループを対象とする場合は **[Global]** (グローバル) を、単一の管理グループを対象とする場合は **[By Management Group]** (管理グループごと) を選択します。
-* アラートの時間範囲を変更するには、ダッシュボードの上部にある **[Data based on]** (データの時間範囲) を選択します。  過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたアラートを選択できます。  **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-アラート管理ソリューションでは、 **Alert**タイプのすべてのレコードが分析されます。  アラートは SCOM からもインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
+アラート管理ソリューションでは、 **Alert**タイプのすべてのレコードが分析されます。  Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
+
+アラートは SCOM からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
 | プロパティ | 説明 |
 |:--- |:--- |
@@ -113,7 +121,5 @@ OMS ワークスペースにアラート管理ソリューションを追加す�
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](log-analytics-alerts.md) に関するページを参照してください。
-
-<!--HONumber=Oct16_HO2-->
 
 

@@ -1,17 +1,52 @@
-* 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
-* クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
-* 複数の Azure Virtual Network を接続するときに、オンプレミスの VPN ゲートウェイは必要ありません (クロスプレミス接続が必要な場合を除く)。
-* VNet 間接続によって仮想ネットワークを接続できます。 仮想ネットワーク内に存在しない仮想マシンやクラウド サービスを接続することはできません。
-* VNet 間接続には、RouteBased VPN タイプの Azure VPN ゲートウェイが必要です (以前は「動的ルーティング」と呼ばれていました) 。 
-* 仮想ネットワーク接続は、マルチサイト VPN と同時に使用することができます。1 つの仮想ネットワーク VPN ゲートウェイに最大 10 本 (既定/標準のゲートウェイ) または 30 本 (高性能ゲートウェイ) の VPN トンネルを確立し、他の仮想ネットワークまたはオンプレミス サイトに接続することが可能です。
-* 仮想ネットワークのアドレス空間とオンプレミスのローカル ネットワーク サイトのアドレス空間とが重複しないようにする必要があります。 アドレス空間が重複していると、VNet 間接続の作成は失敗します。
-* 一対の仮想ネットワーク間に冗長トンネルを確立することはできません。
-* 仮想ネットワークのすべての VPN トンネルは、Azure VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
-* VNet 間のトラフィックは、インターネットではなく、Microsoft ネットワークで送信されます。
-* 同じリージョン内の VNet 間トラフィックは双方向で無料です。リージョンを超えて送信される VNet 間トラフィックには、ソース リージョンに基づき、送信 VNet 内データ転送料金が課せられます。 詳細については、[料金のページ](https://azure.microsoft.com/pricing/details/vpn-gateway/)を参照してください。
+###<a name="does-azure-charge-for-traffic-between-vnets"></a>Azure では VNet 間のトラフィックに対して料金が発生しますか。
+同じリージョン内の VNet 間トラフィックは双方向で無料です。 リージョンを超えて送信される VNet 間エグレス トラフィックには、ソース リージョンに基づき、送信 VNet 内データ転送料金が課せられます。 詳細については[価格のページ](https://azure.microsoft.com/pricing/details/vpn-gateway/)をご覧ください。
+
+###<a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>VNet 間のトラフィックは、インターネット経由で送信されますか。
+いいえ。 VNet 間のトラフィックは、インターネットではなく Microsoft Azure のバックボーンを経由して送信されます。
+
+### <a name="is-vnet-to-vnet-traffic-secure"></a>VNet 間のトラフィックはセキュリティで保護されていますか。
+はい、IPsec/IKE 暗号化で保護されます。
+
+###<a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>VNet 同士を接続するには VPN デバイスが必要ですか。
+いいえ。 複数の Azure 仮想ネットワークを接続するときに、VPN デバイスは必要ありません (クロスプレミス接続が必要な場合を除く)。
+
+###<a name="do-my-vnets-need-to-be-in-the-same-region"></a>VNet は同じリージョンに属している必要がありますか。
+いいえ。 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
+
+###<a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>VNet 間接続はマルチサイト接続と併用できますか。
+はい。 仮想ネットワーク接続は、マルチサイト VPN と同時に使用することができます。
+
+### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>1 つの仮想ネットワークから接続できるオンプレミス サイトと仮想ネットワークの数を教えてください。
+[ゲートウェイの要件](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements)に関する表をご覧ください。
+
+###<a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>VNet 間接続を使用して VNet の外部の VM やクラウド サービスを接続することはできますか。
+いいえ。 VNet 間接続によって仮想ネットワークを接続できます。 仮想ネットワーク内に存在しない仮想マシンやクラウド サービスを接続することはできません。
+
+###<a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>クラウド サービスや負荷分散エンドポイントは複数の VNet にまたがることができますか。
+いいえ。 クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
+
+###<a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>VNet 間接続やマルチサイト接続にポリシー ベースの VPN の種類を使用することはできますか。
+いいえ。 VNet 間接続とマルチサイト接続には、VPN の種類がルート ベース (以前は「動的ルーティング」と呼ばれていました) である Azure VPN Gateway が必要です。
+
+### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>VPN の種類がルート ベースの VNet を VPN の種類がポリシー ベースの VNet に接続できますか。
+いいえ、両方の仮想ネットワークでルート ベース (以前は「動的ルーティング」と呼ばれていました) の VPN を使用している必要があります。
+
+###<a name="do-vpn-tunnels-share-bandwidth"></a>VPN トンネルは帯域幅を共有しますか。
+はい。 仮想ネットワークのすべての VPN トンネルは、Azure VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
+
+###<a name="are-redundant-tunnels-supported"></a>冗長トンネルはサポートされますか。
+1 つの仮想ネットワーク ゲートウェイがアクティブ/アクティブ構成になっている場合、仮想ネットワークのペア間の冗長トンネルがサポートされます。
+
+###<a name="can-i-have-overlapping-address-spaces-for-vnet-to-vnet-configurations"></a>VNet 間接続の構成で、重複するアドレス空間を使用できますか。
+いいえ。 重複する IP アドレス範囲は使用できません。
+
+### <a name="can-there-be-overlapping-address-spaces-among-connected-virtual-networks-and-on-premises-local-sites"></a>接続されている仮想ネットワークとオンプレミスのローカル サイトで、重複するアドレス空間を使用できますか。
+いいえ。 重複する IP アドレス範囲は使用できません。
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Feb17_HO3-->
 
 

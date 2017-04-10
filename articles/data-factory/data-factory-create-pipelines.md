@@ -1,20 +1,24 @@
 ---
-title: パイプラインの作成とスケジュール、データ ファクトリのアクティビティの連鎖 | Microsoft Docs
-description: Azure Data Factory でデータ パイプラインを作成してデータを移動および変換する方法について説明します。 データ主導ワークフローを作成して、すぐに使える情報を生成します。
-keywords: データ パイプライン, データ主導ワークフロー
+title: "パイプラインの作成とスケジュール、データ ファクトリのアクティビティの連鎖 | Microsoft Docs"
+description: "Azure Data Factory でデータ パイプラインを作成してデータを移動および変換する方法について説明します。 データ主導ワークフローを作成して、すぐに使える情報を生成します。"
+keywords: "データ パイプライン, データ主導ワークフロー"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: sharonlo101
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 13b137c7-1033-406f-aea7-b66f25b313c0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 01/25/2017
 ms.author: shlo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d841c57dc736f7d690a6dc97863b7568365fd01a
+
 
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
@@ -25,10 +29,10 @@ ms.author: shlo
 > 
 > 
 
-## <a name="what-is-a-data-pipeline?"></a>データ パイプラインとは
+## <a name="what-is-a-data-pipeline"></a>データ パイプラインとは
 **パイプライン**は、論理的に関連付けられた**アクティビティ**のグループです。 パイプラインは、タスクを実行するユニットにアクティビティをグループ化するために使用されます。 パイプラインをより深く理解するには、最初にアクティビティを理解する必要があります。 
 
-## <a name="what-is-an-activity?"></a>アクティビティとは
+## <a name="what-is-an-activity"></a>アクティビティとは
 アクティビティは、データに対して実行するアクションを定義します。 各アクティビティは、入力として 0 個以上の [データセット](data-factory-create-datasets.md) を受け取り、出力として 1 つまたは複数のデータセットを生成します。 
 
 たとえば、コピー アクティビティを使用して、データ ストア間のデータのコピーを調整できます。 同様に、Azure HDInsight クラスターに対して Hive クエリを実行する HDInsight Hive アクティビティを使用して、データを変換できます。 Azure Data Factory には、[データ変換](data-factory-data-transformation-activities.md)および[データ移動](data-factory-data-movement-activities.md)のための広範なアクティビティがあります。 また、カスタム .NET アクティビティを作成して独自のコードを実行することもできます。 
@@ -36,46 +40,48 @@ ms.author: shlo
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
 次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [コピー アクティビティ](data-factory-data-movement-activities.md) が、Azure BLOB ストレージから Azure SQL データベースにデータをコピーします。 
 
-    {
-      "name": "CopyPipeline",
-      "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
-        "activities": [
+```json
+{
+  "name": "CopyPipeline",
+  "properties": {
+    "description": "Copy data from a blob to Azure SQL table",
+    "activities": [
+      {
+        "name": "CopyFromBlobToSQL",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "CopyFromBlobToSQL",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "InputDataset"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "OutputDataset"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "SqlSink",
-                "writeBatchSize": 10000,
-                "writeBatchTimeout": "60:00:00"
-              }
-            },
-            "Policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "NewestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "InputDataset"
           }
         ],
-        "start": "2016-07-12T00:00:00Z",
-        "end": "2016-07-13T00:00:00Z"
+        "outputs": [
+          {
+            "name": "OutputDataset"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 10000,
+            "writeBatchTimeout": "60:00:00"
+          }
+        },
+        "Policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
       }
-    } 
+    ],
+    "start": "2016-07-12T00:00:00Z",
+    "end": "2016-07-13T00:00:00Z"
+  }
+} 
+```
 
 次の点に注意してください。
 
@@ -88,48 +94,50 @@ ms.author: shlo
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
 次のサンプル パイプラインでは、 **HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](data-factory-hive-activity.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。 
 
-    {
-        "name": "TransformPipeline",
-        "properties": {
-            "description": "My first Azure Data Factory pipeline",
-            "activities": [
-                {
-                    "type": "HDInsightHive",
-                    "typeProperties": {
-                        "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-                        "scriptLinkedService": "AzureStorageLinkedService",
-                        "defines": {
-                            "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
-                            "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "name": "AzureBlobInput"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOutput"
-                        }
-                    ],
-                    "policy": {
-                        "concurrency": 1,
-                        "retry": 3
-                    },
-                    "scheduler": {
-                        "frequency": "Month",
-                        "interval": 1
-                    },
-                    "name": "RunSampleHiveActivity",
-                    "linkedServiceName": "HDInsightOnDemandLinkedService"
-                }
-            ],
-            "start": "2016-04-01T00:00:00Z",
-            "end": "2016-04-02T00:00:00Z",
-            "isPaused": false
-        }
+```json
+{
+    "name": "TransformPipeline",
+    "properties": {
+        "description": "My first Azure Data Factory pipeline",
+        "activities": [
+            {
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                    "scriptLinkedService": "AzureStorageLinkedService",
+                    "defines": {
+                        "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                        "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "AzureBlobInput"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobOutput"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "HDInsightOnDemandLinkedService"
+            }
+        ],
+        "start": "2016-04-01T00:00:00Z",
+        "end": "2016-04-02T00:00:00Z",
+        "isPaused": false
     }
+}
+```
 
 次の点に注意してください。 
 
@@ -180,11 +188,13 @@ Visual Studio を使用して、パイプラインを作成して Azure Data Fac
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 Azure PowerShell を使用して、Azure Data Factory にパイプラインを作成できます。 たとえば、c:\DPWikisample.json のファイルでパイプライン JSON を定義しておきます。 次の例のように Azure Data Factory インスタンスにそれをアップロードできます。
 
-    New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
+```PowerShell
+New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
+```
 
 パイプラインを備えたデータ ファクトリを作成するためのエンド ツー エンド チュートリアルについては、 [Azure PowerShell を使用した Azure Data Factory の使用](data-factory-build-your-first-pipeline-using-powershell.md) に関する記事を参照してください。 
 
-### <a name="using-.net-sdk"></a>.NET SDK の使用
+### <a name="using-net-sdk"></a>.NET SDK の使用
 .NET SDK を使用してパイプラインを作成およびデプロイすることもできます。 このメカニズムを使用すると、プログラムでパイプラインを作成できます。 詳細については、 [プログラムによるデータ ファクトリの作成、管理、および監視](data-factory-create-data-factories-programmatically.md)に関するページをご覧ください。 
 
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
@@ -199,40 +209,44 @@ REST API を使用してパイプラインを作成およびデプロイする�
 ## <a name="pipeline-json"></a>パイプライン JSON
 パイプラインを JSON 形式で定義する方法について詳しく説明します。 パイプラインの一般的な構造は次のようになります。
 
+```json
+{
+    "name": "PipelineName",
+    "properties": 
     {
-        "name": "PipelineName",
-        "properties": 
-        {
-            "description" : "pipeline description",
-            "activities":
-            [
+        "description" : "pipeline description",
+        "activities":
+        [
 
-            ],
-            "start": "<start date-time>",
-            "end": "<end date-time>"
-        }
+        ],
+        "start": "<start date-time>",
+        "end": "<end date-time>"
     }
+}
+```
 
 **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 各アクティビティには、次のような最上位構造があります。
 
+```json
+{
+    "name": "ActivityName",
+    "description": "description", 
+    "type": "<ActivityType>",
+    "inputs":  "[]",
+    "outputs":  "[]",
+    "linkedServiceName": "MyLinkedService",
+    "typeProperties":
     {
-        "name": "ActivityName",
-        "description": "description", 
-        "type": "<ActivityType>",
-        "inputs":  "[]",
-        "outputs":  "[]",
-        "linkedServiceName": "MyLinkedService",
-        "typeProperties":
-        {
 
-        },
-        "policy":
-        {
-        }
-        "scheduler":
-        {
-        }
+    },
+    "policy":
+    {
     }
+    "scheduler":
+    {
+    }
+}
+```
 
 次の表では、アクティビティとパイプラインの JSON 定義で使用されるプロパティを説明します。
 
@@ -261,7 +275,7 @@ REST API を使用してパイプラインを作成およびデプロイする�
 | --- | --- | --- | --- |
 | 同時実行 |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、同時実行の値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
-| retry |整数<br/><br/>最大値は 10 |3 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
+| retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
 | timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例： 00:10:00 (タイムアウトが 10 分であることを意味します)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
 | delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例: 00:10:00 (10 分の遅延を意味します) |
 | longRetry |整数<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
@@ -273,6 +287,9 @@ REST API を使用してパイプラインを作成およびデプロイする�
 * [Azure Data Factory での管理と監視](data-factory-monitor-manage-pipelines.md)について理解してください。
 * [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

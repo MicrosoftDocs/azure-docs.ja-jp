@@ -1,13 +1,13 @@
 ---
-title: How to send scheduled notifications | Microsoft Docs
-description: This topic describes using Scheduled Notifications with Azure Notification Hubs.
+title: "スケジュール設定された通知を送信する方法 | Microsoft Docs"
+description: "このトピックでは、Azure Notification Hubs でスケジュール設定された通知を使用する方法について説明します。"
 services: notification-hubs
 documentationcenter: .net
-keywords: push notifications,push notification,scheduling push notifications
+keywords: "プッシュ通知,プッシュ通知,プッシュ通知のスケジュール設定"
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6b718c75-75dd-4c99-aee3-db1288235c1a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -15,23 +15,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: efac6e1ecc00359f1622d380333140bc055c83e0
+
 
 ---
-# <a name="how-to:-send-scheduled-notifications"></a>How To: Send scheduled notifications
+# <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
 ## <a name="overview"></a>Overview
-If you have a scenario in which you want to send a notification at some point in the future, but do not have an easy way to wake up your back-end code to send the notification. Standard tier Notification Hubs supports a feature that enables you to schedule notifications up to 7 days in the future.
+未来のある時点で通知を送信することが必要なシナリオに対して、通知を送信するためのバックエンド コードの簡単なウェイクアップ方法がないような場合、 Standard レベルの Notification Hubs では、7 日後までの通知をスケジュール設定できる機能をサポートしています。
 
-When sending a notification, simply use the [ScheduledNotification](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) class in the Notification Hubs SDK as shown in the following example:
+通知を送信する場合は、次の例に示すように Notification Hubs SDK の [ScheduledNotification](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) クラスを使用します。
 
     Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
     var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
 
-Also, you can cancel a previously scheduled notification using its notificationId:
+また、既にスケジュール設定されている通知を、その notificationId を使用して取り消すこともできます。
 
     await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
-There are no limits on the number of scheduled notifications you can send.
+スケジュール設定された、送信可能な通知の数に制限はありません。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

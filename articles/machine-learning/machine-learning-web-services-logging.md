@@ -1,19 +1,23 @@
 ---
-title: Machine Learning Web サービスのログ記録 | Microsoft Docs
-description: Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
+title: "Machine Learning Web サービスのログ記録 | Microsoft Docs"
+description: "Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: raymondlaghaeian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 01/12/2017
 ms.author: raymondl;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
+
 
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Machine Learning Web サービスのログ記録の有効化
@@ -60,6 +64,9 @@ Azure のストレージ アカウントを探索できる複数のツールを�
 * score/requests (スコア/要求)  
 * score/init (スコア/初期化)  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

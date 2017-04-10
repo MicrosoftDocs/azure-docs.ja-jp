@@ -4,7 +4,7 @@ description: "分析およびプッシュ通知で Mobile Engagement の配布�
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e3d6caee50a57648f4f775029a2e381cee0f1e72
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -49,7 +50,7 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 
 統合に基づいて、アプリケーションが発行されると、マーケティング担当者はリアルタイムで分析を参照し、対象ユーザーをセグメント化してから、スマート ターゲット プッシュ通知の送信を開始してアプリの内外でエンド ユーザーと情報交換できるようになります。
 
-### <a name="usecases-to-get-started"></a>開始のユース ケース
+### <a name="use-cases-to-get-started"></a>開始のユース ケース
 1. ようこそ戦略: 最初のセッションから 2/5/10/15 日後に再び関心を引き、最初の実行のリテンション期間を延ばすために、アプリケーションの起動時にエンド ユーザーの行動に基づいていくつかのプッシュ通知キャンペーンを作成します。
 2. エンド ユーザーの行動に基づいて新しいコンテンツ (機能、記事/ビデオ、製品) をプロモートして、関心を引く可能性の高い情報だけをエンド ユーザーに送信します。
 3. アプリケーションの評価: ストアでアプリを 5 つ星として評価する可能性が最も高い、ユーザー ベースの 1% 未満を対象とします。
@@ -66,13 +67,13 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 > 
 > 
 
-### <a name="usecases-and-best-practices"></a>ユース ケースとベスト プラクティス
+### <a name="use-cases-and-best-practices"></a>ユース ケースとベスト プラクティス
 以降のセクションでは、作業の開始に役立てるために、弊社のお客様から報告された主要なユース ケースについて簡単に説明します。
 
 #### <a name="media"></a>メディア
 エンド ユーザーによって使用されるコンテンツの種類を収集し、この行動に基づいて対象ユーザーをセグメント化して、特定のタイプのコンテンツのターゲットを、それを使用する可能性の高い対象ユーザーのみに設定します。 ユーザー ベース全体へのスパムは回避し、リテンション期間を向上させます。
 
-#### <a name="mcommerce"></a>M コマース
+#### <a name="m-commerce"></a>M コマース
 アプリケーションおよび対象ユーザー内で最もアクセスの多かった製品カテゴリを収集し、エンド ユーザーが購入する可能性の高い、そのカテゴリ内の割引または新製品をプロモートします。 収益の向上を目指します。 この場合も、目標はスパムをしないことです。
 
 #### <a name="gaming"></a>ゲーム
@@ -130,10 +131,5 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 <!-- URLs. -->
 [Mobile Engagement の概念]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
 [チュートリアル]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

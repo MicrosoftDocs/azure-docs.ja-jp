@@ -1,19 +1,24 @@
 ---
-title: Windows Server および Linux での Azure Service Fabric クラスターの作成 | Microsoft Docs
-description: Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。
+title: "Windows Server および Linux での Azure Service Fabric クラスターの作成 | Microsoft Docs"
+description: "Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。"
 services: service-fabric
 documentationcenter: .net
 author: Chackdan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 03/08/2017
 ms.author: chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
+ms.lasthandoff: 12/14/2016
+
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Windows Server または Linux での Service Fabric クラスターの作成
@@ -26,7 +31,7 @@ Azure でのクラスターの作成は、リソース モデル テンプレー
 クラスターは、次のオペレーティング システムが実行されている VM 上に作成できます。
 
 * Windows Server 2012 R2
-* Windows Server 2016 (一般公開として発表された後)
+* Windows Server 2016 
 * Linux Ubuntu 16.04 (パブリック プレビュー中) 
 
 ## <a name="create-service-fabric-standalone-clusters-on-premise-or-with-any-cloud-provider"></a>オンプレミスまたはクラウド プロバイダーでの Service Fabric スタンドアロン クラスターの作成
@@ -34,7 +39,7 @@ Service Fabric には、オンプレミスまたは任意のクラウド プロ�
 
 Windows Server におけるスタンドアロン Service Fabric クラスターのセットアップの詳細については、 [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 
-### <a name="any-cloud-deployments-vs.-on-premises-deployments"></a>クラウドのデプロイとオンプレミスのデプロイの比較
+### <a name="any-cloud-deployments-vs-on-premises-deployments"></a>クラウドのデプロイとオンプレミスのデプロイの比較
 オンプレミスに Service Fabric クラスターを作成するプロセスは、一連の VM がある任意のクラウド上にクラスターを作成するプロセスとほぼ同じです。 VM をプロビジョニングするための最初の手順は、使用しているクラウド プロバイダーまたはオンプレミス環境に左右されます。 一連の VM を相互にネットワーク接続できる状態にした後は、Service Fabric パッケージの設定、クラスター設定の編集、クラスターの作成と管理のスクリプトの実行の手順はオンプレミスの場合と同じです。 これにより、新しいホスティング環境の使用を決めたときにも、Service Fabric クラスターの運用と管理の経験を活かすことができます。
 
 ### <a name="benefits-of-creating-standalone-service-fabric-clusters"></a>スタンドアロンの Service Fabric クラスターを作成する利点
@@ -49,7 +54,7 @@ Windows Server におけるスタンドアロン Service Fabric クラスター�
 クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます。
 
 * Windows Server 2012 R2
-* Windows Server 2016 (一般公開として発表された後)
+* Windows Server 2016 
 * Linux (近日対応予定)
 
 ## <a name="advantages-of-service-fabric-clusters-on-azure-over-standalone-service-fabric-clusters-created-on-premises"></a>オンプレミスに作成されたスタンドアロンの Service Fabric クラスターと比較した場合の Azure 上の Service Fabric クラスターのメリット
@@ -63,10 +68,9 @@ Windows Server におけるスタンドアロン Service Fabric クラスター�
 * **自動スケール** : Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 
-Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
-
-<!--HONumber=Oct16_HO2-->
+* Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
+* Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
+* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 

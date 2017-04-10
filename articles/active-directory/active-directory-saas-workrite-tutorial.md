@@ -1,231 +1,221 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Workrite | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Workrite.
+title: "チュートリアル: Azure Active Directory と Workrite の統合 | Microsoft Docs"
+description: "Azure Active Directory と Workrite の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2a5c2956-a011-4d5c-877b-80679b6587b5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 02/26/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: a410fb385ed2960139987a71236b7f84a32c8099
+ms.openlocfilehash: 5e640983825fb521a00b84518eca76f007224269
+ms.lasthandoff: 03/01/2017
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-workrite"></a>Tutorial: Azure Active Directory integration with Workrite
-The objective of this tutorial is to show you how to integrate Workrite with Azure Active Directory (Azure AD).  
-Integrating Workrite with Azure AD provides you with the following benefits: 
+# <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル: Azure Active Directory と Workrite の統合
+このチュートリアルの目的は、Workrite と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-* You can control in Azure AD who has access to Workrite 
-* You can enable your users to automatically get signed-on to Workrite (Single Sign-On) with their Azure AD accounts
-* You can manage your accounts in one central location - the Azure classic portal
+Workrite と Azure AD の統合には、次の利点があります。 
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+* Workrite にアクセスする Azure AD ユーザーを制御できます。 
+* ユーザーが自分の Azure AD アカウントで自動的に Workrite にシングル サインオンできるようにします
+* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-## <a name="prerequisites"></a>Prerequisites
-To configure Azure AD integration with Workrite, you need the following items:
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-* An Azure AD subscription
-* A Workrite single-sign on enabled subscription
+## <a name="prerequisites"></a>前提条件
+Azure AD と Workrite の統合を構成するには、次のものが必要です。
 
-> [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+* Azure AD サブスクリプション
+* Workrite でのシングル サインオン (SSO) が有効なサブスクリプション
+
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
-> 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-* You should not use your production environment, unless this is necessary.
-* If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+* 必要な場合を除き、運用環境は使用しないでください。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。 
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of three main building blocks:
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。
 
-1. Adding Workrite from the gallery 
-2. Configuring and testing Azure AD single sign-on
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-## <a name="adding-workrite-from-the-gallery"></a>Adding Workrite from the gallery
-To configure the integration of Workrite into Azure AD, you need to add Workrite from the gallery to your list of managed SaaS apps.
+1. ギャラリーからの Workrite の追加 
+2. Azure AD SSO の構成とテスト
 
-**To add Workrite from the gallery, perform the following steps:**
+## <a name="adding-workrite-from-the-gallery"></a>ギャラリーからの Workrite の追加
+Azure AD への Workrite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Workrite を追加する必要があります。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+**ギャラリーから Workrite を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
    
     ![Active Directory][1]
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![Applications][2]
-4. Click **Add** at the bottom of the page.
+    ![[アプリケーション]][2]
+4. ページの下部にある **[追加]** をクリックします。
    
-    ![Applications][3]
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+    ![アプリケーション][3]
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
-    ![Applications][4]
-6. In the search box, type **Workrite**.
+    ![アプリケーション][4]
+6. [検索] ボックスに、「 **Workrite**」と入力します。
    
-    ![Applications][5]
-7. In the results pane, select **Workrite**, and then click **Complete** to add the application.
+    ![アプリケーション][5]
+7. 結果ウィンドウで **[Workrite]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
-    ![Applications][500]
+    ![アプリケーション][500]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Workrite based on a test user called "Britta Simon".
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Workrite で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Workrite to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Workrite needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Workrite.
+SSO を機能させるには、Azure AD ユーザーに対応する Workrite ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Workrite の関連ユーザーの間で、リンク関係が確立されている必要があります。  
 
-To configure and test Azure AD single sign-on with Workrite, you need to complete the following building blocks:
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、Workrite の **[Username]** の値として割り当てることで確立されます。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a Workrite test user](#creating-a-halogen-software-test-user)** - to have a counterpart of Britta Simon in Workrite that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+Workrite で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Workrite application.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Workrite テスト ユーザーの作成](#creating-a-halogen-software-test-user)** - Workrite で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-**To configure Azure AD single sign-on with Workrite, perform the following steps:**
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD の SSO を有効にすることと、Workrite アプリケーションで SSO を構成することです。
 
-1. In the Azure classic portal, on the **Workrite** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-   
-    ![Configure Single Sign-On][6] 
-2. On the **How would you like users to sign on to Workrite** page, select **Azure AD Single Sign-On**, and then click **Next**.
-   
-    ![Azure AD Single Sign-On][7] 
-3. On the **Configure App Settings** dialog page, perform the following steps:
-   
-    ![Azure AD Single Sign-On][8] 
-   
-     a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Workrite site (e.g.: *https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=1a82b5aa-4dd6-4472-9721-7d0193f59e22*).
-   
-   > [!NOTE]
-   > Please contact your Workrite support team [support@workrite.co.uk](mailto:support@workrite.co.uk) if you don't know the value of the Sign On URL.
-   > 
-   > 
-   
-     b. Click **Next**.
-4. On the **Configure single sign-on at Workrite** page, perform the following steps:
-   
-    ![Azure AD Single Sign-On][9] 
-   
-    a. Click Download certificate, and then save the file on your computer.
-   
-    b. Contact your Workrite support team [support@workrite.co.uk](mailto:support@workrite.co.uk), peovide them with the downloaded certificate, the **Issuer URL** (Entity ID), the **Single Sign-On Service URL**, the **Single Sign-Out URL**, and then ask them to setup SSO for your Workrite app. 
-   
-    c. Click **Next**.
-5. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
-   
-    ![Azure AD Single Sign-On][10]
-6. On the **Single sign-on confirmation** page, click **Complete**.  
-   
-    ![Azure AD Single Sign-On][11]
+**Workrite で Azure AD SSO を構成するには、次の手順に従います。**
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
+1. Azure クラシック ポータルの **Workrite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+   
+    ![[シングル サインオンの構成]][6] 
+2. **[ユーザーの Workrite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+   
+    ![Azure AD のシングル サインオン][7] 
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+   
+    ![Azure AD のシングル サインオン][8] 
+  1. **[サインオン URL]** ボックスに、ユーザーが Workrite サイトへのサインオンに使用する URL (例: *https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=1a82b5aa-4dd6-4472-9721-7d0193f59e22*) を入力します。
 
-![Create Azure AD User][20]
+    >[!NOTE]
+    >サインオン URL の値がわからない場合は、Workrite サポート チーム ( [support@workrite.co.uk](mailto:support@workrite.co.uk) ) に問い合わせてください。 
+    >   
+  2. **[次へ]**をクリックします。
+4. **[Workrite でのシングル サインオンの構成]** ページで、次の手順を実行します。
+   
+    ![Azure AD のシングル サインオン][9] 
+ 1. [証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。  
+ 2. Workrite サポート チーム ([support@workrite.co.uk](mailto:support@workrite.co.uk)) に連絡して、ダウンロードした証明書、**発行者の URL** (エンティティ ID)、**シングル サインオン サービス URL**、**シングル サインアウト URL** を提供し、Workrite アプリの SSO のセットアップを依頼します。  
+ 3. **[次へ]**をクリックします。
+5. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。 
+   
+    ![Azure AD のシングル サインオン][10]
+6. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
+   
+    ![Azure AD のシングル サインオン][11]
 
-**To create a test user in Azure AD, perform the following steps:**
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。  
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_09.png)  
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png) 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png) 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_05.png)  
-   
-    a. As Type Of User, select New user in your organization.
-   
-    b. In the User Name **textbox**, type **BrittaSimon**.
-   
-    c. Click **Next**.
-6. On the **User Profile** dialog page, perform the following steps: 
-   
-   ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_06.png) 
-   
-   a. In the **First Name** textbox, type **Britta**.  
-   
-   b. In the **Last Name** textbox, type, **Simon**.
-   
-   c. In the **Display Name** textbox, type **Britta Simon**.
-   
-   d. In the **Role** list, select **User**.
-   e. Click **Next**.
-7. On the **Get temporary password** dialog page, click **create**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_07.png) 
-8. On the **Get temporary password** dialog page, perform the following steps:
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-workrite-tutorial/create_aaduser_08.png) 
-   
-    a. Write down the value of the **New Password**.
-   
-    b. Click **Complete**.   
+![Azure AD ユーザーの作成][20]
 
-### <a name="creating-a-workrite-test-user"></a>Creating a Workrite test user
-The objective of this section is to create a user called Britta Simon in Workrite.
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-**To create a user called Britta Simon in Workrite, perform the following steps:**
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_09.png)  
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_03.png) 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。 
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_05.png)  
+ 1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。  
+ 2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。 
+ 3. **[次へ]**をクリックします。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
+   
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_06.png)  
+ 1. **[名]** ボックスに「**Britta**」と入力します。   
+ 2. **[姓]** ボックスに「**Simon**」と入力します。 
+ 3. **[表示名]** ボックスに「**Britta Simon**」と入力します。 
+ 4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+ 5. **[次へ]**をクリックします。
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_07.png) 
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_08.png)  
+ 1. **[新しいパスワード]** の値を書き留めます。  
+ 2. ページの下部にある **[完了]**」を参照してください。   
 
-1. Sign on to your workrite company site as administrator.
-2. In the navigation pane, click **Admin**.
-   
-    ![Assign User][400]
-3. Go to Quick Links, and then click **Create User**. 
-   
-    ![Assign User][401]
-4. On the **Create User** dialog, perform the following steps:
-   
-    ![Assign User][402]
-   
-    a. Type the **Email**, the **First Name** and the **Surname** of a valid Azure AD user you want to provision.
-   
-    b. Select **Client Administrator** as **Choose Role**. 
-   
-    c. Click **Save**.   
+### <a name="create-a-workrite-test-user"></a>Workrite テスト ユーザーの作成
+このセクションの目的は、Workrite で Britta Simon というユーザーを作成することです。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Workrite.
+**Workrite で Britta Simon というユーザーを作成するには、次の手順に従います。**
+
+1. Workrite 企業サイトに管理者としてサインオンします。
+2. ナビゲーション ウィンドウで **[Admin]**をクリックします。
+   
+    ![ユーザーの割り当て][400]
+3. クイック リンクに移動し、 **[Create User]**をクリックします。 
+   
+    ![ユーザーの割り当て][401]
+4. **[Create User]** ダイアログで、次の手順に従います。
+   
+    ![ユーザーの割り当て][402]
+ 1. プロビジョニングする有効な Azure AD ユーザーの**電子メール**、**名**、**姓**を入力します。  
+ 2. **[ロールの選択]** で **[クライアント管理者]** を選択します。  
+ 3. **[保存]**をクリックします。   
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に Workrite へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
     ![Assign User][200] 
 
-**To assign Britta Simon to Workrite, perform the following steps:**
+**Workrite に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![Assign User][201] 
-2. In the applications list, select **Workrite**.
+    ![ユーザーの割り当て][201] 
+2. アプリケーションの一覧で **[Workrite]**を選択します。
    
-    ![Assign User][202] 
-3. In the menu on the top, click **Users**.
+    ![ユーザーの割り当て][202] 
+3. 上部のメニューで **[ユーザー]**をクリックします。
    
-    ![Assign User][203] 
-4. In the Users list, select **Britta Simon**.
-5. In the toolbar on the bottom, click **Assign**.
+    ![ユーザーの割り当て][203] 
+4. ユーザーの一覧で **[Britta Simon]**を選択します。
+5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
-    ![Assign User][205]
+    ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Workrite tile in the Access Panel, you should get automatically signed-on to your Workrite application.
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
 
-## <a name="additional-resources"></a>Additional Resources
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+アクセス パネルで [Workrite] タイルをクリックすると、自動的に Workrite アプリケーションにサインオンします。
+
+## <a name="additional-resources"></a>その他のリソース
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -258,10 +248,5 @@ When you click the Workrite tile in the Access Panel, you should get automatical
 
 
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
 
 

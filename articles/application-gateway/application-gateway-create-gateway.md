@@ -4,44 +4,47 @@ description: "このページでは、Azure Application Gateway を作成、構�
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 11/10/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 996bac38e6b67cfe7b72e11bf29831b12086bf1b
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-start-or-delete-an-application-gateway"></a>Application Gateway の作成、起動、または削除
+# <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>PowerShell を使用した Application Gateway の作成、起動、または削除 
+
 > [!div class="op_single_selector"]
-> * [Azure App Service で Java Web アプリ](application-gateway-create-gateway-portal.md)
+> * [Azure ポータル](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
+Azure Application Gateway はレイヤー&7; のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「 [Application Gateway の概要](application-gateway-introduction.md)
 
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
+
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。 **ダウンロード ページ** の [Windows PowerShell](https://azure.microsoft.com/downloads/)セクションから最新バージョンをダウンロードしてインストールできます。
 2. 既存の仮想ネットワークがある場合は、既存の空のサブネットを選択するか、既存の仮想ネットワークにアプリケーション ゲートウェイ専用の新しいサブネットを作成します。 vnet ピアリングを使用していない限り、アプリケーション ゲートウェイの背後にデプロイするリソースとは異なる仮想ネットワークに、アプリケーション ゲートウェイをデプロイすることはできません。 詳細については、「[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください
 3. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。 仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。 Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
 4. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内にエンドポイントが作成されているか、割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Application Gateway の作成に必要な構成
-**New-AzureApplicationGateway** コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成します。
+
+`New-AzureApplicationGateway` コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成します。
 
 値は次のとおりです。
 
@@ -52,6 +55,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 * **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+
 Application Gateway を作成するには:
 
 1. Application Gateway のリソースを作成します。
@@ -60,13 +64,12 @@ Application Gateway を作成するには:
 
 > [!NOTE]
 > アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、 [PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-classic-ps.md)に関するページを参照してください。 詳細については、 [カスタム プローブと正常性監視](application-gateway-probe-overview.md) に関するページを参照してください。
-> 
-> 
 
 ![Scenario example][scenario]
 
 ### <a name="create-an-application-gateway-resource"></a>アプリケーション ゲートウェイのリソースの作成
-ゲートウェイを作成するには、 **New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。 この時点ではゲートウェイの課金は開始されません。 課金は後の手順でゲートウェイが正しく起動されたときに開始します。
+
+ゲートウェイを作成するには、`New-AzureApplicationGateway` コマンドレットを使用して、値を独自の値に置き換えて使用します。 この時点ではゲートウェイの課金は開始されません。 課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
 次の例では、"testvnet1" という仮想ネットワークと "subnet-1" というサブネットを使用してアプリケーション ゲートウェイを作成します。
 
@@ -76,7 +79,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
 
-ゲートウェイが作成されたことを確認するには、 **Get-AzureApplicationGateway** コマンドレットを使用します。
+ゲートウェイが作成されたことを確認するには、`Get-AzureApplicationGateway` コマンドレットを使用します。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -96,18 +99,19 @@ DnsName       :
 
 > [!NOTE]
 > *InstanceCount* の既定値は 2、最大値は 10 です。 *GatewaySize* の既定値は Medium です。 Small、Medium、Large から選択します。
-> 
-> 
 
 ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ## <a name="configure-the-application-gateway"></a>Application Gateway の構成
+
 Application Gateway は、XML または構成オブジェクトを使用して構成できます。
 
 ## <a name="configure-the-application-gateway-by-using-xml"></a>XML を使用して Application Gateway を構成する
+
 次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。  
 
 ### <a name="step-1"></a>手順 1
+
 次のテキストをメモ帳にコピーします。
 
 ```xml
@@ -159,8 +163,6 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 > [!IMPORTANT]
 > プロトコル項目 HTTP または HTTPS は、大文字小文字を区別します。
-> 
-> 
 
 次の例では、構成ファイルを使用してアプリケーション ゲートウェイを設定する方法を示します。 この例では、パブリック ポート 80 で HTTP トラフィックの負荷分散を行い、2 つの IP アドレスの間のバックエンド ポート 80 にネットワーク トラフィックを送信します。
 
@@ -210,21 +212,22 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 ```
 
 ### <a name="step-2"></a>手順 2.
-次に、Application Gateway を設定します。 **Set-AzureApplicationGatewayConfig** コマンドレットと構成 XML ファイルを使用します。
+
+次に、Application Gateway を設定します。 `Set-AzureApplicationGatewayConfig` コマンドレットと構成 XML ファイルを使用してください。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
 ## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>構成オブジェクトを使用して Application Gateway を構成する
-次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。 すべての構成項目は個別に構成した後に、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。 構成オブジェクトを作成したら、 **Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+
+次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。 すべての構成項目は個別に構成した後に、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。 構成オブジェクトを作成したら、`Set-AzureApplicationGateway` コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
 
 > [!NOTE]
-> 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。 個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
-> 
-> 
+> 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。 個々の項目を作成する最初の行では、どの `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` を使用するかを定義しています。
 
 ### <a name="step-1"></a>手順 1
+
 すべての個別の構成項目を作成します。
 
 次の例で示すように、フロントエンド IP を作成します。
@@ -295,6 +298,7 @@ $rule.BackendAddressPool = "pool1"
 ```
 
 ### <a name="step-2"></a>手順 2.
+
 Application Gateway の構成オブジェクト ($appgwconfig) にすべての個別の構成項目を割り当てます。
 
 フロントエンド IP を構成に追加します。
@@ -340,26 +344,26 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>手順 3.
-**Set-AzureApplicationGatewayConfig**を使用して、アプリケーション ゲートウェイのリソースに構成オブジェクトをコミットします。
+`Set-AzureApplicationGatewayConfig` を使用して、アプリケーション ゲートウェイのリソースに構成オブジェクトをコミットします。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
 ## <a name="start-the-gateway"></a>ゲートウェイの起動
-ゲートウェイを構成したら、 **Start-AzureApplicationGateway** コマンドレットを使用してゲートウェイを起動します。 Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
+
+ゲートウェイを構成したら、 `Start-AzureApplicationGateway` コマンドレットを使用してゲートウェイを起動します。 Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
 
 > [!NOTE]
-> **Start-AzureApplicationGateway** コマンドレットは、終了までに最大で 15 ～ 20 分かかる場合があります。
-> 
-> 
+> `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
 
 ```powershell
 Start-AzureApplicationGateway AppGwTest
 ```
 
 ## <a name="verify-the-gateway-status"></a>ゲートウェイの状態の確認
-**Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイの状態を確認します。 前の手順で **Start-AzureApplicationGateway** が成功した場合、*State* は Running になり、*Vip* と *DnsName* に有効な値が入ります。
+
+`Get-AzureApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。 前の手順で `Start-AzureApplicationGateway` が成功した場合、*State* は Running になり、*Vip* と *DnsName* に有効な値が入ります。
 
 次の例では、起動に成功し、実行中で、 `http://<generated-dns-name>.cloudapp.net`方向のトラフィックを受け入れる準備が完了しているアプリケーション ゲートウェイを示します。
 
@@ -382,13 +386,14 @@ DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
 ## <a name="delete-an-application-gateway"></a>Application Gateway の削除
+
 Application Gateway を削除するには:
 
-1. ゲートウェイを停止するには、 **Stop-AzureApplicationGateway** コマンドレットを使用します。
-2. ゲートウェイを削除するには、 **Remove-AzureApplicationGateway** コマンドレットを使用します。
-3. **Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
+1. `Stop-AzureApplicationGateway` コマンドレットを使用してゲートウェイを停止します。
+2. `Remove-AzureApplicationGateway` コマンドレットを使用してゲートウェイを削除します。
+3. `Get-AzureApplicationGateway` コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
-次の例の最初の行は **Stop-AzureApplicationGateway** コマンドレットを示し、その後に出力が続きます。
+このサンプルの最初の行は `Stop-AzureApplicationGateway` コマンドレットを示し、その後に出力が続きます。
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -402,7 +407,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-アプリケーション ゲートウェイが停止状態になったら、 **Remove-AzureApplicationGateway** コマンドレットを使用してサービスを削除します。
+アプリケーション ゲートウェイが停止状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -416,7 +421,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-サービスが削除されたことを確認するには、 **Get-AzureApplicationGateway** コマンドレットを使用します。 この手順は必須ではありません。
+サービスが削除されていることを確認するには、`Get-AzureApplicationGateway` コマンドレットを使用します。 この手順は必須ではありません。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -430,6 +435,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 SSL オフロードを構成する場合は、 [SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 
 内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「 [内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
@@ -440,9 +446,4 @@ SSL オフロードを構成する場合は、 [SSL オフロード用のアプ�
 * [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 [scenario]: ./media/application-gateway-create-gateway/scenario.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

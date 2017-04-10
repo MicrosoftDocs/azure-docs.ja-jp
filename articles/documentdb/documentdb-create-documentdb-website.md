@@ -1,19 +1,23 @@
 ---
-title: Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Docs
-description: Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。
+title: "テンプレートを使用して Web アプリをデプロイする - Azure DocumentDB | Microsoft Docs"
+description: "Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。"
 services: documentdb, app-service\web
 author: h0n
 manager: jhubbard
 editor: monicar
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 12/08/2016
 ms.author: hawong
+translationtype: Human Translation
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
+
 
 ---
 # <a name="deploy-documentdb-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
@@ -38,7 +42,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 * Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
-## <a name="<a-id="createdb"></a>step-1:-download-the-template-files"></a><a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
+## <a name="a-idcreatedbastep-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
 
 1. [DocumentDB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)のテンプレートを、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードします。 このテンプレートでは、DocumentDB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
@@ -46,7 +50,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 <a id="Build"></a>
 
-## <a name="step-2:-deploy-the-documentdb-account,-app-service-web-app-and-demo-application-sample"></a>手順 2: DocumentDB アカウント、App Service Web アプリ、デモ アプリケーション サンプルをデプロイする
+## <a name="step-2-deploy-the-documentdb-account-app-service-web-app-and-demo-application-sample"></a>手順 2: DocumentDB アカウント、App Service Web アプリ、デモ アプリケーション サンプルをデプロイする
 では、最初のテンプレートをデプロイしましょう。
 
 > [!TIP]
@@ -54,7 +58,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、[New](新規.md) をクリックし、「テンプレートのデプロイ」を検索します。
+1. [Azure ポータル](https://portal.azure.com)にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 2. [テンプレートのデプロイ] を選択し、**[作成]** 
      ![[テンプレートのデプロイメント UI のスクリーンショット]](./media/documentdb-create-documentdb-website/TemplateDeployment2.png) をクリックします。
@@ -69,6 +73,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
+
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -86,7 +91,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 <a id="Build"></a> 
 
-## <a name="step-3:-deploy-the-document-account-and-web-app-sample"></a>手順 3: Document アカウントと Web アプリのサンプルのデプロイ
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>手順 3: Document アカウントと Web アプリのサンプルのデプロイ
 では、2 番目のテンプレートをデプロイしましょう。  このテンプレートは、アカウント エンドポイントやマスター キーなどの DocumentDB 接続情報を、アプリケーション設定またはカスタム接続文字列として Web アプリに導入する方法を理解するのに役立ちます。 たとえば、DocumentDB アカウントを使用してデプロイする独自の Web アプリケーションがあり、接続情報をデプロイ時に自動的に設定するような場合があります。
 
 > [!TIP]
@@ -109,6 +114,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
       
       ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
+
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -117,6 +123,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]** 
      ![[リソース グループのスクリーンショット]](./media/documentdb-create-documentdb-website/TemplateDeployment9.png) をクリックします。  
 9. DocumentDB エンドポイントおよびそれぞれの DocumentDB マスター キーに関するアプリケーションの設定がどのように表示されているかを確認します。
+
     ![アプリケーションの設定のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
 10. 引き続き、Azure ポータルの操作を確認したり、DocumentDB の [サンプル](http://go.microsoft.com/fwlink/?LinkID=402386) に従って独自の DocumentDB アプリケーションを作成したり、自由に試してみてください。
 
@@ -129,7 +136,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 * Azure App Service Web Apps の詳細については、 [ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 * Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
-## <a name="what's-changed"></a>変更内容
+## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 * 以前のポータルから新しいポータルへの変更ガイドについては、「 [Azure クラシック ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
@@ -138,6 +145,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO4-->
 
 

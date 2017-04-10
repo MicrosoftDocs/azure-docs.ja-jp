@@ -1,192 +1,97 @@
 ---
-title: Cortana Intelligence ギャラリー | Microsoft Docs
-description: Cortana Intelligence ギャラリーの分析ソリューションなどを共有して検出します。他のユーザーを参考にしてコミュニティに投稿を行います。
+title: "Cortana Intelligence ギャラリー | Microsoft Docs"
+description: "Cortana Intelligence ギャラリーの分析リソースなどを共有して検出します。 他のユーザーを参考にしてコミュニティに投稿を行います。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 03/31/2017
 ms.author: roopalik;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: db1ccf3a2dfecb7b30e38a614a1f5454c2a012ca
+ms.lasthandoff: 11/17/2016
+
 
 ---
-# Cortana Intelligence ギャラリーでソリューションを共有および発見する
-Cortana Intelligence ギャラリーは、製品の Cortana Intelligence Suite セットを使用して構築されたソリューションの検出および共有を行うための、コミュニティ駆動型サイトです。ここではユーザーが他のユーザーを参考にして独自のソリューションの開発を始めたり、自分のソリューションを高度な分析のコミュニティに投稿したりできます。
+# <a name="share-and-discover-resources-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでリソースを共有および発見する
+[!INCLUDE [gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
-**[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
+<!-- separating these 2 includes -->
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## ギャラリーではどのようなものが見つかるのですか。
+## <a name="what-can-i-find-in-the-gallery"></a>ギャラリーではどのようなものが見つかるのですか。
 Cortana Intelligence ギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
 
-* **[実験](https://gallery.cortanaintelligence.com/experiments)**: ギャラリーには、Azure Machine Learning Studio で開発されたさまざまな実験が含まれています。特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
-* **[Jupyter Notebook](https://gallery.cortanaintelligence.com/notebooks)**: Jupyter Notebook には、単一の対話型のキャンバスに、コード、データの視覚化、およびドキュメントが含まれています。ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
-* **[Machine Learning API](https://gallery.cortanaintelligence.com/machineLearningAPIs)**: Azure Machine Learning で開発したソリューションは、REST API のセットを使用して他のユーザーが分析モデルにアクセスできるように、Web サービスとして起動できます。製品リコメンデーション エンジンやクラウド ベースの顔認識と音声認識など、これに該当するさまざまなソリューションをギャラリーで利用できます。
-* **[ソリューション テンプレート](https://gallery.cortanaintelligence.com/solutionTemplates)**: ソリューション テンプレートは、業界固有の問題に対する完全なエンド ツー エンド ソリューションを迅速に構築する開始点になります。このテンプレートには、広範なドキュメントや、独自のソリューションに取り組むために必要なすべてのツールが含まれています。
-* **[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
+* **[実験](machine-learning-gallery-experiments.md)**: ギャラリーには、Azure Machine Learning Studio で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
+* **[Jupyter Notebook](machine-learning-gallery-jupyter-notebooks.md)**: Jupyter Notebook には、単一の対話型のキャンバスに、コード、データの視覚化、およびドキュメントが含まれています。
+  ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
+
+<!--
+- **[Machine Learning APIs](https://machine-learning-gallery-apis.md)** - An experiment developed in Azure Machine Learning can be launched as a web service so that the analytics model can be accessed by others through a set of REST APIs. A variety of these APIs are available in the Gallery, such as a product recommendation engine or cloud-based face and speech recognition.
+-->
+
+* **[ソリューション](machine-learning-gallery-solutions.md)**: 構成済みのソリューション、参照アーキテクチャ、およびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築します。 含まれる手順または機能的なパートナーによって、独自のものにします。
+* **[チュートリアル](machine-learning-gallery-tutorials.md)**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 
 これらの基本的なギャラリー リソースは、いくつかの異なる方法で論理的にグループ化できます。
 
-* **[コレクション](https://gallery.cortanaintelligence.com/collections)**: コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー項目をグループ化できます。
-* **[業界固有のソリューション](https://gallery.cortanaintelligence.com/industries)**: ギャラリーの [Industries (業界)] セクションでは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
+* **[コレクション](machine-learning-gallery-collections.md)**: コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー項目をグループ化できます。
+* **[業界](machine-learning-gallery-industries.md)**: ギャラリーの [業界] セクションでは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
 
-最後に、**[コンペティション](https://gallery.cortanaintelligence.com/competitions)**では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
+最後に、**[コンペティション](machine-learning-gallery-competitions.md)**では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
 
-## ギャラリーを使用するにはどうすればよいですか。
-誰でもギャラリーでソリューションを参照および検索して他のユーザーから学ぶことができます。Microsoft アカウントを使用してログインしている場合は、自分の Machine Learning Studio ワークスペースにダウンロードすることもでき、ギャラリーに自分のソリューションを投稿できます。
+![Cortana Intelligence ギャラリーのホーム ページ](media/machine-learning-gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
-### 検出して学ぶ
-Microsoft と高度な分析のコミュニティから投稿されているさまざまな種類のソリューションを検索および閲覧します。これらを使用すると、独自のデータ分析の問題をすばやく解決できます。
+## <a name="discover-and-learn"></a>検出して学ぶ
+Microsoft と高度な分析のコミュニティから投稿されているギャラリー内のさまざまな種類のリソースは、すべての人が検索して閲覧できます。
+これらを使用すると、詳細を確認して、独自のデータ分析の問題をすばやく解決できます。
+実験と Jupyter Notebook を Machine Learning Studio ワークスペースにダウンロードすることもできます。
 
-最近公開された人気のあるソリューションをギャラリーで簡単に見つけたり、名前、タグ、アルゴリズム、その他の属性で検索したりできます。いずれかのタイルにある作成者の名前をクリックして、特定の作成者からの投稿を閲覧できます。
-
+最近公開された人気のあるリソースをギャラリーで簡単に見つけたり、名前、タグ、アルゴリズム、その他の属性で検索したりできます。
 ギャラリー ヘッダーの **[Browse all (すべてを参照)]** をクリックしてからページ左側で絞り込み検索を選択し、ページ上部に検索語句を入力します。
 
-各ソリューションのページにあるコメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚と興味があるソリューションを共有することもできます。また、ソリューションのページへのリンクをメールで送信して他のユーザーを招待することもできます。
+いずれかのタイルにある作成者の名前をクリックして、特定の作成者からの投稿を閲覧できます。
 
-### 実験をダウンロードする
-Cortana Intelligence ギャラリーは、1 回のクリックで予測分析の実験を自分の Machine Learning Studio ワークスペースに簡単にコピーでき、目的に合わせてすぐにカスタマイズと使用を開始できます。閲覧中にまだサインインしていない場合は、実験をワークスペースにコピーする前に、Microsoft アカウントを使用してサインインするように求められます。
+![作成者の投稿を閲覧する](media/machine-learning-gallery-how-to-use-contribute-publish/view-by-author.png)
 
-### 実験とコレクションを投稿する
-サインインすると、ギャラリー コミュニティのメンバーになります。これにより、独自の実験やコレクションを投稿して、あなたが見つけたソリューションを他のユーザーが利用できるようになります。
+各リソースのページにあるコメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。
+LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚と興味があるリソースを共有することもできます。
+また、こうしたリソースのページへのリンクをメールで送信して、他のユーザーを招待することもできます。
 
-良質のギャラリー投稿物を作成する方法に関する詳細やヒントについては、後述の「[公開および良質なドキュメントに関する提案](#suggestions-for-publishing-and-for-quality-documentation)」セクションを参照してください。
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/comment-and-share.png)
 
-#### 実験を投稿する
-*実験*は、データとさまざまな分析モジュールを組み合わせることで予測分析モデルを構築できるようにする、Machine Learning Studio のキャンバスです。さまざまなアイデアを取り入れ、試行して、最終的には Azure の Web サービスとしてモデルを公開できます。簡単な実験を作成する例については、「[Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](machine-learning-create-experiment.md)」を参照してください。予測分析ソリューションの作成のより詳しいチュートリアルについては、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」を参照してください。
+## <a name="contribute-to-the-gallery"></a>ギャラリーに投稿する
+サインインすると、ギャラリー コミュニティのメンバーになります。 これにより、独自のギャラリー項目を投稿して、あなたが見つけたソリューションを他のユーザーが利用できるようになります。
 
-この手順に従って、実験を Cortana Intelligence ギャラリーに投稿します。
+ギャラリーではあなたの投稿のビュー数とダウンロード数を確認できます。
 
-* Microsoft アカウントを使用して、Machine Learning Studio にサインインします
-* 実験を作成して実行します
-* 実験をギャラリーに公開する準備ができたら、実験キャンバスの下にある **[Publish to Gallery]** をクリックします
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/view-and-download-counts.png)
 
-実験の投稿に関する詳細とヒントについては、後述の「[Azure Machine Learning の実験を公開するためのプロセス](#process-for-publishing-azure-ml-experiments)」セクションを参照してください。
+ユーザーがコメントを追加したり、投稿をデータ サイエンス コミュニティの他のメンバーと共有したりすることもできます。
+Disqus などのディスカッション ツールを使ってログインすると、投稿のコメントに関する通知を受け取ることができます。
 
-#### コレクションを投稿する
-*コレクション*は、後で参照、使用、または共有するためにグループ化された、Cortana Intelligence Gallery の関連項目の一覧です。コレクションには、自分が所有する項目またはコミュニティから投稿されている項目を含むことができます。
+![ユーザーのコメントを確認する](media/machine-learning-gallery-how-to-use-contribute-publish/follow-comments.png)
 
-たとえば、コレクションを使用して特定のトピックの項目をグループ化したり、複雑な問題を解決する複数の手順の実験をグループ化したりできます。Microsoft から投稿された初期のコレクションは、オンライン不正行為の検出、テキストの分類、小売りの予測、予測メンテナンスといった現実世界の問題を解決する、複数手順の機械学習実験テンプレートで構成されています。
+次の項目をギャラリーに追加できます。詳細については、次のリンク先をご覧ください。
 
-次の手順に従って、コレクションを作成して Cortana Intelligence ギャラリーに投稿します。
+* **[コレクション](machine-learning-gallery-collections.md#contribute)**
+* **[実験](machine-learning-gallery-experiments.md#contribute)**
+* **[チュートリアル](machine-learning-gallery-tutorials.md#contribute)**
 
-* Microsoft アカウントを使用して、ギャラリーにサインインします
-* ウィンドウの上部にあるイメージをクリックし、ユーザー名をクリックします
-* **[新しいコレクション]** をクリックします
-* コレクションの名前、簡単な概要、説明、およびユーザーがコレクションを検索する際に役立つタグを設定します
-* コレクションを識別するためのイメージを追加します
-* **[作成]** をクリックします。
-
-これで、コレクションが Cortana Intelligence ギャラリーの一部になりました。
-
-コレクションを開き、**[編集]** をクリックし、**[項目の追加]** をクリックして、コレクションに項目を追加することができます。または、ギャラリーの閲覧中に追加したい項目が見つかった場合には、その項目を開き、 **[コレクションに追加]** をクリックして、追加先のコレクションを指定します。
-
-コレクションの概要、説明、またはタグを変更するには、コレクションを開いて **[編集]** をクリックします。コレクションを編集しているときに、隣の矢印ボタンを使用して一覧の項目を動かし、コレクションの項目の順序を変更することもできます。項目の右上隅をクリックし、**[メモの追加/編集]** を選択して、コレクションの項目にメモも追加します。
-
-<!--
-![Publish](./media/machine-learning-gallery-how-to-use-contribute-publish/publish.png)
--->
-
-## 公開および良質なドキュメントに関する提案
-* 投稿の読者は前もってデータ サイエンスの経験を持っていると想定できますが、可能な限り平易な言葉で詳しく説明することは、やはり有用です。
-* Cortana Intelligence Suite は比較的新しいため、それほど慣れていない読者も存在します。そのため、十分な情報と段階を追った説明を提供して、このような読者が実験をたどりやすい内容にしてください。
-* 実験のグラフやデータのスクリーンショットなどによる視覚化は、読者がコンテンツを適切に解釈して使用するために非常に役立ちます。ドキュメントに画像を挿入する方法の詳細については、[このコレクション](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1)を参照してください。
-* データセットが実験の一部となっていて、リーダー モジュールからインポートしていない場合、このデータセットは実験の一部であり、実験と共にギャラリーに公開されます。この理由から、公開するデータセットに、すべてのユーザーに対して共有とダウンロードを許可する適切なライセンス条項があることを確認してください。ギャラリーへの投稿は、Azure の[使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)の対象です。
-
-## Azure Machine Learning の実験を公開するためのプロセス
-ギャラリーに公開する準備ができたら、次の 5 つの手順に従います。
-
-1. タイトルとタグのフィールドを入力します。「二項分類: Twitter センチメントの解析」などのように、使用している手法または解決する現実の問題を強調したわかりやすい文言にしてください。![公開時のタイトルとタグのフィールドの入力](media/machine-learning-gallery-how-to-use-contribute-publish/experiment-description.png)
-2. コンテンツの概要を記述します。解決する問題と対処の方法について簡単に説明します。
-3. 詳細な説明のボックスを使用して、実験の個々の部分を説明します。ここで指定する有用なトピックの例を次に示します。
-   
-   * 実験グラフのスクリーンショット
-   * データ ソースと説明
-   * データ処理
-   * 特徴エンジニアリング
-   * モデルの説明
-   * 結果およびモデルのパフォーマンスの評価
-     
-     必要に応じ、マークダウンを使用して書式を設定することができます。公開されたときの外観を表示するには、プレビュー アイコンをクリックします。このコレクション内のサンプルには、含める内容と、情報の整理方法が示されています。
-     
-     > [!TIP]
-     > マークダウン編集用のボックスとプレビュー ボックスは、かなり小さいボックスです。マークダウン エディターでドキュメントを記述し、完成したドキュメントをテキスト ボックスに貼り付けることをお勧めします。実験を公開した後は、標準の Web ベース マークダウン ツールを使用して、編集とプレビュー、および必要な調整と修正を行うことができます。
-     > 
-     > 
-4. ギャラリー項目のサムネイル イメージをアップロードします。これは、ギャラリーを参照するときに、項目ページの上部および項目のタイルに表示されます。コンピューターに保存されているイメージ、またはいずれかのストック イメージを選択できます。
-5. コンテンツを一般向けに公開するのか、リンクを持つユーザーのみアクセスできるようにするのかを選択します。
-   
-   > [!TIP]
-   > 一般向けにリリースする前に、ドキュメントが適切に表示されることを確認する場合は、まず、一覧に表示しないドキュメントとして公開した後に、項目ページからパブリックに切り替えることができます。
-   > 
-   > 
-
-これで終わりです。すべて完了しました。
-
-実験をギャラリーに表示し、他のユーザーとリンクを共有できるようになりました。一般向けに公開されている場合、実験は、ギャラリーの参照と検索結果に表示されます。ログインしている間に、項目ページでドキュメントを随時編集することもできます。
-
-> [!TIP]
-> 公開した実験に変更を加えるには、Azure ML Studio で実験に戻り、変更を加え、もう一度公開します。既定では、既存の公開済みコンテンツが更新され、新規作成はされません。
-> 
-> 
-
-## ご意見をお聞かせください
-このギャラリーが、ユーザーの皆さまによって、ユーザーの皆さまのために活用されることを願っています。ギャラリーの好き嫌いについて、右側のスマイリーを使用してお聞かせください。
+## <a name="we-want-to-hear-from-you"></a>ご意見をお聞かせください
+このギャラリーが、ユーザーの皆さまによって、ユーザーの皆さまのために活用されることを願っています。 ギャラリーの好き嫌いについて、右側のスマイリーを使用してお聞かせください。  
 
 ![フィードバック](./media/machine-learning-gallery-how-to-use-contribute-publish/feedback.png)
 
-## よく寄せられる質問
-**ギャラリーに送信した実験のワークフローに変更を加えたいのですが、どのようにしたらいいですか。**
-
-現在、ギャラリーに公開済みの実験へのワークフローの更新はサポートされていません。変更した実験を新しい実験としてギャラリーに公開し、古い実験を削除することができます。マイクロソフトは、ギャラリーに投稿済みの実験に対して更新したワークフローを公開できるように、積極的に取り組んでいます。
-
-**タグや説明だけを編集する場合でも、新しい実験を公開する必要がありますか。**
-
-次の編集は、投稿済みの実験に対して変更できます。再度公開する必要はありません。
-
-* 実験名
-* 概要のテキスト
-* 説明のテキスト
-* タグ
-* イメージ
-
-これらのフィールドを編集するには、編集する特定の実験をクリックします (Microsoft アカウントでサインインしていることを確認します)。実験の詳細ページが開き、ここで編集や削除のオプションを確認できます。**[編集]** をクリックして、上記のいずれかのフィールドを編集できます。
-
-**たった今、ギャラリーに実験を公開しました。私のプロファイル画像に自分の名前が表示されていません。**
-
-あなたは @Outlook、@msn、@live、@hotmail 以外のアカウントを使用している可能性があります。その場合は、Microsoft アカウントの構成設定から、プロファイル画像の写真の代わりにプレースホルダー イメージが表示されます。Microsoft アカウントを使用して実験を再送信すると、この問題の解決に役立ちます。
-
-**Microsoft アカウントの構成設定でプロファイル画像を更新しました。既存の実験の投稿で、新しいプロファイル画像が反映されていないのはなぜですか。**
-
-すべての実験に最新プロファイルの変更 (プロファイル画像、名、姓) を反映させる場合は、以前の実験をギャラリーに再送信する必要があります。その際に、以前のプロファイル設定を反映している古いコピーを削除する必要があります。
-
-**実験用の画像の送信や編集を行う場合の画像の要件を教えてください。**
-
-実験と一緒に送信された画像は、投稿の実験タイルの作成に使用されます。画像のサイズは 500 Kb 未満、縦横比は 3:2、解像度は 960 x 640 にすることをお勧めします。
-
-**実験で使用したデータ セットはどうなりますか。 データ セットもギャラリーに公開されるのですか。**
-
-データ セットが実験の一部となっていて、リーダー モジュールからインポートされていない場合は、実験の一部として実験と共にギャラリーに公開されます。この理由から、実験で公開するデータ セットに、すべてのユーザーに対して共有とダウンロードを許可する適切なライセンス条項があることを確認してください。
-
-**データのインポート モジュールを使用して HDInsight や SQL からデータを取得する実験を行いました。その際、自分の資格情報を使用してデータを取得しました。この実験はどのようにして公開できますか。自分の資格情報が共有されないことは保証されますか。**
-
-現時点では、資格情報を使用した実験の公開は許可されていません。
-
-**タグを区切る方法はありますか。**
-
-タブを使用してタグを区切ることができます。
-
-**一部の実験では高度な表示機能によって多くの説明が表示されています。しかし、説明を入力しようとすると、プレーン テキストで表示されます。**
-
-高度な説明の表示機能は、すべてのギャラリー ユーザーが広く使用できません。マイクロソフトは、マークダウン表示のサポートによってこの機能を使用できるように、積極的に取り組んでいます。
-
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-<!---HONumber=AcomDC_0914_2016-->
+

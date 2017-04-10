@@ -1,146 +1,586 @@
 ---
-title: キュー ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs
-description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Queue ストレージの使用を開始する方法について説明します。
+title: "Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs"
+description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Queue Storage の使用を開始する方法について説明します。"
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/23/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
+ms.openlocfilehash: 4e5638938c8e9fa0de12aa273d03f3eead35a383
+
 
 ---
-# Azure キュー ストレージと Visual Studio 接続済みサービスの概要
+# <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## Overview
-この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure キュー ストレージの使用を開始する方法について説明します。
+## <a name="overview"></a>概要
 
-ストレージ アカウントで Azure キューを作成し、アクセスする方法を紹介します。また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。サンプルは C# コードで記述され、[.NET 用 Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
+Azure Queue Storage は、アプリケーション コンポーネント間のクラウド メッセージングを備えています。 拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage は、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、アプリケーション コンポーネント間の通信に非同期メッセージングを提供します。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
+このチュートリアルでは、Azure Queue Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 これらのシナリオでは、Azure キューの作成や、キュー メッセージの追加、変更、読み取り、削除などの一般的なタスクについて説明します。
 
-## コードでキューにアクセスする
-ASP.NET プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
+##<a name="prerequisites"></a>前提条件
 
-1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認します。
-   
-        using Microsoft.Framework.Configuration;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Queue;
-2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
-   
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. ストレージ アカウント内のキュー オブジェクトを参照する **CloudQueueClient** オブジェクトを取得します。
-   
-        // Create the CloudQueueClient object for this storage account.
-        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. 特定のキューを参照する **CloudQueue** オブジェクトを取得します。
-   
-        // Get a reference to a queue named "messageQueue"
-        CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
+* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Azure Storage アカウント](storage-create-storage-account.md#create-a-storage-account)
 
-**注**: 上記のコードはすべて、以下の例に示すコードの前に使用してください。
+[!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-## コードでキューを作成する
-**CreateIfNotExists** への呼び出しを上記のコードに追加するだけで、コード内に Azure キューが作成されます。
+[!INCLUDE [storage-create-account-include](../../includes/vs-storage-aspnet-getting-started-create-azure-account.md)]
 
-    // Create the messageQueue if it does not exist
-    messageQueue.CreateIfNotExists();
+[!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
-## メッセージをキューに追加する
-既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成した後、**AddMessage** メソッドを呼び出します。
+### <a name="create-an-mvc-controller"></a>MVC コントローラーを作成する 
 
-**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+1. **ソリューション エクスプローラー**で**コントローラー**を右クリックし、コンテキスト メニューで **[追加]、[コントローラー]** の順に選択します。
 
-次の例では、'Hello, World' というメッセージを挿入します。
+    ![ASP.NET MVC アプリケーションへのコントローラーの追加](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-    // Create a message and add it to the queue.
-    CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-    messageQueue.AddMessage(message);
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、**[追加]** を選択します。
 
-## キュー内のメッセージを読み取る
-PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
+    ![MVC コントローラーの種類を指定する](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-    // Peek at the next message
-    CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
+1. **[コントローラーの追加]** ダイアログで、コントローラーに *QueuesController* という名前を付けて、**[追加]** を選択します。
 
-## キュー内のメッセージを読み取って削除する
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
+    ![MVC コントローラー指定](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. GetMessage() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessage() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。
-2. また、キューからのメッセージの削除を完了するには、**DeleteMessage** を呼び出します。
+1. 次の *using* ディレクティブを `QueuesController.cs` ファイルに追加します。
 
-このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に **DeleteMessage** を呼び出しています。
+    ```csharp
+    using Microsoft.Azure;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    ```
+## <a name="create-a-queue"></a>キューを作成する
 
-    // Get the next message in the queue.
-    CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
+次の手順では、キューの作成方法を説明します。
 
-    // Process the message in less than 30 seconds
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
 
-    // Then delete the message.
-    await messageQueue.DeleteMessage(retrievedMessage);
+1. `QueuesController.cs` ファイルを開きます。 
 
+1. **ActionResult** を返す **CreateQueue** というメソッドを追加します。
 
-## 追加オプションを利用してメッセージをデキューする
-キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**GetMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**foreach** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**GetMessages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
-
-    // Create the queue client.
-    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-    // Retrieve a reference to a queue.
-    CloudQueue queue = queueClient.GetQueueReference("myqueue");
-
-    foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes(5)))
+    ```csharp
+    public ActionResult CreateQueue()
     {
-        // Process all messages in less than 5 minutes, deleting each message after processing.
-        queue.DeleteMessage(message);
+        // The code in this section goes here.
+
+        return View();
     }
+    ```
 
-## キューの長さを取得する
-キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようにキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+1. **CreateQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
-    // Fetch the queue attributes.
-    messageQueue.FetchAttributes();
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+1. 目的のキュー名への参照を表す **CloudQueue** オブジェクトを取得します。 **CloudQueueClient.GetQueueReference** メソッドでは、キュー ストレージに対する要求は行われません。 キューが存在するかどうかにかかわらず、参照が返されます。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
 
-    // Retrieve the cached approximate message count.
-    int? cachedMessageCount = messageQueue.ApproximateMessageCount;
+1. キューがまだない場合は、**CloudQueue.CreateIfNotExists** メソッドを呼び出してキューを作成します。 **CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため正常に作成された場合 **true** を返します。 それ以外の場合は、**false** が返されます。    
 
-    // Display number of messages.
-    Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+    ```csharp
+    ViewBag.Success = queue.CreateIfNotExists();
+    ```
 
-## Async-Await パターンを一般的なキュー API で使用する
-この例では、Async-Await パターンを一般的なキュー API で使用する方法を示します。このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの Async 接尾辞によって確認できます。非同期のメソッドを使用するとき、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
+1. キュー名で **ViewBag** を更新します。
 
-    // Create a message to put in the queue
-    CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
+    ```csharp
+    ViewBag.QueueName = queue.Name;
+    ```
 
-    // Async enqueue the message
-    await messageQueue.AddMessageAsync(cloudQueueMessage);
-    Console.WriteLine("Message added");
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-    // Async dequeue the message
-    CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
-    Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**CreateQueue**」と入力し、**[追加]** を選択します。
 
-    // Async delete the message
-    await messageQueue.DeleteMessageAsync(retrievedMessage);
-    Console.WriteLine("Deleted message");
+1. `CreateQueue.cshtml` を開き、次のコード スニペットのように変更します。
 
-## キューを削除する
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
+    ```csharp
+    @{
+        ViewBag.Title = "Create Queue";
+    }
+    
+    <h2>Create Queue results</h2>
 
-    // Delete the queue.
-    messageQueue.Delete();
+    Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
+    ```
 
-## 次のステップ
-[!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-<!---HONumber=AcomDC_0817_2016-->
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[Create queue] (キューの作成)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![キューの作成](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+
+    前述したように、**CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため作成された場合にのみ **true** を返します。 そのため、キューが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にキューを削除する必要があります。 キューの削除は、**CloudQueue.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してキューを削除することもできます。  
+
+## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
+
+[キューを作成](#create-a-queue)したら、そのキューにメッセージを追加できます。 このセクションでは、*test-queue* のキューにメッセージを追加する方法について説明します。 
+
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
+
+1. `QueuesController.cs` ファイルを開きます。
+
+1. **ActionResult** を返す **AddMessage** というメソッドを追加します。
+
+    ```csharp
+    public ActionResult AddMessage()
+    {
+        // The code in this section goes here.
+
+        return View();
+    }
+    ```
+ 
+1. **AddMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+   
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+
+1. キューへの参照を表す **CloudQueueContainer** オブジェクトを取得します。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
+
+1. キューに追加するメッセージを表す **CloudQueueMessage** オブジェクトを作成します。 **CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+
+    ```csharp
+    CloudQueueMessage message = new CloudQueueMessage("Hello, Azure Queue Storage");
+    ```
+
+1. **CloudQueue.AddMessage** メソッドを呼び出して、メッセージをキューに追加します。
+
+    ```csharp
+    queue.AddMessage(message);
+    ```
+
+1. **ViewBag** プロパティを&2; つ作成し、ビュー内で表示されるように設定します。
+
+    ```csharp
+    ViewBag.QueueName = queue.Name;
+    ViewBag.Message = message.AsString;
+    ```
+
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddMessage**」と入力し、**[追加]** を選択します。
+
+1. `AddMessage.cshtml` を開き、次のコード スニペットのように変更します。
+
+    ```csharp
+    @{
+        ViewBag.Title = "Add Message";
+    }
+    
+    <h2>Add Message results</h2>
+    
+    The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
+    ```
+
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[Add message] (メッセージの追加)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![メッセージの追加](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
+
+「[キューからメッセージを削除せずに読み取る](#read-a-message-from-a-queue-without-removing-it)」と「[キューからメッセージを読み取って削除する](#read-and-remove-a-message-from-a-queue)」の&2; つのセクションでは、キューからメッセージを読み取る方法を説明します。    
+
+## <a name="read-a-message-from-a-queue-without-removing-it"></a>キューからメッセージを削除せずに読み取る
+
+次のセクションでは、キューに格納されたメッセージをピークする (最初のメッセージを削除せずに読み取る) 方法を説明します。  
+
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
+
+1. `QueuesController.cs` ファイルを開きます。
+
+1. **ActionResult** を返す **PeekMessage** というメソッドを追加します。
+
+    ```csharp
+    public ActionResult PeekMessage()
+    {
+        // The code in this section goes here.
+
+        return View();
+    }
+    ```
+ 
+1. **PeekMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+   
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+
+1. キューへの参照を表す **CloudQueueContainer** オブジェクトを取得します。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
+
+1. **CloudQueue.PeekMessage** メソッドを呼び出して、キュー内の最初のメッセージをキューから削除せずに読み取ります。 
+
+    ```csharp
+    CloudQueueMessage message = queue.PeekMessage();
+    ```
+
+1. キュー名と読まれたメッセージの&2; つの値で **ViewBag** を更新します。 **CloudQueueMessage** は**CloudQueueMessage.AsBytes** および **CloudQueueMessage.AsString** プロパティの&2; つの値を公開して、オブジェクトの値を取得します。 **AsString** (この例で使用) は文字列を返し、一方で **AsBytes** はバイト配列を返します。
+
+    ```csharp
+    ViewBag.QueueName = queue.Name; 
+    ViewBag.Message = (message != null ? message.AsString : "");
+    ```
+
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**PeekMessage**」と入力し、**[追加]** を選択します。
+
+1. `PeekMessage.cshtml` を開き、次のコード スニペットのように変更します。
+
+    ```csharp
+    @{
+        ViewBag.Title = "PeekMessage";
+    }
+    
+    <h2>Peek Message results</h2>
+    
+    <table border="1">
+        <tr><th>Queue</th><th>Peeked Message</th></tr>
+        <tr><td>@ViewBag.QueueName</td><td>@ViewBag.Message</td></tr>
+    </table>    
+    ```
+
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[メッセージのピーク]** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![メッセージのピーク](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
+
+## <a name="read-and-remove-a-message-from-a-queue"></a>キューからメッセージを読み取って削除する
+
+このセクションでは、キューからメッセージを読み取って削除する方法を説明します。   
+
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
+
+1. `QueuesController.cs` ファイルを開きます。
+
+1. **ActionResult** を返す **ReadMessage** というメソッドを追加します。
+
+    ```csharp
+    public ActionResult ReadMessage()
+    {
+        // The code in this section goes here.
+
+        return View();
+    }
+    ```
+ 
+1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+   
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+
+1. キューへの参照を表す **CloudQueueContainer** オブジェクトを取得します。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
+
+1. **CloudQueue.GetMessage** メソッドを呼び出して、キュー内の最初のメッセージを読み取ります。 **CloudQueue.GetMessage** メソッドは、メッセージの処理中に他のコードによって変更または削除されないように、メッセージを読み取る他のコードに対してそのメッセージを (既定で) 30 秒間非表示にします。 メッセージを非表示にする時間を変更するには、**CloudQueue.GetMessage** メソッドに渡す **visibilityTimeout** パラメーターを変更します。
+
+    ```csharp
+    // This message will be invisible to other code for 30 seconds.
+    CloudQueueMessage message = queue.GetMessage();     
+    ```
+
+1. **CloudQueueMessage.Delete** メソッドを呼び出して、キューからメッセージを削除します。
+
+    ```csharp
+    queue.DeleteMessage(message);
+    ```
+
+1. メッセージが削除された **ViewBag** と、キュー名を更新します。
+
+    ```csharp
+    ViewBag.QueueName = queue.Name;
+    ViewBag.Message = message.AsString;
+    ```
+ 
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**ReadMessage**」と入力し、**[追加]** を選択します。
+
+1. `ReadMessage.cshtml` を開き、次のコード スニペットのように変更します。
+
+    ```csharp
+    @{
+        ViewBag.Title = "ReadMessage";
+    }
+    
+    <h2>Read Message results</h2>
+    
+    <table border="1">
+        <tr><th>Queue</th><th>Read (and Deleted) Message</th></tr>
+        <tr><td>@ViewBag.QueueName</td><td>@ViewBag.Message</td></tr>
+    </table>
+    ```
+
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[Read/Delete message (メッセージの読み取り/削除)]** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![メッセージの読み取りおよび削除](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
+
+## <a name="get-the-queue-length"></a>キューの長さを取得する
+
+このセクションでは、キューの長さ (メッセージ数) を取得する方法を説明します。 
+
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
+
+1. `QueuesController.cs` ファイルを開きます。
+
+1. **ActionResult** を返す **GetQueueLength** というメソッドを追加します。
+
+    ```csharp
+    public ActionResult GetQueueLength()
+    {
+        // The code in this section goes here.
+
+        return View();
+    }
+    ```
+ 
+1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+   
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+
+1. キューへの参照を表す **CloudQueueContainer** オブジェクトを取得します。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
+
+1. **CloudQueue.FetchAttributes** メソッドを呼び出して、キューの属性 (長さを含む) を取得します。 
+
+    ```csharp
+    queue.FetchAttributes();
+    ```
+
+6. **CloudQueue.ApproximateMessageCount** プロパティにアクセスして、キューの長さを取得します。
+ 
+    ```csharp
+    int? nMessages = queue.ApproximateMessageCount;
+    ```
+
+1. そのキュー名を持つ **ViewBag** と、その長さを更新します。
+
+    ```csharp
+    ViewBag.QueueName = queue.Name;
+    ViewBag.Length = nMessages;
+    ```
+ 
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetQueueLength**」と入力し、**[追加]** を選択します。
+
+1. `GetQueueLengthMessage.cshtml` を開き、次のコード スニペットのように変更します。
+
+    ```csharp
+    @{
+        ViewBag.Title = "GetQueueLength";
+    }
+    
+    <h2>Get Queue Length results</h2>
+    
+    The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
+    ```
+
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[Get queue length (キューの長さの取得)]** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![キューの長さを取得する](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
+
+
+## <a name="delete-a-queue"></a>キューを削除する
+このセクションでは、キューを削除する方法について説明します。 
+
+> [!NOTE]
+> 
+> このセクションでは、[開発環境の設定手順](#set-up-the-development-environment)を完了していることを前提にしています。 
+
+1. `QueuesController.cs` ファイルを開きます。
+
+1. **ActionResult** を返す **DeleteQueue** というメソッドを追加します。
+
+    ```csharp
+    public ActionResult DeleteQueue()
+    {
+        // The code in this section goes here.
+
+        return View();
+    }
+    ```
+ 
+1. **DeleteQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更します)。
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+   
+1. Queue サービス クライアントを表す **CloudQueueClient** オブジェクトを取得します。
+   
+    ```csharp
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
+
+1. キューへの参照を表す **CloudQueueContainer** オブジェクトを取得します。 
+   
+    ```csharp
+    CloudQueue queue = queueClient.GetQueueReference("test-queue");
+    ```
+
+1. **CloudQueue.Delete** メソッドを呼び出して、**CloudQueue** オブジェクトによって表されるキューを削除します。
+
+    ```csharp
+    queue.Delete();
+    ```
+
+1. そのキュー名を持つ **ViewBag** と、その長さを更新します。
+
+    ```csharp
+    ViewBag.QueueName = queue.Name;
+    ```
+ 
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**DeleteQueue**」と入力し、**[追加]** を選択します。
+
+1. `DeleteQueue.cshtml` を開き、次のコード スニペットのように変更します。
+
+    ```csharp
+    @{
+        ViewBag.Title = "DeleteQueue";
+    }
+    
+    <h2>Delete Queue results</h2>
+    
+    @ViewBag.QueueName deleted.
+    ```
+
+1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+
+1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+
+    ```html
+    <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
+    ```
+
+1. アプリケーションを実行して **[Get queue length (キューの長さの取得)]** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+  
+    ![キューの削除](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
+
+## <a name="next-steps"></a>次のステップ
+Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
+
+  * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
+  * [テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
+
+
+<!--HONumber=Jan17_HO1-->
+
+

@@ -1,50 +1,57 @@
 ---
-title: Get started with Reliable Services | Microsoft Docs
-description: Introduction to creating a Microsoft Azure Service Fabric application with stateless and stateful services.
+title: "Java で信頼性の高い Azure マイクロサービスを初めて作成する | Microsoft Docs"
+description: "ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。"
 services: service-fabric
-documentationcenter: .net
+documentationcenter: java
 author: vturecek
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 02/10/2017
 ms.author: vturecek
+translationtype: Human Translation
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 5a29d6838af7f3952ad96158e5962b17c0f4cb6b
+ms.lasthandoff: 01/24/2017
+
 
 ---
-# <a name="get-started-with-reliable-services"></a>Get started with Reliable Services
+# <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
-> * [C# on Windows](service-fabric-reliable-services-quick-start.md)
-> * [Java on Linux](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
+> * [Windows での C# ](service-fabric-reliable-services-quick-start.md)
+> * [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
+>
+>
 
-This article explains the basics of Azure Service Fabric Reliable Services and walks you through creating and deploying a simple Reliable Service application written in Java.
+ここでは、Azure Service Fabric Reliable Services の基本と、Java で記述された簡単な Reliable Services アプリケーションを作成およびデプロイする手順について説明します。 また、次の Microsoft Virtual Academy のビデオでは、ステートレスな Reliable Services を作成する方法を紹介しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+<img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
 
-## <a name="installation-and-setup"></a>Installation and setup
-Before you start, make sure you have the Service Fabric development environment set up on your machine.
-If you need to set it up, go to [getting started on Mac](service-fabric-get-started-mac.md) or [getting started on Linux](service-fabric-get-started-linux.md).
+## <a name="installation-and-setup"></a>インストールとセットアップ
+開始する前に、マシン上に Service Fabric 開発環境がセットアップされていることを確認します。
+設定する必要がある場合は、[Mac での作業](service-fabric-get-started-mac.md)または [Linux での作業](service-fabric-get-started-linux.md)を参照してください。
 
-## <a name="basic-concepts"></a>Basic concepts
-To get started with Reliable Services, you only need to understand a few basic concepts:
+## <a name="basic-concepts"></a>基本的な概念
+Reliable Services の使用を開始するには、いくつかの基本的な概念を理解する必要があります。
 
-* **Service type**: This is your service implementation. It is defined by the class you write that extends `StatelessService` and any other code or dependencies used therein, along with a name and a version number.
-* **Named service instance**: To run your service, you create named instances of your service type, much like you create object instances of a class type. Service instances are in fact object instantiations of your service class that you write. 
-* **Service host**: The named service instances you create need to run inside a host. The service host is just a process where instances of your service can run.
-* **Service registration**: Registration brings everything together. The service type must be registered with the Service Fabric runtime in a service host to allow Service Fabric to create instances of it to run.  
+* **サービスの種類**: 使用するサービス実装です。 `StatelessService` を拡張する記述したクラスと、そこで使用する他のコードまたは依存関係のほか、名前やバージョン番号によって定義されます。
+* **名前付きサービス インスタンス**: サービスを実行するには、サービスの種類の名前付きインスタンスを作成します。これは、クラスの種類のオブジェクト インスタンスを作成するのに似ています。 サービス インスタンスは、実際には、記述するサービス クラスのオブジェクト インスタンスです。
+* **サービス ホスト**: 作成した名前付きサービス インスタンスは、ホスト内で実行する必要があります。 サービス ホストは単なる&1; プロセスで、ここでサービスのインスタンスを実行できます。
+* **サービス登録**: 登録はすべてを&1; つにまとめます。 サービス ホストでサービスの種類を Service Fabric ランタイムに登録して、Service Fabric がそのインスタンスを作成して実行できるようにする必要があります。  
 
-## <a name="create-a-stateless-service"></a>Create a stateless service
-Start by creating a new Service Fabric application. The Service Fabric SDK for Linux includes a Yeoman generator to provide the scaffolding for a Service Fabric application with a stateless service. Start by running the following Yeoman command:
+## <a name="create-a-stateless-service"></a>ステートレス サービスの作成
+最初に、Service Fabric アプリケーションを作成します。 Linux 用の Service Fabric SDK には、ステートレス サービスの Service Fabric アプリケーションのスキャフォールディングを提供する Yeoman ジェネレーターが含まれています。 最初に次の Yeoman コマンドを実行します。
 
 ```bash
 $ yo azuresfjava
 ```
 
-Follow the instructions to create a **Reliable Stateless Service**. For this tutorial, name the application "HelloWorldApplication" and the service "HelloWorld". The result will include directories for the `HelloWorldApplication` and `HelloWorld`.
+指示に従って、**信頼性の高いステートレス サービス**を作成します。 このチュートリアルでは、アプリケーションに "HelloWorldApplication" という名前を付け、サービスに "HelloWorld" という名前を付けます。 結果には、`HelloWorldApplication` と `HelloWorld` のディレクトリが含まれます。
 
 ```bash
 HelloWorldApplication/
@@ -71,19 +78,19 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 
-## <a name="implement-the-service"></a>Implement the service
-Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. This class defines the service type, and can run any code. The service API provides two entry points for your code:
+## <a name="implement-the-service"></a>サービスの実装
+**HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java** を開きます。 このクラスは、サービスの種類を定義し、任意のコードを実行することができます。 サービス API には、コードのエントリ ポイントが&2; つあります。
 
-* An open-ended entry point method, called `runAsync()`, where you can begin executing any workloads, including long-running compute workloads.
+* `runAsync()` という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
 
 ```java
 @Override
-protected CompletableFuture<?> runAsync() {
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
     ...
 }
 ```
 
-* A communication entry point where you can plug in your communication stack of choice. This is where you can start receiving requests from users and other services.
+* 選択した通信スタックをプラグインできる通信エントリ ポイント。 これは、ユーザーおよびその他のサービスからの要求の受信を開始できる場所です。
 
 ```java
 @Override
@@ -92,57 +99,49 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-In this tutorial, we will focus on the `runAsync()` entry point method. This is where you can immediately start running your code.
+このチュートリアルでは、`runAsync()` エントリ ポイント メソッドを取り上げます。 これは、コードの実行をすぐに開始できる場所です。
 
 ### <a name="runasync"></a>RunAsync
-The platform calls this method when an instance of a service is placed and ready to execute. The open/close cycle of a service instance can occur many times over the lifetime of the service as a whole. This can happen for various reasons, including:
+プラットフォームは、サービスのインスタンスが配置され実行準備ができたときに、このメソッドを呼び出します。 ステートレス サービスの場合、これは単にサービス インスタンスが開いたことを意味します。 サービス インスタンスを終了する必要がある場合のために、キャンセル トークンが提供されています。 Service Fabric では、サービス インスタンスの開始から終了のサイクルは、サービスのライフタイムで何度も発生する可能性があります。 これは、さまざまな理由で発生する可能性があります。
 
-* The system moves your service instances for resource balancing.
-* Faults occur in your code.
-* The application or system is upgraded.
-* The underlying hardware experiences an outage.
+* システムがリソース分散のためにサービス インスタンスを移動している。
+* コードでエラーが発生している。
+* アプリケーションまたはシステムがアップグレードされている。
+* 基礎となるハードウェアで障害が発生している。
 
-This orchestration is managed by Service Fabric to keep your service highly available and properly balanced.
+この調整は、サービスの可用性を高めて適切なバランスを取るために、Service Fabric によって管理されます。
 
-#### <a name="cancellation"></a>Cancellation
-It is vital that your code in `runAsync()` can stop execution when notified by Service Fabric. The `CompletableFuture` returned from `runAsync()` is canceled when Service Fabric requires your service to stop execution. The following example demonstrates how to handle a cancellation event: 
+`runAsync()` は同期的なブロックを行いません。 CompletableFuture の内部で行う必要がある実行時間の長いタスクをワークロードで実装する必要がある場合は、 ランタイムが続行できるように CompletableFuture を RunAsync の実装で返す必要があります。
+
+#### <a name="cancellation"></a>キャンセル
+ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。 システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。 システムからキャンセルが要求された場合は、キャンセル トークンを利用して作業を完了し、できるだけ早く `runAsync()` を終了することが重要です。 次の例は、キャンセル イベントを処理する方法を示しています。
 
 ```java
     @Override
-    protected CompletableFuture<?> runAsync() {
+    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        CompletableFuture<?> completableFuture = new CompletableFuture<>();
-        ExecutorService service = Executors.newFixedThreadPool(1);
+        // TODO: Replace the following sample code with your own logic
+        // or remove this runAsync override if it's not needed in your service.
 
-        Future<?> userTask = service.submit(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                try
-                {
-                   logger.log(Level.INFO, this.context().serviceName().toString());
-                   Thread.sleep(1000);
-                }
-                catch (InterruptedException ex)
-                {
-                    logger.log(Level.INFO, this.context().serviceName().toString() + " interrupted. Exiting");
-                    return;
-                }
+        CompletableFuture.runAsync(() -> {
+          long iterations = 0;
+          while(true)
+          {
+            cancellationToken.throwIfCancellationRequested();
+            logger.log(Level.INFO, "Working-{0}", ++iterations);
+
+            try
+            {
+              Thread.sleep(1000);
             }
-         });
-
-        completableFuture.handle((r, ex) -> {
-            if (ex instanceof CancellationException) {
-                userTask.cancel(true);
-                service.shutdown();
-            }
-            return null;
+            catch (IOException ex) {}
+          }
         });
+    }
+```
 
-        return completableFuture;
-   }
-``` 
-
-### <a name="service-registration"></a>Service registration
-Service types must be registered with the Service Fabric runtime. The service type is defined in the `ServiceManifest.xml` and your service class that implements `StatelessService`. Service registration is performed in the process main entry point. In this example, the process main entry point is `HelloWorldServiceHost.java`:
+### <a name="service-registration"></a>サービス登録
+サービスの種類は、Service Fabric ランタイムに登録する必要があります。 サービスの種類は、`ServiceManifest.xml` で定義され、さらにサービス クラスを実装する `StatelessService` で定義されます。 サービスの登録は、プロセスのメイン エントリ ポイントで実行されます。 この例では、プロセスのメイン エントリ ポイントは `HelloWorldServiceHost.java` です。
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -150,29 +149,24 @@ public static void main(String[] args) throws Exception {
         ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
         logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
         Thread.sleep(Long.MAX_VALUE);
-    } 
+    }
     catch (Exception ex) {
-        logger.log(Level.SEVERE, "Exception in registration: {0}", ex.toString());
+        logger.log(Level.SEVERE, "Exception in registration:", ex);
         throw ex;
     }
 }
 ```
 
-## <a name="run-the-application"></a>Run the application
-The Yeoman scaffolding includes a gradle script to build the application and bash scripts to deploy and un-deploy the application. To run the application, first build the application with gradle:
+## <a name="run-the-application"></a>アプリケーションの実行
+Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよびデプロイ解除するための bash スクリプトが含まれています。 アプリケーションを実行するには、最初に gradle を使用してアプリケーションをビルドします。
 
 ```bash
 $ gradle
 ```
 
-This will produce a Service Fabric application package that can be deployed using Service Fabric Azure CLI. The install.sh script contains the necessary Azure CLI commands to deploy the application package. Simply run the install.sh script to deploy:
+これにより、Service Fabric Azure CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。 Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Azure CLI コマンドが含まれています。 install.sh スクリプトを実行してデプロイします。
 
-```bask
+```bash
 $ ./install.sh
 ```
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

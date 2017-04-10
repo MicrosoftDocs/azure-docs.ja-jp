@@ -1,172 +1,174 @@
 ---
-title: Performance test and scale results for on-premises to on-premises Hyper-V replication with Site Recovery | Microsoft Docs
-description: This article provides information about performance testing for on-premises to on-premises replication using Azure Site Recovery.
+title: "Azure Site Recovery を使用したサイト間での Hyper-V レプリケーションの結果をテストする | Microsoft Docs"
+description: "この記事では、Azure Site Recovery を使用したオンプレミス間のレプリケーションのパフォーマンス テストについての情報を提供します。"
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 96ff404f-0d88-43fa-a00b-2dffde93d192
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
+ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
+ms.lasthandoff: 02/15/2017
+
 
 ---
-# <a name="performance-test-and-scale-results-for-onpremises-to-onpremises-hyperv-replication-with-site-recovery"></a>Performance test and scale results for on-premises to on-premises Hyper-V replication with Site Recovery
-You can use Microsoft Azure Site Recovery to orchestrate and manage replication of virtual machines and physical servers to Azure, or to a secondary datacenter. This article provides the results of performance testing we did when replicating Hyper-V virtual machines between two on-premises datacenters.
+# <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Site Recovery を使用したオンプレミス間での Hyper-V レプリケーションの結果のテスト
+Microsoft Azure Site Recovery を使用すると、Azure またはセカンダリ データセンターへの仮想マシンと物理サーバーのレプリケーションを調整および管理することができます。 この記事では、2 つのオンプレミス データセンター間で Hyper-V 仮想マシンを複製する際に実行したパフォーマンス テストの結果を示します。
 
-## <a name="overview"></a>Overview
-The goal of testing was to examine how Azure Site Recovery performs during steady state replication. Steady state replication occurs when virtual machines have completed initial replication and are synchronizing delta changes. It’s important to measure performance using steady state because it’s the state in which most virtual machines remain unless unexpected outages occur.
+## <a name="overview"></a>概要
+テストの目的は、安定的にレプリケーションが実行されている間の Azure Site Recovery のパフォーマンスを確認することです。 安定状態のレプリケーションは、仮想マシンが初期レプリケーションを完了し、差分変更を同期しているときに発生します。 予期しない停止が発生しない限り、ほとんどの仮想マシンは安定状態になるため、安定状態を利用してパフォーマンスを測定することが重要です。
 
-The test deployment consisted of two on-premises sites with a VMM server in each site. This test deployment is typical of a head office/branch office deployment, with head office acting as the primary site and the branch office as the secondary or recovery site.
+テスト デプロイは、各サイトに VMM サーバーをデプロイした&2; つのオンプレミスのサイトで構成しました。 このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
 
-### <a name="what-we-did"></a>What we did
-Here's what we did in the test pass:
+### <a name="what-we-did"></a>実行した内容
+テスト パスで実行した内容を次に示します。
 
-1. Created virtual machines using VMM templates.
-2. Started virtual machines and capture baseline performance metrics over 12 hours.
-3. Created clouds on primary and recovery VMM servers.
-4. Configured cloud protection in Azure Site Recovery, including mapping of source and recovery clouds.
-5. Enabled protection for virtual machines and allow them to complete initial replication.
-6. Waited a couple of hours for system stabilization.
-7. Captured performance metrics over 12 hours, ensuring that all virtual machines remained in an expected replication state for those 12 hours.
-8. Measure the delta between the baseline performance metrics and the replication performance metrics.
+1. VMM テンプレートを使用して仮想マシンを作成しました。
+2. 仮想マシンを起動し、12 時間にわたって基準のパフォーマンス メトリックを取得しました。
+3. プライマリ VMM サーバーおよび復旧 VMM サーバー上にクラウドを作成しました。
+4. Azure Site Recovery で、ソース クラウドと復旧クラウドのマッピングを含むクラウドの保護を構成しました。
+5. 仮想マシンの保護を有効にして、初期レプリケーションを完了できるようにしました。
+6. システムが安定するまで数時間待機しました。
+7. 12 時間にわたってパフォーマンス メトリックを取得し、すべての仮想マシンがこの 12 時間 に、期待されたレプリケーションの状態を維持していることを確認しました。
+8. 基準となるパフォーマンス メトリックとレプリケーションのパフォーマンス メトリックの差を測定します。
 
-## <a name="test-deployment-results"></a>Test deployment results
-### <a name="primary-server-performance"></a>Primary server performance
-* Hyper-V Replica asynchronously tracks changes to a log file with minimum storage overhead on the primary server.
-* Hyper-V Replica utilizes self-maintained memory cache to minimize IOPS overhead for tracking. It stores writes to the VHDX in memory and flushes them into the log file before the time that the log is sent to the recovery site. A disk flush also happens if the writes hit a predetermined limit.
-* The graph below shows the steady state IOPS overhead for replication. We can see that the IOPS overhead due to replication is around 5% which is quite low.
+## <a name="test-deployment-results"></a>テスト デプロイの結果
+### <a name="primary-server-performance"></a>プライマリ サーバーのパフォーマンス
+* Hyper-V レプリカは、プライマリ サーバーでのストレージ オーバーヘッドを最小限にしながら、ログ ファイルへの変更を非同期的に追跡します。
+* Hyper-V レプリカは、自己保持型のメモリ キャッシュを活用し、追跡に対する IOPS オーバーヘッドを最小化します。 復旧サイトにログを送信する時刻になる前に、メモリ内に VHDX への書き込みを格納し、ログ ファイルにフラッシュします。 あらかじめ設定された制限に書き込みが達した場合も、ディスク フラッシュが発生します。
+* 次のグラフは、レプリケーションに対する安定状態の IOPS オーバーヘッドを示しています。 レプリケーションによる IOPS オーバーヘッドは約 5% と、非常に低いことがわかります。
 
-![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744913.png)
+![プライマリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744913.png)
 
-Hyper-V Replica utilizes memory on the primary server to optimize disk performance. As shown in the following graph, memory overhead on all servers in the primary cluster is marginal. The memory overhead shown is the percentage of memory used by replication compared to the total installed memory on the Hyper-V server.
+Hyper-V レプリカは、ディスク パフォーマンスを最適化するために、プライマリ サーバー上のメモリを利用します。 次のグラフに示すように、プライマリ クラスター内にあるすべてのサーバー上のメモリ オーバーヘッドはわずかです。 示されているメモリ オーバーヘッドは、Hyper-V サーバーに装着されたメモリの合計と比較した、レプリケーションによって使用されるメモリの割合です。
 
-![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744914.png)
+![プライマリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744914.png)
 
-Hyper-V Replica has minimum CPU overhead. As shown in the graph, replication overhead is in the range of 2-3%.
+Hyper-V レプリカの CPU オーバーヘッドは最小限です。 グラフに示すように、レプリケーションのオーバーヘッドは 2 ～ 3% の範囲内です。
 
-![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
+![プライマリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
 
-### <a name="secondary-recovery-server-performance"></a>Secondary (recovery) server performance
-Hyper-V Replica uses a small amount of memory on the recovery server to optimize the number of storage operations. The graph summarizes the memory usage on the recovery server. The memory overhead shown is the percentage of memory used by replication compared to the total installed memory on the Hyper-V server.
+### <a name="secondary-recovery-server-performance"></a>セカンダリ (復旧) サーバーのパフォーマンス
+Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、ストレージ操作の数を最適化できます。 グラフは、復旧サーバーのメモリ使用量をまとめたものです。 示されているメモリ オーバーヘッドは、Hyper-V サーバーに装着されたメモリの合計と比較した、レプリケーションによって使用されるメモリの割合です。
 
-![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
+![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
 
-The amount of I/O operations on the recovery site is a function of the number of write operations on the primary site. Let’s look at the total I/O operations on the recovery site in comparison with the total I/O operations and write operations on the primary site. The graphs show that the total IOPS on the recovery site is
+復旧サイトでの I/O 操作数は、プライマリ サイトでの書き込み操作の数と相関関係があります。 復旧サイトでの合計 I/O 操作数を、プライマリ サイトでの合計 I/O 操作数および書き込み操作数と比較してみましょう。 グラフでは、復旧サイトでの合計 IOPS は次のとおりになっています。
 
-* Around 1.5 times the write IOPS on the primary.
-* Around 37% of the total IOPS on the primary site.
+* プライマリ サイトでの書き込み IOPS の約 1.5 倍
+* プライマリ サイトでの合計 IOPS の約 37%
 
-![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744917.png)
+![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744917.png)
 
-![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
+![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
-### <a name="effect-of-replication-on-network-utilization"></a>Effect of replication on network utilization
-An average of 275 MB per second of network bandwidth was used between the primary and recovery nodes (with compression enabled) against an existing bandwidth of 5 GB per second.
+### <a name="effect-of-replication-on-network-utilization"></a>ネットワーク使用率に対するレプリケーションの影響
+プライマリ ノードおよび復旧ノード間で、既存の 1 秒あたり 5 Gb の帯域幅に対して、1 秒あたり平均 275 Mb のネットワーク帯域幅が使用されました (圧縮有効時)。
 
-![Results network utilization](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
+![結果のネットワーク使用率](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
-### <a name="effect-of-replication-on-virtual-machine-performance"></a>Effect of replication on virtual machine performance
-An important consideration is the impact of replication on production workloads running on the virtual machines. If the primary site is adequately provisioned for replication, there shouldn’t be any impact on the workloads. Hyper-V Replica’s lightweight tracking mechanism ensures that workloads running in the virtual machines are not impacted during steady-state replication. This is illustrated in the following graphs.
+### <a name="effect-of-replication-on-virtual-machine-performance"></a>仮想マシンのパフォーマンスに対するレプリケーションの影響
+重要な考慮事項として、仮想マシンで実行されている運用ワークロードに対するレプリケーションの影響が挙げられます。 プライマリ サイトがレプリケーション用に十分にプロビジョニングされている場合は、これらのワークロードに影響はありません。 Hyper-V レプリカの軽量な追跡メカニズムにより、安定状態のレプリケーション中に、仮想マシンで実行されているワークロードは影響を受けません。 このことを、次のグラフで示します。
 
-This graph shows IOPS performed by virtual machines running different workloads before and after replication was enabled. You can observe that there is no difference between the two.
+このグラフは、レプリケーションを有効にする前と後で、さまざまなワークロードを実行する仮想マシンが実行した IOPS を示しています。 2 つの間に差がないことを確認できます。
 
-![Replica effect results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
+![レプリカ効果の結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
 
-The following graph shows the throughput of virtual machines running different workloads before and after replication was enabled. You can observe that replication has no significant impact.
+次のグラフは、レプリケーションを有効にする前と後で、さまざまなワークロードを実行する仮想マシンのスループットを示しています。 レプリケーションが大きな影響を与えないことを確認できます。
 
-![Results replica effects](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
+![結果のレプリカ効果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
-### <a name="conclusion"></a>Conclusion
-The results clearly show that Azure Site Recovery, coupled with Hyper-V Replica, scales well with minimum overhead for a large cluster.  Azure Site Recovery provides simple deployment, replication, management and monitoring. Hyper-V Replica provides the necessary infrastructure for successful replication scaling. For planning an optimum deployment we suggest you download the [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057).
+### <a name="conclusion"></a>まとめ
+結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。  Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。 Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。 最適なデプロイを計画するために、 [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードすることをお勧めします。
 
-## <a name="test-environment-details"></a>Test environment details
-### <a name="primary-site"></a>Primary site
-* The primary site has a cluster containing five Hyper-V servers running 470 virtual machines.
-* The virtual machines run different workloads, and all have Azure Site Recovery protection enabled.
-* Storage for the cluster node is provided by an iSCSI SAN. Model – Hitachi HUS130.
-* Each cluster server has four network cards (NICs) of one Gbps each.
-* Two of the network cards are connected to an iSCSI private network and two are connected to an external enterprise network. One of the external networks is reserved for cluster communications only.
+## <a name="test-environment-details"></a>テスト環境の詳細
+### <a name="primary-site"></a>プライマリ サイト
+* プライマリ サイトは、470 台の仮想マシンを実行している 5 つの Hyper-V サーバーを含むクラスターです。
+* 仮想マシンは、さまざまなワークロードを実行し、すべて Azure Site Recovery 保護を有効にしています。
+* クラスター ノード用のストレージは、iSCSI SAN により提供されます。 モデル – Hitachi HUS130。
+* 各クラスター サーバーは、1 Gbps の&4; つのネットワーク カード (NIC) を搭載しています。
+* 2 つのネットワーク カードは、iSCSI プライベート ネットワークに接続され、2 つは外部のエンタープライズ ネットワークに接続されています。 外部ネットワークのうち&1; つは、クラスター通信専用として予約されています。
 
-![Primary hardware requirements](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
+![プライマリのハードウェア要件](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
 
-| Server | RAM | Model | Processor | Number of processors | NIC | Software |
+| サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V servers in cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 has 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| VMM Server |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 に 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
-### <a name="secondary-recovery-site"></a>Secondary (recovery) site
-* The secondary site has a six-node failover cluster.
-* Storage for the cluster node is provided by an iSCSI SAN. Model – Hitachi HUS130.
+### <a name="secondary-recovery-site"></a>セカンダリ (復旧) サイト
+* セカンダリ サイトは&6; ノードのフェールオーバー クラスターです。
+* クラスター ノード用のストレージは、iSCSI SAN により提供されます。 モデル – Hitachi HUS130。
 
-![Primary hardware specification](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
+![プライマリのハードウェア仕様](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
-| Server | RAM | Model | Processor | Number of processors | NIC | Software |
+| サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V servers in cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V role |
-| VMM Server |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @(2.30 GHz) |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @(2.20 GHz) |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
-### <a name="server-workloads"></a>Server workloads
-* For test purposes we picked workloads commonly used in enterprise customer scenarios.
-* We use [IOMeter](http://www.iometer.org) with the workload characteristic summarized in the table for simulation.
-* All IOMeter profiles are set to write random bytes to simulate worst-case write patterns for workloads.
+### <a name="server-workloads"></a>サーバー ワークロード
+* テストのために、企業の顧客のシナリオでよく使用されるワークロードを選択しました。
+* シミュレーションの表にまとめたワークロードの特性を利用して、 [IOMeter](http://www.iometer.org) を使用しました。
+* IOMeter のすべてのプロファイルは、ランダムにバイトを書き込むよう設定して、ワークロードに対して、最悪の場合の書き込みパターンをシミュレートしました。
 
-| Workload | I/O size (KB) | % Access | %Read | Outstanding I/Os | I/O pattern |
+| ワークロード | I/O サイズ (KB) | アクセスの割合 | 読み取りの割合 | 処理待ち I/O 数 | I/O パターン |
 | --- | --- | --- | --- | --- | --- |
-| File Server |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |All 100% random |
-| SQL Server (volume 1)SQL Server (volume 2) |864 |100%100% |70%0% |88 |100% random100% sequential |
-| Exchange |32 |100% |67% |8 |100% random |
-| Workstation/VDI |464 |66%34% |70%95% |11 |Both 100% random |
-| Web File Server |4864 |33%34%33% |95%95%95% |888 |All 75% random |
+| ファイル サーバー |48163264 |60%&20;%&5;%&5;%&10;% |80%&80;%&80;%&80;%&80;% |88888 |すべて 100% ランダム |
+| SQL Server (ボリューム 1) SQL Server (ボリューム 2) |864 |100%&100;% |70%&0;% |88 |100% ランダム&100;% シーケンシャル |
+| Exchange |32 |100% |67% |8 |100% ランダム |
+| ワークステーション/VDI |464 |66%&34;% |70%&95;% |11 |どちらも 100% ランダム |
+| Web ファイル サーバー |4864 |33%&34;%&33;% |95%&95;%&95;% |888 |すべて 75% ランダム |
 
-### <a name="virtual-machine-configuration"></a>Virtual machine configuration
-* 470 virtual machines on the primary cluster.
-* All virtual machines with VHDX disk.
-* Virtual machines running workloads summarized in the table. All were created with VMM templates.
+### <a name="virtual-machine-configuration"></a>仮想マシンの構成
+* プライマリ クラスターに&470; 台の仮想マシン。
+* すべての仮想マシンに VHDX ディスクを搭載。
+* 仮想マシンでは、次の表に要約したワークロードを実行。 すべて VMM テンプレートを使用して作成されました。
 
-| Workload | # VMs | Minimum RAM (GB) | Maximum RAM (GB) | Logical disk size (GB) per VM | Maximum IOPS |
+| ワークロード | # VM | 最小 RAM 容量 (GB) | 最大 RAM 容量 (GB) | VM あたりの論理ディスク サイズ (GB) | 最大 IOPS |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
-| File Server |50 |1 |2 |552 |22 |
-| VDI |149 |.5 |1 |80 |6 |
-| Web server |149 |.5 |1 |80 |6 |
-| TOTAL |470 | | |96.83 TB |4108 |
+| ファイル サーバー |50 |1 |2 |552 |22 |
+| VDI |149 |0.5 |1 |80 |6 |
+| Web サーバー |149 |0.5 |1 |80 |6 |
+| 合計 |470 | | |96.83 TB (テラバイト) |4108 |
 
-### <a name="azure-site-recovery-settings"></a>Azure Site Recovery settings
-* Azure Site Recovery was configured for on-premises to on-premises protection
-* The VMM server has four clouds configured, containing the Hyper-V cluster servers and their virtual machines.
+### <a name="azure-site-recovery-settings"></a>Azure Site Recovery 設定
+* Azure Site Recovery をオンプレミス間の保護用に構成しました。
+* VMM サーバーには、Hyper-V クラスター サーバーとその仮想マシンを含むクラウドが&4; つ構成されています。
 
-| Primary VMM cloud | Protected virtual machines in the cloud | Replication frequency | Additional recovery points |
+| プライマリ VMM クラウド | クラウド内の保護された仮想マシン | レプリケーションの頻度 | 追加の復旧ポイント |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 mins |None |
-| PrimaryCloudRpo30s |47 |30 secs |None |
-| PrimaryCloudRpo30sArp1 |47 |30 secs |1 |
-| PrimaryCloudRpo5m |235 |5 mins |None |
+| PrimaryCloudRpo15m |142 |15 分 |なし |
+| PrimaryCloudRpo30s |47 |30 秒 |なし |
+| PrimaryCloudRpo30sArp1 |47 |30 秒 |1 |
+| PrimaryCloudRpo5m |235 |5 分 |なし |
 
-### <a name="performance-metrics"></a>Performance metrics
-The table summarizes the performance metrics and counters that were measured in the deployment.
+### <a name="performance-metrics"></a>パフォーマンス メトリック
+この表では、このデプロイにおいて測定されたパフォーマンス メトリックとカウンターの概要を示します。
 
-| Metric | Counter |
+| メトリック | カウンター |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
-| Available memory |\Memory\Available MBytes |
+| 使用可能なメモリ |\Memory\Available MBytes |
 | IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
-| VM read (IOPS) operations/sec |\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec |
-| VM write (IOPS) operations/sec |\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S |
-| VM read throughput |\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec |
-| VM write throughput |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
+| VM 読み取り (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec |
+| VM 書き込み (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S |
+| VM 読み取りスループット |\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec |
+| VM 書き込みスループット |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
 
-## <a name="next-steps"></a>Next steps
-* [Set up protection between two on-premises VMM sites](site-recovery-vmm-to-vmm.md)
-
-<!--HONumber=Oct16_HO2-->
-
+## <a name="next-steps"></a>次のステップ
+* [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
 

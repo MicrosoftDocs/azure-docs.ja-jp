@@ -1,12 +1,12 @@
 ---
-title: Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
-description: この記事では、Azure Media Services (AMS) を使用して PlayReady または Widevine のライセンスと、AES キーを配信するものの、オンプレミスのサーバーで残り (エンコード、暗号化、ストリーミング) を処理する方法について説明します。
+title: "Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する"
+description: "この記事では、Azure Media Services (AMS) を使用して PlayReady または Widevine のライセンスと、AES キーを配信するものの、オンプレミスのサーバーで残り (エンコード、暗号化、ストリーミング) を処理する方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 02bf743d310519477bb87a2930a2afe687c62c4e
+
 
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
@@ -31,7 +35,7 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 ## <a name="download-sample"></a>サンプルのダウンロード
 この記事で説明されているサンプルは、 [こちら](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)からダウンロードできます。
 
-## <a name=".net-code-example"></a>.NET コード例
+## <a name="net-code-example"></a>.NET コード例
 このトピックのコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 **コンテンツ キー**、**キー ID**、および**ライセンス取得 URL**の情報を AMS から取得し、オンプレミスのサーバーを構成する必要があります。 オンプレミスのサーバーを構成すると、自分のストリーミング サーバーからストリーミングを行うことができます。 暗号化されたストリームは AMS ライセンス サーバーを参照するため、プレーヤーは AMS にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを AMS ライセンス サーバーが検証し、(有効な場合は) プレーヤーにライセンスを配信します。 (コード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。[この](media-services-protect-with-aes128.md)記事ではその方法を示しています)。
 
     using System;
@@ -339,6 +343,9 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 
 [パートナーを使用して Azure Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

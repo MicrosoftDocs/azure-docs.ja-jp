@@ -6,22 +6,26 @@
 2. **[参照]** タブをクリックし、"Microsoft Azure Relay" を検索して、**[Microsoft Azure Relay]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
 ### <a name="write-some-code-to-send-messages"></a>メッセージを送信するコードを記述する
-1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
+1. Program.cs ファイルの先頭にある既存の `using` ステートメントを次のステートメントに置き換えます。
    
-    ```cs
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。
+2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。 必ず完全修飾名前空間名を使用してください。
    
-    ```cs
-    private const string RelayNamespace = "{RelayNamespace}";
+    ```csharp
+    private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. 次に示すように、新しいメソッドを `Program` クラスに追加します。
+3. 次の新しいメソッドを `Program` クラスに追加します。
    
-    ```cs
+    ```csharp
     private static async Task RunAsync()
     {
         Console.WriteLine("Enter lines of text to send to the server with ENTER");
@@ -33,7 +37,7 @@
         // Initiate the connection
         var relayConnection = await client.CreateConnectionAsync();
    
-        // We run two conucrrent loops on the connection. One 
+        // We run two concurrent loops on the connection. One 
         // reads input from the console and writes it to the connection 
         // with a stream writer. The other reads lines of input from the 
         // connection with a stream reader and writes them to the console. 
@@ -82,13 +86,13 @@
     ```
 4. `Program` クラスの `Main` メソッドに次のコード行を追加します。
    
-    ```cs
+    ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
     Program.cs は次のようになります。
    
-    ```cs
+    ```csharp
     using System;
     using System.IO;
     using System.Threading;
@@ -99,7 +103,7 @@
     {
         class Program
         {
-            private const string RelayNamespace = "{RelayNamespace}";
+            private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
             private const string ConnectionName = "{HybridConnectionName}";
             private const string KeyName = "{SASKeyName}";
             private const string Key = "{SASKey}";
@@ -169,9 +173,4 @@
         }
     }
     ```
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

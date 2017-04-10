@@ -1,413 +1,417 @@
 ---
-title: Azure Role Properties
-description: Learn how to use the Azure Toolkit for Eclipse to configure Azure role settings.
-services: ''
+title: "Azure ロールのプロパティ"
+description: "Azure Toolkit for Eclipse を使用して、Azure ロールの設定を構成する方法について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5c0ec412-5702-465a-8f47-87a8ce99a267
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
+
 
 ---
-# <a name="azure-role-properties"></a>Azure Role Properties
-Various configuration settings for your Azure role can be set within the Azure Toolkit for Eclipse.
+# <a name="azure-role-properties"></a>Azure ロールのプロパティ
+Azure ロールに対する各種構成は、Azure Toolkit for Eclipse 内で設定することができます。
 
-## <a name="configuring-azure-role-properties"></a>Configuring Azure Role Properties
-Configuring your Azure Role Properties is accomplished through the property dialogs for your worker role. Open the context menu for the role in Eclipse's Project Explorer pane and select the **Azure** sub-menu. (If you don't see the role in the Eclipse Project Explorer, expand your Azure project in Project Explorer.)
+## <a name="configuring-azure-role-properties"></a>Azure ロールのプロパティを構成する
+Azure ロールのプロパティは、worker ロールのプロパティ ダイアログ ボックスで構成します。 Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで目的のロールのコンテキスト メニューを開き、**[Azure]** サブメニューを選択します  (Eclipse の Project Explorer でロールが表示されない場合は、Project Explorer で Azure プロジェクトを展開してください)。
 
 ![][ic789599]
 
-The various properties that can be set from the **Properties** dialogs are described in this topic. Note that many properties are filled in automatically when you create a new Azure deployment project.
+このトピックでは、 **[Properties (プロパティ)]** ダイアログ ボックスで設定できるさまざまなプロパティについて説明します。 多くのプロパティは、新しい Azure デプロイ プロジェクトを作成すると自動的に設定されます。
 
-The following property pages are available for Azure roles.
+Azure のロールには、次のプロパティ ページが用意されています。
 
-* [Virtual machine properties](#virtual_machine_properties)
-* [Caching properties](#caching_properties)
-* [Certificates properties](#certificates_properties)
-* [Components properties](#components_properties)
-* [Debugging properties](#debugging_properties)
-* [Endpoints properties](#endpoints_properties)
-* [Environment variables properties](#environment_variables_properties)
-* [Load balancing / session affinity (a.k.a "sticky sessions") properties](#session_affinity_properties)
-* [Local storage properties](#local_storage_properties)
-* [Server configuration properties](#server_configuration_properties)
-* [SSL offloading properties](#ssl_offloading_properties)
+* [仮想マシン プロパティ](#virtual_machine_properties)
+* [Caching のプロパティ](#caching_properties)
+* [証明書のプロパティ](#certificates_properties)
+* [コンポーネントのプロパティ](#components_properties)
+* [デバッグのプロパティ](#debugging_properties)
+* [エンドポイントのプロパティ](#endpoints_properties)
+* [環境変数のプロパティ](#environment_variables_properties)
+* [負荷分散/セッション アフィニティ (別名、"スティッキー セッション") のプロパティ](#session_affinity_properties)
+* [ローカル ストレージのプロパティ](#local_storage_properties)
+* [サーバー構成のプロパティ](#server_configuration_properties)
+* [SSL オフロードのプロパティ](#ssl_offloading_properties)
 
 <a name="virtual_machine_properties"></a>
 
-### <a name="virtual-machine-properties"></a>Virtual machine properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Properties**, and you will have the ability to change the virtual machine size, and also change the number of instances, as shown in the following image.
+### <a name="virtual-machine-properties"></a>仮想マシン プロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Properties (プロパティ)]** の順にクリックします。次の図に示すように、仮想マシンのサイズとインスタンスの数を変更することができます。
 
 ![][ic719499]
 
 > [!NOTE]
-> Windows only: when you set the number of instances to a value greater than 1 and you also configure an application server, the toolkit will allow only 1 role instance to run in the emulator, regardless of this setting. This is to avoid port binding conflicts between the different server instances (for example, all trying to bind to port 8080) when they run on the same computer. Your desired instance count setting is preserved, but it goes into effect only when you deploy to the cloud.
+> Windows のみ: インスタンス数の値を 1 より大きく設定し、なおかつアプリケーション サーバーを構成した場合、この設定に関係なく、エミュレーターで実行できるロール インスタンスの数が 1 つに制限されます。 これは、同じコンピューター上で複数の異なるサーバー インスタンスを実行したときに (たとえば、すべてのサーバー インスタンスがポート 8080 にバインドしようとして発生する) ポート バインドの競合を回避するための動作です。 指定したインスタンス数の設定は保持されますが、その設定が有効になるのはクラウドにデプロイした場合のみです。
 > 
 > 
 
 <a name="caching_properties"></a> 
 
-### <a name="caching-properties"></a>Caching properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Caching**. Within this dialog, you can enable named co-located memcache-compatible caches, allowing you to help speed up your web applications.
+### <a name="caching-properties"></a>Caching のプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Caching (キャッシュ)]** の順にクリックします。 このダイアログ ボックスでは、併置された名前付きの memcache 互換キャッシュを有効にして、Web アプリケーションを高速化できます。
 
 ![][ic719483]
 
-Within the **Caching** property page, you can specify global settings for the following:
+**[Caching]** プロパティ ページでは、次のグローバル設定を指定できます。
 
-* whether co-located caching is enabled.
-* the cache size as a percent of memory.
-* the storage account name for saving the cache state when your application runs as a cloud service, or none if you do not want to save the cache state. (The storage account name is not used when you run your application in the compute emulator.) If you set the storage account name to **(auto)** (which is the default), your caching configuration will automatically use the same storage account as the one you select in the **Publish to Azure** dialog.
+* 併置型キャッシュを有効にするかどうか。
+* キャッシュ サイズ (メモリの割合で指定)。
+* アプリケーションをクラウド サービスとして実行するときにキャッシュの状態を保存するためのストレージ アカウント名 (キャッシュの状態を保存しない場合は [none])。 コンピューティング エミュレーターでアプリケーションを実行するときは、ストレージ アカウント名は使用されません。ストレージ アカウント名を **[(auto) (自動)]** (既定値) に設定した場合、**[Publish to Azure (Azure に発行)]** ダイアログ ボックスで選択したものと同じストレージ アカウントが自動的に使用されます。
 
 > [!NOTE]
-> The **(auto)** setting will have the desired effect only if you publish your deployment using the Eclipse toolkit's publish wizard. If instead you publish the .cspkg file manually using an external mechanism, such as the [Azure Management Portal][Azure Management Portal], the deployment will not function properly.
+> **[(auto)]** 設定の場合、Eclipse ツールキットの発行ウィザードを使用してデプロイを発行した場合にのみ目的の効果が得られます。 [Azure 管理ポータル][Azure Management Portal]など外部のメカニズムを使用して手動で .cspkg ファイルを発行した場合、デプロイは正しく機能しません。
 > 
 > 
 
-The following dialog shows the properties for a cache.
+キャッシュのプロパティに関するダイアログ ボックスを次に示します。
 
 ![][ic719501]
 
-* **Name:** The name of the co-located cache.
-* **Port number:** The port number to use for the cache.
-* **Expiration policy:** One of the following values that specifies when a key in the cache expires.
-  * **Absolute:** The key expires when the time specified by **Minutes to live** is reached.
-  * **NeverExpires:** The key does not have an expiration time.
-  * **SlidingWindow:** The key expires if it has not been accessed for the amount of time specified by **Minutes to live**; each time it is accessed, the expiration clock is reset.
-* **Minutes to live:** Maximum number of minutes for a memcached key to live, subject to the expiration policy.
-* **High availability with replicated backups on different role instances:** If enabled, helps provide high availability utilizing replicated backups on different role instances. Note that at least two role instances must be in effect for your deployment for this feature to work.
+* **[Name]:** 併置型キャッシュの名前。
+* **[Port number]:** キャッシュに使用するポート番号。
+* **[Expiration policy]:** キャッシュ内のキーの有効期限を指定する次のいずれかの値。
+  * **[Absolute (絶対値)]**: **[Minutes to live (有効期間 (分))]** に指定された時間になるとキーが期限切れになります。
+  * **[NeverExpires]:** キーには有効期限がありません。
+  * **[SlidingWindow (スライド式)]**: **[Minutes to live (有効期間 (分))]** に指定された時間にわたってアクセスされない時間があると、キーが期限切れになります。有効期限の時間は、アクセスされるたびにリセットされます。
+* **[Minutes to live]:** 有効期限ポリシーが適用される memcached キーの有効期限 (分単位)。
+* **[High availability with replicated backups on different role instances]:** 有効にした場合、別のロール インスタンスにレプリケートされたバックアップを使用して高可用性が確保されます。 この機能を使用するには、デプロイに対して少なくとも&2; つのロール インスタンスが有効になっている必要があります。
 
-To add a new cache, click the **Add** button in the **Caching** property page, and a **Configure Named Cache** dialog will be opened. Provide values for the properties which are described above.
+新しいキャッシュを追加するには、**[Caching (キャッシュ)]** プロパティ ページで **[Add (追加)]** ボタンをクリックして **[Configure Named Cache (名前付きキャッシュの構成)]** ダイアログ ボックスを開きます。 前述のプロパティの値を指定してください。
 
-To modify a named cache, select the cache and click the **Edit** button in the **Caching** property page. A dialog will be opened allowing you to modify the cache properties. Press **OK** to save the cache values.
+名前付きキャッシュを変更するには、キャッシュを選択し、**[Caching (キャッシュ)]** プロパティ ページで **[Edit (編集)]** ボタンをクリックします。 キャッシュのプロパティを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して、キャッシュの値を保存します。
 
-To delete a cache, select the cache and click the **Remove** button in the **Caching** property page, and then click **Yes** to confirm the deletion.
+キャッシュを削除するには、目的のキャッシュを選択し、**[Caching (キャッシュ)]** プロパティ ページで **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-For more information on how to use caching, see [How to Use Co-located Caching][How to Use Co-located Caching].
+キャッシュの使用方法の詳細については、[併置型キャッシュの使用方法][How to Use Co-located Caching]に関するページを参照してください。
 
 <a name="certificates_properties"></a> 
 
-### <a name="certificates-properties"></a>Certificates properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Certificates**.
+### <a name="certificates-properties"></a>証明書のプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Certificates (証明書)]** の順にクリックします。
 
 ![][ic710964]
 
-Within this dialog, you can add or remove certificates referenced by your Eclipse project. Note that the certificates listed here are not automatically stored inside any Java keystore, and therefore are not automatically available for any use from within a Java application. They are only registered with Azure so that they can be preloaded into the Windows certificate store on the virtual machines running your deployment and subsequently used by other Windows software. Currently, the only feature of the toolkit that uses the certificates referenced this way in the **Certificates** dialog is [SSL Offloading][SSL Offloading], due to its reliance on Internet Information Services (IIS) and Application Request Routing (ARR), which require the proper certificate to be made available in this manner.
+このダイアログ ボックスでは、Eclipse プロジェクトで参照する証明書を追加または削除できます。 ここに表示された証明書は Java キーストア内に自動的には格納されないため、自動的に Java アプリケーション内で使用できるようにはなりません。 デプロイしたアプリケーションの実行環境となる仮想マシン上の Windows 証明書ストアにプリロードしておき、後で他の Windows ソフトウェアから使用することができるよう、これらの証明書は Azure に登録されるのみです。 現在、**[Certificates (証明書)]** ダイアログ ボックスからこのようにして参照された証明書を使用するツールキットの機能は [SSL オフロード][SSL Offloading]のみです。SSL オフロードで使用されるインターネット インフォメーション サービス (IIS) と Application Request Routing (ARR) では、適切な証明書が、この方法で利用できることが要求されるためです。
 
-When you deploy your project to Azure using the Publish wizard, you will be prompted to point at the Personal Information Exchange (PFX) files corresponding to these certificates, along with their passwords, in order to automatically upload them to the Azure service, but only if they have not been uploaded there previously.
+発行ウィザードを使用して Azure にプロジェクトをデプロイするとき、これらの証明書に対応する Personal Information Exchange (PFX) ファイルをパスワードと共に指定するように求められます。これにより、これらのファイルが以前に Azure サービスにアップロードされていない場合にのみ自動的に Azure サービスにアップロードされるようになります。
 
 <a name="components_properties"></a> 
 
-### <a name="components-properties"></a>Components properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Components**. Within this dialog, you have the ability to add, modify, or remove the components of your role, as well as change the order in which they are processed.
+### <a name="components-properties"></a>コンポーネントのプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Components (コンポーネント)]** の順にクリックします。 このダイアログ ボックスで、ロールのコンポーネントを追加、変更、削除できるほか、コンポーネントが処理される順序を変更することができます。
 
 ![][ic719502]
 
-The components feature enables you to add dependencies to your Azure deployment project, such as Java application projects, special files, and executable command line statements that are needed by your deployment.
+Java アプリケーション プロジェクト、特殊ファイル、実行可能コマンド ライン ステートメントなど、デプロイで必要な依存関係は、この機能を使って Azure デプロイ プロジェクトに追加することができます。
 
-For each component, you can specify:
+各コンポーネントに対し、次の項目を指定できます。
 
-* The step to be taken when importing the component into your Azure deployment project when it is built.
-* The step to be taken when deploying that component in the Azure cloud.
+* Azure デプロイ プロジェクトのビルド時にコンポーネントをインポートするときの処理ステップ。
+* コンポーネントを Azure のクラウドにデプロイするときの処理ステップ。
 
 > [!NOTE]
-> When specifying component files or command lines, keep in mind that your deployment will be published to a Windows virtual machine, so your custom steps must be valid for a Windows-based operating system. 
+> コンポーネントのファイルまたはコマンド ラインを指定するときは、デプロイの発行先が Windows の仮想マシンであることに注意してください。つまり、独自に指定した処理ステップは、Windows ベースのオペレーティング システムに対して有効である必要があります。 
 > 
 > 
 
-Components have the following properties:
+コンポーネントには、次のプロパティがあります。
 
-* **Import:** Method that indicates how the component will be imported into the project when the project is built. This can be one of the following values:
-  * **copy:** The component is copied from the local path specified by the **From** property into the role's **approot** directory.
-  * **EAR:** The component is a Java enterprise archive (EAR) imported from an Enterprise Application Project at the local path specified by the **From** property. (This is detected automatically by the toolkit based on the nature of the project at that location).
-  * **JAR:** The component is a Java archive (JAR) and is imported from a Java project at the local path specified by the **From** property. (This is detected automatically by the toolkit based on the nature of the project at that location).
-  * **none:** No action is taken to import the component. This is applicable when the component is assumed to already be present in the role's **approot** directory, or when the component is merely an executable command line statement, as specified in the **As** property when the **Deploy** method is **exec**.
-  * **WAR:** The component is a Java web application archive (WAR) and is imported from a Dynamic Web Project at the local path specified by the **From** property. (This is detected automatically by the toolkit based on the nature of the project at that location).
-  * **zip:** The component is a zip file and is imported by zipping the directory or file specified by the **From** property.
-* **From:** Source path on your local machine to the folder or file that represents the item(s) to import to your deployment. Windows environment variables can be used in this property. All importable components will be imported into the role's **approot** directory when the project is built.
+* **Import:** プロジェクトのビルド時にコンポーネントをどのような方法でプロジェクトにインポートするか。 次のいずれかの値を指定できます。
+  * **[copy (コピー)]**: 対象のコンポーネントは、**[From]** プロパティで指定されたローカル パスからロールの **approot** ディレクトリにコピーされます。
+  * **[EAR]**: 対象のコンポーネントは Java エンタープライズ アーカイブ (EAR) です。**[From]** プロパティで指定されたローカル パスにあるエンタープライズ アプリケーション プロジェクトからインポートされます  (その場所にあるプロジェクトの種類に基づいてツールキットによって自動的に検出されます)。
+  * **[JAR]**: 対象のコンポーネントは Java アーカイブ (JAR) です。**[From]** プロパティで指定されたローカル パスにある Java プロジェクトからインポートされます  (その場所にあるプロジェクトの種類に基づいてツールキットによって自動的に検出されます)。
+  * **[none (なし)]:** コンポーネントをインポートするための処理は実行されません。 ロールの **approot** ディレクトリにコンポーネントが既に存在していることを前提とした処理を行う場合に選択します。また、**[Deploy (デプロイ)]** 方法が **exec** のときに **[As]** プロパティで指定された実行可能コマンド ライン ステートメントがコンポーネントである場合も、これを選択します。
+  * **[WAR]**: 対象のコンポーネントは Java Web アプリケーション アーカイブ (WAR) です。**[From]** プロパティで指定されたローカル パスにある動的 Web プロジェクトからインポートされます  (その場所にあるプロジェクトの種類に基づいてツールキットによって自動的に検出されます)。
+  * **[zip]**: 対象のコンポーネントは zip ファイルです。**[From]** プロパティで指定されたディレクトリまたはファイルを zip 圧縮してインポートされます。
+* **From:** デプロイにインポートするアイテム (フォルダーまたはファイル) が格納されているローカル コンピューター上のパス。 このプロパティには Windows の環境変数を使用できます。 インポート可能なすべてのコンポーネントが、プロジェクトのビルド時にロールの **approot** ディレクトリにインポートされます。
   
-    Note that you have the ability to deploy a component from a download when deploying to the cloud (not the compute emulator). See related information below about adding a component.    
-* **As:** File name under which the component will be imported into the role's **approot** directory and ultimately deployed in the Azure cloud. Leave this property blank to keep the name the same as it is on the local machine. (For executable components, that is, those whose **Deploy** method is set to **exec**, this can be an arbitrary Windows command line statement.)
+    (コンピューティング エミュレーターにではなく) クラウドにデプロイするときは、ダウンロードによってコンポーネントをデプロイすることができます。 コンポーネントの追加については、以下の関連情報を参照してください。    
+* **[As]**: ロールの **approot** ディレクトリにインポートする (最終的に Azure クラウドにデプロイされる) コンポーネントに付けるファイル名。 ローカル コンピューター上のファイルの名前と同じ名前を使用する場合は、このプロパティを空欄にしておいてください。 (**[Deploy (デプロイ)]** 方法が **exec** に設定されている実行可能なコンポーネントの場合は、任意の Windows コマンド ライン ステートメントを指定できます)。
   
   > [!IMPORTANT]
-  > If you use space characters for this value, they will be handled differently depending on the deploy method. If the deploy method is **exec**, spaces will be interpreted as command line argument separators and not as part of the file name. For all other deploy methods, spaces will be interpreted as part of the file name.
+  > この値に空白文字を使用した場合、その扱いは、デプロイ方法によって異なります。 デプロイ方法が **exec**の場合、空白は、ファイル名の一部としてではなく、コマンド ライン引数の区切り記号として解釈されます。 その他のデプロイ方法ではいずれも、空白がファイル名の一部として解釈されます。
   > 
   > 
-* **Deploy:** Method that indicates the action applied to the component when the deployment is started. This can be one of the following values:
+* **Deploy:** デプロイの開始時にコンポーネントに適用する処理の方法。 次のいずれかの値を指定できます。
   
-  * **copy:** The component is copied to the destination path specified by the **To** property.
-  * **exec:** The component is an executable Windows command line statement executed in the context of the path specified by the **To** property, at the time the deployment starts.
-  * **none:** No action is applied to the component when the deployment starts.
-  * **zip:** The component is unzipped to the destination path specified by the **To** property. This method is available only when the **Import** property is **zip**.
-* **To:** Destination path on the virtual machine where the component will be deployed. Windows environment variables can be used in this property, and file paths are relative to **approot**.
+  * **[copy (コピー)]:** 対象のコンポーネントは、**[To]** プロパティで指定されたデプロイ先のパスにコピーされます。
+  * **[exec]:** 対象のコンポーネントは、デプロイの開始時に **[To]** プロパティで指定されたパスのコンテキストで実行される、実行可能な Windows コマンド ライン ステートメントです。
+  * **none:** デプロイの開始時にコンポーネントにアクションは適用されません。
+  * **[zip]**: 対象のコンポーネントは、**[To]** プロパティで指定されたデプロイ先のパスに解凍されます。 この方法は、**[Import (インポート)]** プロパティが **[zip]** の場合にのみ使用できます。
+* **[To]:** 対象コンポーネントのデプロイ先となる仮想マシン上のパス。 このプロパティには Windows の環境変数を使用できます。**approot** に対する相対パスで指定します。
 
-To add a new component, click the **Add** button in the **Components** property page, and an **Azure Role Component** dialog will be opened. Provide values for the properties which are described above. 
+新しいコンポーネントを追加するには、**[Components (コンポーネント)]** プロパティ ページの **[Add (追加)]** ボタンをクリックして **[Azure Role Component (Azure ロール コンポーネント)]** ダイアログ ボックスを開きます。 前述のプロパティの値を指定してください。 
 
-The following shows an example for adding a new WAR component.
+新しい WAR コンポーネントを追加する例を次に示します。
 
 ![][ic719503]
 
-When deploying to the cloud (not the compute emulator), if you want to deploy the component from a download, ensure that **When in cloud, instead of including in the package, deploy from** is checked. If you want to download from your Azure storage account, select the storage account from the **Storage account** drop-down list (you can click the **Accounts** link to modify what is in the list), which will partially fill in the **URL** field, and then fill in the remaining portion of the URL. If you do not want to use Azure storage, select **(none)** from the **Storage account** drop-down list, and enter the URL to your component in the **URL** field. Specify one of the following methods:
+(コンピューティング エミュレーターにではなく) クラウドにデプロイするとき、ダウンロードによってコンポーネントをデプロイする場合は、**[When in cloud, instead of including in the package, deploy from (クラウドにデプロイする場合、パッケージに含める代わりに次の場所からデプロイする)]** をオンにしてください。 Azure ストレージ アカウントからダウンロードする場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts (アカウント)]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、URL の残りの部分を手動で入力します。 Azure Storage を使用しない場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧の **[(none) (なし)]** を選択し、**[URL]** ボックスにコンポーネントの URL を入力します。 次のいずれかの方法を指定します。
 
-* **copy:** The download component is copied to the destination path specified by the **To Directory** path.
-* **same:** The same method used for **Deploy from download** as for **Deploy from package**.
-* **zip:** The download component is unzipped to the destination path specified by the **To Directory** path.
+* **[copy (コピー)]**: ダウンロードしたコンポーネントは、**[To Directory (ターゲット ディレクトリ)]** で指定されたデプロイ先のパスにコピーされます。
+* **[same (同じ)]**: **[Deploy from package (パッケージからデプロイ)]** と同じ方法が **[Deploy from download (ダウンロードからデプロイ)]** に使用されます。
+* **[zip]:** ダウンロードしたコンポーネントは、**[To Directory (ターゲット ディレクトリ)]** で指定されたデプロイ先のパスに解凍されます。
 
-To modify a component, select the component and click the **Edit** button in the **Components** property page. A dialog will be opened allowing you to modify the component properties. Press **OK** to save the component values.
+コンポーネントに変更を加えるには、対象のコンポーネントを選択し、**[Components (コンポーネント)]** プロパティ ページで **[Edit (編集)]** ボタンをクリックします。 コンポーネントのプロパティを変更するためのダイアログ ボックスが開きます。 **[OK]** を押すと、コンポーネントの値が保存されます。
 
-To delete a component, select the component and click the **Remove** button in the **Components** property page, and then click **Yes** to confirm the deletion.
+コンポーネントを削除するには、対象のコンポーネントを選択し、**[Components (コンポーネント)]** プロパティ ページで **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-Components are processed in the order listed. Use the **Move Up** and **Move Down** buttons to arrange the order.
+コンポーネントは、リストの先頭から順に処理されます。 順序を変更するには、**[Move Up (上へ移動 )]** ボタンと **[Move Down (下へ移動)]** ボタンを使用します。
 
 > [!NOTE]
-> The server configuration feature relies on components as well. Those components cannot be removed or edited without removing the corresponding server configuration. You will be prompted about that when attempting to make changes to such components.
+> コンポーネントは、サーバーの構成機能でも使われています。 それらのコンポーネントを削除したり編集したりするには、対応するサーバーの構成を削除する必要があります。 そのようなコンポーネントに変更を加えようとすると、この点を確認するメッセージが表示されます。
 > 
 > 
 
 <a name="debugging_properties"></a> 
 
-### <a name="debugging-properties"></a>Debugging properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Debugging**. Within this dialog, you have the ability to enable or disable remote debugging, as well as create debug configurations, as shown in the following image.
+### <a name="debugging-properties"></a>デバッグのプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Debugging (デバッグ)]** の順にクリックします。 次の図に示すように、このダイアログ ボックスでリモート デバッグを有効または無効にしたり、デバッグ構成を作成したりできます。
 
 ![][ic719504]
 
-For related information about debugging, see [Debugging Azure Applications in Eclipse][Debugging Azure Applications in Eclipse].
+デバッグの詳細については、「[Eclipse での Azure アプリケーションのデバッグ][Debugging Azure Applications in Eclipse]」を参照してください。
 
 <a name="endpoints_properties"></a> 
 
-### <a name="endpoints-properties"></a>Endpoints properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Endpoints**. Within this dialog, you have the ability to create an endpoint, as well as edit or remove an endpoint, as shown in the following image.
+### <a name="endpoints-properties"></a>エンドポイントのプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Endpoints (エンドポイント)]** の順にクリックします。 次の図に示すように、このダイアログ ボックスではエンドポイントを作成、編集、削除することができます。
 
 ![][ic719505]
 
-To add an endpoint, click the **Add** button in the **Endpoints** property page, and an **Add Endpoint** dialog will be opened.
+エンドポイントを追加するには、**[Endpoints (エンドポイント)]** プロパティ ページの **[Add (追加)]** ボタンをクリックして **[Add Endpoint (エンドポイントの追加)]** ダイアログ ボックスを開きます。
 
 ![][ic710897]
 
-Enter a name for the endpoint, select the type (either **Input**, **Internal**, or **InstanceInput**), and specify the public and private port. Press **OK** to save the new endpoint values.
+エンドポイントの名前を入力し、種類 (**[Input (入力)]**、**[Internal (内部)]**、**[InstanceInput (インスタンス入力)]** のいずれか) を選択して、パブリック ポートとプライベート ポートを指定します。 **[OK]** を押して、新しいエンドポイント値を保存します。
 
-Depending on the type of endpoint, you may use port ranges as follows:
+エンドポイントの種類によっては、次のようにポート範囲を使用できます。
 
-* For an input instance endpoint, the public port can be a range of ports (for example **2000-2010**) and the private port is a fixed value.
-* For an internal endpoint, the public port is not used, and the private port can be a range, or left blank or set to an asterisk to indicate it is automatically set by Azure.
-* For input endpoints, the public port can only be a fixed value, and the private port can be a fixed value, or left blank or set to an asterisk to indicate it is automatically set by Azure.
+* 入力インスタンス エンドポイントの場合、パブリック ポートにポート範囲を指定できます (たとえば、**2000 ～&2010;**)。プライベート ポートには固定値を使用します。
+* 内部エンドポイントの場合、パブリック ポートは使用されません。プライベート ポートに範囲を指定してください。空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
+* 入力エンドポイントの場合、パブリック ポートに指定できるのは固定値のみです。プライベート ポートには固定値を指定できるほか、空欄またはアスタリスクを指定して Azure で自動的にポートを設定することもできます。
 
-If you want to use a single port number instead of a range, leave the text box for the end of the range blank.
+範囲ではなく単一のポート番号を使用する場合は、範囲の終わりを示すテキスト ボックスは空欄にしてください。
 
-For ports that are set to automatic, if you need to determine which port is actually used during runtime, your application can use the Azure Service Runtime API, which is documented in the [com.microsoft.windowsazure.serviceruntime package summary][com.microsoft.windowsazure.serviceruntime package summary].
+ポートの設定を自動で行う場合に実行時に実際に使用されるポートを調べるには、Azure サービス ランタイム API ([com.microsoft.windowsazure.serviceruntime パッケージの概要][com.microsoft.windowsazure.serviceruntime package summary]を参照) をアプリケーションで使用してください。
 
-To see how instance input endpoints can be used to help with debugging a multi-instance deployment, see [Debugging a specific role instance in a multi-instance deployment][Debugging a specific role instance in a multi-instance deployment].
+複数インスタンス デプロイのデバッグにインスタンス入力エンドポイントを利用する方法については、[複数インスタンス デプロイでの特定のロール インスタンスのデバッグ][Debugging a specific role instance in a multi-instance deployment]に関するページを参照してください。
 
-To modify an endpoint, select the endpoint and click the **Edit** button in the **Endpoints** property page. A dialog will be opened allowing you to modify the endpoint name, type, and public and private ports. Press **OK** to save the modified endpoint values.
+エンドポイントに変更を加えるには、対象のエンドポイントを選択し、**[Endpoints (エンドポイント)]** プロパティ ページの **[Edit (編集)]** ボタンをクリックします。 エンドポイントの名前、種類、パブリック ポート、プライベート ポートを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して、変更したエンドポイントの値を保存します。
 
-To delete an endpoint, select the endpoint and click the **Remove** button in the **Endpoints** property page, and then click **Yes** to confirm the deletion.
+エンドポイントを削除するには、対象のエンドポイントを選択し、**[Endpoints (エンドポイント)]** プロパティ ページの **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-In order to properly configure some of the features (such as Caching, Remote Debugging, Session Affinity, or SSL offloading) enabled by the user on a role, the toolkit may automatically configure special endpoints that will be listed along with user-defined endpoints. The toolkit prevents the user from editing or deleting such automatically generated endpoints as long as the associated feature is enabled.
+ロールのユーザーによって有効にされた機能 (キャッシュ、リモート デバッグ、セッション アフィニティ、SSL オフロードなど) を適切に構成するために、特殊なエンドポイントがツールキットによって自動的に構成されることがあります。これらのエンドポイントは、ユーザー定義のエンドポイントと共に一覧に表示されます。 関連付けられている機能が有効になっている限り、これらの自動生成されたエンドポイントをユーザーが編集または削除することはできません。
 
 <a name="environment_variables_properties"></a> 
 
-### <a name="environment-variables-properties"></a>Environment variables properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Environment Variables**. Within this dialog, you have the ability to create an environment variable, as well as modify or remove an environment variable, as shown in the following image.
+### <a name="environment-variables-properties"></a>環境変数のプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Environment Variables (環境変数)]** の順にクリックします。 次の図に示すように、このダイアログ ボックスで環境変数を作成、変更、削除することができます。
 
 ![][ic719506]
 
-Environment variables are available to your startup script when the role starts.
+スタートアップ スクリプトの中で指定された環境変数の値は、ロールの起動時に与えられます。
 
 > [!NOTE]
-> When specifying environment variables, keep in mind that your deployment will be published to a Windows virtual machine, so your environment variables must be valid for a Windows-based operating system.
+> 環境変数を指定するときは、デプロイの発行先が Windows の仮想マシンであることに注意してください。つまり環境変数は、Windows ベースのオペレーティング システムに対して有効である必要があります。
 > 
 > 
 
-As an example of an environment variable being available when the role starts, create a new environment variable by clicking the **Add** button. The following shows an environment variable named **MyRoleVersion** being created and assigned the value **1.0**.
+ここで、ロールの起動時に値が与えられる環境変数の例を紹介します。**[Add (追加)]** ボタンをクリックして新しい環境変数を作成しましょう。 ここでは、**MyRoleVersion** という名前の環境変数を作成し、その値として **1.0** を割り当てています。
 
 ![][ic659268]
 
-Within your jsp code, you could display the value using the `System.getenv` method:
+jsp コードでは、 `System.getenv` メソッドを使用してこの値を表示できます。
 
     <body>
       <b> Hello World!</b>
       <p>Running role version: <%= System.getenv("MyRoleVersion") %></p>
     </body>
 
-Resulting in this output when your application runs:
+アプリケーションを実行すると、次の出力が得られます。
 
 ![][ic552233]
 
-To modify an environment variable, select the environment variable and click the **Edit** button in the **Environment Variables** property page. A dialog will be opened allowing you to modify the environment variable properties. Press **OK** to save the environment variable values.
+環境変数を変更するには、対象の環境変数を選択し、**[Environment Variables (環境変数)]** プロパティ ページで **[Edit (編集)]** ボタンをクリックします。 環境変数のプロパティを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して環境変数の値を保存します。
 
-To delete an environment variable, select the environment variable and click the **Remove** button in the **Environment Variables** property page, and then click **Yes** to confirm the deletion.
+環境変数を削除するには、対象の環境変数を選択し、**[Environment Variables (環境変数)]** プロパティ ページの **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
-In order to properly configure some of the features (such as Server Configuration, Remote Debugging or Local Storage) enabled by the user on a role, the toolkit may automatically configure special environment variables that will be listed along with user-defined environment variables. The toolkit prevents the user from editing or deleting such automatically generated environment variables as long as the associated feature is enabled.
+ロールのユーザーによって有効にされた機能 (サーバー構成、リモート デバッグ、ローカル ストレージなど) を適切に構成するために、特殊な環境変数がツールキットによって自動的に構成されることがあります。これらの環境変数は、ユーザー定義の環境変数と共に一覧に表示されます。 関連付けられている機能が有効になっている限り、これらの自動生成された環境変数をユーザーが編集または削除することはできません。
 
 <a name="session_affinity_properties"></a> 
 
-### <a name="load-balancing-session-affinity-aka-sticky-sessions-properties"></a>Load balancing / session affinity (a.k.a "sticky sessions") properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Load Balancing**. Within this dialog, you have the ability to enable or disable session affinity, as shown in the following image.
+### <a name="load-balancing--session-affinity-aka-sticky-sessions-properties"></a>負荷分散/セッション アフィニティ (別名、"スティッキー セッション") のプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Load Balancing (負荷分散)]** の順にクリックします。 次の図に示すように、このダイアログ ボックスでセッション アフィニティを有効または無効にすることができます。
 
 ![][ic719492]
 
-For related information, see [Session Affinity][Session Affinity]. Also, note this feature's behavior in the context of SSL offloading, as described at [SSL Offloading][SSL Offloading].
+関連情報については、[セッション アフィニティ][Session Affinity]に関するページを参照してください。 また、[SSL オフロード][SSL Offloading]に関するページで説明されているように、SSL オフロードのコンテキストでのこの機能の動作に注意してください。
 
 <a name="local_storage_properties"></a> 
 
-### <a name="local-storage-properties"></a>Local storage properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Local Storage**. Within this dialog, you have the ability to create, modify or remove temporary local storage for the virtual machine that is running your application. Specific values can be set for the size of the local storage, as well as whether the contents are preserved when the role is recycled, as shown in the following image.
+### <a name="local-storage-properties"></a>ローカル ストレージのプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Local Storage (ローカル ストレージ)]** の順にクリックします。 アプリケーションを実行している仮想マシンの一時ローカル ストレージは、このダイアログ ボックスで作成、変更、削除することができます。 次の図に示すように、ローカル ストレージのサイズとして特定の値を設定したり、ロールをリサイクルするときに内容を保持するかどうかを設定したりすることができます。
 
 ![][ic719508]
 
-You can also optionally specify an environment variable that corresponds to the local storage.
+また、必要に応じて、ローカル ストレージに対応する環境変数を指定することもできます。
 
-By default, everything that you deploy into Azure is placed (and unzipped) in the **approot** folder of the role instance. While most simple deployments will fit there even after unzipping, the space allocated for the **approot** directory is limited and not well-defined (less than 1 GB is a reasonable rule of thumb). Therefore, to ensure Azure allocates sufficient disk space for larger deployments that might not fit in the **approot** folder, you should set up a local storage resource using the **Local Storage** dialog. For an easy way to do this, see [Deploying Large Deployments][Deploying Large Deployments].
+既定では、Azure にデプロイするすべてのものが、ロール インスタンスの **approot** フォルダーに配置 (および解凍) されます。 ほとんどの単純なデプロイは解凍した後もこのフォルダーに収まりますが、 **approot** ディレクトリに割り当てられる領域は限られ、適切に定義されません (妥当な経験則では 1 GB 未満)。 そのため、**approot** フォルダーに収まらない可能性がある大規模なデプロイに対して十分なディスク領域が Azure によって割り当てられるようにするには、**[Local Storage (ローカル ストレージ)]** ダイアログを使用してローカル ストレージ リソースを設定する必要があります。 これを簡単に行う方法については、「[大規模なデプロイ][Deploying Large Deployments]」を参照してください。
 
-You can easily reference the storage resource from startup scripts (for example, your **startup.cmd**) using the environment variable automatically associated by the Eclipse toolkit with the resource, as shown in the **Local Storage** dialog. That environment variable will contain the full path of the local resource you've configured at the time your startup script is executed. 
+ストレージ リソースは、Eclipse ツールキットによってリソースに自動的に関連付けられた環境変数を使用して、スタートアップ スクリプト (たとえば、**startup.cmd**) から簡単に参照することができます (環境変数は、**[Local Storage (ローカル ストレージ)]** ダイアログ ボックスに示されます)。 環境変数には、構成したローカル リソースの完全なパスが、スタートアップ スクリプトの実行時に格納されます。 
 
-To modify a local storage resource, select the local storage resource and click the **Edit** button in the **Local Storage** property page. A dialog will be opened allowing you to modify the local storage resource properties. Press **OK** to save the local storage resource values.
+ローカル ストレージ リソースに変更を加えるには、対象のローカル ストレージ リソースを選択し、**[Local Storage (ローカル ストレージ)]** プロパティ ページで **[Edit (編集)]** ボタンをクリックします。 ローカル ストレージ リソースのプロパティを変更するためのダイアログ ボックスが開きます。 **[OK]** を押して、ローカル ストレージ リソースの値を保存します。
 
-To delete a local storage resource, select the local storage resource and click the **Remove** button in the **Local Storage** property page, and then click **Yes** to confirm the deletion.
+ローカル ストレージ リソースを削除するには、目的のローカル ストレージ リソースを選択し、**[Local Storage (ローカル ストレージ)]** プロパティ ページで **[Remove (削除)]** ボタンをクリックします。確認のメッセージが表示されるので、削除してかまわなければ **[Yes (はい)]** をクリックしてください。
 
 <a name="server_configuration_properties"></a> 
 
-### <a name="server-configuration-properties"></a>Server configuration properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Server Configuration**. Within this dialog, you have the ability to add, remove, and modify the JDK and Java application server used by your deployment, as well as add or remove the applications (such as WAR, JAR or EAR files) used by your deployment.
+### <a name="server-configuration-properties"></a>サーバー構成のプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[Server Configuration (サーバー構成)]** の順にクリックします。 このダイアログ ボックスで、デプロイで使用される JDK や Java アプリケーション サーバーを追加、削除、変更できるほか、デプロイで使用されるアプリケーション (WAR、JAR、EAR ファイルなど) を追加したり削除したりすることができます。
 
-### <a name="jdk-configuration"></a>JDK configuration
-This dialog allows you to specify the JDK package to use for your deployment. If you are using Eclipse on Windows, you can specify the JDK package to use locally when running in the Azure emulator and you have the option to deploy that local installation to Azure. On non-Windows operating systems, the emulator JDK setting is not applicable and you cannot deploy the locally installed JDK since it is not compatible with Windows. However, regardless of the operating system that you are using, you can always choose among the 3rd party JDK packages to deploy to Azure, or point at your own Windows-compatible JDK package from an alternate download location.
+### <a name="jdk-configuration"></a>JDK の構成
+このダイアログ ボックスでは、デプロイに使用する JDK パッケージを指定できます。 Windows 上で Eclipse を使用している場合は、Azure エミュレーターで実行したときにローカルで使用する JDK パッケージを指定できるほか、そのローカル インストールを Azure にデプロイすることができます。 Windows 以外のオペレーティング システムでは、エミュレーター JDK の設定は適用されません。Windows との互換性がないため、ローカルにインストールされた JDK をデプロイすることはできません。 ただし、Azure にデプロイするサード パーティ製の JDK パッケージを選択したり、代替となるダウンロード場所から Windows と互換性のある独自の JDK パッケージを参照したりすることは、使用しているオペレーティング システムに関係なくいつでも行うことができます。
 
-The following is an example of how you can specify a JDK on Windows:
+Windows 上の JDK を指定する方法の例を次に示します。
 
 ![][ic780647]
 
-If you are using Eclipse on Windows, you can specify a JDK to use with the compute emulator; to do so, ensure **Use the JDK from this file path for testing locally** is checked in the **Emulator deployment** section. Then, specify the local path to your JDK; you can browse to different JDK if the one you want to use is not selected automatically. You also have the option to deploy your JDK to your Azure cloud service; to do so, select the **Deploy my local JDK (auto-upload to cloud storage)** option in the **Cloud deployment** section.
+Windows 上で Eclipse を使用している場合は、コンピューティング エミュレーターで使用する JDK を指定できます。そのためには、**[Emulator deployment (エミュレーター デプロイ)]** セクションの **[Use the JDK from this file path for testing locally (ローカルなテスト用にこのファイル パスの JDK を使用する)]** チェック ボックスを必ずオンにしてください。 そのうえで JDK のローカル パスを指定します。必要な JDK が自動選択されない場合は、目的の JDK を参照画面で選択してください。 また、JDK を Azure クラウド サービスにデプロイすることもできます。そのためには、**[Cloud deployment (クラウド デプロイ)]** セクションの **[Deploy my local JDK (auto-upload to cloud storage) (ローカル JDK をデプロイする (クラウド ストレージに自動アップロードする))]** を選択します。
 
-Note: On non-Windows operating systems, the **Emulator deployment** settings and the **Deploy my local JDK** option are not available. The following example illustrates specifying a JDK on a Mac or other supported non-Windows operating system:
+注: Windows 以外のオペレーティング システムでは、**[Emulator deployment (エミュレーター デプロイ)]** 設定と **[Deploy my local JDK (ローカル JDK をデプロイする)]** オプションは使用できません。 Windows 以外のサポート対象オペレーティング システム (Mac など) 上で JDK を指定する例を次に示します。
 
 ![][ic789643]
 
-Regardless of the operating system you are on, you have the following two **Cloud deployment** options for the source and type of your JDK package:
+**[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の&2; つのオプションがあります。
 
-* **Deploy a 3rd party JDK package available on Azure** 
-* **Deploy from a custom download** 
+* **[Deploy a 3rd party JDK package available on Azure]** 
+* **[Deploy from a custom download]** 
 
-If you are using the **Deploy a 3rd party JDK package available from Azure** option:
+**[Deploy a 3rd party JDK package available from Azure]** オプションを使用する場合:
 
-1. Check the checkbox named **Deploy a 3rd party JDK package available from Azure**.
-2. From the drop-down list, select the 3rd party JDK package that is available on Azure.
-3. Your **JDK** tab will look similar to the following on Windows:  ![][ic780648]
-    And it will look similar to the following on Mac OS or other supported non-Windows operating systems:  ![][ic789643]
-4. Click **OK** to save your changes.
-5. When prompted to accept the license agreement from the 3rd party JDK package provider, review the license terms. Assuming you accept the terms, click **Yes** to close the **Accept license agreement** dialog.
-    Note that the underlying logic for which items appear in the drop-down list for the **Deploy a 3rd party JDK package available from Azure** option can be customized. To customize the items, in the **JDK** dialog, click the **Customize** link. This will close the **JDK** property page and open the **componentsets.xml** file in Eclipse, which you can then modify as needed. Documentation for **componentsets.xml** is included in the **componentsets.xml** file itself.
+1. **[Deploy a 3rd party JDK package available from Azure]**チェック ボックスをオンにします。
+2. ドロップダウン リストから、Azure で利用可能なサード パーティ製の JDK パッケージを選択します。
+3. Windows を使用している場合、**[JDK]** タブは次のようになります。 ![][ic780648]
+   Mac OS またはサポートされている他の非 Windows オペレーティング システムを使用している場合、[JDK] タブは次のようになります。 ![][ic789643]
+4. **[OK]** をクリックして変更を保存します。
+5. サード パーティ製の JDK パッケージ プロバイダーからライセンス契約に同意することを求められたら、ライセンス条項を確認します。 (条項に同意する場合) **[Yes (はい)]** をクリックして **[Accept license agreement (ライセンス条項に同意する)]** ダイアログを閉じます。
+    **[Deploy a 3rd party JDK package available from Azure (Azure で使用できるサード パーティの JDK パッケージをデプロイする)]** ボックスの一覧に表示される項目を決定するロジックはカスタマイズすることができます。 項目をカスタマイズするには、**[JDK]** ダイアログ ボックスで、**[Customize (カスタマイズ)]** リンクをクリックします。 すると、**[JDK]** プロパティ ページが閉じ、**componentsets.xml** ファイルが Eclipse で開かれます。このファイルを、必要に応じて変更できます。 **componentsets.xml** に関するドキュメントは、**componentsets.xml** ファイル自体に含まれています。
 
-If you are using the **Deploy a JDK from a custom download** option:
+**[Deploy a JDK from a custom download]** オプションを使用する場合:
 
-1. Create a ZIP of your JDK installation directory, ensuring that the directory node itself is the child of the ZIP structure, and not its contents. Take note of the name of the directory, as you will need it later, and keep in mind this JDK installation will be deployed to a Windows virtual machine.
-2. Upload the ZIP into your Azure storage account as a blob. You can do this using an externally available tool for uploading blobs to Azure storage. It is recommended to use a private blob. Take note of the blob URL of the ZIP contents.
-3. Check the checkbox named **Deploy a JDK from a custom download**.
-    If you want to download from your Azure storage account, select the storage account from the **Storage account** drop-down list (you can click the **Accounts** link to modify what is in the list), which will partially fill in the **URL** field, and then fill in the remaining portion of the URL. If you do not want to use Azure storage, select **(none)** from the **Storage account** drop-down list, and enter the URL to your JDK download in the **URL** field. If using Azure storage, blob names in the URL must be lowercase.
-4. Ensure that the **JAVA_HOME** textbox refers to the correct directory name. By default, it will reference the same JDK directory name as the value you chose for your local use. But if the directory contained in the ZIP has a different name (for example, due to using a different version), update the directory name in the **JAVA_HOME** textbox accordingly, since this setting will be used in the cloud (not in the compute emulator).
-5. Click **OK** to save your changes.
+1. JDK インストール ディレクトリの ZIP を作成します。このとき、ディレクトリの内容ではなくノード自体が ZIP 構造の子になるようにします。 後で必要になるのでこのディレクトリの名前を控えておきます。この JDK インストールは Windows 仮想マシンにデプロイされることに注意してください。
+2. Azure ストレージ アカウントに ZIP を BLOB としてアップロードします。 Azure Storage への BLOB のアップロードには、外部のツールを使用できます。 プライベート BLOB を使用することをお勧めします。 ZIP コンテンツの BLOB の URL を書き留めます。
+3. **[Deploy a JDK from a custom download]**の順にクリックします。
+    Azure ストレージ アカウントからダウンロードする場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts (アカウント)]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、URL の残りの部分を手動で入力します。 Azure Storage を使用しない場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧の **[(none) (なし)]** を選択し、**[URL]** ボックスに JDK ダウンロードの URL を入力します。 Azure Storage を使用する場合、URL 内の BLOB 名は小文字で指定してください。
+4. **[JAVA_HOME]** ボックスに適切なディレクトリ名が指定されていることを確認します。 既定では、ローカルでの使用のために選択した値と同じ JDK ディレクトリ名が参照されます。 ただし、(たとえば、別のバージョンを使用した結果) ZIP に含まれているディレクトリの名前が異なる場合は、それに応じて **[JAVA_HOME]** ボックスのディレクトリ名を更新します。それは、この設定が (コンピューティング エミュレーターではなく) クラウドで使用されるためです。
+5. **[OK]** をクリックして変更を保存します。
 
-That's it. Now, when you build for the cloud, you will notice the package size will be much smaller, the build process should typically take less time, and the deployment itself when you publish to the cloud should also take less time. Note that the **Deploy my local JDK (auto-upload to cloud storage)** or **Deploy a JDK from a custom download** options are in effect only when your application is deployed in the cloud. They have no effect on your compute emulator experience; the local version of the components will still be used when you deploy to the compute emulator. 
+これで終了です。 以上で完了です。ここでクラウド向けにビルドすると、パッケージ サイズが大幅に縮小されることがわかります。通常、ビルド プロセスに要する時間も短くなり、クラウドに発行するときのデプロイ自体の時間も短縮されます。 **[Deploy my local JDK (auto-upload to cloud storage) (ローカル JDK をデプロイする (クラウド ストレージに自動アップロードする))]** オプションまたは **[Deploy a JDK from a custom download (カスタム ダウンロードから JDK をデプロイする)]** オプションは、アプリケーションをクラウドにデプロイする場合にのみ有効になります。 これらのオプションは、コンピューティング エミュレーター環境には作用しません。コンピューティング エミュレーターにデプロイするときは、ローカルに置かれている方のコンポーネントが使用されます。 
 
-### <a name="server-configuration"></a>Server configuration
-The following is an example of how you can specify an application server.
+### <a name="server-configuration"></a>サーバー構成
+アプリケーション サーバーを指定する方法の例を次に示します。
 
 ![][ic796926]
 
-Verify that the **Deploy a server of this type** checkbox is selected, and then choose the type of application server you want to use.
+**[Deploy a server of this type]** チェック ボックスがオンになっていることを確認して、使用するアプリケーション サーバーの種類を選択します。
 
-For specifying a server to use for cloud deployment, you can take advantage of the following options:
+クラウド デプロイに使用するサーバーを指定する場合、次のオプションを利用できます。
 
-1. **Deploy a 3rd party server available on Azure** - this is especially applicable in dev/test scenarios where deployment efficiency and simplicity is a priority and the server does not require a custom configuration. Or when you want to use one of those servers as the starting point but you include appropriate server customization steps in your deployment's startup logic.
-2. **Deploy from a custom download** - this is especially applicable in production scenarios when you have a specially prepared and configured server that you want to use in the cloud.
-3. **Deploy my local server installation** - this is especially applicable in if your local server installation is already custom-configured for your use. If you choose this option, you must also specify your local server's path in the **Local server path** text box below.
+1. **[Deploy a 3rd party server available on Azure]** : 効率と単純さに優先順位が置かれ、サーバーのカスタム構成を必要としない開発とテストのシナリオで主に使用します。 また、これらのサーバーのいずれかを開始点として使用するものの、必要なサーバー カスタマイズ手順をデプロイのスタートアップ ロジックに含める場合も、このオプションを使用します。
+2. **[Deploy from a custom download]** : このオプションは主に、クラウドで使うことを目的として準備、構成されたサーバーがある実稼働環境のシナリオで使用します。
+3. **[Deploy my local server installation]** : 主に、ローカル サーバーのインストール環境に対し、必要なカスタム構成が済んでいる場合に使用します。 このオプションを選択する場合、下の **[Local server path]** ボックスにもローカル サーバーのパスを指定する必要があります。
 
-If you are using the **Deploy a 3rd party server available on Azure** option:
+**[Deploy a 3rd party server available on Azure]** オプションを使用する場合:
 
-1. Check the checkbox named **Deploy a 3rd party server available on Azure**.
-2. From the dropdown menu, select the desired server software to use with your deployment in the cloud. Note, if you already specified a type of server to use earlier, you will be limited to choosing only a cloud server that is in the same family as that server type. But if you did not choose a server type, you can choose from any of the servers that are currently available on Azure and the server type will be automatically selected for you.
-3. Click **OK** to save your changes.
+1. **[Deploy a 3rd party server available on Azure]**チェック ボックスをオンにします。
+2. ドロップダウン メニューから、クラウド上のデプロイで使用する目的のサーバー ソフトウェアを選択します。 使用するサーバーの種類を既に指定してある場合、選択できるのは、そのサーバーの種類と同じファミリに属するクラウド サーバーに限定されます。 まだサーバーの種類を選択していない場合は、Azure で現在使用できる任意のサーバーから選択できます。サーバーの種類は自動的に選択されます。
+3. **[OK]** をクリックして変更を保存します。
 
-If using the **Deploy from a custom download** option:
+**[Deploy from a custom download]** オプションを使用する場合:
 
-1. Make sure that you have already selected a server type according to the preceding steps. This tells the plugin how to deploy the server from your custom download, as it must be from the same family as your selected server type.
-2. Check the checkbox named **Deploy from a custom download**.
-    If you want to download from your Azure storage account, select the storage account from the **Storage account** drop-down list (you can click the **Accounts** link to modify what is in the list), which will partially fill in the **URL** field, and then fill in the remaining portion of the URL to your server download ZIP (when using Azure storage, blob names in the URL must be lowercase). If you do not want to use Azure storage, select **(none)** from the **Storage account** drop-down list, and enter the URL to your server download ZIP in the **URL** field. The ZIP would contain a child folder representing your application server installation directory. For example, if you are using a zip for Apache Tomcat 7.0.35, within the zip would be the child folder representing the installation directory, such as **apache-tomcat-7.0.35**. 
-3. Specify the value for the home directory environment variable. It will default to the value used for your local application server, if any, but you can specify a different value if your cloud application server is different from your local application server. However, you need to make sure that your cloud application server is of the same family as the server type selected earlier.
-    If you update your cloud application server zip in the future, you can manually change the home directory setting, or, to have it again match your local setting (if you changed your local application server too).
-4. Click **OK** to save your changes.
+1. 前の手順に従ってサーバーの種類が既に選択されていることを確認します。 サーバーは選択したサーバーの種類と同じファミリに属している必要があるため、この選択で、カスタム ダウンロードからサーバーをデプロイする方法をプラグインに指示します。
+2. **[Deploy from a custom download]**の順にクリックします。
+    Azure ストレージ アカウントからダウンロードする場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts (アカウント)]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、サーバー ダウンロード ZIP に対する URL の残りの部分を手動で入力します (Azure Storage を使用する場合、URL 内の BLOB 名は小文字で表記する必要があります)。 Azure Storage を使用しない場合は、**[Storage account (ストレージ アカウント)]** ボックスの一覧の **[(none) (なし)]** を選択し、**[URL]** ボックスにサーバー ダウンロード ZIP の URL を入力します。 通常この ZIP に、アプリケーション サーバーのインストール ディレクトリを表す子フォルダーが格納されます。 たとえば、Apache Tomcat 7.0.35 の zip を使用している場合、zip 内には、**apache-tomcat-7.0.35** などのインストール ディレクトリを表す子フォルダーがあります。 
+3. ホーム ディレクトリの環境変数の値を指定します。 この値は、ローカル アプリケーション サーバーがある場合に既定で使用される値になりますが、クラウドのアプリケーション サーバーがローカル アプリケーション サーバーと異なる場合は別の値を指定することができます。 ただし、クラウド アプリケーション サーバーは、前に選択したサーバーの種類と同じファミリに属している必要があります。
+    今後、クラウド アプリケーション サーバーの zip を更新する場合は、ホーム ディレクトリ設定を手動で変更するか、ローカル設定に合わせて変更することができます (ローカル アプリケーション サーバーも変更した場合)。
+4. **[OK]** をクリックして変更を保存します。
 
-The underlying logic for which items appear in the **Server** tab of the **Server Configuration** property page can be customized. This is an advanced feature that you might need if your needs extend beyond the default values or if you want to add other servers. To customize the logic, in the **Server** dialog, click the **Customize** link. This will close the **Server Configuration** property page and open the **componentsets.xml** file in Eclipse, which you can then modify as needed to extend the server configuration template. Documentation for **componentsets.xml** is included in the **componentsets.xml** file itself.
+**[Server Configuration (サーバー構成)]** プロパティ ページの **[Server (サーバー)]** タブに項目を表示する際に適用される基になるロジックをカスタマイズすることができます。 これは、実際のニーズが既定値を超える場合や他のサーバーを追加する場合に必要となる高度な機能です。 ロジックをカスタマイズするには、**[Server (サーバー)]** ダイアログ ボックスで、**[Customize (カスタマイズ)]** リンクをクリックします。 すると、**[Server Configuration (サーバー構成)]** プロパティ ページが閉じ、**componentsets.xml** ファイルが Eclipse で開かれます。このファイルを必要に応じて変更して、サーバーの構成テンプレートを拡張できます。 **componentsets.xml** に関するドキュメントは、**componentsets.xml** ファイル自体に含まれています。
 
-If you are using the **Deploy my local server (auto-upload to cloud storage)** option:
+**[Deploy my local server (auto-upload to cloud storage)]** オプションを使用する場合:
 
-1. Check the checkbox named **Deploy my local server (auto-upload to cloud storage)**.
-2. Using the **Storage account** drop-down list, select **(auto)**. If you specify **(auto)** here, the Eclipse toolkit will use the same storage account for your server as the one you select for your deployment in the **Publish to Azure** dialog.
-3. Click **OK** to save your changes.
+1. **[Deploy my local server (auto-upload to cloud storage)]**チェックボックスをオンにします。
+2. **[Storage account (ストレージ アカウント)]** ボックスの一覧の **[(auto) (自動)]** を選択します。 **[(auto) (自動)]** を指定すると、**[Publish to Azure (Azure に発行)]** ダイアログ ボックスでデプロイに対して選択したものと同じサーバーのストレージ アカウントが使用されます。
+3. **[OK]** をクリックして変更を保存します。
 
-Select a server installation path on your computer in the **Local server path** text box if any of the following conditions are true:
+次の条件のいずれかに該当する場合は、使用しているコンピューターの **[Local server path]** ボックスでサーバー インストール パスを選択します。
 
-* You want to test your deployment in the emulator (applies to Windows only).
-* You want to deploy your locally installed server to the cloud.
-* You want to use a custom server download of your own in the cloud, in which case, also ensure the **Deploy my local server (auto-upload to cloud storage)** option is selected above.
+* デプロイをエミュレーターでテストする (Windows にのみ適用されます)。
+* ローカルにインストールされているサーバーをクラウドにデプロイする。
+* クラウドで独自のカスタム サーバー ダウンロードを使用する。この場合、上の **[Deploy my local server (auto-upload to cloud storage) (ローカル サーバーをデプロイする (クラウド ストレージに自動アップロードする))]** オプションも選択する必要があります。
 
-If none of the preceding options apply to your situation, the local server setting is optional.
+これらの条件のいずれにも該当しない場合は、ローカル サーバーの設定を省略できます。
 
-### <a name="applications-configuration"></a>Applications configuration
-The following is an example of how you can specify an application.
+### <a name="applications-configuration"></a>アプリケーションの構成
+アプリケーションを指定する方法の例を次に示します。
 
 ![][ic719512]
 
-Click **Add** to add another application, or **Remove** to remove an application. For efficiency purposes, if you want to use a download for the source of an application when deploying to the cloud, use the [components properties](#components_properties) to specify a URL, storage account, etc. 
+別のアプリケーションを追加するには、**[Add (追加)]** をクリックします。アプリケーションを削除するには、**[Remove (削除)]** をクリックします。 クラウドへのデプロイ時に、効率上の理由からアプリケーションのソースとしてダウンロードを使用する場合は、[コンポーネントのプロパティ](#components_properties)を使用して、URL、ストレージ アカウントなどの値を指定してください。 
 
-Beginning with the April 2014 release, your applications are automatically uploaded into the same storage account (under the **eclipsedeploy** container) as the one selected for your deployment. The startup logic of your deployment contains a step that first downloads those applications from that storage account. This means that you may upgrade your applications in your deployment without needing to rebuild and redeploy the entire package, by manually uploading newer versions of the application directly into that storage account (using the Azure portal for example), replacing the WAR files originally uploaded there by the toolkit. Then, just initiate the recycling of all those role instances using Azure's management portal again, or via command line utilities. (Triggering role recycling directly from within the Eclipse toolkit is not currently supported.)
+April 2014 リリースより、アプリケーションは、デプロイ用に選択したのと同じ ( **eclipsedeploy** コンテナーの下の) ストレージ アカウントに自動的にアップロードされます。 デプロイのスタートアップ ロジックには、このストレージ アカウントから最初にそれらのアプリケーションをダウンロードする手順が含まれています。 これは、デプロイ内のアプリケーションをアップグレードする際にパッケージ全体を再ビルドして再デプロイする必要がないことを意味します。 つまり、手動で (たとえば、Azure ポータルを使用して) 新しいバージョンのアプリケーションをストレージ アカウントに直接アップロードして、ツールキットによってそこにアップロードされていた WAR ファイルを置き換える必要はありません。 Azure の管理ポータルまたはコマンド ライン ユーティリティを使用して、これらのすべてのロール インスタンスのリサイクルを開始するだけです (現在、Eclipse ツールキット内から直接リサイクルをトリガーすることはできません)。
 
-### <a name="notes-about-server-configuration"></a>Notes about server configuration
-Changes made through the **Server configuration** property page are reflected in the `<component>` elements of the package.xml file.
+### <a name="notes-about-server-configuration"></a>サーバーの構成に関する注意事項
+**[Server configuration (サーバー構成)]** プロパティ ページで加えられた変更は、package.xml ファイルの `<component>` 要素に反映されます。
 
-When you use the **Automatically upload...** or **Deploy from download...** options for either the JDK or application server, and you are building for the cloud (not the compute emulator), and you are connected to the network, you may notice build messages such as the following in the Console output, as the Ant builder verifies the download's availability:
+JDK またはアプリケーション サーバーに対して **[Automatically upload (自動アップロード)]** オプションまたは **[Deploy from download (デプロイからダウンロード)]** オプションを使用し、(コンピューティング エミュレーターではなく) クラウド用にビルドしていて、かつネットワークに接続されている場合、Ant ビルダーがダウンロードの可用性を検証したときに、次のようなメッセージがコンソールに出力されることがあります。
 
 `[windowsazurepackage] Verifying blob availability (https://example.blob.core.windows.net/temp/tomcat6.zip)...` 
 
-If you selected the **Deploy from download...** option, the following warning may be shown, but the build will continue:
+**[Deploy from download]** オプションを選択した場合、次の警告が表示されることがありますが、ビルドは続行されます。
 
 `[windowsazurepackage] warning: Failed to confirm blob availability! Make sure the URL and/or the access key is correct (https://example.blob.core.windows.net/temp/tomcat6.zip).` 
 
-This warning is the only indication that the download's availability hasn't been verified. So if a deployment fails in the cloud for some reason, check to see if you received this warning.
+この警告は、単にダウンロードの利用の可否が検証されていないことを示しています。 したがって、何かの理由でクラウドでのデプロイに失敗した場合は、この警告を受け取っていないか確認してください。
 
-If you want to disable the download verification (for example, if you feel it unnecessarily slows down the build), set the `verifydownloads` attribute to `false` in the `<windowsazurepackage>` element of package.xml: 
+(たとえば、ダウンロードの検証が原因でビルドが不必要に遅くなっていると思われる場合に) ダウンロードの検証を無効にするには、package.xml の `<windowsazurepackage>` 要素の `verifydownloads` 属性を `false` に設定します。 
 
 `<windowsazurepackage verifydownloads="false" ...>` 
 
-If you selected the **Automatically upload...** option, then in the console window you will see build messages reporting the progress of the upload every 5 seconds, whenever an upload is necessary.
+**[Automatically upload]** オプションを選択した場合、アップロードが必要なときはいつでも、アップロードの進行状況を報告するビルド メッセージが 5 秒ごとにコンソール ウィンドウに表示されます。
 
 <a name="ssl_offloading_properties"></a> 
 
-### <a name="ssl-offloading-properties"></a>SSL offloading properties
-Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **SSL Offloading**. 
+### <a name="ssl-offloading-properties"></a>SSL オフロードのプロパティ
+Eclipse の [Project Explorer (プロジェクト エクスプローラー)] ウィンドウで、ロールのコンテキスト メニューを開き、**[Azure]**、**[SSL Offloading (SSL オフロード)]** の順にクリックします。 
 
 ![][ic719481]
 
-Within this dialog, you can enable SSL offloading, allowing you to easily enable Hypertext Transfer Protocol Secure (HTTPS) support in your Java deployment on Azure, without requiring you to configure SSL in your Java application server. For more information, see [SSL Offloading][SSL Offloading] and [How to Use SSL Offloading][How to Use SSL Offloading].
+このダイアログ ボックスで SSL オフロードを有効にすると、Azure に対する Java のデプロイにおいてハイパー テキスト転送プロトコル セキュア (HTTPS) のサポートを簡単に有効にすることができます。Java アプリケーション サーバーで SSL を構成する必要はありません。 詳細については、[SSL オフロード][SSL Offloading]と [SSL オフロードの使用方法][How to Use SSL Offloading]に関するページを参照してください。
 
-## <a name="see-also"></a>See Also
+## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Installing the Azure Toolkit for Eclipse][Installing the Azure Toolkit for Eclipse]
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse]
 
-[Creating a Hello World Application for Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Project Properties][Azure Project Properties]
+[Azure プロジェクトのプロパティ][Azure Project Properties]
 
-[Azure Storage Account List][Azure Storage Account List]
+[Azure ストレージ アカウントの一覧][Azure Storage Account List]
 
-For more information about using Azure with Java, see the [Azure Java Developer Center][Azure Java Developer Center].
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
@@ -456,6 +460,6 @@ For more information about using Azure with Java, see the [Azure Java Developer 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
-## 次のステップ
-Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を有効にできます。最初に、Key Vault 内で非対称鍵を作成し、VM の SQL Server 内で対称鍵を作成する必要があります。これでデータベースとバックアップの暗号化を有効にする T-SQL ステートメントを実行できます。
+## <a name="next-steps"></a>次のステップ
+Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を有効にできます。 最初に、Key Vault 内で非対称鍵を作成し、VM の SQL Server 内で対称鍵を作成する必要があります。 これでデータベースとバックアップの暗号化を有効にする T-SQL ステートメントを実行できます。
 
 次のような形式の暗号化を活用できます。
 
@@ -10,11 +10,11 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
 次の Transact-SQL スクリプトにはこれらの各領域の例があります。
 
 > [!NOTE]
-> 例はいずれも 2 つ前提条件に基づきます。Key Vault からの「**CONTOSO\_KEY**」という名前の非対称鍵と AKV 統合機能により作成された「**Azure\_EKM\_TDE\_cred**」という名前の資格情報です。
+> 例はいずれも 2 つ前提条件に基づきます。Key Vault からの "**CONTOSO_KEY**" という名前の非対称鍵と AKV 統合機能により作成された "**Azure_EKM_TDE_cred**" という名前の資格情報です。
 > 
 > 
 
-### 透過的なデータ暗号化 (TDE)
+### <a name="transparent-data-encryption-tde"></a>透過的なデータ暗号化 (TDE)
 1. TDE のためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
    
         USE master;
@@ -45,7 +45,7 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
         SET ENCRYPTION ON;
         GO
 
-### 暗号化バックアップ
+### <a name="encrypted-backups"></a>暗号化バックアップ
 1. バックアップを暗号化するためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
    
         USE master;
@@ -69,7 +69,7 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
         ENCRYPTION(ALGORITHM = AES_256, SERVER ASYMMETRIC KEY = [CONTOSO_KEY]);
         GO
 
-### 列レベルの暗号化 (CLE)
+### <a name="column-level-encryption-cle"></a>列レベルの暗号化 (CLE)
 このスクリプトにより、Key Vault の非対称鍵で保護される対称鍵が作成され、その対称鍵を利用し、データベースのデータが暗号化されます。
 
     CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -91,9 +91,8 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
     --Close the symmetric key
     CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
-## その他のリソース
-これらの暗号化機能の使用方法の詳細については、「[SQL Server 暗号化機能で EKM を使用する](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)」を参照してください。
+## <a name="additional-resources"></a>その他のリソース
+これらの暗号化機能の使用方法の詳細については、「 [SQL Server 暗号化機能で EKM を使用する](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)」を参照してください。
 
-この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。実行していない場合、「[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。 実行していない場合、[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。 Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->

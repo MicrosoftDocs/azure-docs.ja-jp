@@ -1,13 +1,27 @@
 ---
+title: "Azure Load Balancer のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Load Balancer を使用して、アプリのネットワーク パフォーマンスを向上させる方法について説明します。 仮想マシンとクラウド リソースのトラフィックやクロスプレミス仮想ネットワーク内のトラフィックを管理できます。"
+services: load-balancer
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: load-balancer
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
-ms.openlocfilehash: 926beb8579ccdb1b0ed502ecb1892063ba976025
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 96da506c8545a1b863e62133706a2687c2498bbd
+ms.lasthandoff: 03/22/2017
 
 ---
+
 #<a name="load-balancer-documentation"></a>Load Balancer のドキュメント
 
-Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。  Load Balancer は、仮想マシンへの着信インターネット トラフィック、クラウド リソース間のトラフィック、クロスプレミス仮想ネットワーク内のトラフィック、または特定の仮想マシンへの外部トラフィックを負荷分散するように構成できます。
+Load Balancer を構成して、高い可用性と優れたネットワーク パフォーマンスをアプリケーションに提供する方法について説明します。 ドキュメントでは、仮想マシンやクラウド リソースの間のトラフィックと、クロスプレミス仮想ネットワーク内のトラフィックを負荷分散する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,34 +100,50 @@ Azure Load Balancer は、アプリケーションに高可用性と優れたネ
 
 ---
 
-##<a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/lb">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.network.models">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.JS</a></p>
+                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers">Ruby</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations#azure.mgmt.network.operations.LoadBalancersOperations">Python</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt163651.aspx">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Load Balancer PowerShell リファレンス](/powershell/azureps-cmdlets-doc)
-
-###<a name="azure-cli"></a>Azure CLI
-[Load Balancer Azure CLI](/cli/azure/network/lb)
-
-###<a name="net"></a>.NET
-[.NET API リファレンス](/dotnet/api)
-
-###<a name="java"></a>Java
-[Java API リファレンス](/java/api)
-
-###<a name="rest"></a>REST ()
-[Load Balancer REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163651.aspx)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-Load Balancer のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

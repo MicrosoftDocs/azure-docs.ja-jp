@@ -1,10 +1,10 @@
 ---
-title: Allow application to revtrieve Azure Stack Key Vault secrets  | Microsoft Docs
+title: Allow application to retrieve Azure Stack Key Vault secrets  | Microsoft Docs
 description: Use a sample app to work with Azure Stack Key Vault
 services: azure-stack
 documentationcenter: 
-author: rlfmendes
-manager: natmack
+author: SnehaGunda
+manager: byronr
 editor: 
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
@@ -13,15 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
-ms.author: ricardom
+ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05de639f55510db3b49385bf5d24b4e1b6bc2ff8
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 3d64805f30efe986c3be4408189ef823e5b72430
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="run-the-sample-application-for-key-vault"></a>Run the sample application for Key Vault
 In this guide, you'll use a sample application to retrieve secrets and passwords from Key Vault.
+
+> [!NOTE]
+> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
 
 ## <a name="download-the-samples-and-prepare"></a>Download the samples and prepare
 Download the Azure Key Vault client samples from the [Azure Key Vault client samples page](https://www.microsoft.com/en-us/download/details.aspx?id=45343).
@@ -30,7 +34,7 @@ Extract the contents of the .zip file to your local computer.
 
 Read the **README.md** file (this is a text file), and then follow the instructions.
 
-## <a name="run-sample-1hellokeyvault"></a>Run Sample #1--HelloKeyVault
+## <a name="run-sample-1--hellokeyvault"></a>Run Sample #1--HelloKeyVault
 HelloKeyVault is a console application that walks through the key scenarios that are supported by Key Vault:
 
 1. Create/import a key (HSM or software key)
@@ -52,10 +56,5 @@ That console application should run with no changes, except that the appropriate
 [Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
 
 [Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -1,32 +1,36 @@
 ---
-title: Azure Resource Manager の仮想マシンに WinRM アクセスを設定する | Microsoft Docs
-description: Azure Resource Manager の仮想マシンと共に使用するために WinRM アクセスを設定する方法
+title: "Azure VM の WinRM アクセスの設定 | Microsoft Docs"
+description: "Resource Manager のデプロイ モデルに作成された Azure 仮想マシンで使用するために WinRM アクセスを設定します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: singhkays
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
-ms.author: singhkay
+ms.author: kasing
+translationtype: Human Translation
+ms.sourcegitcommit: ebc2195bbb3526171359cc126ea6b59d0089f4a0
+ms.openlocfilehash: 6559b8605a311bb774f6c8b38a9298875d3a5362
+ms.lasthandoff: 02/14/2017
+
 
 ---
-# Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
-## Azure サービス管理の WinRM と Azure Resource Manager
+# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
+## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>Azure サービス管理の WinRM と Azure Resource Manager
+
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-クラシック デプロイ モデル
+* Azure Resource Manager の概要については、こちらの[記事](../azure-resource-manager/resource-group-overview.md)を参照してください。
+* Azure サービス管理と Azure Resource Manager の違いについては、こちらの [記事](../azure-resource-manager/resource-manager-deployment-model.md)
 
-* Azure Resource Manager の概要については、こちらの[記事](../resource-group-overview.md)を参照してください。
-* Azure サービス管理と Azure Resource Manager の違いについては、こちらの[記事](../resource-manager-deployment-model.md)を参照してください。
-
-2 つのスタックで WinRM 構成を設定する場合の主な違いは、VM に証明書をインストールする方法です。Azure Resource Manager スタックでは、Key Vault リソース プロバイダーが管理するリソースとして証明書がモデル化されます。そのため、ユーザーは自分の証明書を VM で使用する前に、Key Vault にアップロードする必要があります。
+2 つのスタックで WinRM 構成を設定する場合の主な違いは、VM に証明書をインストールする方法です。 Azure Resource Manager スタックでは、Key Vault リソース プロバイダーが管理するリソースとして証明書がモデル化されます。 そのため、ユーザーは自分の証明書を VM で使用する前に、Key Vault にアップロードする必要があります。
 
 ここでは WinRM 接続を備えた VM のセットアップに必要な手順を説明します。
 
@@ -36,14 +40,14 @@ ms.author: singhkay
 4. Key Vault の自己署名証明書の URL を取得する
 5. VM を作成するときに、自己署名証明書の URL を参照する
 
-## 手順 1: Key Vault を作成する
+## <a name="step-1-create-a-key-vault"></a>手順 1: Key Vault を作成する
 次のコマンドを使用して、Key Vault を作成します
 
 ```
 New-AzureRmKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## 手順 2: 自己署名証明書を作成する
+## <a name="step-2-create-a-self-signed-certificate"></a>手順 2: 自己署名証明書を作成する
 この PowerShell スクリプトを使用して、自己署名証明書を作成します
 
 ```
@@ -58,8 +62,8 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## 手順 3: Key Vault に自己署名証明書をアップロードする
-手順 1 で作成した Key Vault に証明書をアップロードする前に、Microsoft.Compute リソース プロバイダーが理解する形式への変換が必要です。次の PowerShell スクリプトにより、実行が許可されます
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>手順 3: Key Vault に自己署名証明書をアップロードする
+手順 1 で作成した Key Vault に証明書をアップロードする前に、Microsoft.Compute リソース プロバイダーが理解する形式への変換が必要です。 次の PowerShell スクリプトにより、実行が許可されます
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -81,26 +85,26 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## 手順 4: Key Vault の自己署名証明書の URL を取得する
-VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4: Key Vault の自己署名証明書の URL を取得する
+VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。 これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
 
 > [!NOTE]
-> シークレットの URL には、バージョンも含める必要があります。URL の例を次に示します https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> シークレットの URL には、バージョンも含める必要があります。 URL の例を次に示します: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 
-#### テンプレート
+#### <a name="templates"></a>テンプレート
 次のコードを使用して、テンプレートの URL へのリンクを取得する事ができます
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
-#### PowerShell
+#### <a name="powershell"></a>PowerShell
 次の PowerShell コマンドを使用して、この URL を取得することができます
 
     $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## 手順 5: VM を作成するときに、自己署名証明書の URL を参照する
-#### Azure Resource Manager のテンプレート
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5: VM を作成するときに、自己署名証明書の URL を参照する
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 テンプレートを使用して VM を作成する場合、"secrets" セクションと "WinRM" セクションで証明書を次のように参照します。
 
     "osProfile": {
@@ -135,11 +139,11 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
           }
         },
 
-上記のサンプル テンプレートは、[201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows) にあります。
+上記のサンプル テンプレートは、 [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
-このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) にあります。
+このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
-#### PowerShell
+#### <a name="powershell"></a>PowerShell
     $vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
     $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
@@ -148,13 +152,13 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
     $CertificateStore = "My"
     $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## 手順 6 - VM に接続する
-VM に接続する前に、WinRM リモート管理のためにコンピューターが構成されていることを確認する必要があります。管理者として PowerShell を開始し、次のコマンドを実行して設定を確認します。
+## <a name="step-6-connecting-to-the-vm"></a>手順 6 - VM に接続する
+VM に接続する前に、WinRM リモート管理のためにコンピューターが構成されていることを確認する必要があります。 管理者として PowerShell を開始し、次のコマンドを実行して設定を確認します。
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。`Get-Service WinRM` を使用して、確認することができます。
+> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。 `Get-Service WinRM`
 > 
 > 
 
@@ -162,4 +166,3 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-<!---HONumber=AcomDC_0824_2016-->

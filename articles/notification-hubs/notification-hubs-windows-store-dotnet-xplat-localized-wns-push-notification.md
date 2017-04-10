@@ -1,12 +1,12 @@
 ---
-title: Notification Hubs Localized Breaking News Tutorial
-description: Learn how to use Azure Notification Hubs to send localized breaking news notifications.
+title: "Notification Hubs ローカライズ ニュース速報のチュートリアル"
+description: "ローカライズ ニュース速報通知を Azure Notification Hubs を使用して送信する方法について説明します。"
 services: notification-hubs
 documentationcenter: windows
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
@@ -14,36 +14,40 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
+
 
 ---
-# <a name="use-notification-hubs-to-send-localized-breaking-news"></a>Use Notification Hubs to send localized breaking news
+# <a name="use-notification-hubs-to-send-localized-breaking-news"></a>通知ハブを使用したローカライズ ニュース速報の送信
 > [!div class="op_single_selector"]
-> * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 > 
 > 
 
 ## <a name="overview"></a>Overview
-This topic shows you how to use the **template** feature of Azure Notification Hubs to broadcast breaking news notifications that have been localized by language and device. In this tutorial you start with the Windows Store app created in [Use Notification Hubs to send breaking news]. When complete, you will be able to register for categories you are interested in, specify a language in which to receive the notifications, and receive only push notifications for the selected categories in that language.
+このトピックでは、Azure 通知ハブの **テンプレート** 機能を使用して、言語およびデバイスごとにローカライズしたニュース速報通知をブロードキャストする方法について説明します。 このチュートリアルでは、「 [通知ハブを使用したニュース速報の送信]」で作成した Windows ストア アプリケーションを使用します。 完了すると、興味のあるニュース速報カテゴリに登録して受信する通知の言語を指定し、選択したカテゴリのその言語のプッシュ通知だけを受信できるようになります。
 
-There are two parts to this scenario:
+このシナリオは次の 2 つに分けられます。
 
-* the Windows Store app allows client devices to specify a language, and to subscribe to different breaking news categories;
-* the back-end broadcasts the notifications, using the **tag** and **template** feautres of Azure Notification Hubs.
+* Windows ストア アプリケーションで、クライアント デバイスが言語を指定し、さまざまなニュース速報カテゴリを購読できるようになります。
+* Azure Notification Hubs の**タグ**機能と**テンプレート**機能を使用して、バックエンドから通知がブロードキャストされます。
 
-## <a name="prerequisites"></a>Prerequisites
-You must have already completed the [Use Notification Hubs to send breaking news] tutorial and have the code available, because this tutorial builds directly upon that code.
+## <a name="prerequisites"></a>前提条件
+「[通知ハブを使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルでは、そのコードに基づいているためです。
 
-You also need Visual Studio 2012 or later.
+Visual Studio 2012 以降も必要です。
 
-## <a name="template-concepts"></a>Template concepts
-In [Use Notification Hubs to send breaking news] you built an app that used **tags** to subscribe to notifications for different news categories.
-Many apps, however, target multiple markets and require localization. This means that the content of the notifications themselves have to be localized and delivered to the correct set of devices.
-In this topic we will show how to use the **template** feature of Notification Hubs to easily deliver localized breaking news notifications.
+## <a name="template-concepts"></a>テンプレートの概念
+「 [通知ハブを使用したニュース速報の送信] 」では、 **タグ** を使用してさまざまなニュース カテゴリの通知を購読するアプリケーションを構築しました。
+しかし、多くのアプリケーションは複数の市場をターゲットとしており、ローカライズが必要です。 これは、通知自体の内容をローカライズし、適切なデバイス セットに配信する必要があることを意味します。
+このトピックでは、Notification Hubs の **テンプレート** 機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法について説明します。
 
-Note: one way to send localized notifications is to create multiple versions of each tag. For instance, to support English, French, and Mandarin, we would need three different tags for world news: "world_en", "world_fr", and "world_ch". We would then have to send a localized version of the world news to each of these tags. In this topic we use templates to avoid the proliferation of tags and the requirement of sending multiple messages.
+注: ローカライズした通知を送信する 1 つの方法として、各タグの複数のバージョンを作成する方法があります。 たとえば、ワールド ニュースで英語、フランス語、標準中国語をサポートするには、3 つのタグ ("world_en"、"world_fr"、"world_ch") が必要です。 その後、ワールド ニュースのローカライズ バージョンをこれらの各タグに送信する必要があります。 このトピックでは、テンプレートを使用することでタグの増加を抑制し、複数のメッセージを送信しなくてもよいようにします。
 
-At a high level, templates are a way to specify how a specific device should receive a notification. The template specifies the exact payload format by referring to properties that are part of the message sent by your app back-end. In our case, we will send a locale-agnostic message containing all supported languages:
+大まかに言えば、テンプレートとは、特定のデバイスが通知をどのように受信するかを特定するための手段です。 テンプレートは、アプリケーション バックエンドにより送信されるメッセージの一部となっているプロパティを参照することで、正確なペイロードを指定します。 このケースでは、サポートされるすべての言語を含む、ロケールにとらわれないメッセージを送信します。
 
     {
         "News_English": "...",
@@ -51,7 +55,7 @@ At a high level, templates are a way to specify how a specific device should rec
         "News_Mandarin": "..."
     }
 
-Then we will ensure that devices register with a template that refers to the correct property. For instance, a Windows Store app that wants to receive a simple toast message will register for the following template with any corresponding tags:
+次に、デバイスが、適切なプロパティを参照するテンプレートを登録するようにします。 たとえば、簡単なトースト メッセージを受信する Windows ストア アプリケーションは、次の対応するタグを持つテンプレートを登録します。
 
     <toast>
       <visual>
@@ -63,14 +67,14 @@ Then we will ensure that devices register with a template that refers to the cor
 
 
 
-Templates are a very powerful feature you can learn more about in our [Templates](notification-hubs-templates-cross-platform-push-messages.md) article. 
+テンプレートは有用な機能です。詳細については、「[テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」の記事を参照してください。 
 
-## <a name="the-app-user-interface"></a>The app user interface
-We will now modify the Breaking News app that you created in the topic [Use Notification Hubs to send breaking news] to send localized breaking news using templates.
+## <a name="the-app-user-interface"></a>アプリケーションのユーザー インターフェイス
+ここでは、「 [通知ハブを使用したニュース速報の送信] 」で作成したニュース速報アプリケーションを変更し、テンプレートを使用してローカライズしたニュース速報を送信します。
 
-In your Windows Store app:
+Windows ストア アプリケーションで、以下の手順を実行します。
 
-Change your MainPage.xaml to include a locale combobox:
+MainPage.xaml を変更してロケール コンボボックスを追加します。
 
     <Grid Margin="120, 58, 120, 80"  
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -101,8 +105,8 @@ Change your MainPage.xaml to include a locale combobox:
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
 
-## <a name="building-the-windows-store-client-app"></a>Building the Windows Store client app
-1. In your Notifications class, add a locale parameter to your  *StoreCategoriesAndSubscribe* and *SubscribeToCateories* methods.
+## <a name="building-the-windows-store-client-app"></a>Windows ストア クライアント アプリケーションを構築する
+1. Notifications クラスで、*StoreCategoriesAndSubscribe* メソッドと *SubscribeToCateories* メソッドにロケール パラメーターを追加します。
    
         public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
@@ -127,17 +131,17 @@ Change your MainPage.xaml to include a locale combobox:
             return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
    
-    Note that instead of calling the *RegisterNativeAsync* method we call *RegisterTemplateAsync*: we are registering a specific notification format in which the template depends on the locale. We also provide a name for the template ("localizedWNSTemplateExample"), because we might want to register more than one template (for instance one for toast notifications and one for tiles) and we need to name them in order to be able to update or delete them.
+    *RegisterNativeAsync* メソッドを呼び出す代わりに *RegisterTemplateAsync* を呼び出す点に注意してください。テンプレートがロケールに依存している特定の通知形式を登録します。 さらに、テンプレートの名前 ("localizedWNSTemplateExample") も指定します。複数のテンプレートを登録する可能性があり (たとえば、トースト通知用のテンプレートとタイル通知用のテンプレートなど)、それらを更新または削除するには名前を付ける必要があるためです。
    
-    Note that if a device registers multiple templates with the same tag, an incoming message targeting that tag will result in multiple notifications delivered to the device (one for each template). This behavior is useful when the same logical message has to result in multiple visual notifications, for instance showing both a badge and a toast in a Windows Store application.
-2. Add the following method to retrieve the stored locale:
+    同じタグを持つ複数のテンプレートがデバイスによって登録された場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信される点に注意してください (テンプレートごとに 1 つずつ)。 この動作は、同じ論理メッセージによって複数のビジュアル通知を生成する必要がある場合に役立ちます。たとえば、Windows ストア アプリケーションにバッジとトーストの両方を表示する場合などです。
+2. 次のメソッドを追加して、格納されたロケールを取得します。
    
         public string RetrieveLocale()
         {
             var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
             return locale != null ? locale : "English";
         }
-3. In your MainPage.xaml.cs, update your button click handler by retrieving the current value of the Locale combo box and providing it to the call to the Notifications class, as shown:
+3. 次に示すように、MainPage.xaml.cs でロケール コンボ ボックスの現在の値を取得し、それを Notifications クラスへの呼び出しに提供することで、ボタン クリック ハンドラーを更新します。
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -159,7 +163,7 @@ Change your MainPage.xaml to include a locale combobox:
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-4. Finally, in your App.xaml.cs file, make sure to update your `InitNotificationsAsync` method to retrieve the locale and use it when subscribing:
+4. 最後に、App.xaml.cs ファイルで `InitNotificationsAsync` メソッドを必ず更新してロケールを取得し、購読しているときに使用します。
    
         private async void InitNotificationsAsync()
         {
@@ -174,42 +178,42 @@ Change your MainPage.xaml to include a locale combobox:
             }
         }
 
-## <a name="send-localized-notifications-from-your-back-end"></a>Send localized notifications from your back-end
+## <a name="send-localized-notifications-from-your-back-end"></a>バックエンドからローカライズした通知を送信する
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
 <!-- Anchors. -->
-[Template concepts]: #concepts
-[The app user interface]: #ui
-[Building the Windows Store client app]: #building-client
-[Send notifications from your back-end]: #send
+[テンプレートの概念]: #concepts
+[アプリケーションのユーザー インターフェイス]: #ui
+[Windows ストア クライアント アプリケーションを構築する]: #building-client
+[バックエンドから通知を送信する]: #send
 [Next Steps]:#next-steps
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[Mobile Service]: /develop/mobile/tutorials/get-started
-[Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
-[Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
+[モバイル サービス]: /develop/mobile/tutorials/get-started
+[Notification Hubs によるユーザーへの通知: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs によるユーザーへの通知: Mobile Services]: /manage/services/notification-hubs/notify-users
+[通知ハブを使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
-[Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-dotnet
-[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
-[Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
+[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
+[データの使用]: /develop/mobile/tutorials/get-started-with-data-dotnet
+[認証の概要]: /develop/mobile/tutorials/get-started-with-users-dotnet
+[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-dotnet
+[アプリケーション ユーザーへのプッシュ通知]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
+[スクリプトを使用したユーザーの認証]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
+[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
+[方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/jj927172.aspx
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

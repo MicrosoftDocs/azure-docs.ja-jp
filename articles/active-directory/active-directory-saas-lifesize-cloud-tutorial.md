@@ -1,262 +1,252 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Lifesize Cloud | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Lifesize Cloud.
+title: "チュートリアル: Azure Active Directory と Lifesize Cloud の統合 | Microsoft Docs"
+description: "Azure Active Directory と Lifesize Cloud の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/13/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 8edbee8e554a7818b97669a4bb64b31ada67b1a5
+ms.lasthandoff: 02/17/2017
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-lifesize-cloud"></a>Tutorial: Azure Active Directory integration with Lifesize Cloud
-In this tutorial, you learn how to integrate Lifesize Cloud with Azure Active Directory (Azure AD).
+# <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル: Azure Active Directory と Lifesize Cloud の統合
+このチュートリアルでは、Lifesize Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-Integrating Lifesize Cloud with Azure AD provides you with the following benefits:
+Lifesize Cloud と Azure AD の統合には、次の利点があります。
 
-* You can control in Azure AD who has access to Lifesize Cloud
-* You can enable your users to automatically get signed-on to Lifesize Cloud (Single Sign-On) with their Azure AD accounts
-* You can manage your accounts in one central location - the Azure classic portal
+* Lifesize Cloud にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで自動的に Lifesize Cloud にシングル サインオン (SSO) できるようにします。
+* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites
-To configure Azure AD integration with Lifesize Cloud, you need the following items:
+## <a name="prerequisites"></a>前提条件
+Lifesize Cloud と Azure AD の統合を構成するには、次のものが必要です。
 
-* An Azure AD subscription
-* A Lifesize Cloud single-sign on enabled subscription
+* Azure AD サブスクリプション
+* Lifesize Cloud でのシングル サインオン () が有効なサブスクリプション
 
-> [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
-> 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-* You should not use your production environment, unless this is necessary.
-* If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* 必要な場合を除き、運用環境は使用しないでください。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment.
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-The scenario outlined in this tutorial consists of two main building blocks:
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-1. Adding Lifesize Cloud from the gallery
-2. Configuring and testing Azure AD single sign-on
+* ギャラリーからの Lifesize Cloud の追加
+* Azure AD SSO の構成とテスト
 
-## <a name="adding-lifesize-cloud-from-the-gallery"></a>Adding Lifesize Cloud from the gallery
-To configure the integration of Lifesize Cloud into Azure AD, you need to add Lifesize Cloud from the gallery to your list of managed SaaS apps.
+## <a name="add-lifesize-cloud-from-the-gallery"></a>ギャラリーからの Lifesize Cloud の追加
+Azure AD への Lifesize Cloud の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Lifesize Cloud を追加する必要があります。
 
-**To add Lifesize Cloud from the gallery, perform the following steps:**
+**ギャラリーから Lifesize Cloud を追加するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Active Directory][1]
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![Applications][2]
-4. Click **Add** at the bottom of the page.
+    ![[アプリケーション]][2]
+4. ページの下部にある **[追加]** をクリックします。
    
-    ![Applications][3]
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+    ![アプリケーション][3]
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
-    ![Applications][4]
-6. In the search box, type **Lifesize Cloud**.
+    ![アプリケーション][4]
+6. 検索ボックスに、「**Lifesize Cloud**」と入力します。
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_01.png)
-7. In the results pane, select **Lifesize Cloud**, and then click **Complete** to add the application.
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_01.png)
+7. 結果ウィンドウで **[Lifesize Cloud]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_02.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with Lifesize Cloud based on a test user called "Britta Simon".
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Lifesize Cloud で Azure AD のシングル サインオンを構成し、テストします。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Lifesize Cloud is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Lifesize Cloud needs to be established.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Lifesize Cloud ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Lifesize Cloud の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Lifesize Cloud.
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、Lifesize Cloud の **[Username]** の値として割り当てることで確立されます。
 
-To configure and test Azure AD single sign-on with Lifesize Cloud, you need to complete the following building blocks:
+Lifesize Cloud での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a Lifesize Cloud test user](#creating-a-lifesize-cloud-test-user)** - to have a counterpart of Britta Simon in Lifesize Cloud that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Lifesize Cloud のテスト ユーザーの作成](#creating-a-lifesize-cloud-test-user)** - Lifesize Cloud で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Lifesize Cloud application.
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションでは、クラシック ポータルで Azure AD の SSO を有効にして、Lifesize Cloud アプリケーションでシングル サインオンを構成します。
 
-**To configure Azure AD single sign-on with Lifesize Cloud, perform the following steps:**
+**Lifesize Cloud との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. In the classic portal, on the **Lifesize Cloud** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. クラシック ポータルの **Lifesize Cloud** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure Single Sign-On][6] 
-2. On the **How would you like users to sign on to Lifesize Cloud** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    ![[シングル サインオンの構成]][6] 
+2. **[ユーザーの Lifesize Cloud へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_03.png) 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_03.png) 
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_04.png) 
+   ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_04.png)   
+  1. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Lifesize Cloud アプリケーションへのサインオンに使用する URL を入力します。**https://login.lifesizecloud.com/ls/?acs**
+  2. **[次へ]**をクリックします。
+4. **[Lifesize Cloud でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Lifesize Cloud application using the following pattern: **https://login.lifesizecloud.com/ls/?acs**.
-   
-    b. click **Next**
-4. On the **Configure single sign-on at Lifesize Cloud** page, perform the following steps:
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_05.png)
-   
-    a. Click **Download certificate**, and then save the file on your computer.
-   
-    b. Click **Next**.
-5. To get SSO configured for your application, login into the Lifesize Cloud application with Admin privileges.
-6. In the top right corner click on your name and then click on the **Advance Settings**
+   ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_05.png)
+   1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+   2. **[次へ]**をクリックします。
+5. アプリケーション用に構成された SSO を取得するには、管理者権限で Lifesize Cloud アプリケーションにログインします。
+6. ページの右上にある自分の名前をクリックし、**[詳細設定]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
-7. In the Advance Settings now click on the **SSO Configuration** link. This will open the SSO Configuration page for your instance.
+7. [詳細設定] で **[SSO 構成]** のリンクをクリックします。 インスタンスの [SSO 構成] ページが開きます。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
-8. Now configure the following values in the SSO configuration UI.    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+8. SSO 構成 UI で、次の値を構成します。    
    
     ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+  1. Azure AD から [発行者の URL] の値をコピーし、**[ID プロバイダー発行者]** ボックスに貼り付けます。 
+  2. Azure AD から [リモート ログイン URL] の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。   
+  3. ダウンロードした証明書をメモ帳で開き、証明書の内容 (BEGIN CERTIFICATE と END CERTIFICATE の行を除く) をコピーして、**[X.509 Certificate]** ボックスに貼り付けます。
+  4. **[名]** ボックスの SAML 属性マッピングに、値を「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+  5. **[姓]** ボックスの SAML 属性マッピングに、値を「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+  6. **[電子メール]** ボックスの SAML 属性マッピングに、値を「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+9. 構成を確認するには、**[テスト]** ボタンをクリックします。
    
-    • Copy the value of Issuer URL from Azure AD and paste that in **Identity Provider Issuer** textbox.
-   
-    • Copy the value of Remote Login URL from Azure AD and paste that in **Login URL** textbox.
-   
-    • Open the downloaded certificate in notepad and copy the content of certificate, excluding the Begin Certificate and End Certificate lines, paste this in the **X.509 Certificate** textbox.
-   
-    • In the SAML Attribute mapping for the **First Name** text box enter the value as **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
-   
-    • In the SAML Attribute mapping for the **Last Name** text box enter the value as **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
-   
-    • In the SAML Attribute mapping for the **Email** text box enter the value as **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**
-9. To check the configuration you can click on the **Test** button.
-   
-   > [!NOTE]
-   > For successful testing you need to complete the configuration wizard in Azure AD and also provide access to users or groups who can perform the test.
-   > 
-   > 
-10. Enable the SSO by checking on the **Enable SSO** button.
-11. Now click on the **Update** button so that all the settings are saved. This will generate the RelayState value. Copy the RelayState value which is generated in the text box. We will need this value in the next steps.
-12. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+   >[!NOTE]
+   >テストを成功させるには、Azure AD の構成ウィザードを完了し、テストを実行するユーザーやグループにもアクセスを提供する必要があります。
+   >  
+10. **[SSO を有効にする]** ボタンをクリックして、SSO を有効にします。
+11. **[更新]** ボタンをクリックして、すべての設定を保存します。 これにより、RelayState 値が生成されます。 テキスト ボックスに生成された RelayState 値をコピーします。 この値は、次の手順で必要になります。
+12. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
     
-    ![Azure AD Single Sign-On][10]
-13. On the **Single sign-on confirmation** page, click **Complete**.  
+   ![Azure AD のシングル サインオン][10]
+13. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
     
-    ![Azure AD Single Sign-On][11]
-14. Now login into the Azure Management Portal **https://portal.azure.com** using the admin credentials
-15. Click on **More Services** link in the left navigation pane
+    ![Azure AD のシングル サインオン][11]
     
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_09.png)
-16. Search for Azure Active Directory and Click on the **Azure Active Directory** Link
+**Microsoft Azure 管理ポータルにログインするには、次の手順に従います。**
+
+1. 管理者の資格情報を使用して **https://portal.azure.com** にログインします。
+2. 左のナビゲーション ウィンドウで、**[その他のサービス]** のリンクをクリックします。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_10.png)
-17. You will find all your SaaS applications under the **Enterprise Applications** button.
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_09.png)
+3. Azure Active Directory を検索し、**[Azure Active Directory]** のリンクをクリックします。
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_10.png)
+4. **[エンタープライズ アプリケーション]** ボタンで、すべての SaaS アプリケーションが表示されます。
     
     ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_11.png)
-18. Now click on **All Applications** link in the next blade
+5. 次のブレードで、**[すべてのアプリケーション]** のリンクをクリックします。
     
     ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_12.png)
-19. Search for Lifesize application for which you want to setup the RelayState. 
+6. RelayState をセットアップする Lifesize アプリケーションを検索します。 
     
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_13.png)
-20. Now Click **Single sign-on** link in the blade
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_13.png)
+7. ブレードの **[シングル サインオン]** のリンクをクリックします。
     
     ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_14.png)
-21. You will see the **Show advanced URL settings** check box. Click the check box.
+8. **[詳細な URL 設定の表示]** チェック ボックスが表示されます。 チェック ボックスをオンにします。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_15.png)
-22. Now configure the RelayState for the application, which you see in the Lifesize application SSO configuration page. 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_15.png)
+9. Lifesize アプリケーションの [SSO 構成] ページに表示される、アプリケーションの RelayState を構成します。 
     
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_16.png)
-23. Save the settings.
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_16.png)
+10. 設定を保存します。
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-In this section, you create a test user in the classic portal called Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_09.png) 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_09.png) 
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_03.png) 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_03.png) 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_04.png) 
-5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_05.png) 
-   
-    a. As Type Of User, select New user in your organization.
-   
-    b. In the User Name **textbox**, type **BrittaSimon**.
-   
-    c. Click **Next**.
-6. On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_06.png) 
-   
-   a. In the **First Name** textbox, type **Britta**.  
-   
-   b. In the **Last Name** textbox, type, **Simon**.
-   
-   c. In the **Display Name** textbox, type **Britta Simon**.
-   
-   d. In the **Role** list, select **User**.
-   
-   e. Click **Next**.
-7. On the **Get temporary password** dialog page, click **create**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_07.png) 
-8. On the **Get temporary password** dialog page, perform the following steps:
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_08.png) 
-   
-    a. Write down the value of the **New Password**.
-   
-    b. Click **Complete**.   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_04.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-### <a name="creating-an-lifesize-cloud-test-user"></a>Creating an Lifesize Cloud test user
-In this section, you create a user called Britta Simon in Lifesize Cloud. Lifesize cloud does support automatic user provisioning. After successful authentication at Azure AD, the user will be automatically provisioned in the application. 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_05.png) 
+   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+   3. **[次へ]**をクリックします。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Lifesize Cloud.
-
-![Assign User][200] 
-
-**To assign Britta Simon to Lifesize Cloud, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_06.png) 
+   1. **[名]** ボックスに「**Britta**」と入力します。   
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
-    ![Assign User][201] 
-2. In the applications list, select **Lifesize Cloud**.
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_07.png) 
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_50.png) 
-3. In the menu on the top, click **Users**.
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_08.png) 
+    1. **[新しいパスワード]** の値を書き留めます。
+    2. **[完了]** をクリックします。   
+
+### <a name="create-an-lifesize-cloud-test-user"></a>Lifesize Cloud のテスト ユーザーの作成
+このセクションでは、Lifesize Cloud で Britta Simon というユーザーを作成します。 Lifesize Cloud では、ユーザーの自動プロビジョニングがサポートされています。 Azure AD での認証に成功すると、ユーザーはアプリケーションで自動的にプロビジョニングされます。 
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションでは、Britta Simon に Lifesize Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+![ユーザーの割り当て][200] 
+
+**Lifesize Cloud に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![Assign User][203]
-4. In the Users list, select **Britta Simon**.
-5. In the toolbar on the bottom, click **Assign**.
+    ![ユーザーの割り当て][201] 
+2. アプリケーションの一覧で **[Lifesize Cloud]** を選択します。
    
-    ![Assign User][205]
+    ![[シングル サインオンの構成]](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_50.png) 
+3. 上部のメニューで **[ユーザー]**をクリックします。
+   
+    ![ユーザーの割り当て][203]
+4. ユーザーの一覧で **[Britta Simon]**を選択します。
+5. 下部にあるツール バーで **[割り当て]**をクリックします。
+   
+    ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
-When you click the Lifesize Cloud tile in the Access Panel, you should get automatically signed-on to your Lifesize Cloud application.
+アクセス パネルで Lifesize Cloud のタイルをクリックすると、自動的に Lifesize Cloud アプリケーションにサインオンします。
 
-## <a name="additional-resources"></a>Additional resources
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>その他のリソース
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -275,9 +265,4 @@ When you click the Lifesize Cloud tile in the Access Panel, you should get autom
 [203]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

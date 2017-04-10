@@ -1,56 +1,55 @@
 ---
-title: Visual Studio で Azure クラウド サービス プロジェクトを構成する | Microsoft Docs
-description: Visual Studio で、そのプロジェクトの要件に応じて、Azure クラウド サービス プロジェクトを構成する方法について説明します。
+title: "Visual Studio で Azure クラウド サービス プロジェクトを構成する | Microsoft Docs"
+description: "Visual Studio で、そのプロジェクトの要件に応じて、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 609d6965-05cc-47b1-82dc-c76a92d4f295
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 03/06/2017
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 11a56418156a46e1fcef7b8d1c6003990000046f
+ms.lasthandoff: 03/27/2017
+
 
 ---
-# Visual Studio で Azure クラウド サービス プロジェクトを構成するには
-Azure クラウド サービス プロジェクトは、そのプロジェクトの要件に応じて構成できます。次のカテゴリに関して、プロジェクトのプロパティを設定できます。
+# <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Visual Studio で Azure クラウド サービス プロジェクトを構成する
+Azure クラウド サービス プロジェクトは、そのプロジェクトの要件に応じて構成できます。 次のカテゴリに関して、プロジェクトのプロパティを設定できます。
 
-* **Azure にクラウド サービスを発行**
-  
-  Azure にデプロイされた既存のクラウド サービスが誤って削除されることがないようプロパティ設定できます。
-* **ローカル コンピューター上のクラウド サービスの実行またはデバッグ**
-  
-  サービス構成を使用して、Azure ストレージ エミュレーターを開始するかどうか指定することができます。
-* **クラウド サービス パッケージの作成時に検証**
-  
-  すべての警告をエラーとして処理する設定にできるため、クラウド サービス パッケージを確実に問題のない状態でデプロイできます。これにより、デプロイをしてから障害が発生した場合にも待機時間が削減されます。
+- **クラウド サービスを Azure に発行する** - Azure にデプロイされた既存のクラウド サービスが誤って削除されないようにするためのプロパティを設定できます。
+- **ローカル コンピューターでクラウド サービスを実行またはデバッグする** - 使用するサービス構成を選択し、Azure ストレージ エミュレーターを開始するかどうかを指定できます。
+- **クラウド サービス パッケージを作成時に検証する** - クラウド サービス パッケージを問題のない状態で確実にデプロイできるように、すべての警告をエラーとして処理できます。 
 
-次の図では、クラウド サービスをローカルで実行またはデバッグする際に使用する構成を選択する方法を示します。図に示すように、必要なプロジェクト プロパティはすべてこのウィンドウで設定できます。
+## <a name="steps-to-configure-an-azure-cloud-service-project"></a>Azure クラウド サービス プロジェクトを構成する手順
+1. Visual Studio でクラウド サービス プロジェクトを開くか作成します。
 
-![Microsoft Azure プロジェクトを構成します。](./media/vs-azure-tools-configuring-an-azure-project/IC713462.png)
-
-## Azure クラウド サービス プロジェクトを構成するには
-1. **ソリューション エクスプローラー**でクラウド サービス プロジェクトを構成するには、クラウド サービス プロジェクトのショートカット メニューを開き、**[プロパティ]** をクリックします。
+1. **ソリューション エクスプローラー**でそのプロジェクトを右クリックし、コンテキスト メニューから **[プロパティ]** を選択します。
    
-   クラウド サービス プロジェクトの名前のページが、Visual Studio エディターに表示されます。
-2. [**開発**] タブを選択します。
-3. Azure で既にデプロイされているものを誤って削除することがないよう、既存の展開リストの削除の前に表示されるプロンプトでは **True** を選択します。
-4. クラウド サービスをローカルで実行またはデバッグする際に、使用するサービス構成を選択するには、**サービス構成**のリストでサービス構成を選択します。
-   
-   > [!NOTE]
-   > 使用するサービス構成を作成する場合は、「サービス構成とプロファイルを管理する方法」を参照してください。ロールのサービス構成を変更する場合は、「[Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
-   > 
-   > 
-5. クラウド サービスをローカルで実行またはデバッグするときに、Azure ストレージ エミュレーターを開始するには、[**Start Azure storage emulator (Azure ストレージ エミュレーターの起動)**] で **True** を選択してください。
-6. パッケージの検証エラーがある場合には発行できないようにするには、[**Treat warnings as errors (警告をエラーとして扱う)**] で **True** を選択してください。
-7. Web ロールが IIS Express でローカルに開始される際に毎回同じポートを使用するようにするには、[**Use web project ports (Web プロジェクト ポートの使用)**] で **True** を選択してください。特定のウェブ プロジェクトで特定のポートを使用するには、Web プロジェクトのショートカット メニューを開き、[**プロパティ**]、[**Web**] タブの順に選択して、[**IIS Express**] セクションの中の [**プロジェクト Url**] のポート番号を変更してください。例えば、プロジェクト URL として `http://localhost:14020` を入力します。
-8. クラウド サービス プロジェクトのプロパティに対して行ったすべての変更を保存するには、ツールバーの [**保存**] ボタンをクリックします。
+1. プロジェクトのプロパティ ページで **[開発]** タブを選択します。
 
-## 次のステップ
-Visual Studio で Azure のクラウド サービス プロジェクトを構成する方法の詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
+    ![プロジェクトのプロパティ メニュー](./media/vs-azure-tools-configuring-an-azure-project/solution-explorer-project-properties-menu.png)
 
-<!---HONumber=AcomDC_0817_2016-->
+1. **[既存の配置を削除する前にプロンプトで確認します]** を **[True]** に設定します。 この設定により、Azure で既存のデプロイが誤って削除されないようにすることができます。
+
+1. クラウド サービスをローカルで実行またはデバッグするときに使用する**サービス構成**を選択します。 ロールのサービス構成を変更する方法の詳細については、[Visual Studio で Azure クラウド サービスのロールを構成する方法](./vs-azure-tools-configure-roles-for-cloud-service.md)に関する記事をご覧ください。
+
+1. クラウド サービスをローカルで実行またはデバッグするときに Azure ストレージ エミュレーターを開始するには、**[Start Azure storage emulator (Azure ストレージ エミュレーターの起動)]** を **[True]** に設定します。
+
+1. パッケージの検証エラーがある場合には発行できないようにするには、**[警告をエラーとして扱う]** を **[True]** に設定します。
+
+1. IIS Express で Web ロールがローカルで開始されるときに毎回同じポートが使用されるようにするには、**[Web プロジェクト ポートの使用]** を **[True]** に設定します。
+
+1. Visual Studio ツール バーの **[保存]** を選択します。
+
+## <a name="next-steps"></a>次のステップ
+- [複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)
+
+

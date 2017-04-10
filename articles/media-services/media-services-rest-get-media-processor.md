@@ -1,22 +1,26 @@
 ---
-title: メディア プロセッサを作成する方法 | Microsoft Docs
-description: メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。
+title: "メディア プロセッサを作成する方法 | Microsoft Docs"
+description: "メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/20/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
+ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
+
 
 ---
-# <a name="how-to:-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
+# <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST ()](media-services-rest-get-media-processor.md)
@@ -34,10 +38,10 @@ ms.author: juliako
 | メディア エンコーダー Premium ワークフロー |メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md) |
 | Azure Media Indexer |メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。 |[Azure Media Indexer](media-services-index-content.md) |
 | Azure Media Hyperlapse (プレビュー) |ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。 コンテンツをすばやく使用可能なクリップにすることもできます。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |償却対象 | |
-| Storage Decryption |償却対象 | |
-| Azure Media Packager |償却対象 | |
-| Azure Media Encryptor |償却対象 | |
+| Azure Media Encoder |非推奨 | |
+| Storage Decryption |非推奨 | |
+| Azure Media Packager |非推奨 | |
+| Azure Media Encryptor |非推奨 | |
 
 ## <a name="get-mediaprocessor"></a>MediaProcessor の取得
 > [!NOTE]
@@ -45,7 +49,7 @@ ms.author: juliako
 > 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
+> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
 > 
 > 
 
@@ -91,6 +95,9 @@ ms.author: juliako
 ## <a name="next-steps"></a>次のステップ
 これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、[資産のエンコード方法](media-services-rest-get-started.md)に関するトピックに進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure Media Services .NET SDK を使用したフィルターの作成
-description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
+title: "Azure Media Services .NET SDK を使用したフィルターの作成"
+description: "このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,32 +14,37 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2016
 ms.author: juliako;cenkdin
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 07239a392438afd9807ce69fba657c27e853a219
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# Azure Media Services .NET SDK を使用したフィルターの作成
+# <a name="creating-filters-with-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK を使用したフィルターの作成
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST ()](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
+Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
-フィルターと動的マニフェストに関連する詳細については、「[動的マニフェストの概要](media-services-dynamic-manifest-overview.md)」をご覧ください。
+フィルターと動的マニフェストに関連する詳細については、「 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)」をご覧ください。
 
-このトピックでは、Media Services .NET SDK を使用してフィルターを作成、更新、削除する方法を説明します。
+このトピックでは、Media Services .NET SDK を使用してフィルターを作成、更新、削除する方法を説明します。 
 
-フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかることに注意してください。このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。フィルターを更新した後にキャッシュをクリアすることをお勧めします。このオプションが利用できない場合は、別のフィルターを使用することを検討してください。
+フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかることに注意してください。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。 
 
-## フィルターの作成に使用する種類
-次の種類の REST API を使用してフィルターを作成します。
+## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
+次の種類の REST API を使用してフィルターを作成します。 
 
-* **IStreamingFilter**。この種類は次の REST API [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx) に基づきます。
-* **IStreamingAssetFilter**。この種類は次の REST API [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx) に基づきます。
-* **PresentationTimeRange**。この種類は次の REST API [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx) に基づきます。
-* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx) に基づきます。
+* **IStreamingFilter**。  この種類は次の REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**。 この種類は次の REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**。 この種類は次の REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。 これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## グローバル フィルターの作成、更新、読み取り、削除
+## <a name="createupdatereaddelete-global-filters"></a>グローバル フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
 
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -68,7 +73,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     filter.Delete();
 
 
-## 資産フィルターの作成、更新、読み取り、削除
+## <a name="createupdatereaddelete-asset-filters"></a>資産フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
 
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -99,12 +104,12 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 
 
-## フィルターを使用するストリーミング URL の構築
-資産の発行と配信方法については、「[顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)」をご覧ください。
+## <a name="build-streaming-urls-that-use-filters"></a>フィルターを使用するストリーミング URL の構築
+資産の発行と配信方法については、「 [顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)」をご覧ください。
 
 次の例では、ストリーミング URL にフィルターを追加する方法を示します。
 
-**MPEG DASH**
+**MPEG DASH** 
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
@@ -121,18 +126,13 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
 
-**HDS**
-
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
-
-
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+

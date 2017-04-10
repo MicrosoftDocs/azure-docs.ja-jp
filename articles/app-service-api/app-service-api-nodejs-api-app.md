@@ -4,7 +4,7 @@ description: "Azure App Service で Node.js RESTful API を作成して API ア�
 services: app-service\api
 documentationcenter: node
 author: bradygaster
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.service: app-service-api
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+ms.sourcegitcommit: 9e62ed235d872738bc1a99ad33d977745c8b2d08
+ms.openlocfilehash: a3dacff719588be707418248ddc35c6f686b9b49
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,9 +40,9 @@ App Service では、コードを API アプリにデプロイする方法を数
    
         git clone https://github.com/Azure-Samples/app-service-api-node-contact-list.git
    
-    サンプル API には 2 つのエンドポイントがあります。`/contacts` に対して Get 要求を発行すると、名前と電子メール アドレスの一覧が JSON 形式で返されます。`/contacts/{id}` では、選択した連絡先のみが返されます。
+    サンプル API には&2; つのエンドポイントがあります。`/contacts` に対して Get 要求を発行すると、名前と電子メール アドレスの一覧が JSON 形式で返されます。`/contacts/{id}` では、選択した連絡先のみが返されます。
 
-## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>Swagger メタデータに基づく Node.js コードのスキャフォールディング (自動生成)
+## <a name="scaffold-auto-generate-nodejs-code-based-on-swagger-metadata"></a>Swagger メタデータに基づく Node.js コードのスキャフォールディング (自動生成)
 [Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用のファイル形式です。 Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を備えています。 チュートリアルのこのセクションは、API 開発ワークフローをモデルにしています。ここでは最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディング (自動生成) します。 
 
 > [!NOTE]
@@ -98,7 +99,7 @@ App Service では、コードを API アプリにデプロイする方法を数
                 res.json(repository.all())
             }
         };
-3. **handlers/contacts/{id}.js** ファイルのコードを次のコードに置き換えます。 
+3. **handlers/contacts/{id}.js** ファイルのコードを次のコードで置き換えます。 
    
         'use strict';
    
@@ -131,7 +132,7 @@ App Service では、コードを API アプリにデプロイする方法を数
         app.use(bodyParser.json());
    
         app.use(swaggerize({
-            api: path.resolve('./config/api.json'), // third change
+            api: path.resolve('./config/swagger.json'), // third change
             handlers: path.resolve('./handlers'),
             docspath: '/swagger' // fourth change
         }));
@@ -175,7 +176,7 @@ App Service では、コードを API アプリにデプロイする方法を数
     既に他のユーザーによって使用されている名前を入力すると、右側に赤い感嘆符が表示されます。
 4. **[リソース グループ]** ボックスの一覧の **[新規作成]** をクリックし、**[新しいリソース グループ名]** に「NodejsAPIAppGroup」(またはお好きな名前) を入力します。 
    
-    [リソース グループ](../azure-resource-manager/resource-group-overview.md)は、API アプリ、データベース、VM などの Azure リソースをひとまとめにしたものです。 このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
+    [リソース グループ](../azure-resource-manager/resource-group-overview.md)は、API アプリ、データベース、VM などの Azure リソースをひとまとめにしたものです。 このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを&1; 回の手順で簡単に削除できるからです。
 5. **[App Service プラン/場所]** をクリックし、**[新規作成]** をクリックします。
    
     ![Create App Service plan](./media/app-service-api-nodejs-api-app/newappserviceplan.png)
@@ -230,23 +231,29 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
         git init
    
      ![新しいローカル Git リポジトリ](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. 次のコマンドを実行して、API アプリのリポジトリの Git リモートを追加します。 
+3. このチュートリアルの最初の部分を完了し、`ContactList` フォルダーをコピーすると、そのコピーには `node_modules` フォルダーが含まれることがあります。 `node_modules` フォルダーはデプロイ プロセス中に `package.json` ファイルと `npm install` から作成されたものなので、ソース管理には含めたくありません。 したがって、プロジェクト ディレクトリのルートで次のコマンドを実行して、`.gitignore` ファイルを追加します。
+
+         touch .gitignore
+      
+   .gitignore ファイルを開き、ファイルの最初の行に `node_modules` を追加します。 `git status` を実行しても一覧内にディレクトリが表示されていなければ、`node_modules` フォルダーがソース管理から無視されていることを確認できます。 さらにルールを追加する場合に NodeJS プロジェクトで無視することが推奨されるファイルに関する (GitHub プロジェクト)[https://github.com/github/gitignore/blob/master/Node.gitignore] があります。
+ 
+4. 次のコマンドを実行して、API アプリのリポジトリの Git リモートを追加します。 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
     **注**: 文字列 "YOUR_GIT_CLONE_URL_HERE" は、前の手順でコピーした Git クローン URL に置き換えます。 
-4. 次のコマンドを実行して、すべてのコードを含むコミットを作成します。 
+5. 次のコマンドを実行して、すべてのコードを含むコミットを作成します。 
    
         git add .
         git commit -m "initial revision"
    
     ![Git Commit の出力](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. Azure にコードをプッシュするコマンドを実行します。 パスワードの入力を求められたら、前に Azure ポータルで作成したパスワードを入力します。
+6. Azure にコードをプッシュするコマンドを実行します。 パスワードの入力を求められたら、前に Azure ポータルで作成したパスワードを入力します。
    
         git push azure master
    
     API アプリへのデプロイが開始されます。  
-6. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることがわかります。 
+7. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることがわかります。 
    
     ![デプロイメントの実行中](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
@@ -271,10 +278,5 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
 
 ## <a name="next-steps"></a>次のステップ
 この時点で、API アプリの作成と、そのアプリへの Node.js API コードのデプロイが正常に完了しました。 次のチュートリアルでは、 [CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について説明します。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

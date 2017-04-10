@@ -1,12 +1,12 @@
 ---
-title: StorSimple ジョブの表示と管理 | Microsoft Docs
-description: StorSimple Manager サービスの [ジョブ] ページと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、スケジュールされたバックアップ ジョブを追跡する方法について説明します。
+title: "StorSimple ジョブの表示と管理 | Microsoft Docs"
+description: "StorSimple Manager サービスの [ジョブ] ページと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、スケジュールされたバックアップ ジョブを追跡する方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 55922cd0-d490-48eb-938a-012a67c1c09e
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6b7e0e1a689ff6caa4142959818a70bc4a6b65af
+
 
 ---
-# StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する
+# <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs"></a>StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する
 [!INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
-## Overview
-**[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、および失敗したジョブを確認できます。結果は表形式で表示されます。
+## <a name="overview"></a>Overview
+**[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。 複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、および失敗したジョブを確認できます。 結果は表形式で表示されます。 
 
 ![[ジョブ] ページ](./media/storsimple-manage-jobs/HCS_JobsPage.png)
 
@@ -35,10 +39,10 @@ ms.author: alkohli
 
 * **タイプ** - バックアップ、クローン、復元、フェールオーバー、または更新。
 * **状態** - 実行中、スケジュール済み、失敗、完了、取り消し中、または取り消し済み。
-* **エンティティ** - ジョブは、ボリューム、バックアップ ポリシー、デバイスに関連付けられます。クローン ジョブはボリュームに関連付けられますが、スケジュール済みのバックアップ ジョブはバックアップ ポリシーに関連付けられます。デバイス ジョブは、障害復旧 (DR) または復元操作の結果として作成されます。
+* **エンティティ** - ジョブは、ボリューム、バックアップ ポリシー、デバイスに関連付けられます。 クローン ジョブはボリュームに関連付けられますが、スケジュール済みのバックアップ ジョブはバックアップ ポリシーに関連付けられます。 デバイス ジョブは、障害復旧 (DR) または復元操作の結果として作成されます。
 * **デバイス** - ジョブが開始されたデバイスの名前。
 * **開始日** - ジョブが開始された日時。
-* **進行状況**– 実行中のジョブの完了率。完了したジョブの場合、これは常に 100% です。
+* **進行状況** – 実行中のジョブの完了率。 完了したジョブの場合、これは常に 100% です。
 
 ジョブの一覧は 30 秒ごとに更新されます。
 
@@ -47,28 +51,33 @@ ms.author: alkohli
 * ジョブの詳細を表示する
 * ジョブを取り消す
 
-## ジョブの詳細を表示する
+## <a name="view-job-details"></a>ジョブの詳細を表示する
 任意のジョブの詳細を表示するには、以下の手順を実行します。
 
-#### ジョブの詳細を表示するには
-1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。完了済み、実行中、または取り消し済みのジョブを検索できます。
+#### <a name="to-view-job-details"></a>ジョブの詳細を表示するには
+1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。 完了済み、実行中、または取り消し済みのジョブを検索できます。
 2. ジョブを選択します。
-3. ページの下部にある **[詳細]** をクリックします。
+3. ページの下部にある **[詳細]**をクリックします。
 4. **[ジョブの詳細]** ダイアログ ボックスで、状態、詳細、時間統計、データ統計を確認できます。
 
-## ジョブを取り消す
+## <a name="cancel-a-job"></a>ジョブを取り消す
 実行中のジョブを取り消すには、以下の手順を実行します。
 
-### ジョブを取り消すには
+### <a name="to-cancel-a-job"></a>ジョブを取り消すには
 1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、取り消しを行う実行中のジョブを表示します。
 2. 該当するジョブを選択します。
-3. ページの下部にある **[キャンセル]** をクリックします。
-4. 確認を求められたら、**[はい]** をクリックします。
+3. ページの下部にある **[キャンセル]**をクリックします。
+4. 確認を求められたら、 **[はい]**をクリックします。
 
 このジョブが取り消されました。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [StorSimple バックアップ ポリシーの管理方法](storsimple-manage-backup-policies.md)。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

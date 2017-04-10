@@ -1,12 +1,12 @@
 ---
-title: 'MyDriving Azure IoT の例: ビルドする | Microsoft Docs'
-description: Microsoft Azure を使用して、Stream Analytics、Machine Learning、Event Hubs などの IoT システムを設計する方法を総合的に示すアプリを構築します。
-services: ''
+title: "MyDriving Azure IoT の例: ビルドする |Microsoft Docs"
+description: "Microsoft Azure を使用して、Stream Analytics、Machine Learning、Event Hubs などの IoT システムを設計する方法を総合的に示すアプリを構築します。"
+services: 
 documentationcenter: .net
-suite: ''
+suite: 
 author: harikmenon
 manager: douge
-
+ms.assetid: c2fcd6ee-3bbe-43d1-a066-dce52cc3a53d
 ms.service: multiple
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/25/2016
 ms.author: harikm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
+
 
 ---
 # <a name="build-and-deploy-the-mydriving-solution-to-your-environment"></a>MyDriving ソリューションを自分の環境でビルドおよびデプロイする
@@ -192,7 +196,7 @@ Azure サービスと Team Services Build サービスの自動デプロイを�
 
 Microsoft Azure では、クラウド アプリケーションのビルドに使用できるさまざまなサービスを提供します。 多くは個別に使用できますが (App Service、Web Apps など)、MyDriving で使用するなど、統合システムを形成するために相互接続すると、最適な状態で使用できます。
 
-Azure サービスを手動で作成および相互接続することができますが、Azure Resource Manager テンプレートを使用すると、より早く信頼性が向上します。 [Resource Manager](../resource-group-overview.md) では、ソリューションのリソースのデプロイとリソース間の相互接続を自動化します。
+Azure サービスを手動で作成および相互接続することができますが、Azure Resource Manager テンプレートを使用すると、より早く信頼性が向上します。 [Resource Manager](../azure-resource-manager/resource-group-overview.md) では、ソリューションのリソースのデプロイとリソース間の相互接続を自動化します。
 
 [Scripts/ARM](https://github.com/Azure-Samples/MyDriving/tree/master/scripts/ARM)の GitHub リポジトリで、MyDriving システムのテンプレートを見つけます。 このテンプレートでは、アーキテクチャのさまざまなサービスがどのように相互接続されているかについて、包括的かつ簡潔なビューを提供します。 これらすべての詳細については、「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」で説明していますが、テンプレート自体を読むだけで多くを把握することができます。
 
@@ -364,7 +368,7 @@ MyDriving の開発構成を設定するコストの大まかな見積もりを�
 | [アプリケーション インサイト](https://azure.microsoft.com/pricing/details/application-insights/) <br/>Web サービスとサイトのパフォーマンスと使用状況の監視 |Free レベル。 |0 ドル |
 | [HockeyApp](http://hockeyapp.net/pricing/) <br/>  ベータ アプリの配布、フィードバック、使用量とクラッシュ データの収集 |新規ユーザー用に 2 つの無料アプリ。<br/> その後は 30 ドル/月。 |0 ドル |
 | [Xamarin](https://store.xamarin.com/)<br/>  複数のデバイスの統合されたプラットフォーム上のコード |無料試用版。 <br/>その後は 25 ドル/月。 |0 ドル |
-| [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) |Basic レベル、Single Database モデル。 |5 ドル |
+| [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  |Basic レベル、Single Database モデル。 |5 ドル |
 | [Service Fabric](https://azure.microsoft.com/pricing/details/service-fabric/) (省略可能) |ローカル クラスターを実行する。 |0 ドル |
 | [Power BI](https://powerbi.microsoft.com/pricing/)<br/>  多用途のディスプレイおよびストリーミングされたデータと静的データの調査 |Free レベル: 1GB、10,000 行/時間、毎日更新。 <br/> [上限引き上げ](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/)の場合は 10 ドル/ユーザー/月、接続オプションの追加、コラボレーション。 |0 ドル |
 | [Storage](https://azure.microsoft.com/pricing/details/storage/) |L (ローカル冗長) &lt; 100 G 0.024 ドル/GB. |3 ドル |
@@ -376,7 +380,7 @@ MyDriving の開発構成を設定するコストの大まかな見積もりを�
 
 詳細については、次を参照してください。
 
-* [Azure サービスのクォータと制限](../azure-subscription-service-limits.md#iot-hub-limits)
+*  [Azure サービスのクォータと制限](../azure-subscription-service-limits.md#iot-hub-limits)
 * [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="send-us-your-feedback"></a>フィードバックを送信します
@@ -394,6 +398,9 @@ MyDriving は、独自の IoT システムの開発を支援するために作�
 ## <a name="next-steps"></a>次のステップ
 システムとそのコンポーネントの設計の包括的な説明である「 [MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」をお勧めします。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,24 @@
 ---
-title: Machine Learning Web サービスを使用する | Microsoft Docs
-description: 機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。
+title: "Machine Learning Web サービスを使用する | Microsoft Docs"
+description: "機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f4f3caed8390ba3a80d6cf1282f4d2751c67ae6b
+ms.lasthandoff: 03/29/2017
+
 
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service-that-has-been-deployed-from-a-machine-learning-experiment"></a>Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法
@@ -24,7 +29,7 @@ Azure Machine Learning の実験は、Web サービスとしてデプロイさ�
 
 * ネットワークに接続している
 * HTTPS 要求を実行する SSL の機能がある
-* (手動またはサポート ライブラリによって) JSON を解析できる
+* JSON を解析できる (直接またはサポート ライブラリを使用)
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -34,14 +39,9 @@ Azure Machine Learning Web サービスは、要求応答サービスまたは�
 > 予測 Web サービスにアクセスする Web アプリケーションを作成する簡単な方法については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)」をご覧ください。
 > 
 > 
+> Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する][walkthrough]」を参照してください。
 
-<!-- When this article gets published, fix the link and uncomment
-For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
--->
-
-Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][発行]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
-
-## <a name="requestresponse-service-rrs"></a>要求応答サービス (RRS)
+## <a name="request-response-service-rrs"></a>要求応答サービス (RRS)
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスであり、Azure Machine Learning Studio の実験で作成およびデプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 このサービスを使用すると、使用側アプリケーションがリアルタイムでの応答を期待するシナリオに対応できます。
 
 RRS は、1 行または複数行の入力パラメーターを受け取り、出力として 1 行または複数行を生成できます。 出力行には複数の列を含めることができます。
@@ -68,7 +68,7 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 ### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルでの情報の場所
 必要な情報を入手するには、次のようにします。
 
-1. [Azure Machine Learning Web サービス][webservicesportal] ポータルにサインインします。
+1. [Azure Machine Learning Web サービス ポータル][webservicesportal]にサインインします。
 2. **[Web サービス]** または **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 3. 使用する Web サービスをクリックします。 
 4. クラシック Web サービスを使用する場合は、[Classic Web Services (クラシック Web サービス)]をクリックします。
@@ -98,7 +98,7 @@ API ヘルプ ページにアクセスするには、タスクに応じた **[�
 
 必要な情報を Azure Machine Learning Web サービス ポータルで入手するには、次のようにします。
 
-1. [Azure Machine Learning Web サービス][webservicesportal] ポータルにサインインします。
+1. [Azure Machine Learning Web サービス ポータル][webservicesportal]にサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 3. 使用する Web サービスをクリックします。 
 4. 使用するエンドポイントをクリックします。
@@ -244,11 +244,11 @@ C# の実装のコード サンプルを次に示します。 クラシック We
 
     /**
      * Download full code from github - [https://github.com/nk773/AzureML_RRSApp](https://github.com/nk773/AzureML_RRSApp)
-     */
+      */
         /**
-          * Call REST API for retrieving prediction from Azure ML 
-          * @return response from the REST API
-          */    
+           * Call REST API for retrieving prediction from Azure ML 
+           * @return response from the REST API
+           */    
         public static String rrsHttpPost() {
 
             HttpPost post;
@@ -415,7 +415,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
         class Program
         {
             static void Main(string[] args)
-            {               
+            {                
                 InvokeBatchExecutionService().Wait();
             }
 
@@ -524,13 +524,13 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
     }
 
 #### <a name="sample-code-in-java-for-bes"></a>Java for BES のコード サンプル
-バッチ実行サービス REST API では、次のサンプルのように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。 完全なコードは [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp)で確認できます。 この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。 
+バッチ実行サービス REST API では、次のサンプルのように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。 完全なコードは [GitHub](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp)で確認できます。 この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。 
 
     { "GlobalParameters": {}, 
         "Inputs": { "input1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=Q8kkieg==", 
             "RelativeLocation": "myContainer/sampleinput.csv" } }, 
-        "Outputs": { "output1": { "ConnectionString":   "DefaultEndpointsProtocol=https;
+        "Outputs": { "output1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=kjC12xQ8kkieg==", 
             "RelativeLocation": "myContainer/sampleoutput.csv" } } 
     } 
@@ -541,7 +541,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * Call REST API to create a job to Azure ML 
          * for batch predictions
          * @return response from the REST API
-         */ 
+         */    
         public static String besCreateJob() {
 
             HttpPost post;
@@ -590,7 +590,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besStartJob(String job){
             HttpPost post;
             HttpClient client;
@@ -630,7 +630,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besCancelJob(String job) {
             HttpDelete post;
             HttpClient client;
@@ -725,14 +725,10 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 
 <!-- Relative Links -->
 
-[発行]: machine-learning-publish-a-machine-learning-web-service.md
-[チュートリアル]: machine-learning-walkthrough-develop-predictive-solution.md
+[publish]: machine-learning-publish-a-machine-learning-web-service.md
+[walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- External Links -->
 [webservicesportal]: https://services.azureml.net/
 [mlstudio]: https://studio.azureml.net
-
-
-<!---HONumber=Oct16_HO2-->
-
 

@@ -1,19 +1,23 @@
 ---
-title: Azure 診断でログを収集する方法 | Microsoft Docs
-description: この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。
+title: "Azure 診断でログを収集する方法 | Microsoft Docs"
+description: "この記事では、Azure で実行されている Service Fabric クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: ms-toddabel
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9f7e1fa5-6543-4efd-b53f-39510f18df56
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2016
+ms.date: 01/17/2017
 ms.author: toddabel
+translationtype: Human Translation
+ms.sourcegitcommit: 1b4599848f44a7200f13bd6ddf4e82e96a75e069
+ms.openlocfilehash: 41343990d3379aabd129af437ff2edbbd2134dcc
+
 
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Azure 診断でログを収集する方法
@@ -25,16 +29,16 @@ ms.author: toddabel
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。 ログは、ストレージ内で直接に使用した場合はそれほど役に立ちません。 しかし、外部プロセスを使用することにより、ストレージからイベントを読み取って、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) や [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md)、または他のログ解析ソリューションに配置できます。
+ログを収集してアップロードするための方法としては、Azure 診断拡張機能を使う方法があります。この拡張機能では、Azure Storage、Azure Application Insights、または Azure Event Hubs にログをアップロードできます。 ログは、ストレージ内または Event Hubs 内で直接使った場合はそれほど役に立ちません。 しかし、外部プロセスを使うことにより、ストレージからイベントを読み取って、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) や他のログ解析ソリューションに配置できます。 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) には、包括的なログ検索と分析サービスが組み込みで付属しています。
 
 ## <a name="prerequisites"></a>前提条件
-これらのツールは、このドキュメントの操作の一部を実行するために使用します:
+これらのツールは、このドキュメントの操作の一部を実行するために使います。
 
 * [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Azure Cloud Services と関連性はありますが、お勧めの情報と例が掲載されています)
-* [Azure リソース マネージャー](../resource-group-overview.md)
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
-* [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [Azure Resource Manager テンプレート](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>収集することができるログ ソース
 * **Service Fabric ログ:** プラットフォームから標準の Windows イベント トレーシング (ETW) と EventSource チャネルに対して生成されます。 次のような種類のログがあります。
@@ -51,11 +55,11 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 ![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-Azure サポート チームは、サポート要求を解決するためにサポート ログを*必要*とします。 これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。 診断設定により、アプリケーション レベルのイベントが構成されます。 これらのイベントには、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) イベント、 [Reliable Services](service-fabric-reliable-services-diagnostics.md) イベント、および Azure Storage に格納されるいくつかのシステム レベル Service Fabric イベントが含まれます。
+Azure サポート チームは、サポート要求を解決するためにサポート ログを*必要*とします。 これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの&1; つに保存されます。 診断設定により、アプリケーション レベルのイベントが構成されます。 これらのイベントには、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) イベント、 [Reliable Services](service-fabric-reliable-services-diagnostics.md) イベント、および Azure Storage に格納されるいくつかのシステム レベル Service Fabric イベントが含まれます。
 
-[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスで、ストレージ アカウントからイベントを取得できます。 現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。
+[Elasticsearch](https://www.elastic.co/guide/index.html) などの製品や独自のプロセスで、ストレージ アカウントからイベントを取得できます。 現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。
 
-ポータルを使用してクラスターを作成する場合、**[OK]*** をクリックしてクラスターを作成する前に*テンプレートをダウンロードすることを強くお勧めします。 詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 いくつかの変更はポータルを使用して行うことができないため、後で変更を行うためにこのテンプレートが必要になります。
+ポータルを使ってクラスターを作成する場合、**[OK] をクリックしてクラスターを作成する前に**テンプレートをダウンロードすることを強くお勧めします。 詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 いくつかの変更はポータルを使用して行うことができないため、後で変更を行うためにこのテンプレートが必要になります。
 
 次の手順を使用して、ポータルからテンプレートをエクスポートできます。 ただし、これらのテンプレートは必要な情報が欠落している null 値を含んでいる場合があるため、さらに使いにくくなる可能性があります。
 
@@ -80,7 +84,7 @@ Resource Manager を使用してクラスターを作成するには、診断の
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)に関する記事を参照してください。
+または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
 
 ```powershell
 
@@ -189,6 +193,25 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 前述のように template.json ファイルを変更したら、Resource Manager テンプレートを再発行します。 テンプレートのエクスポート後、deploy.ps1 ファイルを実行すると、テンプレートが再発行されます。 デプロイ後、**ProvisioningState** が **Succeeded** になっていることを確認します。
 
+## <a name="update-diagnostics-to-collection-health-and-load-events"></a>正常性と負荷のイベントを収集するように診断を更新する
+
+Service Fabric リリース 5.4 以降、正常性と負荷のメトリック イベントを収集できるようになりました。 これらのイベントは、[ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) や [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) などの正常性または負荷レポート API を使うことでシステムやユーザーのコードによって生成されるイベントを反映します。 これにより、一定期間のシステムの正常性を集計および表示したり、正常性または負荷のイベントに基づいてアラートを生成したりできます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
+
+イベントを収集するには、リソース マネージャー テンプレートに次の行を追加します。
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387912",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+
 ## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>新しい EventSource チャネルのログを収集およびアップロードするように診断を更新する
 デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定に関する[前述のセクション](#deploywadarm)と同じ手順を実行してください。
 
@@ -206,15 +229,18 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
         }
 ```
 
-パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
+パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
 
 ## <a name="next-steps"></a>次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
 ## <a name="related-articles"></a>関連記事
-* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Log Analytics の Service Fabric ソリューション](../log-analytics/log-analytics-service-fabric.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO3-->
 
 

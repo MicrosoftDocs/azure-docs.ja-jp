@@ -1,38 +1,43 @@
 ---
-title: Using PM2 Configuration for NodeJS in Web Apps on Linux | Microsoft Docs
-description: Using PM2 Configuration for NodeJS in Web Apps on Linux
-keywords: azure app service, web app, nodejs, pm2, linux, oss
+title: "Web Apps on Linux での Node.js 向け PM2 構成の使用 | Microsoft Docs"
+description: "Web Apps on Linux での Node.js 向け PM2 構成の使用"
+keywords: "Azure App Service, Web アプリ, Node.js, PM2, Linux, OSS"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: naziml
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: fb420f32-6d74-49c7-992f-0ed5616e66e7
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
+translationtype: Human Translation
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
+ms.lasthandoff: 02/17/2017
+
 
 ---
-# <a name="using-pm2-configuration-for-node.js-in-web-apps-on-linux"></a>Using PM2 Configuration for Node.js in Web Apps on Linux
-If you set the application stack to Node.js for Web Apps on Linux, you will get the option to set a Node.js startup file as shown in the image below.
+# <a name="use-pm2-configuration-for-nodejs-in-web-apps-on-linux"></a>Web Apps on Linux での Node.js 向け PM2 構成の使用
+Web Apps on Linux 向けにアプリケーション スタックを Node.js に設定した場合、Node.js スタートアップ ファイルを設定するためのオプションが次の図のように表示されます。
 
-![][1]
+![Node.js スタートアップ ファイルの設定][1]
 
-You can use this to either
+このオプションを使用して、次のタスクのいずれかを実行できます。
 
-* Specify the startup script for your Node.js app (for example: /bin/server.js)
-* Specify the PM2 configuration file to use for your Node.js app (for example: /foo/process.json)
+* Node.js アプリのスタートアップ スクリプトの指定 (例: /bin/server.js)。
+* Node.js アプリに使用する PM2 構成ファイルの指定 (例: /foo/process.json)。
   
   > [!NOTE]
-  > If you want your Node processes to automatically restart when certain files are modified, you will need to use PM2 configuration. Otherwise your application will not restart when it receives change notifications from things like continuous deployment when your application code changes.
+  > 特定のファイルが変更されたときに Node.js プロセスを自動的に再起動させるには、PM2 構成を使用します。 そうしないと、変更の通知を受信したときもアプリケーションが再起動しません (アプリケーション コードが変更されたときなど)。
   > 
   > 
 
-You can check the Node.js [process file documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for all the options, but below is a sample of what you would use as your process.json file
+Node.js の[プロセス ファイルのドキュメント](http://pm2.keymetrics.io/docs/usage/application-declaration/)ですべてのオプションを確認できますが、process.json ファイルとして使用できるもののサンプルを次に示します。
 
         {
           "name"        : "worker",
@@ -48,20 +53,17 @@ You can check the Node.js [process file documentation](http://pm2.keymetrics.io/
           }
         }
 
-Important things to note in this configuration are 
+この構成で重要な点は次のとおりです。
 
-* The "script" property specifies your application's start script.
-* The "instances" property specifies how many instances of the node process to launch. If you are running your application on larger VM sizes that have multiple cores, you want to maximize your resources by setting a higher value here.
-* The "watch" array specifies all files for whose change you want to restart your node processes.
-* For the "watch_options", you currently need to specify "usePolling" as true because of the way your application content is mounted.
+* "script" プロパティでは、アプリケーションの開始スクリプトを指定します。
+* "instances" プロパティでは、起動するノード プロセスのインスタンス数を指定します。 複数のコアを持つ大規模な VM でアプリケーションを実行している場合は、ここでより大きな値を設定し、リソースを最大化することをお勧めします。
+* "watch" 配列では、変更時にノード プロセスを再起動させるすべてのファイルを指定します。
+* "watch_options" には、現時点では "usePolling" を true として指定する必要があります。これはアプリケーションのコンテンツのマウント方法が原因です。
 
-## <a name="next-steps"></a>Next Steps
-* [What is App Service on Linux?](app-service-linux-intro.md)
+## <a name="next-steps"></a>次のステップ
+* [App Service on Linux とは](app-service-linux-intro.md)
+* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png
-
-
-<!--HONumber=Oct16_HO2-->
-
 

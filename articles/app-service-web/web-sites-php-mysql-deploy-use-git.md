@@ -1,47 +1,51 @@
 ---
-title: Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
-description: MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。
+title: "Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする"
+description: "MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。"
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
-manager: wpickett
-editor: ''
+manager: erikre
+editor: 
 tags: mysql
-
+ms.assetid: 7454475f-e275-4bc7-9f09-1ef07382e5da
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
+
 
 ---
-# Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
-このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
+# <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。 コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使います。 このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。 このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
 学習内容:
 
-* [Azure ポータル][management-portal]を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure Portal][management-portal] を使って Web アプリと MySQL データベースを作成する方法。 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
-* Composer 拡張機能を有効にして `git push` ごとに Composer のタスクを自動化する方法。
+* Composer 拡張機能を有効にして `git push`ごとに Composer のタスクを自動化する方法。
 
-このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。 アプリケーションは、Web Apps でホストされます。 完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![Azure の PHP Web サイト][running-app]
 
-## 開発環境を設定する
+## <a name="set-up-the-development-environment"></a>開発環境を設定する
 このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] がインストールされていることを前提としています。
 
 <a id="create-web-site-and-set-up-git"></a>
 
-## Web アプリの作成と Git 発行の設定
+## <a name="create-a-web-app-and-set-up-git-publishing"></a>Web アプリの作成と Git 発行の設定
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
-1. [Azure ポータル][management-portal]にログインします。
+1. [Azure Portal][management-portal] にログインします。
 2. **[次へ]** アイコンをクリックします。
-3. **[Marketplace]** の横の **[すべて表示]** をクリック します。
-4. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。**[作成]** をクリックします。
+3. **[Marketplace]** の横の **[すべて表示]** をクリック します。 
+4. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。 **[作成]**をクリックします。
 5. リソース グループの有効な名前を入力します。
    
     ![リソース グループ名の設定][resource-group]
@@ -58,12 +62,12 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 10. ソース コード用の **[ローカル Git リポジトリ]** を選択します。
     
      ![Git リポジトリの設定][setup-repository]
-11. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
+11. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。 作成するユーザー名とパスワードはメモしておいてください (Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
     
      ![発行資格情報の作成][credentials]
 
-## MySQL のリモート接続情報の取得
-Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
+## <a name="get-remote-mysql-connection-information"></a>MySQL のリモート接続情報の取得
+Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。 MySQL の接続情報を取得するには、次の手順に従います。
 
 1. リソース グループで、データベースをクリックします。
    
@@ -75,14 +79,14 @@ Web Apps で実行されている MySQL データベースに接続するには�
    
     ![プロパティへの注記][note-properties]
 
-## アプリケーションの作成とローカル テスト
+## <a name="build-and-test-your-app-locally"></a>アプリケーションの作成とローカル テスト
 Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
-Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションを構成するファイルは&1; つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 
-アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部) がセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
+アプリケーションを作成してローカルで実行するには、次の手順に従います。 ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部) がセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
 1. 先ほどメモしておいた `Data Source`、`User Id`、`Password`、`Database` の各値を使用して、リモートの MySQL サーバーに接続します。
    
@@ -186,16 +190,16 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
-## アプリケーションの発行
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
+## <a name="publish-your-app"></a>アプリケーションの発行
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。 ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
 > [!NOTE]
 > これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
 > 
 > 
 
-1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure Portal の Web アプリ プロパティに移動します。
+2. GitBash (Git が `PATH`にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
    
         git init
         git add .
@@ -206,17 +210,17 @@ Registration アプリケーションは、名前と電子メール アドレス
     先ほど作成したパスワードを入力するように求められます。
    
     ![Git 経由による Azure への初期プッシュ][git-initial-push]
-3. アプリケーションの使用を開始できるように、**http://[sitename].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
+3. アプリケーションの使用を開始できるように、**http://[サイト名].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
    
     ![Azure の PHP Web サイト][running-app]
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
-## アプリケーションへの変更の発行
+## <a name="publish-changes-to-your-app"></a>アプリケーションへの変更の発行
 アプリケーションへの変更を発行するには、次のステップに従います。
 
 1. ローカルでアプリケーションへの変更を行います。
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリのルート ディレクトリに変更して、次のコマンドを実行します。
+2. GitBash (Git が `PATH`にある場合はターミナル) を開き、ディレクトリをアプリのルート ディレクトリに変更して、次のコマンドを実行します。
    
         git add .
         git commit -m "comment describing changes"
@@ -225,35 +229,36 @@ Registration アプリケーションは、名前と電子メール アドレス
     先ほど作成したパスワードを入力するように求められます。
    
     ![サイト変更の Git 経由による Azure へのプッシュ][git-change-push]
-3. アプリケーションとその変更内容を確認できるように、**http://[sitename].azurewebsites.net/index.php** に移動します。
+3. アプリケーションとその変更内容を確認できるように、**http://[サイト名].azurewebsites.net/index.php** に移動します。
    
     ![Azure の PHP Web サイト][running-app]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
 <a name="composer"></a>
 
-## Composer 拡張機能を使用した Composer 自動化の有効化
-既定では、PHP プロジェクトに composer.json があっても、App Service の git デプロイ プロセスで処理されません。`git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
+## <a name="enable-composer-automation-with-the-composer-extension"></a>Composer 拡張機能を使用した Composer 自動化の有効化
+既定では、PHP プロジェクトに composer.json があっても、App Service の git デプロイ プロセスで処理されません。 `git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
 
-1. [Azure ポータル][management-portal]の PHP Web アプリのブレードで、**[ツール]**、**[拡張機能]** の順にクリックします。
+1. [Azure Portal][management-portal] の PHP Web アプリのブレードで、**[ツール]** > **[拡張機能]** をクリックします。
    
     ![Composer Extension Settings][composer-extension-settings]
 2. **[追加]**、**[Composer]** の順にクリックします。
    
     ![Composer Extension Add][composer-extension-add]
-3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
+3. **[OK]** をクリックして法律条項に同意します。 もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
    
-    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。![Composer Extension View][composer-extension-view]
-4. 前のセクションと同様に、`git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
+    これで、 **[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。  
+    ![Composer Extension View][composer-extension-view]
+4. 前のセクションと同様に、`git add`、`git commit`、`git push` を実行します。 composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
    
     ![Composer Extension Success][composer-extension-success]
 
-## 次のステップ
-詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
 
 <!-- URL List -->
 
@@ -292,4 +297,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 [composer-extension-view]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png
 [composer-extension-success]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

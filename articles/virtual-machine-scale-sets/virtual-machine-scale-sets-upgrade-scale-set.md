@@ -1,13 +1,13 @@
 ---
-title: 仮想マシン スケール セットでのアプリのデプロイ | Microsoft Docs
-description: 仮想マシン スケール セットでアプリをデプロイします。
+title: "仮想マシン スケール セットでのアプリのデプロイ | Microsoft Docs"
+description: "仮想マシン スケール セットでアプリをデプロイします。"
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: gbowerman
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a5158c51149e75952eaf91af14f3fcf2dd1ed2af
+
 
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのアップグレード
@@ -39,7 +43,7 @@ ms.author: guybo
 
 このことを認識したうえで、REST API を使用して PowerShell のスケール セットのバージョンを更新する方法を確認してみましょう。 これらの例ではプラットフォーム イメージを取り上げますが、この記事ではこのプロセスをカスタム イメージに適用するために必要な情報も提供します。
 
-## <a name="powershell##"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 この例では、Windows 仮想マシン スケール セットを新しいバージョン 4.0.20160229 に更新します。 モデル更新後に、一度に 1 つの仮想マシン インスタンスを更新します。
 
 ```powershell
@@ -90,6 +94,9 @@ $vmss.virtualMachineProfile.storageProfile.osDisk.image.uri= $newURI
 
 ![Vmsseditor showing update in progress](./media/virtual-machine-scale-sets-upgrade-scale-set/vmssEditor2.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

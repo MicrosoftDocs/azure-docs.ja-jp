@@ -1,27 +1,33 @@
 ---
-title: Azure SQL Database Azure 導入事例 - Snelstart | Microsoft Docs
-description: SnelStart が SQL Database を使用して、新規の Azure SQL Database を月あたり 1,000 台追加し、どのように事業サービスを急速に拡大したのかをご紹介します。
+title: "Azure SQL Database Azure 導入事例 - Snelstart | Microsoft Docs"
+description: "SnelStart が SQL Database を使用して、新規の Azure SQL Database を月あたり 1,000 台追加し、どのように事業サービスを急速に拡大したのかをご紹介します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: fab506b2-439d-4f1a-bdc5-d1d25c80d267
 ms.service: sql-database
+ms.custom: customer implementations
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: 0c37a035cfc782e05dd72da7323fe244eadc4ce9
+ms.lasthandoff: 01/12/2017
+
 
 ---
-# <a name="with-azure,-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1,000-new-azure-sql-databases-per-month"></a>Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
+# <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
-SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。 SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。 デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、C# 言語のなじみのある環境を使用して作成しています。またエラスティック データベース プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。 Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
+SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。 SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。 デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、使い慣れたC# 言語の環境を使用して作成しています。またエラスティック プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。 Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
 > 
 > 
 
@@ -50,7 +56,7 @@ SnelStart はクラウド モデルの導入により、顧客がソフトウェ
 現在 SnelStart は、オランダの中堅・中小規模企業および自営業者を対象とした、基幹業務 (LOB)/業務管理アプリケーションを提供する主要プロバイダーです。 IT アーキテクトの Carlo Kuip 氏は次のように述べています。「私たちは、100% 自動化された業務管理サービスをお客様に提供することを目指しています。」
 
 ## <a name="optimizing-performance-and-cost-with-elastic-pools"></a>エラスティック プールでパフォーマンスとコストを最適化
-SnelStart は、エラスティック データベース プールを早い時期から大規模に導入しました。 エラスティック プールは、コストを抑制しパフォーマンス要件を効率的に管理する上で役立っています。 Been 氏は次のように述べています。「エラスティック データベース プールを使用することで、過剰にプロビジョニングすることなく、お客様のニーズに基づいてパフォーマンスを最適化できます。 ピーク時の負荷に基づいたプロビジョニングには、非常にコストがかかります。 一方、使用頻度が低い複数のデータベース間でリソースを共有できるオプションでは、適切に動作し、コスト効率に優れたソリューションを生み出すことができます。」
+SnelStart は、エラスティック プールを早い時期から大規模に導入しました。 エラスティック プールは、コストを抑制しパフォーマンス要件を効率的に管理する上で役立っています。 Been 氏は次のように述べています。「エラスティック プールを使用することで、過剰にプロビジョニングすることなく、お客様のニーズに基づいてパフォーマンスを最適化できます。 ピーク時の負荷に基づいたプロビジョニングには、非常にコストがかかります。 一方、使用頻度が低い複数のデータベース間でリソースを共有できるオプションでは、適切に動作し、コスト効率に優れたソリューションを生み出すことができます。」
 
 ## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Azure SQL Database、データのコンテナー格納で隔離とセキュリティを実現
 Azure SQL Database により、SnelStart は、顧客のオンプレミスの業務管理データを容易に、かつ透過的に Azure に移動できます。 Azure SQL Database は、隔離、認証の境界、承認、容易なバックアップおよび復元機能を提供する、利便性の高いコンテナーです。 データベースは、ビジネス管理用に適した概念モデルを提供します。 IT アーキテクトの Carlo Kuip 氏は次のように述べています。「このコンテナーの境界内のアイテムには、ビジネスに不可欠な機密データが含まれています。 このようなアイテムを隔離されたデータベースに格納することで、十分に保護されます。 データベース レベルで承認を管理できるほか、データベース管理者 (DBA) を必要とせずにデータベースの管理やスケール アウトを自動化できます。」
@@ -58,7 +64,7 @@ Azure SQL Database により、SnelStart は、顧客のオンプレミスの業
 また Azure SQL Data Warehouse も、不正侵入検出、ユーザー アクティビティのログ記録、および接続などのテレメトリ データの収集に役立ち、SnelStart のセキュリティと管理に重要な役割を果たしています。
 
 ## <a name="azure-removes-overhead-so-that-developers-can-spend-more-time-delivering-value"></a>Azure が負荷を軽減、開発者は価値の提供に注力
-Azure のプラットフォーム モデルによってインフラストラクチャのコストが削減され、SnelStart は C# 管理ライブラリを使用してデプロイを自動化できるようになりました。 Kuip 氏は次のように述べています。「ごく少人数のスタッフで現在のオペレーションを拡大しつつ、お客様のためにスケーラビリティ、スピード、および障害復旧オプションを強化することができました。 新しい規制や税法に対処するために、ただ既存のコードを更新する代わりに、サービスの開発に注力することで、新しいサービスや機能に取り組むためのリソースを確保できました。 管理を自動化して SaaS サービスを利用することで、人件費がかさむことなく、お客様に価値をお届けすることができます。」 たとえば SnelStart では、Azure およびエラスティック データベース プールの導入により、銀行と顧客データとの堅牢な統合、新しい請求サービス、小規模企業の信用調査、および電子メール サービスなどのさまざまな機能を新たに追加することができました。
+Azure のプラットフォーム モデルによってインフラストラクチャのコストが削減され、SnelStart は C# 管理ライブラリを使用してデプロイを自動化できるようになりました。 Kuip 氏は次のように述べています。「ごく少人数のスタッフで現在のオペレーションを拡大しつつ、お客様のためにスケーラビリティ、スピード、および障害復旧オプションを強化することができました。 新しい規制や税法に対処するために、ただ既存のコードを更新する代わりに、サービスの開発に注力することで、新しいサービスや機能に取り組むためのリソースを確保できました。 管理を自動化して SaaS サービスを利用することで、人件費がかさむことなく、お客様に価値をお届けすることができます。」 たとえば SnelStart では、Azure とエラスティック プールの導入により、銀行と顧客データとの堅牢な統合、新しい請求サービス、小規模企業の信用調査、メール サービスなどのさまざまな機能を新たに追加することができました。
 
 > 「2016 年初めのわずか数か月で、当社は Azure SQL Database の環境を約 5,500 から 12,000 以上にまで拡大し、現在では月あたり約 1,000 台のデータベースを追加しています。」
 > 
@@ -83,7 +89,7 @@ Azure を導入したことで、SnelStart は、顧客やその会計士に、�
 
 ![SnelStart architecture](./media/sql-database-implementation-snelstart/figure1.png)
 
-図 1. SnelStart は、2016 年 6 月の時点で、1 万 1,000 台を超えるデータベース、および 50 を超えるエラスティック データベース プールを所有しています。
+図 1. SnelStart は、2016 年 6 月の時点で、1 万 1,000 台を超えるデータベースと、50 を超えるエラスティック プールを所有しています。
 
 ## <a name="simplicity-from-the-cloud"></a>クラウドによる簡素化
 Azure のクラウド ベースのソリューションに移行したことで、SnelStart は顧客基盤の急速な拡大に対応しつつ、革新的な機能とサービスを提供しています。 Been 氏は次のように述べています。「Azure への移行により、人員を拡大することなく、お客様に継続的に更新をお届けできるようになりました。 お客様は、スケーラビリティや障害復旧などの Azure の優れた機能を、すべてまとめて利用できます。
@@ -98,11 +104,9 @@ Azure のクラウド ベースのソリューションに移行したことで�
 SnelStart の目下の目標は、顧客満足度をさらに高めていくことです。 Been 氏は次のように述べています。「ISV としての技術上およびリソース上の制約がないため、私たちの成長はとどまるところを知りません。」
 
 ## <a name="more-information"></a>詳細情報
-* Azure エラスティック データベース プールの詳細については、 [エラスティック データベース プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。 
+* Azure エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
+* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure SQL Data Warehouse の詳細については、 [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * SnelStart の詳細については、 [SnelStart](http://www.snelstart.nl)をご覧ください。
-
-<!--HONumber=Oct16_HO2-->
 
 

@@ -3,7 +3,7 @@ title: "Azure AD Privileged Identity Management の使用 | Microsoft Docs"
 description: "Azure ポータルの Azure Active Directory Privileged Identity Management アプリケーションで特権 ID を管理する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
-ms.author: kgremban
+ms.date: 02/27/2017
+ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 6945529b8189c270ca6e5c41be0cd0d9caa37cb4
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="get-started-with-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management の使用
+# <a name="start-using-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management の使用開始
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 この記事では、Azure AD PIM アプリを Azure ポータル ダッシュボードに追加する方法を説明します。
@@ -44,7 +45,6 @@ Azure AD Privileged Identity Management を設定すると、アプリケーシ�
 * **[特権ロールの管理]** は、特権ロール管理者がロール割り当ての管理、ロールのアクティブ化設定の変更、アクセス レビューの開始などを行うためのダッシュボードです。 このダッシュボードのオプションは、特権ロール管理者以外に対しては無効になっています。
 * **[特権アクセスのレビュー]** では、完了する必要がある保留中のすべてのアクセス レビューが表示されます。自分自身のアクセスをレビューすることも、他のユーザーのアクセスをレビューすることもできます。 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Privileged Identity Management の概要](active-directory-privileged-identity-management-configure.md) に関するページに、組織で管理アクセスを管理する方法の詳細が記載されています。
 
@@ -53,9 +53,4 @@ Azure AD Privileged Identity Management を設定すると、アプリケーシ�
 <!--Image references-->
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

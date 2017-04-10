@@ -1,9 +1,25 @@
 ---
+title: "Azure Service Fabric のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Service Fabric ミドルウェア プラットフォームを使用して、クラウド規模のアプリケーション用のマイクロサービスのパッケージ化とデプロイを実行する方法について説明します。 チュートリアル、API リファレンス、コード サンプルがあります。"
+services: service-fabric
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Service Fabric Documentation
+ms.assetid: 
+ms.service: service-fabric
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 964b9b1ab804b8e5d56863ab5a174c984ebf8235
+ms.openlocfilehash: 2180a54f576c8878e8a33bd6a5be3082188abebc
 
-Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices. Service Fabric also addresses the significant challenges in developing and managing cloud applications. Developers and administrators can avoid complex infrastructure problems and focus on implementing mission-critical, demanding workloads that are scalable, reliable, and manageable. 
+---
+#<a name="service-fabric-documentation"></a>Service Fabric のドキュメント
+
+Service Fabric を使用して、拡張性と信頼性の高いマイクロサービスをパッケージ化、デプロイ、管理する方法について説明します。 チュートリアル、API リファレンス、コード サンプルでは、このミドルウェア プラットフォームを使用してクラウド規模のアプリケーションを構築および管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +33,7 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Service Fabric</h3>
+                        <h3>Service Fabric の詳細</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +51,7 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Service Fabric Video Library</h3>
+                        <h3>Service Fabric のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +65,11 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using C# for Windows</h3>
+                        <h3>C# for Windows を使用する Service Fabric の概要</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +83,11 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using C# for Linux</h3>
+                        <h3>C# for Linux を使用する Service Fabric の概要</h3>
                     </div>
                 </div>
             </div>
@@ -89,37 +105,65 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using Java</h3>
+                        <h3>Java を使用する Service Fabric の概要</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-	
-	
+    
+    
 </ul>
 
 ---
 
-##Reference
-###PowerShell
-[Service Fabric PowerShell](/powershell/servicefabric/vlatest/servicefabric)
-
-###Java
-[Java API Reference](/java/api)
-
-###.NET
-[Service Fabric Managed Reference API](/dotnet/api/)  
-
-###REST
-[Service Fabric REST API Reference](http://msdn.microsoft.com/library/dn707692.aspx)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Service Fabric Documentation
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/servicefabric/vlatest/servicefabric">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/java/api/microsoft.servicefabric.services">Java API</a></p>
+                        <p><a href="/dotnet/api/microsoft.servicefabric.services">.NET</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/servicefabric">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>    
+
+
+
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

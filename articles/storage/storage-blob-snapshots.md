@@ -1,31 +1,36 @@
 ---
-title: BLOB の読み取り専用スナップショットの作成 | Microsoft Docs
-description: BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。
+title: "BLOB の読み取り専用スナップショットの作成 | Microsoft Docs"
+description: "BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 services: storage
-documentationcenter: ''
-author: tamram
-manager: carmonm
+documentationcenter: 
+author: mmacy
+manager: timlt
 editor: tysonn
-
+ms.assetid: 3710705d-e127-4b01-8d0f-29853fb06d0d
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: tamram
+ms.date: 12/07/2016
+ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: a8b570cfbab594e1a21417e081eaf6d34a4659d0
+ms.openlocfilehash: 40f10b1cb860ca0c018cc3589417c54588269b0c
+ms.lasthandoff: 02/28/2017
+
 
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 ## <a name="overview"></a>Overview
 スナップショットは、ある時点で作成された読み取り専用の BLOB です。 スナップショットは BLOB をバックアップするのに便利です。 作成したスナップショットの読み取り、コピー、削除はできますが、変更はできません。
 
-スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。 
+スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。
 
 > [!NOTE]
 > すべてのスナップショットがベース BLOB の URI を共有します。 ベース BLOB とスナップショットの唯一の違いは、追加される **DateTime** 値です。
-> 
-> 
+>
+>
 
 BLOB に対するスナップショットの数に制限はありません。 スナップショットは、明示的に削除されるまで保持されます。 スナップショットは、ベース BLOB よりも長く保持することはできません。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
 
@@ -33,40 +38,45 @@ BLOB のスナップショットを作成すると、BLOB のシステム プロ
 
 ベース BLOB に関連付けられているリースはスナップショットにコピーされません。 スナップショットはリースを取得することはできません。
 
+VHD ファイルは、VM ディスクの現時点の情報と状態の格納に使用します。 ディスクを VM 内から切断するか、VM をシャットダウンしてから、その VHD ファイルのスナップショットを撮ることができます。 このスナップショットを後に使用して、その時点での VHD ファイルを取得して VM を再作成することができます。
+
+BLOB が存在するストレージ アカウントで Storage Service Encryption (SSE) が 有効になっている場合、その BLOB について撮られたスナップショットは暗号化されて保存されます。
+
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 次のコード例は、.NET でスナップショットを作成する方法を示しています。 この例では、スナップショットの作成時に別のメタデータを指定しています。
 
-    private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
+```csharp
+private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
+{
+    // Create a new block blob in the container.
+    CloudBlockBlob baseBlob = container.GetBlockBlobReference("sample-base-blob.txt");
+
+    // Add blob metadata.
+    baseBlob.Metadata.Add("ApproxBlobCreatedDate", DateTime.UtcNow.ToString());
+
+    try
     {
-        // Create a new block blob in the container.
-        CloudBlockBlob baseBlob = container.GetBlockBlobReference("sample-base-blob.txt");
+        // Upload the blob to create it, with its metadata.
+        await baseBlob.UploadTextAsync(string.Format("Base blob: {0}", baseBlob.Uri.ToString()));
 
-        // Add blob metadata.
-        baseBlob.Metadata.Add("ApproxBlobCreatedDate", DateTime.UtcNow.ToString());
+        // Sleep 5 seconds.
+        System.Threading.Thread.Sleep(5000);
 
-        try
-        {
-            // Upload the blob to create it, with its metadata.
-            await baseBlob.UploadTextAsync(string.Format("Base blob: {0}", baseBlob.Uri.ToString()));
-
-            // Sleep 5 seconds.
-            System.Threading.Thread.Sleep(5000);
-
-            // Create a snapshot of the base blob.
-            // Specify metadata at the time that the snapshot is created to specify unique metadata for the snapshot.
-            // If no metadata is specified when the snapshot is created, the base blob's metadata is copied to the snapshot.
-            Dictionary<string, string> metadata = new Dictionary<string, string>();
-            metadata.Add("ApproxSnapshotCreatedDate", DateTime.UtcNow.ToString());
-            await baseBlob.CreateSnapshotAsync(metadata, null, null, null);
-        }
-        catch (StorageException e)
-        {
-            Console.WriteLine(e.Message);
-            Console.ReadLine();
-            throw;
-        }
+        // Create a snapshot of the base blob.
+        // Specify metadata at the time that the snapshot is created to specify unique metadata for the snapshot.
+        // If no metadata is specified when the snapshot is created, the base blob's metadata is copied to the snapshot.
+        Dictionary<string, string> metadata = new Dictionary<string, string>();
+        metadata.Add("ApproxSnapshotCreatedDate", DateTime.UtcNow.ToString());
+        await baseBlob.CreateSnapshotAsync(metadata, null, null, null);
     }
-
+    catch (StorageException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
+```
 
 ## <a name="copy-snapshots"></a>スナップショットのコピー
 BLOB やスナップショットに関連するコピー操作は次のルールに従います。
@@ -84,36 +94,39 @@ BLOB やスナップショットに関連するコピー操作は次のルール
 
 次のコード例は、.NET で BLOB とそのスナップショットを削除する方法を示しています。`blockBlob` は **CloudBlockBlob** 型の変数です。
 
-    await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
+```csharp
+await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
+```
 
 ## <a name="snapshots-with-azure-premium-storage"></a>Azure Premium Storage のスナップショット
 Premium Storage でスナップショットを使うには次のルールに従います。
 
 * Premium Storage アカウントにおけるページ BLOB あたりのスナップショットの最大数は 100 です。 上限を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnapshotCountExceeded**) が返されます。
 * Premium Storage アカウントのページ BLOB のスナップショットは 10 分ごとに作成できます。 この頻度を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnaphotOperationRateExceeded**) が返されます。
-* Get Blob を呼び出して、Premium Storage アカウントのページ BLOB のスナップショットを読み取ることはできません。 Premium Storage アカウントのスナップショットで Get Blob を呼び出すと、エラー コード 400 (**InvalidOperation**) が返されます。 ただし、Premium Storage アカウントのスナップショットに対して、Get Blob Properties と Get Blob Metadata は呼び出すことができます。
 * スナップショットを読み込むには、Copy Blob を操作してアカウントの別のページ BLOB にスナップショットをコピーします。 すでにスナップショットがある BLOB にはスナップショットをコピーできません。 コピー先の BLOB にスナップショットがある場合、Copy Blob 操作でエラー コード 409 (**SnapshotsPresent**) が返されます。
 
 ## <a name="return-the-absolute-uri-to-a-snapshot"></a>スナップショットに絶対 URI を返す
 この C# コードの例では、スナップショットを作成し、プライマリの場所の絶対 URI を書き込みます。
 
-    //Create the blob service client object.
-    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+```csharp
+//Create the blob service client object.
+const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
 
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    //Get a reference to a container.
-    CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
-    container.CreateIfNotExists();
+//Get a reference to a container.
+CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
+container.CreateIfNotExists();
 
-    //Get a reference to a blob.
-    CloudBlockBlob blob = container.GetBlockBlobReference("sampleblob.txt");
-    blob.UploadText("This is a blob.");
+//Get a reference to a blob.
+CloudBlockBlob blob = container.GetBlockBlobReference("sampleblob.txt");
+blob.UploadText("This is a blob.");
 
-    //Create a snapshot of the blob and write out its primary URI.
-    CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
-    Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
+//Create a snapshot of the blob and write out its primary URI.
+CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
+Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
+```
 
 ## <a name="understand-how-snapshots-accrue-charges"></a>スナップショットの課金方法について
 スナップショット (BLOB の読み取り専用コピー) を作成すると、別途データ ストレージ料金がアカウントに課金される場合があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
@@ -128,11 +141,11 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 > [!NOTE]
 > 不要な料金を避けるためにも、スナップショットは慎重に管理してください。 スナップショットは次のように管理することをお勧めします。
-> 
+>
 > * まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。 BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
 > * BLOB のスナップショットを維持する場合は、**UploadFile**、**UploadText**、**UploadStream**、または **UploadByteArray** を呼び出して BLOB を更新しないようにしてください。 これらのメソッドを呼び出すと、BLOB 内のすべてのブロックが置き換えられるため、ベース BLOB とスナップショットが大幅に分化します。 代わりに、**PutBlock** メソッドと **PutBlockList** メソッドを使用して、最小数のブロックのみを更新するようにしてください。
-> 
-> 
+>
+>
 
 ### <a name="snapshot-billing-scenarios"></a>スナップショットの課金シナリオ
 ブロック BLOB とそのスナップショットについて料金が発生するしくみを次のシナリオで説明します。
@@ -154,8 +167,6 @@ Premium Storage でスナップショットを使うには次のルールに従�
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
 ## <a name="next-steps"></a>次のステップ
-BLOB ストレージのその他の使用例については、「 [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。 
-
-<!--HONumber=Oct16_HO2-->
+BLOB ストレージのその他の使用例については、「 [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
 
 

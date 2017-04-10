@@ -1,6 +1,6 @@
 ---
 title: "Java を使用したオンデマンド コンテンツ配信の概要 | Microsoft Docs"
-description: "Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。"
+description: "このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Java を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。"
 services: media-services
 documentationcenter: java
 author: juliako
@@ -12,28 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Java を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## <a name="setting-up-an-azure-account-for-media-services"></a>Media Services 用の Azure アカウントの設定
-Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。 Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Java を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 
-## <a name="setting-up-for-media-services-development"></a>Media Services 開発のための設定
-このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
+## <a name="prerequisites"></a>前提条件
 
-### <a name="prerequisites"></a>前提条件
-* 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java デベロッパー センター]からインストールできます。
+チュートリアルを完了するには次のものが必要です。
+
+* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* Azure Libraries for Java。[Azure Java デベロッパー センター][Azure Java Developer Center]からインストールできます。
 
 ## <a name="how-to-use-media-services-with-java"></a>方法: Java で Media Services を使用する
+
+>[!NOTE]
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 
 このコードを使用する前に、Media Services アカウントを設定する必要があります。 アカウントの設定方法については、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
@@ -80,7 +88,7 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 
         // Encoder configuration
         private static String preferedEncoder = "Media Encoder Standard";
-        private static String encodingPreset = "H264 Multiple Bitrate 720p";
+        private static String encodingPreset = "Adaptive Streaming";
 
         public static void main(String[] args)
         {
@@ -260,16 +268,11 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>その他のリソース
-Media Services に関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][Azure Libraries for Java のドキュメント]を参照してください。
+Media Services に関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][Azure Libraries for Java documentation]を参照してください。
 
 <!-- URLs. -->
 
-[Azure Java デベロッパー センター]: http://azure.microsoft.com/develop/java/
-[Azure Libraries for Java のドキュメント]: http://dl.windowsazure.com/javadoc/
-[Media Services クライアント開発]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 

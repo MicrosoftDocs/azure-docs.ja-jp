@@ -25,7 +25,7 @@
 
     ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
-1. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](のアドレスを指定します。/media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-includeのアドレスを指定します。png)のアドレスを指定します。
+1. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png)のアドレスを指定します。
    デバイスの **[クイック スタート]** ページが再び表示されます。
    
    > [!NOTE]

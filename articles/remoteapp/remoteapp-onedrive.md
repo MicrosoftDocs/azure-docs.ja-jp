@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2fdca965a0fe69c0165ce27ccd77659ce9341f66
+ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
+ms.openlocfilehash: 98f592ca96d8c332d7cb99679e1ef3834f84a095
 
 
 ---
@@ -33,6 +33,6 @@ Office 365 で使用するためのコレクションに OneDrive for Business �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

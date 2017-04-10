@@ -1,22 +1,22 @@
 ---
-title: "Relay ハイブリッド接続の概要 | Microsoft Docs"
+title: "Node での Azure Relay ハイブリッド接続の概要 | Microsoft Docs"
 description: "ハイブリッド接続用の Node コンソール アプリケーションを作成する方法"
-services: service-bus
+services: service-bus-relay
 documentationcenter: node
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub
+ms.date: 02/13/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f59faed2edb75e32ea62fa7f1d7013da5f387d8
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: bee101d19cb5f5fc790b53295069b4d4db247366
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 0f59faed2edb75e32ea62fa7f1d7013da5f387d8
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 ## <a name="what-will-be-accomplished"></a>作業内容
-ハイブリッド接続ではクライアントとサーバーの 2 つのコンポーネントが必要になります。このため、このチュートリアルでは 2 つのコンソール アプリケーションを作成します。 手順は次のようになります。
+ハイブリッド接続ではクライアントとサーバーの&2; つのコンポーネントが必要になります。このため、このチュートリアルでは&2; つのコンソール アプリケーションを作成します。 手順は次のようになります。
 
 1. Azure Portal を使用した Relay 名前空間の作成
 2. Azure Portal を使用したハイブリッド接続の作成
@@ -75,6 +75,6 @@ Relay にメッセージを送信するために、Node.js コンソール ア�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

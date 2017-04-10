@@ -7,6 +7,6 @@ Azure のファイル共有は、 [Azure ポータル](https://portal.azure.com)
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

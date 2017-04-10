@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -29,7 +30,8 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 この記事では、WebHDFS REST API と Data Lake Store REST API を使用して、アカウントの管理と、Azure Data Lake Store に対するファイル システム操作を実行する方法について説明します。 Azure Data Lake Store では、アカウント管理操作用の独自の REST API を公開しています。 ただし、Data Lake Store は、HDFS および Hadoop エコシステムと互換性があるため、WebHDFS REST API を使用したファイル システム操作もサポートしています。
@@ -45,9 +47,9 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 * [cURL](http://curl.haxx.se/)。 この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
-Azure Active Directory を使用した認証方法には 2 つあります。
+Azure Active Directory を使用した認証方法には&2; つあります。
 
-### <a name="enduser-authentication-interactive"></a>エンド ユーザー認証 (対話型)
+### <a name="end-user-authentication-interactive"></a>エンド ユーザー認証 (対話型)
 このシナリオでは、アプリケーションはユーザーにログインを求め、すべての操作はユーザーのコンテキストで実行されます。 対話型認証のためには次の手順を実行します。
 
 1. アプリケーションでユーザーを次の URL にリダイレクトします。
@@ -88,7 +90,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
-### <a name="servicetoservice-authentication-noninteractive"></a>サービス間認証 (非対話型)
+### <a name="service-to-service-authentication-non-interactive"></a>サービス間認証 (非対話型)
 このシナリオでは、操作を実行するための独自の資格情報をアプリケーションが提供します。 このアプローチの場合は、次に示すように POST 要求を発行する必要があります。 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -164,7 +166,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 ## <a name="upload-data-into-a-data-lake-store-account"></a>Data Lake Store アカウントにデータをアップロードする
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-WebHDFS REST API を使用したデータのアップロードは、次に説明するように 2 段階のプロセスとなります。
+WebHDFS REST API を使用したデータのアップロードは、次に説明するように&2; 段階のプロセスとなります。
 
 1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。 次のコマンドで、**\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
    
@@ -200,7 +202,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 * まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`に対して GET 要求を送信します。 これにより、次の GET 要求を送信する場所が返されます。
 * 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`に対して GET 要求を送信します。 これにより、ファイルの内容が表示されます。
 
-ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。 最後に、次のように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+ただし、1 番目の手順と&2; 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションは、基本的に&2; つの要求を&1; つの要求に結合し、新しい場所で cURL により要求をやり直します。 最後に、次のように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
 
@@ -259,10 +261,5 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

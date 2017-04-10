@@ -1,43 +1,47 @@
 ---
-title: Deploying Large Deployments
-description: Learn how to deploy large deployments using the Azure Toolkit for Eclipse.
-services: ''
+title: "大規模なデプロイ"
+description: "Azure Toolkit for Eclipse を使用して大規模なデプロイを行う方法について説明します。"
+services: 
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5e18bace-5df0-4af8-ad86-6151ea8bd823
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: d6b2b28a7e01d5a70cd08f4cd2d8cccff7d918cf
+
 
 ---
-# <a name="deploying-large-deployments"></a>Deploying Large Deployments
-If your deployment is too large to be contained in the default approot folder, you can use a local storage resource as the deployment root folder for your JDK and application server.
+# <a name="deploying-large-deployments"></a>大規模なデプロイ
+デプロイの規模が大きすぎて既定の approot フォルダーに格納できない場合は、JDK とアプリケーション サーバーのデプロイ ルート フォルダーとしてローカル ストレージ リソースを使用できます。
 
-## <a name="to-use-a-local-storage-resource-as-the-deployment-root-folder-for-large-deployments"></a>To use a local storage resource as the deployment root folder for large deployments
-1. Create a new local storage resource. The name of the resource does not matter. Storage resources are defined at the role level. The quickest way to access the local storage configuration dialog, from which you could create a new local storage resource, is by using the following steps: Right-click the role in the **Project Explorer** view (expand your Azure project node if you don't see the role), click **Azure**, and then click **Local Storage**. Within the **Local Storage** dialog, click **Add** to create a new local storage resource.
-2. Set the desired size to at least 2048 MB (anything less may cause the same file size problems as you would encounter in the approot).
-3. Ensure that **Clean the contents when the role instance is recycled** is checked; this will help prevent the deployment's startup logic from running into conflicts with pre-existing files in the resource when the role instance is recycled.
-4. Ensure that the **Environment variable storing the resource's directory path after deployment** value is set to the string **DEPLOYROOT**. Your local storage resource dialog will look similar to the following.
+## <a name="to-use-a-local-storage-resource-as-the-deployment-root-folder-for-large-deployments"></a>大規模なデプロイのデプロイ ルート フォルダーとしてローカル ストレージ リソースを使用するには
+1. 新しいローカル ストレージ リソースを作成します。 リソースの名前は問いません。 ストレージ リソースはロール レベルで定義されます。 新しいローカル ストレージ リソースを作成するためのローカル ストレージ構成ダイアログにアクセスする最も簡単な方法は、次の手順に従うことです。**[Project Explorer (プロジェクト エクスプローラー)]** ビューでロールを右クリックします (ロールが表示されていない場合は、Azure プロジェクト ノードを展開します)。**[Azure]** をクリックし、**[Local Storage (ローカル ストレージ)]** をクリックします。 **[Local Storage (ローカル ストレージ)]** ダイアログで、**[Add (追加)]** をクリックして新しいローカル ストレージ リソースを作成します。
+2. 2048 MB 以上の目的のサイズを設定します (このサイズより小さくすると、approot のように同一ファイル サイズ問題が発生する可能性があります)。
+3. **[Clean the contents when the role instance is recycled (ロール インスタンスをリサイクルするときにコンテンツをクリーニングする)]** がオンになっていることを確認します。これで、ロール インスタンスがリサイクルされるときに、デプロイのスタートアップ ロジックがリソース内の既存のファイルと競合することを防止できます。
+4. **[Environment variable storing the resource's directory path after deployment (デプロイ後にリソースのディレクトリ パスを格納する環境変数)]** の値が文字列 **DEPLOYROOT** に設定されていることを確認します。 ローカル ストレージ リソース ダイアログは次のようになります。
     ![][ic667943]
 
-Alternatively, if you use **DEPLOYROOT** as the *name* of your local resource and you do not change the automatically-generated environment variable name (which will be set to **DEPLOYROOT_PATH** in that case), that would work for your application as well.
+ローカル リソースの*名前*として **DEPLOYROOT** を使用し、自動的に生成される環境変数 (この場合は **DEPLOYROOT_PATH** に設定されます) を変更しないという操作でも、アプリケーションは問題なく動作します。
 
-Additional information about creating a local storage resource can be found at [Local storage properties][Local storage properties].
+ローカル ストレージ リソースの作成に関する追加情報については、「[ローカル ストレージのプロパティ][Local storage properties]」を参照してください。
 
-## <a name="see-also"></a>See Also
+## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Creating a Hello World Application for Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Installing the Azure Toolkit for Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-For more information about using Azure with Java, see the [Azure Java Developer Center][Azure Java Developer Center].
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
@@ -55,6 +59,6 @@ For more information about using Azure with Java, see the [Azure Java Developer 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

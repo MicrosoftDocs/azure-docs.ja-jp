@@ -1,20 +1,24 @@
 ---
-title: データ ソースの登録方法 | Microsoft Docs
-description: この記事では、Azure Data Catalog にデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。
+title: "データ ソースの登録方法 | Microsoft Docs"
+description: "この記事では、Azure Data Catalog にデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
+
 
 ---
 # <a name="how-to-register-data-sources"></a>データ ソースの登録方法
@@ -50,8 +54,8 @@ ms.author: maroche
 
 > [!NOTE]
 > 多くの列を含む幅の広いテーブルでは、プレビューに組み込まれるレコードが 20 より少ない場合があります。
-> 
-> 
+>
+>
 
 ## <a name="including-data-profiles"></a>データ プロファイルの組み込み
 プレビューを組み込むことで、 **Azure Data Catalog**内のデータ ソースを検索するユーザーに貴重なコンテキストを提供できるのと同じように、データ プロファイルを取り込むことで、検出されたデータ ソースをより簡単に理解できるようにすることができます。
@@ -67,8 +71,8 @@ ms.author: maroche
 
 > [!NOTE]
 > テキスト列と日付列には、該当するデータ プロファイル内の平均または標準偏差の統計情報は取り込まれません。
-> 
-> 
+>
+>
 
 ## <a name="updating-registrations"></a>登録の更新
 データ ソースを登録すると、登録の間に抽出されるメタデータおよびオプションのプレビューを使用して、 **Azure Data Catalog** でデータ ソースを検出できるようになります。 Catalog のデータ ソースを更新する必要がある場合は (たとえば、オブジェクトのスキーマが変更された場合、もともと除外されていたテーブルを含める必要がある場合、ユーザーがプレビューに含まれるデータを更新したい場合など)、データ ソース登録ツールを再実行できます。
@@ -81,6 +85,8 @@ ms.author: maroche
 ## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

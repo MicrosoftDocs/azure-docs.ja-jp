@@ -1,34 +1,39 @@
 ---
-title: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する - 実験例 | Microsoft Docs
-description: 'データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。Cortana Analytics のギャラリーの例で、クラスタリング アルゴリズムの例などをご覧ください。'
-keywords: データ サイエンスの例,アルゴリズムの例,実験の例,機械学習の例,クラスタリング アルゴリズム
+title: "他のユーザーのデータ サイエンスの例をコピーする - Machine Learning - Azure | Microsoft Docs"
+description: "データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Cortana Analytics Gallery から Machine Learning の例を取得します。"
+keywords: "データ サイエンスの例,Machine Learning の例,クラスタリング アルゴリズム,クラスタリング アルゴリズムの例"
 services: machine-learning
 documentationcenter: na
-author: brohrer-ms
+author: cjgronlund
 manager: jhubbard
 editor: cjgronlund
-
+ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/15/2016
-ms.author: cgronlun;brohrer;garye
+ms.date: 02/09/2017
+ms.author: cgronlun;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
+ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
+ms.lasthandoff: 02/10/2017
+
 
 ---
-# 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
-## ビデオ 5: 初心者向けデータ サイエンス シリーズ
-データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。自分の実験に使用するクラスタリング アルゴリズムの例を検索します。
+# <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
+データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Cortana Analytics Gallery で検索します。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
+>
+>
 
-## このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -36,26 +41,26 @@ ms.author: cgronlun;brohrer;garye
 * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
-## トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
-"初心者向けデータ サイエンス" シリーズの 5 番目のビデオへようこそ。
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+"初心者向けデータ サイエンス" シリーズの&5; 番目のビデオへようこそ。
 
-このビデオでは、作業の出発点として利用できるサンプルの場所について紹介しています。このビデオを最大限に活用するためにまず、このシリーズのビデオを最初から視聴するようお勧めします。
+このビデオでは、作業の出発点として利用できるサンプルの場所について紹介しています。 このビデオを最大限に活用するためにまず、このシリーズのビデオを最初から視聴するようお勧めします。
 
-データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。
+データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。
 
-## Cortana Intelligence ギャラリーでサンプルを探す
-Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) という、無料で試用できるクラウドベースのサービスを提供しています。さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
+## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでサンプルを探す
+Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) という、無料で試用できるクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、**[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)**というものがあります。このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。
+このサービスの一部として、**[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)**というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の&1; つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。
 
-ギャラリーには、[aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery) からアクセスできます。だれでもアクセスできるので、自由に閲覧してください。
+ギャラリーには、[aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery) からアクセスできます。 だれでもアクセスできるので、自由に閲覧してください。
 
-![Cortana Intelligence Gallery](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cortana-intelligence-gallery.png)
+![Cortana Intelligence ギャラリー](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cortana-intelligence-gallery.png)
 
-一番上の **[Experiments (実験)]** をクリックすると、評価の高い最新の実験が多数ギャラリーに表示されます。その他の実験を検索するには、画面上部の **[Browse All (すべて参照)]** をクリックしてください。そこで検索語を入力したり、検索フィルターを選択したりすることができます。
+一番上の **[試験的機能]** をクリックすると、評価の高い最新の実験が多数ギャラリーに表示されます。 その他の実験を検索するには、画面上部の **[Browse All (すべて参照)]** をクリックしてください。そこで検索語句を入力したり、検索フィルターを選択したりすることができます。
 
-## クラスタリング サンプルの検索と使用
-たとえばクラスター解析の実例を見てみたいという場合は、「**clustering**」と入力して実験を検索します。
+## <a name="find-and-use-a-clustering-algorithm-example"></a>クラスタリング アルゴリズム サンプルの検索と使用
+たとえばクラスター解析の実例を見てみたいという場合は、「 **clustering** 」と入力して実験を検索します。
 
 ![Search for clustering experiments](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
@@ -67,27 +72,26 @@ Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services
 
 ![Clustering experiment description page](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-**[Open in Studio (Studio で開く)]** と書かれたリンクに注目してください。
+**[Open in Studio (Studio で開く)]**と書かれたリンクに注目してください。
 
 ![Open in Studio button](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-このリンクをクリックすると、**Azure Machine Learning Studio** が表示されます。実験のコピーが作成され、自分のワークスペースに配置されます。ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
+このリンクをクリックすると、 **Azure Machine Learning Studio**が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
 
-![Gallery experiment open in Machine Learning Studio](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![Machine Learning Studio でギャラリー実験を開く - クラスタリング アルゴリズム サンプル](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
-これで自分の作業の出発点が得られました。後は独自のデータに交換し、必要に応じてモデルを調整するだけです。実験の内容について詳しく把握している人の作業を足掛かりとすることができます。
+これで自分の作業の出発点が得られました。 後は独自のデータに交換し、必要に応じてモデルを調整するだけです。 実験の内容について詳しく把握している人の作業を足掛かりとすることができます。
 
-## 機械学習の手法を示した実験を探す
-[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)には、データ サイエンスに初めて取り組む方々のために、その具体的な方法を例示することに特化して投稿された実験も存在します。たとえばギャラリーには、欠損値の扱い方を紹介した実験として、「[Methods for handling missing values (欠損値の扱い方)](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)」が存在します。欠損値を置き換える 15 とおりの方法が紹介され、それぞれどのような利点があって、どのようなときに使用すべきかが説明されています。
+## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>機械学習の手法を示した実験を探す
+[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery) には、データ サイエンスに初めて取り組む方々のために、その具体的な方法を例示することに特化して投稿された実験も存在します。 たとえばギャラリーには、欠損値の扱い方を紹介した実験として、「[Methods for handling missing values (欠損値の扱い方)](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)」が存在します。 欠損値を置き換える 15 とおりの方法が紹介され、それぞれどのような利点があって、どのようなときに使用すべきかが説明されています。
 
-![Gallery experiment open in Machine Learning Studio](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![ギャラリー実験が Machine Learning Studio で開く - 欠損値のための方法](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-独自のソリューションの出発点として利用できる実用的な実験を探す場、それが [Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery)です。
+[Cortana Intelligence ギャラリー](http://aka.ms/CortanaIntelligenceGallery) です。
 
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0914_2016-->

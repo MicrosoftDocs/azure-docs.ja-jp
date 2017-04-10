@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/13/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 3a5131323f438109d94137cb4f577054ec13227f
 
 
 ---
@@ -30,16 +30,16 @@ ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
 > 
 > 
 
-この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用して Azure Search の[インデックス](https://msdn.microsoft.com/library/azure/dn798941.aspx)を作成するプロセスについて説明します。
+この記事では、[Azure Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Search の[インデックス](https://docs.microsoft.com/rest/api/searchservice/Create-Index)を作成するプロセスについて説明します。
 
 このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)です。
 
 この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。
 
-## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Azure Search サービスの管理者 API キーの識別
+## <a name="identify-your-azure-search-services-admin-api-key"></a>Azure Search サービスの管理者 API キーの識別
 Azure Search サービスのプロビジョニングが完了すると、あと少しで、.NET SDK を使用して、サービス エンドポイントに対して要求を発行できます。 まず、プロビジョニングした検索サービス用に生成された管理者 API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. サービスの API キーを探すには、 [Azure ポータル](https://portal.azure.com/)
+1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にサインインする必要があります。
 2. Azure Search サービスのブレードに移動します。
 3. "キー" アイコンをクリックします。
 
@@ -52,7 +52,7 @@ Azure Search サービスのプロビジョニングが完了すると、あと�
 
 <a name="CreateSearchServiceClient"></a>
 
-## <a name="ii-create-an-instance-of-the-searchserviceclient-class"></a>II. SearchServiceClient クラスのインスタンスの作成
+## <a name="create-an-instance-of-the-searchserviceclient-class"></a>SearchServiceClient クラスのインスタンスの作成
 Azure Search .NET SDK を使い始めるには、`SearchServiceClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、パラメーターとして検索サービスの名前と `SearchCredentials` オブジェクトを使用します。 `SearchCredentials` は API キーをラップします。
 
 次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
@@ -73,50 +73,90 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 <a name="DefineIndex"></a>
 
-## <a name="iii-define-your-azure-search-index-using-the-index-class"></a>III. `Index` クラスを使用した Azure Search インデックスの定義
+## <a name="define-your-azure-search-index"></a>Azure Search インデックスの定義
 `Indexes.Create` メソッドに対する 1 回の呼び出しでインデックスが作成されます。 このメソッドでは、Azure Search インデックスを定義する `Index` オブジェクトがパラメーターとして使用されます。 次のように、 `Index` オブジェクトを作成して初期化する必要があります。
 
 1. `Index` オブジェクトの `Name` プロパティをインデックスの名前に設定します。
-2. `Index` オブジェクトの `Fields` プロパティを `Field` オブジェクトの配列に設定します。 それぞれの `Field` オブジェクトがインデックスのフィールドの動作を定義します。 コンストラクターに対して、データ型 (または文字列フィールドのアナライザー) と共に、フィールドの名前を指定することができます。 `IsSearchable` や `IsFilterable` など、他のプロパティを設定することもできます。
+2. `Index` オブジェクトの `Fields` プロパティを `Field` オブジェクトの配列に設定します。 `Field` オブジェクトを作成する最も簡単な方法は、`FieldBuilder.BuildForType` メソッドを呼び出し、型パラメーターのモデル クラスを渡すことです。 モデル クラスには、インデックスのフィールドにマップされるプロパティがあります。 これにより、ドキュメントを検索インデックスからモデル クラスのインスタンスにバインドすることができます。
 
-各 `Field` には[適切なプロパティ](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。 これらのプロパティでは、どのフィールドにどの検索機能 (フィルター、ファセット、全文検索の並べ替えなど) が適用されるかを制御します。 明示的に設定しないプロパティについては、明確に有効にしない限り、`Field` クラスの既定では、対応する検索機能が無効になります。
+> [!NOTE]
+> モデル クラスを使用する予定がない場合でも、`Field` オブジェクトを直接作成してインデックスを定義できます。 コンストラクターに対して、データ型 (または文字列フィールドのアナライザー) と共に、フィールドの名前を指定することができます。 `IsSearchable` や `IsFilterable` など、他のプロパティを設定することもできます。
+>
+>
 
-この例では、インデックスに "hotels" という名前を付け、次のようにフィールドを定義しました。
+各フィールドには[適切なプロパティ](https://docs.microsoft.com/rest/api/searchservice/Create-Index)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。 これらのプロパティでは、どのフィールドにどの検索機能 (フィルター、ファセット、全文検索の並べ替えなど) が適用されるかを制御します。 明示的に設定しないプロパティについては、明確に有効にしない限り、`Field` クラスの既定では、対応する検索機能が無効になります。
+
+この例では、インデックスに "hotels" という名前を付け、モデル クラスを使用してフィールドを定義しました。 モデル クラスの各プロパティには、対応するインデックス フィールドの検索に関連した動作を決定する属性があります。 モデル クラスは次のように定義されています。
+
+```csharp
+[SerializePropertyNamesAsCamelCase]
+public partial class Hotel
+{
+    [Key]
+    [IsFilterable]
+    public string HotelId { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public double? BaseRate { get; set; }
+
+    [IsSearchable]
+    public string Description { get; set; }
+
+    [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.FrLucene)]
+    [JsonProperty("description_fr")]
+    public string DescriptionFr { get; set; }
+
+    [IsSearchable, IsFilterable, IsSortable]
+    public string HotelName { get; set; }
+
+    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+    public string Category { get; set; }
+
+    [IsSearchable, IsFilterable, IsFacetable]
+    public string[] Tags { get; set; }
+
+    [IsFilterable, IsFacetable]
+    public bool? ParkingIncluded { get; set; }
+
+    [IsFilterable, IsFacetable]
+    public bool? SmokingAllowed { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public DateTimeOffset? LastRenovationDate { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public int? Rating { get; set; }
+
+    [IsFilterable, IsSortable]
+    public GeographyPoint Location { get; set; }
+
+    // ToString() method omitted for brevity...
+}
+```
+
+各プロパティの属性は、アプリケーションでどのように使用されるかに応じて、慎重に選択しています。 たとえば、ホテルについて検索するユーザーは `description` フィールドでのキーワードの一致に関心がある可能性が高いため、`IsSearchable` 属性を `Description` プロパティに追加してそのフィールドの全文検索を有効にしています。
+
+`Key` 属性を追加して、インデックスの `string` 型のフィールドを 1 つだけ *key* フィールドとして指定する必要があることにご注意ください (上記の例の `HotelId` を参照)。
+
+上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドに言語アナライザーを使用しています。 言語アナライザーの詳細については、[言語サポートのトピック](https://docs.microsoft.com/rest/api/searchservice/Language-support)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
+
+> [!NOTE]
+> 既定では、モデル クラス内の各プロパティの名前が、インデックス内の対応するフィールドの名前として使用されます。 すべてのプロパティ名を Camel 形式のフィールド名にマップする場合は、クラスを `SerializePropertyNamesAsCamelCase` 属性でマークします。 別の名前にマップする場合は、上記の `DescriptionFr` プロパティのように `JsonProperty` 属性を使用できます。 `JsonProperty` 属性は `SerializePropertyNamesAsCamelCase` 属性よりも優先されます。
+> 
+> 
+
+モデル クラスの定義が完了したので、インデックス定義を非常に簡単に作成できます。
 
 ```csharp
 var definition = new Index()
 {
     Name = "hotels",
-    Fields = new[]
-    {
-        new Field("hotelId", DataType.String)                       { IsKey = true, IsFilterable = true },
-        new Field("baseRate", DataType.Double)                      { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("description", DataType.String)                   { IsSearchable = true },
-        new Field("description_fr", AnalyzerName.FrLucene),
-        new Field("hotelName", DataType.String)                     { IsSearchable = true, IsFilterable = true, IsSortable = true },
-        new Field("category", DataType.String)                      { IsSearchable = true, IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("tags", DataType.Collection(DataType.String))     { IsSearchable = true, IsFilterable = true, IsFacetable = true },
-        new Field("parkingIncluded", DataType.Boolean)              { IsFilterable = true, IsFacetable = true },
-        new Field("smokingAllowed", DataType.Boolean)               { IsFilterable = true, IsFacetable = true },
-        new Field("lastRenovationDate", DataType.DateTimeOffset)    { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("rating", DataType.Int32)                         { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("location", DataType.GeographyPoint)              { IsFilterable = true, IsSortable = true }
-    }
+    Fields = FieldBuilder.BuildForType<Hotel>()
 };
 ```
 
-各 `Field` のプロパティの値は、アプリケーションでどのように使用されるかに応じて、慎重に選択されています。 たとえば、ホテルについて検索するユーザーは `description` フィールドでのキーワードの一致に関心がある可能性が高いです。そのため、`IsSearchable` を `true` に設定してそのフィールドの全文検索を有効にします。
-
-`IsKey` を `true` に設定して、インデックスの `DataType.String` 型のフィールドを 1 つだけ、*key* フィールドとして指定する必要があることにご注意ください (上記の例の `hotelId` を参照)。
-
-上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、 `description_fr` フィールドにカスタム言語アナライザーを使用しています。 言語アナライザーの詳細については、[MSDN の言語サポートのトピック](https://msdn.microsoft.com/library/azure/dn879793.aspx)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
-
-> [!NOTE]
-> コンストラクターで `AnalyzerName.FrLucene` を渡すことによって、`Field` は自動的に `DataType.String` 型になり、`IsSearchable` が `true` に設定されることにご注意ください。
-> 
-> 
-
-## <a name="iv-create-the-index"></a>IV. インデックスの作成
+## <a name="create-the-index"></a>インデックスの作成
 `Index` オブジェクトが初期化されたので、`SearchServiceClient` オブジェクトで `Indexes.Create` を呼び出すだけでインデックスを作成できます。
 
 ```csharp
@@ -136,12 +176,12 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## <a name="next"></a>次へ
+## <a name="next-steps"></a>次のステップ
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

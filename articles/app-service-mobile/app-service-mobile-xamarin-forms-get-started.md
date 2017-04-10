@@ -4,7 +4,7 @@ description: "次のチュートリアルに従って、Xamarin.Forms 開発用�
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -15,15 +15,16 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a48181c6c22e6042dd8ef39c12415979e384f8b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 6b8c5c2ac2e721c4d6f73c7c17f34eadc041e0c9
+ms.lasthandoff: 01/20/2017
 
 
 ---
 # <a name="create-a-xamarinforms-app"></a>Xamarin.Forms アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure Mobile App バックエンドを使用して Xamarin.Forms モバイル アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。 新しい Mobile App バックエンドと、アプリのデータを Azure に格納する簡単な *Todo list* Xamarin.Forms アプリの両方を作成します。
 
 Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアルを行う前に、このチュートリアルを完了してください。
@@ -31,12 +32,12 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大&10; 件の無料 Mobile Apps を入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx) 」をご覧ください。 
 * Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。 [Visual Studio と Xamarin を対象にしたセットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)に関するページと「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://azure.microsoft.com/try/app-service/mobile/)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -85,7 +86,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
    > 
    > 
 
-アプリで、意味のあるテキスト (「*Xamarin の学習*」など) を入力し、**+** ボタンをクリックします。
+アプリで、意味のあるテキスト (「"*Xamarin の学習*"」など) を入力し、**+** ボタンをクリックします。
 
 ![][10]
 
@@ -114,7 +115,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
    > 
    > 
 
-アプリで、意味のあるテキスト (「*Xamarin の学習*」など) を入力し、**+** ボタンをクリックします。
+アプリで、意味のあるテキスト (「"*Xamarin の学習*"」など) を入力し、**+** ボタンをクリックします。
 
 ![][11]
 
@@ -152,17 +153,17 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリへの認証の追加](app-service-mobile-xamarin-forms-get-started-users.md)  
-   ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+  ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
 * [アプリへのプッシュ通知の追加](app-service-mobile-xamarin-forms-get-started-push.md)  
-   アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
+  アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-   モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
+  モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 * [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)  
-   Xamarin アプリでの管理されたクライアント SDK の操作方法について説明します。 
+  Xamarin アプリでの管理されたクライアント SDK の操作方法について説明します。 
 
 <!-- Anchors. -->
-[モバイル アプリ バックエンドの使用]:#getting-started
-[新しいモバイル アプリ バックエンドの作成]:#create-new-service
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
 [Next Steps]:#next-steps
 
 
@@ -177,12 +178,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 <!-- URLs. -->
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-[モバイル アプリ SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+[Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Azure ポータル]: https://portal.azure.com/
 
 

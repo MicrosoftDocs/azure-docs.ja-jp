@@ -1,23 +1,29 @@
 ---
-title: Log Analytics の VMware の監視ソリューション | Microsoft Docs
-description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
+title: "Log Analytics の VMware の監視ソリューション | Microsoft Docs"
+description: "VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2016
+ms.date: 01/02/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
 
 ---
-# <a name="vmware-monitoring-(preview)-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
+
+# <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 Log Analytics の VMware の監視ソリューションは、大規模な VMware ログに対する一元化されたログ記録と監視のアプローチを作成するのに役立つソリューションです。 この記事では、このソリューションを使用して 1 つの場所で ESXi ホストのトラブルシューティング、キャプチャ、管理を行う方法を説明します。 このソリューションでは、すべての ESXi ホストの詳細なデータを 1 つの場所に表示できます。 ESXi ホストのログを通じて、VM および ESXi ホストの上位のイベント数、状態、傾向を知ることができます。 一元化された ESXi ホストのログを表示および検索して、トラブルシューティングを実行できます。 また、ログ検索クエリに基づくアラートを作成することもできます。
+
+このソリューションでは、ESXi ホストのネイティブの syslog 機能を使用して、OMS エージェントがインストールされたターゲット VM にデータをプッシュします。 ただし、ターゲット VM 内の syslog にはファイルは書き込まれません。 OMS エージェントがポート 1514 を開き、このポートをリッスンします。 OMS エージェントは、データを受信すると、OMS にデータをプッシュします。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
@@ -37,29 +43,30 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` や `tcp://123.456.789.101:1514` のようにします。
 3. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[セキュリティ プロファイル]** > **[ファイアウォール]** をクリックし、**[プロパティ]** を開きます。  
-   
+
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
-   
+
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 4. vSphere コンソールを調べて、syslog が正しく設定されていることを確認します。 ESXI ホストで、ポート **1514** が構成されていることを確認します。
-5. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 次に例を示します。
-   
-    ```
-    [root@ESXiHost:~] nc -z 123.456.789.101 1514
-    Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
-    ```
-6. OMS Agent for Linux をダウンロードし、Linux サーバーにインストールします。 詳細については、[OMS Agent for Linux のドキュメント](https://github.com/Microsoft/OMS-Agent-for-Linux)をご覧ください。
-7. OMS Agent for Linux をインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 次に例を示します。
-   
+5. OMS Agent for Linux をダウンロードし、Linux サーバーにインストールします。 詳細については、[OMS Agent for Linux のドキュメント](https://github.com/Microsoft/OMS-Agent-for-Linux)をご覧ください。
+6. OMS Agent for Linux をインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 次に例を示します。
+
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-8. `sudo /opt/microsoft/omsagent/bin/service_control restart` を実行して OMS Agent for Linux を再起動します。
+7. `sudo /opt/microsoft/omsagent/bin/service_control restart` を実行して OMS Agent for Linux を再起動します。
+8. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 次に例を示します。
+
+    ```
+    [root@ESXiHost:~] nc -z 123.456.789.101 1514
+    Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
+    ```
+
 9. OMS ポータルで、`Type=VMware_CL` のログ検索を実行します。 OMS が syslog データを収集する際には、syslog 形式が維持されます。 ポータルでは、*Hostname* や *ProcessName*など、いくつかの特定のフィールドがキャプチャされます。  
-   
+
     ![type](./media/log-analytics-vmware/type.png)  
-   
+
     上の図のようなログ検索結果が表示される場合は、OMS の VMware の監視ソリューション ダッシュボードを使用するように設定されています。  
 
 ## <a name="vmware-data-collection-details"></a>VMware のデータ収集の詳細
@@ -69,7 +76,7 @@ VMware の監視ソリューションは、有効にしている OMS Agents for 
 
 | プラットフォーム | OMS Agent for Linux | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Linux |![[はい]](./media/log-analytics-vmware/oms-bullet-green.png) |![なし](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-vmware/oms-bullet-red.png) |3 分おき |
+| Linux |![[はい]](./media/log-analytics-vmware/oms-bullet-green.png) |![なし](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-vmware/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-vmware/oms-bullet-red.png) |3 分おき |
 
 次の表は、VMware の監視ソリューションによって収集されるデータ フィールドの例を示しています。
 
@@ -149,11 +156,50 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 #### <a name="create-alerts-from-queries"></a>クエリからのアラートの作成
 クエリを作成したら、そのクエリを使用して、特定のイベントが発生したときにアラートを受け取ることもできます。 アラートの作成方法については、「[Log Analytics のアラート](log-analytics-alerts.md)」をご覧ください。 アラート クエリおよびその他のクエリの例については、ブログ記事「[Monitor VMware using OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics)」(OMS Log Analytics を使用した VMware の監視) をご覧ください。
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>ESXi ホストの設定で必要なことは何ですか。 現在の環境にどのような影響がありますか。
+ソリューションでは、ESXi ホストのネイティブの syslog 転送メカニズムを使用します。 ログを記録するために、ESXi ホストに Microsoft ソフトウェアを追加する必要はありません。 既存の環境への影響はわずかですが、 ESXi の機能である syslog 転送を設定する必要があります。
+
+### <a name="do-i-need-to-restart-my-esxi-host"></a>ESXi ホストを再起動する必要がありますか。
+いいえ。 このプロセスでは再起動は不要です。 vSphere で syslog が適切に更新されない場合があります。 このような場合は、ESXi ホストにログオンし、syslog を再読み込みします。 この場合もホストを再起動する必要はないので、このプロセスが環境に悪影響を及ぼすことはありません。
+
+### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-oms"></a>OMS に送信されるログ データの量を増減することはできますか。
+はい、できます。 vSphere の ESXi ホストのログ レベル設定を使用します。 ログの収集は *info* レベルに基づいています。 そのため、VM の作成や削除を監査する場合は、Hostd で *info* レベルを維持する必要があります。 詳細については、[VMware Knowledge Base](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658) をご覧ください。
+
+### <a name="why-is-hostd-not-providing-data-to-oms-my-log-setting-is-set-to-info"></a>Hostd から OMS にデータが提供されていないのはなぜですか。 ログ設定は info に設定されています。
+ESXi ホストに syslog タイムスタンプのバグがありました。 詳細については、[VMware Knowledge Base](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202) をご覧ください。 この解決策を適用すると、Hostd が正常に機能するようになります。
+
+### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>複数の ESXi ホストから、omsagent を実行している 1 つの VM に syslog データを転送することはできますか。
+はい。 複数の ESXi ホストから、omsagent を実行している 1 つの VM に転送できます。
+
+### <a name="why-dont-i-see-data-flowing-into-oms"></a>OMS へのデータ フローが表示されないのはなぜですか。
+複数の理由が考えられます。
+
+* omsagent を実行している VM に、ESXi ホストがデータを正しくプッシュしていません。 これをテストするには、次の手順を実行します。
+
+  1. 確認するには、ssh を使用して ESXi ホストにログオンし、`nc -z ipaddressofVM 1514` コマンドを実行します。
+
+      このコマンドが失敗した場合は、[詳細構成] の vSphere 設定に誤りがあると考えられます。 syslog 転送用に ESXi ホストを設定する方法については、「[syslog の収集の構成](#configure-syslog-collection)」をご覧ください。
+  2. syslog ポートの接続は成功しているにも関わらず、データが引き続き表示されない場合は、ssh を使用して ` esxcli system syslog reload` コマンドを実行し、ESXi ホストで syslog を再読み込みします。
+* OMS エージェントがインストールされた VM が正しく設定されていません。 これをテストするには、次の手順を実行します。
+
+  1. OMS エージェントはポート 1514 をリッスンし、データを OMS にプッシュします。 このポートが開いていることを確認するには、`netstat -a | grep 1514` コマンドを実行します。
+  2. ポート `1514/tcp` が開いていることがわかります。 この情報が表示されない場合は、omsagent が正しくインストールされていることを確認します。 ポート情報が表示されない場合、VM で syslog ポートが開いていません。
+
+     1. `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
+     2. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` ファイルを開きます。
+
+         `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf` のように、適切なユーザーおよびグループ設定が有効であることを確認します。
+
+         このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
+
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics の[ログ検索](log-analytics-log-searches.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](log-analytics-alerts.md)します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,8 +12,12 @@
 * [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](../articles/app-service-web/web-sites-integrate-with-vnet.md)
 * [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](../articles/app-service-web/web-sites-hybrid-connection-get-started.md)
 * [App Service 環境 (ASE) を使用して、アプリのセキュリティの分離を実現する](../articles/app-service-web/app-service-app-service-environment-intro.md)
-  * [ASE の前面に Web アプリケーション ファイアウォール (WAF) を構成する](../articles/app-service-web/app-service-app-service-environment-web-application-firewall.md)
+  * [ASE の前面に Web アプリケーション ファイアウォール (WAF) を構成する ](../articles/app-service-web/app-service-app-service-environment-web-application-firewall.md)
   * [ASE の着信ネットワーク トラフィック用のアクセス制御を構成する](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)
   * [ASE からバックエンド リソースに安全に接続する](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

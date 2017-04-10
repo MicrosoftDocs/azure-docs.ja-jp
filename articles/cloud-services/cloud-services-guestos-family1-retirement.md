@@ -1,38 +1,43 @@
 ---
-title: ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Docs
-description: Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します
+title: "ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Docs"
+description: "Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します"
 services: cloud-services
 documentationcenter: na
-author: yuemlu
+author: raiye
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 06/10/2016
-ms.author: yuemlu
+ms.date: 3/21/2017
+ms.author: raiye
+translationtype: Human Translation
+ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
+ms.openlocfilehash: 578059c397319147c8716e2152901dfdc15a28cd
+ms.lasthandoff: 12/08/2016
+
 
 ---
-# ゲスト OS ファミリ 1 の提供終了に関する通知
+# <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
 
-**2014 年 9 月 2 日**: Windows Server 2008 オペレーティング システムに基づく Azure ゲスト オペレーティング システム (ゲスト OS) ファミリ 1.x が正式に提供終了となりました。ファミリ 1 を使用して新しいサービスをデプロイしようとする試みまたは既存のサービスをアップグレードしようとする試みはすべて失敗し、ゲスト OS ファミリ 1 の提供が終了したことを示すエラー メッセージが表示されます。
+**2014 年 9 月 2 日** : Windows Server 2008 オペレーティング システムに基づく Azure ゲスト オペレーティング システム (ゲスト OS) ファミリ 1.x が正式に提供終了となりました。 ファミリ 1 を使用して新しいサービスをデプロイしようとする試みまたは既存のサービスをアップグレードしようとする試みはすべて失敗し、ゲスト OS ファミリ 1 の提供が終了したことを示すエラー メッセージが表示されます。
 
-**2014 年 11 月 3 日**: ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。これらのサービスは、突然停止される可能性があります。自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
+**2014 年 11 月 3 日** : ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。 ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。 これらのサービスは、突然停止される可能性があります。 自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
 
-質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。
+質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## 利用中のサービスが影響を受けるか
+## <a name="are-you-affected"></a>利用中のサービスが影響を受けるか
 次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。
 
 1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。
-2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
+2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。 現在、この場合、既定値として "1" が使用されます。
 3. Azure クラシック ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
 
-クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../powershell-install-configure.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
+クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell](/powershell/azureps-cmdlets-docs) を設定する必要があります。 スクリプトの詳細については、「[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)」を参照してください。 
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -46,7 +51,7 @@ foreach($subscription in Get-AzureSubscription) {
 
 スクリプトの出力の osFamily 列が空であるか、"1" が含まれている場合、クラウド サービスは、OS ファミリ 1 の提供終了の影響を受けます。
 
-## 利用中のサービスが影響を受ける場合の推奨事項
+## <a name="recommendations-if-you-are-affected"></a>利用中のサービスが影響を受ける場合の推奨事項
 クラウド サービスのロールを、サポートされているゲスト OS ファミリのいずれかに移行することをお勧めします。
 
 **ゲスト OS ファミリ 4.x** - Windows Server 2012 R2 *(推奨)*
@@ -64,10 +69,10 @@ foreach($subscription in Get-AzureSubscription) {
 1. アプリケーションで SDK 1.3 以降と .NET Framework 3.5 または 4.0 を使用していることを確認します。
 2. ServiceConfiguration.cscfg ファイルで osFamily 属性を "2" に設定し、クラウド サービスを再デプロイします。
 
-## 2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
-ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。
+## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
+ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。 サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。  
 
-## 次のステップ
-最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
+## <a name="next-steps"></a>次のステップ
+最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+

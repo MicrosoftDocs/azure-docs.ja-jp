@@ -1,12 +1,12 @@
 ---
-title: .NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする
-description: Mobile Engagement .NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする方法について説明します
+title: ".NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする"
+description: "Mobile Engagement .NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする方法について説明します"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: c07728aa-43f2-4238-8b4a-c9eddf9d838b
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -14,18 +14,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 57b2abc37551a782cb7106b9fc4540ce2ba37732
+
 
 ---
-# .NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする
-Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、API のセットが公開されています。これらの API と対話するために、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。Swagger ファイルから SDK を生成するには、[AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。
+# <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>.NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする
+Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、API のセットが公開されています。これらの API と対話するために、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。 Swagger ファイルから SDK を生成するには、 [AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。 
 
-C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。
+C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。  
 
 このサンプルでは、.NET SDK を使用するために従う一連の手順について説明します。
 
-1. まず、[こちら](mobile-engagement-api-authentication.md#authentication)に説明されているとおりに、Azure Active Directory を使用して、API の認証をセットアップする必要があります。これらの手順が完了すると、有効な **SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** を入手できます。
-2. アナウンス キャンペーンを作成するシナリオを含む .NET SDK の操作を示すために、単純な Windows コンソール アプリを使用します。そのため、Visual Studio を開き、**コンソール アプリケーション**を作成します。
-3. 次に、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement/)の Nuget ギャラリーで **Microsoft Azure Engagement 管理ライブラリ**として利用可能な .NET SDK をダウンロードする必要があります。Visual Studio から Nuget をインストールしている場合は、パッケージを検索するときに、**[プレリリースを含める]** オプションにチェック マークがあることを確認する必要があります。
+1. まず、 [こちら](mobile-engagement-api-authentication.md#authentication)に説明されているとおりに、Azure Active Directory を使用して、API の認証をセットアップする必要があります。 これらの手順が完了すると、有効な **SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** を入手できます。 
+2. アナウンス キャンペーンを作成するシナリオを含む .NET SDK の操作を示すために、単純な Windows コンソール アプリを使用します。 そのため、Visual Studio を開き、 **コンソール アプリケーション**を作成します。   
+3. 次に、 **こちら** の Nuget ギャラリーで [Microsoft Azure Engagement 管理ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement/)として利用可能な .NET SDK をダウンロードする必要があります。
+   Visual Studio から Nuget をインストールしている場合は、パッケージを検索するときに、 **[プレリリースを含める]** オプションにチェック マークがあることを確認する必要があります。
    
     ![][1]
 4. `Program.cs` ファイルに、次の名前空間を追加します。
@@ -42,7 +47,7 @@ C# ラッパーを使用してこれらの API と対話できるようにする
         const string SUBSCRIPTION_ID = "<Your Subscription Id>";
    
         // This is the Azure Resource group concept for grouping together resources 
-        //  see here: https://azure.microsoft.com/documentation/articles/resource-group-portal/
+        //  see here: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
         const string RESOURCE_GROUP = "";
    
         // For Mobile Engagement operations
@@ -68,7 +73,7 @@ C# ラッパーを使用してこれらの API と対話できるようにする
                 Console.WriteLine(ex.InnerException.Message);
                 throw ex;
             }
-8. 最初に認証を行い、次にアナウンス キャンペーンの作成を計画する Mobile Engagement アプリと関連付けて、`EngagementManagementClient` の初期化を処理する次のメソッドを定義します。
+8. 最初に認証を行い、次にアナウンス キャンペーンの作成を計画する Mobile Engagement アプリと関連付けて、 `EngagementManagementClient` の初期化を処理する次のメソッドを定義します。
    
         private static async Task InitEngagementClient()
         {
@@ -84,15 +89,15 @@ C# ラッパーを使用してこれらの API と対話できるようにする
         }
    
    > [!IMPORTANT]
-   > AppName パラメーターの Microsoft Azure 管理ポータルで定義した**アプリ リソース名**を使用する必要があることに注意してください。
+   > AppName パラメーターの Microsoft Azure 管理ポータルで定義した **アプリ リソース名** を使用する必要があることに注意してください。 
    > 
    > 
-9. 最後に、タイトルとメッセージで単純な **AnyTime** と **Notification-only** キャンペーンを作成するために、前に初期化された EngagementClient の使用を処理する CreateCampaign メソッドを定義します。
+9. 最後に、タイトルとメッセージで単純な **AnyTime** と  & **Notification-only** キャンペーンを作成するために、前に初期化された EngagementClient の使用を処理する CreateCampaign メソッドを定義します。 
    
         private async static Task CreateCampaign()
         {
             //  Refer to the Announcement Campaign format from here - 
-            //      https://msdn.microsoft.com/ja-JP/library/azure/mt683751.aspx
+            //      https://msdn.microsoft.com/en-us/library/azure/mt683751.aspx
             // Make sure you are passing all the non-optional parameters
             Campaign parameters = new Campaign(
                 name:"WelcomeCampaign",
@@ -102,7 +107,7 @@ C# ラッパーを使用してこれらの API と対話できるようにする
                 deliveryTime:"any"
                 );
    
-            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/ja-JP/library/azure/mt683742.aspx
+            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/en-us/library/azure/mt683742.aspx
             CampaignStateResult result = 
                 await engagementClient.Campaigns.CreateAsync(CampaignKinds.Announcements, parameters);
             Console.WriteLine("Campaign Id '{0}' was created successfully and it is in '{1}' state", result.Id, result.State);
@@ -115,4 +120,8 @@ C# ラッパーを使用してこれらの API と対話できるようにする
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

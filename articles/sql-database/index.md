@@ -1,13 +1,37 @@
 ---
+title: "Azure SQL Database のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウドでのサービスとしてのデータベースである SQL Database について説明します。 チュートリアル、ビデオ、およびその他のドキュメントでは、リレーショナル データベースの設定、接続、管理方法を紹介します。"
+services: sql-database
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: edfc23605c738fbe8aac99c0db89c6f588a09d60
-ms.openlocfilehash: 85bf943fb28348a17e609fff506dddf855b28dfa
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e982e07b6279c1338398980aa07d46ce08ede11c
+ms.lasthandoff: 03/22/2017
 
 ---
-#<a name="sql-database-documentation"></a>SQL Database のドキュメント
 
-Azure SQL Database は、Microsoft SQL Server エンジンに基づいたミッション クリティカルな機能が組み込まれた、クラウド内のリレーショナル データベース サービスです。 これは、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれも管理は最小限となります。 SQL Database は、SQL Server エンジンを基盤としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしており、クラウドへの移行およびクラウドへの拡張が簡単になります。
+# <a name="sql-database-documentation"></a>SQL Database のドキュメント
+
+<div class="introHolder">
+    <div class="intro">
+Microsoft SQL Server エンジンをベースに構築された、クラウドでのサービスとしてのリレーショナル データベースである SQL Database の使用方法を紹介します。 チュートリアル、ビデオ、その他のドキュメントでは、SQL データベースの設定、接続、管理方法を紹介します。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" /> 無料の PluralSight ビデオ トレーニング - Microsoft Azure を使用したインフラストラクチャの管理 </a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -104,34 +128,84 @@ Azure SQL Database は、Microsoft SQL Server エンジンに基づいたミッ�
 
 ---
 
-##<a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
+                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (エラスティック データベース)</a></p>
+                        <p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.JS</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/sql/">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server Tools</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p>
+                        <p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL Database の管理ライブラリ パッケージ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server ドライバー</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/powershell/azureps-cmdlets-docs)
-
-###<a name="net"></a>.NET
-[.NET に関する管理リファレンス](/dotnet/api)
-
-### <a name="java"></a>Java
-[Java SDK リファレンス](/java/api)
-
-###<a name="rest"></a>REST ()
-[SQL Database REST API リファレンス](/rest/api/sql)
-
-###<a name="tsql"></a>T-SQL
-[T-SQL リファレンス](https://msdn.microsoft.com/library/azure/bb510741)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-SQL Database のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

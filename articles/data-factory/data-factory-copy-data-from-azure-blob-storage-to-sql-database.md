@@ -1,20 +1,25 @@
 ---
-title: Blob Storage から SQL Database へのデータのコピー | Microsoft Docs
-description: このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。
-keywords: BLOB SQL, Blob Storage, データのコピー
+title: "Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs"
+description: "このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。"
+keywords: "BLOB SQL, Blob Storage, データのコピー"
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 04/03/2017
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2dcba235353f2b1bd2b42d93066a91071f0ea1a1
+ms.openlocfilehash: 8b9afcd62ad318e181e2d210af58dcb412eefaaf
+ms.lasthandoff: 02/22/2017
+
 
 ---
 # <a name="copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
@@ -27,8 +32,8 @@ ms.author: spelluru
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-> 
-> 
+>
+>
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
@@ -36,8 +41,8 @@ ms.author: spelluru
 
 > [!NOTE]
 > Data Factory サービスの詳細については、 [Azure Data Factory サービスの概要](data-factory-introduction.md) に関する記事をご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -52,17 +57,17 @@ ms.author: spelluru
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のメニューで **[More services (その他のサービス)]** を選択し、**[ストレージ アカウント]** を選択します。
-   
-    ![参照 - ストレージ アカウント](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\browse-storage-accounts.png)
+
+    ![参照 - ストレージ アカウント](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. **[ストレージ アカウント]** ブレードで、このチュートリアルで使用する **Azure ストレージ アカウント**を選択します。
 4. **[設定]** にある **[アクセス キー]** リンクを選択します。
 5. **[ストレージ アカウント名]** テキスト ボックスの隣にある (イメージの) **[コピー]** ボタンをクリックし、任意の場所 (たとえばテキスト ファイル) に貼り付けて保存します。
 6. **key1**についても、前のコピー手順を繰り返すか、メモしておきます。
-   
-    ![スストレージ アクセス キー](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\storage-access-key.png)
+
+    ![スストレージ アクセス キー](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
 7. **[X]**をクリックしてすべてのブレードを閉じます。
 
-## <a name="collect-sql-server,-database,-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
+## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
 このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
 1. **Azure Portal** で、左側にある **[More services (その他のサービス)]** をクリックし、**[SQL データベース]** を選択します。
@@ -75,7 +80,7 @@ ms.author: spelluru
 Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
 1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、**[SQL サーバー]** をクリックします。
-2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。 
+2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
 4. **[X]**をクリックしてすべてのブレードを閉じます。
 
@@ -83,37 +88,43 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  
 
 1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
-   
-        John, Doe
-        Jane, Doe
+
+    ```
+    John, Doe
+    Jane, Doe
+    ```
 2. [Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使用して **adftutorial** コンテナーを作成し、このコンテナーに **emp.txt** ファイルをアップロードします。
-   
+
     ![Azure Storage Explorer. Copy data from Blob storage to SQL database](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. 次の SQL スクリプトを使用して、 **emp** テーブルを Azure SQL Database に作成します。  
 
-        CREATE TABLE dbo.emp
-        (
-            ID int IDENTITY(1,1) NOT NULL,
-            FirstName varchar(50),
-            LastName varchar(50),
-        )
-        GO
+    ```SQL
+    CREATE TABLE dbo.emp
+    (
+        ID int IDENTITY(1,1) NOT NULL,
+        FirstName varchar(50),
+        LastName varchar(50),
+    )
+    GO
 
-        CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+    ```
 
-    **SQL Server 2012/2014 がコンピューターにインストールされている場合** : 記事「 [SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続](../sql-database/sql-database-manage-azure-ssms.md#Step2) 」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。 この記事では、[新しい Azure Portal](https://portal.azure.com) ではなく、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
+    **SQL Server 2012/2014 がコンピューターにインストールされている場合**は、「[SQL Server Management Studio を使用した Azure SQL Database の管理](../sql-database/sql-database-manage-azure-ssms.md)」の手順に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。 この記事では、[新しい Azure Portal](https://portal.azure.com) ではなく、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
 
     クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。 Azure SQL サーバーのファイアウォールを構成する手順については、 [こちらの記事](../sql-database/sql-database-configure-firewall-settings.md) を参照してください。
 
-これで前提条件を完了しました。 データ ファクトリを作成するには、次のいずれかの方法を使用します。 上部にあるいずれかのタブまたは次のリンクをクリックして、チュートリアルを実行します。     
+これで前提条件を完了しました。 データ ファクトリを作成するには、次のいずれかの方法を使用します。 上部にあるドロップダウン リストのいずれかのオプションまたは次のリンクをクリックして、チュートリアルを実行します。     
 
+* [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 * [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+* [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-* [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+> [!NOTE]
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
+> 
+> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 

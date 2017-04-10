@@ -9,15 +9,16 @@ manager: jhubbard
 editor: 
 ms.assetid: a2e47475-c955-4a8d-a65c-cbef9a6d9b9f
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/27/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f5fa586bd8902af2129a7157f0549c337ae00d00
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
 
 
 ---
@@ -43,18 +44,17 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 下位のパフォーマンス レベルにダウングレードできるかどうかを判断するために、パフォーマンス メトリックを利用することもできます。 たとえば、Standard S2 データベースを使用していて、すべてのパフォーマンス メトリックは、どの時点でもデータベースの平均的な使用率が 10% を超えないとします。 この場合、データベースは Standard S1 で快適に動作します。 ただし、下位のパフォーマンス レベルへの移行を決定する前に、急上昇や変動するワークロードに注意してください。
 
 ## <a name="monitor-databases-using-dmvs"></a>DMV を使用したデータベースの監視
-Portal で公開されているものと同じメトリックを、システム ビューからも利用できます。それは、サーバーの論理 **master** データベースの [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) と、ユーザー データベースの [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) です。 詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource_stats** を使用します。 詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm_db_resource_stats** を使用します。 詳細については、[Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)に関する記事を参照してください。
+Portal で公開されているものと同じメトリックを、システム ビューからも利用できます。それは、サーバーの論理 **master** データベースの [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) と、ユーザー データベースの [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) です。 詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource_stats** を使用します。 詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm_db_resource_stats** を使用します。 詳細については、[Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitor-resource-use)に関する記事を参照してください。
 
 > [!NOTE]
 > **sys.dm_db_resource_stats** は、提供終了になった Web および Business Edition データベースで使用された場合、空の結果セットを返します。
-> 
-> 
+>
+>
 
-エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。 ただし、プールを全体として監視することもできます。 詳細については、「 [エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。
-
-
+エラスティック プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視できます。 ただし、プールを全体として監視することもできます。 詳細については、[エラスティック プールの監視と管理](sql-database-elastic-pool-manage-portal.md)に関する記事を参照してください。
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

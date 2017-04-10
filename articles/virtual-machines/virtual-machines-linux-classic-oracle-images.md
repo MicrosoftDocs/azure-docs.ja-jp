@@ -1,25 +1,10 @@
 ---
-title: Oracle VM イメージの一覧 | Microsoft Docs
-description: Azure ギャラリーで Oracle イメージの一覧を取得し、Oracle 仮想マシンを作成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rickstercdn
-manager: timlt
-editor: ''
-tags: azure-service-management, azure-resource-manager
-
-ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 09/06/2016
-ms.author: rclaus
+redirect_url: /azure/virtual-machines/linux/classic/oracle-images
+redirect_document_id: true
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: d9a920c4203ce5e09114e39c09501b1c638952b4
+ms.lasthandoff: 03/27/2017
 
 ---
-# Oracle 仮想マシン イメージの一覧
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-[!INCLUDE [virtual-machines-common-classic-oracle-images](../../includes/virtual-machines-common-classic-oracle-images.md)]
-
-<!---HONumber=AcomDC_0914_2016-->

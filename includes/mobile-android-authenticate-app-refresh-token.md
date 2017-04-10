@@ -1,8 +1,8 @@
-簡単なケースでは、トークン キャッシュは動作しますが、トークンが期限切れになった場合、または取り消された場合はどのようになるでしょうか。 トークンが期限切れになる可能性があるのは、アプリケーションが実行されていないときです。つまり、このときにトークン キャッシュは無効になることがあります。アプリケーションの実行中も、トークンが期限切れになる場合があります。その結果、HTTP ステータス コード 401 "認証エラー" が発生します。
+簡単なケースでは、トークン キャッシュは動作しますが、トークンが期限切れになった場合、または取り消された場合はどのようになるでしょうか。 トークンが期限切れになる可能性があるのは、アプリケーションが実行されていないときです。 つまり、このときにトークン キャッシュは無効になることがあります。 アプリケーションの実行中も、トークンが期限切れになる場合があります。 その結果、HTTP ステータス コード 401 "認証エラー" が発生します。 
 
-期限切れのトークンは、検出して更新できるようにする必要があります。そのためには、[Android クライアント ライブラリ](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/ServiceFilter.html)の [ServiceFilter](http://dl.windowsazure.com/androiddocs/) を使用します。
+期限切れのトークンは、検出して更新できるようにする必要があります。 そのためには、[Android クライアント ライブラリ](http://dl.windowsazure.com/androiddocs/)の [ServiceFilter](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/ServiceFilter.html) を使用します。
 
-このセクションでは、HTTP ステータス コード 401 の応答を検出し、トークンとトークン キャッシュの更新を開始するように ServiceFilter を定義します。さらに、この ServiceFilter では認証中に他の送信要求をブロックして、これらの要求が更新されたトークンを使用できるようにします。
+このセクションでは、HTTP ステータス コード 401 の応答を検出し、トークンとトークン キャッシュの更新を開始するように ServiceFilter を定義します。 さらに、この ServiceFilter では認証中に他の送信要求をブロックして、これらの要求が更新されたトークンを使用できるようにします。
 
 1. ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
    
@@ -10,12 +10,12 @@
         import java.util.concurrent.ExecutionException;
    
         import com.microsoft.windowsazure.mobileservices.MobileServiceException;
-2. 次のメンバーをクラス `ToDoActivity` クラスに追加します。
+2. 次のメンバーをクラス `ToDoActivity` クラスに追加します。 
    
         public boolean bAuthenticating = false;
         public final Object mAuthenticationLock = new Object();
    
-    これらは、ユーザーの認証を同期しやすくするために使用します。認証が必要なのは、一度だけです。認証中の呼び出しがすべて待機し、進行中の認証から新しいトークンを取得して使用する必要があります。
+    これらは、ユーザーの認証を同期しやすくするために使用します。 認証が必要なのは、一度だけです。 認証中の呼び出しがすべて待機し、進行中の認証から新しいトークンを取得して使用する必要があります。
 3. ToDoActivity.java ファイルで、次のメソッドを ToDoActivity クラスに追加します。このメソッドは、認証の進行中に他のスレッドでの送信呼び出しをブロックするために使用します。
    
         /**
@@ -45,7 +45,7 @@
    
             return detected;
         }
-4. ToDoActivity.java ファイル内で、次のメソッドを ToDoActivity クラスに追加します。このメソッドは、待機を開始し、認証の完了時に送信呼び出しでトークンを更新します。
+4. ToDoActivity.java ファイル内で、次のメソッドを ToDoActivity クラスに追加します。 このメソッドは、待機を開始し、認証の完了時に送信呼び出しでトークンを更新します。 
 
         /**
          * Waits for authentication to complete then adds or updates the token 
@@ -69,7 +69,7 @@
         }
 
 
-1. ToDoActivity.java ファイルで、ToDoActivity クラスの `authenticate` メソッドを更新し、トークンとトークン キャッシュを強制的に更新するブール型パラメーターを受け入れるようにします。また、ブロックされたスレッドが新しいトークンを取得できるように、認証が完了したらこれらにスレッドに通知する必要があります。
+1. ToDoActivity.java ファイルで、ToDoActivity クラスの `authenticate` メソッドを更新し、トークンとトークン キャッシュを強制的に更新するブール型パラメーターを受け入れるようにします。 また、ブロックされたスレッドが新しいトークンを取得できるように、認証が完了したらこれらにスレッドに通知する必要があります。
    
         /**
          * Authenticates with the desired login provider. Also caches the token. 
@@ -193,7 +193,7 @@
             }
         }
 
-    このサービス フィルターでは、各応答で HTTP ステータス コード 401 "認証エラー" が発生していないかどうかを確認します。401 が発生した場合は、新しいトークンを取得する新しいログイン要求が、UI スレッドで設定されます。その他の呼び出しは、ログインが完了するか、5 回失敗するまでブロックされます。新しいトークンが取得されると、401 を引き起こした要求は新しいトークンを使用して再試行されます。またブロックされた呼び出しも、新しいトークンを使用して再試行されます。
+    このサービス フィルターでは、各応答で HTTP ステータス コード 401 "認証エラー" が発生していないかどうかを確認します。 401 が発生した場合は、新しいトークンを取得する新しいログイン要求が、UI スレッドで設定されます。 その他の呼び出しは、ログインが完了するか、5 回失敗するまでブロックされます。 新しいトークンが取得されると、401 を引き起こした要求は新しいトークンを使用して再試行されます。またブロックされた呼び出しも、新しいトークンを使用して再試行されます。 
 
 1. ToDoActivity.java ファイルで、ToDoActivity クラス内に次の新しい `ProgressFilter` クラスのコードを追加します。
    
@@ -242,7 +242,7 @@
         }
    
     このフィルターでは、要求の開始時に進行状況バーが表示され、応答が到着すると非表示になります。
-2. ToDoActivity.java ファイルで、`onCreate` メソッドを次のように更新します。
+2. ToDoActivity.java ファイルで、 `onCreate` メソッドを次のように更新します。
    
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -272,6 +272,11 @@
             }
         }
 
-       このコードでは、`ProgressFilter` 以外に `RefreshTokenCacheFilter` が使用されています。また、`onCreate` の間に、トークン キャッシュも読み込みます。そのため、`false` が `authenticate` メソッドに渡されます。
+       In this code, `RefreshTokenCacheFilter` is used in addition to `ProgressFilter`. Also during `onCreate` we want to load the token cache. So `false` is passed in to the `authenticate` method.
 
-<!---HONumber=AcomDC_1210_2015-->
+
+
+
+<!--HONumber=Jan17_HO3-->
+
+

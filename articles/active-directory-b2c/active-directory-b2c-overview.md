@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 217ffc63e07d66de522accc42c246125d01713c8
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 851319639f1443c062b87305bbde351f41846433
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 * 現在の [サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を参照してください。
 * 最後に、Azure AD B2C と ASP.NET Core を使用した[コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c)を参照してください。
 
-## <a name="howto-articles"></a>ハウツー記事
+## <a name="how-to-articles"></a>ハウツー記事
 以下に示す Azure Active Directory B2C の各機能の使用方法について確認してください。
 
 * コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
@@ -54,8 +55,9 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 以下のリンクは、サービスの詳細を調べるのに役立ちます。
 
 * 「 [Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
-* [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローへの対処法についてのヒントが得られます。
-* [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) を利用して、サービスについての感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
+* Azure Active Directory B2C の[コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c)を確認します。 
+* [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) タグを使用したスタック オーバーフローへの対処法についてのヒントが得られます。
+* [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) を利用して、サービスについての感想をお寄せください。皆様からのご意見をお待ちしております。
 * [Azure AD B2C プロトコル リファレンス](active-directory-b2c-reference-protocols.md)を確認してください。
 * [Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を確認してください。
 * [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)をご覧ください。
@@ -63,10 +65,5 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

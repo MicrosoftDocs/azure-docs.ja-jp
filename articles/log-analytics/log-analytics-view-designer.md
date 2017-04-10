@@ -1,23 +1,28 @@
 ---
-title: Log Analytics ビュー デザイナー | Microsoft Docs
-description: Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化するカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
+title: "OMS Log Analytics のビューを作成してデータを分析する | Microsoft Docs"
+description: "Log Analytics のビュー デザイナーを使用すると、OMS と Azure Portal に表示されるカスタム ビューを作成し、OMS リポジトリのデータをさまざまな方法で視覚化することができます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d65f730a0f84b89d0228a22b42d0421ad4f2678f
+ms.lasthandoff: 03/09/2017
+
 
 ---
-# <a name="log-analytics-view-designer"></a>Log Analytics ビュー デザイナー
-Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータをさまざまに視覚化したカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
+# <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
+[Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 
 ビュー デザイナーについてはこの他に次の記事があります。
 
@@ -62,7 +67,7 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ![ビューの削除](media/log-analytics-view-designer/edit-menu-delete.png)
 
 ### <a name="export-an-existing-view"></a>既存のビューをエクスポートする
-ビューを JSON ファイルにエクスポートして、別のワークスペースにインポートしたり、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) で使用したりできます。  既存のビューをエクスポートするには、OMS のメイン ダッシュボードで該当するタイルをクリックしてビューを開きます。  次に、**[エクスポート]** ボタンをクリックして、ブラウザーのダウンロード フォルダーの中にファイルを作成します。  ファイルの名前は、ビューの名前に拡張子 *omsview* が付加されたものになります。
+ビューを JSON ファイルにエクスポートして、別のワークスペースにインポートしたり、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) で使用したりできます。  既存のビューをエクスポートするには、OMS のメイン ダッシュボードで該当するタイルをクリックしてビューを開きます。  次に、**[エクスポート]** ボタンをクリックして、ブラウザーのダウンロード フォルダーの中にファイルを作成します。  ファイルの名前は、ビューの名前に拡張子 *omsview* が付加されたものになります。
 
 ![ビューのエクスポート](media/log-analytics-view-designer/edit-menu-export.png)
 
@@ -77,7 +82,7 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ![ビュー デザイナー](media/log-analytics-view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-view-tile"></a>ビューのタイルを構成する
-カスタム ビューは、タイルを 1 つだけ持つことができます。  **タイル** ウィンドウの **タイル** タブを選択して現在のタイルを表示するか、別のタイルを選択します。  **プロパティ** ウィンドウには、現在のタイルのプロパティが表示されます。  「[タイル リファレンス](log-analytics-view-designer-tiles.md)」の詳細情報に従ってタイルのプロパティを構成し、**[適用]** をクリックして変更を保存します。
+カスタム ビューは、タイルを&1; つだけ持つことができます。  **タイル** ウィンドウの **タイル** タブを選択して現在のタイルを表示するか、別のタイルを選択します。  **プロパティ** ウィンドウには、現在のタイルのプロパティが表示されます。  「[タイル リファレンス](log-analytics-view-designer-tiles.md)」の詳細情報に従ってタイルのプロパティを構成し、**[適用]** をクリックして変更を保存します。
 
 ### <a name="configure-visualization-parts"></a>視覚化パーツを構成する
 ビューには、任意の数の視覚化パーツを含めることができます。  **[ビュー]** タブを選択し、ビューに追加する視覚化パーツを選択します。  **プロパティ** ウィンドウに、選択したパーツのプロパティが表示されます。  「[視覚化パーツ リファレンス](log-analytics-view-designer-parts.md)」の詳細情報に従ってビューのプロパティを構成し、**[適用]** をクリックして変更を保存します。
@@ -91,7 +96,5 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ## <a name="next-steps"></a>次のステップ
 * [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
 * [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
-
-<!--HONumber=Oct16_HO2-->
 
 

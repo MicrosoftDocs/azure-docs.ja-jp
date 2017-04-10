@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [Hadoop](hdinsight-hadoop-introduction.md)
 ## [HDInsight の Hadoop コンポーネント](hdinsight-component-versioning.md)
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
@@ -6,14 +6,16 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [ドメイン参加済み HDInsight プレビュー](hdinsight-domain-joined-introduction.md)
+## [Kafka (プレビュー)](hdinsight-apache-kafka-introduction.md)
 
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
-## [R Server を開始する (プレビュー)](hdinsight-hadoop-r-server-get-started.md)
+## [R Server の開始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [対話型 Hive を開始する (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)
+## [Kafka の開始 (プレビュー)](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop サンドボックス](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools と Hortonworks サンドボックス](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -47,23 +49,30 @@
 ### [DataFu と Pig を使用する](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [オンデマンド クラスター](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-## R Server の使用 (プレビュー)
+## R Server の使用
 ### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
 ### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## メモリ内の処理への Spark の使用
+### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)
-### [スタンドアロン アプリ](hdinsight-apache-spark-create-standalone-application.md)
+### [スタンドアロン アプリを作成する](hdinsight-apache-spark-create-standalone-application.md)
+### [Eclipse を使用してアプリを開発する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [IntelliJ を使用してアプリを開発する](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [ストリーミング イベントを処理する](hdinsight-apache-spark-eventhub-streaming.md)
 ### [HVAC パフォーマンスを予測する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [食品検査の結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Web サイトのログを分析する](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [ディープ ラーニングに Caffe を使用する](hdinsight-deep-learning-caffe-spark.md)
+### [Microsoft Cognitive Toolkit を使用する](hdinsight-apache-spark-microsoft-cognitive-toolkit.md)
+### [Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter Notebook カーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [Jupyter Notebook 向けパッケージ](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [cell magic を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Script Action を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-python-package-installation.md)
 ### [ローカルの Jupyter Notebook を使用する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md)
-### [IntelliJ を使用してアプリを開発する](hdinsight-apache-spark-intellij-tool-plugin.md)
-### [IntelliJ でリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+### [IntelliJ を使用してリモートでジョブをデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [リソースの管理](hdinsight-apache-spark-resource-manager.md)
 ### [ジョブを追跡してデバッグする](hdinsight-apache-spark-job-debugging.md)
 ### [既知の問題](hdinsight-apache-spark-known-issues.md)
@@ -71,9 +80,7 @@
 ### [Phoenix および SQLLine を使用する](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [リアルタイムのツイートの分析](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [仮想ネットワークでクラスターを作成する](hdinsight-hbase-provision-vnet.md)
-### [VPN 接続の構成](hdinsight-hbase-geo-replication-configure-vnets.md)
-### [DNS サーバーを構成する](hdinsight-hbase-geo-replication-configure-dns.md)
-### [HBase geo レプリケーションの構成](hdinsight-hbase-geo-replication.md)
+### [HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 ### [Java でアプリを開発する](hdinsight-hbase-build-java-maven-linux.md)
 ## Storm の使用
 ### [トポロジをデプロイおよび管理する](hdinsight-storm-deploy-monitor-topology-linux.md)
@@ -94,6 +101,10 @@
 ### [構成](hdinsight-domain-joined-configure.md)
 ### [管理](hdinsight-domain-joined-manage.md)
 ### [Hive ポリシーを構成する](hdinsight-domain-joined-run-hive.md)
+## Kafka の使用 (プレビュー)
+### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
+### [Spark での使用](hdinsight-apache-spark-with-kafka.md)
+### [Storm での使用](hdinsight-apache-storm-with-kafka.md)
 ## 開発
 ### [Java MapReduce プログラムを開発する](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce ジョブを開発する](hdinsight-hadoop-mapreduce-scalding.md)
@@ -131,11 +142,10 @@
 #### [REST を使用してアプリをインストールする](https://msdn.microsoft.com/library/mt706515.aspx)
 #### [HDInsight アプリを Azure Marketplace に発行する](hdinsight-apps-publish-applications.md)
 ## セキュリティ保護
+### [HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [SSH トンネリングを使用する](hdinsight-linux-ambari-ssh-tunnel.md)
-### [Linux、Unix、OS X から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-### [Windows OS から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 ### [データ アクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)
-## [管理]
+## 管理
 ### [Linux クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Azure PowerShell の使用](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 #### [cURL と Azure REST API を使用する](hdinsight-hadoop-create-linux-clusters-curl-rest.md)
@@ -149,6 +159,7 @@
 #### [Azure CLI の使用](hdinsight-administer-use-command-line.md)
 ### [Ambari Web UI を使用してクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 #### [Ambari REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 ### [Hadoop ジョブのデータをアップロードする](hdinsight-upload-data.md)
 ### [Sqoop でデータをインポートおよびエクスポートする](hdinsight-use-sqoop.md)
 #### [SSH を使用した接続](hdinsight-use-sqoop-mac-linux.md)
@@ -160,6 +171,8 @@
 ### [クラスターとサービスのポートと URI](hdinsight-hadoop-port-settings-for-services.md)
 ### [Resource Manager 開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)
 ### [高可用性と信頼性](hdinsight-high-availability-linux.md)
+### [HDInsight クラスターを新しいバージョンにアップグレードする](hdinsight-upgrade-cluster.md)
+### [HDInsight クラスター用の OS の修正プログラム](hdinsight-os-patching.md)
 ## トラブルシューティング
 ### [Linux のヒント](hdinsight-hadoop-linux-information.md)
 ### [リリース ノート](hdinsight-release-notes.md)
@@ -174,27 +187,17 @@
 #### [Hive クエリのパフォーマンス](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # リファレンス
-## [REST API リファレンス](https://msdn.microsoft.com/library/mt622197.aspx)
-## [リモート ジョブ用の Spark REST API](https://msdn.microsoft.com/library/mt613023.aspx)
-## [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt438705.aspx)
-## [.NET SDK for Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET SDK for HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET library for Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST ()](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # 関連項目
 ## Windows クラスター
 ### [Windows クラスターを Linux クラスターに移行する](hdinsight-migrate-from-windows-to-linux.md)
-### [Hadoop の開始](hdinsight-hadoop-tutorial-get-started-windows.md)
-### [Storm の開始](hdinsight-apache-storm-tutorial-get-started.md)
-### [HBase を開始する](hdinsight-hbase-tutorial-get-started.md)
-### [HDInsight サンプル ギャラリー](hdinsight-learn-hadoop-use-sample-gallery.md)
 ### [Hadoop MapReduce サンプルを実行する](hdinsight-run-samples.md)
-### [Hadoop クラスターを作成する](hdinsight-provision-clusters.md)
-#### [Azure Portal の使用](hdinsight-hadoop-create-windows-clusters-portal.md)
-#### [.NET SDK の使用](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md)
-#### [Azure CLI の使用](hdinsight-hadoop-create-windows-clusters-cli.md)
-#### [Azure PowerShell の使用](hdinsight-hadoop-create-windows-clusters-powershell.md)
-#### [Resource Manager テンプレートの使用](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 ### [クラスターで Solr を使用する](hdinsight-hadoop-solr-install-linux.md)
 ### [Giraph を使用して大規模なグラフを処理する](hdinsight-hadoop-giraph-install.md)
 ### [ワークフローに Oozie を使用する](hdinsight-use-oozie.md)
@@ -202,7 +205,6 @@
 ### [Maven を使用して Java アプリケーションを構築する](hdinsight-hbase-build-java-maven.md)
 ### [Tez UI を使用して Tex ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 ### [スクリプト アクションを使用してカスタマイズする](hdinsight-hadoop-customize-cluster.md)
-### [高可用性と信頼性](hdinsight-high-availability.md)
 ### [YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)
 ### [Apache Phoenix と SQuirreL を使用する](hdinsight-hbase-phoenix-squirrel.md)
 ### [Mahout を使用した映画のリコメンデーションの生成](hdinsight-mahout.md)
@@ -215,8 +217,3 @@
 # リソース
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

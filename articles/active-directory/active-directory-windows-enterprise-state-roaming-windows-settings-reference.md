@@ -1,20 +1,25 @@
 ---
-title: Windows 10 ローミング設定リファレンス | Microsoft Docs
-description: Windows 10 でローミングまたはバックアップされる全設定の一覧です。
+title: "Windows 10 ローミング設定リファレンス | Microsoft Docs"
+description: "Windows 10 でローミングまたはバックアップされる全設定の一覧です。"
 services: active-directory
-keywords: Enterprise State Roaming, Windows クラウド
-documentationcenter: ''
-author: femila
-manager: swadhwa
+keywords: "Enterprise State Roaming, Windows クラウド"
+documentationcenter: 
+author: tanning
+manager: femila
 editor: curtand
-
+ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 03/08/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
+ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
+ms.lasthandoff: 01/05/2017
+
 
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
@@ -30,7 +35,7 @@ ms.author: femila
 | Microsoft アカウント: 同期 |はい |はい |
 | Microsoft アカウント: バックアップ/復元 |なし |はい |
 
-## <a name="what-is-backup?"></a>バックアップとは
+## <a name="what-is-backup"></a>バックアップとは
 一般に Windows の設定は既定で同期されますが、デバイスにインストールされているアプリケーションの一覧など、バックアップにのみ対応している設定もあります。 バックアップはモバイル デバイス向けのみで、Enterprise State Roaming ユーザーは現在使用できません。 バックアップには Microsoft アカウントが使用され、OneDrive に設定とアプリケーション データが保存されます。 ユーザーが設定アプリを使ってデバイス上の同期を無効にした場合、通常であれば同期されるアプリケーション データがバックアップのみになります。 バックアップ データは、新しいデバイスの初回実行時に復元操作を通じてのみアクセスできます。 バックアップは、デバイスの設定で無効にできるほか、ユーザーの OneDrive アカウントを通じて管理したり削除したりすることができます。
 
 ## <a name="windows-settings-overview"></a>Windows 設定の概要
@@ -63,13 +68,7 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **アプリ データ**: 個々のアプリでデータを同期可能 |同期バックアップ |同期バックアップ |内部 |
 | **アプリの一覧**: インストールされているアプリの一覧 |○ |backup |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |○ |○ | |
-| **コマンド プロンプト**: コマンド プロンプトのすべての設定 |sync |○ | |
-| **Cortana**: オン/オフ |○ |○ | |
-| **Cortana**: ロック画面で Cortana を有効にする |○ |○ | |
-| **Cortana**: ユーザー名 |sync |sync |内部 |
-| **Cortana**: SMS の読み上げ |○ |sync |内部 |
-| **Cortana**: セーフ サーチ |○ |sync |内部 |
-| **Cortana**: フライトなどに関する情報の検索 |○ |sync |内部 |
+| **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |○ | |
 | **資格情報**: 資格情報保管ボックス |sync |sync |パスワード |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |言語 |
 | **日付、時刻、地域**: 24 時間形式 |sync |○ |言語 |
@@ -91,8 +90,8 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
 | **Edge ブラウザー**: お気に入り |sync |sync |内部 |
 | **Edge ブラウザー**: Edge におけるその他すべての設定 |○ |○ | |
-| **ハイ コントラスト**: オン/オフ |sync |sync |簡単操作 |
-| **ハイ コントラスト**: テーマの設定 |sync |○ | |
+| **ハイ コントラスト**: オン/オフ |sync |○ |簡単操作 |
+| **ハイ コントラスト**: テーマの設定 |sync |○ |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |
 | **Internet Explorer**: リーディング リスト |sync |sync |Internet Explorer |
 | **Internet Explorer**: 入力された URL |sync |sync |Internet Explorer |
@@ -109,17 +108,17 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |○ |言語 |
 | **言語**: CHS QWERTY - 文字セット簡体字中国語 |sync |○ |言語 |
 | **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |○ |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |sync |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pairs |sync |sync |言語 |
+| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |backup |言語 |
+| **言語**: CHS QWERTY - Fuzzy Pairs |sync |backup |言語 |
 | **言語**: CHS QWERTY - Full Pinyin |sync |○ |言語 |
 | **言語**: CHS QWERTY - Double Pinyin |sync |○ |言語 |
 | **言語**: CHS QWERTY - 読みの自動修正 |sync |○ |言語 |
 | **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |○ |言語 |
 | **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |○ |言語 |
-| **言語**: CHS WUBI - 1 文字入力モード |sync |○ |言語 |
+| **言語**: CHS WUBI -&1; 文字入力モード |sync |○ |言語 |
 | **言語**: CHS WUBI - candidate の残りのコーディングを表示 |sync |○ |言語 |
 | **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |○ |言語 |
-| **言語**: CHS Bopomofo - CJK 統合漢字拡張 A を含める |sync |○ |言語 |
+| **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |○ |言語 |
 | **言語**: 日本語 IME - 予測入力とカスタムの単語 |sync |sync |言語 |
 | **言語**: 韓国語 (KOR) IME |○ |○ |言語 |
 | **言語**: 手書き認識 |○ |○ |言語 |
@@ -143,11 +142,11 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **ナレーター**: 挿入カーソルがナレーターを追うようにする (既定ではオン) |sync |○ |簡単操作 |
 | **ナレーター**: ナレーター カーソルの視覚的な強調表示を有効にする (既定ではオン) |sync |○ |簡単操作 |
 | **ナレーター**: オーディオ キューの再生 (既定ではオン) |sync |○ |簡単操作 |
-| **ナレーター**: タッチ キーボードから指を離したときにキーを有効にする (既定ではオフ) |sync |sync |簡単操作 |
+| **ナレーター**: タッチ キーボードから指を離したときにキーを有効にする (既定ではオフ) |sync |○ |簡単操作 |
 | **簡単操作**: 点滅カーソルの太さを設定 |sync |○ |簡単操作 |
 | **簡単操作**: 背景のイメージを削除 (既定ではオフ) |sync |○ |簡単操作 |
 | **電源とスリープ**: すべての設定 |○ |○ | |
-| **スタート画面の個人用設定**: システム カラー |sync |sync |テーマ |
+| **スタート画面の個人用設定**: アクセント カラー (電話のみ) |○ |sync |テーマ |
 | **入力**: スペル チェック辞書 |sync |backup |言語 |
 | **入力**: スペル ミスの語句を自動修正する |sync |backup |言語 |
 | **入力**: スペル ミスの語句を強調表示する |sync |backup |言語 |
@@ -165,7 +164,5 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 * [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-
-<!--HONumber=Oct16_HO2-->
-
+* [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 

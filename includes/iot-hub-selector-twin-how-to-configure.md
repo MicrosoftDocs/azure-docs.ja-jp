@@ -1,25 +1,24 @@
 > [!div class="op_single_selector"]
-> * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
+> * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
 > 
 > 
 
-## <a name="introduction"></a>Introduction
-In [Get started with IoT Hub twins][lnk-twin-tutorial], you learned how to set device meta-data from your solution back end using *tags*, report device conditions from a device app using *reported properties*, and query this information using a SQL-like language.
+## <a name="introduction"></a>はじめに
+[IoT Hub ツインの概要][lnk-twin-tutorial]に関するページでは、"*タグ*" を使用してソリューション バックエンドからデバイス メタデータを設定する方法、"*報告されるプロパティ*" を使用してデバイス アプリからデバイスの状態を報告する方法、SQL に似た言語を使用してこの情報を照会する方法について学習しました。
 
-In this tutorial, you will learn how to use the the twin's *desired properties* in conjunction with *reported properties*, to remotely configure device apps. More specifically, this tutorial shows how twin's reported and desired properties enable a multi-step configuration of a device application setting, and provide the visibility to the solution back end of the status of this operation across all devices.
+このチュートリアルでは、"*必要なプロパティ*" と "*報告されるプロパティ*" を併せて使用し、デバイス アプリをリモートで構成する方法について説明します。 具体的には、デバイス ツインの報告されるプロパティと必要なプロパティを使用して、デバイス アプリケーション設定の複数手順の構成を有効にする方法のほか、ソリューション バックエンドですべてのデバイスにおけるこの操作の状態を表示できるようにする方法について説明します。 デバイス構成の役割の詳細については、[IoT Hub を使用したデバイス管理の概要][lnk-dm-overview]に関するページを参照してください。
 
-At a high level, this tutorial follows the *desired state pattern* for device management. The fundamental idea of this pattern is to have the solution back end specify the desired state for the managed devices, instead of sending specific commands. This puts the device in charge of establishing the best way to reach the desired state (very important in IoT scenarios where specific device conditions affect the ability to immediately carry out specific commands), while continually reporting to the back end the current state and potential error conditions. The desired state pattern is instrumental to the management of large sets of devices, as it enables the back end to have full visibility of the state of the configuration process across all devices.
-You can find more information regarding the role of the desired state pattern in device management in [Overview of Azure IoT Hub device management][lnk-dm-overview].
+大まかには、デバイス ツインを使用すると、ソリューション バックエンドは、特定のコマンドを送信する代わりに、管理対象デバイスに必要な構成を指定できます。 これにより、デバイスはその構成を更新する最善の方法を確立します (特定のデバイスの状態が特定のコマンドを直ちに実行できるかどうかに影響する IoT シナリオでは非常に重要)。同時に、更新プロセスの現在の状態と潜在的なエラー状態をソリューション バックエンドに継続的に報告します。 このパターンは、多数のデバイスの管理に役立ちます。これは、すべてのデバイスにおける構成プロセスの状態を、ソリューション バックエンドで完全に表示できるためです。
 
 > [!NOTE]
-> In scenarios where devices are controlled in a more interactive fashion (turn on a fan from a user-controlled app), consider using [cloud-to-device methods][lnk-methods].
+> (ユーザー制御アプリからファンをオンにするなど) より対話的な方法でデバイスを制御するシナリオについては、[ダイレクト メソッド][lnk-methods]の使用を検討してください。
 > 
 > 
 
-In this tutorial, the application back end changes the telemetry configuration of a target device and, as a result of that, the device app follows a multi-step process to apply a configuration update (e.g. requiring a software module restart), which this tutorial simulates with a simple delay).
+このチュートリアルでは、ソリューション バックエンドによってターゲット デバイスのテレメトリ構成が変更されます。その結果、デバイス アプリは、複数手順のプロセスに従って構成の更新 (ソフトウェア モジュールの再起動など) を適用します。このチュートリアルでは単純な遅延でこれをシミュレートします。
 
-The back-end stores the configuration in the device twin's desired properties in the following way:
+ソリューション バックエンドでは、次の方法でデバイス ツインの必要なプロパティに構成が格納されます。
 
         {
             ...
@@ -37,11 +36,11 @@ The back-end stores the configuration in the device twin's desired properties in
         }
 
 > [!NOTE]
-> Since configurations can be complex objects, they are usually assigned unique ids (hashes or [GUIDs][lnk-guid]) to simplify their comparisons.
+> 構成は複雑なオブジェクトである可能性があるため、比較しやすいように、構成には通常一意の ID (ハッシュまたは [GUID][lnk-guid]) が割り当てられます。
 > 
 > 
 
-The device app reports its current configuration mirroring the desired property **telemetryConfig** in the reported properties:
+デバイス アプリは、必要なプロパティ **telemetryConfig** を報告されるプロパティに反映して、現在の構成を報告します。
 
         {
             "properties": {
@@ -57,9 +56,9 @@ The device app reports its current configuration mirroring the desired property 
             }
         }
 
-Note how the reported **telemetryConfig** has an additional property **status**, used to report the state of the configuration update process.
+報告される **telemetryConfig** に追加のプロパティ **status** があることに注意してください。このプロパティは、構成の更新プロセスの状態を報告するために使用されます。
 
-When a new desired configuration is received, the device app reports a pending configuration by changing the information:
+望ましい構成が新たに届いたら、デバイス アプリは情報を変更して保留中の構成を報告します。
 
         {
             "properties": {
@@ -79,13 +78,13 @@ When a new desired configuration is received, the device app reports a pending c
             }
         }
 
-Then, at some later time, the device app will report the success of failure of this operation by updating the above property.
-Note how the back end is able, at any time, to query the status of the configuration process across all the devices.
+しばらくしてから、デバイス アプリは、上記のプロパティを更新してこの操作の失敗または成功を報告します。
+すべてのデバイスにおける構成プロセスの状態は、ソリューション バックエンドでいつでも照会できることに注目してください。
 
-This tutorial shows you how to:
+このチュートリアルでは、次の操作方法について説明します。
 
-* Create a simulated device that receives configuration updates from the back end and reports multiple updates as *reported properties* on the configuration update process.
-* Create a back-end app that updates the desired configuration of a device, and then queries the configuration update process.
+* ソリューション バックエンドから構成の更新を受け取り、構成の更新プロセスで複数の更新を "*報告されるプロパティ*" として報告する、シミュレーション対象デバイス アプリを作成します。
+* デバイスの望ましい構成を更新し、構成の更新プロセスを照会するバックエンド アプリを作成します。
 
 <!-- links -->
 
@@ -94,6 +93,7 @@ This tutorial shows you how to:
 [lnk-twin-tutorial]: ../articles/iot-hub/iot-hub-node-node-twin-getstarted.md
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Feb17_HO3-->
 
 

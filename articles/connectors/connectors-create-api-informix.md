@@ -1,13 +1,13 @@
 ---
-title: ロジック アプリに Informix コネクタを追加する | Microsoft Docs
-description: Informix コネクタと REST API パラメーターの概要
-services: ''
-documentationcenter: ''
+title: "ロジック アプリに Informix コネクタを追加する | Microsoft Docs"
+description: "Informix コネクタと REST API パラメーターの概要"
+services: 
+documentationcenter: 
 author: gplarsen
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
+translationtype: Human Translation
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 614400a8787fdd2081fa8e981c0fc6b6dd794a58
+ms.lasthandoff: 02/16/2017
+
 
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
@@ -28,15 +33,15 @@ Microsoft Connector for Informix は、IBM Informix データベースに格納�
 このコネクタでは、次のデータベース操作をサポートしています。
 
 * データベース テーブルの一覧表示
-* SELECT を使用した 1 つの行の読み取り
+* SELECT を使用した&1; つの行の読み取り
 * SELECT を使用したすべての行の読み取り
-* INSERT を使用した 1 つの行の追加
-* UPDATE を使用した 1 つの行の変更
-* DELETE を使用した 1 つの行の削除
+* INSERT を使用した&1; つの行の追加
+* UPDATE を使用した&1; つの行の変更
+* DELETE を使用した&1; つの行の削除
 
 このトピックでは、ロジック アプリでコネクタを使用してデータベース操作を処理する方法を説明します。
 
-Logic Apps の詳細については、 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
 
 ## <a name="available-actions"></a>使用可能なアクション
 このコネクタでサポートされているロジック アプリのアクションは、次のとおりです。
@@ -157,8 +162,8 @@ Informix テーブル内のすべての行を取得するロジック アプリ�
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
-## <a name="add-one-row-using-insert"></a>INSERT を使用した 1 つの行の追加
-Informix テーブル内の 1 つの行を追加するロジック アプリのアクションを作成できます。 このアクションでは、Informix の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
+## <a name="add-one-row-using-insert"></a>INSERT を使用した&1; つの行の追加
+Informix テーブル内の&1; つの行を追加するロジック アプリのアクションを作成できます。 このアクションでは、Informix の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -184,8 +189,8 @@ Informix テーブル内の 1 つの行を追加するロジック アプリの�
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
-## <a name="fetch-one-row-using-select"></a>SELECT を使用して 1 つの行を取得する
-Informix テーブル内の 1 つの行を取得するロジック アプリのアクションを作成できます。 このアクションでは、Informix の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="fetch-one-row-using-select"></a>SELECT を使用して&1; つの行を取得する
+Informix テーブル内の&1; つの行を取得するロジック アプリのアクションを作成できます。 このアクションでは、Informix の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -212,8 +217,8 @@ Informix テーブル内の 1 つの行を取得するロジック アプリの�
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
-## <a name="change-one-row-using-update"></a>UPDATE を使用して 1 つの行を変更する
-Informix テーブル内の 1 つの行を変更するロジック アプリのアクションを作成できます。 このアクションでは、Informix の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
+## <a name="change-one-row-using-update"></a>UPDATE を使用して&1; つの行を変更する
+Informix テーブル内の&1; つの行を変更するロジック アプリのアクションを作成できます。 このアクションでは、Informix の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -239,8 +244,8 @@ Informix テーブル内の 1 つの行を変更するロジック アプリの�
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
-## <a name="remove-one-row-using-delete"></a>DELETE を使用した 1 つの行の削除
-Informix テーブル内の 1 つの行を削除するロジック アプリのアクションを作成できます。 このアクションでは、Informix の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="remove-one-row-using-delete"></a>DELETE を使用した&1; つの行の削除
+Informix テーブル内の&1; つの行を削除するロジック アプリのアクションを作成できます。 このアクションでは、Informix の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -272,7 +277,7 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
 
 | アクション | Description |
 | --- | --- |
-| [GetRow](connectors-create-api-informix.md#get-row) |Informix テーブルから 1 つの行を取得します |
+| [GetRow](connectors-create-api-informix.md#get-row) |Informix テーブルから&1; つの行を取得します |
 | [GetRows](connectors-create-api-informix.md#get-rows) |Informix テーブルから複数の行を取得します |
 | [InsertRow](connectors-create-api-informix.md#insert-row) |Informix テーブルに新しい行を挿入します |
 | [DeleteRow](connectors-create-api-informix.md#delete-row) |Informix テーブルから行を削除します |
@@ -283,7 +288,7 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
 このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
 
 #### <a name="get-row"></a>行を取得する
-Informix テーブルから 1 つの行を取得します。  
+Informix テーブルから&1; つの行を取得します。  
 
 | プロパティ名 | Displayname Settings | Description |
 | --- | --- | --- |
@@ -400,8 +405,6 @@ Informix テーブルの既存の行を更新します。
 * IBM Informix 11.7
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-<!--HONumber=Oct16_HO2-->
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
 

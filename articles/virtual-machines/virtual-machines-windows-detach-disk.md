@@ -1,20 +1,25 @@
 ---
-title: Windows VM からデータ ディスクを切断する | Microsoft Docs
-description: Resource Manager デプロイ モデルを使用する Azure 仮想マシンから、データ ディスクを切断する方法について説明します。
+title: "Windows VM からデータ ディスクを切断する - Azure | Microsoft Docs"
+description: "Resource Manager デプロイ モデルを使用する Azure 仮想マシンから、データ ディスクを切断する方法について説明します。"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 13180343-ac49-4a3a-85d8-0ead95e2028c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 03/21/2017
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 7274a86ada8115e86156592cf034d0350f59ebab
+ms.lasthandoff: 03/22/2017
+
 
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
@@ -29,12 +34,14 @@ ms.author: cynthn
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 1. ポータル ハブで **[仮想マシン]**を選択します。
-2. 切断するデータ ディスクが接続されている仮想マシンを選択し、 **[すべての設定]**をクリックします。
-3. **[設定]** ブレードで、**[ディスク]** を選択します。
-4. **[ディスク]** ブレードで、切断するデータ ディスクを選択します。
-5. データ ディスクのブレードで、 **[切断]**をクリックします。
+2. 切断するデータ ディスクが接続されている仮想マシンを選択し、**[停止]** をクリックして VM の割り当てを解除します。
+3. 仮想マシンのブレードで、**[ディスク]** を選択します。
+4. **[ディスク]** ブレードの上部で、**[編集]** を選択します。
+5. **[ディスク]** ブレードで、切断するデータ ディスクの右端にある ![切断ボタン イメージ](./media/virtual-machines-common-detach-disk/detach.png) 切断ボタンをクリックします。
+5. ディスクが削除されたら、ブレードの上部にある [保存] をクリックします。
+6. [仮想マシン] ブレードで **[概要]** をクリックし、ブレードの上部にある **[開始]** ボタンをクリックして VM を再起動します。
 
-    ![[切断] ボタンが表示されたスクリーンショット。](./media/virtual-machines-windows-detach-disk/detach-disk.png)
+
 
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
@@ -45,16 +52,15 @@ ms.author: cynthn
 
 最後のコマンドは仮想マシンの状態を更新し、データ ディスク削除のプロセスを完了します。
 
-    $VirtualMachine = Get-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" 
-    Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3"
-    Update-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" -VM $VirtualMachine
+```powershell
+$VirtualMachine = Get-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" 
+Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3"
+Update-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" -VM $VirtualMachine
+```
 
-
-詳細については、「 [Remove-AzureRmVMDataDisk](https://msdn.microsoft.com/library/mt603614.aspx)
+詳細については、「[Remove-AzureRmVMDataDisk](/powershell/remove-azurermvmdatadisk)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-データ ディスクを再利用する場合は、 [別の VM にそのデータ ディスクをアタッチ](virtual-machines-windows-attach-disk-portal.md)
-
-<!--HONumber=Oct16_HO2-->
+データ ディスクを再利用する場合は、 [別の VM にそのデータ ディスクをアタッチ](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 

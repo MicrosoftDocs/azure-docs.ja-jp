@@ -1,12 +1,12 @@
-## Azure DNS
+## <a name="azure-dns"></a>Azure DNS
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。
 
 | プロパティ | 説明 | 値の例 |
 | --- | --- | --- |
 | **DNSzones** |特定ドメインの DNS レコードをホストするドメイン ゾーンの情報 |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com" |
 
-### DNS レコード セット
-DNS ゾーンには、レコード セットという名前の子オブジェクトがあります。レコード セットは、DNS ゾーンに対する種類別のホスト レコードのコレクションです。レコードの種類は、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT です。
+### <a name="dns-record-sets"></a>DNS レコード セット
+DNS ゾーンには、レコード セットという名前の子オブジェクトがあります。 レコード セットは、DNS ゾーンに対する種類別のホスト レコードのコレクションです。 レコードの種類は、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT です。
 
 | プロパティ | 説明 | 値の例 |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ DNS ゾーンには、レコード セットという名前の子オブジェク
 
 <sup>1</sup> レコード セットごとに 1 つの値のみ許可されます。
 
-<sup>2</sup> DNS ゾーンごとに 1 つのレコード種類の SOA のみ許可されます。
+<sup>2</sup> DNS ゾーンごとに 1 つのレコード種類の SOA のみ許可されます。 
 
 Json 形式での DNS ゾーンの例:
 
@@ -77,9 +77,13 @@ Json 形式での DNS ゾーンの例:
           ]
     }
 
-## その他のリソース
-詳細については、[DNS ゾーンの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130626.aspx)を参照してください。
+## <a name="additional-resources"></a>その他のリソース
+詳細については、 [DNS ゾーンの REST API ドキュメント ](https://msdn.microsoft.com/library/azure/mt130626.aspx) を参照してください。
 
-詳細については、[DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130627.aspx)を参照してください。
+詳細については、 [DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130627.aspx) を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

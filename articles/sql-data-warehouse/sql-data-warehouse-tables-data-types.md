@@ -1,36 +1,42 @@
 ---
-title: Data types for tables in SQL Data Warehouse | Microsoft Docs
-description: Getting started with data types for Azure SQL Data Warehouse tables.
+title: "SQL Data Warehouse のテーブルのデータ型 | Microsoft Docs"
+description: "Azure SQL Data Warehouse のテーブルのデータ型の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.lasthandoff: 03/22/2017
+
 
 ---
-# <a name="data-types-for-tables-in-sql-data-warehouse"></a>Data types for tables in SQL Data Warehouse
+# <a name="data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルのデータ型
 > [!div class="op_single_selector"]
-> * [Overview][Overview]
-> * [Data Types][Data Types]
-> * [Distribute][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Temporary][Temporary]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
+> * [インデックス][Index]
+> * [パーティション][Partition]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
-SQL Data Warehouse supports the most commonly used data types.  Below is a list of the data types supported by SQL Data Warehouse.  For additional details on data type support, see [create table][create table].
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。  SQL Data Warehouse でサポートされるデータ型の一覧を以下に示します。  データ型のサポートについて詳しくは、[テーブルの作成][create table]に関するページをご覧ください。
 
-| **Supported Data Types** |  |  |
+| **サポートされているデータ型** |  |  |
 | --- | --- | --- |
 | [bigint][bigint] |[decimal][decimal] |[smallint][smallint] |
 | [binary][binary] |[float][float] |[smallmoney][smallmoney] |
@@ -41,16 +47,16 @@ SQL Data Warehouse supports the most commonly used data types.  Below is a list 
 | [datetime2][datetime2] |[real][real] |[varbinary][varbinary] |
 | [datetimeoffset][datetimeoffset] |[smalldatetime][smalldatetime] |[varchar][varchar] |
 
-## <a name="data-type-best-practices"></a>Data type best practices
- When defining your column types, using the smallest data type which will support your data will improve query performance. This is especially important for CHAR and VARCHAR columns. If the longest value in a column is 25 characters, then define your column as VARCHAR(25). Avoid defining all character columns to a large default length. In addition, define columns as VARCHAR when that is all that is needed rather than use [NVARCHAR][NVARCHAR].  Use NVARCHAR(4000) or VARCHAR(8000) when possible instead of NVARCHAR(MAX) or VARCHAR(MAX).
+## <a name="data-type-best-practices"></a>データ型のベスト プラクティス
+ 列の型を定義するときに、データをサポートする最小のデータ型を使用すると、クエリのパフォーマンスが向上します。 これは、CHAR および VARCHAR 列の場合に特に重要です。 列の最長の値が 25 文字の場合は、列を VARCHAR(25) として定義します。 すべての文字列を既定の長さで定義しないようにします。 さらに、VARCHAR で済む場合は、[NVARCHAR][NVARCHAR] を使用せずに、列を VARCHAR として定義します。  可能なときは、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
 
-## <a name="polybase-limitation"></a>Polybase limitation
-If you are using Polybase to load your tables, define your tables so that the maximum possible row size, including the full length of variable length columns, does not exceed 32,767 bytes.  While you can define a row with variable length data that can exceed this width and load rows with BCP, you will not be able to use Polybase to load this data.  Polybase support for wide rows will be added soon.
+## <a name="polybase-limitation"></a>Polybase の制限事項
+テーブルの読み込みに Polybase を使用している場合は、データの長さが 1 MB を超えていないことを確認します。  この幅を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはできません。  
 
-## <a name="unsupported-data-types"></a>Unsupported data types
-If you are migrating your database from another SQL platform like Azure SQL Database, as you migrate, you may encounter some data types that are not supported on SQL Data Warehouse.  Below are unsupported data types as well as some alternatives you can use in place of unsupported data types.
+## <a name="unsupported-data-types"></a>サポートされていないデータ型
+Azure SQL Database などの別の SQL プラットフォームからデータベースを移行する場合は、一部のデータ型が SQL Data Warehouse でサポートされていない可能性があります。  以下に、サポートされていないデータ型とサポートされていないデータ型の代わりに使用できるデータ型をいくつか示します。
 
-| Data Type | Workaround |
+| データ型 | 対処法 |
 | --- | --- |
 | [geometry][geometry] |[varbinary][varbinary] |
 | [geography][geography] |[varbinary][varbinary] |
@@ -58,14 +64,14 @@ If you are migrating your database from another SQL platform like Azure SQL Data
 | [image][ntext,text,image] |[varbinary][varbinary] |
 | [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
-| [sql_variant][sql_variant] |Split column into several strongly typed columns. |
-| [table][table] |Convert to temporary tables. |
-| [timestamp][timestamp] |Rework code to use [datetime2][datetime2] and `CURRENT_TIMESTAMP` function.  Only constants are supported as defaults, therefore current_timestamp cannot be defined as a default constraint. If you need to migrate row version values from a timestamp typed column then use [BINARY][BINARY](8) or [VARBINARY][BINARY](8) for NOT NULL or NULL row version values. |
+| [sql_variant][sql_variant] |列を厳密に型指定された複数の列に分割します。 |
+| [table][table] |一時テーブルに変換します。 |
+| [timestamp][timestamp] |[datetime2][datetime2] と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。  定数のみが既定値としてサポートされているため、current_timestamp を既定の制約として定義できません。 timestamp で型指定された列から行バージョンの値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に [BINARY][BINARY](8) または [VARBINARY][BINARY](8) を使用します。 |
 | [xml][xml] |[varchar][varchar] |
-| [user defined types][user defined types] |convert back to their native types where possible |
-| default values |default values support literals and constants only.  Non-deterministic expressions or functions, such as `GETDATE()` or `CURRENT_TIMESTAMP`, are not supported. |
+| [ユーザー定義型][user defined types] |可能な限り、ネイティブ型に変換します。 |
+| 既定値 |既定値では、リテラルと定数のみがサポートされます。  `GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。 |
 
-The below SQL can be run on your current SQL database to identify columns which are not be supported by Azure SQL Data Warehouse:
+Azure SQL Data Warehouse でサポートされていない列を識別するために、現在の SQL データベースで以下の SQL を実行できます。
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -76,8 +82,8 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
  AND  y.[is_user_defined] = 1;
 ```
 
-## <a name="next-steps"></a>Next steps
-To learn more, see the articles on [Table Overview][Overview], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
+## <a name="next-steps"></a>次のステップ
+[テーブルの概要][Overview]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
 
@@ -128,9 +134,4 @@ To learn more, see the articles on [Table Overview][Overview], [Distributing a T
 [varchar]: https://msdn.microsoft.com/library/ms186939.aspx
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
 [user defined types]: https://msdn.microsoft.com/library/ms131694.aspx
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

@@ -4,16 +4,16 @@
 
 キャッシュを表示するには、**[その他のサービス] > [Redis Caches]** をクリックします。 最近 Redis Cache を参照した場合は、**[その他のサービス]** をクリックしなくても一覧から **[Redis Cache]** を直接クリックできます。
 
-キャッシュのプロパティを表示するには、目的のキャッシュを選択します。
+目的のキャッシュを選択して表示し、そのキャッシュの設定を構成します。
 
 ![Azure Redis Cache の参照キャッシュ リスト](media/redis-cache-browse/redis-caches.png)
 
-**[設定]** または **[すべての設定]** をクリックしてキャッシュを表示し、構成します。
+キャッシュの表示と構成は、**[Redis Cache]** ブレードで行うことができます。
 
 ![Redis Cache のすべての設定](media/redis-cache-browse/redis-cache-blade.png)
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

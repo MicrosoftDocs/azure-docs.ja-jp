@@ -4,7 +4,7 @@ description: "既存の Mobile Services プロジェクトに App Service がも
 services: app-service\mobile
 documentationcenter: ios
 author: adrianhall
-manager: dwrede
+manager: adrianha
 editor: 
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
 * (.NET の場合) MVC などの ASP.NET の任意の機能を活用します。
 * (Node.js の場合) 共通 MVC ライブラリなど、ノード エコシステムの任意の純粋な JavaScript ライブラリを活用します。
 
-## <a name="access-onpremises-data-using-vnet"></a>VNet を使用したオンプレミス データへのアクセス
+## <a name="access-on-premises-data-using-vnet"></a>VNet を使用したオンプレミス データへのアクセス
 Mobile Services により、現在既にハイブリッド接続を使用してオンプレミス リソースにアクセスすることができます。 ただし、VPN ソリューションの方が望ましい場合もあります。 *Azure App Service* により、モバイル アプリのバックエンド コードに Azure VNet を使用できます。
 
 ## <a name="use-your-favorite-backend-language"></a>好みのバックエンド言語の使用
@@ -63,10 +64,5 @@ Mobile services では、バックエンド コードのすべてのインスタ
 *Azure App Service* を使用することにより、モバイル アプリ用に複数のプライベートなテスト環境とステージング環境を作成できるようになりました。 これらを使用して、デプロイ前にテストを実行します。 ダウンタイムなしで運用環境と交換します。 Web アプリは事前に読み込まれ、優れたカスタマー エクスペリエンスを実現します。
 
 こちらの *チュートリアル* に従って、既存のモバイル サービスに [App Service](app-service-mobile-migrating-from-mobile-services.md)を活用することができます。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

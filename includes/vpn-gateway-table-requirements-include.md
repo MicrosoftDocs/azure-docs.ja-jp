@@ -1,4 +1,4 @@
-次の表に、PolicyBased および RouteBased の VPN Gateway の要件を示します。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。クラシック モデルでは、PolicyBased VPN Gateway は静的ゲートウェイと同じです。また、RouteBased のゲートウェイは動的ゲートウェイと同じです。
+次の表に、PolicyBased および RouteBased の VPN Gateway の要件を示します。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。 クラシック モデルでは、PolicyBased VPN Gateway は静的ゲートウェイと同じです。また、RouteBased のゲートウェイは動的ゲートウェイと同じです。
 
 |  | **PolicyBased の Basic VPN Gateway** | **RouteBased の Basic VPN Gateway** | **RouteBased の Standard VPN Gateway** | **RouteBased の HighPerformance VPN Gateway** |
 | --- | --- | --- | --- | --- |
@@ -9,4 +9,8 @@
 | **P2S 接続の最大数** |サポートされていません |128 |128 |128 |
 | **アクティブ ルーティングのサポート (BGP)** |サポートされていません |サポートされていません |サポートされています |サポートされています |
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

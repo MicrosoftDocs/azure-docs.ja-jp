@@ -1,23 +1,11 @@
 ---
-title: "NoSQL チュートリアル: DocumentDB .NET SDK | Microsoft Docs"
-description: "DocumentDB .NET SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成する NoSQL チュートリアル。 DocumentDB は、JSON 用の NoSQL データベースです。"
-keywords: "NoSQL チュートリアル, オンライン データベース, C# コンソール アプリケーション"
-services: documentdb
-documentationcenter: .net
-author: AndrewHoh
-manager: jhubbard
-editor: monicar
-ms.assetid: 4c084dab-52a4-4b84-9952-6d36a3bbb731
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 09/01/2016
-ms.author: anhoh
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 55d76dd78a6bb702d3beeadd1961635e3d5bfbbc
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: ee193a9b4e99c2a1e24ca7e725cfa7c50eb62677
+ms.lasthandoff: 02/23/2017
+
 
 
 ---
@@ -88,7 +76,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 > 
 > 
 
-次に、これら 2 つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
+次に、これら&2; つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
 
     public class Program
     {
@@ -261,7 +249,7 @@ DocumentDB [データベースは](documentdb-resources.md#databases)、**Docume
 おめでとうございます。 これで、DocumentDB ドキュメント コレクションが作成されました。  
 
 ## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の [データ移行ツール](documentdb-import-data.md)を使用できます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで&1; つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の [データ移行ツール](documentdb-import-data.md)を使用できます。
 
 まず、この例の DocumentDB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 **GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
 
@@ -341,7 +329,7 @@ DocumentDB [データベースは](documentdb-resources.md#databases)、**Docume
         }
     }
 
-さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう 1 つは Wakefield Family のドキュメントです。
+さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう&1; つは Wakefield Family のドキュメントです。
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメント コレクションの作成処理のすぐ下に追加してください。
 
@@ -475,7 +463,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#from-clause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
+DocumentDB クエリのスコープは既に&1; つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
 ## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
 DocumentDB は、JSON ドキュメントの置換をサポートします。  
@@ -599,12 +587,6 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 * プログラミング モデルの詳細については、 [DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

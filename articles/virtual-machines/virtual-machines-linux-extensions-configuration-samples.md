@@ -1,13 +1,13 @@
 ---
-title: Linux VM 拡張機能のサンプル構成 | Microsoft Docs
-description: 拡張機能を使用したテンプレート作成のサンプル構成 (Linux VM 向け)
+title: "Linux VM 拡張機能のサンプル構成 | Microsoft Docs"
+description: "拡張機能を使用したテンプレート作成のサンプル構成 (Linux VM 向け)"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4f50e6b2-fce0-41ef-823d-df433957601a
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 7f08d711a7d45c48fab5aab272b0446cff61e163
+
 
 ---
 # <a name="linux-vm-extension-configuration-samples"></a>Linux VM 拡張機能の構成のサンプル
 > [!div class="op_single_selector"]
-> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
-> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+> * [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
@@ -28,13 +32,13 @@ ms.author: kundanap
 
 この記事には、Linux VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
 
-これらの拡張機能の詳細については、「 [Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)
+これらの拡張機能の詳細については、「 [Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-拡張機能テンプレートの作成の詳細については、「 [拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)
+拡張機能テンプレートの作成の詳細については、「 [拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 この記事では、一部の Linux 拡張機能について、予測される構成値の一覧を示します。
 
-## <a name="sample-template-snippet-for-vm-extensions."></a>VM 拡張機能のサンプル テンプレート スニペット
+## <a name="sample-template-snippet-for-vm-extensions"></a>VM 拡張機能のサンプル テンプレート スニペット
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
 
       {
@@ -55,7 +59,7 @@ ms.author: kundanap
       }
       }
 
-## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets"></a>VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
           ....
@@ -90,7 +94,7 @@ ms.author: kundanap
             }
           }
 
-### <a name="customscript-extension-for-linux."></a>Linux 用 CustomScript 拡張機能
+### <a name="customscript-extension-for-linux"></a>Linux 用 CustomScript 拡張機能
     {
         "publisher": " Microsoft.Azure.Extensions",
         "type": "CustomScript",
@@ -127,7 +131,7 @@ ms.author: kundanap
           }
         }
 
-### <a name="vm-access-extension-(password-reset)"></a>VM Access 拡張機能 (パスワード リセット)
+### <a name="vm-access-extension-password-reset"></a>VM Access 拡張機能 (パスワード リセット)
 更新版のスキーマについては、 [VMAccessForLinux のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
@@ -217,6 +221,9 @@ ms.author: kundanap
 
 [Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

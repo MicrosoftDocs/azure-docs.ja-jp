@@ -1,12 +1,12 @@
 ---
-title: Temporary tables in SQL Data Warehouse | Microsoft Docs
-description: Getting started with temporary tables in Azure SQL Data Warehouse.
+title: "SQL Data Warehouse の一時テーブル | Microsoft Docs"
+description: "Azure SQL Data Warehouse の一時テーブルの概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,81 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83b12c6daf5422039f3dd95eb9b177b972fad840
+
 
 ---
-# <a name="temporary-tables-in-sql-data-warehouse"></a>Temporary tables in SQL Data Warehouse
+# <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 > [!div class="op_single_selector"]
-> * [Overview][Overview]
-> * [Data Types][Data Types]
-> * [Distribute][Distribute]
+> * [概要][概要]
+> * [データ型][データ型]
+> * [分散][分散]
 > * [Index][Index]
 > * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Temporary][Temporary]
+> * [統計][統計]
+> * [一時的な][一時]
 > 
 > 
 
-Temporary tables are very useful when processing data - especially during transformation where the intermediate results are transient. In SQL Data Warehouse temporary tables exist at the session level.  They are only visible to the session in which they were created and are automatically dropped when that session logs off.  Temporary tables offer a performance benefit because their results are written to local rather than remote storage.  Temporary tables are slightly different in Azure SQL Data Warehouse than Azure SQL Database as they can be accessed from anywhere inside the session, including both inside and outside of a stored procedure.
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが非常に役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
 
-This article contains essential guidance for using temporary tables and highlights the principles of session level temporary tables. Using the information in this article can help you modularize your code, improving both reusability and ease of maintenance of your code.
+この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
 
-## <a name="create-a-temporary-table"></a>Create a temporary table
-Temporary tables are created by simply prefixing your table name with a `#`.  For example:
+## <a name="create-a-temporary-table"></a>一時テーブルを作成する
+一時テーブルは、テーブル名にプレフィックス `#`を付けるだけで作成できます。  次に例を示します。
 
 ```sql
 CREATE TABLE #stats_ddl
 (
-    [schema_name]       NVARCHAR(128) NOT NULL
-,   [table_name]            NVARCHAR(128) NOT NULL
-,   [stats_name]            NVARCHAR(128) NOT NULL
-,   [stats_is_filtered]     BIT           NOT NULL
-,   [seq_nmbr]              BIGINT        NOT NULL
-,   [two_part_name]         NVARCHAR(260) NOT NULL
-,   [three_part_name]       NVARCHAR(400) NOT NULL
+    [schema_name]        NVARCHAR(128) NOT NULL
+,    [table_name]            NVARCHAR(128) NOT NULL
+,    [stats_name]            NVARCHAR(128) NOT NULL
+,    [stats_is_filtered]     BIT           NOT NULL
+,    [seq_nmbr]              BIGINT        NOT NULL
+,    [two_part_name]         NVARCHAR(260) NOT NULL
+,    [three_part_name]       NVARCHAR(400) NOT NULL
 )
 WITH
 (
     DISTRIBUTION = HASH([seq_nmbr])
-,   HEAP
+,    HEAP
 )
 ```
 
-Temporary tables can also be created with a `CTAS` using exactly the same approach:
+一時テーブルは、次のようにまったく同じ手法で `CTAS` を利用して作成することもできます。
 
 ```sql
 CREATE TABLE #stats_ddl
 WITH
 (
     DISTRIBUTION = HASH([seq_nmbr])
-,   HEAP
+,    HEAP
 )
 AS
 (
 SELECT
-        sm.[name]                                                               AS [schema_name]
-,       tb.[name]                                                               AS [table_name]
-,       st.[name]                                                               AS [stats_name]
-,       st.[has_filter]                                                         AS [stats_is_filtered]
+        sm.[name]                                                                AS [schema_name]
+,        tb.[name]                                                                AS [table_name]
+,        st.[name]                                                                AS [stats_name]
+,        st.[has_filter]                                                            AS [stats_is_filtered]
 ,       ROW_NUMBER()
         OVER(ORDER BY (SELECT NULL))                                            AS [seq_nmbr]
-,                                QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
-,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
-FROM    sys.objects         AS ob
-JOIN    sys.stats           AS st   ON  ob.[object_id]      = st.[object_id]
-JOIN    sys.stats_columns   AS sc   ON  st.[stats_id]       = sc.[stats_id]
-                                    AND st.[object_id]      = sc.[object_id]
-JOIN    sys.columns         AS co   ON  sc.[column_id]      = co.[column_id]
-                                    AND sc.[object_id]      = co.[object_id]
-JOIN    sys.tables          AS tb   ON  co.[object_id]      = tb.[object_id]
-JOIN    sys.schemas         AS sm   ON  tb.[schema_id]      = sm.[schema_id]
-WHERE   1=1
-AND     st.[user_created]   = 1
+,                                 QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
+,        QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
+FROM    sys.objects            AS ob
+JOIN    sys.stats            AS st    ON    ob.[object_id]        = st.[object_id]
+JOIN    sys.stats_columns    AS sc    ON    st.[stats_id]        = sc.[stats_id]
+                                    AND st.[object_id]        = sc.[object_id]
+JOIN    sys.columns            AS co    ON    sc.[column_id]        = co.[column_id]
+                                    AND    sc.[object_id]        = co.[object_id]
+JOIN    sys.tables            AS tb    ON    co.[object_id]        = tb.[object_id]
+JOIN    sys.schemas            AS sm    ON    tb.[schema_id]        = sm.[schema_id]
+WHERE    1=1
+AND        st.[user_created]   = 1
 GROUP BY
         sm.[name]
-,       tb.[name]
-,       st.[name]
-,       st.[filter_definition]
-,       st.[has_filter]
+,        tb.[name]
+,        st.[name]
+,        st.[filter_definition]
+,        st.[has_filter]
 )
 SELECT
     CASE @update_type
@@ -107,12 +111,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS` is a very powerful command and has the added advantage of being very efficient in its use of transaction log space. 
+> `CTAS` は非常に強力なコマンドであり、トランザクション ログ領域を非常に効率的に利用するという長所があります。 
 > 
 > 
 
-## <a name="dropping-temporary-tables"></a>Dropping temporary tables
-When a new session is created, no temporary tables should exist.  However, if you are calling the same stored procedure, which creates a temporary with the same name, to ensure that your `CREATE TABLE` statements are successful a simple pre-existence check with a `DROP` can be used as in the below example:
+## <a name="dropping-temporary-tables"></a>一時テーブルを削除する
+新しいセッションが作成されたとき、一時テーブルは存在しません。  ただし、同じストアド プロシージャを呼び出している場合、同じ名前で一時テーブルが作成されるため、`CREATE TABLE` ステートメントを正常に実行するには、次の例のように `DROP` を使用した簡単な既存チェックを使用できます。
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -121,14 +125,14 @@ BEGIN
 END
 ```
 
-For coding consistency, it is a good practice to use this pattern for both tables and temporary tables.  It is also a good idea to use `DROP TABLE` to remove temporary tables when you have finished with them in your code.  In stored procedure development it is quite common to see the drop commands bundled together at the end of a procedure to ensure these objects are cleaned up.
+コードの一貫性のために、テーブルと一時テーブルの両方にこのパターンを利用することが推奨されます。  また、コードで一時テーブルの利用を終えたら、 `DROP TABLE` でそれを削除することもお勧めします。  ストアド プロシージャの開発では、一般的に、オブジェクトが消去されるように、プロシージャの終わりに削除コマンドがバンドルされています。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modularizing code
-Since temporary tables can be seen anywhere in a user session, this can be exploited to help you modularize your application code.  For example, the stored procedure below brings together the recommended practices from above to generate DDL which will update all statistics in the database by statistic name.
+## <a name="modularizing-code"></a>コードのモジュール化
+一時テーブルはユーザー セッションのどこでも表示できるため、アプリケーション コードをモジュール化できます。  たとえば、次のストアド プロシージャは上記の推奨されるベスト プラクティスを実現し、統計の名前でデータベースのすべての統計を更新する DDL を生成します。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -160,30 +164,30 @@ WITH
 AS
 (
 SELECT
-        sm.[name]                                                               AS [schema_name]
-,       tb.[name]                                                               AS [table_name]
-,       st.[name]                                                               AS [stats_name]
-,       st.[has_filter]                                                         AS [stats_is_filtered]
+        sm.[name]                                                                AS [schema_name]
+,        tb.[name]                                                                AS [table_name]
+,        st.[name]                                                                AS [stats_name]
+,        st.[has_filter]                                                            AS [stats_is_filtered]
 ,       ROW_NUMBER()
         OVER(ORDER BY (SELECT NULL))                                            AS [seq_nmbr]
-,                                QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
-,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
-FROM    sys.objects         AS ob
-JOIN    sys.stats           AS st   ON  ob.[object_id]      = st.[object_id]
-JOIN    sys.stats_columns   AS sc   ON  st.[stats_id]       = sc.[stats_id]
-                                    AND st.[object_id]      = sc.[object_id]
-JOIN    sys.columns         AS co   ON  sc.[column_id]      = co.[column_id]
-                                    AND sc.[object_id]      = co.[object_id]
-JOIN    sys.tables          AS tb   ON  co.[object_id]      = tb.[object_id]
-JOIN    sys.schemas         AS sm   ON  tb.[schema_id]      = sm.[schema_id]
-WHERE   1=1
-AND     st.[user_created]   = 1
+,                                 QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
+,        QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
+FROM    sys.objects            AS ob
+JOIN    sys.stats            AS st    ON    ob.[object_id]        = st.[object_id]
+JOIN    sys.stats_columns    AS sc    ON    st.[stats_id]        = sc.[stats_id]
+                                    AND st.[object_id]        = sc.[object_id]
+JOIN    sys.columns            AS co    ON    sc.[column_id]        = co.[column_id]
+                                    AND    sc.[object_id]        = co.[object_id]
+JOIN    sys.tables            AS tb    ON    co.[object_id]        = tb.[object_id]
+JOIN    sys.schemas            AS sm    ON    tb.[schema_id]        = sm.[schema_id]
+WHERE    1=1
+AND        st.[user_created]   = 1
 GROUP BY
         sm.[name]
-,       tb.[name]
-,       st.[name]
-,       st.[filter_definition]
-,       st.[has_filter]
+,        tb.[name]
+,        st.[name]
+,        st.[filter_definition]
+,        st.[has_filter]
 )
 SELECT
     CASE @update_type
@@ -202,7 +206,7 @@ FROM    t1
 GO
 ```
 
-At this stage the only action that has occurred is the creation of a stored procedure which will simply generated a temporary table, #stats_ddl, with DDL statements.  This stored procedure will drop #stats_ddl if it already exists to ensure it does not fail if run more than once within a session.  However, since there is no `DROP TABLE` at the end of the stored procedure, when the stored procedure completes, it will leave the created table so that it can be read outside of the stored procedure.  In SQL Data Warehouse, unlike other SQL Server databases, it is possible to use the temporary table outside of the procedure that created it.  SQL Data Warehouse temporary tables can be used **anywhere** inside the session. This can lead to more modular and manageable code as in the below example:
+この段階で、発生した唯一のアクションが、DDL ステートメントで単純に一時テーブル #stats_ddl を生成するストアド プロシージャの作成です。  セッション内で複数回実行された場合に失敗しないように、既に存在する場合は、このストアド プロシージャが #stats_ddl を削除します。  ただし、ストアド プロシージャの最後に `DROP TABLE` がないため、ストアド プロシージャが実行されると、ストアド プロシージャの外から読み取れるように、作成されたテーブルはそのままになります。  他の SQL Server データベースと異なり、SQL Data Warehouse では、一時テーブルを作成したプロシージャの外部でその一時テーブルを使用できます。  SQL Data Warehouse では、一時テーブルはセッション内の **どこでも** 使用できます。 これにより、次の例のように、コードのモジュール性が高まり、コードを管理しやすくなります。
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -223,23 +227,23 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-## <a name="temporary-table-limitations"></a>Temporary table limitations
-SQL Data Warehouse does impose a couple of limitations when implementing temporary tables.  Currently, only session scoped temporary tables are supported.  Global Temporary Tables are not supported.  In addition, views cannot be created on temporary tables.
+## <a name="temporary-table-limitations"></a>一時テーブルの制限事項
+SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。  現時点では、セッションを範囲とした一時テーブルのみがサポートされています。  グローバル一時テーブルはサポートされていません。  また、一時テーブルでビューを作成することはできません。
 
-## <a name="next-steps"></a>Next steps
-To learn more, see the articles on [Table Overview][Overview], [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition] and [Maintaining Table Statistics][Statistics].  For more about best practices, see [SQL Data Warehouse Best Practices][SQL Data Warehouse Best Practices].
+## <a name="next-steps"></a>次のステップ
+[テーブルの概要][概要]、[テーブルのデータ型][データ型]、[テーブルの分散][分散]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][統計]に関する各記事で詳細をご覧ください。  その他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[概要]: ./sql-data-warehouse-tables-overview.md
+[データ型]: ./sql-data-warehouse-tables-data-types.md
+[分散]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[一時]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
@@ -247,6 +251,6 @@ To learn more, see the articles on [Table Overview][Overview], [Table Data Types
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

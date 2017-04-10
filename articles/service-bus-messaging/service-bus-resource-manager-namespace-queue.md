@@ -1,27 +1,31 @@
 ---
-title: Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成 | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
-services: service-bus
+title: "テンプレートを使用した Azure Service Bus の名前空間とキューの作成 | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成"
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 01/18/2017
 ms.author: sethm;shvija
+translationtype: Human Translation
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 777a515daa57f6a6af0ebec41412a3edbd1eaf19
+
 
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューを作成する方法について説明します。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Azure Resource Manager のテンプレートの作成]」を参照してください。
+テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
-完全なテンプレートについては、GitHub にある [Service Bus の名前空間とキューのテンプレート][Service Bus の名前空間とキューのテンプレート] を参照してください。
+完全なテンプレートについては、GitHub の [Service Bus の名前空間とキューのテンプレート][Service Bus namespace and queue template]に関するページを参照してください。
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
@@ -29,13 +33,13 @@ ms.author: sethm;shvija
 > * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
-> * [イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
+> * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure クイックスタート テンプレート] 」ギャラリーで "Service Bus" を検索してください。
+> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Service Bus" を検索してください。
 > 
 > 
 
-## <a name="what-will-you-deploy?"></a>デプロイの対象
+## <a name="what-will-you-deploy"></a>デプロイの対象
 このテンプレートでは、キューを含んだ Service Bus 名前空間をデプロイします。
 
 [Service Bus キュー](service-bus-queues-topics-subscriptions.md#queues)では、コンシューマーが競合している場合のメッセージ配信に先入れ先出し法 (FIFO) を使用します。
@@ -52,7 +56,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 作成する Service Bus 名前空間の名前。
 
-```
+```json
 "serviceBusNamespaceName": {
 "type": "string",
 "metadata": { 
@@ -64,7 +68,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
 Service Bus 名前空間に作成するキューの名前。
 
-```
+```json
 "serviceBusQueueName": {
 "type": "string"
 }
@@ -73,7 +77,7 @@ Service Bus 名前空間に作成するキューの名前。
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 テンプレートの Service Bus API バージョン。
 
-```
+```json
 "serviceBusApiVersion": {
 "type": "string"
 }
@@ -82,7 +86,7 @@ Service Bus 名前空間に作成するキューの名前。
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
 **Messaging**タイプの標準的な Service Bus 名前空間を作成し、キューを追加します。
 
-```
+```json
 "resources ": [{
         "apiVersion": "[variables('sbVersion')]",
         "name": "[parameters('serviceBusNamespaceName')]",
@@ -111,12 +115,14 @@ Service Bus 名前空間に作成するキューの名前。
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```
+
+```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```
+
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
@@ -125,18 +131,18 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>次のステップ
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-* [PowerShell で Service Bus を管理する](../service-bus/service-bus-powershell-how-to-provision.md)
-* [Service Bus リソースを Service Bus Explorer で管理する](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
+* [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)
+* [Service Bus リソースを Service Bus Explorer で管理する](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-[Service Bus の名前空間とキューのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
-[Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Service Bus のキューの詳細については、こちらを参照してください。]: service-bus-queues-topics-subscriptions.md
-[Azure リソース マネージャーでの Azure PowerShell の使用]: ../powershell-azure-resource-manager.md
-[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用]: ../xplat-cli-azure-resource-manager.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
+[Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

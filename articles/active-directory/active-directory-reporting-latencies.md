@@ -1,23 +1,27 @@
 ---
-title: Azure Active Directory レポートの待機時間 | Microsoft Docs
-description: Azure Active Directory でレポート イベントを表示するのにかかる時間
+title: "Azure Active Directory レポートの待機時間 | Microsoft Docs"
+description: "Azure Active Directory でレポート イベントを表示するのにかかる時間"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 346b14f8-d16d-4b07-8211-e6c5eec07062
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e15c82330ac27f58f3faec3a224123cb45c9b28b
+
 
 ---
-# Azure Active Directory レポートの待機時間
-*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
+# <a name="azure-active-directory-report-latencies"></a>Azure Active Directory レポートの待機時間
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です。*
 
 | レポート | 最小値 | 平均 | 最大値 |
 | --- | --- | --- | --- |
@@ -51,4 +55,9 @@ ms.author: dhanyahk
 | **プライベート プレビュー レポート** | | | |
 | すべてのユーザーのサインイン アクティビティ |2 時間 |4 時間 |8 時間 |
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

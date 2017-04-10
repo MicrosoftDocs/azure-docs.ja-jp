@@ -1,20 +1,24 @@
 ---
-title: Azure で MySQL データベースを作成して接続する
-description: Azure ポータルを使用して MySQL データベースを作成し、Azure の PHP Web アプリからそのデータベースに接続する方法について説明します。
+title: "Azure で MySQL データベースを作成して接続する"
+description: "Azure ポータルを使用して MySQL データベースを作成し、Azure の PHP Web アプリからそのデータベースに接続する方法について説明します。"
 documentationcenter: php
 services: app-service\web
 author: cephalin
-manager: wpickett
-editor: ''
+manager: erikre
+editor: 
 tags: mysql
-
+ms.assetid: 55465a9a-7e65-4fd9-8a65-dd83ee41f3e5
 ms.service: multiple
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/22/2016
 ms.author: robmcm;cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b5f828f90c73f5fd0356fde4e71c11d4d27ec794
+
 
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>Azure で MySQL データベースを作成して接続する
@@ -37,7 +41,7 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
    * **[データベース名]**: 一意に識別できる名前を入力します。
    * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
    * **[データベースの種類]**: 低コストまたは無料のレベルの場合は **[共有]** を選択し、専用リソースを取得する場合は **[専用]** を選択します。 
-   * **[リソース グループ]**: MySQL データベースを既存の [リソース グループ](resource-group-overview.md) に追加するか、新しいリソース グループに配置します。 同じグループ内のリソースは、まとめて簡単に管理できます。
+   * **[リソース グループ]**: MySQL データベースを既存の [リソース グループ](azure-resource-manager/resource-group-overview.md) に追加するか、新しいリソース グループに配置します。 同じグループ内のリソースは、まとめて簡単に管理できます。
    * **[場所]**: 近くの場所を選択します。 既存のリソース グループに追加する場合は、リソース グループの場所に固定されます。
    * **[価格レベル]**: **[価格レベル]** をクリックし、価格オプション (**Mercury** レベルは無料) を選択して、**[選択]** をクリックします。 
    * **[法律条項]**: **[法律条項]** をクリックし、購入の詳細を確認して、**[購入]** をクリックします。
@@ -64,7 +68,7 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
 
 これで、どの Web アプリでもその接続情報を使用できるようになりました。 単純な PHP アプリから接続情報を使用する方法を示すサンプルは、 [こちら](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql)で入手できます。
 
-## <a name="connect-a-laravel-web-app-(from-the-php-get-started-tutorial)"></a>Laravel Web アプリの接続 (PHP の入門チュートリアルから)
+## <a name="connect-a-laravel-web-app-from-the-php-get-started-tutorial"></a>Laravel Web アプリの接続 (PHP の入門チュートリアルから)
 「[Azure への PHP Web アプリの作成、構成、デプロイ](app-service-web/app-service-web-php-get-started.md)」のチュートリアルを完了したばかりで、Azure で [Laravel](https://www.laravel.com/) Web アプリを実行しているとします。 その場合、Laravel アプリにデータベース機能を簡単に追加できます。 以下の手順に従ってください。
 
 > [!NOTE]
@@ -82,12 +86,13 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
         DB_PASSWORD=<PASSWORD_from_properties_blade>
    
    > [!NOTE]
-   > **[プロパティ]** ブレードでは、MySQL データベースの名前が **[データベース名]** フィールドに表示されている場合と表示されていない場合があります。 **[接続文字列]** フィールドで Database パラメーターを確認することをお勧めします。 
+   > **[プロパティ]** ブレードでは、MySQL データベースの名前が **[データベース名]** フィールドに表示されている場合と表示されていない場合があります。 **[接続文字列]** フィールドで Database パラメーターを確認することをお勧めします。    
    > 
    > ![Create a MySQL database in Azure - in progress](./media/store-php-create-mysql-database/connect-db-1-database-name.png)
    > 
    > 
-2. 現時点で MySQL にアクセスできることを確認するための最も簡単な方法は、 [Laravel の既定の認証スキャフォールディング](https://laravel.com/docs/5.2/authentication#authentication-quickstart)を使用することです。 コマンド ライン ターミナルで、Laravel アプリのルート ディレクトリから以下のコマンドを実行します。
+2. 現時点で MySQL にアクセスできることを確認するための最も簡単な方法は、 [Laravel の既定の認証スキャフォールディング](https://laravel.com/docs/5.2/authentication#authentication-quickstart)を使用することです。 
+   コマンド ライン ターミナルで、Laravel アプリのルート ディレクトリから以下のコマンドを実行します。
    
          php artisan migrate
          php artisan make:auth
@@ -136,6 +141,9 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,12 @@
-
 ---
 title: 'Azure-consistent storage: differences and considerations | Microsoft Docs'
 description: Understand the differences from Azure Storage and other Azure-consistent storage deployment considerations.
 services: azure-stack
-documentationcenter: ''
+documentationcenter: 
 author: MChadalapaka
 manager: siroy
-editor: ''
-
+editor: 
+ms.assetid: 1d720ffa-848d-4853-b7b4-ac726fe82e99
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: mchad
+translationtype: Human Translation
+ms.sourcegitcommit: 7f8a9c563000d2958b58569740c05f96de0dc7e4
+ms.openlocfilehash: 28a83a899c5c4c261a2b63bf96baf4b040b5585f
+
 
 ---
-# <a name="azure-consistent-storage:-differences-and-considerations"></a>Azure-consistent storage: differences and considerations
+# <a name="azure-consistent-storage-differences-and-considerations"></a>Azure-consistent storage: differences and considerations
 Azure-consistent storage is the set of storage cloud services in Microsoft Azure Stack. Azure-consistent storage provides blob, table, queue, and account management functionality with Azure-consistent semantics. This article summarizes the known Azure-consistent storage differences with Azure Storage. It also summarizes other considerations to keep in mind when you deploy the currently publicly available preview version of Microsoft Azure Stack.
 
 <span id="Concepts" class="anchor"><span id="_Toc386544169" class="anchor"><span id="_Toc389466742" class="anchor"><span id="_Ref428966996" class="anchor"><span id="_Toc433223853" class="anchor"></span></span></span></span></span>
@@ -55,6 +58,9 @@ The following versions are supported with this preview release of Azure-consiste
 
 * [Introduction to Azure-consistent storage](azure-stack-storage-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

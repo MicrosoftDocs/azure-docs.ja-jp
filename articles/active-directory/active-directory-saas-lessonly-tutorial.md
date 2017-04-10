@@ -1,22 +1,27 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Lesson.ly の統合 | Microsoft Docs'
-description: Azure Active Directory と Lesson.ly の間でシングル サインオンを構成する方法について説明します。
+title: "チュートリアル: Azure Active Directory と Lesson.ly の統合 | Microsoft Docs"
+description: "Azure Active Directory と Lesson.ly の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 8c9dc6e6-5d85-4553-8a35-c7137064b928
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/14/2017
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: 242cc7d58acb4af66d7ea5da4502db4ce2b414c6
+ms.lasthandoff: 02/15/2017
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-lesson.ly"></a>チュートリアル: Azure Active Directory と Lesson.ly の統合
+# <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>チュートリアル: Azure Active Directory と Lesson.ly の統合
 このチュートリアルの目的は、Lesson.ly と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
 Lesson.ly と Azure AD の統合には、次の利点があります。
@@ -41,17 +46,17 @@ Azure AD と Lesson.ly の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Lesson.ly の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-lesson.ly-from-the-gallery"></a>ギャラリーからの Lesson.ly の追加
+## <a name="adding-lessonly-from-the-gallery"></a>ギャラリーからの Lesson.ly の追加
 Azure AD への Lesson.ly の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Lesson.ly を追加する必要があります。
 
 **ギャラリーから Lesson.ly を追加するには、次の手順に従います。**
@@ -127,17 +132,17 @@ Lesson.ly アプリケーションでは、特定の形式の SAML アサーシ�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lessonly_04.png) 
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、"**https://companyname.Lesson.ly/signin**" のパターンを使用して、ユーザーが Lesson.ly アプリケーションへのサインオンに使用する URL を入力します。 一般名を参照するときは、この **companyname** を実際の名前に置き換える必要があります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、ユーザーが Lessonly アプリケーションへのサインオンに使用する URL を、"**https://companyname.lesson.ly/signin**" の形式で入力します。 一般名を参照するときは、この **companyname** を実際の名前に置き換える必要があります。
 
 
 1. **[Lesson.ly でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lessonly_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
-2. お使いのアプリケーション用に構成された SSO を取得するために、Lesson.ly のサポート チーム ( dev@lesson.ly. Lesson.ly チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
+    b. **[次へ]**をクリックします。
+2. お使いのアプリケーション用に構成された SSO を取得するために、Lesson.ly のサポート チーム (dev@lessonly.com) に問い合わせます。 Lesson.ly チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
    ![Azure AD のシングル サインオン][10]
@@ -168,22 +173,23 @@ Lesson.ly アプリケーションでは、特定の形式の SAML アサーシ�
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lessonly-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lessonly-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに、「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lessonly-tutorial/create_aaduser_07.png) 
@@ -195,7 +201,7 @@ Lesson.ly アプリケーションでは、特定の形式の SAML アサーシ�
    
     b. **[完了]** をクリックします。   
 
-### <a name="creating-a-lesson.ly-test-user"></a>Lesson.ly テスト ユーザーの作成
+### <a name="creating-a-lessonly-test-user"></a>Lesson.ly テスト ユーザーの作成
 このセクションの目的は、Lesson.ly で Britta Simon というユーザーを作成することです。 Lesson.ly では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Lesson.ly ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)
@@ -252,9 +258,4 @@ Lesson.ly アプリケーションでは、特定の形式の SAML アサーシ�
 [203]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

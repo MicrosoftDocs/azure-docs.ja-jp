@@ -1,13 +1,27 @@
 ---
+title: "Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+services: key-vault
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: key-vault
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: d6059070f8cb8765986763a2ae52068ab692d41d
-ms.openlocfilehash: 9614778d6c7502f16639d2ccb2f259a98be5b0c9
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1913116e8d43d25a01ea2a8f4eb112c001dbc7ff
+ms.lasthandoff: 03/22/2017
 
 ---
+
 # <a name="key-vault-documentation"></a>Key Vault のドキュメント
 
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。
+Key Vault を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソースやソリューションにアクセスして暗号化するキーを作成および管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +43,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=key-vault">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=key-vault">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,36 +117,51 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 </ul>
 
 ---
-
-## <a name="reference"></a>リファレンス
-
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell リファレンス](/PowerShell/azureps-cmdlets-docs)
-
-### <a name="azure-cli"></a>Azure CLI 
-[Azure CLI を使用した Key Vault](/cli/azure/keyvault)
-
-### <a name="java"></a>Java 
-[Java リファレンスの Key Vault](/java/api/)
-
-### <a name="net"></a>.NET 
-[Key Vault に関する管理リファレンス API](/dotnet/api/) 
-
-### <a name="rest"></a>REST () 
-[Key Vault REST API リファレンス](/rest/api/keyvault) 
+ 
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p>
+                         <p><a href="/cli/azure/keyvault">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.keyvault">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">Node.JS</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/keyvault">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/key-vault.pdf">
-        <div class="img"></div>
-        <div class="text">
-Key Vault のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

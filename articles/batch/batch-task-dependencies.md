@@ -1,37 +1,47 @@
 ---
-title: Azure Batch におけるタスクの依存関係 | Microsoft Docs
-description: MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの正常完了に依存するタスクを作成します。
+title: "タスクの依存関係を使って、他のタスクの完了に基づきタスクを実行する - Azure Batch | Microsoft Docs"
+description: "MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの完了に依存するタスクを作成します。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/28/2016
-ms.author: marsma
+ms.date: 03/02/2017
+ms.author: tamram
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 12b121783f6d95a952441f1a570d58af9ec1eb7a
+ms.lasthandoff: 03/07/2017
+
 
 ---
-# <a name="task-dependencies-in-azure-batch"></a>Azure Batch におけるタスクの依存関係
-Azure Batch のタスク依存関係機能は、次の処理を行う場合に適しています。
+# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
+
+タスクの依存関係を定義して、タスクまたは一連のタスクが親タスクの完了後にのみ実行されるようにできます。 タスクの依存関係は、たとえば次のようなシナリオで役立ちます。
 
 * クラウドでの MapReduce 形式のワークロード。
 * 有向非巡回グラフ (DAG) としてデータ処理タスクを表すことのできるジョブ。
+* 各タスクが次のタスクの開始前に完了している必要がある、レンダリング前およびレンダリング後プロセス。
 * 下流のタスクが上流タスクの出力に依存する、その他すべてのジョブ。
 
-Batch のタスク依存関係を使用すると、コンピューティング ノードで他の 1 つ以上のタスクが正常に完了した後にのみ実行するようにスケジュールされたタスクを作成できます。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
+Batch のタスク依存関係を使用すると、コンピューティング ノードで&1; つ以上の親タスクが完了した後に実行されるようにスケジューリングされたタスクを作成できます。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
 
-他のタスクに対して一対一または一対多の依存関係を持つタスクを作成できます。 さらに、特定の範囲に依存するタスク (特定の範囲のタスク ID に該当する一連のタスクが正常に完了した場合にのみ実行されるタスク) を作成することもできます。 その 3 つの基本シナリオを組み合わせれば、多対多の関係を作成することもできます。
+既定では、依存タスクは、親タスクが正常に完了した後にのみ実行されるようにスケジューリングされます。 既定の動作を上書きし、親タスクが失敗したときにタスクを実行する、依存関係アクションを指定できます。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。  
 
-## <a name="task-dependencies-with-batch-.net"></a>Batch .NET でのタスクの依存関係
-この記事では、[Batch .NET][net_msdn] ライブラリを使用したタスクの依存関係の構成方法について説明します。 まず、ジョブで[タスクの依存関係を有効にする](#enable-task-dependencies)方法を説明した後、[依存関係を伴うタスクを構成する](#create-dependent-tasks)方法を紹介します。 最後に、Batch でサポートされる [依存関係のシナリオ](#dependency-scenarios) について取り上げます。
+他のタスクに対して一対一または一対多の依存関係を持つタスクを作成できます。 特定の範囲に依存するタスク (指定した範囲のタスク ID に該当するタスクのグループが完了した場合に実行されるタスク) を作成することもできます。 その&3; つの基本シナリオを組み合わせれば、多対多の関係を作成することもできます。
+
+## <a name="task-dependencies-with-batch-net"></a>Batch .NET でのタスクの依存関係
+この記事では、[Batch .NET][net_msdn] ライブラリを使用したタスクの依存関係の構成方法について説明します。 まず、ジョブで[タスクの依存関係を有効にする](#enable-task-dependencies)方法を説明した後、[依存関係を伴うタスクを構成する](#create-dependent-tasks)方法を紹介します。 親が失敗した場合に依存タスクを実行する、依存関係アクションを指定する方法についても説明します。 最後に、Batch でサポートされる [依存関係のシナリオ](#dependency-scenarios) について取り上げます。
 
 ## <a name="enable-task-dependencies"></a>タスクの依存関係を有効にする
-Batch アプリケーションでタスクの依存関係を使用するには、まず、そのジョブでタスクの依存関係が使用されていることを Batch サービスに伝える必要があります。 Batch .NET では、[CloudJob][net_cloudjob] の [UsesTaskDependencies][net_usestaskdependencies] プロパティを `true` に設定することによって有効にします。
+Batch アプリケーションでタスクの依存関係を使用するには、まず、タスクの依存関係を使用するジョブを構成する必要があります。 Batch .NET では、[CloudJob][net_cloudjob] の [UsesTaskDependencies][net_usestaskdependencies] プロパティを `true` に設定することによって有効にします。
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -44,7 +54,7 @@ unboundJob.UsesTaskDependencies = true;
 前のコード スニペットでは、"batchClient" は、[BatchClient][net_batchclient] クラスのインスタンスです。
 
 ## <a name="create-dependent-tasks"></a>依存タスクの作成
-他のタスクの正常完了に依存するタスクを作成するには、タスクが他のタスクに "依存" していることを Batch に伝えます。 Batch .NET では、[TaskDependencies][net_taskdependencies] クラスのインスタンスを使用して [CloudTask][net_cloudtask].[DependsOn][net_dependson] プロパティを構成します。
+1 つ以上の親タスクの完了に依存するタスクを作成するには、タスクが他のタスクに "依存" するよう指定します。 Batch .NET では、[TaskDependencies][net_taskdependencies] クラスのインスタンスを使って [CloudTask][net_cloudtask].[DependsOn][net_dependson] プロパティを構成します。
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -55,15 +65,15 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
-このコード スニペットは、"Flowers" という ID のタスクを作成しています。"Rain" と "Sun" という ID のタスクが正常に完了した後にのみ、コンピューティング ノードで実行するようスケジューリングしています。
+このコード スニペットでは、"Flowers" というタスク ID の依存タスクを作成しています。 "Flowers" タスクは "Rain" タスクと "Sun" タスクに依存します。 "Flowers" タスクは、"Rain" タスクと "Sun" タスクが正常に完了した後にのみコンピューティング ノードで実行されるようにスケジューリングされます。
 
 > [!NOTE]
-> タスクはその状態が **completed** になり、対応する**終了コード**が `0` であるとき、完了したと見なされます。 Batch .NET では、[CloudTask][net_cloudtask].[State][net_taskstate] プロパティの値が `Completed` で、なおかつ CloudTask の [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] プロパティの値が `0` である状態が該当します。
+> タスクはその状態が **completed** になり、対応する**終了コード**が `0` であるとき、正常に完了したと見なされます。 Batch .NET では、[CloudTask][net_cloudtask].[State][net_taskstate] プロパティの値が `Completed` で、なおかつ CloudTask の [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] プロパティの値が `0` である状態が該当します。
 > 
 > 
 
 ## <a name="dependency-scenarios"></a>依存関係のシナリオ
-Azure Batch で利用できる基本的なタスクの依存関係には、一対一、一対多、タスク ID 範囲という 3 つのシナリオがあります。 これらを組み合わせることで、第 4 のシナリオ (多対多) を実現することもできます。
+Azure Batch で利用できる基本的なタスクの依存関係には、一対一、一対多、タスク ID 範囲という&3; つのシナリオがあります。 これらを組み合わせることで、第&4; のシナリオ (多対多) を実現することもできます。
 
 | シナリオ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 例 |  |
 |:---:| --- | --- |
@@ -74,10 +84,10 @@ Azure Batch で利用できる基本的なタスクの依存関係には、一�
 > [!TIP]
 > タスク C、D、E、F がそれぞれタスク A と B に依存するような**多対多**の関係を作成できます。たとえば下流の複数のタスクが上流にある複数のタスクの出力に依存するような、前処理を並列実行する状況で有効活用できます。
 > 
-> 
+> このセクションの例では、依存タスクは親タスクが正常に完了した後にのみ実行されます。 この動作は、依存タスクの既定の動作です。 既定の動作を上書きする依存関係アクションを指定すると、親タスクが失敗した後にタスクを実行できます。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。
 
 ### <a name="one-to-one"></a>一対一
-単一タスクの正常完了に依存するタスクを作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnId][net_onid] 静的メソッドに 1 つのタスク ID を渡します。
+一対一の依存関係では、タスクは&1; つの親タスクの正常な完了に依存します。 この依存関係を作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnId][net_onid] 静的メソッドに&1; つのタスク ID を渡します。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -91,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一対多
-単一タスクの正常完了に依存するタスクを作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静的メソッドに 1 つのタスク ID を渡します。
+一対多の依存関係では、タスクは複数の親タスクの完了に依存します。 この依存関係を作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、[TaskDependencies][net_taskdependencies].[OnId][net_onids] 静的メソッドにタスク ID のコレクションを渡します。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -104,15 +114,18 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 {
     DependsOn = TaskDependencies.OnIds("Rain", "Sun")
 },
-```
+``` 
 
 ### <a name="task-id-range"></a>タスク ID の範囲
-特定の範囲内に ID が該当する一連のタスクの正常完了に依存するタスクを作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、その範囲の最初と最後のタスク ID を [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静的メソッドに渡します。
+親タスクの範囲への依存関係では、タスクは ID が特定の範囲内にあるタスクの完了に依存します。
+この依存関係を作成するには、[CloudTask][net_cloudtask] の [DependsOn][net_dependson] プロパティに値を設定する際、その範囲の最初のタスク ID と最後のタスク ID を [TaskDependencies][net_taskdependencies].[OnId][net_onidrange] 静的メソッドに渡します。
 
 > [!IMPORTANT]
-> 依存関係としてタスク ID の範囲を使用するとき、その範囲内のタスク ID には " *必ず* " 整数値の文字列表記を使用してください。 また、依存する側のタスクが実行対象としてスケジューリングされるためには、範囲内のすべてのタスクが正常に完了する必要があります。
+> 依存関係としてタスク ID の範囲を使用するとき、その範囲内のタスク ID には " *必ず* " 整数値の文字列表記を使用してください。
 > 
-> 
+> 範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された依存関係アクションに指定されているエラーで終了することによって、依存関係を満たしている必要があります。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。
+>
+>
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -132,15 +145,74 @@ new CloudTask("4", "cmd.exe /c echo 4")
 },
 ```
 
+## <a name="dependency-actions"></a>依存関係アクション
+
+既定では、依存タスクまたは一連の依存タスク は、親タスクが正常に完了した後にのみ実行されます。 シナリオによっては、親タスクが失敗した後でも依存タスクを実行したい場合があります。 依存関係アクションを指定すると、既定の動作を上書きできます。 依存関係アクションは、親タスクの成功または失敗に基づいて、依存タスクを実行対象にするかどうかを指定します。 
+
+たとえば、依存タスクが、上流タスクの完了によって得られるデータを待機しているとします。 上流タスクが失敗しても、古いデータを使用して依存タスクを実行できる場合があります。 その場合は、依存関係アクションで、親タスクの失敗にかかわらずタスクを実行対象にするよう指定できます。
+
+依存関係アクションは、親タスクの終了条件に基づきます。 .NET では、次のどの終了条件に対しても依存関係アクションを指定できます。詳細については、[ExitConditions][net_exitconditions] クラスに関する記事をご覧ください。
+
+- スケジュール エラーが発生したとき
+- **ExitCodes** プロパティで定義された終了コードでタスクが終了したとき
+- **ExitCodeRanges** プロパティで定義された範囲内の終了コードでタスクが終了したとき
+- 既定のケースで、**ExitCodes** または **ExitCodeRanges** で定義されていない終了コードでタスクが終了した場合、または、タスクがスケジュール エラーで終了し **SchedulingError** プロパティが設定されていない場合 
+
+.NET で依存関係アクションを指定するには、終了条件の [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] プロパティを設定します。 **DependencyAction** プロパティは、次の&2; つの値のいずれかに設定できます。
+
+- **DependencyAction** プロパティを **Satisfy** に設定すると、指定したエラーで親タスクが終了した場合に依存タスクが実行対象になります。
+- **DependencyAction** プロパティを **Block** に設定すると、依存タスクは実行対象になりません。
+
+**DependencyAction** プロパティの既定の設定は、終了コード 0 に対しては **Satisfy**、その他のすべての終了条件に対しては **Block** です。
+
+次のコード スニペットでは、親タスクの **DependencyAction** プロパティを設定します。 親タスクがスケジュール エラーで終了した場合、または指定したエラー コードで終了した場合は、依存タスクがブロックされます。 親タスクがその他の&0; 以外のエラーで終了した場合は、依存タスクが実行対象となります。
+
+```csharp
+// Task A is the parent task.
+new CloudTask("A", "cmd.exe /c echo A")
+{
+    // Specify exit conditions for task A and their dependency actions.
+    ExitConditions = new ExitConditions()
+    {
+        // If task A exits with a scheduling error, block any downstream tasks (in this example, task B).
+        SchedulingError = new ExitOptions()
+        {
+            DependencyAction = DependencyAction.Block
+        },
+        // If task A exits with the specified error codes, block any downstream tasks (in this example, task B).
+        ExitCodes = new List<ExitCodeMapping>()
+        {
+            new ExitCodeMapping(10, new ExitOptions() { DependencyAction = DependencyAction.Block }),
+            new ExitCodeMapping(20, new ExitOptions() { DependencyAction = DependencyAction.Block })
+        },
+        // If task A succeeds or fails with any other error, any downstream tasks become eligible to run 
+        // (in this example, task B).
+        Default = new ExitOptions()
+        {
+            DependencyAction = DependencyAction.Satisfy
+        }
+    }
+},
+// Task B depends on task A. Whether it becomes eligible to run depends on how task A exits.
+new CloudTask("B", "cmd.exe /c echo B")
+{
+    DependsOn = TaskDependencies.OnId("A")
+},
+```
+
 ## <a name="code-sample"></a>サンプル コード
-[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio 2015 ソリューションは、ジョブでタスクの依存関係を有効にし、他のタスクに依存するタスクを作成して、それらのタスクをコンピューティング ノードのプールで実行する方法を示します。
+[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の&1; つです。 この Visual Studio ソリューションでは以下を示しています。
+
+- ジョブでタスクの依存関係を有効にする方法
+- 他のタスクに依存するタスクを作成する方法
+- コンピューティング ノードのプールでそれらのタスクを実行する方法
 
 ## <a name="next-steps"></a>次のステップ
 ### <a name="application-deployment"></a>アプリケーションのデプロイ
 コンピューティング ノード上でタスクを通じて実行するアプリケーションのデプロイとバージョン管理は、どちらも Batch の [アプリケーション パッケージ](batch-application-packages.md) 機能を使って簡単に実現できます。
 
 ### <a name="installing-applications-and-staging-data"></a>アプリケーションとステージング データのインストール
-Azure Batch フォーラムの「[Installing applications and staging data on Batch compute nodes (Batch コンピューティング ノードへのアプリケーションとステージング データのインストール)」という投稿][forum_post]に、タスクの実行に使用するノードを準備するさまざまな方法が簡単に説明されています。 この投稿記事は、Azure Batch チームのメンバーによって書かれたものです。コンピューティング ノードにファイル (アプリケーションとタスクの入力データを含む) を展開する各種の方法がわかりやすく解説されています。
+タスクの実行に使用するノードを準備する方法の概要については、Azure Batch フォーラムの「[Installing applications and staging data on Batch compute nodes][forum_post]」(Batch コンピューティング ノードへのアプリケーションとステージング データのインストール) をご覧ください。 この投稿記事は、Azure Batch チームのメンバーによって書かれたものです。コンピューティング ノードにアプリケーション、タスクの入力データ、その他のファイルをコピーする各種の方法がわかりやすく解説されています。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -150,6 +222,9 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 [net_dependson]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.dependson.aspx
 [net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
+[net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
+[net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
+[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions#Microsoft_Azure_Batch_ExitOptions_DependencyAction
 [net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
 [net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx
@@ -159,12 +234,7 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 [net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
 [net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
 
-[1]: ./media/batch-task-dependency/01_one_to_one.png ": 一対一の依存関係"
-[2]: ./media/batch-task-dependency/02_one_to_many.png ": 一対多の依存関係"
-[3]: ./media/batch-task-dependency/03_task_id_range.png ": タスク範囲の依存関係"
-
-
-
-<!--HONumber=Oct16_HO2-->
-
+[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: one-to-one dependency"
+[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: one-to-many dependency"
+[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: task id range dependency"
 

@@ -1,19 +1,24 @@
 ---
-title: Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 管理タスクの決定 | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
-documentationcenter: ''
+title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 管理タスクの決定 | Microsoft Docs"
+description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fbb295d00f90a70b6d8505575e9260d0d8c98f1f
+ms.lasthandoff: 12/29/2016
+
 
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
@@ -53,16 +58,14 @@ ID ソリューションを調整し、ユーザーにセルフサービス機�
 ## <a name="synchronization-management"></a>同期管理
 ID マネージャーの目標の 1 つは、あらゆる ID プロバイダーを同期させることです。 権限のあるマスター ID プロバイダーに基づき、データを同期します。 同期管理モデルのあるハイブリッド ID シナリオでは、オンプレミス サーバーですべてのユーザーとデバイスの ID を管理し、アカウントと、必要に応じて、パスワードをクラウドに同期します。 ユーザーはクラウドと同じパスワードをオンプレミスで入力します。サインイン時にパスワードが ID ソリューションにより検証されます。 このモデルではディレクトリ同期ツールが使用されます。
 
-![](./media/hybrid-id-design-considerations/Directory_synchronization.png) ハイブリッド ID ソリューションの同期を適切に設計するには、次の質問に答えます。• ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
-• どのようなシングル サインオン機能が利用できますか。
-• B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
+![](./media/hybrid-id-design-considerations/Directory_synchronization.png) ハイブリッド ID ソリューションの同期を適切に設計するには、次の質問に答えます。•    ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
+•    どのようなシングル サインオン機能が利用できますか。
+•    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
 
 ## <a name="next-steps"></a>次のステップ
 [ハイブリッド ID 管理の導入戦略の決定](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

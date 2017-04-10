@@ -1,20 +1,23 @@
 ---
-title: Azure Government のドキュメント | Microsoft Docs
-description: Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。
-services: Azure-Government
+title: "Azure Government ドキュメントの概要 | Microsoft Docs"
+description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
+services: azure-government
 cloud: gov
-documentationcenter: ''
+documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: ''
-
-ms.service: multiple
+ms.assetid: 56d84e26-947e-4f3b-8e33-18247f1c7944
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 08/25/2016
+ms.date: 01/10/2017
 ms.author: ryansoc
+translationtype: Human Translation
+ms.sourcegitcommit: 8e5dd57f4ff55e350aebce339f9f723cc6ca917b
+ms.openlocfilehash: 2a1e9c6e001280451ae01330ee659d1e27c2d89a
+
 
 ---
 # <a name="azure-government-documentation-overview"></a>Azure Government ドキュメントの概要
@@ -46,31 +49,31 @@ Azure Government でソリューションをホストした場合、こうした
 ## <a name="protecting-customer-data-using-encryption"></a>暗号化を使用してお客様のデータを保護する
 リスクの緩和と規制義務の遵守が求められる中で、データの暗号化はしだいに注目を集め、その重要性はますます大きくなってきています。 効果的な暗号化システムを使用することで、現在のネットワークやアプリケーションのセキュリティ対策を強化し、クラウド環境の全体的なリスクを軽減することができます。
 
-### <a name="<a-name="overview"></a>encryption-at-rest"></a><a name="Overview"></a>保存時の暗号化
+### <a name="a-nameoverviewaencryption-at-rest"></a><a name="Overview"></a>保存時の暗号化
 ディスク ストレージに格納されているカスタマー コンテンツの保護には、保存データの暗号化が適用されます。 その実現にはいくつかの方法があります。
 
-### <a name="<a-name="overview"></a>storage-service-encryption"></a><a name="Overview"></a>Storage Service Encryption
+### <a name="a-nameoverviewastorage-service-encryption"></a><a name="Overview"></a>Storage Service Encryption
 Azure Storage Service Encryption はストレージ アカウント レベルで有効になります。したがってブロック BLOB とページ BLOB は、Azure Storage への書き込み時に自動的に暗号化されます。 Azure Storage からデータを読み取ると、Storage サービスによって復号化されてから、返されます。 そのため、データをセキュリティで保護するためにコードを変更したり、アプリケーションにコードを追加したりする必要はありません。
 
-### <a name="<a-name="overview"></a>azure-disk-encryption"></a><a name="Overview"></a>Azure Disk Encryption
+### <a name="a-nameoverviewaazure-disk-encryption"></a><a name="Overview"></a>Azure Disk Encryption
 Azure Virtual Machine に使用される OS ディスクとデータ ディスクを暗号化するには、Azure Disk Encryption を使用します。 Azure Key Vault との統合によって、ディスクの暗号化キーを制御し、効率よく管理することができます。
 
-### <a name="<a-name="overview"></a>client-side-encryption"></a><a name="Overview"></a>クライアント側の暗号化
+### <a name="a-nameoverviewaclient-side-encryption"></a><a name="Overview"></a>クライアント側の暗号化
 クライアント側の暗号化は Java と .NET ストレージ クライアント ライブラリに組み込まれているので、Azure Key Vault API を使用して簡単に実装できます。 Azure Key Vault では、Azure Active Directory を使用して、Azure Key Vault 内のシークレットへのアクセス権を特定のユーザー用に取得します。
 
-### <a name="<a-name="overview"></a>encryption-in-transit"></a><a name="Overview"></a>転送中の暗号化
+### <a name="a-nameoverviewaencryption-in-transit"></a><a name="Overview"></a>転送中の暗号化
 Azure Government への接続用に用意されている基本的な暗号化は、Transport Level Security (TLS) 1.2 プロトコルと X.509 証明書をサポートします。 Azure Government のデータセンター間におけるインフラストラクチャ ネットワーク接続には、Federal Information Processing Standard (FIPS) 140-2 Level 1 暗号アルゴリズムも使用されます。  Windows Server 2012 R2 と Windows 8 + VM、および Azure ファイル共有では、VM とファイル共有間の暗号化に SMB 3.0 を使用できます。 クライアント アプリケーションのストレージに転送する前のデータを暗号化したり、ストレージから転送された後のデータを復号化したりするには、クライアント側の暗号化を使用します。
 
-### <a name="<a-name="overview"></a>best-practices-for-encryption"></a><a name="Overview"></a>暗号化のベスト プラクティス
+### <a name="a-nameoverviewabest-practices-for-encryption"></a><a name="Overview"></a>暗号化のベスト プラクティス
 * IaaS VM: Azure Disk Encryption を使用します。 ディスクを Azure Storage にバックアップする際に使用する VHD ファイルは、Storage Service Encryption を有効にすることで暗号化します。ただし、その場合、暗号化されるのは、新しく書き込まれたデータだけです。 つまり、VM を作成してから、VHD ファイルを保持するストレージ アカウントで Storage Service Encryption を有効にすると、元の VHD ファイルではなく、変更のみが暗号化されます。
 * クライアント側の暗号化: データは転送前に暗号化され、保存データも暗号化されるので、データを暗号化するうえで最も安全な方法といえます。 ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。 ストレージを追加したくない場合は、転送中のデータに HTTPS を使用し、Storage Service Encryption を使用して保存データを暗号化する方法があります。 クライアント側の暗号化は、クライアントにかかる負荷が増加するため、スケーラビリティの計画でこの点を考慮する必要があります。特に、大量のデータを暗号化したり転送したりする場合に重要です。
 
-Azure における暗号化オプションの詳細については、「 [Storage Security Guide (ストレージ セキュリティ ガイド)](/storage-security-guide)」を参照してください。
+Azure における暗号化オプションの詳細については、「 [Storage Security Guide (ストレージ セキュリティ ガイド)](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)」を参照してください。
 
 ## <a name="protecting-customer-data-by-managing-secrets"></a>シークレットを管理することでお客様のデータを保護する
 クラウドにあるデータを保護するうえで、安全なキー管理は不可欠です。 キーの管理を省力化すると共に、クラウド アプリケーションやクラウド サービスでデータを暗号化する際に使用されるキーの管理に絶えず気を配るよう努めてください。
 
-### <a name="<a-name="overview"></a>best-practices-for-managing-secrets"></a><a name="Overview"></a>シークレットを管理するうえでのベスト プラクティス
+### <a name="a-nameoverviewabest-practices-for-managing-secrets"></a><a name="Overview"></a>シークレットを管理するうえでのベスト プラクティス
 * ハードコーディングされた構成ファイルやスクリプト、ソース コード内からシークレットが漏えいするリスクを Key Vault を使用して最小限に抑えます。 Azure Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) にキー (Azure Disk Encryption 用の暗号化キーなど) やシークレット (パスワードなど) を格納することで、それらを暗号化します。 さらに安心感を高めたい場合には、それらの HSM でキーのインポートや生成を行うことができます。
 * アプリケーション コードやテンプレートに記述する必要があるのは、シークレットへの URI 参照のみです。つまり、実際のシークレットは、コード リポジトリ、構成リポジトリ、ソース コード リポジトリには存在しません。 これにより、GitHub での収集ボットのような、内外のリポジトリへのキー フィッシング攻撃を防ぐことができます。
 * Key Vault 内で強力な RBAC 制御を利用します。 信任されていたオペレーターが退職したり、社内の別の部署に異動になったりした場合は、そのオペレーターのシークレットへのアクセスを禁止する必要があります。  
@@ -80,10 +83,10 @@ Azure における暗号化オプションの詳細については、「 [Storag
 ## <a name="isolation-to-restrict-data-access"></a>分離によってデータ アクセスを制限する
 分離の本質は、境界、区分、コンテナーを使用して、権限のあるユーザーやサービス、アプリケーションにデータへのアクセスを限定することです。 たとえば Microsoft Azure のようなマルチテナント型のクラウド プラットフォームでは、テナントどうしを分離することが、セキュリティ上の機構として不可欠になります。 論理上の分離によって、テナントが互いの運用に支障を及ぼすことを防ぐことができます。
 
-### <a name="<a-name="overview"></a>environment-isolation"></a><a name="Overview"></a>環境の分離
+### <a name="a-nameoverviewaenvironment-isolation"></a><a name="Overview"></a>環境の分離
 Azure Government 環境は、Microsoft の他のネットワークから切り離された物理インスタンスです。 これは、生体認証デバイスやカメラを使用した物理的な境界による保護など、一連の物理的制御と論理的制御によって実現されています。  運用環境への論理アクセスを必要とする Microsoft の社員は、特定の資格情報と多要素認証を使用しています。  Azure Government のサービス インフラストラクチャはすべて米国内に置かれています。
 
-#### <a name="<a-name="overview"></a>per-customer-isolation"></a><a name="Overview"></a>顧客ごとの分離
+#### <a name="a-nameoverviewaper-customer-isolation"></a><a name="Overview"></a>顧客ごとの分離
 Azure は、VLAN 分離、ACL、ロード バランサー、および IP フィルターによるネットワーク アクセス制御と分離を実装しています。
 
 サブスクリプションやリソース グループ、仮想ネットワーク、サブネットによって、お客様はそのリソースの分離度をさらに高めることができます。
@@ -92,6 +95,9 @@ Microsoft Azure における分離の詳細については、 [Azure セキュ�
 
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を随時ご覧ください。
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO5-->
 
 

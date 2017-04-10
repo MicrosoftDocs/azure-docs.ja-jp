@@ -15,7 +15,7 @@ File ストレージの一般的な用途には、次のようなものがあり
 ## <a name="file-storage-concepts"></a>File ストレージの概念
 File ストレージには次の構成要素があります。
 
-![files-concepts][files-concepts]
+![files-concepts](./media/storage-file-concepts-include/files-concepts.png)
 
 * **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md) を参照してください。
 * **共有** : File ストレージ共有は、Azure 内の SMB ファイル共有です。 
@@ -31,8 +31,7 @@ File ストレージには次の構成要素があります。
 
 共有、ディレクトリ、およびファイルの詳しい命名方法については、「 [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
 
-[files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,24 @@
 ---
-title: Azure Storage クライアント ツール | Microsoft Docs
-description: Azure Storage のデータの表示/操作を可能にするツールの一覧。
+title: "Azure Storage 向けのツール | Microsoft Docs"
+description: "Azure Storage のデータの表示/操作を可能にするツールの一覧。"
 services: storage
-documentationcenter: ''
-author: micurd
+documentationcenter: 
+author: seguler
 manager: jahogg
 editor: tysonn
-
+ms.assetid: e4748642-98c4-437e-b0ed-4f9641c2e894
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
+translationtype: Human Translation
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
+ms.lasthandoff: 01/24/2017
+
 
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage クライアント ツール
@@ -42,7 +47,7 @@ Azure Storage のユーザーのご要望に多いのが、Azure Storage クラ�
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure ポータル:</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
     <td>○</td>
     <td>○</td>
     <td>○</td>
@@ -115,7 +120,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td>○</td>
     <td>○</td>
     <td>○</td>
-    <td>評価版</td>
+    <td>試用版</td>
     <td>○</td>
     <td></td>
     <td></td>
@@ -129,7 +134,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td>○</td>
     <td>○</td>
     <td>○</td>
-    <td>評価版</td>
+    <td>試用版</td>
     <td></td>
     <td>○</td>
     <td></td>
@@ -150,7 +155,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure ストレージ エクスプローラー</a></td>
+    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure Storage Explorer</a></td>
     <td>○</td>
     <td>○</td>
     <td></td>
@@ -185,7 +190,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td>○</td>
     <td>○</td>
     <td></td>
-    <td>評価版</td>
+    <td>試用版</td>
     <td></td>
     <td>○</td>
     <td></td>
@@ -213,7 +218,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td></td>
     <td></td>
     <td></td>
-    <td>評価版</td>
+    <td>試用版</td>
     <td></td>
     <td>○</td>
     <td></td>
@@ -241,16 +246,11 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td>○</td>
     <td>○</td>
     <td>○</td>
-    <td>評価版</td>
+    <td>試用版</td>
     <td>○</td>
     <td></td>
     <td></td>
     <td></td>
   </tr>
 </table>
-
-
-
-<!--HONumber=Oct16_HO2-->
-
 

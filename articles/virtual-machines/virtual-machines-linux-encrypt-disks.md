@@ -1,310 +1,284 @@
 ---
-title: Encrypt disks on a Linux VM | Microsoft Docs
-description: How to encrypt disks on a Linux VM using the Azure CLI and the Resource Manager deployment model
+title: "Azure で Linux VM のディスクを暗号化する | Microsoft Docs"
+description: "セキュリティを強化するために、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
-editor: ''
-
+editor: 
+tags: azure-resource-manager
+ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/11/2016
+ms.date: 03/23/2017
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 10e6ba839130d05dc6b3c1c31681478209a73ed6
+ms.lasthandoff: 03/27/2017
+
 
 ---
-# <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli"></a>Encrypt disks on a Linux VM using the Azure CLI
-For enhanced virtual machine (VM) security and compliance, virtual disks in Azure can be encrypted at rest. Disks are encrypted using cryptographic keys that are secured in an Azure Key Vault. You control these cryptographic keys and can audit their use. This article details how to encrypt virtual disks on a Linux VM using the Azure CLI and the Resource Manager deployment model.
+# <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Linux VM の仮想ディスクを暗号化する方法
+仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
-## <a name="quick-commands"></a>Quick commands
-If you need to quickly accomplish the task, the following section details the base commands to encrypt virtual disks on your VM. More detailed information and context for each step can be found the rest of the document, [starting here](#overview-of-disk-encryption).
+## <a name="quick-commands"></a>クイック コマンド
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM の仮想ディスクを暗号化するための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#overview-of-disk-encryption)。
 
-You need the [latest Azure CLI](../xplat-cli-install.md) installed and logged in using the Resource Manager mode as follows:
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myKey`、`myVM` などは、例として使われているパラメーター名です。
 
-```
-azure config mode arm
-```
+まず、[az provider register](/cli/azure/provider#register) を使用して Azure サブスクリプションで Azure Key Vault プロバイダーを有効にし、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
 
-In the following examples, replace example parameter names with your own values. Example parameter names include `myResourceGroup`, `myKeyVault`, and `myVM`.
-
-First, enable the Azure Key Vault provider within your Azure subscription and create a resource group. The following example creates a resource group name `myResourceGroup` in the `WestUS` location:
-
-```bash
-azure provider register Microsoft.KeyVault
-azure group create myResourceGroup --location WestUS
+```azurecli
+az provider register -n Microsoft.KeyVault
+az group create --name myResourceGroup --location WestUS
 ```
 
-Create an Azure Key Vault. The following example creates a Key Vault named `myKeyVault`:
+[az keyvault create](/cli/azure/keyvault#create) を使用して Azure Key Vault を作成し、ディスクの暗号化で使用するために Key Vault を有効にします。 次のように、`keyvault_name` に一意の Key Vault 名を指定します。
 
-```bash
-azure keyvault create --vault-name myKeyVault --resource-group myResourceGroup \
-  --location WestUS
+```azurecli
+keyvault_name=myUniqueKeyVaultName
+az keyvault create --name $keyvault_name --resource-group myResourceGroup \
+  --location WestUS --enabled-for-disk-encryption True
 ```
 
-Create a cryptographic key in your Key Vault and enable it for disk encryption. The following example creates a key named `myKey`:
+[az keyvault key create](/cli/azure/keyvault/key#create) を使用して、Key Vault に暗号化キーを作成します。 次の例では、`myKey` という名前のキーを作成します。
 
-```bash
-azure keyvault key create --vault-name myKeyVault --key-name myKey \
-  --destination software
-azure keyvault set-policy --vault-name myKeyVault --resource-group myResourceGroup \
-  --enabled-for-disk-encryption true
+```azurecli
+az keyvault key create --vault-name $keyvault_name --name myKey --protection software
 ```
 
-Create an endpoint using Azure Active Directory for handling the authentication and exchanging of cryptographic keys from Key Vault. The `--home-page` and `--identifier-uris` do not need to be actual routable address. For the highest level of security, client secrets should be used instead of passwords. The Azure CLI cannot currently generate client secrets. Client secrets can only be generated in the Azure portal. The following example creates an Azure Active Directory endpoint named `myAADApp` and uses a password of `myPassword`:
+[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用して、Azure Active Directory を使用するサービス プリンシパルを作成します。 サービス プリンシパルは、認証と Key Vault の暗号化キーの交換を処理します。 次の例では、この後のコマンドで使用するために、サービス プリンシパルの ID とパスワードの値を読み取ります。
 
-```bash
-azure ad app create --name myAADApp \
-  --home-page http://testencrypt.contoso.com \
-  --identifier-uris http://testencrypt.contoso.com \
-  --password myPassword
+```azurecli
+read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -o tsv)
 ```
 
-Note the `applicationId` shown in the output from the preceding command. This application ID is used in the following steps:
+パスワードは、サービス プリンシパルの作成時にのみ出力されます。 必要に応じて、パスワードを表示して記録しておきます (`echo $sp_password`)。 [az ad sp list](/cli/azure/ad/sp#list) を使用してサービス プリンシパルの一覧を表示できます。また、[az ad sp show](/cli/azure/ad/sp#show) を使用して、特定のサービス プリンシパルに関する追加情報を表示できます。
 
-```bash
-azure ad sp create --applicationId myApplicationID
-azure keyvault set-policy --vault-name myKeyVault --spn myApplicationID \
-  --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]
+[az keyvault set-policy](/cli/azure/keyvault#set-policy) を使用して、Key Vault に対するアクセス許可を設定します。 次の例では、サービス プリンシパル ID が前のコマンドから提供されます。
+
+```azurecli
+az keyvault set-policy --name $keyvault_name --spn $sp_id \
+  --key-permissions all \
+  --secret-permissions all
 ```
 
-Add a data disk to an existing VM. The following example adds a data disk to a VM named `myVM`:
+[az vm create](/cli/azure/vm#create) を使用して VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、**CentOS 7.2n** イメージを使用して、`myVM` という名前の VM を作成します。
 
-```bash
-azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
-  --size-in-gb 5
+```azurecli
+az vm create -g myResourceGroup -n myVM --image OpenLogic:CentOS:7.2n:7.2.20160629 \
+  --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
+  --data-disk-sizes-gb 5
 ```
 
-Review the details for your Key Vault and the key you created. You need the Key Vault ID, URI, and key URL in the final step. The following example reviews the details for a Key Vault named `myKeyVault` and key named `myKey`:
+VM に SSH 接続します。 パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
 
-```bash
-azure keyvault show myKeyVault
-azure keyvault key show myKeyVault myKey
+[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の `ad sp create-for-rbac` コマンドの `$sp_id` 変数と `$sp_password` 変数を使用しています。
+
+```azurecli
+az vm encryption enable --resource-group myResourceGroup --name myVM \
+  --aad-client-id $sp_id \
+  --aad-client-secret $sp_password \
+  --disk-encryption-keyvault $keyvault_name \
+  --key-encryption-key myKey \
+  --volume-type all
 ```
 
-Encrypt your disks as follows, entering your own parameter names throughout:
+ディスク暗号化プロセスが完了するまで少し時間がかかります。 [az vm encryption show](/cli/azure/vm/encryption#show) を使用して、プロセスの状態を監視します。
 
-```bash
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
-  --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
-  --disk-encryption-key-vault-url myKeyVaultVaultURI \
-  --disk-encryption-key-vault-id myKeyVaultID \
-  --key-encryption-key-url myKeyKID \
-  --key-encryption-key-vault-id myKeyVaultID \
-  --volume-type Data
+```azurecli
+az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
-The Azure CLI doesn't provide verbose errors during the encryption process. For additional troubleshooting information, review `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log`. As the preceding command has many variables and you may not get much indication as to why the process fails, a complete command example would be as follows:
+状態が **EncryptionInProgress** になっています。 OS ディスクの状態が **VMRestartPending** になるまで待ち、[az vm restart](/cli/azure/vm#restart) を使用して VM を再起動します。
 
-```bash
-azure vm enable-disk-encryption -g myResourceGroup -n MyVM \
-  --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
-  --aad-client-secret P@ssw0rd! \
-  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
-  --disk-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
-  --key-encryption-key-url https://myKeyVault.vault.azure.net/keys/myKey/6f5fe9383f4e42d0a41553ebc6a82dd1 \
-  --key-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResoureGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
-  --volume-type Data
+```azurecli
+az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-Finally, review the encryption status again to confirm that your virtual disks have now been encrypted. The following example checks the status of a VM named `myVM` in the `myResourceGroup` resource group:
+ディスク暗号化プロセスは起動プロセス中に最終処理が行われるので、数分待ってから **az vm encryption show** を使用して暗号化の状態をもう一度確認します。
 
-```bash
-azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
+```azurecli
+az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="overview-of-disk-encryption"></a>Overview of disk encryption
-Virtual disks on Linux VMs are encrypted at rest using [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). There is no charge for encrypting virtual disks in Azure. Cryptographic keys are stored in Azure Key Vault using software-protection, or you can import or generate your keys in Hardware Security Modules (HSMs) certified to FIPS 140-2 level 2 standards. You retain control of these cryptographic keys and can audit their use. These cryptographic keys are used to encrypt and decrypt virtual disks attached to your VM. An Azure Active Directory endpoint provides a secure mechanism for issuing these cryptographic keys as VMs are powered on and off.
+ OS ディスクとデータ ディスクの状態がどちらも **Encrypted** になっています。
 
-The process for encrypting a VM is as follows:
+## <a name="overview-of-disk-encryption"></a>ディスク暗号化の概要
+Linux VM の仮想ディスクは、[dm-crypt](https://wikipedia.org/wiki/Dm-crypt) を使って暗号化します。 Azure の仮想ディスクを暗号化するための料金はかかりません。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 Azure Active Directory サービス プリンシパルは、VM の電源がオンまたはオフになったときにこれらの暗号化キーを発行するためのセキュリティで保護されたメカニズムを提供します。
 
-1. Create a cryptographic key in an Azure Key Vault.
-2. Configure the cryptographic key to be usable for encrypting disks.
-3. To read the cryptographic key from the Azure Key Vault, create an endpoint using Azure Active Directory with the appropriate permissions.
-4. Issue the command to encrypt your virtual disks, specifying the Azure Active Directory endpoint and appropriate cryptographic key to be used.
-5. The Azure Active Directory endpoint requests the required cryptographic key from Azure Key Vault.
-6. The virtual disks are encrypted using the provided cryptographic key.
+VM 暗号化のプロセスは次のとおりです。
 
-## <a name="supporting-services-and-encryption-process"></a>Supporting services and encryption process
-Disk encryption relies on the following additional components:
+1. Azure Key Vault で暗号化キーを作成します。
+2. ディスクの暗号化に使うことができるように暗号化キーを構成します。
+3. Azure Key Vault から暗号化キーを読み取るには、適切なアクセス許可を持つ Azure Active Directory サービス プリンシパルを作成します。
+4. Azure Active Directory サービス プリンシパルと、使用する適切な暗号化キーを指定して、仮想ディスクを暗号化するコマンドを発行します。
+5. Azure Active Directory サービス プリンシパルは、Azure Key Vault に必要な暗号化キーを要求します。
+6. 提供された暗号化キーを使って仮想ディスクが暗号化されます。
 
-* **Azure Key Vault** - used to safeguard cryptographic keys and secrets used for the disk encryption/decryption process. 
-  * If one exists, you can use an existing Azure Key Vault. You do not have to dedicate a Key Vault to encrypting disks.
-  * To separate administrative boundaries and key visibility, you can create a dedicated Key Vault.
-* **Azure Active Directory** - handles the secure exchanging of required cryptographic keys and authentication for requested actions. 
-  * You can typically use an existing Azure Active Directory instance for housing your application. 
-  * The application is more of an endpoint for the Key Vault and Virtual Machine services to request and get issued the appropriate cryptographic keys. You are not developing an actual application that integrates with Azure Active Directory.
+## <a name="encryption-process"></a>暗号化プロセス
+ディスクの暗号化は、以下の他のコンポーネントに依存します。
 
-## <a name="requirements-and-limitations"></a>Requirements and limitations
-Supported scenarios and requirements for disk encryption:
+* **Azure Key Vault** - ディスクの暗号化/暗号化解除プロセスに使われる暗号化キーとシークレットの保護に使われます。 
+  * Azure Key Vault が既に存在する場合は、それを使うことができます。 Key Vault をディスク暗号化専用にする必要はありません。
+  * 管理境界とキーの可視性を分離するため、専用の Key Vault を作成してもかまいません。
+* **Azure Active Directory** - 必要な暗号化キーの安全な交換と、要求されたアクションの認証を処理します。 
+  * 通常は、既存の Azure Active Directory インスタンスを使ってアプリケーションを保持できます。
+  * サービス プリンシパルは、適切な暗号化キーを要求し、発行するセキュリティで保護されたメカニズムを提供します。 Azure Active Directory と統合する実際のアプリケーションを開発しているのではありません。
 
-* The following Linux server SKUs - Ubuntu, CentOS, SUSE and SUSE Linux Enterprise Server (SLES), and Red Hat Enterprise Linux.
-* All resources (such as Key Vault, Storage account, and VM) must be in the same Azure region and subscription.
-* Standard A, D, DS, G, and GS series VMs.
+## <a name="requirements-and-limitations"></a>要件と制限
+ディスク暗号化のサポートされるシナリオと要件:
 
-Disk encryption is not currently supported in the following scenarios:
+* 次の Linux サーバー SKU - Ubuntu、CentOS、SUSE と SUSE Linux Enterprise Server (SLES)、Red Hat Enterprise Linux。
+* すべてのリソース (Key Vault、ストレージ アカウント、VM など) は、同じ Azure リージョンとサブスクリプションに存在している必要があります。
+* Standard A、D、DS、G、GS シリーズの VM。
 
-* Basic tier VMs.
-* VMs created using the Classic deployment model.
-* Disabling OS disk encryption on Linux VMs.
-* Updating the cryptographic keys on an already encrypted Linux VM.
+現在、ディスクの暗号化は次のシナリオではサポートされていません。
 
-## <a name="create-the-azure-key-vault-and-keys"></a>Create the Azure Key Vault and keys
-To complete the remainder of this guide, you need the [latest Azure CLI](../xplat-cli-install.md) installed and logged in using the Resource Manager mode as follows:
+* Basic レベルの VM。
+* クラシック デプロイメント モデルで作成された VM。
+* Linux VM での OS ディスク暗号化の無効化。
+* 既に暗号化されている Linux VM での暗号化キーの更新。
 
-```
-azure config mode arm
-```
+## <a name="create-azure-key-vault-and-keys"></a>Azure Key Vault とキーを作成する
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。 コマンドの例全体を通して、パラメーターの例を実際の名前、場所、およびキーの値に置き換えます。 以下の例では、`myResourceGroup`、`myKeyVault`、`myAADApp` などの表記を使います。
 
-Throughout the command examples, replace all example parameters with your own names, location, and key values. The following examples use a convention of `myResourceGroup`, `myKeyVault`, `myAADApp`, etc.
+コマンドの例全体を通して、パラメーターの例を実際の名前、場所、およびキーの値に置き換えます。 以下の例では、`myResourceGroup`、`myKey`、`myVM` などの表記を使います。
 
-The first step is to create an Azure Key Vault to store your cryptographic keys. Azure Key Vault can store keys, secrets, or passwords that allow you to securely implement them in your applications and services. For virtual disk encryption, you use Key Vault to store a cryptographic key that is used to encrypt or decrypt your virtual disks. 
+最初に、暗号化キーを格納する Azure Key Vault を作成します。 Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 仮想ディスクの暗号化では、仮想ディスクの暗号化または暗号化解除に使われる暗号化キーを格納するために Key Vault を使います。 
 
-Enable the Azure Key Vault provider in your Azure subscription, then create a resource group as follows:
+[az provider register](/cli/azure/provider#register) を使用して Azure サブスクリプションで Azure Key Vault プロバイダーを有効にし、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
 
-```bash
-azure provider register Microsoft.KeyVault
-azure group create myResourceGroup --location WestUS
+```azurecli
+az provider register -n Microsoft.KeyVault
+az group create --name myResourceGroup --location WestUS
 ```
 
-The Azure Key Vault containing the cryptographic keys and associated compute resources such as storage and the VM itself must reside in the same region. Create an Azure Key Vault as follows:
+暗号化キーおよびストレージや VM 自体などの関連するコンピューティング リソースを格納する Azure Key Vault は、同じリージョンに存在する必要があります。 [az keyvault create](/cli/azure/keyvault#create) を使用して Azure Key Vault を作成し、ディスクの暗号化で使用するために Key Vault を有効にします。 次のように、`keyvault_name` に一意の Key Vault 名を指定します。
 
-```bash
-azure keyvault create --vault-name myKeyVault --resource-group myResourceGroup \
-  --location  <WestUS>
+```azurecli
+keyvault_name=myUniqueKeyVaultName
+az keyvault create --name $keyvault_name --resource-group myResourceGroup \
+  --location WestUS --enabled-for-disk-encryption True
 ```
 
-You can store cryptographic keys using software or Hardware Security Model (HSM) protection. Using an HSM requires a premium Key Vault. There is an additional cost to creating a premium Key Vault rather than standard Key Vault that stores software-protected keys. To create a premium Key Vault, in the preceding step add `--sku Premium` to the command. The following example uses software-protected keys since we created a standard Key Vault. 
+ソフトウェアまたはハードウェア セキュリティ モデル (HSM) の保護を使って、暗号化キーを格納できます。 HSM を使うには、Premium Key Vault が必要です。 ソフトウェアで保護されたキーを格納する Standard Key Vault ではなく Premium Key Vault を作成するには、追加コストがかかります。 Premium Key Vault を作成するには、前の手順で `--sku Premium` をコマンドに追加します。 ここでは Standard Key Vault を作成したので、次の例ではソフトウェアで保護されたキーを使います。 
 
-For both protection models, the Azure platform needs to be granted access to request the cryptographic keys when the VM boots to decrypt the virtual disks. Create an encryption key within your Key Vault, then enable it for use with virtual disk encryption as follows:
+どちらの保護モデルでも、VM が起動して仮想ディスクを復号化するときに、Azure プラットフォームは暗号化キーを要求するためのアクセスを許可される必要があります。 [az keyvault key create](/cli/azure/keyvault/key#create) を使用して、Key Vault に暗号化キーを作成します。 次の例では、`myKey` という名前のキーを作成します。
 
-```bash
-azure keyvault key create --vault-name myKeyVault --key-name myKey \
-  --destination software
-azure keyvault set-policy --vault-name myKeyVault --resource-group myResourceGroup \
-  --enabled-for-disk-encryption true
+```azurecli
+az keyvault key create --vault-name $keyvault_name --name myKey --protection software
 ```
 
 
-## <a name="create-the-azure-active-directory-application"></a>Create the Azure Active Directory application
-When virtual disks are encrypted or decrypted, you use an endpoint to handle the authentication and exchanging of cryptographic keys from Key Vault. This endpoint, an Azure Active Directory application, allows the Azure platform to request the appropriate cryptographic keys on behalf of the VM. A default Azure Active Directory instance is available in your subscription, though many organizations have dedicated Azure Active Directory directories.
+## <a name="create-the-azure-active-directory-service-principal"></a>Azure Active Directory サービス プリンシパルを作成する
+仮想ディスクを暗号化または暗号化解除するときは、認証と Key Vault の暗号化キーの交換を処理するアカウントを指定します。 このアカウント (Azure Active Directory サービス プリンシパル) を使用して、Azure プラットフォームは VM の代わりに適切な暗号化キーを要求できます。 サブスクリプションでは既定の Azure Active Directory インスタンスを使うことができますが、多くの場合、専用の Azure Active Directory ディレクトリが使われます。
 
-As you are not creating a full Azure Active Directory application, the `--home-page` and `--identifier-uris` parameters in the following example do not need to be actual routable address. The following example also specifies a password-based secret rather than generating keys from within the Azure portal. As this time, generating keys cannot be done from the Azure CLI. 
+[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用して、Azure Active Directory を使用するサービス プリンシパルを作成します。 次の例では、この後のコマンドで使用するために、サービス プリンシパルの ID とパスワードの値を読み取ります。
 
-Create your Azure Active Directory application as follows:
-
-```bash
-azure ad app create --name myAADApp \
-  --home-page http://testencrypt.contoso.com \
-  --identifier-uris http://testencrypt.contoso.com \
-  --password myPassword
+```azurecli
+read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -o tsv)
 ```
 
-Make a note of the `applicationId` that is returned in the output from the preceding command. This application ID is used in some of the remaining steps. Next, create a service principal name (SPN) so that the application is accessible within your environment. To successfully encrypt or decrypt virtual disks, permissions on the cryptographic key stored in Key Vault must be set to permit the Azure Active Directory application to read the keys. 
+パスワードは、サービス プリンシパルの作成時にのみ表示されます。 必要に応じて、パスワードを表示して記録しておきます (`echo $sp_password`)。 [az ad sp list](/cli/azure/ad/sp#list) を使用してサービス プリンシパルの一覧を表示できます。また、[az ad sp show](/cli/azure/ad/sp#show) を使用して、特定のサービス プリンシパルに関する追加情報を表示できます。
 
-Create the SPN and set the appropriate permissions as follows:
+仮想ディスクを正常に暗号化または暗号化解除するには、Key Vault に格納されている暗号化キーに対するアクセス許可を設定して、Azure Active Directory サービス プリンシパルにキーの読み取りを許可する必要があります。 [az keyvault set-policy](/cli/azure/keyvault#set-policy) を使用して、Key Vault に対するアクセス許可を設定します。 次の例では、サービス プリンシパル ID が前のコマンドから提供されます。
 
-```bash
-azure ad sp create --applicationId myApplicationID
-azure keyvault set-policy --vault-name myKeyVault --spn myApplicationID \
-  --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]
+```azurecli
+az keyvault set-policy --name $keyvault_name --spn $sp_id \
+  --key-permissions all \
+  --secret-permissions all
 ```
 
 
-## <a name="add-a-virtual-disk-and-review-encryption-status"></a>Add a virtual disk and review encryption status
-To actually encrypt some virtual disks, lets add a disk to an existing VM. Add a 5Gb data disk to an existing VM as follows:
+## <a name="create-virtual-machine"></a>仮想マシンの作成
+実際に仮想ディスクを暗号化するために、VM を作成し、データ ディスクを追加します。 [az vm create](/cli/azure/vm#create) を使用して、暗号化する VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、**CentOS 7.2n** イメージを使用して、`myVM` という名前の VM を作成します。
 
-```bash
-azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
-  --size-in-gb 5
+```azurecli
+az vm create -g myResourceGroup -n myVM --image OpenLogic:CentOS:7.2n:7.2.20160629 \
+  --data-disk-sizes-gb 5
 ```
 
-The virtual disks are not currently encrypted. Review the current encryption status of your VM as follows:
+VM に SSH 接続して、パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
 
-```bash
-azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
+
+## <a name="encrypt-virtual-machine"></a>仮想マシンを暗号化する
+仮想ディスクを暗号化するには、これまでのコンポーネントをすべてまとめます。
+
+1. Azure Active Directory サービス プリンシパルとパスワードを指定します。
+2. 暗号化されたディスクのメタデータを格納する Key Vault を指定します。
+3. 実際の暗号化と暗号化解除に使う暗号化キーを指定します。
+4. OS ディスク、データ ディスク、またはすべてのディスクのいずれを暗号化するかを指定します。
+
+[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の `ad sp create-for-rbac` コマンドの `$sp_id` 変数と `$sp_password` 変数を使用しています。
+
+```azurecli
+az vm encryption enable --resource-group myResourceGroup --name myVM \
+  --aad-client-id $sp_id \
+  --aad-client-secret $sp_password \
+  --disk-encryption-keyvault $keyvault_name \
+  --key-encryption-key myKey \
+  --volume-type all
 ```
 
+ディスク暗号化プロセスが完了するまで少し時間がかかります。 [az vm encryption show](/cli/azure/vm/encryption#show) を使用して、プロセスの状態を監視します。
 
-## <a name="encrypt-virtual-disks"></a>Encrypt virtual disks
-To now encrypt the virtual disks, you bring together all the previous components:
-
-1. Specify the Azure Active Directory application and password.
-2. Specify the Key Vault to store the metadata for your encrypted disks.
-3. Specify the cryptographic keys to use for the actual encryption and decryption.
-4. Specify whether you want to encrypt the OS disk, the data disks, or all.
-
-Lets review the details for your Azure Key Vault and the key you created, as you need the Key Vault ID, URI, and then key URL in the final step:
-
-```bash
-azure keyvault show myKeyVault
-azure keyvault key show myKeyVault myKey
+```azurecli
+az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
-Encrypt your virtual disks using the output from the `azure keyvault show` and `azure keyvault key show` commands as follows:
+出力は次の例のようになります (一部省略)。
 
-```bash
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
-  --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
-  --disk-encryption-key-vault-url myKeyVaultVaultURI \
-  --disk-encryption-key-vault-id myKeyVaultID \
-  --key-encryption-key-url myKeyKID \
-  --key-encryption-key-vault-id myKeyVaultID \
-  --volume-type Data
+```json
+[
+  "dataDisk": "EncryptionInProgress",
+  "osDisk": "EncryptionInProgress",
+]
 ```
 
-As the preceding command has many variables, the following example is the complete command for reference:
+OS ディスクの状態が **VMRestartPending** になるまで待ち、[az vm restart](/cli/azure/vm#restart) を使用して VM を再起動します。
 
-```bash
-azure vm enable-disk-encryption -g myResourceGroup -n MyVM \
-  --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
-  --aad-client-secret P@ssw0rd! \
-  --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
-  --disk-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
-  --key-encryption-key-url https://myKeyVault.vault.azure.net/keys/myKey/6f5fe9383f4e42d0a41553ebc6a82dd1 \
-  --key-encryption-key-vault-id /subscriptions/guid/resourceGroups/myResoureGroup/providers/Microsoft.KeyVault/vaults/myKeyVault \
-  --volume-type Data
+```azurecli
+az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-The Azure CLI doesn't provide verbose errors during the encryption process. For additional troubleshooting information, review `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log` on the VM you are encrypting.
+ディスク暗号化プロセスは起動プロセス中に最終処理が行われるので、数分待ってから **az vm encryption show** を使用して暗号化の状態をもう一度確認します。
 
-Finally, lets review the encryption status again to confirm that your virtual disks have now been encrypted:
-
-```bash
-azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
+```azurecli
+az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
+OS ディスクとデータ ディスクの状態がどちらも **Encrypted** になっています。
 
-## <a name="add-additional-data-disks"></a>Add additional data disks
-Once you have encrypted your data disks, you can later add additional virtual disks to your VM and also encrypt them. When you run the `azure vm enable-disk-encryption` command, increment the sequence version using the `--sequence-version` parameter. This sequence version parameter allows you to perform repeated operations on the same VM.
 
-For example, lets add a second virtual disk to your VM as follows:
+## <a name="add-additional-data-disks"></a>新しいデータ ディスクを追加する
+データ ディスクを暗号化した後で、別の仮想ディスクを VM に追加して暗号化することもできます。 `az vm encryption enable` コマンドを実行するときに、`--sequence-version` パラメーターを使ってシーケンスのバージョンを増やします。 このシーケンス バージョン パラメーターを使うと、同じ VM に対して操作を繰り返し実行できます。
 
-```bash
-azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
-  --size-in-gb 5
+たとえば、次のようにして 2 番目の仮想ディスクを VM に追加できます。
+
+```azurecli
+az vm disk attach-new --resource-group myResourceGroup --vm-name myVM --size-in-gb 5
 ```
 
-Rerun the command to encrypt the virtual disks, this time adding the `--sequence-version` parameter, and incrementing the value from our first run as follows:
+コマンドを再度実行して仮想ディスクを暗号化します。今度は、`--sequence-version` パラメーターを追加し、次のように最初の実行から値を増分します。
 
-```bash
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
-  --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
-  --disk-encryption-key-vault-url myKeyVaultVaultURI \
-  --disk-encryption-key-vault-id myKeyVaultID \
-  --key-encryption-key-url myKeyKID \
-  --key-encryption-key-vault-id myKeyVaultID \
-  --volume-type Data
+```azurecli
+az vm encryption enable --resource-group myResourceGroup --name myVM \
+  --aad-client-id $sp_id \
+  --aad-client-secret $sp_password \
+  --disk-encryption-keyvault $keyvault_name \
+  --key-encryption-key myKey \
+  --volume-type all \
   --sequence-version 2
 ```
 
 
-## <a name="next-steps"></a>Next steps
-* For more information about managing Azure Key Vault, including deleting cryptographic keys and vaults, see [Manage Key Vault using CLI](../key-vault/key-vault-manage-with-cli.md).
-* For more information about disk encryption, such as preparing an encrypted custom VM to upload to Azure, see [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
-
-<!--HONumber=Oct16_HO2-->
+## <a name="next-steps"></a>次のステップ
+* 暗号化キーや Vault の削除など、Azure Key Vault の管理について詳しくは、「[CLI を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli.md)」をご覧ください。
+* 暗号化されたカスタム VM を Azure にアップロードするための準備など、ディスクの暗号化について詳しくは、「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」をご覧ください。
 
 

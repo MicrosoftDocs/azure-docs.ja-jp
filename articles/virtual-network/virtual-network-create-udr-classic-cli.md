@@ -1,13 +1,13 @@
 ---
-title: クラシック デプロイメント モデルで Azure CLI を使用してルーティングを制御し、仮想アプライアンスを使用する | Microsoft Docs
-description: クラシック デプロイメント モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する
+title: "Azure Virtual Network でのルーティングの制御 - CLI - クラシック | Microsoft Docs"
+description: "クラシック デプロイメント モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する"
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,36 +15,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 71153e46d1695611c8286d2e57b109db9e7ad9df
+ms.openlocfilehash: 4a610a65b33f91f46d011e07c6cb11523d3dae0d
+ms.lasthandoff: 02/01/2017
+
 
 ---
-# Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
-[!INCLUDE [virtual-network-create-udr-classic-selectors-include.md](../../includes/virtual-network-create-udr-classic-selectors-include.md)]
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
+
+> [!div class="op_single_selector"]
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [テンプレート](virtual-network-create-udr-arm-template.md)
+> * [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
+> * [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルでルーティングを制御し、仮想アプライアンスを使用する](virtual-network-create-udr-arm-cli.md)こともできます。
+この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルでルーティングを制御し、仮想アプライアンスを使用する](virtual-network-create-udr-arm-cli.md)こともできます。
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-以下の Azure CLI のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに示されているようにコマンドを実行するのであれば、「[Azure CLI を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-cli.md)」に示されている環境を構築します。
+以下の Azure CLI のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。 このドキュメントに示されているようにコマンドを実行するのであれば、「 [Azure CLI を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-cli.md)」に示されている環境を構築します。
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## フロントエンドのサブネットの UDR を作成する
+## <a name="create-the-udr-for-the-front-end-subnet"></a>フロントエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、フロントエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
 
-1. **`azure config mode`** を実行してクラシック モードに切り替えます。
-   
-        azure config mode asm
-   
+1. 次のコマンドを実行して、クラシック モードに切り替えます。
+
+    ```azurecli
+    azure config mode asm
+    ```
+
     出力:
-   
+
         info:    New mode is asm
-2. **`azure network route-table create`** コマンドを実行して、フロントエンドのサブネットのルート テーブルを作成します。
-   
-        azure network route-table create -n UDR-FrontEnd -l uswest
+
+2. 次のコマンドを実行して、フロントエンドのサブネットのルート テーブルを作成します。
+
+    ```azurecli
+    azure network route-table create -n UDR-FrontEnd -l uswest
+    ```
    
     出力:
    
@@ -57,12 +73,14 @@ ms.author: jdial
    
     パラメーター:
    
-   * **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
-   * **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
-3. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`azure network route-table route set`** コマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
-   
-        azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
-   
+   * **-l (または --location)**。 NSG が作成される Azure リージョンです。 ここでは、 *westus*です。
+   * **-n (または --name)**。 新しい NSG の名前です。 ここでは、 *NSG-FrontEnd*です。
+3. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、次のコマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
+
+    ```azurecli
+    azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
+    ```
+
     出力:
    
         info:    Executing command network route-table route set
@@ -72,13 +90,15 @@ ms.author: jdial
    
     パラメーター:
    
-   * **-r (または --route-table-name)**。ルートが追加されるルート テーブルの名前です。ここでは、*UDR-FrontEnd* です。
-   * **-a (または --address-prefix)**。パケットの送信先であるサブネットのアドレス プレフィックスです。ここでは、*192.168.2.0/24* です。
-   * **-t (または --next-hop-type)**。トラフィックの送信先となるオブジェクトの種類です。指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
-   * **-p (または --next-hop-ip-address**)。次のホップ先の IP アドレスです。ここでは、*192.168.0.4* です。
-4. **`azure network vnet subnet route-table add`** コマンドを実行して、上記で作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
-   
-        azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
+   * **-r (または --route-table-name)**。 ルートが追加されるルート テーブルの名前です。 ここでは、 *UDR-FrontEnd*です。
+   * **-a (または --address-prefix)**。 パケットの送信先であるサブネットのアドレス プレフィックスです。 ここでは、 *192.168.2.0/24*です。
+   * **-t (または --next-hop-type)**。 トラフィックの送信先となるオブジェクトの種類です。 指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
+   * **-p (または --next-hop-ip-address**)。 次のホップ先の IP アドレスです。 ここでは、 *192.168.0.4*です。
+4. 次のコマンドを実行して、作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
+
+    ```azurecli
+    azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
+    ```
    
     出力:
    
@@ -95,20 +115,28 @@ ms.author: jdial
    
     パラメーター:
    
-   * **-t (または --vnet-name)**。サブネットが置かれている VNet の名前です。ここでは、*TestVNet* です。
-   * **-n (または --subnet-name**)。ルート テーブルが追加されるサブネットの名前です。ここでは、*FrontEnd* です。
+   * **-t (または --vnet-name)**。 サブネットが置かれている VNet の名前です。 ここでは、 *TestVNet*です。
+   * **-n (または --subnet-name**)。 ルート テーブルが追加されるサブネットの名前です。 ここでは、 *FrontEnd*です。
 
-## バックエンドのサブネットの UDR を作成する
-上記のシナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
+## <a name="create-the-udr-for-the-back-end-subnet"></a>バックエンドのサブネットの UDR を作成する
+シナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
 
-1. バックエンドのサブネットのルート テーブルを作成するには、**`azure network route-table create`** コマンドを実行します。
-   
-        azure network route-table create -n UDR-BackEnd -l uswest
-2. フロントエンドのサブネット (192.168.1.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`azure network route-table route set`** コマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
-   
-        azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
-3. **`azure network vnet subnet route-table add`** コマンドを実行して、上記で作成したルート テーブルを **BackEnd** サブネットに関連付けます。
-   
-        azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
+1. 次のコマンドを実行して、バックエンドのサブネットのルート テーブルを作成します。
 
-<!---HONumber=AcomDC_0810_2016-->
+    ```azurecli
+    azure network route-table create -n UDR-BackEnd -l uswest
+    ```
+
+2. フロントエンドのサブネット (192.168.1.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、次のコマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
+
+    ```azurecli
+    azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
+    ```
+
+3. 次のコマンドを実行して、上記で作成したルート テーブルを **BackEnd** サブネットに関連付けます。
+
+    ```azurecli
+    azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
+    ```
+
+

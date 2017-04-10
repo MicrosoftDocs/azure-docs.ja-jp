@@ -279,27 +279,27 @@ Apple の「 [Local and Push Notification Programming Guide (ローカルおよ�
 <!-- URLs. -->
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Microsoft Azure Notification Hubs (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
-[Xcode のインストール]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
+[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド) (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
-[Azure App Service で Java Web アプリ]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 
 

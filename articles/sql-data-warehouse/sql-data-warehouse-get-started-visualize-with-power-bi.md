@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 8790bacecac0fa824189b5c212c2d803092ff4ed
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -32,19 +34,19 @@ ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
 
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを進めるには、次が必要です。
 
-* AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][SQL Data Warehouse の作成]に関するページを参照し、サンプル データの読み込みを選択してください。 データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][サンプル データを手動で読み込む]ことができます。
+* AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照し、サンプル データを読み込んでください。 データ ウェアハウスは既にあるもののサンプル データがない場合は、[サンプル データを手動で読み込む][load sample data manually]ことができます。
 
 ## <a name="1-connect-to-your-database"></a>1.データベースに接続する
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
-1. [Azure Portal][Azure Portal] にサインインします。
+1. [Azure Portal][Azure portal] にサインインします。
 2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。
    
     ![データベースの検索][1]
@@ -78,18 +80,18 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
     棒グラフは左側に移動しました。
    
     ![Power BI バー][9]
-3. この手順では、発注日ごとの売上高を表示する折れ線グラフを作成します。 これを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] と [OrderDate] をクリックします。 [視覚化] 列で、折れ線グラフのアイコンをクリックします。"視覚化" の下の 2 行目先頭にあるアイコンです。
+3. この手順では、発注日ごとの売上高を表示する折れ線グラフを作成します。 これを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] と [OrderDate] をクリックします。 [視覚化] 列で、折れ線グラフのアイコンをクリックします。"視覚化" の下の&2; 行目先頭にあるアイコンです。
    
     ![Power BI select line chart][10]
    
-    これで、同じデータを 3 とおりの方法で視覚化したレポートが完成しました。
+    これで、同じデータを&3; とおりの方法で視覚化したレポートが完成しました。
    
     ![Power BI ライン][11]
 
 **[ファイル]** をクリックして **[保存]** を選択すると、作業をいつでも保存できます。
 
 ## <a name="next-steps"></a>次のステップ
-いくつかサンプル データを挙げて、[開発][開発]、[読み込み][読み込み]、[移行][移行]の方法を確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト][Power BI の Web サイト]を参照してください。
+いくつかサンプル データを挙げて、どのようにして[開発][develop]、[ロード][load]、[移行][migrate]するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト][Power BI website]を参照してください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -106,19 +108,14 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[移行]: sql-data-warehouse-overview-migrate.md
-[開発]: sql-data-warehouse-overview-develop.md
-[読み込み]: sql-data-warehouse-overview-load.md
-[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse への接続]: sql-data-warehouse-integrate-power-bi.md
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
+[migrate]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
+[load]: sql-data-warehouse-overview-load.md
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
-[Azure ポータル]: https://portal.azure.com/
-[Power BI の Web サイト]: http://www.powerbi.com/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Azure portal]: https://portal.azure.com/
+[Power BI website]: http://www.powerbi.com/
 

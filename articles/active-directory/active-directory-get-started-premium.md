@@ -3,20 +3,20 @@ title: "Azure Active Directory Premium の概要"
 description: "このトピックでは、ボリューム ライセンスの Web サイトを通じて Azure Active Directory Premium Edition にサインアップする方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: curtand
 manager: femila
-editor: 
 ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2016
-ms.author: markvi
+ms.date: 01/24/2017
+ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f5341ecd0256d6268b9247ef5ec391809b7071a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -137,9 +137,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [10]: ./media/active-directory-get-started-premium/contosolicenseplan.png
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

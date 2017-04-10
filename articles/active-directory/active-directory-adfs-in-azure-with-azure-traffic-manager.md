@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
+ms.sourcegitcommit: 3170abb4f9bd7f7996b1c0dd2e20f648ea1b9fe5
+ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 
 
 ---
-# <a name="high-availability-crossgeographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ
+# <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ
 [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md) 」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。 この記事では、その次の手順として、 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。 Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。
 
 可用性に優れた地域間 AD FS インフラストラクチャにより、次のことを実現できます。
@@ -76,7 +76,7 @@ ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
    
    **[ターゲット リソースの種類]:** このプロパティの値として [パブリック IP アドレス] を選択します。 
    
-   **[ターゲット リソース]:** サブスクリプションで使用できるさまざまな DNS ラベルから選択できます。 DNS ラベルを選択します。
+   **[ターゲット リソース]:** サブスクリプションで使用できるさまざまな DNS ラベルから選択できます。 構成しているエンドポイントに対応する DNS ラベルを選択します。
    
    Azure Traffic Manager でトラフィックをルーティングする地理的リージョンごとにエンドポイントを追加します。
    Traffic Manager のエンドポイントを構成および追加する方法の詳細と手順については、「 [エンドポイントの追加と削除、有効化と無効化](../traffic-manager/traffic-manager-endpoints.md)
@@ -94,13 +94,13 @@ ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
    
     <code>fs.fabidentity.com IN CNAME mysts.trafficmanager.net</code>
 
-## <a name="test-the-routing-and-ad-fs-signin"></a>ルーティングと AD FS のサインインをテストする
+## <a name="test-the-routing-and-ad-fs-sign-in"></a>ルーティングと AD FS のサインインをテストする
 ### <a name="routing-test"></a>ルーティング テスト
 ルーティングの非常に基本的なテストでは、各地理的リージョンのコンピューターからフェデレーション サービスの DNS 名に対して ping を実行します。 ping の表示には、選択したルーティング方法に応じて、実際に ping を実行するエンドポイントが反映されます。 たとえば、パフォーマンス ルーティングを選択した場合、クライアントのリージョンに最も近いエンドポイントにアクセスします。 次のスナップショットは、2 つの異なるリージョン (東アジアと米国西部) のクライアント コンピューターからの 2 つの ping を示しています。 
 
 ![ルーティング テスト](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/pingtest.png)
 
-### <a name="ad-fs-signin-test"></a>AD FS のサインイン テスト
+### <a name="ad-fs-sign-in-test"></a>AD FS のサインイン テスト
 AD FS をテストする最も簡単な方法は、IdpInitiatedSignon.aspx ページを使用する方法です。 そのためには、AD FS のプロパティで IdpInitiatedSignOn を有効にする必要があります。 以下の手順に従って AD FS の設定を確認してください。
 
 1. AD FS サーバーで PowerShell から以下のコマンドレットを実行し、このプロパティを有効にします。 
@@ -126,6 +126,6 @@ AD FS をテストする最も簡単な方法は、IdpInitiatedSignon.aspx ペ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

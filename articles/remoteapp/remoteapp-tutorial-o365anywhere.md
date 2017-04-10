@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: guscatal;elizapo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0146ee4516ee54c3507567c25183e212db1ba7d2
+ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
+ms.openlocfilehash: 13634bec8abbefdf941066dece8390f2fd064422
 
 
 ---
@@ -75,6 +75,6 @@ ms.openlocfilehash: 0146ee4516ee54c3507567c25183e212db1ba7d2
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

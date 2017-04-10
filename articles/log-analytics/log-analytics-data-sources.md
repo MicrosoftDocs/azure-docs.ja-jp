@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のデータ ソース | Microsoft Docs
-description: データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。
+title: "OMS Log Analytics のデータ ソースの構成 | Microsoft Docs"
+description: "データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
-
+ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: cec0ceb0da57150e4bdd9f9a0f6d3e751c108523
+
 
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
@@ -46,9 +50,11 @@ Log Analytics の **[設定]** の **[データ]** メニューからデータ �
 4. 構成の詳細については、上記の表のデータ ソース名をクリックして、リンク先のドキュメントを参照してください。
 
 ## <a name="data-collection"></a>データ収集
-データ ソースの構成は、数分以内に OMS に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Log Analytics に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
+データ ソースの構成は、数分以内に Log Analytics に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Log Analytics に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
-接続された管理グループ内の System Center Operations Manager (SCOM) エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、またはエージェントが管理サーバーを介さずに Log Analytics に送信します。 詳細については、「[OMS の機能とソリューションにおけるデータ収集の詳細](log-analytics-add-solutions.md#data-collection-details-for-oms-features-and-solutions)」を参照してください。  SCOM および OMS と接続し、構成の配信頻度を変更する方法の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
+接続された管理グループ内の System Center Operations Manager (SCOM) エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Log Analytics に転送されるか、またはエージェントが管理サーバーを介さずに Log Analytics に送信します。 詳細については、「[OMS の機能とソリューションにおけるデータ収集の詳細](log-analytics-add-solutions.md#data-collection-details)」を参照してください。  SCOM および OMS と接続し、構成の配信頻度を変更する方法の詳細については、[System Center Operations Manager との統合の構成](log-analytics-om-agents.md)に関するページを参照してください。
+
+エージェントが Log Analytics または Operations Manager に接続できない場合は、そのままデータの収集を続け、接続が確立されたときにデータを送信します。  データの量がクライアントの最大キャッシュ サイズに達した場合、またはエージェントが 24 時間以内に接続を確立できなかった場合は、データが失われることがあります。
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 Log Analytics によって収集されたデータはすべて、レコードとして OMS リポジトリに保存されます。  さまざまなデータ ソースから収集されたレコードは、独自のプロパティ セットを持ち、 **Type** プロパティによって識別されます。  各レコードの種類の詳細については、各データ ソースのドキュメントおよびソリューションを参照してください。
@@ -58,6 +64,8 @@ Log Analytics によって収集されたデータはすべて、レコードと
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

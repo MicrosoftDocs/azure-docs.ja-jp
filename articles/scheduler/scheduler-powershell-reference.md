@@ -1,27 +1,31 @@
 ---
-title: Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
-description: Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
+title: "Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
+description: "Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
 services: scheduler
 documentationcenter: .NET
-author: krisragh
-manager: dwrede
-editor: ''
-
+author: derek1ee
+manager: kevinlam1
+editor: 
+ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.service: scheduler
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: krisragh
+ms.author: deli
+translationtype: Human Translation
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 26eb1469bc508ef518103a955fa0fbc6db2be46d
+
 
 ---
-# Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
+# <a name="scheduler-powershell-cmdlets-reference"></a>Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 次のテーブルでは、Azure Scheduler の主なコマンドレットを説明し、各コマンドレットのリファレンス ページへのリンクを示します。
 
-Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 
 
-[Azure Resource Manager コマンドレット](../powershell-azure-resource-manager.md)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx)」を参照してください。
+[Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 | コマンドレット | コマンドレットの説明 |
 | --- | --- |
@@ -43,7 +47,7 @@ Azure PowerShell をインストールして、Azure サブスクリプション
 | [Set-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490137\(v=azure.200\).aspx) |Service Bus トピック ジョブを変更します。 |
 | [Set-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490128\(v=azure.200\).aspx) |ストレージ キュー ジョブを変更します。 |
 
-詳細については、次のいずれかのコマンドレットを実行してください。
+詳細については、次のいずれかのコマンドレットを実行してください。 
 
 ```
 Get-Help <cmdlet name> -Detailed
@@ -55,7 +59,7 @@ Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## 関連項目
+## <a name="see-also"></a>関連項目
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
@@ -72,4 +76,9 @@ Get-Help <cmdlet name> -Full
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO1-->
+
+

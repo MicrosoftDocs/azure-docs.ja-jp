@@ -1,43 +1,52 @@
+<!--
+Used in:
+sql-database-performance-guidance.md  
+sql-database-resource-limits.md
+sql-database-service-tiers.md  
+-->
+
 ### <a name="basic-service-tier"></a>Basic サービス レベル
-|  |  |
-| --- | --- |
-| 最大 DTU 数 |5 |
-| 最大データベース サイズ (GB) |2 |
-| 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
+| **パフォーマンス レベル** | **Basic** |
+| --- | :---: |
+| 最大 DTU 数 | 5 |
+| 最大データベース サイズ* |2 GB|
+| 最大インメモリ OLTP ストレージ |該当なし |
 | 最大同時実行ワーカー数 |30 |
 | 最大同時ログイン数 |30 |
 | 最大同時セッション数 |300 |
-| ポイントインタイム リストア |過去 7 日間の任意のポイント |
-| 障害復旧 |アクティブ geo レプリケーションを選択するとき |
+|||
 
 ### <a name="standard-service-tier"></a>Standard サービス レベル
-|  |  |
-| --- |:---:|
-| **S0** &nbsp;&nbsp;&nbsp;&nbsp; **S1** &nbsp;&nbsp;&nbsp;&nbsp; **S2** &nbsp;&nbsp;&nbsp; **S3** | |
-| 最大 DTU 数 |&nbsp;&nbsp;10 &nbsp;&nbsp;&nbsp;&nbsp; 20 &nbsp;&nbsp;&nbsp;&nbsp; 50 &nbsp;&nbsp; 100 |
-| 最大データベース サイズ (GB) |250 |
-| 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
-| 最大同時実行ワーカー数 |60 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 120 &nbsp;&nbsp;&nbsp; 200 |
-| 最大同時ログイン数 |60 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 120 &nbsp;&nbsp;&nbsp; 200 |
-| 最大同時セッション数 |600 &nbsp; 900 &nbsp; 1200 &nbsp; 2400 |
-| ポイントインタイム リストア |過去 35 日間の任意のポイント |
-| 障害復旧 |アクティブ geo レプリケーションを選択するとき |
+| **パフォーマンス レベル** | **S0** | **S1** | **S2** | **S3** |
+| --- |---:| ---:|---:|---:|---:|
+| 最大 DTU 数 | 10 | 20 | 50 | 100 |
+| 最大データベース サイズ* | 250 GB| 250 GB | 250 GB | 250 GB |
+| 最大インメモリ OLTP ストレージ | 該当なし | 該当なし | 該当なし | 該当なし |
+| 最大同時実行ワーカー数 | 60 | 90 | 120 | 200 |
+| 最大同時ログイン数 | 60 | 90 | 120 | 200 |
+| 最大同時セッション数 |600 | 900 | 1200 | 2400 |
+||||||
 
-### <a name="premium-service-tier"></a>Premium サービス レベル
-|  |  |
-| --- |:---:|
-| **P1** &nbsp;&nbsp;&nbsp;&nbsp; **P2** &nbsp;&nbsp;&nbsp;&nbsp; **P4** &nbsp;&nbsp;&nbsp; **P6/P3** &nbsp;&nbsp; **P11** &nbsp;&nbsp; **P15** | |
-| 最大 DTU 数 |125 &nbsp;&nbsp; 250 &nbsp;&nbsp; 500 &nbsp;&nbsp; 1000 &nbsp;&nbsp;&nbsp; 1750 &nbsp;&nbsp; 4000 |
-| 最大データベース サイズ (GB) |500 &nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 1000 &nbsp;&nbsp; 1000 |
-| 最大インメモリ OLTP ストレージ容量 (GB) |&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 |
-| 最大同時実行ワーカー数 |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
-| 最大同時ログイン数 |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
-| 最大同時セッション数 |2400 &nbsp;4800 &nbsp; 9600 &nbsp;19200 &nbsp;32000 &nbsp;32000 |
-| ポイントインタイム リストア |過去 35 日間の任意のポイント |
-| 障害復旧 |アクティブ geo レプリケーションを選択するとき |
+### <a name="premium-service-tier"></a>Premium サービス レベル 
+| **パフォーマンス レベル** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
+| --- |---:|---:|---:|---:|---:|---:|
+| 最大 DTU 数 | 125 | 250 | 500 | 1,000 | 1750 | 4000 |
+| 最大データベース サイズ* | 500 GB | 500 GB | 500 GB | 500 GB | 4 TB* | 4 TB* |
+| 最大インメモリ OLTP ストレージ | 1 GB | 2 GB | 4 GB | 8 GB | 14 GB | 32 GB |
+| 最大同時実行ワーカー数 | 200 | 400 | 800 | 1600 | 2400 | 6400 |
+| 最大同時ログイン数 | 200 | 400| 800| 1600| 2400| 6400 |
+| 最大同時セッション数 | 30000| 30000| 30000| 30000| 30000| 30000 |
+|||||||
 
+### <a name="premium-rs-service-tier"></a>Premium RS サービス レベル 
+| **パフォーマンス レベル** | **PRS1** | **PRS2** | **PRS4** | **PRS6** |
+| --- |---:|---:|---:|---:|---:|---:|
+| 最大 DTU 数 | 125 | 250 | 500 | 1,000 |
+| 最大データベース サイズ* | 500 GB | 500 GB | 500 GB | 500 GB |
+| 最大インメモリ OLTP ストレージ | 1 GB | 2 GB | 4 GB | 8 GB |
+| 最大同時実行ワーカー数 | 200 | 400 | 800 | 1600 |
+| 最大同時ログイン数 | 200 | 400| 800| 1600|
+| 最大同時セッション数 | 30000| 30000| 30000| 30000|
+|||||||
 
-
-<!--HONumber=Nov16_HO2-->
-
-
+\* 最大データベース サイズは、データベース内のデータの最大サイズを意味します。 

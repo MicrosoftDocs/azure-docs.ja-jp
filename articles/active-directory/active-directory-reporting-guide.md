@@ -1,25 +1,28 @@
 ---
-title: Azure Active Directory レポート ガイド | Microsoft Docs
-description: Azure Active Directory レポートに関するすべての記事を含むガイド
+title: "Azure Active Directory レポート ガイド | Microsoft Docs"
+description: "Azure Active Directory レポートに関するすべての記事を含むガイド"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+ms.assetid: b60d7f22-f271-4148-a3c8-b0ed0eccd106
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
-ms.author: femila
+ms.date: 01/19/2017
+ms.author: femila;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
+ms.openlocfilehash: b51d409a78d737ac6d15d05d5b146ed185223e75
+
 
 ---
 # <a name="azure-active-directory-reporting-guide"></a>Azure Active Directory レポート ガイド
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-reporting-azure-portal.md)
-> * [Azure クラシック ポータル](active-directory-reporting-guide.md)
+> * [Azure Portal](active-directory-reporting-guide.md)
+> * [Azure クラシック ポータル](active-directory-reporting-guide-classic-portal.md)
 > 
 > 
 
@@ -27,12 +30,10 @@ ms.author: femila
 * [Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)
 * [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 * [Azure Active Directory レポートの保持期間](active-directory-reporting-retention.md)
-* [Azure Active Directory のレポート検索](active-directory-reporting-search.md)
-* [Azure Active Directory レポートのバックフィル](active-directory-reporting-backfill.md)
-* [Azure Active Directory レポートの待機時間](active-directory-reporting-latencies.md)
-* [Azure Active Directory レポートの "Unknown Actor" イベント](active-directory-reporting-unknown-actor.md)
-* [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO3-->
 
 

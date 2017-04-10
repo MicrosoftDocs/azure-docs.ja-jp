@@ -1,20 +1,24 @@
 ---
-title: 検索条件の保存とデータ資産のピン留めを行う方法 | Microsoft Docs
-description: データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。
+title: "検索条件の保存とデータ資産のピン留めを行う方法 | Microsoft Docs"
+description: "データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/10/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f017776480466979d7f2f9edec2b3ac5caca2321
+
 
 ---
 # <a name="how-to-save-searches-and-pin-data-assets"></a>検索条件の保存とデータ資産のピン留めを行う方法
@@ -68,7 +72,7 @@ Azure Data Catalog の保存した検索条件とは、再利用可能な、ユ�
 
 ![Unpinning a data asset](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
-## <a name="“my-assets”"></a>[マイ アセット]
+## <a name="my-assets"></a>[マイ アセット]
 Azure Data Catalog ポータルのホーム ページには [マイ アセット] セクションがあり、現在のユーザーにとって関心のある資産が表示されます。 このセクションには、ピン留めされた資産と保存した検索条件の両方が表示されます。
 
 !['My Assets' on the home page](./media/data-catalog-how-to-save-pin/07-my-assets.png)
@@ -76,6 +80,8 @@ Azure Data Catalog ポータルのホーム ページには [マイ アセット
 ## <a name="summary"></a>概要
 Azure Data Catalog には、ユーザーが必要なデータ ソースをより簡単に検出できるようにする機能が用意されています。その結果、ユーザーは、データの検索にかかる時間を短縮し、データの処理により多くの時間を費やすことができるようになりました。 保存した検索条件とピン留めされたデータ資産は、このような中核となる機能に基づいているため、ユーザーは繰り返し使用するデータ ソースを簡単に特定できます。
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

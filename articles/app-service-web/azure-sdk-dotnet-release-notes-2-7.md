@@ -1,23 +1,25 @@
-
 ---
-title: Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
-description: Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
+title: "Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
+description: "Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
 services: app-service\web
 documentationcenter: .net
-author: Juliako
-manager: erikre
-editor: ''
-
+author: chrissfanos
+editor: 
+ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
 ms.service: app-service
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/17/2016
+ms.date: 02/24/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 877fb34d2fe5d4b85157a8338e180358d2226ef1
+
 
 ---
-# <a name="azure-sdk-for-.net-2.7-and-.net-2.7.1-release-notes"></a>Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
+# <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
 ## <a name="overview"></a>概要
 このドキュメントには、Azure SDK for .NET 2.7 リリースのリリース ノートが含まれます。 
 
@@ -27,7 +29,7 @@ Azure SDK 2.7 は、Visual Studio 2015 と Visual Studio 2013 でのみサポー
 
 このリリースの詳細については、[Azure SDK 2.7 の発表に関する投稿](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)と[Azure SDK 2.7.1 の発表に関する投稿](http://go.microsoft.com/fwlink/?LinkId=623850)をご覧ください。
 
-## <a name="azure-sdk-for-.net-2.7"></a>Azure SDK for .NET 2.7
+## <a name="azure-sdk-for-net-27"></a>Azure SDK for .NET 2.7
 ### <a name="sign-in-improvements-for-visual-studio-2015"></a>Visual Studio 2015 のサインインの機能強化
 Visual Studio 2015 用の Azure SDK 2.7 は、Visual Studio 2015 の新しい ID 管理機能をサポートしています。  これには、ロールベースの Access Control、クラウド ソリューション プロバイダー、DreamSpark や他のアカウント、サブスクリプションの種類を使用して Azure にアクセスするアカウント向けのサポートが含まれています。
 
@@ -61,7 +63,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 #### <a name="known-issues"></a>既知の問題
 Web アプリ デプロイメント スロットのノードがサーバー エクスプローラーのスロット ノードに表示されません。また、Web アプリ デプロイ スロットの子ノードがクラウド エクスプローラーに読み込まれません。 この問題は解決され、次の SDK リリースに向けて準備されています。 
 
-### <a name="<a-name="cloud_explorer"></a>cloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer for Visual Studio 2015
+### <a name="a-namecloudexploreracloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer for Visual Studio 2015
 Azure SDK 2.7 には、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio 2015 のクラウド エクスプローラーが含まれています。 
 
 クラウド エクスプローラーは、次をサポートしています。
@@ -95,7 +97,7 @@ Visual Studio 用の **Azure Data Factory ツール** が導入されていま�
 * **マルチ環境の公開**: 開発環境、テスト環境、運用環境に対して、環境ごとに個別の構成ファイルを作成し、作成したパイプラインを発行します。
 * **Pig、Hive、.Net ベースのデータ処理のサポート**: Data Factory プロジェクトにおける Pig スクリプトと Hive スクリプトをサポートします。 .Net アクティビティを管理するための C# プロジェクトの参照をサポートします。
 
-## <a name="azure-sdk-for-.net-2.7.1"></a>Azure SDK for .NET 2.7.1
+## <a name="azure-sdk-for-net-271"></a>Azure SDK for .NET 2.7.1
 次のセクションには、the Azure SDK for .NET 2.7.1 に導入された更新が含まれています。
 
 ### <a name="hdinsight-tools"></a>HDInsight ツール
@@ -135,6 +137,9 @@ LightSwitch プロジェクトはこのリリースと互換性がありませ�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

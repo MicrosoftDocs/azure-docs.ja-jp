@@ -1,43 +1,49 @@
 ---
-title: Manage historical data in Temporal Tables with retention policy | Microsoft Docs
-description: Learn how to use temporal retention policy to keep historical data under your control.
+title: "リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理 | Microsoft Docs"
+description: "一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: bonova
 manager: drasumic
-editor: ''
-
+editor: 
+ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
+ms.custom: development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
+translationtype: Human Translation
+ms.sourcegitcommit: dd09cf5f9ad4bc82d9685b656eb40d31ac13fbd2
+ms.openlocfilehash: a0f5ef966bf4de86d337a561a4b9e2ded8b55488
+ms.lasthandoff: 02/16/2017
+
 
 ---
-# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Manage historical data in Temporal Tables with retention policy
-Temporal Tables may increase database size more than regular tables, especially if you retain historical data for a longer period of time. Hence, retention policy for historical data is an important aspect of planning and managing the lifecycle of every temporal table. Temporal Tables in Azure SQL Database come with easy-to-use retention mechanism that helps you accomplish this task.
+# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
+特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
 
-Temporal history retention can be configured at the individual table level, which allows users to create flexible aging polices. Applying temporal retention is simple: it requires only one parameter to be set during table creation or schema change.
+テンポラル履歴のリテンション期間は、個々のテーブル レベルで構成できるため、柔軟な継続ポリシーを作成できます。 テンポラル リテンション期間は簡単に適用でき、テーブルの作成時かスキーマの変更時にパラメーターを&1; つ設定するのみで適用できます。
 
-After you define retention policy, Azure SQL Database will start checking regularly if there are historical rows that are eligible for automatic data cleanup. Identification of matching rows and their removal from the history table occur transparently, in the background task that is scheduled and run by the system. Age condition for the history table rows is checked based on the column representing end of SYSTEM_TIME period. If retention period, for example, is set to six months, table rows eligible for cleanup satisfy the following condition:
+リテンション ポリシーを定義すると、自動データ クリーンアップの対象となる履歴行があるかどうかを Azure SQL Database が定期的にチェックするようになります。 一致する行の特定と履歴テーブルからの削除は、システムによってスケジュールが設定され、実行されるバックグラウンド タスクで透過的に実行されます。 SYSTEM_TIME 期間終了を表す列に基づいて、履歴テーブルの行の有効期間の条件がチェックされます。 たとえば、リテンション期間を&6; か月間に設定すると、次の条件を満たすテーブル行がクリーンアップの対象となります。
 
 ````
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ````
 
-In the example above we assumed that **ValidTo** column corresponds to the end of SYSTEM_TIME period.
+上の例では、**[ValidTo]** 列が SYSTEM_TIME 期間終了と一致するという前提になっています。
 
-## <a name="how-to-configure-retention-policy?"></a>How to configure retention policy?
-Before you configure retention policy for a temporal table, check first whether temporal historical retention is enabled *at the database level*.
+## <a name="how-to-configure-retention-policy"></a>リテンション ポリシーの構成方法
+テンポラル テーブルのリテンション ポリシーを構成する前に、テンポラル履歴のリテンション期間が*データベース レベルで*有効になっているかどうかを確認します。
 
 ````
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-Database flag **is_temporal_history_retention_enabled** is set to ON by default, but users can change it with ALTER DATABASE statement. It is also automatically set to OFF after [point in time restore](sql-database-point-in-time-restore-portal.md) operation. To enable temporal history retention cleanup for your database, execute the following statement:
+データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-recovery-using-backups.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
 
 ````
 ALTER DATABASE <myDB>
@@ -45,11 +51,11 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 > [!IMPORTANT]
-> You can configure retention for temporal tables even if **is_temporal_history_retention_enabled** is OFF, but automatic cleanup for aged rows will not be triggered in that case.
+> **is_temporal_history_retention_enabled** がオフの場合であっても、テンポラル テーブルのリテンション期間を構成できますが、この場合は、期限切れの行の自動クリーンアップはトリガーされません。
 > 
 > 
 
-Retention policy is configured during table creation by specifying value for the HISTORY_RETENTION_PERIOD parameter:
+リテンション ポリシーは、テーブルの作成時に HISTORY_RETENTION_PERIOD パラメーターの値を指定することによって構成します。
 
 ````
 CREATE TABLE dbo.WebsiteUserInfo
@@ -71,9 +77,9 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ````
 
-Azure SQL Database allows you to specify retention period by using different time units: DAYS, WEEKS, MONTHS, and YEARS. If HISTORY_RETENTION_PERIOD is omitted, INFINITE retention is assumed. You can also use INFINITE keyword explicitly.
+Azure SQL Database では、DAYS、WEEKS、MONTHS、YEARS のさまざまな時間単位を使用してリテンション期間を指定できます。 HISTORY_RETENTION_PERIOD を省略すると、リテンション期間が INFINITE であると判断されます。 INFINITE キーワードを明示的に使用することもできます。
 
-In some scenarios, you may want to configure retention after table creation, or to change previously configured value. In that case use ALTER TABLE statement:
+一部のシナリオでは、テーブルの作成後にリテンション期間の構成が必要になったり、構成済みの値の変更が必要になることがあります。 その場合は、ALTER TABLE ステートメントを使用します。
 
 ````
 ALTER TABLE dbo.WebsiteUserInfo
@@ -81,11 +87,11 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ````
 
 > [!IMPORTANT]
-> Setting SYSTEM_VERSIONING to OFF *does not preserve* retention period value. Setting SYSTEM_VERSIONING to ON without HISTORY_RETENTION_PERIOD specified explicitly results in the INFINITE retention period.
+> SYSTEM_VERSIONING をオフに設定したときには、リテンション期間の値は*保持されません*。 HISTORY_RETENTION_PERIOD を明示的に指定せずに SYSTEM_VERSIONING をオンに設定すると、リテンション期間が INFINITE に設定されます。
 > 
 > 
 
-To review current state of the retention policy, use the following query that joins temporal retention enablement flag at the database level with retention periods for individual tables:
+リテンション ポリシーの現在の状態を確認するには、データベース レベルのテンポラル リテンション期間の有効化フラグを、個々のテーブルのリテンション期間に結合する次のクエリを使用します。
 
 ````
 SELECT DB.is_temporal_history_retention_enabled,
@@ -101,28 +107,28 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 ````
 
 
-## <a name="how-sql-database-deletes-aged-rows?"></a>How SQL Database deletes aged rows?
-The cleanup process depends on the index layout of the history table. It is important to notice that *only history tables with a clustered index (B-tree or columnstore) can have finite retention policy configured*. A background task is created to perform aged data cleanup for all temporal tables with finite retention period.
-Cleanup logic for the rowstore (B-tree) clustered index deletes aged row in smaller chunks (up to 10K) minimizing pressure on database log and I/O subsystem. Although cleanup logic utilizes required B-tree index, order of deletions for the rows older than retention period cannot be firmly guaranteed. Hence, *do not take any dependency on the cleanup order in your applications*.
+## <a name="how-sql-database-deletes-aged-rows"></a>SQL Database によって期限切れの行が削除されるしくみ
+クリーンアップ プロセスは、履歴テーブルのインデックスのレイアウトに依存します。 *クラスター化されたインデックスを持つ履歴テーブル (B ツリーまたは列ストア) のみに有限のリテンション ポリシーを構成する*ことが重要です。 有限のリテンション期間を持つすべてのテンポラル テーブルに対して、期限切れのデータのクリーンアップを実行するバックグラウンド タスクが作成されます。
+行ストア (B ツリー) のクラスター化されたインデックスのクリーンアップ ロジックでは、よりサイズの小さなまとまり (最大 10K) で期限切れの行が削除され、データベース ログや I/O サブシステムへの負荷が軽減されます。 クリーンアップ ロジックでは必須の B ツリー インデックスが使用されますが、リテンション期間を過ぎた行の削除の順序は必ずしも保証されません。 そのため、*アプリケーションではクリーンアップの順序に依存関係を持たないようにしてください*。
 
-The cleanup task for the clustered columnstore removes entire [row groups](https://msdn.microsoft.com/library/gg492088.aspx) at once (typically contain 1 million of rows each), which is very efficient, especially when historical data is generated at a high pace.
+クラスター化された列ストアのクリーンアップ タスクでは[行グループ](https://msdn.microsoft.com/library/gg492088.aspx)(通常は、1 グループに 100 万行が含まれます)全体が一度に削除されるため 、特に、履歴データが頻繁に生成されるような場合に効果的です。
 
-![Clustered columnstore retention](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
+![クラスター化列ストアのリテンション期間](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-Excellent data compression and efficient retention cleanup makes clustered columnstore index a perfect choice for scenarios when your workload rapidly generates high amount of historical data. That pattern is typical for intensive [transactional processing workloads that use temporal tables](https://msdn.microsoft.com/library/mt631669.aspx) for change tracking and auditing, trend analysis, or IoT data ingestion.
+データ圧縮とリテンション クリーンアップの効率性が優れているため、ワークロードが短時間に大量の履歴データを生成するようなシナリオでは、クラスター化列ストア インデックスをお勧めします。 このようなパターンは、変更の追跡や監査、傾向分析、IoT データの取り込みに[テンポラル テーブルを使用する大量のトランザクション処理ワークロード](https://msdn.microsoft.com/library/mt631669.aspx)でよく見られます。
 
-## <a name="index-considerations"></a>Index considerations
-The cleanup task for tables with rowstore clustered index requires index to start with the column corresponding the end of SYSTEM_TIME period. If such index doesn’t exist, you won’t be able to configure finite retention period:
+## <a name="index-considerations"></a>インデックスに関する考慮事項
+行ストア クラスター化インデックスを持つテーブルのクリーンアップ タスクでは、SYSTEM_TIME 期間の終了に対応する列から始めるためのインデックスが必要です。 このようなインデックスが存在しない場合は、有限のリテンション期間を構成できません。
 
-*Msg 13765, Level 16, State 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table.*
+*Msg 13765, Level 16, State 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. (履歴テーブル 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' に必要なクラスター化インデックスがないため、システム バージョンのテンポラル テーブル 'temporalstagetestdb.dbo.WebsiteUserInfo' で有限のリテンション期間の設定が失敗しました)Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table. (SYSTEM_TIME 期間終了に一致する列から始まるクラスター化列ストアまたは B ツリーを履歴テーブルに作成することを検討してください)*
 
-It is important to notice that the default history table created by Azure SQL Database already has clustered index, which is compliant for retention policy. If you try to remove that index on a table with finite retention period, operation fails with the following error:
+Azure SQL Database で作成した既定の履歴テーブルには、既に、リテンション ポリシーに準拠したクラスター化インデックスがあります。 有限のリテンション期間を持つテーブルのインデックスを削除しようとすると、次のエラーが表示されて操作が失敗します。
 
-*Msg 13766, Level 16, State 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index.*
+*Msg 13766, Level 16, State 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. (期限切れのデータの自動クリーンアップに使用されているため、クラスター化インデックス 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' を削除できません)Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index. (このインデックスの削除が必要な場合は、対応するシステム バージョンのテンポラル テーブルで HISTORY_RETENTION_PERIOD を INFINITE に設定することを検討してください)*
 
-Cleanup on the clustered columnstore index works optimally if historical rows are inserted in the ascending order (ordered by the end of period column), which is always the case when the history table is populated exclusively by the SYSTEM_VERSIONIOING mechanism. If rows in the history table are not ordered by end of period column (which may be the case if you migrated existing historical data), you should re-create clustered columnstore index on top of B-tree rowstore index that is properly ordered, to achieve optimal performance.
+履歴行を昇順で (期間終了列順)、SYSTEM_VERSIONIOING メカニズムによって排他的履歴テーブルのデータを設定する場合、大文字と小文字は常に挿入する場合、クラスター化列ストア インデックスのクリーンアップは最適に動作します。 履歴テーブルの行が期間終了列を基準にして並べられていない場合 (既存の履歴データを移行したような場合)、パフォーマンスを最適化するためには、適切に並べられた B ツリー行ストア インデックスの最上部にクラスター化列ストア インデックスを再作成する必要があります。
 
-Avoid rebuilding clustered columnstore index on the history table with the finite retention period, because it may change ordering in the row groups naturally imposed by the system-versioning operation. If you need to rebuild clustered columnstore index on the history table, do that by re-creating it on top of compliant B-tree index, preserving ordering in the rowgroups necessary for regular data cleanup. The same approach should be taken if you create temporal table with existing history table that has clustered column index without guaranteed data order:
+システム バージョンの操作によって自然に作成された行グループ内の順序が変更されることがあるため、有限のリテンション期間を持つ履歴テーブルのクラスター化列ストア インデックスは再構築しないでください。 履歴テーブルのクラスター化列ストア インデックスの再構築が必要な場合は、互換性のある B ツリー インデックスの最上部に再作成してください。そうすることで、通常のデータ クリーンアップに必要な行グループの順番が保持されます。 データの順番を気にせずに、クラスター化列インデックスを持つ既存の履歴テーブルを持つテンポラル テーブルを作成する場合も、同じ方法で実行します。
 
 ````
 /*Create B-tree ordered by the end of period column*/
@@ -134,54 +140,52 @@ CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoH
 WITH (DROP_EXISTING = ON);
 ````
 
-When finite retention period is configured for the history table with the clustered columnstore index, you cannot create additional non-clustered B-tree indexes on that table:
+クラスター化列ストア インデックスを持つ履歴テーブルに有限のリテンション期間を構成するときは、そのテーブルにクラスター化されていない B ツリーを追加で作成することはできません。
 
 ````
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ````
 
-An attempt to execute above statement will fail with the following error:
+上記のステートメントを実行すると、次のエラーが表示されて失敗します。
 
-*Msg 13772, Level 16, State 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined.*
+*Msg 13772, Level 16, State 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined. (有限のリテンション期間とクラスター化列ストア インデックスが定義されているため、テンポラル履歴テーブル 'WebsiteUserInfoHistory' ではクラスター化されていないインデックスを作成できません)*
 
-## <a name="querying-tables-with-retention-policy"></a>Querying tables with retention policy
-All queries on the temporal table automatically filter out historical rows matching finite retention policy, to avoid unpredictable and inconsistent results, since aged rows can be deleted by the cleanup task, *at any point in time and in arbitrary order*.
+## <a name="querying-tables-with-retention-policy"></a>リテンション ポリシーを持つテーブルの照会
+クリーンアップ タスクでは*任意の時間かつ任意の順序で*期限切れの行を削除できるため、予期しない、一貫性のない結果を避けるために、テンポラル テーブルのクエリではすべて、有限のリテンション ポリシーに一致する履歴列が除外されます。
 
-The following picture shows the query plan for a simple query:
+次の図は、シンプルなクエリのクエリ プランを示しています。
 
 ````
 SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 ````
 
-The query plan includes additional filter applied to end of period column (ValidTo) in the “Clustered Index Scan” operator on the history table (highlighted). This example assumes that 1 MONTH retention period was set on WebsiteUserInfo table.
+クエリ プランには、履歴テーブル (ハイライト表示) での「Clustered Index Scan」操作の期間終了列 (ValidTo) に適用される追加のフィルターが含まれます。 この例では、WebsiteUserInfo テーブルに&1; か月のリテンション期間が設定されていると想定しています。
 
-![Retention query filter](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
+![リテンション期間クエリ フィルター](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
-However, if you query history table directly, you may see rows that are older than specified retention period, but without any guarantee for repeatable query results. The following picture shows query execution plan for the query on the history table without additional filters applied:
+ただし、履歴テーブルにクエリを直接実行すると、指定したリテンション期間よりも古い行が表示されることがあり、クエリを繰り返し実行すると結果が異なることがあります。 次の図は、追加のフィルターを適用しない、履歴テーブルのクエリのクエリ実行プランを示します。
 
-![Querying history without retention filter](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
+![リテンション期間フィルターを使用せずに履歴のクエリを実行する](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Do not rely your business logic on reading history table beyond retention period as you may get inconsistent or unexpected results. It is recommended to use temporal queries with FOR SYSTEM_TIME clause for analyzing data in temporal tables.
+一貫性のない結果や予期しない結果を得ることがあるため、ビジネス ロジックが保有期間を超える履歴テーブルの読み取りに依存することのないようにしてください。 テンポラル テーブルのデータの分析には、FOR SYSTEM_TIME 句を使ったテンポラル クエリを使用することをお勧めします。
 
-## <a name="point-in-time-restore-considerations"></a>Point in time restore considerations
-When you create new database by [restoring existing database to a specific point in time](sql-database-point-in-time-restore-portal.md), it has temporal retention disabled at the database level. (**is_temporal_history_retention_enabled** flag set to OFF). This functionality allows you to examine all historical rows upon restore, without worrying that aged rows are removed before you get to query them. You can use it to *inspect historical data beyond configured retention period*.
+## <a name="point-in-time-restore-considerations"></a>ポイントインタイム リストアの考慮事項
+[既存のデータベースを特定の時点に復元](sql-database-point-in-time-restore-portal.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
 
-Say that a temporal table has one MONTH retention period specified. If your database was created in Premium Service tier, you would be able to create database copy with the database state up to 35 days back in the past. That effectively would allow you to analyze historical rows that are up to 65 days old by querying the history table directly.
+テンポラル テーブルに&1; か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
 
-If you want to activate temporal retention cleanup, run the following Transact-SQL statement after point in time restore:
+テンポラル リテンション期間のクリーンアップを有効にする場合は、ポイントインタイム リストアの後に次の Transact-SQL ステートメントを実行します。
 
 ````
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
-## <a name="next-steps"></a>Next steps
-To learn how to use Temporal Tables in your applications check out [Getting Started with Temporal Tables in Azure SQL Database](sql-database-temporal-tables.md).
+## <a name="next-steps"></a>次のステップ
+アプリケーションでテンポラル テーブルを使用する方法については、「[Azure SQL Database のテンポラル テーブルの概要](sql-database-temporal-tables.md)」をご覧ください。
 
-Visit Channel 9 to hear a [real customer temporal implementation success story](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) and watch a [live temporal demonstration](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
-For detailed information about Temporal Tables, review [MSDN documentation](https://msdn.microsoft.com/library/dn935015.aspx).
-
-<!--HONumber=Oct16_HO2-->
+テンポラル テーブルの詳細については、[MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)をご覧ください。
 
 

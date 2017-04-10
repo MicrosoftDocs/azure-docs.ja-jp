@@ -1,13 +1,13 @@
 ---
-title: ロジック アプリへの DB2 コネクタの追加 | Microsoft Docs
-description: DB2 コネクタと REST API パラメーターの概要
-services: ''
-documentationcenter: ''
+title: "ロジック アプリへの DB2 コネクタの追加 | Microsoft Docs"
+description: "DB2 コネクタと REST API パラメーターの概要"
+services: 
+documentationcenter: 
 author: gplarsen
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
+translationtype: Human Translation
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: bba03cfb21e8eebdbf67152de9c6e2da6f22f5a2
+ms.lasthandoff: 02/16/2017
+
 
 ---
 # <a name="get-started-with-the-db2-connector"></a>DB2 コネクタの概要
@@ -28,15 +33,15 @@ Microsoft Connector for DB2 は、IBM DB2 データベースに格納されて�
 DB2 コネクタでは、次のデータベース操作をサポートしています。
 
 * データベース テーブルの一覧表示
-* SELECT を使用した 1 つの行の読み取り
+* SELECT を使用した&1; つの行の読み取り
 * SELECT を使用したすべての行の読み取り
-* INSERT を使用した 1 つの行の追加
-* UPDATE を使用した 1 つの行の変更
-* DELETE を使用した 1 つの行の削除
+* INSERT を使用した&1; つの行の追加
+* UPDATE を使用した&1; つの行の変更
+* DELETE を使用した&1; つの行の削除
 
 このトピックでは、ロジック アプリでコネクタを使用してデータベース操作を処理する方法を説明します。
 
-Logic Apps の詳細については、 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
 
 ## <a name="available-actions"></a>使用可能なアクション
 DB2 コネクタでサポートされているロジック アプリのアクションは、次のとおりです。
@@ -157,8 +162,8 @@ DB2 テーブル内のすべての行を取得するロジック アプリのア
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
 
-## <a name="add-one-row-using-insert"></a>INSERT を使用した 1 つの行の追加
-DB2 テーブル内の 1 つの行を追加するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
+## <a name="add-one-row-using-insert"></a>INSERT を使用した&1; つの行の追加
+DB2 テーブル内の&1; つの行を追加するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -170,7 +175,7 @@ DB2 テーブル内の 1 つの行を追加するロジック アプリのアク
 3. **[繰り返し]** トリガーで **[編集]** を選択します。**[頻度]** ドロップダウンをクリックして **[日]** を選択し、**[間隔]** を選択して「**7**」と入力します。 
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**db2**」と入力し、**[DB2 - 行の挿入 (プレビュー)]** を選択します。
-6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
+6. **[DB2 - Insert row (Preview) (DB2 - 行の挿入 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
 7. **[接続]** 構成ウィンドウで、接続を選択します。 たとえば、 **[hisdemo2]**を選択します。
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -184,8 +189,8 @@ DB2 テーブル内の 1 つの行を追加するロジック アプリのアク
     
     ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
 
-## <a name="fetch-one-row-using-select"></a>SELECT を使用して 1 つの行を取得する
-DB2 テーブル内の 1 つの行を取得するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="fetch-one-row-using-select"></a>SELECT を使用して&1; つの行を取得する
+DB2 テーブル内の&1; つの行を取得するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -212,8 +217,8 @@ DB2 テーブル内の 1 つの行を取得するロジック アプリのアク
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
 
-## <a name="change-one-row-using-update"></a>UPDATE を使用して 1 つの行を変更する
-DB2 テーブル内の 1 つの行を変更するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
+## <a name="change-one-row-using-update"></a>UPDATE を使用して&1; つの行を変更する
+DB2 テーブル内の&1; つの行を変更するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -225,7 +230,7 @@ DB2 テーブル内の 1 つの行を変更するロジック アプリのアク
 3. **[繰り返し]** トリガーで **[編集]** を選択します。**[頻度]** ドロップダウンをクリックして **[日]** を選択し、**[間隔]** を選択して「**7**」と入力します。 
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**db2**」と入力し、**[DB2 - Update row (Preview) (DB2 - 行の更新 (プレビュー))]** を選択します。
-6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
+6. **[DB2 - Update row (Preview) (DB2 - 行の更新 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
 7. **[接続]** 構成ウィンドウで、既存の接続をクリックして選択します。 たとえば、 **[hisdemo2]**を選択します。
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -239,8 +244,8 @@ DB2 テーブル内の 1 つの行を変更するロジック アプリのアク
     
     ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
 
-## <a name="remove-one-row-using-delete"></a>DELETE を使用した 1 つの行の削除
-DB2 テーブル内の 1 つの行を削除するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+## <a name="remove-one-row-using-delete"></a>DELETE を使用した&1; つの行の削除
+DB2 テーブル内の&1; つの行を削除するロジック アプリのアクションを定義できます。 このアクションでは、DB2 の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -252,7 +257,7 @@ DB2 テーブル内の 1 つの行を削除するロジック アプリのアク
 3. **[繰り返し]** トリガーで **[編集]** を選択します。**[頻度]** ドロップダウンをクリックして **[日]** を選択し、**[間隔]** を選択して「**7**」と入力します。 
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**db2**」と入力し、**[DB2 - 行の削除 (プレビュー)]** を選択します。
-6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
+6. **[DB2 - Delete row (Preview) (DB2 - 行の削除 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
 7. **[接続]** 構成ウィンドウで、既存の接続を選択します。 たとえば、 **[hisdemo2]**を選択します。
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -272,7 +277,7 @@ DB2 テーブル内の 1 つの行を削除するロジック アプリのアク
 
 | アクション | Description |
 | --- | --- |
-| [GetRow](connectors-create-api-db2.md#get-row) |DB2 テーブルから 1 つの行を取得します |
+| [GetRow](connectors-create-api-db2.md#get-row) |DB2 テーブルから&1; つの行を取得します |
 | [GetRows](connectors-create-api-db2.md#get-rows) |DB2 テーブルから複数の行を取得します |
 | [InsertRow](connectors-create-api-db2.md#insert-row) |DB2 テーブルに新しい行を挿入します |
 | [DeleteRow](connectors-create-api-db2.md#delete-row) |DB2 テーブルから行を削除します |
@@ -283,7 +288,7 @@ DB2 テーブル内の 1 つの行を削除するロジック アプリのアク
 このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
 
 #### <a name="get-row"></a>行を取得する
-DB2 テーブルから 1 つの行を取得します。  
+DB2 テーブルから&1; つの行を取得します。  
 
 | プロパティ名 | Displayname Settings | Description |
 | --- | --- | --- |
@@ -405,8 +410,6 @@ DB2 テーブルの既存の行を更新します。
 * IBM DB2 for LUW 10.5
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-<!--HONumber=Oct16_HO2-->
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
 

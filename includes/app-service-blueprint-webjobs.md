@@ -1,5 +1,5 @@
 
-## リソース
+## <a name="resources"></a>リソース
 * [Web ジョブ リソースの完全な一覧](../articles/app-service-web/websites-webjobs-resources.md)
 * [Azure Web ジョブ SDK の使用](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
 * [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
@@ -16,7 +16,7 @@
 * [Web ジョブ SDK を使用してログを記述し、ダッシュボードに表示する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
 * [Web ジョブのリモート デバッグ](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 
-## ビデオ
+## <a name="videos"></a>ビデオ
 * [Web ジョブと Web ジョブ SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-153-WebJobs-with-Pranav-Rastogi?utm_source=dlvr.it&utm_medium=twitter)
 * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 * [Visual Studio 向けの Web ジョブ ツールの概要](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster)
@@ -24,4 +24,8 @@
 * [Web ジョブのスケール アウト](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Magnus Mårtensson 氏による Azure Web ジョブ ビデオ](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

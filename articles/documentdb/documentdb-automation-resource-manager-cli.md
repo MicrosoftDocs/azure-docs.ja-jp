@@ -1,355 +1,240 @@
 ---
-title: DocumentDB Automation - リソース マネージャー - CLI | Microsoft Docs
-description: Azure リソース マネージャーのテンプレートまたは CLI を使用し、DocumentDB データベース アカウントをデプロイします。DocumentDB は、JSON データ用のクラウドベースの NoSQL データベースです。
+title: DocumentDB Automation - Azure CLI 2.0 | Microsoft Docs
+description: "Azure CLI 2.0 を使用して DocumentDB データベース アカウントを管理します。 DocumentDB は、JSON データ用のクラウドベースの NoSQL データベースです。"
 services: documentdb
-author: mimig1
+author: dmakwana
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-resource-manager
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 6158c27f-6b9a-404e-a234-b5d48c4a5b29
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2016
-ms.author: mimig
+ms.date: 03/20/2017
+ms.author: dimakwan
+translationtype: Human Translation
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b286a93d7cc5f962f969e877b2f487e56cbb1a95
+ms.lasthandoff: 03/30/2017
+
 
 ---
-# Azure リソース マネージャーのテンプレートと Azure CLI を利用し、DocumentDB アカウントを自動作成する
+# <a name="automate-azure-documentdb-account-management-using-azure-cli-20"></a>Azure CLI 2.0 を使用した Azure DocumentDB アカウントの管理の自動化
 > [!div class="op_single_selector"]
 > * [Azure ポータル](documentdb-create-account.md)
-> * [Azure CLI と ARM](documentdb-automation-resource-manager-cli.md)
-> 
-> 
+> * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
+> * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+> * [Azure Powershell](documentdb-manage-account-with-powershell.md)
 
-この記事では、Azure Resource Manager のテンプレートと Azure CLI (コマンド ライン インターフェイス) を利用し、Azure DocumentDB データベース アカウントを自動作成する方法について説明します。Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
+次のガイドでは、Azure CLI 2.0 の DocumentDB プレビュー コマンドを使用して、DocumentDB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][scaling-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 DocumentDB データベース アカウントのクロスプラットフォーム管理には、[Azure Powershell](documentdb-manage-account-with-powershell.md)、[リソースプロバイダーの REST API][rp-rest-api]、[Azure Portal](documentdb-create-account.md) のいずれも使用可能です。
 
-* [CLI を利用して DocumentDB アカウントを作成する](#quick-create-documentdb-account)
-* [ARM テンプレートを利用して DocumentDB アカウントを作成する](#deploy-documentdb-from-a-template)
+## <a name="getting-started"></a>使用の開始
 
-現在のところ、DocumentDB データベース アカウントは、ARM テンプレートと Azure CLI で作成できる唯一の DocumentDB リソースです。
+[Azure CLI 2.0 のインストールと構成方法][install-az-cli2]に関するページの手順に従って、Azure CLI 2.0 で開発環境をセットアップしてください。
 
-## 準備
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI をインストールしていない場合は、[インストールします](../xplat-cli-install.md)。
+次のコマンドを実行して画面上の手順に従い、Azure アカウントにログインします。
 
-### Azure CLI のバージョンを更新する
-コマンド プロンプトで、「`azure --version`」と入力し、バージョン 0.9.11 以降が既にインストールされているかどうかを確認します。この手順で Microsoft Azure CLI のデータ収集に参加するように求められる場合があります。y または n を選択して、オプトインまたはオプトアウトできます。
+    az login
 
-    azure --version
-    0.9.11 (node: 0.12.7)
+[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)が作成されていない場合は、リソース グループを作成します。
 
-バージョンが 0.9.11 以降ではない場合、[Azure CLI をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合、「`npm update -g azure-cli`」と入力し、インストールする場合、「`npm install -g azure-cli`」と入力します。
+    az group create --name <resourcegroupname> --location <resourcegrouplocation>
+    az group list
 
-### Azure アカウントとサブスクリプションを設定する
-Azure サブスクリプションをまだ持っていない場合でも、Visual Studio サブスクリプションがあれば、[Visual Studio サブスクライバー向けの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+`<resourcegrouplocation>` は、DocumentDB が一般公開されているリージョンのいずれかである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
-Azure リソース管理テンプレートを使用するには、職場のアカウント、学校のアカウント、Microsoft アカウントのいずれかの ID を所有している必要があります。いずれかのアカウントを所有している場合、次のコマンドを入力します。
+### <a name="notes"></a>メモ
 
-    azure login
+* 使用できるすべてのコマンドの一覧を取得するには、'az documentdb -h' を実行するか、[リファレンス ページ][az-documentdb-ref]をご覧ください。
+* 'az documentdb <command> -h' を実行すると、コマンドごとの必要なパラメーターとオプションのパラメータの詳細のリストを取得できます。
 
-次の出力が生成されます。
+## <a id="create-documentdb-account-cli"></a> DocumentDB データベース アカウントの作成
 
-    info:    Executing command login
-    |info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
-    Enter the code E1A2B3C4D to authenticate.
+このコマンドでは、DocumentDB データベース アカウントを作成できます。 新しいデータベース アカウントは、単一リージョンまたは[複数リージョン][scaling-globally]で、特定の[一貫性ポリシー](documentdb-consistency-levels.md)に基づいて構成します。 
+
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+    --default-consistency-level   : Default consistency level of the DocumentDB database account.
+                                    Allowed values: BoundedStaleness, Eventual, Session, Strong.
+    --ip-range-filter             : Firewall support. Specifies the set of IP addresses or IP
+                                    address ranges in CIDR form to be included as the allowed list
+                                    of client IPs for a given database account. IP addresses/ranges
+                                    must be comma separated and must not contain any spaces.
+                                    To enable portal access, include 104.42.195.92.
+    --kind                        : The type of DocumentDB database account to create.  Allowed
+                                    values: GlobalDocumentDB, MongoDB, Parse.  Default:
+                                    GlobalDocumentDB.
+    --locations                   : Space separated locations in 'regionName=failoverPriority'
+                                    format. E.g "East US"=0 "West US"=1. Failover priority values
+                                    are 0 for write regions and greater than 0 for read regions. A
+                                    failover priority value must be unique and less than the total
+                                    number of regions. Default: single region account in the
+                                    location of the specified resource group.
+    --max-interval                : When used with Bounded Staleness consistency, this value
+                                    represents the time amount of staleness (in seconds) tolerated.
+                                    Accepted range for this value is 1 - 100.  Default: 5.
+    --max-staleness-prefix        : When used with Bounded Staleness consistency, this value
+                                    represents the number of stale requests tolerated. Accepted
+                                    range for this value is 1 - 2,147,483,647.  Default: 100.
+```
+
+次に例を示します。 
+
+    az documentdb create -g rg-test -n docdb-test
+    az documentdb create -g rg-test -n docdb-test --kind MongoDB
+    az documentdb create -g rg-test -n docdb-test --locations "East US"=0 "West US"=1 "South Central US"=2
+    az documentdb create -g rg-test -n docdb-test --ip-range-filter "13.91.6.132,13.91.6.1/24"
+    az documentdb create -g rg-test -n docdb-test --locations "East US"=0 "West US"=1 --default-consistency-level BoundedStaleness --max-interval 10 --max-staleness-prefix 200
+
+### <a name="notes"></a>メモ
+* 場所は、DocumentDB が一般公開されているリージョンである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+
+## <a id="update-documentdb-account-cli"></a> DocumentDB データベース アカウントの更新
+
+このコマンドでは、DocumentDB データベース アカウントのプロパティを更新できます。 これには、一貫性ポリシーと、データベース アカウントが存在する場所が含まれます。
 
 > [!NOTE]
-> Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/virtual-machines-windows-create-aad-work-id.md)」を参照してください。
-> 
-> 
+> このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更することはできません。 フェールオーバー優先度の変更方法については、[こちら](#modify-failover-priority-powershell)を参照してください。
 
-ブラウザーで [https://aka.ms/devicelogin](https://aka.ms/devicelogin) を開き、コマンド出力で生成されたコードを入力します。
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+    --default-consistency-level   : Default consistency level of the DocumentDB database account.
+                                    Allowed values: BoundedStaleness, Eventual, Session, Strong.
+    --ip-range-filter             : Firewall support. Specifies the set of IP addresses or IP address
+                                    ranges in CIDR form to be included as the allowed list of client
+                                    IPs for a given database account. IP addresses/ranges must be comma
+                                    separated and must not contain any spaces.
+    --locations                   : Space separated locations in 'regionName=failoverPriority' format.
+                                    E.g "East US"=0. Failover priority values are 0 for write regions
+                                    and greater than 0 for read regions. A failover priority value must
+                                    be unique and less than the total number of regions.
+    --max-interval                : When used with Bounded Staleness consistency, this value represents
+                                    the time amount of staleness (in seconds) tolerated. Accepted range
+                                    for this value is 1 - 100.
+    --max-staleness-prefix        : When used with Bounded Staleness consistency, this value represents
+                                    the number of stale requests tolerated. Accepted range for this
+                                    value is 1 - 2,147,483,647.
+```
 
-![Microsoft Azure CLI のデバイス ログイン画面のスクリーンショット](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
+次に例を示します。 
 
-コードを入力したら、ブラウザーで使用する ID を選択し、必要に応じてユーザー名とパスワードを入力します。
+    az documentdb update -g rg-test -n docdb-test --locations "East US"=0 "West US"=1 "South Central US"=2
+    az documentdb update -g rg-test -n docdb-test --ip-range-filter "13.91.6.132,13.91.6.1/24"
+    az documentdb update -g rg-test -n docdb-test --default-consistency-level BoundedStaleness --max-interval 10 --max-staleness-prefix 200
 
-![使用する Azure サブスクリプションに関連付けられている Microsoft ID アカウントを選択する場所のスクリーンショット](media/documentdb-automation-resource-manager-cli/identity-cli-login.png)
+## <a id="add-remove-region-documentdb-account-cli"></a> DocumentDB データベース アカウントからのリージョンの追加/削除
 
-ログインすると、次の確認画面が表示されます。表示されたら、ブラウザーのウィンドウを閉じることができます。
+既存の DocumentDB データベース アカウントとの間でリージョンの追加または削除を実行するには、[update](#update-documentdb-account-cli) コマンドと `--locations` フラグを使用します。 次の例では、新しいアカウントを作成し、続いてそのアカウントにリージョンを追加したり、アカウントからリージョンを削除したりする方法を説明します。
 
-![Microsoft Azure クロスプラットフォーム コマンド ライン インターフェイスへのログインを確認するスクリーンショット](media/documentdb-automation-resource-manager-cli/login-confirmation.png)
+例:
 
-コマンド シェルでは、次の出力も提供します。
+    az documentdb create -g rg-test -n docdb-test --locations "East US"=0 "West US"=1
+    az documentdb update -g rg-test -n docdb-test --locations "East US"=0 "North Europe"=1 "South Central US"=2
 
-    /info:    Added subscription Visual Studio Ultimate with MSDN
-    info:    Setting subscription "Visual Studio Ultimate with MSDN" as default
-    +
-    info:    login command OK
 
-ここで説明する対話式のログイン方法以外に、Azure CLi でログインする方法もあります。他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
+## <a id="delete-documentdb-account-cli"></a> DocumentDB データベース アカウントの削除
 
-### Azure CLI リソース グループ モードに切り替える
-既定では、Azure CLI はサービス管理モード (**asm** モード) で起動します。以下を入力してリソース グループ モードに切り替えます。
+このコマンドでは、既存の DocumentDB データベース アカウントを削除できます。
 
-    azure config mode arm
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+```
 
-次の出力が生成されます。
+例:
 
-    info:    Executing command config mode
-    info:    New mode is arm
-    info:    config mode command OK
+    az documentdb delete -g rg-test -n docdb-test
 
-必要に応じて、「`azure config mode asm`」と入力することで、既定のコマンド セットに戻すことができます。
+## <a id="get-documentdb-properties-cli"></a> DocumentDB データベース アカウントのプロパティの取得
 
-## <a id="quick-create-documentdb-account"></a>作業: Azure CLI を利用して DocumentDB アカウントを作成する
-このセクションの指示に従い、Azure CLI で DocumentDB アカウントを作成します。
+このコマンドでは、既存の DocumentDB データベース アカウントのプロパティを取得できます。
 
-### 手順 1: リソース グループを作成または取得する
-DocumentDB アカウントを作成するには、最初にリソース グループを用意する必要があります。使用するリソース グループの名前がわかっている場合、[手順 2](#create-documentdb-account-cli) に移動してください。
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+```
 
-現在のすべてのリソース グループの一覧を確認するには、次のコマンドを実行し、使用するリソース グループの名前をメモします。
+例:
 
-    azure group list
+    az documentdb show -g rg-test -n docdb-test
 
-新しいリソース グループを作成するには、作成する新しいリソース グループの名前とリソース グループを作成するリージョンを指定します。
+## <a id="list-account-keys-cli"></a> アカウント キーの一覧表示
 
-    azure group create <resourcegroupname> <resourcegrouplocation>
+DocumentDB アカウントを作成すると、2 つのマスター アクセス キーが生成され、DocumentDB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、DocumentDB アカウントを中断することなくキーを再生成できます。 読み取り専用操作を認証するための読み取り専用キーも使用できます。 2 つの読み取り/書き込みキー (プライマリおよびセカンダリ) と、2 つの読み取り専用キー (プライマリおよびセカンダリ) が存在します。
 
-* `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
-* `<resourcegrouplocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+```
 
-入力例:
+例:
 
-    azure group create new_res_group westus
+    az documentdb list-keys -g rg-test -n docdb-test
 
-次の出力が生成されます。
+## <a id="regenerate-account-key-cli"></a> アカウント キーの再生成
 
-    info:    Executing command group create
-    + Getting resource group new_res_group
-    + Creating resource group new_res_group
-    info:    Created resource group new_res_group
-    data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/new_res_group
-    data:    Name:                new_res_group
-    data:    Location:            westus
-    data:    Provisioning State:  Succeeded
-    data:    Tags: null
-    data:
-    info:    group create command OK
+接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
 
-エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+    --key-kind          [Required]: The access key to regenerate.  Allowed values: primary, primaryReadonly,
+                                    secondary, secondaryReadonly.
+```
 
-### <a id="create-documentdb-account-cli"></a> 手順 2: CLI を利用して DocumentDB アカウントを作成する
-コマンド プロンプトで次のコマンドを入力し、新規または既存のリソース グループで DocumentDB アカウントを作成します。
+例:
 
-> [!TIP]
-> Azure PowerShell または Windows PowerShell でこのコマンドを実行する場合、予想外のコマンドに関するエラーを受け取ります。代わりに、Windows PowerShell コマンド プロンプトでこのコマンドを実行します。
-> 
-> 
+    az documentdb regenerate-key -g rg-test -n docdb-test --key-kind secondary
 
-    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
+## <a id="modify-failover-priority-cli"></a> DocumentDB データベース アカウントのフェールオーバー優先度の変更
 
-* `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
-* `<databaseaccountname>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
-* `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
+複数リージョンのデータベース アカウントでは、DocumentDB データベース アカウントが存在するさまざまなリージョンのフェールオーバー優先度を変更できます。 DocumentDB データベース アカウントでのフェールオーバーの詳細については、[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)に関する記事を参照してください。
 
-入力例:
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+    --failover-policies [Required]: Space separated failover policies in 'regionName=failoverPriority' format.
+                                    E.g "East US"=0 "West US"=1.
+```
 
-    azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08  -l westus -p "{"databaseAccountOfferType":"Standard"}"
+例:
 
-新しいアカウントがプロビジョニングされるとき、次の出力が生成されます。
+    az documentdb failover-priority-change "East US"=1 "West US"=0 "South Central US"=2
 
-    info:    Executing command resource create
-    + Getting resource samplecliacct
-    + Creating resource samplecliacct
-    info:    Resource samplecliacct is updated
-    data:
-    data:    Id:        /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/new_res_group/providers/Microsoft.DocumentDB/databaseAccounts/samplecliacct
-    data:    Name:      samplecliacct
-    data:    Type:      Microsoft.DocumentDB/databaseAccounts
-    data:    Parent:
-    data:    Location:  West US
-    data:    Tags:
-    data:
-    info:    resource create command OK
+## <a name="next-steps"></a>次のステップ
+DocumentDB アカウントを作成できたら、次の手順として DocumentDB データベースを作成します。 データベースを作成するには、次のいずれかを使用します。
 
-エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
-
-コマンドが終了すると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
-
-## <a id="deploy-documentdb-from-a-template"></a>作業: ARM テンプレートを利用して DocumentDB アカウントを作成する
-このセクションの指示に従い、Azure リソース マネージャー (ARM) のテンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) で DocumentDB アカウントを作成します。テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
-
-### ARM テンプレートとリソース グループについて
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の DocumentDB アカウント、ストレージ アカウント、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
-
-*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
-
-Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
-
-### 手順 1: テンプレートとパラメーター ファイルを作成する
-次の内容でローカル テンプレート ファイルを作成します。azuredeploy.json ファイルに名前を付けます。
-
-    {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "databaseAccountName": {
-                "type": "string"
-            }
-        },
-        "variables": { },
-        "resources": [
-            {
-                "apiVersion": "2015-04-08",
-                "type": "Microsoft.DocumentDb/databaseAccounts",
-                "name": "[parameters('databaseAccountName')]",
-                "location": "[resourceGroup().location]",
-                "properties": {
-                    "name": "[parameters('databaseAccountName')]",
-                    "databaseAccountOfferType": "Standard"
-                }
-            }
-        ]
-    }
-
-このテンプレートはパラメーターを 1 つだけ必要とします。作成するデータベース アカウントの名前です。新しいデータベース アカウントの場所はリソース グループと同じ場所に設定されます。
-
-テンプレートに必要なパラメーターは 1 つだけであるため、コマンド ラインで値を入力するか、パラメーター ファイルを作成して値を指定できます。
-
-パラメーター ファイルを作成するには、新しいファイルに次の内容をコピーし、azuredeploy.parameters.json ファイルに名前を付けます。コマンド プロンプトでデータベース アカウント名を指定する場合、このファイルを作成せずに続行できます。
-
-    {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "databaseAccountName": {
-                "value": "samplearmacct"
-            }
-        }
-    }
-
-azuredeploy.parameters.json ファイルで、「samplearmacct」という値を使用するデータベース名に変更し、ファイルを保存します。`"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
-
-### 手順 2: リソース グループを作成または取得する
-DocumentDB アカウントを作成するには、最初にリソース グループを用意する必要があります。使用するリソース グループ名を既に知っている場合は、場所が [DocumentDB の一般公開されているリージョン](https://azure.microsoft.com/regions/#services)であることを確認し、[手順 3](#create-account-from-template) に進みます。テンプレートでは、アカウントの場所はリソース グループと同じリージョンに作成されるので、DocumentDB を使用できないリージョンにアカウントを作成しようとすると、デプロイメント エラーが発生します。
-
-現在のすべてのリソース グループの一覧を確認するには、次のコマンドを実行し、使用するリソース グループの名前をメモします。
-
-    azure group list
-
-新しいリソース グループを作成するには、作成する新しいリソース グループの名前とリソース グループを作成するリージョンを指定します。
-
-    azure group create <resourcegroupname> <databaseaccountlocation>
-
-* `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
-* `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
-
-入力例:
-
-    azure group create new_res_group westus
-
-次の出力が生成されます。
-
-    info:    Executing command group create
-    + Getting resource group new_res_group
-    + Creating resource group new_res_group
-    info:    Created resource group new_res_group
-    data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/new_res_group
-    data:    Name:                new_res_group
-    data:    Location:            West US
-    data:    Provisioning State:  Succeeded
-    data:    Tags: null
-    data:
-    info:    group create command OK
-
-エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
-
-### <a id="create-account-from-template"></a>手順 3: ARM テンプレートを利用して DocumentDB アカウントを作成する
-リソース グループで DocumentDB アカウントを作成するには、次のコマンドを実行し、テンプレート ファイルのパス、パラメーター ファイルまたはパラメーター値のパス、デプロイメントするリソース グループの名前、デプロイメント名を指定します (-n は任意です)。
-
-パラメーター ファイルを使用するには:
-
-    azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
-
-* `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
-* `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
-* `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。
-* `<deploymentname>` は、デプロイメント名 (省略可能) です。
-
-入力例:
-
-    azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json -g new_res_group -n azuredeploy
-
-あるいは、パラメーター ファイルなしでデータベース アカウント名パラメーターを指定し、代わりに値の入力を求めさせるには、次のコマンドを実行します。
-
-    azure group deployment create -f <PathToTemplate> -g <resourcegroupname> -n <deploymentname>
-
-入力例 (「new\_db\_acct」というデータベース アカウントのプロンプトとエントリが表示されます):
-
-    azure group deployment create -f azuredeploy.json -g new_res_group -n azuredeploy
-    info:    Executing command group deployment create
-    info:    Supply values for the following parameters
-    databaseAccountName: samplearmacct
-
-アカウントがプロビジョニングされると、次の情報を受け取ります。
-
-    info:    Executing command group deployment create
-    + Initializing template configurations and parameters
-    + Creating a deployment
-    info:    Created template deployment "azuredeploy"
-    + Waiting for deployment to complete
-    + 
-    + 
-    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Running
-    + 
-    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Succeeded
-    data:    DeploymentName     : azuredeploy
-    data:    ResourceGroupName  : new_res_group
-    data:    ProvisioningState  : Succeeded
-    data:    Timestamp          : 2015-11-30T18:50:23.6300288Z
-    data:    Mode               : Incremental
-    data:    CorrelationId      : 4a5d4049-c494-4053-bad4-cc804d454700
-    data:    DeploymentParameters :
-    data:    Name                 Type    Value
-    data:    -------------------  ------  ------------------
-    data:    databaseAccountName  String  samplearmacct
-    info:    group deployment create command OK
-
-エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
-
-コマンドが終了すると、アカウントは数分間「**作成中**」の状態になります。その後、「**オンライン**」の状態に変化し、使用する準備ができます。[Azure ポータル](https://portal.azure.com)の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
-
-## トラブルシューティング
-リソース グループまたはデータベース アカウントの作成中に `Deployment provisioning state was not successful` のようなエラーが発生する場合、いくつかのトラブルシューティング方法があります。
-
-> [!NOTE]
-> データベース アカウント名に正しくない文字を指定するか、DocumentDB を使用できない場所を指定すると、デプロイメント エラーが発生します。データベース アカウント名に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。有効なデータベース アカウントの場所一覧については、[Azure リージョンのページ](https://azure.microsoft.com/regions/#services)を参照してください。
-> 
-> 
-
-* 出力に次の `Error information has been recorded to C:\Users\wendy\.azure\azure.err` が含まれている場合は、azure.err ファイルでエラー情報を確認してください。
-* このログ ファイルには、リソース グループの役立つ情報が記録されている場合があります。ログ ファイルを表示するには、次のコマンドを実行します。
-  
-        azure group log show <resourcegroupname> --last-deployment
-  
-    入力例:
-  
-        azure group log show new_res_group --last-deployment
-  
-    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-cli.md)」を参照してください。
-* 次のスクリーンショットのように、エラー情報は Azure ポータルでも確認できます。エラー情報に移動するには: ジャンプバーで [リソース グループ] をクリックし、エラーが発生したリソース グループを選択します。次に、[リソース グループ] ブレードの [Essentials] 領域で [前回のデプロイ] の日付をクリックし、[デプロイ履歴] ブレードで失敗したデプロイを選択し、[デプロイ] ブレードで赤い感嘆符が付いた [操作の詳細] 詳細をクリックします。失敗したデプロイメントの状態メッセージが [操作の詳細] ブレードに表示されます。
-  
-    ![デプロイメント エラー メッセージに移動する方法を示す Azure ポータルのスクリーンショット](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
-
-## 次のステップ
-DocumentDB アカウントを作成できたら、次の手順として DocumentDB データベースを作成します。データベースを作成するには、次のいずれかを使用します。
-
-* Azure ポータル。[Azure ポータルを使用した DocumentDB データベースの作成に関するページ](documentdb-create-database.md)の説明を参照してください。
+* Azure Portal。[Azure Portal を使用した DocumentDB コレクションとデータベースの作成](documentdb-create-collection.md)に関する記事をご覧ください。
 * GitHub の [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) リポジトリの [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) プロジェクトにある C# .NET のサンプル。
-* [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。
+* [DocumentDB SDK](documentdb-sdk-dotnet.md)。 DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。
 
 データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。
 
-コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-DocumentDB の詳細については、以下の資料を参照してください。
+コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#ExecutingSqlQueries)できます。
+
+DocumentDB の詳細については、以下のリソースを参照してください。
 
 * [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 * [DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
-使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!--Reference style links - using these makes the source content way more readable than using inline links-->
+[scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
+[install-az-cli2]: https://docs.microsoft.com/en-us/cli/azure/install-az-cli2
+[az-documentdb-ref]: https://docs.microsoft.com/en-us/cli/azure/documentdb
+[az-documentdb-create-ref]: https://docs.microsoft.com/en-us/cli/azure/documentdb#create
+[rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/
+

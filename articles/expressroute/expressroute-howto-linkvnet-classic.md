@@ -1,38 +1,46 @@
 ---
-title: クラシック デプロイメント モデルと PowerShell を使用した ExpressRoute 回線への仮想ネットワークのリンク | Microsoft Docs
-description: このドキュメントでは、クラシック デプロイメント モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
+title: "ExpressRoute 回線への仮想ネットワークのリンク: PowerShell: クラシック: Azure | Microsoft Docs"
+description: "このドキュメントでは、クラシック デプロイメント モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。"
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9601ff3152e62baf95794919fdc5a7fc43204d52
+ms.lasthandoff: 03/24/2017
+
 
 ---
-# <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線への仮想ネットワークのリンク
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
-> * [Azure ポータル - Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell - Resource Manager](expressroute-howto-linkvnet-arm.md)
-> * [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [クラシック - PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > 
 > 
 
 この記事では、クラシック デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Azure のデプロイ モデルについて**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
-1. Azure PowerShell モジュールの最新バージョンが必要になります。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。 Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md) 」の手順に従ってください。
+1. Azure PowerShell モジュールの最新バージョンが必要になります。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。 Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってください。
 2. 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
 3. アクティブな ExpressRoute 回線が必要です。
    * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md) し、接続プロバイダーに回線を有効にしてもらいます。
@@ -66,7 +74,9 @@ ms.author: ganesr
 回線所有者は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンクが削除されます。
 
 ### <a name="circuit-owner-operations"></a>回線所有者の操作
-#### <a name="creating-an-authorization"></a>承認の作成
+
+**承認の作成**
+
 回線所有者は、その他のサブスクリプションの管理者が指定された回線を使用することを承認します。 次の例では、回線 (Contoso IT) の管理者は、別のサブスクリプション (Dev-Test) の管理者が最大 2 個の仮想ネットワークを回線にリンクできるようにします。 Contoso IT 管理者がこれを行うとき、Dev-Test Microsoft ID を指定します。 コマンドレットは、指定された Microsoft ID に電子メールを送信しません。 回線所有者が、承認が完了したことをその他のサブスクリプション所有者に明示的に通知する必要があります。
 
     New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
@@ -77,7 +87,8 @@ ms.author: ganesr
     MicrosoftIds        : devtest@contoso.com
     Used                : 0
 
-#### <a name="reviewing-authorizations"></a>承認の確認
+**承認の確認**
+
 回線所有者は、次のコマンドレットを実行し、特定の回線で発行されるすべての承認を確認できます。
 
     Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
@@ -101,7 +112,8 @@ ms.author: ganesr
     Used                : 2
 
 
-#### <a name="updating-authorizations"></a>承認の更新
+**承認の更新**
+
 回線所有者は、次のコマンドレットを使用して承認を変更できます。
 
     Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
@@ -113,14 +125,17 @@ ms.author: ganesr
     Used                : 0
 
 
-#### <a name="deleting-authorizations"></a>承認の削除
+**承認の削除**
+
 回線所有者は、次のコマンドレットを実行して、ユーザーに対する承認を取り消したり削除したりすることができます。
 
     Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 
 
 ### <a name="circuit-user-operations"></a>回線ユーザーの操作
-#### <a name="reviewing-authorizations"></a>承認の確認
+
+**承認の確認**
+
 回線ユーザーは、次のコマンドレットを使用して承認を確認できます。
 
     Get-AzureAuthorizedDedicatedCircuit
@@ -135,7 +150,8 @@ ms.author: ganesr
     Status                           : Enabled
     UsedLinks                        : 0
 
-#### <a name="redeeming-link-authorizations"></a>リンク承認の適用
+**リンク承認の適用**
+
 回線ユーザーは次のコマンドレットを実行し、リンク承認を利用できます。
 
     New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
@@ -146,7 +162,5 @@ ms.author: ganesr
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
-
-<!--HONumber=Oct16_HO2-->
 
 

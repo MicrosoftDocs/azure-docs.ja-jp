@@ -15,8 +15,8 @@
 
 使用されるコードは、Windows ストアと iOS デバイスの両方に対してブロードキャストされます。これは、バックエンドはサポートされているすべてのデバイスにブロードキャストできるためです。
 
-### C# コンソール アプリケーションを使用して通知を送信するには
-次のコードを使用して、以前に作成したコンソール アプリケーションで `SendTemplateNotificationAsync` メソッドを変更します。この場合、異なるロケールやプラットフォームに対して複数の通知を送信する必要はありません。
+### <a name="to-send-notifications-using-a-c-console-app"></a>C# コンソール アプリケーションを使用して通知を送信するには
+次のコードを使用して、以前に作成したコンソール アプリケーションで `SendTemplateNotificationAsync` メソッドを変更します。 この場合、異なるロケールやプラットフォームに対して複数の通知を送信する必要はありません。
 
         private static async void SendTemplateNotificationAsync()
         {
@@ -54,7 +54,7 @@
 
 この単純な呼び出しでは、プラットフォームに関係なく、ローカライズされた各ニュースが**すべての**デバイスに配信されます。これは、通知ハブが適切なネイティブ ペイロードを作成し、そのペイロードを特定のタグにサブスクライブされているすべてのデバイスに配信するためです。
 
-### Mobile Services を使用した通知の送信
+### <a name="sending-the-notification-with-mobile-services"></a>Mobile Services を使用した通知の送信
 モバイル サービス スケジューラでは、次のスクリプトを使用できます。
 
     var azure = require('azure');
@@ -71,4 +71,8 @@
     });
 
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

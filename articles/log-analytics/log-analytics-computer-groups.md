@@ -1,19 +1,23 @@
 ---
-title: Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs
-description: Log Analytics では、コンピューター グループを使用して、ログ検索の範囲を特定のコンピューターの集合に限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ検索で使用する方法について説明します。
+title: "Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs"
+description: "Log Analytics では、コンピューター グループを使用して、ログ検索の範囲を特定のコンピューターの集合に限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ検索で使用する方法について説明します。"
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6c0affd0f5ea600f979cfcc87e2435658c8dab14
+
 
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
@@ -103,6 +107,9 @@ Active Directory または WSUS から作成されたコンピューター グ�
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Microsoft 監視製品の比較 | Microsoft Docs
-description: Microsoft Operations Management Suite (OMS) は、Microsoft のクラウド ベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。
+title: "Microsoft 監視製品の比較 | Microsoft Docs"
+description: "Microsoft Operations Management Suite (OMS) は、Microsoft のクラウド ベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。"
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: a63ca0ad-61f8-425d-a48c-d87ba518c104
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d7325b0bb900dcaf789c01e1a9b534d7f72c8c43
+
 
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 監視製品の比較
@@ -168,6 +172,9 @@ Log Analytics のクエリは、アド ホック分析を実行できるだけ�
 * [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx)をデプロイする。
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics)にサインアップする。  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

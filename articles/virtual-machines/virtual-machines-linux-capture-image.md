@@ -1,192 +1,158 @@
 ---
-title: テンプレートとして使用する Linux VM をキャプチャする | Microsoft Docs
-description: Azure Resource Manager デプロイメント モデルで作成された Linux ベースの Azure 仮想マシン (VM) のイメージをキャプチャおよび汎用化する方法について説明します。
+title: "Azure CLI 2.0 を使用した Linux VM のキャプチャ | Microsoft Docs"
+description: "Azure CLI 2.0 で作成した管理ディスクを使用する Linux ベースの Azure 仮想マシン (VM) のイメージをキャプチャし、一般化する方法"
 services: virtual-machines-linux
-documentationcenter: ''
-author: dlepow
+documentationcenter: 
+author: iainfoulds
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
-ms.author: danlep
+ms.date: 02/02/2017
+ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 93abc8b1b14f58b0d0be52517a2b63dfe2dc32fb
+ms.openlocfilehash: c72f576d992c9adfa83b9744672397045833c43f
+ms.lasthandoff: 02/27/2017
+
 
 ---
-# リソース マネージャーのテンプレートとして使用する Linux 仮想マシンをキャプチャする方法
-Azure コマンド ライン インターフェイス (CLI) を使用して、Linux を実行する Azure 仮想マシンをキャプチャして汎用化します。これを Azure Resource Manager テンプレートとして使用し、他の仮想マシンを作成できます。このテンプレートでは、仮想マシンに接続された OS ディスクやデータ ディスクが指定されています。Azure Resource Manager VM を作成するために必要な仮想ネットワークのリソースは含まれません。そのため、通常は、テンプレートを使用する別の仮想マシンを作成する前に、これらのリソースを個別に設定する必要があります。
+# <a name="how-to-generalize-and-capture-a-linux-virtual-machine"></a>Linux 仮想マシンを一般化してキャプチャする方法
+Azure にデプロイされて構成された仮想マシン (VM) を再利用するには、VM のイメージをキャプチャします。 このプロセスでは、イメージから新しい VM をデプロイする前に、個人アカウント情報を削除するために VM を一般化する必要もあります。 この記事では、Azure Managed Disks を使用して、Azure CLI 2.0 で VM に対して VM イメージをキャプチャする方法について詳しく説明します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この記事では、Azure CLI 2.0 を使用して Linux VM をキャプチャする方法を詳しく説明しています。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 > [!TIP]
-> カスタム Linux VM イメージを作成し、そのイメージから VM を作成できるようにイメージを Azure にアップロードする方法に関心をお持ちの場合は、「[Upload and create a VM from custom disk image (カスタム ディスク イメージをアップロードして VM を作成する)](virtual-machines-linux-upload-vhd.md)」をご覧ください。
-> 
-> 
+> バックアップまたはデバッグ用に設定した特別な状態の既存の Linux VM のコピーを作成したい場合は、「[Azure で実行されている Linux 仮想マシンのコピーを作成する](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、オンプレミスの VM から Linux VHD をアップロードしたい場合は、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。  
 
-## 開始する前に
-これらの手順では、既にリソース マネージャー デプロイメント モデルによって Azure VM が作成され、データ ディスクの接続やその他のカスタマイズ (たとえば、アプリケーションのインストールなど) を含むオペレーティング システムの構成が完了しているものと仮定します。VM を設定する方法はいくつかあります。たとえば、Azure CLI を使用する方法などです。この作業をまだ完了していない場合は、Azure CLI を Azure リソース マネージャー モードで使用するための次の手順を参照してください。
 
-* [CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md)
-* [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)
+## <a name="before-you-begin"></a>開始する前に
+次の前提条件が満たされていることを確認します。
 
-たとえば、*MyResourceGroup* という名前のリソース グループを米国中部リージョンで作成するとします。次のような **azure vm quick-create** コマンドを使用して、Ubuntu 14.04 LTS VM をリソース グループにデプロイします。
+* **Resource Manager デプロイメント モデルで作成された Azure VM** - Linux VM を作成していない場合は、[ポータル](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure CLI](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、または [Resource Manager テンプレート](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)し、更新プログラムを適用し、アプリケーションをインストールします。 
 
-     azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:latest -u <your-user-name> -p <your-password>
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要もあります。
 
-VM をプロビジョニングし実行したら、[データ ディスクを接続しマウント](virtual-machines-linux-add-disk.md)することができます。
+## <a name="quick-commands"></a>クイック コマンド
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、Azure で Linux VM のイメージをキャプチャするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-steps)。 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myVM`、`myImage` などは、例として使われているパラメーター名です。
 
-## VM をキャプチャする
-1. VM をキャプチャする準備ができたら、SSH クライアントを使用して VM に接続します。
-2. SSH のウィンドウで、次のコマンドを入力します。**waagent** からの出力はこのユーティリティのバージョンによって多少異なる場合があります。
+1. ソース VM のプロビジョニングを解除します。
+
+    ```bash
+    ssh ops@myvm.westus.cloudapp.azure.com
+    sudo waagent -deprovision+user -force
+    exit
+    ```
+
+2. [az vm deallocate](/cli/azure/vm#deallocate) で VM の割り当てを解除します。
+
+    ```azurecli
+    az vm deallocate --resource-group myResourceGroup --name myVM
+    ```
+
+3. [az vm generalize](/cli/azure/vm#generalize) で VM を一般化します。
    
-    `sudo waagent -deprovision+user`
+    ```azurecli
+    az vm generalize --resource-group myResourceGroup --name myVM
+    ```
+
+4. [az image create](/cli/azure/image#create) で VM リソースからイメージを作成します。
    
-    このコマンドは、システムをクリーンアップし、再プロビジョニングに適した状態にします。この操作では次のタスクが実行されます。
+    ```azurecli
+    az image create --resource-group myResourceGroup --name myImage --source myVM
+    ```
+
+5. [az vm create](/cli/azure/vm#create) でイメージ リソースから VM を作成します。
+
+    ```azurecli
+    az vm create --resource-group myResourceGroup --name myVMDeployed --image myImage
+        --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
+    ```
+
+## <a name="detailed-steps"></a>詳細な手順
+以降の手順では、既存の VM のプロビジョニングを解除し、VM リソースの割り当てを解除して一般化した後、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。 このプロセスでは、非管理対象ディスクよりも [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用したほうが多くのメリットが得られます。 非管理対象ディスクを使用する場合は、基になる仮想ハード ディスク (VHD) の BLOB コピーを作成します。VM は、コピーした VHD BLOB と同じストレージ アカウントにしか作成できません。 管理ディスクを使用すると、イメージ リソースを作成して、サブスクリプション全体にデプロイできます。
+
+## <a name="step-1-remove-the-azure-linux-agent"></a>手順 1: Azure Linux エージェントを削除する
+VM を一般化する準備として、Azure VM エージェントを使用している VM のプロビジョニングを解除し、ファイルとデータを削除します。 対象の Linux VM で **deprovision** パラメーターを指定して **waagent** コマンドを実行します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+
+1. SSH クライアントを使って Linux VM に接続します。
+2. SSH のウィンドウで、次のコマンドを入力します。
    
-   * すべての SSH ホスト キーの削除 (構成ファイルで Provisioning.RegenerateSshHostKeyPair が 'y' の場合)
-   * /etc/resolvconf 内のネームサーバー構成の消去
-   * /etc/shadow の `root` ユーザーのパスワードの削除 (構成ファイルで Provisioning.DeleteRootPassword が 'y' の場合)
-   * キャッシュされた DHCP クライアントのリースの削除
-   * ホスト名を localhost.localdomain にリセット
-   * (/var/lib/waagent から取得した) 前回プロビジョニングされたユーザー アカウントおよび関連データの削除
-     
-     > [!NOTE]
-     > プロビジョニング解除では、イメージを汎用化する目的でファイルとデータが削除されます。このコマンドはイメージとしてキャプチャする VM に対して実行するだけとします。プロビジョニング解除により、イメージからすべての機密情報が削除されることや、イメージが第三者への再配布に適した状態になることが保証されるわけではありません。
-     > 
-     > 
-3. 「**y**」と入力して続行します。**-force** パラメーターを追加すると、この確認手順を省略できます。
-4. 「**exit**」と入力して、SSH クライアントを閉じます。
+    ```bash
+    sudo waagent -deprovision+user
+    ```
+   > [!NOTE]
+   > このコマンドはイメージとしてキャプチャする VM に対して実行するだけとします。 これにより、イメージからすべての機密情報が削除されることや、イメージが再配布に適した状態になることが保証されるわけではありません。
+ 
+3. 「 **y** 」と入力して続行します。 **-force** パラメーターを追加すると、この確認手順を省略できます。
+4. コマンドが完了した後、「**exit**」と入力します。 SSH クライアントが閉じられます。
+
+## <a name="step-2-capture-the-vm"></a>手順 2: VM をキャプチャする
+Azure CLI 2.0 を使って、VM を一般化してキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、**myResourceGroup**、**myVnet**、**myVM**といったパラメーター名にします。
+
+1. [az vm deallocate](/cli//azure/vm#deallocate) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
+   
+    ```azurecli
+    az vm deallocate --resource-group myResourceGroup --name myVM
+    ```
+
+2. [az vm generalize](/cli//azure/vm#generalize) で VM を一般化します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM を一般化します。
+   
+    ```azurecli
+    az vm generalize --resource-group myResourceGroup --name myVM
+    ```
+
+3. [az image create](/cli//azure/image#create) で VM リソースのイメージを作成します。 次の例では、`myVM` という名前の VM リソースを使用して `myResourceGroup` という名前のリソース グループに含まれる `myImage` という名前のイメージを作成します。
+   
+    ```azurecli
+    az image create --resource-group myResourceGroup --name myImage --source myVM
+    ```
    
    > [!NOTE]
-   > 次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。
-   > 
-   > 
-5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。詳細については、「[Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)](../xplat-cli-connect.md)」を参照してください。
-6. 次のコマンドを使用して、リソース マネージャー モードになっていることを確認します。
-   
-    `azure config mode arm`
-7. 次のコマンドを使用して、既にプロビジョニング解除されている VM を停止します。
-   
-    `azure vm deallocate -g <your-resource-group-name> -n <your-virtual-machine-name>`
-8. 次のコマンドを使用して VM を汎用化します。
-   
-    `azure vm generalize -g <your-resource-group-name> -n <your-virtual-machine-name>`
-9. ここで、次のコマンドを使用してイメージとローカル ファイル テンプレートをキャプチャします。
-   
-    `azure vm capture <your-resource-group-name>  <your-virtual-machine-name> <your-vhd-name-prefix> -t <path-to-your-template-file-name.json>`
-   
-    このコマンドは、VM ディスクに対して指定された VHD 名のプレフィックスを使用して、汎用化された OS イメージを作成します。イメージ VHD ファイルは、既定では、元の VM が使用していたのと同じストレージ アカウントに作成されます (イメージから作成するすべての新しい VM の VHD を同じアカウントに格納できます)。 **-t** オプションを指定すると、イメージから新しい VM を作成する際に使用できるローカル JSON ファイル テンプレートが作成されます。
+   > このイメージは、ソース VM と同じリソース グループに作成されます。 このイメージから、サブスクリプション内の任意のリソース グループに VM を作成できます。 管理の観点から、VM のリソースとイメージに専用のリソース グループを作成することをお勧めします。
 
-> [!TIP]
-> イメージの場所を見つけるには、JSON ファイル テンプレートを開きます。**storageProfile** で、**システム** コンテナー内に位置する**イメージ**の **uri** を見つけます。たとえば、OS ディスク イメージの uri は `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/<your-vhd-name-prefix>-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。
-> 
-> 
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>手順 3: キャプチャしたイメージから VM を作成する
+[az vm create](/cli/azure/vm#create) で、作成したイメージを使用して VM を作成します。 次の例では、`myImage` という名前のイメージから `myVMDeployed` という名前の VM を作成します。
 
-## キャプチャしたイメージから新しい VM をデプロイする
-ここで、イメージとテンプレートを使用して、Linux VM を作成します。次の手順では、Azure CLI と、`azure vm capture` コマンドで作成した JSON ファイル テンプレートを使用して、新しい仮想ネットワークに VM を作成する方法を説明します。
+```azurecli
+az vm create --resource-group myResourceGroup --name myVMDeployed --image myImage
+    --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
+```
 
-### ネットワーク リソースを作成する
-テンプレートを使用するには、まず、新しい VM に対して仮想ネットワークと NIC をセットアップする必要があります。これらのリソースの新しいリソース グループは、VM イメージが格納されている場所に作成することをお勧めします。次に示すようなコマンドに、リソースの名前と適切な Azure の場所 (次のコマンドでは "centralus") を指定して実行します。
+管理ディスクを使用する場合は、サブスクリプション内の任意のリソース グループでイメージから VM を作成できます。 この点が、非管理対象ディスクとは異なります。非管理対象ディスクでは、VM をソース VHD と同じストレージ アカウントにしか作成できません。 イメージとは別のリソース グループに VM を作成するには、イメージに対する完全なリソース ID を指定します。 [az image list](/cli/azure/image#list) を実行すると、イメージの一覧が表示されます。 出力は次の例のようになります。
 
-    azure group create <your-new-resource-group-name> -l "centralus"
+```json
+"id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
+   "location": "westus",
+   "name": "myImage",
+```
 
-    azure network vnet create <your-new-resource-group-name> <your-vnet-name> -l "centralus"
+次の例では、**az vm create** を実行し、イメージ リソース ID を指定してソース イメージとは別のリソース グループに VM を作成します。
 
-    azure network vnet subnet create <your-new-resource-group-name> <your-vnet-name> <your-subnet-name>
-
-    azure network public-ip create <your-new-resource-group-name> <your-ip-name> -l "centralus"
-
-    azure network nic create <your-new-resource-group-name> <your-nic-name> -k <your-subnetname> -m <your-vnet-name> -p <your-ip-name> -l "centralus"
-
-キャプチャ中に保存した JSON を使用して、イメージから仮想マシンをデプロイするには、NIC の ID が必要です。これを取得するには、次のコマンドを実行します。
-
-    azure network nic show <your-new-resource-group-name> <your-nic-name>
-
-出力内の **ID** は、次のような文字列となります。
-
-    /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<your-new-resource-group-name>/providers/Microsoft.Network/networkInterfaces/<your-nic-name>
+```azurecli
+az vm create --resource-group myOtherResourceGroup --name myOtherVMDeployed 
+    --image "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage"
+    --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
+```
 
 
+### <a name="verify-the-deployment"></a>デプロイを検証する
+ここで、作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#show) を実行して、VM の IP アドレスか FQDN を見つけます。
 
-### 新しいデプロイを作成する
-ここで、次のコマンドを実行して、キャプチャした VM イメージと保存したテンプレート JSON ファイルとから VM を作成します。
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM --show-details
+```
 
-    azure group deployment create <your-new-resource-group-name> <your-new-deployment-name> -f <path-to-your-template-file-name.json>
+## <a name="next-steps"></a>次のステップ
+ソース VM イメージから複数の VM を作成できます。 イメージに変更を加える必要がある場合は、次の手順を実行します。 
 
-新しい VM 名、管理者のユーザー名とパスワード、および前に作成した NIC の ID を指定するように求められます。
+- イメージから VM を作成します。
+- 必要な更新または構成の変更を行います。
+- 再度本記事の手順に従って、イメージのプロビジョニングの解除、割り当ての解除、一般化、作成を行います。
+- 今後のデプロイには、この新しいイメージを使用します。 必要に応じて、元のイメージを削除します。
 
-    info:    Executing command group deployment create
-    info:    Supply values for the following parameters
-    vmName: mynewvm
-    adminUserName: myadminuser
-    adminPassword: ********
-    networkInterfaceId: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resource Groups/mynewrg/providers/Microsoft.Network/networkInterfaces/mynewnic
+CLI を使用して VM を管理する方法の詳細については、[Azure CLI 2.0](/cli/azure/overview) に関するページをご覧ください。
 
-デプロイが成功した場合は、次のような出力が表示されます。
-
-    + Initializing template configurations and parameters
-    + Creating a deployment
-    info:    Created template deployment "dlnewdeploy"
-    + Waiting for deployment to complete
-    data:    DeploymentName     : mynewdeploy
-    data:    ResourceGroupName  : mynewrg
-    data:    ProvisioningState  : Succeeded
-    data:    Timestamp          : 2015-10-29T16:35:47.3419991Z
-    data:    Mode               : Incremental
-    data:    Name                Type          Value
-
-
-    data:    ------------------  ------------  -------------------------------------
-
-    data:    vmName              String        mynewvm
-
-
-    data:    vmSize              String        Standard_D1
-
-
-    data:    adminUserName       String        myadminuser
-
-
-    data:    adminPassword       SecureString  undefined
-
-
-    data:    networkInterfaceId  String        /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/mynewrg/providers/Microsoft.Network/networkInterfaces/mynewnic
-    info:    group deployment create command OK
-
-### デプロイを検証する
-ここで、作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。SSH を介して接続するには、次のコマンドを実行して、作成済みの VM の IP アドレスを見つけます。
-
-    azure network public-ip show <your-new-resource-group-name> <your-ip-name>
-
-コマンドの出力には、パブリック IP アドレスが一覧されます。既定では、ポート 22 で SSH を使用して Linux VM に接続します。
-
-## テンプレートを使用して追加の仮想マシンを作成する
-前のセクションで概説した手順を使用して追加の VM をデプロイするには、キャプチャしたイメージとテンプレートを使用します。
-
-* VM イメージが、VM の VHD をホストするのと同じストレージ アカウントにあることを確認します。
-* テンプレート JSON ファイルをコピーし、各 VM の VHD の **uri** として一意の値を入力します。
-* 同じ仮想ネットワークまたは別の仮想ネットワークに NIC を作成します。
-* 変更したテンプレート JSON ファイルを使用して、仮想ネットワークをセットアップするリソース グループ内にデプロイメントを作成します。
-
-イメージから VM を作成するときにネットワークが自動的にセットアップされるようにする場合は、GitHub の [101-vm-from-user-image テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)を使用してください。このテンプレートでは、カスタム イメージおよび必要な仮想ネットワークと、パブリック IP アドレスと、NIC リソースから仮想マシンを作成します。Azure ポータルでのテンプレートの使用に関する詳細なチュートリアルについては、「[Resource Manager テンプレートを使用してカスタム イメージから仮想マシンを作成する方法](http://codeisahighway.com/how-to-create-a-virtual-machine-from-a-custom-image-using-an-arm-template/)」を参照してください。
-
-## azure vm create コマンドを使用する
-一般には、リソース マネージャー テンプレートを使用して、イメージから VM を作成します。ただし、**azure vm create** コマンドと **-Q** (**--image-urn**) パラメーターを組み合わせて使用して VM を "強制的に" 作成することができます。この方法を使用する場合、新しい VM の OS .vhd ファイルの場所を指定するために、**-d** (**--os-disk-vhd**) パラメーターも渡します。これは、イメージ VHD ファイルが格納されているストレージ アカウントの vhds コンテナー内でなければなりません。このコマンドは、新しい VM の VHD を自動的に vhds コンテナーにコピーします。
-
-イメージで **azure vm create** を実行する前に次の操作を行います。
-
-1. リソース グループを作成するか、デプロイ用に既存のリソース グループを特定します。
-2. 新しい VM 用のパブリック IP アドレス リソースと NIC リソースを作成します。CLI を使用して仮想ネットワーク、パブリック IP アドレス、および NIC を作成する手順については、この記事の前の方を参照してください (**azure vm create** で NIC を作成することもできますが、仮想ネットワークとサブネットの追加のパラメーターを渡す必要があります)。
-
-次に、以下のようなコマンドを実行し、新しい OS VHD ファイルと既存のイメージの両方に URI を渡します。
-
-    azure vm create <your-resource-group-name> <your-new-vm-name> eastus Linux -d "https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/<your-new-VM-prefix>.vhd" -Q "https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/<your-image-prefix>-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd" -z Standard_A1 -u <your-admin-name> -p <your-admin-password> -f <your-nic-name>
-
-追加のコマンド オプションについては、`azure help vm create` を実行してください。
-
-## 次のステップ
-CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」に記載のタスクを参照してください。
-
-<!---HONumber=AcomDC_0817_2016-->

@@ -1,19 +1,24 @@
 ---
-title: Azure Service Fabric で作成されたサービスをローカルで監視および診断する | Microsoft Docs
-description: ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。
+title: "Windows で Azure マイクロサービスをデバッグする | Microsoft Docs"
+description: "ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
-author: ms-toddabel
+author: dkkapur
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/06/2016
-ms.author: toddabel
+ms.date: 01/04/2017
+ms.author: dekapur
+translationtype: Human Translation
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 5421cf66449892bb7bbc46cd8727a0642b7d66f3
+ms.lasthandoff: 01/24/2017
+
 
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
@@ -28,9 +33,9 @@ ms.author: toddabel
 ## <a name="the-benefits-of-event-tracing-for-windows"></a>Windows イベント トレーシングの利点
 [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 その理由は、次のとおりです。
 
-* **ETW は、高速です。**  コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
+* **ETW は、高速です。** コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
 * **ETW トレースは、ローカル開発環境から実際のクラスターのセットアップに至るまでシームレスに機能します。** つまり、コードを実際のクラスターにデプロイする準備ができたら、トレース コードを書き直す必要はありません。
-* **Service Fabric のシステム コードも内部のトレースに ETW を使用します。**  これを使用すると、アプリケーションのトレースと Service Fabric のシステム トレースを交互に配置した状態で表示できます。 また、アプリケーションのコードと基盤となるシステムのイベントの間の順序と相互関係が理解しやすくなります。
+* **Service Fabric のシステム コードも内部のトレースに ETW を使用します。** これを使用すると、アプリケーションのトレースと Service Fabric のシステム トレースを交互に配置した状態で表示できます。 また、アプリケーションのコードと基盤となるシステムのイベントの間の順序と相互関係が理解しやすくなります。
 * **ETW イベントを表示する Service Fabric のVisual Studio ツールが内蔵でサポートされます。**
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Visual Studio で Service Fabric のシステム イベントを表示する
@@ -61,8 +66,6 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
 
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
-* [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
-
-<!--HONumber=Oct16_HO2-->
+* [サービス プロセスからログを直接収集する](service-fabric-diagnostic-collect-logs-without-an-agent.md)
 
 

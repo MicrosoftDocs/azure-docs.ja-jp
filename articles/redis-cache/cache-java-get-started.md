@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 08/24/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 907f75dc02bff7e25712a564410c1974e22f0d99
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: b95f37db90b105962c01545e25c8e14c53257ebc
 
 
 ---
@@ -45,27 +45,35 @@ Azure Redis Cache を使用すると、Microsoft が管理している専用の 
 ## <a name="retrieve-the-host-name-and-access-keys"></a>ホスト名とアクセス キーを取得する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-nonssl-endpoint"></a>非 SSL エンドポイントを有効にする
-一部の Redis クライアントは SSL をサポートしていないため、既定では、 [新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています](cache-configure.md#access-ports)。 この記事の執筆時には、 [Jedis](https://github.com/xetorthio/jedis) クライアントが SSL をサポートしていません。 
+## <a name="connect-to-the-cache-securely-using-ssl"></a>SSL を使用してキャッシュに安全に接続する
+[jedis](https://github.com/xetorthio/jedis) の最新のビルドでは、SSL を使用した Azure Redis Cache への接続をサポートしています。 次の例では、SSL エンドポイント 6380 を使用して Azure Redis Cache に接続する方法を示しています。 `<name>` をキャッシュの名前に、`<key>` を前の「[ホスト名とアクセス キーを取得する](#retrieve-the-host-name-and-access-keys)」セクションで説明したプライマリまたはセカンダリ キーに置き換えます。
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
+    boolean useSsl = true;
+    /* In this line, replace <name> with your cache name: */
+    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
+    shardInfo.setPassword("<key>"); /* Use your access key. */
+
+> [!NOTE]
+> 新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています。 SSL をサポートしていない別のクライアントを使用している場合は、[非 SSL ポートを有効にする方法](cache-configure.md#access-ports)に関するページをご覧ください。
+> 
+> 
 
 ## <a name="add-something-to-the-cache-and-retrieve-it"></a>キャッシュに何か追加し、取得する
     package com.mycompany.app;
     import redis.clients.jedis.Jedis;
     import redis.clients.jedis.JedisShardInfo;
 
-    /* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the Azure Portal */
     public class App
     {
       public static void main( String[] args )
       {
+        boolean useSsl = true;
         /* In this line, replace <name> with your cache name: */
-        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
+        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
         shardInfo.setPassword("<key>"); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);
-         jedis.set("foo", "bar");
-         String value = jedis.get("foo");
+        jedis.set("foo", "bar");
+        String value = jedis.get("foo");
       }
     }
 
@@ -76,7 +84,6 @@ Azure Redis Cache を使用すると、Microsoft が管理している専用の 
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

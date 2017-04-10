@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ
-description: Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します
+title: "Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ"
+description: "Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,127 +14,139 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.lasthandoff: 03/01/2017
+
 
 ---
-# さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
-新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。
+# <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
+新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。 プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。 
 
-### コンテンツの種類：
+### <a name="content-types"></a>コンテンツの種類：
 * アナウンス
 * アンケート
 * データ プッシュ
 * タイル (Windows Phone のみ)
 
-## アナウンスのコンテンツ
- ![リーチ - コンテンツ 1][30]
+## <a name="content-of-announcements"></a>アナウンスのコンテンツ
+ ![リーチ - コンテンツ&1;][30] 
 
-### アナウンスの種類を選択します:
-* 通知のみ: シンプルな標準的な通知です。ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
+### <a name="choose-the-type-of-your-announcement"></a>アナウンスの種類を選択します:
+* 通知のみ: シンプルな標準的な通知です。 ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
 * テキストのアナウンス: ユーザーにテキスト ビューを閲覧するよう促す通知です。
-* Web のアナウンス: ユーザーに Web ビューを閲覧するよう促す通知です。
+* Web のアナウンス:  ユーザーに Web ビューを閲覧するよう促す通知です。
 
-### 関連項目
-* [リーチ - 方法 - アナウンス][Link 3]
+### <a name="see-also"></a>関連項目
+* [リーチ - 方法 - アナウンス][Link 3] 
 
-### Web ビューのアナウンスについて:
-ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
+### <a name="about-web-view-announcements"></a>Web ビューのアナウンスについて:
+ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。 この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。
+全画面表示の Web ビューを作成する場合は (既定の Action (アクション) と Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます: 
 
 * アナウンスの操作を実行する: ReachContent.actionContent()
 * アナウンスを終了する: ReachContent.actionContent()
 
-### アクションを選択する:
-### アクションの URL について:
-対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure Mobile Engagement のデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
+### <a name="choose-your-action"></a>アクションを選択する:
+### <a name="about-action-urls"></a>アクションの URL について:
+対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。
+アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。
+発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。 これを使用して、Azure Mobile Engagement のデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
 
 * **Android + iOS のアクション**
   * Web ページを開く
-  * http://[web-site-domain\]
-  * 例:http://www.azure.com
+  * http://\[web-site-domain\] 
+  * 例: http://www.azure.com
   * メールを送信する
-  * mailto:[メール宛先]?subject=[件名]&body=[メッセージ]
-  * 例: mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
   * SMS を送信する
-  * sms: [電話番号]
+  * sms:\[phone-number\] 
   * 例: sms:2125551212
   * 電話をかける
-  * tel: [電話番号]
+  * tel:\[phone-number\] 
   * 例: tel:2125551212
 * **Android のみのアクション**
   * Play ストアでアプリケーションをダウンロードする
-  * market://details?id=[appパッケージ]
-  * 例:market://details?id=com.microsoft.office.word
+  * market://details?id=\[app package\] 
+  * 例: market://details?id=com.microsoft.office.word
   * 地理的にローカライズされた検索を開始する
-  * geo:0、0? q = [検索クエリ]
+  * geo:0,0?q=\[search query\] 
   * 例: geo:0,0?q=starbucks,paris
 * **iOS のみのアクション**
   * App ストアでアプリケーションをダウンロードする
-  * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8
-  * 例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * http://itunes.apple.com/[国]/app/[アプリ名]/id[アプリ ID]?mt=8 
+  * 例: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows のアクション
   * Web ページを開く
-  * http://[web-site-domain\]
-  * 例:http://www.azure.com
+  * http://\[web-site-domain\] 
+  * 例: http://www.azure.com
   * メールを送信する
-  * mailto:[メール宛先]?subject=[件名]&body=[メッセージ]
-  * 例: mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
   * SMS を送信する (Skype ストア アプリが必要)
-  * sms: [電話番号]
+  * sms:\[phone-number\] 
   * 例: sms:2125551212
   * 電話をかける (Skype ストア アプリが必要)
-  * tel: [電話番号]
+  * tel:\[phone-number\] 
   * 例: tel:2125551212
   * Play ストアでアプリケーションをダウンロードする
-  * ms-windows-store:PDP?PFN=app package ID
+  * ms-windows-store:PDP?PFN=\[app package ID\] 
   * 例: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
   * Bingmaps 検索を開始する
-  * bingmaps:? q = search query]
+  * bingmaps:?q=\[search query\] 
   * 例: bingmaps:?q=starbucks,paris
   * カスタムのスキームを使用する
-  * [custom scheme]://[custom scheme params]
-  * 例:myCustomProtocol://myCustomParams
+  * \[custom scheme\]://\[custom scheme params\] 
+  * 例: myCustomProtocol://myCustomParams
   * パッケージ データを使用する (拡張機能読み取りのためのストア アプリ が必要)
-  * [folder][data].[extension]
+  * \[folder\]\[data\].\[extension\] 
   * 例: myfolderdata.txt
 
-### 追跡用 URL を構築する:
-* 「UI ドキュメント」の「設定」セクションで、ユーザーが他のアプリケーションをダウンロードできるようにする追跡 URL を構築する方法をご覧ください。
+### <a name="build-a-tracking-url"></a>追跡用 URL を構築する:
+* <UI Documentation> の「設定」セクションで、ユーザーが他のアプリケーションをダウンロードできるようにする追跡用の URL を構築する方法をご覧ください。
 
-### アナウンスのテキストを定義する
-アナウンスの件名、コンテンツ、ボタンのテキストを入力します。このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかといったフィードバックに基づいて行うことができます。
+### <a name="define-the-texts-of-your-announcement"></a>アナウンスのテキストを定義する
+アナウンスの件名、コンテンツ、ボタンのテキストを入力します。 このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかといったフィードバックに基づいて行うことができます。
 
-### 関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
+### <a name="see-also"></a>関連項目
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
-## アンケートのコンテンツ
-![リーチ - コンテンツ 2][31]アナウンスの件名、説明、ボタンのテキストを入力します。次に、質問と質問への回答の選択肢を追加します。このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
+## <a name="content-of-polls"></a>アンケートのコンテンツ
+![リーチ - コンテンツ&2;][31] 
 
-### 関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
+アナウンスの件名、説明、ボタンのテキストを入力します。 次に、質問と質問への回答の選択肢を追加します。
+このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。 また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
 
-## データ プッシュのコンテンツ
-![リーチ - コンテンツ 3][32]
+### <a name="see-also"></a>関連項目
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
-### データの種類を選択します：
+## <a name="content-of-data-pushes"></a>データ プッシュのコンテンツ
+![リーチ - コンテンツ&3;][32] 
+
+### <a name="choose-the-type-of-your-data"></a>データの種類を選択します：
 * テキスト
 * バイナリ データ
 * Base64 データ
 
-### データのコンテンツを定義します
+### <a name="define-the-content-of-your-data"></a>データのコンテンツを定義します
 * テキスト データのプッシュを選択した場合は、[Contents (コンテンツ)] ボックスにテキストをコピーして貼り付けます。
 * バイナリ データや base64 データのプッシュを選択した場合は、[upload your file (ファイルをアップロード)] ボタンを使用してファイルをアップロードします。
-* このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。
+* このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。
 
-### 関連項目
-* [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
+### <a name="see-also"></a>関連項目
+* [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
-## タイルのコンテンツ (Windows Phone のみ)
-![リーチ - コンテンツ 4][33]
+## <a name="content-of-tiles-windows-phone-only"></a>タイルのコンテンツ (Windows Phone のみ)
+![リーチ - コンテンツ&4;][33]
 
-### タイルのコンテンツを定義します
-タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service (MPNS) バージョンです。タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。
+### <a name="define-the-content-of-your-tile"></a>タイルのコンテンツを定義します
+タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。
+タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service (MPNS) バージョンです。 タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。 
 
-### 関連項目
-* [API ドキュメント - Reach API - ネイティブ プッシュ][Link 4]
+### <a name="see-also"></a>関連項目
+* [API ドキュメント - リーチ API - ネイティブ プッシュ][Link 4]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -228,4 +240,3 @@ ms.author: piyushjo
 [Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
-<!---HONumber=AcomDC_0824_2016-->

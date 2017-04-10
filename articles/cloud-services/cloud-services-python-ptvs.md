@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio による Python Web ロールと Python worker ロール | Microsoft Docs"
+title: "Python と Azure Cloud Services を使ってみる | Microsoft Docs"
 description: "Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
 services: cloud-services
 documentationcenter: python
@@ -12,27 +12,31 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: c03122972228f30d56a8e0636b1c35ac92b42977
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
+
 この記事では、[Python Tools for Visual Studio][Python Tools for Visual Studio] で Python Web ロールと Python worker ロールを扱う方法について概説します。 Python を使用する基本的なクラウド サービスを、Visual Studio を使って作成、デプロイする方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
-* Visual Studio 2013 または 2015
+* [Visual Studio 2013、2015、または 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015]
-* [Python 2.7 32 ビット][Python 2.7 32 ビット] または [Python 3.5 32 ビット][Python 3.5 32 ビット]
+* [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013]、または  
+[Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015]、または  
+[Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
+* [Python 2.7 (32 ビット)][Python 2.7 32-bit] または [Python 3.5 (32 ビット)][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
-Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] の 3 種類があります。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という&3; つのコンピューティング モデルが用意されています。 これら&3; つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
@@ -323,48 +327,44 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 数分経過するとデプロイメントが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
 
 ### <a name="investigate-logs"></a>ログを調査する
-クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
+クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも&1; つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
 
-* [クラウド サービス プロジェクト][クラウド サービス プロジェクト]
+* [クラウド サービス プロジェクト][Cloud Service Projects]
 
 Web ロールまたは worker ロールから Azure Storage や Service Bus などの Azure サービスを使用する方法の詳細については、次の記事を参照してください。
 
-* [Blob service][Blob service]
-* [Table service][Table service]
-* [Queue サービス][Queue サービス]
-* [Service Bus キュー][Service Bus キュー]
-* [Service Bus トピック][Service Bus トピック]
+* [Blob service][Blob Service]
+* [Table service][Table Service]
+* [Queue サービス][Queue Service]
+* [Service Bus キュー][Service Bus Queues]
+* [Service Bus トピック][Service Bus Topics]
 
 <!--Link references-->
 
 [クラウド サービスとは]: cloud-services-choose-me.md
 [execution model-web sites]: ../app-service-web/app-service-web-overview.md
-[execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
+[execution model-vms]:../virtual-machines/windows/about.md
 [execution model-cloud services]: cloud-services-choose-me.md
-[Python デベロッパー センター]: /develop/python/
+[Python Developer Center]: /develop/python/
 
-[Blob service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue サービス]: ../storage/storage-python-how-to-use-queue-storage.md
-[Table service]: ../storage/storage-python-how-to-use-table-storage.md
-[Service Bus キュー]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
-[Service Bus トピック]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
+[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
+[Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
-[クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
-[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7 (32 ビット)]: https://www.python.org/downloads/
-[Python 3.5 (32 ビット)]: https://www.python.org/downloads/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=746482
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=746481
+[Azure SDK Tools for VS 2017]: http://go.microsoft.com/fwlink/?LinkId=746483
+[Python 2.7 32-bit]: https://www.python.org/downloads/
+[Python 3.5 32-bit]: https://www.python.org/downloads/
 

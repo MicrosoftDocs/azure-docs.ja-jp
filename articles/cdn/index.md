@@ -1,17 +1,30 @@
 ---
+title: "Azure CDN のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Content Delivery Network (CDN) を使用して、グローバル データ センターから任意のデバイスにコンテンツを配信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: cdn
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cdn
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 00db07b08a15b37c38e6c3a303e3e35cf16b0774
-ms.openlocfilehash: 5cc39b23ab6282ea1c4367fcbdf8c7b095180b51
+ms.sourcegitcommit: 642f9469722dfe701db8e353f4aa2b17edc00081
+ms.openlocfilehash: 67fdc8b9b4db5d311a8247995d7f8f626b90e5c5
+ms.lasthandoff: 02/09/2017
 
 ---
-#<a name="cdn-documentation"></a>CDN のドキュメント
+# <a name="cdn-documentation"></a>CDN のドキュメント
 
-Azure Content Delivery Network (CDN) は、Azure または他の任意の場所でホストされている高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。  CDN を使用すると、Azure BLOB ストレージ、Web アプリケーション、仮想マシン、アプリケーション フォルダー、またはその他の HTTP/HTTPS の場所から読み込んだ一般公開されているオブジェクトをキャッシュすることができます。  CDN は、通常、イメージ、スタイル シート、ドキュメント、ファイル、クライアント側スクリプト、HTML ページなどの静的コンテンツの配信に使用されます。
+Content Delivery Network (CDN) を使用して、Azure やその他の場所でホストされている高帯域幅コンテンツを配信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、CDN を使用して、グローバル データ センターから任意のデバイスにコンテンツを配信する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/best-practices-CDN">
+        <a href="/azure/best-practices-cdn">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,25 +80,47 @@ Azure Content Delivery Network (CDN) は、Azure または他の任意の場所�
 
 ---
 
-##<a name="reference"></a>リファレンス
+<h2>リファレンス</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/cdn/">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-###<a name="rest"></a>REST ()
-[CDN REST API リファレンス](/rest/api/CDN)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cdn.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure CDN のドキュメントのダウンロード </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

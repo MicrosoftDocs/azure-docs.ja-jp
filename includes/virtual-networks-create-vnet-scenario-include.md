@@ -10,6 +10,6 @@ VNet とサブネットの作成方法をわかりやすく説明するために
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

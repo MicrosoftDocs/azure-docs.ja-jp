@@ -4,7 +4,7 @@
 > 
 > 
 
-この記事では、[Azure IoT Gateway SDK][lnk-gateway-sdk] アーキテクチャの基本的なコンポーネントを表す [Hello World サンプル コード][lnk-helloworld-sample]の詳細なチュートリアルを提供します。 このサンプルでは、IoT Hub Gateway SDK を使用して、5 秒ごとに "hello world" メッセージをファイルに記録する単純なゲートウェイを作成します。
+この記事では、[Azure IoT Gateway SDK][lnk-gateway-sdk] アーキテクチャの基本的なコンポーネントを表す [Hello World サンプル コード][lnk-helloworld-sample]の詳細なチュートリアルを提供します。 このサンプルでは、Azure IoT Gateway SDK を使用して、5 秒ごとに "hello world" メッセージをファイルに記録する単純なゲートウェイを作成します。
 
 このチュートリアルでは、次の項目について説明します。
 
@@ -72,6 +72,6 @@ logger モジュールはブローカーからメッセージを受信するだ�
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

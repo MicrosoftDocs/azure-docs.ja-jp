@@ -1,14 +1,14 @@
 ---
-title: VM の可用性セットの変更 | Microsoft Docs
-description: Azure PowerShell と Resource Manager デプロイメント モデルを使用して仮想マシンの可用性セットを変更する方法について説明します。
-keywords: ''
+title: "VM の可用性セットの変更 | Microsoft Docs"
+description: "Azure PowerShell と Resource Manager デプロイメント モデルを使用して仮想マシンの可用性セットを変更する方法について説明します。"
+keywords: 
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: Drewm3
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 44c90f90-bc9a-4260-a36f-5465e2a1ef94
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,12 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 947369fe8d93cb5a7ecf2624a0192d8aa1ea8524
+
 
 ---
-# Windows VM の可用性セットの変更
-以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。VM を可用性セットに追加できるのは、VM の作成時のみです。可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。
+# <a name="change-the-availability-set-for-a-windows-vm"></a>Windows VM の可用性セットの変更
+以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
 
-## PowerShell を使用して可用性セットを変更する
+## <a name="change-the-availability-set-using-powershell"></a>PowerShell を使用して可用性セットを変更する
 1. 変更する VM の以下の重要な詳細を記録します。
    
     VM の名前
@@ -51,14 +55,14 @@ ms.author: drewm
     $vm.StorageProfile.OsDisk.Vhd.Uri
     ```
    
-    各データ ディスクのディスク プロファイル
+    各データ ディスクのディスク プロファイル 
    
     ```powershell
     $vm.StorageProfile.DataDisks[<index>].Lun
     $vm.StorageProfile.DataDisks[<index>].Vhd.Uri
     ```
    
-    インストール済みの VM 拡張機能
+    インストール済みの VM 拡張機能 
    
     ```powershell
     $vm.Extensions
@@ -84,9 +88,9 @@ ms.author: drewm
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. データ ディスクと拡張機能を追加します。詳細については、[VM へのデータ ディスクの接続](virtual-machines-windows-attach-disk-portal.md)に関するページと[拡張機能の構成例](virtual-machines-windows-extensions-configuration-samples.md)に関するページを参照してください。VM へのデータ ディスクと拡張機能の追加は、PowerShell または Azure CLI を使用して行うことができます。
+5. データ ディスクと拡張機能を追加します。 詳細については、「[Azure ポータルで Windows VM にデータ ディスクを接続する方法](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Azure Windows VM 拡張機能の構成サンプル](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 VM へのデータ ディスクと拡張機能の追加は、PowerShell または Azure CLI を使用して行うことができます。
 
-## サンプル スクリプト
+## <a name="example-script"></a>サンプル スクリプト
 次のスクリプトでは、必要な情報を収集し、元の VM を削除してから新しい可用性セット内でその VM を作り直す例を示します。
 
 ```powershell
@@ -150,7 +154,12 @@ ms.author: drewm
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
-## 次のステップ
-[データ ディスク](virtual-machines-windows-attach-disk-portal.md)を追加して、VM に記憶域をさらに追加します。
+## <a name="next-steps"></a>次のステップ
+[データ ディスク](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を追加して、記憶域を VM にさらに追加します。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

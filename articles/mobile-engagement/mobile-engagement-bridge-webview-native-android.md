@@ -1,12 +1,12 @@
 ---
-title: ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ
-description: Javascript を実行している Web ビューとネイティブ Mobile Engagement Android SDK の間にブリッジを作成する方法について説明します
+title: "ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ"
+description: "Javascript を実行している Web ビューとネイティブ Mobile Engagement Android SDK の間にブリッジを作成する方法について説明します"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: cf272f3f-2b09-41b1-b190-944cdca8bba2
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,18 +14,22 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
+
 
 ---
-# ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ
+# <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ
 > [!div class="op_single_selector"]
 > * [Android ブリッジ](mobile-engagement-bridge-webview-native-android.md)
 > * [iOS ブリッジ](mobile-engagement-bridge-webview-native-ios.md)
 > 
 > 
 
-一部のモバイル アプリは、アプリ自体がネイティブの Android 開発を使用して開発されるハイブリッド アプリとして設計されますが、一部またはすべての画面が Android Web ビュー内でレンダリングされます。このようなアプリ内では、Mobile Engagement Android SDK を継続して使用することができます。このチュートリアルではこれを行う方法について説明します。次のサンプル コードは、[こちら](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)の Android ドキュメントに基づいています。このドキュメントでは、この文書化されたアプローチを使用して、Mobile Engagement Android SDK で一般的に使用されるメソッドに対して同様に実装する方法について説明しています。たとえば、ハイブリッド アプリからの Web ビューは、Android SDK を使用してパイプ処理を行う間に、イベント、ジョブ、エラー、アプリ情報を追跡する要求も開始することができます。
+一部のモバイル アプリは、アプリ自体がネイティブの Android 開発を使用して開発されるハイブリッド アプリとして設計されますが、一部またはすべての画面が Android Web ビュー内でレンダリングされます。 このようなアプリ内では、Mobile Engagement Android SDK を継続して使用することができます。このチュートリアルではこれを行う方法について説明します。 次のサンプル コードは、[こちら](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)の Android ドキュメントに基づいています。 このドキュメントでは、この文書化されたアプローチを使用して、Mobile Engagement Android SDK で一般的に使用されるメソッドに対して同様に実装する方法について説明しています。たとえば、ハイブリッド アプリからの Web ビューは、Android SDK を使用してパイプ処理を行う間に、イベント、ジョブ、エラー、アプリ情報を追跡する要求も開始することができます。 
 
-1. まず、「[入門チュートリアル](mobile-engagement-android-get-started.md)」を実行して、ハイブリッド アプリに Mobile Engagement Android SDK を統合していることを確認する必要があります。これを行うと、`OnCreate` メソッドは、次のようになります。
+1. まず、「 [入門チュートリアル](mobile-engagement-android-get-started.md) 」を実行して、ハイブリッド アプリに Mobile Engagement Android SDK を統合していることを確認する必要があります。 これを行うと、 `OnCreate` メソッドは、次のようになります。  
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ ms.author: piyushjo
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. 自分のハイブリッド アプリに Web ビューを含む画面があることを確認します。このためのコードは、次のようになります。画面の `onCreate` メソッド内の Web ビューにローカル HTML ファイルの **Sample.html** を読み込んでいます。
+2. 自分のハイブリッド アプリに Web ビューを含む画面があることを確認します。 このためのコードは、次のようになります。画面の `onCreate` メソッド内の Web ビューにローカル HTML ファイルの **Sample.html** を読み込んでいます。 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -106,7 +110,7 @@ ms.author: piyushjo
                 return extras;
             }
         }  
-4. 上記のブリッジ ファイルを作成したら、そのファイルが Web ビューに関連付けられていることを確認する必要があります。これを実現させるには、`SetWebview` メソッドを次のように編集する必要があります。
+4. 上記のブリッジ ファイルを作成したら、そのファイルが Web ビューに関連付けられていることを確認する必要があります。 これを実現させるには、 `SetWebview` メソッドを次のように編集する必要があります。
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -115,7 +119,7 @@ ms.author: piyushjo
             webSettings.setJavaScriptEnabled(true);
             myWebView.addJavascriptInterface(new WebAppInterface(this), "EngagementJs");
         }
-5. 上記のスニペットでは、ブリッジ クラスと Web ビューを関連付けるために `addJavascriptInterface` を呼び出し、ブリッジ ファイルからメソッドを呼び出すために **EngagementJs** と呼ばれるハンドルを作成しました。
+5. 上記のスニペットでは、ブリッジ クラスと Web ビューを関連付けるために `addJavascriptInterface` を呼び出し、ブリッジ ファイルからメソッドを呼び出すために **EngagementJs** と呼ばれるハンドルを作成しました。 
 6. **assets** と呼ばれるフォルダー内の自分のプロジェクトに、**Sample.html** と呼ばれる次のファイルを作成します。これは、Web ビューに読み込まれ、ブリッジ ファイルからメソッドを呼び出します。
    
         <!doctype html>
@@ -195,14 +199,14 @@ ms.author: piyushjo
         </html>
 7. 上述の HTML ファイルに関して次の点に注意してください。
    
-   * これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement Android SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。
-   * これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。この追加情報は、`WebAppInterface` ファイルを検索する場合、解析され、Android `Bundle` に配置し、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。
-   * Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。
-   * Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer\_name' と、タグの値として入力された値で渡されます。
-8. このアプリを実行すると、次が表示されます。ここで、次のようにテスト イベントにいくつかの名前を指定し、その下にある **[送信]** をクリックします。
+   * これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。 この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement Android SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。 
+   * これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。 この追加情報は、`WebAppInterface` ファイルを検索する場合、解析され、Android `Bundle` に配置し、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。 
+   * Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。 
+   * Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer_name' と、タグの値として入力された値で渡されます。 
+8. このアプリを実行すると、次が表示されます。 ここで、次のようにテスト イベントにいくつかの名前を指定し、その下にある **[送信]** をクリックします。 
    
     ![][1]
-9. アプリの **[モニター]** タブに移動し、**[イベント] - [詳細]** に表示された場合、このイベントは送信している静的なアプリ情報と共に表示されます。
+9. アプリの **[モニター]** タブに移動し、**[イベント] - [詳細]** に表示された場合、このイベントは送信している静的なアプリ情報と共に表示されます。 
    
    ![][2]
 
@@ -210,4 +214,8 @@ ms.author: piyushjo
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

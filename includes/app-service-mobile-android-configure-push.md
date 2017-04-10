@@ -1,14 +1,14 @@
 
-1. [Azure ポータル](https://azure.portal.com/) で、**[参照]**、**[App Services]** の順にクリックします。お使いのモバイル アプリ バックエンドを探してクリックした後、**[すべての設定]**、**[モバイル]**、**[プッシュ]** の順にクリックします。
-2. [プッシュ通知サービス] で、**[Google (GCM)]** をクリックし、前の手順で GCM から取得した **[API キー]** の値を入力し、**[保存]** をクリックします。
-   
-    ![ポータルで GCM API キーを設定する](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+1. [Azure Portal](https://portal.azure.com/) で、**[すべて参照]** > **[App Services]** の順にクリックし、Mobile Apps バックエンドをクリックします。 **[設定]** で、**[App Service Push (App Service プッシュ)]**、通知ハブ名の順にクリックします。
+2. **[Google (GCM)]** で、Firebase コンソールから取得した FCM サーバー キーを入力し、**[保存]** をクリックします。
 
-これで、モバイル アプリ バックエンドは、通知ハブを使用している Android デバイスで実行中のアプリに GCM を使用してプッシュ通知を使用するように構成されました。
+これで、Firebase Cloud Messaging と連携するようにサービスが構成されました。
 
 <!-- URLs. -->
 
-
 <!-- images -->
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!--HONumber=Dec16_HO2-->
+
+

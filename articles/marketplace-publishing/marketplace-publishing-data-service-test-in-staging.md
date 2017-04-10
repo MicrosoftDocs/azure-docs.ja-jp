@@ -1,12 +1,12 @@
 ---
-title: Testing your Data Service offer for the Marketplace | Microsoft Docs
-description: Understand how to test your Data Service offer for the Azure Marketplace.
+title: "Marketplace のデータ サービス プランのテスト | Microsoft Docs"
+description: "Azure Marketplace のデータ サービス プランをテストする方法を理解します。"
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
 manager: hascipio
-editor: ''
-
+editor: 
+ms.assetid: e861bd11-f74d-4d77-b4b5-23fb463644ad
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,85 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: daf2017bfbab4250e3f1481f592e0e858c77f121
+
 
 ---
-# <a name="testing-your-data-service-offer-in-staging"></a>Testing your Data Service offer in Staging
+# <a name="testing-your-data-service-offer-in-staging"></a>ステージング環境でのデータ サービス プランのテスト
 > [!IMPORTANT]
-> **At this time we are no longer onboarding any new Data Service publishers. New dataservices will not get approved for listing.** If you have a SaaS business application you would like to publish on AppSource you can find more information [here](https://appsource.microsoft.com/partners). If you have an IaaS applications or developer service you would like to publish on Azure Marketplace you can find more information [here](https://azure.microsoft.com/marketplace/programs/certified/).
+> **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。 IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
 > 
 > 
 
-After completing the first two steps of [Creating your Microsoft Developer account](marketplace-publishing-accounts-creation-registration.md) and [Creating your Data Service Offer in Publishing Portal](marketplace-publishing-data-service-creation.md) you’re ready for making your offer available in the Azure Marketplace. This topic will walk you through the first, intermediate, step called “Staging”
+最初の 2 つの手順 ([Microsoft 開発者アカウントの作成](marketplace-publishing-accounts-creation-registration.md)と[公開ポータルでのデータ サービス プランの作成](marketplace-publishing-data-service-creation.md)) が完了したら、Azure Marketplace でオファーを使用可能にする準備が整います。 このトピックでは「ステージング」と呼ばれる第一の中間的なステップについて説明します。
 
-Staging means deploying your offer in a private "sandbox" where you can test and verify its functionality before pushing it to production. The offer will appear in staging just as it would to a customer who has deployed it.
+ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。 ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。
 
-## <a name="step-1.-pushing-your-offer-to-staging"></a>Step 1. Pushing your offer to staging
-Pushing your offer to staging allows you to test the offer before it becomes available to future subscribers.  You can see how your offer will appear and function for those subscribing to your data.  
+## <a name="step-1-pushing-your-offer-to-staging"></a>手順 1. ステージングへのプランのプッシュ
+ステージングにプランをプッシュすることで、のちにサブスクライバーがプランを使用可能になる前にプランをテストできます。  自分のデータのサブスクライバーに対して、プランがどのように表示されどのように機能するかを確認できます。  
 
-  ![drawing](media/marketplace-publishing-data-service-test-in-staging/step-1.1.png)
+  ![図](media/marketplace-publishing-data-service-test-in-staging/step-1.1.png)
 
-1. Login into the [Publishing Portal](https://publish.windowsazure.com)
-2. Select **Data Services** in the left navigation window
-3. Select your offer you want to push to staging. You will see the above screen.
-4. Click **Push To Staging** button.  
-5. If there are issues with the offer that needed to be completed prior to pushing to staging, you will see a list displayed.  Correct these items by clicking on each item in the list. When all corrections made, click **Push to Staging** button again.
+1.  [発行ポータル](https://publish.windowsazure.com)
+2. 左側のナビゲーション ウィンドウで [ **Data Services** ] を選択します。
+3. ステージング環境にプッシュするプランを選択します。 上記の画面が表示されます。
+4. [ **ステージングにプッシュ** ] ボタンをクリックします。  
+5. プランにおいて、ステージングにプッシュする前に完了すべき問題がある場合には、一覧が表示されます。  一覧の各項目をクリックしてそれらの項目を修正してください。 すべての修正を終えたら、[ **ステージングにプッシュ** ] ボタンを再度クリックします。
 
-If there are no issues with your offer you will see the popup window below.  
+プランに問題がない場合は、以下のようなポップアップ ウィンドウが表示されます。  
 
-If you’re not planning/not approved to surface your offer in Azure Portal (currently has limited capacity), then just close the pop-up window.
+プランを Azure ポータルに上げる計画がない / 承認が下りていない場合 (現在は容量に制限がある)、ポップアップ ウィンドウはそのまま閉じてください。
 
-To test your Data Service in Azure Portal (in addition to the DataMarket portal), you will need an Azure Subscription ID to test with.  This Subscription ID will identify the account that will be allowed to test your offer.  
+(DataMarket ポータルに加えて) Azure ポータルの Data Sevice をテストするには、テストで使用する Azure サブスクリプション ID が必要になります。  このサブスクリプション ID は、プランのテストに使用できるアカウントを識別します。  
 
-Cut and paste your Subscription ID and click the checkmark to continue.
+サブスクリプション ID を貼り付け、チェックマークをクリックして続行します。
 
-  ![drawing](media/marketplace-publishing-data-service-test-in-staging/step-1.2.png)
+  ![図](media/marketplace-publishing-data-service-test-in-staging/step-1.2.png)
 
 > [!NOTE]
-> These Azure subscriptions IDs are only required for testing and staging in the [Azure Management Portal](https://manage.windowsazure.com). They are not required to test in Azure Marketplace.
+> これらの Azure サブスクリプション ID は、 [Azure 管理ポータル](https://manage.windowsazure.com)でのテストとステージングにのみ必要です。 Azure Marketplace でのテストには必要ではありません。
 > 
 > 
 
-The next screen that appears shows that publishing is taking place by displaying the “In progress” icon highlighted yellow below. Pushing to staging takes between 10 to 15 minutes.  If it takes longer, first refresh your browser (press F5 in IE).  In the rare cases where your offer is still pushing to staging after an hour, click the contact us link to let us know that there is an issue.
+次に現れる画面では、下に黄色く強調表示された "In progress" アイコンによって発行が進行中であることがわかります。 ステージングへのプッシュは 10 ～ 15 分かかります。  それより時間がかかる場合、最初にブラウザーを更新してください (IE で F5 を押下)。  まれではありますが、プランがステージングへのプッシュを 1 時間過ぎてもまだ行っていたら、その場合はお問い合わせのリンクをクリックして問題報告を行ってください。
 
-  ![drawing](media/marketplace-publishing-data-service-test-in-staging/step-1.3.png)
+  ![図](media/marketplace-publishing-data-service-test-in-staging/step-1.3.png)
 
-When the Push to Staging completes the “In progress” icon will stop moving and the status will be updated to “Staged”.  You are now ready to test your offer.  
+ステージングへのプッシュが完了すると、"In progress" アイコンの動きが止まり、状態が "Staged" に更新されます。  これでプランのテストの準備ができました。  
 
-## <a name="step-2.-test-your-staged-offer-in-datamarket"></a>Step 2. Test your staged offer in DataMarket
-Click the link following the text **“See Your service offer at…”** to display the screen that the subscriber will see when your offer goes to production and will appear in DataMarket.
+## <a name="step-2-test-your-staged-offer-in-datamarket"></a>手順 2. ステージされたプランを DataMarket でテストする
+[ **サービス プランを表示** ] というテキストに続くリンクをクリックして、プランが本番稼働したときにサブスクライバーが参照し、DataMarket に表示される画面を表示してください。
 
-  ![drawing](media/marketplace-publishing-data-service-test-in-staging/step-2.2.png)
+  ![図](media/marketplace-publishing-data-service-test-in-staging/step-2.2.png)
 
-Test or verify each of the 12 items marked above to ensure all logos, prices/transactions, text, images, documentation, and links are correct and working properly.  This is a good time to ensure any test values you entered when creating your offer have been replaced with actual values.
+上でマークされた 12 項目をそれぞれテストまたは検証し、すべてのロゴ、価格 / トランザクション、テキスト、画像、ドキュメント、リンクが正しく、適切に動作していることを確認してください。  これは、プランの作成時に入力したテスト値が実際の値に置き換えられていることを確認するのに良いタイミングです。
 
-1. Offer logo
-2. Offer name
-3. Publisher name/link to your company's website
-4. Search categories for your offer
-5. Your offer's support link to assist subscribers
-6. Contextual description for your offer
-7. Offer plan depicting billing details
-8. Link to implementation code
-9. Sample images that illustrate use of offer data
-10. Input/Output metadata for each service within the offer
-11. Offer's Terms of Use
-12. Preview of the offer's data
+1. プラン ロゴ
+2. プラン名
+3. 発行者名 / 会社の Web サイトへのリンク
+4. プランの検索カテゴリ
+5. サブスクライバーを支援するためのプランのサポート リンク
+6. プランのコンテキストの説明
+7. 課金の詳細を示すオファー プラン
+8. 実装コードへのリンク
+9. プラン データの使用法を図解するサンプル イメージ
+10. プラン内の各サービスに対するメタデータの入力 / 出力
+11. プランの利用規約
+12. プラン データのプレビュー
 
-Finally, check the service will work through the Datamarket by clicking the link “EXPLORE THIS DATASET”.  A new window will open in the tool we call “Service Explorer” so you can preview the results of a query against your service.  In this window, you can enter the parameters needed and see the results displayed from a query against your service.   Also, displayed is the URL for your Query.  
+最後に、リンク "EXPLORE THIS DATASET" をクリックすることで、Datamarket でサービスが動作することを確認します。  "Service Explorer" と呼ばれるツールで新しいウィンドウが開き、プランに関してクエリの結果をプレビューできます。  このウィンドウでは、必要なパラメーターを入力でき、サービスに関するクエリ結果の表示も可能です。   また、クエリに関する URL も表示されます。  
 
 > [!NOTE]
-> Be sure to review the textual description of the service displayed at the top.  And if your offer consists of more than one service call, click the tabs at the bottom to switch to the next service to review and test.
+> 必ず先頭に表示されるサービスの説明テキストを確認してください。  プランが複数のサービス呼び出しで構成されている場合、一番下のタブをクリックして、次のサービスに移動してレビューおよびテストできます。
 > 
 > 
 
-## <a name="next-step"></a>Next step
-If you are having issues and need help resolving them please contact [Azure Publisher Support](http://go.microsoft.com/fwlink/?LinkId=272975).
+## <a name="next-step"></a>次のステップ
+問題が発生して解決にヘルプが必要な場合は、 [Azure パブリッシャー サポート](http://go.microsoft.com/fwlink/?LinkId=272975)にご連絡ください。
 
-If you are satisfied and ready to publish your offer please read the [Request Approval to Push To Production](marketplace-publishing-push-to-production.md) documentation.
+プランの発行準備が整ったら、「 [本番にプッシュするための承認の要求](marketplace-publishing-push-to-production.md) 」ドキュメントを参照してください。
 
-## <a name="see-also"></a>See Also
-* [Getting Started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>関連項目
+* [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

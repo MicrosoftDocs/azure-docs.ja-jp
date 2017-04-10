@@ -1,26 +1,18 @@
 ---
-title: DocumentDB の既定のクォータ | Microsoft Docs
-description: DocumentDB によって割り当てられる既定のクォータについて説明します。
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: cgronlun
-documentationcenter: ''
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
+translationtype: Human Translation
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 9c5fc17927d719330926c8242008b61f6c88a298
 
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/15/2016
-ms.author: arramac
 
 ---
-# DocumentDB の既定のクォータ
-次の表では、Azure DocumentDB データベース リソースの既定のクォータについて説明します。
+# <a name="default-quotas-for-documentdb"></a>DocumentDB の既定のクォータ
 
-[!INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
+DocumentDBは世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについて質問がある場合は、askdocdb@microsoft.com に電子メールをお送りください。
 
-アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](documentdb-increase-limits.md)。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Jan17_HO3-->
+
+

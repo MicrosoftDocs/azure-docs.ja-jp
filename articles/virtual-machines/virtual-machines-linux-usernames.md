@@ -1,36 +1,40 @@
 ---
-title: Linux に対応するユーザー名の選択 | Microsoft Docs
-description: Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。
+title: "Linux に対応するユーザー名の選択 | Microsoft Docs"
+description: "Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: 33b50c97-92f1-46c9-a623-e37f67459c5c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2016
+ms.date: 02/02/2017
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eaea0ce42537789278d3a0476b261e6a750dde2b
+
 
 ---
-# Azure 上の Linux に対応するユーザー名の選択
+# <a name="selecting-user-names-for-linux-on-azure"></a>Azure 上の Linux に対応するユーザー名の選択
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Azure に Linux 仮想マシンをプロビジョニングするとき、後で VM へのログインに使用できる、ルート以外のユーザー名を指定する必要があります。新規ユーザーの名前を選択するか、Azure クラシック ポータルでプロビジョニングする場合は既定の名前である "azureuser" を使用できます。
+Azure に Linux 仮想マシンをプロビジョニングするとき、後で VM へのログインに使用できる、ルート以外のユーザー名を指定する必要があります。 新規ユーザーの名前を選択するか、Azure クラシック ポータルでプロビジョニングする場合は既定の名前である "azureuser" を使用できます。
 
-ほとんどの場合、このユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。ユーザーが基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に指定された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
+ほとんどの場合、このユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。 ユーザーが基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に指定された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
 
-**ただし**、Linux では、使用しない方がよいユーザー名が定められています。UID 0 ～ 99 で定義されている既存のシステム ユーザーを使用して Linux VM をプロビジョニングしようとすると、プロビジョニング プロセスは**失敗**します。代表的な例は、UID が 0 である `root` ユーザーです。
+**ただし**、Linux では、使用しない方がよいユーザー名が定められています。 UID 0 ～ 99 で定義されている既存のシステム ユーザーを使用して Linux VM をプロビジョニングしようとすると、プロビジョニング プロセスは **失敗** します。 代表的な例は、UID が 0 である `root` ユーザーです。
 
-* [Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)を参照してください。
+*  [Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
-以下に示したのは、Linux 仮想マシンを Azure にプロビジョニングするときに避けるべき CentOS と Ubuntu における一般的な組み込みシステム ユーザーの一覧です。これはあくまで例です。ご使用のディストリビューションのドキュメントを参照し、既存のシステム ユーザーと競合しないユーザー名を使用してください。
+以下に示したのは、Linux 仮想マシンを Azure にプロビジョニングするときに避けるべき CentOS と Ubuntu における一般的な組み込みシステム ユーザーの一覧です。 これはあくまで例です。ご使用のディストリビューションのドキュメントを参照し、既存のシステム ユーザーと競合しないユーザー名を使用してください。
 
-## CentOS
+## <a name="centos"></a>CentOS
 * abrt
 * adm
 * audio
@@ -86,7 +90,7 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 * video
 * wheel
 
-## Ubuntu
+## <a name="ubuntu"></a>Ubuntu
 * adm
 * admin
 * audio
@@ -141,4 +145,9 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 * whoopsie
 * www-data
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

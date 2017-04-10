@@ -4,7 +4,7 @@ description: "Azure ポータルを使用して Azure Marketplace から新し�
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 972a296d-f927-470b-8534-0f2cb9eac223
 ms.service: app-service-web
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。 代わりに SQL Database を使用する場合は、[Project Nami] を参照してください。これは Azure Marketplace からも入手できます。
 
 > [!NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効][activate]にするか、[無料試用版にサインアップ][free trial]してください。
+> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする][activate]か、[無料試用版にサインアップ][free trial]してください。
 > 
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用]に関するページにアクセスしてください。 有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
 > 
@@ -67,12 +68,12 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     Web アプリの URL は *{name}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
    
     ![Configure the WordPress web app name][ConfigAppName]
-3. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
+3. サブスクリプションが複数ある場合には、使用するものを&1; つ選択します。
    
     ![Configure the subscription for the web app][ConfigSubscription]
 4. **リソース グループ** を選択するか、新しく作成します。
    
-    リソース グループの詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。
+    リソース グループの詳細については、[Azure Resource Manager の概要][ResourceGroups]に関するページをご覧ください。
    
     ![Configure the resource group for the web app][ConfigResourceGroup]
 5. **App Service プラン/場所** を選択するか、新しく作成します。
@@ -97,7 +98,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
    
     ![Finish the web app settings and click OK][ConfigFinished]
    
-    Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
+    Azure App Service によって、通常は&1; 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
    
     ![進捗状況インジケーター][ConfigProgress]
 
@@ -127,22 +128,22 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 App Service Web Apps の使用方法の詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示されるリンクを参照してください。
 
-Azure での WordPress Web アプリの開発の詳細については、「[Azure App Service での WordPress の開発][WordPressOnAzure]」を参照してください。
+Azure での WordPress Web アプリの開発の詳細については、「[Azure App Service での WordPress の開発][WordPressOnAzure]」をご覧ください。
 
 <!-- URL List -->
 
 [PHP]: https://azure.microsoft.com/develop/php/
 [.NET]: https://azure.microsoft.com/develop/net/
-[Node.JS]: https://azure.microsoft.com/develop/nodejs/
+[Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[無料試用版]: https://azure.microsoft.com/pricing/free-trial/
-[Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
+[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[App Service の試用]: https://azure.microsoft.com/try/app-service/
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure App Service で Java Web アプリ]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [Project Nami]: http://projectnami.org/
 [WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
 
@@ -165,9 +166,4 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 [WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -1,93 +1,94 @@
-# Overview
-## [ロジック アプリの概要](../app-service-logic/app-service-logic-what-are-logic-apps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [コネクタの一覧](../connectors/apis-list.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+# 概要
+## [ロジック アプリとは](logic-apps-what-are-logic-apps.md)
+## [Enterprise Integration Pack を使用した B2B](logic-apps-enterprise-integration-overview.md)
+## [コネクタ](../connectors/apis-list.md)
 
 # 作業開始
-## [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [ロジック アプリの機能を使用する](../app-service-logic/app-service-logic-use-logic-app-features.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [テンプレートの概要](../app-service-logic/app-service-logic-use-logic-app-templates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [カスタム テンプレートを作成する](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [例とシナリオ](../app-service-logic/app-service-logic-examples-and-scenarios.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Service Bus のシナリオ](../app-service-logic/app-service-logic-scenario-function-sb-trigger.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [B2B の処理](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [XML の処理](../app-service-logic/app-service-logic-enterprise-integration-xml.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)
+## [ロジック アプリのテンプレート](logic-apps-use-logic-app-templates.md)
+## [テンプレートからのロジック アプリの作成](logic-apps-arm-provision.md)
 
 # 方法
 ## 構築
-### [コネクタの作成](../app-service-logic/app-service-logic-create-api-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Visual Studio ツール](../app-service-logic/app-service-logic-deploy-from-vs.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Azure 関数の使用](../app-service-logic/app-service-logic-azure-functions.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [呼び出し可能なエンドポイントとしてのロジック アプリ](../app-service-logic/app-service-logic-http-endpoint.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [カスタム API の使用](../app-service-logic/app-service-logic-custom-hosted-api.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [例外処理](../app-service-logic/app-service-logic-exception-handling.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [例外処理のシナリオ](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [コンテンツ タイプの処理](../app-service-logic/app-service-logic-content-type.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [ワークフローの定義](../app-service-logic/app-service-logic-author-definitions.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [トラブルシューティングのヒント](../app-service-logic/app-service-logic-diagnosing-failures.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [制限と構成](../app-service-logic/app-service-logic-limits-and-config.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Visual Studio でロジック アプリをビルドしてデプロイする](logic-apps-deploy-from-vs.md)
+### [条件を追加してワークフローを実行する](logic-apps-use-logic-app-features.md)
+### [Switch ステートメントを追加する](logic-apps-switch-case.md)
+### [Azure Functions を使用してカスタム コードを追加する](logic-apps-azure-functions.md)
+### [ループ、スコープ、データの分割処理](logic-apps-loops-and-scopes.md)
+### [ロジック アプリの定義を作成する](logic-apps-author-definitions.md)
+### [ロジック アプリを呼び出し、トリガーし、入れ子にする](logic-apps-http-endpoint.md)
+### [ロジック アプリ用のカスタム API を作成する](logic-apps-create-api-app.md)
+### [ロジック アプリ用のカスタム API を呼び出す](logic-apps-custom-hosted-api.md)
+### [エラーと例外を処理する](logic-apps-exception-handling.md)
+### [コンテンツ タイプを処理する](logic-apps-content-type.md)
+### [ロジック アプリをセキュリティで保護する](logic-apps-securing-a-logic-app.md)
+### [トラブルシューティング](logic-apps-diagnosing-failures.md)
+### [制限と構成](logic-apps-limits-and-config.md)
 
-## Enterprise Integration Pack (EIP) の使用
-### [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [統合アカウントの概要](../app-service-logic/app-service-logic-enterprise-integration-create-integration-account.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [アグリーメント](../app-service-logic/app-service-logic-enterprise-integration-agreements.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [B2B の処理](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML の処理](../app-service-logic/app-service-logic-enterprise-integration-xml.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [フラット ファイルの処理](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XSLT マップを追加する](../app-service-logic/app-service-logic-enterprise-integration-maps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML を変換する](../app-service-logic/app-service-logic-enterprise-integration-transform.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML を検証する](../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [証明書の使用](../app-service-logic/app-service-logic-enterprise-integration-certificates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [パートナーを追加する](../app-service-logic/app-service-logic-enterprise-integration-partners.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [スキーマを追加する](../app-service-logic/app-service-logic-enterprise-integration-schemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2 統合](../app-service-logic/app-service-logic-enterprise-integration-as2.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2 のエンコード](../app-service-logic/app-service-logic-enterprise-integration-as2-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2 のデコード](../app-service-logic/app-service-logic-enterprise-integration-as2-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT 統合](../app-service-logic/app-service-logic-enterprise-integration-edifact.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT のエンコード](../app-service-logic/app-service-logic-enterprise-integration-edifact-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT のデコード](../app-service-logic/app-service-logic-enterprise-integration-edifact-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12 統合](../app-service-logic/app-service-logic-enterprise-integration-x12.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12 のエンコード](../app-service-logic/app-service-logic-enterprise-integration-x12-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12 のデコード](../app-service-logic/app-service-logic-enterprise-integration-x12-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [B2B の追跡](../app-service-logic/app-service-logic-track-b2b-message.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2 の追跡スキーマ](../app-service-logic/app-service-logic-track-integration-account-as2-tracking-shemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12 の追跡スキーマ](../app-service-logic/app-service-logic-track-integration-account-x12-tracking-shemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [カスタム追跡スキーマ](../app-service-logic/app-service-logic-track-integration-account-custom-tracking-shema.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## Enterprise Integration Pack を使用した B2B
+### [統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)
+### [パートナー](logic-apps-enterprise-integration-partners.md)
+### [アグリーメント](logic-apps-enterprise-integration-agreements.md)
+### [B2B の処理](logic-apps-enterprise-integration-b2b.md)
+### [XML の処理](logic-apps-enterprise-integration-xml.md)
+### [フラット ファイルの処理](logic-apps-enterprise-integration-flatfile.md)
+### [XML を検証する](logic-apps-enterprise-integration-xml-validation.md)
+### [XML 検証用のスキーマを追加する](logic-apps-enterprise-integration-schemas.md)
+### [XML を変換する](logic-apps-enterprise-integration-transform.md)
+### [XML 変換のためのマップを追加する](logic-apps-enterprise-integration-maps.md)
+### [B2B セキュリティ用の証明書を追加する](logic-apps-enterprise-integration-certificates.md)
+### [アーティファクトのメタデータを格納する](logic-apps-enterprise-integration-metadata.md)
+### [AS2 のエンタープライズ統合](logic-apps-enterprise-integration-as2.md)
+### [AS2 のエンコード](logic-apps-enterprise-integration-as2-encode.md)
+### [AS2 のデコード](logic-apps-enterprise-integration-as2-decode.md)
+### [EDIFACT のエンタープライズ統合](logic-apps-enterprise-integration-edifact.md)
+### [EDIFACT のエンコード](logic-apps-enterprise-integration-edifact-encode.md)
+### [EDIFACT のデコード](logic-apps-enterprise-integration-edifact-decode.md)
+### [X12 のエンタープライズ統合](logic-apps-enterprise-integration-x12.md)
+### [X12 のエンコード](logic-apps-enterprise-integration-x12-encode.md)
+### [X12 のデコード](logic-apps-enterprise-integration-x12-decode.md)
+### [障害復旧](logic-apps-enterprise-integration-b2b-business-continuity.md)
 
-## ゲートウェイの使用
-### [オンプレミスに接続する](../app-service-logic/app-service-logic-gateway-connection.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [インストール](../app-service-logic/app-service-logic-gateway-install.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## オンプレミスのデータへのアクセス
+### [オンプレミスのデータに接続する](logic-apps-gateway-connection.md)
+### [データ ゲートウェイをインストールする](logic-apps-gateway-install.md)
 
-## 自動化
-### [Automation テンプレート](../app-service-logic/app-service-logic-create-deploy-template.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [VS から発行する](../app-service-logic/app-service-logic-deploy-from-vs.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## 自動化とデプロイ
+### [自動デプロイ テンプレートを作成する](logic-apps-create-deploy-template.md)
+### [Visual Studio から発行する](logic-apps-deploy-from-vs.md)
 
-## [管理]
-### [ロジック アプリの監視](../app-service-logic/app-service-logic-monitor-your-logic-apps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [統合アカウント](../app-service-logic/app-service-logic-enterprise-integration-accounts.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [料金](../app-service-logic/app-service-logic-pricing.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## 管理と監視
+### [Visual Studio でロジック アプリを管理する](logic-apps-manage-from-vs.md)
+### [ロジック アプリの監視](logic-apps-monitor-your-logic-apps.md)
+### [統合アカウントを管理する](logic-apps-enterprise-integration-accounts.md)
+### [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
+#### [AS2 の追跡スキーマ](logic-apps-track-integration-account-as2-tracking-schemas.md)
+#### [X12 の追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)
+#### [カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)
+#### [OMS で B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md)
+#### [メッセージについて OMS を照会する](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+
+## 例、シナリオ、チュートリアル
+### [概要](logic-apps-examples-and-scenarios.md)
+### [サーバーなしのソーシャル ダッシュ ボードを作成する](logic-apps-scenario-social-serverless.md)
+### [Azure Functions を使用してロジック アプリを呼び出す](logic-apps-scenario-function-sb-trigger.md)
+### [エラーと例外の処理を追加する](logic-apps-scenario-error-and-exception-handling.md)
+### [B2B の処理](logic-apps-enterprise-integration-b2b.md)
+
+## 価格と課金
+### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
+### [使用量の測定](logic-apps-pricing.md)
 
 # リファレンス
-## スキーマの履歴
-### [一般公開](../app-service-logic/app-service-logic-schema-2016-04-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [プレビュー](../app-service-logic/app-service-logic-schema-2015-08-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-
-## [PowerShell コマンドレット](/powershell/resourcemanager/)
-## [.NET](https://msdn.microsoft.com/library/azure/mt416943)
+## [ワークフロー定義言語](logic-apps-workflow-definition-language.md)
+## [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-
-## 2014 スキーマ (一般公開前)
-### [Azure リソース コネクタ](../app-service-logic/app-service-logic-connector-azure-resource.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [File コネクタ](../app-service-logic/app-service-logic-connector-file.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
+## スキーマの履歴
+### [一般公開](logic-apps-schema-2016-04-01.md)
+### [プレビュー](logic-apps-schema-2015-08-01.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/logic-apps/)  
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps) 
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-logic-apps)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps) 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

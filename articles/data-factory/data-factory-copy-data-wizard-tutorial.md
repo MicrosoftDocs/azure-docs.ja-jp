@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
+ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
+ms.openlocfilehash: 5a50f583831b398ae22416e7ade23c33846de55c
 
 
 ---
@@ -35,10 +35,9 @@ ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
 
 Azure Data Factory の**コピー ウィザード**を使用すると、データの取り込み/移動の要件を満たしたパイプラインがすばやく簡単に作成できます。 データ移動のシナリオを想定したサンプル パイプラインを作成するときはまず、このウィザードを使用することをお勧めします。 このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL Database にデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」をご覧ください。 
 
-> [!IMPORTANT]
-> このチュートリアルの作業を開始する前に、[概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の記事にひととおり目を通して大要を把握し、**前提条件**を満たしておくようにしてください。
-> 
-> 
+## <a name="prerequisites"></a>前提条件
+- [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。
+
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
 この手順では、Azure ポータルを使用して、 **ADFTutorialDataFactory**という名前の Azure データ ファクトリを作成します。
@@ -60,8 +59,8 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
    2. Azure **サブスクリプション**を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。 
       
-      1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
-      2. **[新規作成]** を選択し、リソース グループの名前を入力します。
+      - **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。
          
           このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
    4. データ ファクトリの**場所**を選択します。
@@ -84,7 +83,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
    
    1. **[タスク名]** に「**CopyFromBlobToAzureSql**」と入力します。
    2. **説明** を入力します (省略可能)。
-   3. **[Start date time (開始日時)]** と **[End date time (終了日時)]** を変更します。終了日は今日の日付に、開始日はその 5 日前の日付に設定してください。  
+   3. **[Start date time (開始日時)]** と **[End date time (終了日時)]** を変更します。終了日は今日の日付に、開始日はその&5; 日前の日付に設定してください。  
    4. ページの下部にある **[次へ]**」を参照してください。  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
@@ -146,23 +145,24 @@ Azure Data Factory の**コピー ウィザード**を使用すると、デー�
    
    ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
    
-   > [!NOTE]
-   > **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** 一覧の一番下にある **[更新]** ボタンをクリックして最新の状態を確認します。 自動的には更新されません。 
-   > 
-   > 
+   
+   **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** 一覧の一番下にある **[更新]** ボタンをクリックして最新の状態を確認します。 自動的には更新されません。 
+
+> [!NOTE]
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
+> 
+> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
-| [データ移動アクティビティ](data-factory-data-movement-activities.md) |この記事には、このチュートリアルで使用したコピー アクティビティの詳細な情報が記載されています。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
-| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

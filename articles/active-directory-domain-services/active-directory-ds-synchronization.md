@@ -1,79 +1,125 @@
 ---
-title: 'Azure Active Directory Domain Services: Synchronization in managed domains | Microsoft Docs'
-description: Understand synchronization in an Azure Active Directory Domain Services managed domain
+title: "Azure Active Directory ドメイン サービス: 管理対象ドメインでの同期 | Microsoft Docs"
+description: "Azure Active Directory ドメイン サービスの管理対象ドメインでの同期について"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 03/06/2017
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
+ms.lasthandoff: 03/07/2017
+
 
 ---
-# <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronization in an Azure AD Domain Services managed domain
-The following diagram illustrates how synchronization works in Azure AD Domain Services managed domains.
+# <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインでの同期
+次の図は、Azure AD ドメイン サービスの管理対象ドメインにおける同期のしくみを示しています。
 
-![Synchronization topology in Azure AD Domain Services](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Azure AD ドメイン サービスの同期トポロジ](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>Synchronization from your on-premises directory to your Azure AD tenant
-Azure AD Connect sync is used to synchronize user accounts, group memberships, and credential hashes to your Azure AD tenant. Attributes of user accounts such as the UPN and on-premises SID (security identifier) are synchronized. If you use Azure AD Domain Services, legacy credential hashes required for NTLM and Kerberos authentication are also synchronized to your Azure AD tenant.
+## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>オンプレミスのディレクトリから Azure AD テナントへの同期
+Azure AD Connect Sync は、ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの Azure AD テナントへの同期に使用されます。 UPN やオンプレミスの SID (セキュリティ識別子) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用すると、NTLM および Kerberos 認証に必要な従来の資格情報ハッシュも、Azure AD テナントに同期されます。
 
-If you configure write-back, changes occurring in your Azure AD directory are synchronized back to your on-premises Active Directory. For example, if you change your password using Azure AD's self-service password change features, the changed password is updated in your on-premises AD domain.
+書き戻しを構成すると、Azure AD ディレクトリで行われた変更が、オンプレミスの Active Directory に同期されます。 たとえば、Azure AD のセルフサービス パスワード変更機能を使用してパスワードを変更すると、変更されたパスワードがオンプレミスの AD ドメインに更新されます。
 
 > [!NOTE]
-> Always use the latest version of Azure AD Connect to ensure you have fixes for all known bugs.
-> 
-> 
+> 既知のバグ/問題がすべて修正されているよう、常に最新バージョンの Azure AD Connect を使用してください。
+>
+>
 
-## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Synchronization from your Azure AD tenant to your managed domain
-User accounts, group memberships, and credential hashes are synchronized from your Azure AD tenant to your Azure AD Domain Services managed domain. This synchronization process is automatic. You do not need to configure, monitor, or manage this synchronization process. The synchronization process is also one-way/unidirectional in nature. Your managed domain is largely read-only except for any custom OUs you create. Therefore, you cannot make changes to user attributes, user passwords, or group memberships within the managed domain. As a result, there is no reverse synchronization of changes from your managed domain back to your Azure AD tenant.
+## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Azure AD テナントから管理対象ドメインへの同期
+ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD テナントから Azure AD Domain Services の管理対象ドメインに同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 1 回のみ実行されるディレクトリの初期同期が完了した後は、Azure AD で行われた変更が管理対象ドメインに反映されるまで、通常は約 20 分かかります。 この同期間隔は、Azure AD で実行されたパスワードの変更や属性の変更に適用されます。
 
-## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Synchronization from a multi-forest on-premises environment
-Many organizations have a fairly complex on-premises identity infrastructure consisting of multiple account forests. Azure AD Connect supports synchronizing users, groups, and credential hashes from multi-forest environments to your Azure AD tenant.
+また同期プロセスは、一方向性のプロセスです。 管理対象ドメインは、カスタムの組織単位 (OU) を作成した場合を除き、主に読み取り専用です。 そのため、管理対象ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。 したがって、管理対象ドメインから Azure AD テナントに、逆方向に変更内容が同期されることはありません。
 
-In contrast, your Azure AD tenant is a much simpler and flat namespace. To enable users to reliably access applications secured by Azure AD, resolve UPN conflicts across user accounts in different forests. Your Azure AD Domain Services managed domain bears close resemblance to your Azure AD tenant. Therefore, you see a flat OU structure in your managed domain. All users and groups are stored within the 'AADDC Users' container, regardless of the on-premises domain or forest from which they were synced in. You may have configured a hierarchical OU structure on-premises. However, your managed domain still has a simple flat OU structure.
+## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>複数フォレストのオンプレミス環境からの同期
+多くの組織が、複数のアカウント フォレストで構成された複雑なオンプレミスの ID インフラストラクチャを持っています。 Azure AD Connect では、複数フォレストの環境から Azure AD テナントへのユーザー、グループ、および資格情報ハッシュの同期をサポートしています。
 
-## <a name="exclusions---what-isn't-synchronized-to-your-managed-domain"></a>Exclusions - what isn't synchronized to your managed domain
-The following objects or attributes are not synchronized to your Azure AD tenant or to your managed domain:
+これに対し、Azure AD テナントは非常にシンプルでフラットな名前空間です。 Azure AD によって保護されたアプリケーションにユーザーが確実にアクセスできるようにするには、異なるフォレストのユーザー アカウント間における UPN の競合を解決する必要があります。 Azure AD Domain Services の管理対象ドメインは Azure AD テナントとよく似ています。 したがって、管理対象ドメイン内の OU はフラットな構造になっています。 ユーザーとグループは、オンプレミス ドメインとフォレストのいずれで同期されたかに関係なく、すべて "AADDC Users" コンテナー内に格納されます。 オンプレミスで階層状の OU 構造を構成している場合があります。 それでも、管理対象ドメインは、単純でフラットな OU 構造のままです。
 
-* **Excluded attributes:** You may choose to exclude certain attributes from synchronizing to your Azure AD tenant from your on-premises domain using Azure AD Connect. These excluded attributes are not available in your managed domain.
-* **Group Policies:** Group Policies configured in your on-premises domain are not synchronized to your managed domain.
-* **SYSVOL share:** Similarly, the contents of the SYSVOL share on your on-premises domain are not synchronized to your managed domain.
-* **Computer objects:** Computer objects for computers joined to your on-premises domain are not synchronized to your managed domain. These computers do not have a trust relationship with your managed domain and belong to your on-premises domain only. In your managed domain, you find computer objects only for computers you have explicitly domain-joined to the managed domain.
-* **SidHistory attributes for users and groups:** The primary user and primary group SIDs from your on-premises domain are synchronized to your managed domain. However, existing SidHistory attributes for users and groups are not synchronized from your on-premises domain to your managed domain.
-* **Organization Units (OU) structures:** Organizational Units defined in your on-premises domain do not synchronize to your managed domain. There are two built-in OUs in your managed domain. By default, your managed domain has a flat OU structure. You may however choose to [create a custom OU in your managed domain](active-directory-ds-admin-guide-create-ou.md).
+## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>除外項目 - 管理対象ドメインに同期されないもの
+次のオブジェクトや属性は、Azure AD テナントまたは管理対象ドメインに同期されません。
 
-## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>How specific attributes are synchronized to your managed domain
-The following table lists some common attributes and describes how they are synchronized to your managed domain.
+* **除外対象の属性:** Azure AD Connect を使用して、オンプレミス ドメインから Azure AD テナントへの同期から、特定の属性を除外することができます。 これらの除外対象の属性は、管理対象ドメインでは使用できません。
+* **グループ ポリシー:** オンプレミス ドメインで構成されたグループ ポリシーは、管理対象ドメインに同期されません。
+* **SYSVOL 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、管理対象ドメインに同期されません。
+* **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、管理対象ドメインに同期されません。 これらのコンピューターは管理対象ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 管理対象ドメイン内にあるコンピューター オブジェクトは、管理対象ドメインに明示的にドメイン参加させたコンピューターのものだけです。
+* **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、管理対象ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインから管理対象ドメインに同期されません。
+* **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、管理対象ドメインに同期されません。 管理対象ドメインには、2 つの組み込み OU があります。 既定では、管理対象ドメインはフラットな OU 構造をしています。 ただし、[管理対象ドメイン内にカスタム OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。
 
-| Attribute in your managed domain | Source | Notes |
+## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性が管理対象ドメインに同期される方法
+次の表では、一般的な属性の一部を示し、これらが管理対象ドメインに同期される方法を説明します。
+
+| 管理対象ドメイン内の属性 | から | メモ |
 |:--- |:--- |:--- |
-| UPN |User's UPN attribute in your Azure AD tenant |The UPN attribute from your Azure AD tenant is synchronized as is to your managed domain. Therefore, the most reliable way to sign in to your managed domain is using your UPN. |
-| SAMAccountName |User's mailNickname attribute in your Azure AD tenant or auto-generated |The SAMAccountName attribute is sourced from the mailNickname attribute in your Azure AD tenant. If multiple user accounts have the same mailNickname attribute, the SAMAccountName is auto-generated. If the user's mailNickname or UPN prefix is longer than 20 characters, the SAMAccountName is auto-generated to satisfy the 20 character limit on SAMAccountName attributes. |
-| Passwords |User's password from your Azure AD tenant |Credential hashes required for NTLM or Kerberos authentication (also called supplemental credentials) are synchronized from your Azure AD tenant. If your Azure AD tenant is a synced tenant, these credentials are sourced from your on-premises domain. |
-| Primary user/group SID |Auto-generated |The primary SID for user/group accounts is auto-generated in your managed domain. This attribute does not match the primary user/group SID of the object in your on-premises AD domain. This mismatch is because the managed domain has a different SID namespace than your on-premises domain. |
-| SID history for users and groups |On-premises primary user and group SID |The SidHistory attribute for users and groups in your managed domain is set to match the corresponding primary user or group SID in your on-premises domain. This feature helps make lift-and-shift of on-premises applications to the managed domain easier, since you do not need to re-ACL resources. |
+| UPN |Azure AD テナントのユーザーの UPN 属性 |Azure AD テナントの UPN 属性は、そのまま管理対象ドメインに同期されます。 そのため、UPN を使用することが、管理対象ドメインにサインインする最も確実な方法になります。 |
+| SAMAccountName |Azure AD テナントのユーザーに設定、または自動生成された mailNickname 属性 |SAMAccountName 属性は、Azure AD テナントの mailNickname 属性を同期元とします。 複数のユーザー アカウントで mailNickname 属性が同じ場合は、SAMAccountName が自動生成されます。 ユーザーの mailNickname または UPN プレフィックスが 20 文字を超える場合は、SAMAccountName 属性の 20 文字以下の制限を満たすために SAMAccountName が自動生成されます。 |
+| パスワード |Azure AD テナントのユーザー パスワード |NTLM または Kerberos 認証に必要な資格情報ハッシュ (補足の資格情報とも呼ばれます) は、Azure AD テナントから同期されます。 Azure AD テナントが同期されたテナントの場合は、これらの資格情報の同期元はオンプレミス ドメインになります。 |
+| プライマリ ユーザーおよびグループの SID |自動生成 |ユーザーおよびグループ アカウントのプライマリ SID は、管理対象ドメインで自動生成されます。 この属性は、オンプレミス AD ドメインのオブジェクトのプライマリ ユーザーおよびグループの SID とは一致しません。 この不一致の原因は、管理対象ドメインがオンプレミス ドメインとは異なる SID の名前空間を持つためです。 |
+| ユーザーとグループの SID 履歴 |オンプレミスのプライマリ ユーザーおよびグループの SID |管理対象ドメインのユーザーおよびグループの SidHistory 属性は、オンプレミス ドメインの対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションをリフト アンド シフト方式で管理対象ドメインに簡単に移行することができます。 |
 
 > [!NOTE]
-> **Sign in to the managed domain using the UPN format:** The SAMAccountName attribute may be auto-generated for some user accounts in your managed domain. If multiple users have the same mailNickname attribute or users have overly long UPN prefixes, the SAMAccountName for these users may be auto-generated. Therefore, the SAMAccountName format (for example, 'CONTOSO100\joeuser') is not always a reliable way to sign in to the domain. Users' auto-generated SAMAccountName may differ from their UPN prefix. Use the UPN format (for example, 'joeuser@contoso100.com') to sign in to the managed domain reliably.
-> 
-> 
+> **UPN 形式を使用した管理対象ドメインへのサインイン:** 管理対象ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 管理対象ドメインに確実にサインインするには、UPN 形式 (例: 「joeuser@contoso100.com」) を使用します。
+>
+>
 
-## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>Objects that are not synchronized to your Azure AD tenant from your managed domain
-As described in a preceding section of this article, there is no synchronization from your managed domain back to your Azure AD tenant. You may choose to [create a custom Organizational Unit (OU)](active-directory-ds-admin-guide-create-ou.md) in your managed domain. Further, you can create other OUs, users, groups, or service accounts within these custom OUs. None of the objects created within custom OUs are synchronized back to your Azure AD tenant. These objects are available for use only within your managed domain. Therefore, these objects are not visible using Azure AD PowerShell cmdlets, Azure AD Graph API or using the Azure AD management UI.
+### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
+次の表は、Azure AD テナントのユーザー オブジェクトの特定の属性が、管理対象ドメインの対応する属性にどのように同期されるかを示しています。
 
-## <a name="related-content"></a>Related Content
-* [Features - Azure AD Domain Services](active-directory-ds-features.md)
-* [Deployment scenarios - Azure AD Domain Services](active-directory-ds-scenarios.md)
-* [Networking considerations for Azure AD Domain Services](active-directory-ds-networking.md)
-* [Get started with Azure AD Domain Services](active-directory-ds-getting-started.md)
+| Azure AD テナントのユーザー属性 | 管理対象ドメインのユーザー属性 |
+|:--- |:--- |
+| accountEnabled |userAccountControl (ACCOUNT_DISABLED ビットの設定または解除) |
+| city |l |
+| country |co |
+| department |department |
+| displayName |displayName |
+| facsimileTelephoneNumber |facsimileTelephoneNumber |
+| givenName |givenName |
+| jobTitle |title |
+| mail |mail |
+| mailNickname |msDS-AzureADMailNickname |
+| mailNickname |SAMAccountName (自動生成される場合があります) |
+| mobile |mobile |
+| objectid |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |sidHistory |
+| passwordPolicies |userAccountControl (DONT_EXPIRE_PASSWORD ビットの設定または解除) |
+| physicalDeliveryOfficeName |physicalDeliveryOfficeName |
+| postalCode |postalCode |
+| preferredLanguage |preferredLanguage |
+| state |st |
+| streetAddress |streetAddress |
+| surname |sn |
+| telephoneNumber |telephoneNumber |
+| userPrincipalName |userPrincipalName |
 
-<!--HONumber=Oct16_HO2-->
+### <a name="attribute-mapping-for-groups"></a>グループの属性のマッピング
+次の表は、Azure AD テナントのグループ オブジェクトの特定の属性が、管理対象ドメインの対応する属性にどのように同期されるかを示しています。
 
+| Azure AD テナントのグループ属性 | 管理対象ドメインのグループ属性 |
+|:--- |:--- |
+| displayName |displayName |
+| displayName |SAMAccountName (自動生成される場合があります) |
+| mail |mail |
+| mailNickname |msDS-AzureADMailNickname |
+| objectid |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |sidHistory |
+| securityEnabled |groupType |
+
+## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>管理対象ドメインから Azure AD テナントに同期されないオブジェクト
+この記事の前のセクションで説明したとおり、管理対象ドメインから Azure AD テナントへの同期はありません。 ただし、管理対象ドメイン内に[カスタムの組織単位 (OU) を作成](active-directory-ds-admin-guide-create-ou.md)することができます。 これらのカスタム OU 内には、ほかの OU、ユーザー、グループ、またはサービス アカウントを作成することもできます。 カスタム OU 内に作成されたオブジェクトは、いずれも Azure AD テナントに同期されません。 これらのオブジェクトは管理対象ドメイン内でのみ使用することができます。 そのため、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用しても、これらのオブジェクトは表示されません。
+
+## <a name="related-content"></a>関連コンテンツ
+* [機能 - Azure AD Domain Services](active-directory-ds-features.md)
+* [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
+* [Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)
+* [Azure AD ドメイン サービスの使用開始](active-directory-ds-getting-started.md)
 

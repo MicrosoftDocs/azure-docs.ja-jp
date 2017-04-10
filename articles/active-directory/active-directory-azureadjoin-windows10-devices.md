@@ -1,20 +1,25 @@
 ---
-title: 職場での Windows 10 デバイスの使用 | Microsoft Docs
-description: 企業が Windows 10 でデバイスをプロビジョニングして使用する際のさまざまな方法を比較して、ユーザーおよび IT 管理者が利用できる機能を簡潔に評価します。
+title: "職場での Windows 10 デバイスの使用 | Microsoft Docs"
+description: "企業が Windows 10 でデバイスをプロビジョニングして使用する際のさまざまな方法を比較して、ユーザーおよび IT 管理者が利用できる機能を簡潔に評価します。"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: 94ccc8fd-b17b-4fda-8d56-9d87aa37a9f9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 71e8944fc56420ddd7fd42bbfbfdf6d145a1cf3b
+ms.lasthandoff: 03/21/2017
+
 
 ---
 # <a name="using-windows-10-devices-in-your-workplace"></a>職場での Windows 10 デバイスの使用
@@ -71,7 +76,7 @@ Azure AD Join は、Windows 10 の新しいセルフサービスの作業プロ�
 
 Azure AD Join の詳細については、「 [Azure Active Directory Join を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)」を参照してください。
 
-## <a name="when-to-use-domain-join-(or-keep-using-it)"></a>どのようなときにドメイン参加を使用するか (または使用し続けるか)
+## <a name="when-to-use-domain-join-or-keep-using-it"></a>どのようなときにドメイン参加を使用するか (または使用し続けるか)
 過去 15 年間、多くの組織はドメイン参加を使用して職場のデバイスを接続してきました。 この方法を使用した場合、ユーザーは Active Directory の職場または学校アカウントを使用して自分のデバイスにサインインできます。 また、IT 部門はこのようなデバイスを一元的かつ全面的に管理できます。 組織は、通常、イメージ作成方法を利用してデバイスをプロビジョニングし、そのデバイスの管理には System Center Configuration Manager (SCCM) またはグループ ポリシーを使用することがよくあります。
 
 **次のいずれかの理由により、企業ではドメイン参加を使用する (または使用し続ける) 必要があります。**
@@ -117,9 +122,9 @@ Azure AD Join の詳細については、「 [Windows 10 エクスペリエン�
 * "ドメイン参加済み" デバイスへのアクセスを許可するポリシー (一部のデバイスのアクセスを制限できるようにする場合)。
 * 準拠デバイスを必要とする規則を有効にするための System Center Configuration Manager Version 1509 for Technical Preview  (TechNet のドキュメントとブログの投稿を参照してください)。
 
-Windows 10 でのドメイン参加の詳細については、 <link-to-DJ-in-Win10-deployment-guide> を参照してください。
+Windows 10 におけるドメイン参加の詳細については、「[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)」を参照してください。
 
-## <a name="requirements-for-using-byod-and-"add-a-work-or-school-account""></a>BYOD と "職場または学校アカウントを追加" を使用するための要件
+## <a name="requirements-for-using-byod-and-add-a-work-or-school-account"></a>BYOD と "職場または学校アカウントを追加" を使用するための要件
 職場または学校アカウントで "Bring Your Own Device" (BYOD) を有効にするには、以下が必要です。
 
 * Azure AD サブスクリプション。
@@ -141,18 +146,19 @@ PKI を使用する代わりに、次の手順を実行して、キーに基づ�
 Windows 10 の Microsoft Passport および Windows Hello の詳細については、<link-to-MS-Passport-and-Windows-Hello-document> を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-### <a name="which-partner-mobile-device-management-products-integrate-with-azure-ad?"></a>Azure AD と統合されるのはどのパートナーのモバイル デバイス管理製品ですか。
+### <a name="which-partner-mobile-device-management-products-integrate-with-azure-ad"></a>Azure AD と統合されるのはどのパートナーのモバイル デバイス管理製品ですか。
 Azure AD には Windows 10 での統合登録および条件付きアクセスが可能な次のベンダー製品を組み込むことができます。
 
 * AirWatch by VMware
 * Citrix Xenmobile
 * Lightspeed Mobile Manager
 * SOTI オンプレミス モバイル デバイス管理
+* MobileIron
 
-### <a name="what-about-workplace-join-in-windows-10?"></a>Windows 10 の Workplace Join について説明してください。
+### <a name="what-about-workplace-join-in-windows-10"></a>Windows 10 の Workplace Join について説明してください。
 Windows 8.1 では、BYOD を有効にするために社内参加が使用されていました。 Windows 10 では、このドキュメントで既に説明したように、"職場または学校アカウントを追加" を使用して BYOD を有効にします。 Azure AD とモバイル デバイス管理を統合しない組織では、ユーザーは、**[設定]**、 > **[アカウント]** > 、**[職場のアクセス]** の順に移動して、デバイスを手動で管理に登録できます。
 
-### <a name="can-users-connect-their-microsoft-account-to-their-domain-account-in-windows-10?"></a>ユーザーは Windows 10 のドメイン アカウントに Microsoft アカウントを関連付けることができますか。
+### <a name="can-users-connect-their-microsoft-account-to-their-domain-account-in-windows-10"></a>ユーザーは Windows 10 のドメイン アカウントに Microsoft アカウントを関連付けることができますか。
 Windows 10 ではできません。 Windows 8.1 では、ドメイン参加済みデバイスのユーザーは、Microsoft アカウント (Hotmail、Live、Outlook、Xbox など) をドメイン アカウントに "関連付け"、Live サービスへの SSO、Windows ストアの使用、デバイス間でのユーザー設定のローミングなどの特定のエクスペリエンスを実現することができました。 Windows 10 では、Microsoft アカウントの "関連付け" 機能の提供が終了しています。 ユーザーは、Windows ストアなどのコンシューマー サービスへの SSO を有効にするために、追加のアカウントとして Microsoft アカウントを 1 つ以上追加できます。 これは、**[設定]**、 > **[アカウント]** > 、**[アカウント]** で実行します。
 
 Windows 8.1 のドメイン参加済みデバイスからアップグレードするユーザーと、Microsoft アカウントが関連付けられているユーザーは、関連付けられている Microsoft アカウントが、使用する追加アカウントの一覧に自動的に追加されます。
@@ -163,7 +169,5 @@ Windows 8.1 のドメイン参加済みデバイスからアップグレード�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-<!--HONumber=Oct16_HO2-->
 
 

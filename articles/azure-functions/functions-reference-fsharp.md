@@ -1,14 +1,14 @@
 ---
-title: Azure Functions F# developer reference | Microsoft Docs
-description: Understand how to develop Azure Functions using F#.
+title: "Azure Functions F# 開発者向けリファレンス | Microsoft Docs"
+description: "F# を使用して Azure Functions を開発する方法について説明します。"
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: ''
-tags: ''
-keywords: azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture, F#
-
+editor: 
+tags: 
+keywords: "Azure Functions, 関数, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ, F#"
+ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
 ms.topic: reference
@@ -16,27 +16,31 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
+translationtype: Human Translation
+ms.sourcegitcommit: 4544629c47326d448cd99b5d96d79666a56f0274
+ms.openlocfilehash: 1691d378263f6b4ce5072f5c621d8db02f774b5f
+
 
 ---
-# <a name="azure-functions-f-developer-reference"></a>Azure Functions F# Developer Reference
+# <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 > [!div class="op_single_selector"]
-> * [C# script](functions-reference-csharp.md)
-> * [F# script](functions-reference-fsharp.md)
-> * [Node.js](functions-reference-node.md)
+> * [C# スクリプト](functions-reference-csharp.md)
+> * [F# スクリプト](functions-reference-fsharp.md)
+> * [Node.JS](functions-reference-node.md)
 > 
 > 
 
-F# for Azure Functions is a solution for easily running small pieces of code, or "functions," in the cloud. Data flows into your F# function via function arguments. Argument names are specified in `function.json`, and there are predefined names for accessing things like the function logger and cancellation tokens.
+Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 データは関数の引数を通じて F# 関数に渡されます。 引数名は `function.json`で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
 
-This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
+この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
-## <a name="how-fsx-works"></a>How .fsx works
-An `.fsx` file is an F# script. It can be thought of as an F# project that's contained in a single file. The file contains both the code for your program (in this case, your Azure Function) and directives for managing dependencies.
+## <a name="how-fsx-works"></a>.fsx のしくみ
+`.fsx` ファイルは、F# スクリプトです。 1 つのファイルに含まれている F# プロジェクトとして考えることができます。 ファイルには、プログラムのためのコード (この場合は、Azure 関数) と、依存関係を管理するためのディレクティブの両方が含まれています。
 
-When you use an `.fsx` for an Azure Function, commonly required assemblies are automatically included for you, allowing you to focus on the function rather than "boilerplate" code.
+Azure 関数に対して `.fsx` を使用すると、一般に必要とされるアセンブリが自動的に含められるため、"定型" コードではなく、関数のコードに集中できます。
 
-## <a name="binding-to-arguments"></a>Binding to arguments
-Each binding supports some set of arguments, as detailed in the [Azure Functions triggers and bindings developer reference](functions-triggers-bindings.md). For example, one of the argument bindings a blob trigger supports is a POCO, which can be expressed using an F# record. For example:
+## <a name="binding-to-arguments"></a>引数へのバインド
+「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 次に例を示します。
 
 ```fsharp
 type Item = { Id: string }
@@ -46,11 +50,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Your F# Azure Function will take one or more arguments. When we talk about Azure Functions arguments, we refer to *input* arguments and *output* arguments. An input argument is exactly what it sounds like: input to your F# Azure Function. An *output* argument is mutable data or a `byref<>` argument that serves as a way to pass data back *out* of your function.
+F# Azure 関数は、1 つまたは複数の引数を受け取ります。 Azure Functions の引数についての説明では、"*入力*" 引数と "*出力*" 引数が出てきます。 入力引数は、名前が示すとおり、F# Azure 関数への入力です。 "*出力*" 引数は、関数から "*出力*" データを返す方法として機能する、変更可能なデータまたは `byref<>` 引数です。
 
-In the example above, `blob` is an input argument, and `output` is an output argument. Notice that we used `byref<>` for `output` (there's no need to add the `[<Out>]` annotation). Using a `byref<>` type allows your function to change which record or object the argument refers to.
+上の例では、`blob` が入力引数で、`output` が出力引数です。 `output` に `byref<>` を使用したことに注意してください (`[<Out>]` という注釈を付ける必要はありません)。 `byref<>` 型を使用すると、関数は引数が参照するレコードまたはオブジェクトを変更できます。
 
-When an F# record is used as an input type, the record definition must be marked with `[<CLIMutable>]` in order to allow the Azure Functions framework to set the fields appropriately before passing the record to your function. Under the hood, `[<CLIMutable>]` generates setters for the record properties. For example:
+F# レコードを入力型として使用する場合は、Azure Functions フレームワークがレコードを関数に渡す前にフィールドを適切に設定できるように、レコード定義を `[<CLIMutable>]` でマークする必要があります。 内部的には、 `[<CLIMutable>]` によってレコードのプロパティのセッターが生成されます。 次に例を示します。
 
 ```fsharp
 [<CLIMutable>]
@@ -62,7 +66,7 @@ let Run(req: TestObject, log: TraceWriter) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-An F# class can also be used for both in and out arguments. For a class, properties will usually need getters and setters. For example:
+F# クラスも、入力と出力の両方の引数で使用できます。 クラスの場合、プロパティには通常、ゲッターとセッターが必要です。 次に例を示します。
 
 ```fsharp
 type Item() =
@@ -74,8 +78,8 @@ let Run(input: string, item: byref<Item>) =
     item <- result
 ```
 
-## <a name="logging"></a>Logging
-To log output to your [streaming logs](../app-service-web/web-sites-streaming-logs-and-console.md) in F#, your function should take an argument of type `TraceWriter`. For consistency, we recommend this argument is named `log`. For example:
+## <a name="logging"></a>ログの記録
+出力を F# の[ストリーミング ログ](../app-service-web/web-sites-streaming-logs-and-console.md)に記録するには、関数が `TraceWriter` 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 次に例を示します。
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -83,8 +87,8 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     output <- input
 ```
 
-## <a name="async"></a>Async
-The `async` workflow can be used, but the result needs to return a `Task`. This can be done with `Async.StartAsTask`, for example:
+## <a name="async"></a>非同期
+`async` ワークフローを使用できますが、結果は `Task` を返す必要があります。 そのためには、たとえば `Async.StartAsTask`を使用します。
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -93,8 +97,8 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-## <a name="cancellation-token"></a>Cancellation Token
-If your function needs to handle shutdown gracefully, you can give it a [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argument. This can be combined with `async`, for example:
+## <a name="cancellation-token"></a>キャンセル トークン
+関数が正常なシャットダウンを処理する必要がある場合は、 [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 引数を設定できます。 これは、たとえば `async`と結合される場合があります。
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -105,8 +109,8 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
     Async.StartAsTask(f, token)
 ```
 
-## <a name="importing-namespaces"></a>Importing namespaces
-Namespaces can be opened in the usual way:
+## <a name="importing-namespaces"></a>名前空間のインポート
+名前空間は、通常の方法で開くことができます。
 
 ```fsharp
 open System.Net
@@ -116,7 +120,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-The following namespaces are automatically opened:
+以下の名前空間は、自動的に開かれます。
 
 * `System`
 * `System.Collections.Generic`
@@ -125,10 +129,10 @@ The following namespaces are automatically opened:
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`.
+* `Microsoft.Azure.WebJobs.Host`
 
-## <a name="referencing-external-assemblies"></a>Referencing External Assemblies
-Similarly, framework assembly references be added with the `#r "AssemblyName"` directive.
+## <a name="referencing-external-assemblies"></a>外部アセンブリの参照
+同様に、フレームワーク アセンブリ参照を、 `#r "AssemblyName"` ディレクティブと共に追加できます。
 
 ```fsharp
 #r "System.Web.Http"
@@ -141,7 +145,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     ...
 ```
 
-The following assemblies are automatically added by the Azure Functions hosting environment:
+次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
 
 * `mscorlib`,
 * `System`
@@ -152,9 +156,9 @@ The following assemblies are automatically added by the Azure Functions hosting 
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`.
+* `System.Net.Http.Formatting`
 
-In addition, the following assemblies are special cased and may be referenced by simplename (e.g. `#r "AssemblyName"`):
+さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -162,10 +166,10 @@ In addition, the following assemblies are special cased and may be referenced by
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-If you need to reference a private assembly, you can upload the assembly file into a `bin` folder relative to your function and reference it by using the file name (e.g.  `#r "MyAssembly.dll"`). For information on how to upload files to your function folder, see the following section on package management.
+プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
-## <a name="editor-prelude"></a>Editor Prelude
-An editor that supports F# Compiler Services will not be aware of the namespaces and assemblies that Azure Functions automatically includes. As such, it can be useful to include a prelude that helps the editor find the assemblies you are using, and to explicitly open namespaces. For example:
+## <a name="editor-prelude"></a>エディター準備
+F# Compiler Services をサポートしているエディターは、Azure Functions が自動的に含める名前空間とアセンブリを認識しません。 そのため、使用されているアセンブリを検索するエディターを支援するための準備を行い、明示的に名前空間を開くと、便利な場合があります。 次に例を示します。
 
 ```fsharp
 #if !COMPILED
@@ -180,12 +184,12 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     ...
 ```
 
-When Azure Functions executes your code, it processes the source with `COMPILED` defined, so the editor prelude will be ignored.
+Azure Functions は、コードを実行するとき、 `COMPILED` が定義されているソースを処理するため、エディター準備は無視されます。
 
 <a name="package"></a>
 
-## <a name="package-management"></a>Package management
-To use NuGet packages in an F# function, add a `project.json` file to the the function's folder in the function app's file system. Here is an example `project.json` file that adds a NuGet package reference to `Microsoft.ProjectOxford.Face` version 1.1.0:
+## <a name="package-management"></a>パッケージの管理
+NuGet パッケージを F# 関数で使用するには、 `project.json` ファイルを関数アプリのファイル システムにある関数のフォルダーに追加します。 次に示すのは、`Microsoft.ProjectOxford.Face` Version 1.1.0 への NuGet パッケージ参照を追加する、`project.json` ファイルの例です。
 
 ```json
 {
@@ -199,16 +203,16 @@ To use NuGet packages in an F# function, add a `project.json` file to the the fu
 }
 ```
 
-Only the .NET Framework 4.6 is supported, so make sure that your `project.json` file specifies `net46` as shown here.
+.NET Framework 4.6 のみがサポートされているので、次に示すように `project.json` ファイルが `net46` を指定していることを確認します。
 
-When you upload a `project.json` file, the runtime gets the packages and automatically adds references to the package assemblies. You don't need to add `#r "AssemblyName"` directives. Just add the required `open` statements to your `.fsx` file.
+`project.json` ファイルをアップロードすると、ランタイムによってパッケージが取得され、パッケージ アセンブリへの参照が自動的に追加されます。 `#r "AssemblyName"` ディレクティブを追加する必要はありません。 単に、必要な `open` ステートメントを `.fsx` ファイルに追加します。
 
-You may wish to put automatically references assemblies in your editor prelude, to improve your editor's interaction with F# Compile Services.
+エディターと F# Compile Services との相互作用を向上させるために、エディター準備に参照アセンブリを自動的に配置したい場合があるかもしれません。
 
-### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>How to add a `project.json` file to your Azure Function
-1. Begin by making sure your function app is running, which you can do by opening your function in the Azure portal. This also gives access to the streaming logs where package installation output will be displayed.
-2. To upload a `project.json` file, use one of the methods described in [how to update function app files](functions-reference.md#fileupdate). If you are using [Continuous Deployment for Azure Functions](functions-continuous-deployment.md), you can add a `project.json` file to your staging branch in order to experiment with it before adding it to your deployment branch.
-3. After the `project.json` file is added, you will see output similar to the following example in your function's streaming log:
+### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>`project.json` ファイルを Azure 関数に追加する方法
+1. Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。 これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
+2. `project.json` ファイルをアップロードするには、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」で説明されているいずれかの方法を使用します。 [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)を使用している場合は、`project.json` ファイルをステージング環境の分岐に追加して、デプロイ分岐に追加する前に実験することができます。
+3. `project.json` ファイルが追加された後、関数のストリーミング ログの出力は次の例のようになります。
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -227,8 +231,8 @@ You may wish to put automatically references assemblies in your editor prelude, 
 2016-04-04T19:02:57.455 Packages restored.
 ```
 
-## <a name="environment-variables"></a>Environment variables
-To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, for example:
+## <a name="environment-variables"></a>環境変数
+環境変数またはアプリ設定値を取得するには、次の例のように、 `System.Environment.GetEnvironmentVariable`を使用します。
 
 ```fsharp
 open System.Environment
@@ -238,8 +242,8 @@ let Run(timer: TimerInfo, log: TraceWriter) =
     log.Info("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-fsx-code"></a>Reusing .fsx code
-You can use code from other `.fsx` files by using a `#load` directive. For example:
+## <a name="reusing-fsx-code"></a>.fsx コードの再利用
+他の `.fsx` ファイルのコードを利用するには、`#load` ディレクティブを使用します。 次に例を示します。
 
 `run.fsx`
 
@@ -257,25 +261,29 @@ let mylog(log: TraceWriter, text: string) =
     log.Verbose(text);
 ```
 
-Paths provides to the `#load` directive are relative to the location of your `.fsx` file.
+`#load` ディレクティブに指定するパスは、`.fsx` ファイルの場所からの相対パスです。
 
-* `#load "logger.fsx"` loads a file located in the function folder.
-* `#load "package\logger.fsx"` loads a file located in the `package` folder in the function folder.
-* `#load "..\shared\mylogger.fsx"` loads a file located in the `shared` folder at the same level as the function folder, that is, directly under `wwwroot`.
+* `#load "logger.fsx"` によって、関数フォルダーにあるファイルが読み込まれます。
+* `#load "package\logger.fsx"` によって、関数フォルダー内の `package` フォルダーにあるファイルが読み込まれます。
+* `#load "..\shared\mylogger.fsx"` によって、関数フォルダーと同じレベル (`wwwroot` の直下) にある `shared` フォルダーのファイルが読み込まれます。
 
-The `#load` directive only works with `.fsx` (F# script) files, and not with `.fs` files.
+`#load` ディレクティブは、`.fsx` (F# スクリプト) ファイルだけで動作します。`.fs` ファイルでは動作しません。
 
-## <a name="next-steps"></a>Next steps
-For more information, see the following resources:
+## <a name="next-steps"></a>次のステップ
+詳細については、次のリソースを参照してください。
 
-* [F# Guide](https://docs.microsoft.com/en-us/dotnet/articles/fsharp/index)
-* [Azure Functions developer reference](functions-reference.md)
-* [Azure Functions C# developer reference](functions-reference-csharp.md)
-* [Azure Functions NodeJS developer reference](functions-reference-node.md)
-* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
-* [Azure Functions testing](functions-test-a-function.md)
-* [Azure Functions scaling](functions-scale.md)
+* [F# Guide (F# ガイド)](/dotnet/articles/fsharp/index)
+* [Azure Functions のベスト プラクティス](functions-best-practices.md)
+* [Azure Functions 開発者向けリファレンス](functions-reference.md)
+* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
+* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* [Azure Functions のテスト](functions-test-a-function.md)
+* [Azure Functions のスケーリング方法](functions-scale.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
