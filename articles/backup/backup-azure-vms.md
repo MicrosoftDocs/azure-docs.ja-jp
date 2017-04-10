@@ -34,13 +34,13 @@ ms.lasthandoff: 03/02/2017
 詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」と [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) に関するページを参照してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 バックアップ コンテナーで保護できるのは、クラシック モデルでデプロイされた VM だけです。 Resource Manager モデルでデプロイされた VM をバックアップ コンテナーで保護することはできません。 Recovery Services コンテナーの操作について詳しくは、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 バックアップ コンテナーで保護できるのは、クラシック モデルでデプロイされた VM だけです。 Resource Manager モデルでデプロイされた VM をバックアップ コンテナーで保護することはできません。 Recovery Services コンテナーの操作について詳しくは、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください。
 >
 >
 
-Azure 仮想マシンのバックアップには、次の&3; つの主要な手順が含まれます。
+Azure 仮想マシンのバックアップには、次の 3 つの主要な手順が含まれます。
 
-![Azure IaaS VM をバックアップする&3; つのステップ](./media/backup-azure-vms/3-steps-for-backup.png)
+![Azure IaaS VM をバックアップする 3 つのステップ](./media/backup-azure-vms/3-steps-for-backup.png)
 
 > [!NOTE]
 > 仮想マシンのバックアップはローカルな処理です。 あるリージョンの仮想マシンを別のリージョンのバックアップ コンテナーにバックアップすることはできません。 そのため、各 Azure リージョン (バックアップ対象の仮想マシンが存在する) にバックアップ コンテナーを作成する必要があります。
@@ -55,12 +55,12 @@ Azure 仮想マシンのバックアップには、次の&3; つの主要な手�
     ![コンテナーの一覧を開く](./media/backup-azure-vms/choose-vault-list.png)
 3. バックアップ コンテナーの一覧で、VM をバックアップするコンテナーを選択します。
 
-    これが新しい資格情報コンテナーの場合、ポータルで **クイック スタート** ページが開きます。
+    これが新しいコンテナーの場合、ポータルで **クイック スタート** ページが開きます。
 
     ![[登録済みの項目] メニューを開く](./media/backup-azure-vms/vault-quick-start.png)
 
     コンテナーが既に構成されている場合は、ポータルで最近使用したメニューが開きます。
-4. ページの上部にある資格情報コンテナー メニューで、 **[登録済みの項目]**をクリックします。
+4. ページの上部にあるコンテナー メニューで、 **[登録済みの項目]**をクリックします。
 
     ![[登録済みの項目] メニューを開く](./media/backup-azure-vms/vault-menu.png)
 5. **[種類]** メニューの **[Azure 仮想マシン]** を選択します。
@@ -88,7 +88,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
     ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
 3. ページの下部にある **[登録]** をクリックします。
     ![[登録] ボタン](./media/backup-azure-vms/register-button-only.png)
-4. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。 同じ名前の仮想マシンが&2; つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
+4. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。 同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
 
    > [!TIP]
    > 一度に複数の仮想マシンを登録することができます。
@@ -132,7 +132,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
 4. 選択した仮想マシンをバックアップするための **[バックアップ スケジュール]** を選択します。 既存のポリシーのセットから選択することも、新しいポリシーを定義することもできます。
 
-    各バックアップ ポリシーには、複数の仮想マシンを関連付けることができます。 ただし、仮想マシンは常に&1; つのポリシーにしか関連付けることができません。
+    各バックアップ ポリシーには、複数の仮想マシンを関連付けることができます。 ただし、仮想マシンは常に 1 つのポリシーにしか関連付けることができません。
 
     ![新しいポリシーで保護](./media/backup-azure-vms/policy-schedule.png)
 
