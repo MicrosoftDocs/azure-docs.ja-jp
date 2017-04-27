@@ -91,7 +91,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 ### <a name="azure-resource-group-templates"></a>Azure のリソース グループ テンプレート
 Azure では先ごろ、[Azure リソース管理](../articles/resource-manager-deployment-model.md) REST API と、この API を簡単に使用できるように更新された PowerShell および Azure CLI ツールをリリースしました。 [Azure Resource Manager テンプレート](../articles/resource-group-authoring-templates.md) と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
-* [テンプレートを使用した Azure ポータル](https://github.com/Azure/azure-quickstart-templates) &mdash; "DeployToAzure" ボタンを使用するなど
+* [テンプレートを使用した Azure Portal](https://github.com/Azure/azure-quickstart-templates) &mdash; "DeployToAzure" ボタンを使用するなど
 * [Azure CLI](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure PowerShell モジュール](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
