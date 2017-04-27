@@ -41,7 +41,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 #### <a name="to-connect-to-the-service"></a>サービスに接続するには
 1. [https://portal.azure.com](https://portal.azure.com) に移動します。
-2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure ポータルにログオンします。
+2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure Portal にログオンします。
 3. [参照]、[StorSimple デバイス マネージャー] の [フィルター] の順に移動し、特定のサブスクリプションのデバイス マネージャーをすべて表示します。
 
 ## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>StorSimple デバイス マネージャー サービスを使用して管理タスクを実行する
@@ -55,7 +55,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | サービスを作成する</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md) |
 | アクティビティ ログを表示する |[StorSimple サービスの概要を使用する](storsimple-virtual-array-service-summary.md) |
 | 仮想アレイを非アクティブ化する</br>仮想アレイを削除する |[仮想アレイを非アクティブ化または削除する](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| 障害復旧とデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>ビジネス継続性障害復旧 (BCDR)</br>災害復旧時のエラー |[StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
+| ディザスター リカバリーとデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>事業継続とディザスター リカバリー (BCDR)</br>ディザスター リカバリー時のエラー |[StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
 | 共有やボリュームをバックアップする</br>手動バックアップの取得</br>バックアップのスケジュールを変更する</br>既存のバックアップを表示する |[StorSimple Virtual Array をバックアップする](storsimple-virtual-array-backup.md) |
 | バックアップ セットから共有を複製する</br>バックアップ セットからボリュームを複製する</br>項目レベルの回復 (ファイル サーバーのみ) |[StorSimple Virtual Array のバックアップから複製する](storsimple-virtual-array-clone.md) |
 | ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントの削除 |[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md) |
