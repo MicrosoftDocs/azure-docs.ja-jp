@@ -100,7 +100,7 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 | 管理ロール | 制限 | Description |
 | --- | --- | --- |
 | アカウント管理者 (AA) |1 Azure アカウントに&1; 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
-| サービス管理者 (SA) |1 Azure サブスクリプションに&1; 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
+| サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure Portal](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
 | [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり&200; 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 
 Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。 詳細については、「 [Azure Active Directory のロールベースの Access Control](../active-directory/role-based-access-control-configure.md)」を参照してください。
