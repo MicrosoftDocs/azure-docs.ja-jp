@@ -28,7 +28,7 @@ ms.lasthandoff: 04/21/2017
 [Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
 
 > [!IMPORTANT]
-> Premium RS のデータベースは、Premium または Standard の各データベースよりも少ない冗長コピーで実行されます。 そのため、サービスで障害が発生した場合は、5 分以内にバックアップからデータベースを復旧する必要があります。
+> Premium RS のデータベースは、Premium または Standard の各データベースよりも少ない冗長コピーで実行されます。 そのため、サービスで障害が発生した場合は、最大 5 分間の遅延があるバックアップからデータベースを復旧する必要があります。
 >
 
 あるサービス レベルの特定の[パフォーマンス レベル](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)で、専用リソースを含む単一データベースを作成できます。 また、リソースが複数のデータベース間で共有される[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)内にデータベースを作成することもできます。 単一データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) を単位として表現されます。これに対して、エラスティック プールで利用できるリソースは、エラスティック データベース トランザクション ユニット (eDTU) を単位として表現されます。 DTU と eDTU の詳細については、[DTU の概要](sql-database-what-is-a-dtu.md)に関する記事を参照してください。 
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/21/2017
 
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
 
-## <a name="single-database-service-tiers-and-performance-levels"></a>Single Database サービス階層とパフォーマンス レベル
+## <a name="single-database-service-tiers-and-performance-levels"></a>単一データベース サービス階層とパフォーマンス レベル
 単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。  
 
 ホストされるデータベースの数にかかわらず、データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性には影響しません。
@@ -71,9 +71,9 @@ ms.lasthandoff: 04/21/2017
 > このサービス層テーブルのその他すべての行の詳細については、「 [サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
 > 
 
-## <a name="scaling-up-or-scaling-down-a-single-database"></a>1 つのデータベースのスケールアップとスケールダウン
+## <a name="scaling-up-or-scaling-down-a-single-database"></a>単一データベースのスケールアップとスケールダウン
 
-最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、Azure Portal、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C#、および REST API を使用してデータベースのレベルを簡単に変更することができます。 
+最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、単一データベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、[Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用してデータベースの階層を簡単に変更することができます。  
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
