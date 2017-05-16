@@ -3,7 +3,7 @@
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
 
 ## Team Data Science Process
-### [概要](http://aka.ms/datascienceprocess)
+### [概要](https://azure.microsoft.com/ja-jp/documentation/learning-paths/data-science-process/)
 ### [ライフサイクル](data-science-process-overview.md)
 ### [チュートリアル](data-science-process-walkthroughs.md)
 
