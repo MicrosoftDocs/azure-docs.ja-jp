@@ -46,15 +46,15 @@ ms.lasthandoff: 03/10/2017
 #### <a name="validation"></a>検証
 * 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
 
-## <a name="geo-replication"></a>geo レプリケーション
-geo レプリケーションを使用して保護されたデータベースの場合、訓練には、セカンダリ データベースへの計画されたフェールオーバーが含まれます。 計画されたフェールオーバーでは、ロールが切り替わったときに、プライマリ データベースとセカンダリ データベースの同期を維持するようにします。 計画外のフェールオーバーとは異なり、この操作ではデータは失われないため、訓練を運用環境で実行できます。
+## <a name="geo-replication"></a>地理レプリケーション
+地理レプリケーションを使用して保護されたデータベースの場合、訓練には、セカンダリ データベースへの計画フェールオーバーが含まれます。 計画フェールオーバーでは、ロールが切り替わったときに、プライマリ データベースとセカンダリ データベースの同期を維持するようにします。 計画外フェールオーバーとは異なり、この操作ではデータは失われないため、訓練を運用環境で実行できます。
 
 #### <a name="outage-simulation"></a>障害のシミュレーション
 障害をシミュレートするために、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にできます。 これにより、Web クライアントの接続エラーが発生します。
 
 #### <a name="recovery"></a>復旧
 * 障害復旧リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。
-* [計画されたフェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) を実行して、セカンダリ データベースを新しいプライマリにします。
+* [計画フェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) を実行して、セカンダリ データベースを新しいプライマリにします。
 * 「 [復旧後のデータベースの構成](sql-database-disaster-recovery.md) 」のガイドに従って、復旧を完了します。
 
 #### <a name="validation"></a>検証
@@ -62,7 +62,7 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 ## <a name="next-steps"></a>次のステップ
 * ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
+* Azure SQL Database 自動バックアップの詳細については、「 SQL Database 自動バックアップ](sql-database-automated-backups.md)
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
-* より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)  
+* より迅速な復旧オプションについては、 [アクティブ地理レプリケーション](sql-database-geo-replication-overview.md)  
 
