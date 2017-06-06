@@ -103,7 +103,7 @@ sudo az acs kubernetes install-cli
 そのうえで、次のコマンドを実行して、マスターの Kubernetes クラスター構成を `~/.kube/config` ファイルにダウンロードします。
 
 ```azurecli
-az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
+az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME --ssh-key-file=your-id_rsa_file_path
 ```
 
 `kubectl` をインストールして構成する方法については、[Azure Container Service クラスターへの接続](container-service-connect.md)に関するトピックを参照してください。
