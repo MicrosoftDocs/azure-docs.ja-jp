@@ -23,7 +23,7 @@ ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: アプリケーションの種類
-Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。 また、 [アプリケーションの構築を始める](active-directory-b2c-overview.md#get-started)前にシナリオの概要を理解することもできます。
+Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単対象のアプリ。 また、 [アプリケーションの構築を始める](active-directory-b2c-overview.md#get-started)前にシナリオの概要を理解することもできます。
 
 ## <a name="the-basics"></a>基本
 Azure AD B2C を使用するすべてのアプリは、[Azure Portal](https://portal.azure.com/) で [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
@@ -54,7 +54,7 @@ Azure AD B2C に送信される各要求は、 **ポリシー**を指定しま�
 これらの手順は、構築しているアプリの種類によりわずかに異なることがあります。 細部は、オープン ソース ライブラリが自動的に対応できます。
 
 ## <a name="web-apps"></a>Web Apps
-サーバーでホストされ、ブラウザーを通じてアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node.js など) に対して、Azure AD B2C は、すべてのユーザー エクスペリエンスで [OpenID Connect](active-directory-b2c-reference-protocols.md) をサポートします。 これには、サインイン、サインアップ、およびプロファイル管理が含まれます。 Azure AD B2C の OpenID Connect の実装では、Web アプリは、これらのユーザーエクスペリエンスを Azure AD に認証要求を発行することで開始します。 要求の結果は `id_token`です。 このセキュリティ トークンは、ユーザーの ID を表します。 また、要求の形式でユーザーに関する情報も提供します。
+サーバーでホストされ、ブラウザーを通じてアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node.js など) に対して、Azure AD B2C は、すべてのユーザー エクスペリエンスで [OpenID Connect](active-directory-b2c-reference-protocols.md) をサポートします。 これには、サインイン、サインアップ、およびプロファイルているアプリの種類。 Azure AD B2C の OpenID Connect の実装では、Web アプリは、これらのユーザーエクスペリエンスを Azure AD に認証要求を発行することで開始します。 要求の結果は `id_token`です。 このセキュリティ トークンは、ユーザーの ID を表します。 また、要求の形式でユーザーに関する情報も提供します。
 
 ```
 // Partial raw id_token
@@ -63,7 +63,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 // Partial content of a decoded id_token
 {
     "name": "John Smith",
-    "email": "john.smith@gmail.com",
+    "email": "john.smith@hotmail.com",
     "oid": "d9674823-dffc-4e3f-a6eb-62fe4bd48a58"
     ...
 }
@@ -103,7 +103,7 @@ Web API はトークンを使用して API の呼び出し元の ID を検証し
 
 Web API は、Web アプリ、デスクトップ アプリ、モバイル アプリ、シングル ページ アプリ、サーバー サイド デーモン、それ以外の Web API など、多くの種類のクライアントからトークンを受信できます。 ここでは、Web API を呼び出す Web アプリの完全なフローの例を示します。
 
-![Web API のスイムレーン イメージ](./media/active-directory-b2c-apps/webapi.png)
+![Web API のスイムレーン イメージ](./media/active-directory-b2c-apps/webapi2.png)
 
 承認コード、更新トークン、およびトークンの取得手順については、 [OAuth 2.0 プロトコル](active-directory-b2c-reference-oauth-code.md)に関するページを参照してください。
 
