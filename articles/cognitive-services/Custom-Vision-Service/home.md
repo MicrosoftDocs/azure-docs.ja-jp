@@ -1,6 +1,6 @@
 ---
-title: Overview of Custom Vision Service machine learning | Microsoft Docs
-description: Use this to bring the power of machine learning to your applications.
+title: Custom Vision Service の概要 | Microsoft Docs
+description: Custom Vision Service を使ってアプリケーションに機械学習のパワーをもたらそう
 services: cognitive-services
 author: v-royhar
 manager: juliakuz
@@ -17,23 +17,22 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="overview"></a>Overview
+# <a name="overview"></a>Custom Vision Service の概要
 
-## <a name="custom-vision-service-brings-the-power-of-machine-learning-to-your-apps"></a>Custom Vision Service brings the power of machine learning to your apps
+## <a name="custom-vision-service-brings-the-power-of-machine-learning-to-your-apps"></a>Custom Vision Service はアプリケーションに機械学習のパワーをもたらします
 
-Custom Vision Service is a tool for building custom image classifiers. It makes it easy and fast to build, deploy, and improve an image classifier. We provide a REST API and a web interface to upload your images and train.
+Custom Vision Service は、独自の画像分類器を構築するためのツールです。画像分類器の構築、デプロイ、改善を容易かつ迅速に行います。画像のアップロードとトレーニングするためのREST APIとウェブインターフェースを提供しています。
 
-## <a name="what-can-custom-vision-service-do-well-what-cant-it-do"></a>What can Custom Vision Service do well? What can't it do? 
+## <a name="what-can-custom-vision-service-do-well-what-cant-it-do"></a>Custom Vision Service でできること・できないこと 
 
-Custom Vision Service is a tool for building custom image classifiers, and for making them better over time. For example, if you want a tool that could identify images of "Daisies", "Daffodils", and "Dahlias", you could train a classifier to do that. You do so by providing Custom Vision Service with images for each tag you want to recognize.
+Custom Vision Service は、独自の画像分類器を構築し、時間の経過とともに改善するためのツールです。例えば、"デイジー"、"ラッパズイセン"、"ダリア"の画像を識別できるツールが必要な場合、そのための分類器をトレーニングすることができます。Custom Vision Service に、認識したいタグ毎の画像を提供することで実現できます。
 
-Custom Vision Service works best when the item you are trying to classify is prominent in your image. Custom Vision Service does "image classification" but not yet "object detection." This means that Custom Vision Service identifies whether an image is of a particular object, but not where that object is within the image.
+Custom Vision Service は、分類したいものが画像の中で顕著であるときに良い結果をもたらします。Custom Vision Service は、"オブジェクト検出" ではなく "画像分類" を行います。つまり、そのオブジェクトが画像内のどこにあるかではなく、画像が特定のオブジェクトであるかどうかを識別します。
 
-Very few images are required to create a classifier -- 30 images per class is enough to start your prototype. The methods Custom Vision Service uses are robust to differences, which allows you to start prototyping with so little data. However, this means Custom Vision Service is not well suited to scenarios where you want to detect very subtle differences (for example, minor cracks or dents in quality assurance scenarios.)
+分類器を作成するのに多くの画像は必要ありません。プロトタイプを作成するのであれば、1クラスにつき30枚の画像があれば十分です。Custom Vision Service が使っている手法は、違いの検知に強いため、少ないデータでプロトタイプの作成を行えます。しかしこれは、Custom Vision Service が、微妙な違い（例えば、品質保証シナリオでのわずかな亀裂や窪みなど）を検出するシナリオには適していないことを意味します。
 
-Custom Vision Service is designed to make it easy to start building your classifier, and to help you improve the quality of your classifier over time.
+Custom Vision Service は、分類器の構築を容易にし、時間の経過とともに分類器の品質を向上させるのに役立ちます。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Build a Classifier](getting-started-build-a-classifier.md)
-
+[分類器の構築](getting-started-build-a-classifier.md)
