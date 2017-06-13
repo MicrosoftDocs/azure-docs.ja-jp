@@ -17,31 +17,30 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="test-and-retrain-your-model"></a>Test and Retrain Your Model
+# <a name="test-and-retrain-your-model"></a>モデルのテストと再トレーニング
 
-After you train your model, you can quickly test it using a locally stored image or an online image. The test uses the most recently trained iteration.
+モデルをトレーニングした後、ローカルに保存されている画像またはオンラインの画像を使ってすぐにテストできます。このテストでは、直近でトレーニングされたイテレーションを使用します。
 
-## <a name="test-your-model"></a>Test your model:
+## <a name="test-your-model"></a>モデルのテスト :
 
-1. Click **Quick Test** on the right of the top menu bar. This action opens a window labeled **Quick Test**.
+1. トップメニューバーの右側にある **Quick Test** をクリックします。 **Quick Test** というウインドウが表示されます。
 
     ![The Quick Test button is shown in the upper right corner of the window.](./media/test-your-model/quick-test-button.png)
 
-2. In the **Quick Test** window, click in the **Submit Image** field and enter the URL of the image you want to use for your test. If you want to use a locally stored image instead, click the **Browse local files** button and select a local image file.
+2. **Quick Test** ウインドウで、 **Submit Image** フィールドをクリックし、テストに使用する画像のURLを入力します。 ローカルに保存されている画像を使用したい場合は、**Browse local files** ボタンをクリックし、ローカルイメージファイルを選択します。
 
     ![The Quick Test window is shown. It has a URL field and a button for selecting local files.](./media/test-your-model/quick-test-results.png)
 
-The image you select appears in the middle of the page. Then the results appear below the image in the form of a table with two columns, labeled **Tags** and **Confidence**. After you view the results, you may close the **Quick Test** window.
+選択した画像がページの中央に表示されます。結果は、**Tags** と **Probability** の2列の表形式で画像の下に表示されます。 結果を確認し、**Quick Test** ウィンドウを閉じることができます。
 
-You can now add this test image to your model and then retrain your model.
+このテスト画像をモデルに追加し、モデルを再トレーニングすることができます。
 
-## <a name="add-a-test-image-and-retrain-your-model"></a>Add a test image and retrain your model:
+## <a name="add-a-test-image-and-retrain-your-model"></a>テスト画像の追加と再トレーニング : 
 
-You can follow the steps below to add to your model an image that you have submitted for a quick test and to then retrain the model. However, adding only one image before you retrain your model doesn't lead to significant performance gains. For best results, add a significant number of images before you retrain the model.
+以下の手順に従って、クイックテストで使った画像をモデルに追加し、モデルを再トレーニングすることができます。しかし、1つのイメージを追加してモデルを再トレーニングしても、パフォーマンスは大幅に向上しません。 最良の結果を得るには、モデルを再トレーニングする前に多量の画像を追加しましょう。
 
-1. Click the **PREDICTIONS** tab on the top menu bar.
-2. Click the image you used for the quick test. A new window appears, with the image in the center.
-3. In the new window, assign the correct tag to the image from the **My Tags** drop-down list. If you don't see the appropriate tag in the drop-down list, you can type in a new tag and then click the **+** sign to the right of the **My Tags** field.
-4. Click the **Save and close** button at the bottom of the window.
-4. Click the green **Train** button in the top menu bar.
-
+1. トップメニューバーの **PREDICTIONS** タブをクリックします。
+2. クイックテストで使った画像をクリックします。新しいウインドウで、画像が中央に表示されます。
+3. 新しいウインドウで **My Tags** ドロップダウンリストから正しいタグを画像に割り当てます。ドロップダウンリストに適切なタグがない場合は、新しいタグを入力して **My Tags** フィールドの右側の **+** をクリックします。
+4. ウインドウ下部の **Save and close** ボタンをクリックします。
+5. トップメニューバーにある グリーンの **Train** ボタンをクリックします。
