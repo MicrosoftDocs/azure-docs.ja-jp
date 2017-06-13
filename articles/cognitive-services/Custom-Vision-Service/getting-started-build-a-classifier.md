@@ -17,105 +17,105 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="overview"></a>Overview
+# <a name="overview"></a>概要 
 
-To use the Custom Vision Service you must first build a classifier. 
+Custom Vision Service を使うには、最初に分類器を構築する必要があります。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-To build a classifier, you must first have:
+分類器を構築するには、最初に以下を準備します:
 
-- A valid MSA, so you can sign into customvision.ai and get started. Note that you will be able to access your subscription keys once you have created your first project.
-- A series of images to train your classifier (minimum of 30 images per tag).
-- A few images to test your classifier after the classifier is trained.
+- 有効なMSA（Microsoft アカウント） - customvision.aiにサインインして利用できるようになります。最初のプロジェクトを作成した後、サブスクリプションキーにアクセスできるようになります。
+- 分類器をトレーニングするための複数の画像（1タグあたり30枚以上を推奨）。
+- 分類器をトレーニングした後、分類器をテストするための数枚の画像。
 
-## <a name="getting-started-build-a-classifier"></a>Getting Started: Build a Classifier
+## <a name="getting-started-build-a-classifier"></a>作業の開始 : 分類器の構築
 
-Custom Vision Service can be found by clicking here: [https://customvision.ai](https://customvision.ai)
+Custom Vision Service こちらをクリックしてアクセスできます。: [https://customvision.ai](https://customvision.ai)
 
-After you log into Custom Vision Service, you will be presented with a list of projects.
+Custom Vision Service にログインすると, プロジェクトの一覧が表示されます。
 
-1. Click **New Project** to create your first project.
+1. **New Project** をクリックして最初のプロジェクトを作成います。
 
-2. If this is your first project, you are asked to agree to the Terms of Service. Check the check box, then click the **I agree** button.
+2. 最初のプロジェクトである場合は、サービスの利用規約に同意するように求められます。チェックボックスをオンにし、**I agree** (同意する) ボタンをクリックします。
 
-The New Project dialog box appears.
+New Project ダイアログが表示されます。
 
 ![The new project dialog box, which has fields for name, description, and domains which consist of general, food, landmarks, retail, and adult.](./media/getting-started-build-a-classifier/new-project.png)
 
-3. Enter a name for this project, a description of the project, and select one domain.
+3. プロジェクト名、プロジェクトの概要を入力し、ドメインを選択します。
 
-There are several domains available, and each one optimizes the classifier for a specific type of images:
+利用可能なドメインが複数用意されています。画像の特定のタイプに合わせて分類器を最適化してくれます。
 
-|Domain|Purpose|
+|ドメイン|用途|
 |---|---|
-|Generic|If none of the other domains are appropriate, or you are unsure of which domain to choose, select the Generic domain.|
-|Food|Optimized for photographs of dishes as you would see on a restaurant menu. If you want to classify photographs of individual fruits or vegetables, use the Generic domain for that purpose.|
-|Landmarks|Optimized for recognizable landmarks, both natural and artificial. This domain works best when the landmark is clearly visible in the photograph, even if the landmark is slightly obstructed by a group of people posing in front of it.|
-|Retail|Optimized for images found in a shopping catalog or shopping website. If you want high precision classifying between dresses, pants, and shirts, use this domain.|
-|Adult|Optimized to better define between adult content and non-adult content. For example, if you want to block images of people in bathing suits, this domain allows you to build a custom classifier to do that.|
+|Generic（汎用）|他に適切なドメインが無い場合、またはどのドメインを選択していいかわからない場合は Generic ドメインを選択します。|
+|Food（フード）|レストランのメニューで表示するような料理の写真用に最適化されています。個々の果物や野菜の写真を分類したい場合は Generic ドメインを使用します。|
+|Landmarks（ランドマーク）|自然、人工の両方のランドマークの認識用に最適化されています。ランドマークの前で複数の人がいても、ランドマークがはっきり見えていれば、最適に動作します。|
+|Retail（リテール）|ショッピングカタログやショッピングウェブサイトにあるような画像に最適化されています。ドレス、パンツ、シャツを高精度で分類したい場合は、このドメインを使用します。|
+|Adult（アダルト）|成人向けコンテンツと非成人向けコンテンツをよりよく定義するために最適化されています。たとえば、水着の人物画像をブロックしたい場合、このドメインを使って分類器を構築できます。|
 
-You can change the domain later if you wish.
+ドメインはいつでも変更することができます。
 
-4. Add images to train your classifier.
+4. 画像を追加して分類器をトレーニング
 
-Add some images to train your classifier. Let's say you want a classifier to distinguish between dogs and ponies. You would upload and tag at least 30 images of dogs and 30 images of ponies. Try to upload a variety of images with different camera angles, lighting, background, types, styles, groups, sizes, etc. We recommend variety in your photos to ensure your classifier is not biased in any way and can generalize well.
+画像を追加して分類器をトレーニングします。例えば、犬とポニーを見分けたいとしましょう。少なくとも犬の画像を30枚、ポニーの画像を30枚をアップロードしてタグ付けしましょう。異なるカメラアングル、照明、背景、タイプ、スタイル、グループ、サイズなどを含む多様な画像をアップロードしてみてください。分類器が偏り無く汎化されるよう多様な画像を使うことをお薦めします。
 
-**Note:** Custom Vision Service accepts training images in JPG/JPEG, PNG, and BMP format, up to 6 MB per image (prediction images can be up to 4 MB per image). Images are recommended to be 256 pixels on the shortest edge. Any images shorter than 256 pixels on the shortest edge will be scaled up by Custom Vision Service.
+**メモ :** Custom Vision Serviceでトレーニング用の画像は、 JPG / JPEG、PNG、およびBMP形式で、1枚のにつき最大6 MBまで使用できます (検証用の画像は、1枚のにつき最大4MBまでです)。画像の最短のエッジは、256ピクセルが推奨です。最短エッジの256ピクセルより短い画像は、Custom Vision Service によって拡大されます。
 
-a. Click **Add images**.
+a. **Add images** （画像を追加）をクリックします
 
    ![The add images control is shown in the upper left, and as a button at bottom center.](./media/getting-started-build-a-classifier/add-images01.png)
 
-b. Browse to the location of your training images.
+b. トレーニング用の画像がある場所を参照します。
 
-   **Note:** You can use the REST API to load training images from URLs. The web app can only upload training images from your local computer.
+   **メモ :** REST APIを使用してURLからトレーニング画像を読み込むことができます。ウェブアプリケーションでは、ローカルコンピュータからトレーニング用の画像をアップロードすることしかできません。
 
    ![The browse local files button is shown near bottom center.](./media/getting-started-build-a-classifier/add-images02.png)
 
-c. Select the images for your first tag.
+c. タグをつける画像を選択します。
 
-d. Click `Open` to open the selected images.
+d. `開く` をクリックして選択した画像を開きます。
 
-e. Assign tags: Type in the tag you want to assign, then press the **+** button to assign the tag. You can add more than one tag at a time to the images.
+e. タグの割り当て: 割り当てたいタグを入力し、**+** ボタンをクリックしてタグを割り当てます。一度に複数の画像に対してタグを追加できます。
 
    ![The "add some tags" text control is below the images of dogs. The plus sign is to the right of the text control. The "upload files" button is on the lower right.](./media/getting-started-build-a-classifier/add-images03.png)
 
-f. When you are done adding tags, click **Upload [number] files**. The upload could take some time if you have a large number of images or a slow Internet connection.
+f. タグの割り当てが完了したら、**Upload [number] files** をクリックします。大量の画像をアップロードしたりインターネット接続が遅い場合は、アップロードに時間がかかることがあります。
 
-g. After the files have uploaded, click **Done**.
+g. ファイルのアップロードが完了したら、**Done** をクリックします。
 
    ![The progress bar shows all tasks completed. The upload report shows 38 images uploaded successfully. The Done button is on the lower right.](./media/getting-started-build-a-classifier/add-images04.png)
 
-h. To load more images with a different set of tags, return to step a.
+h. 別のタグで画像をアップロードする場合、ステップ a に戻ります。
 
-5. Train your classifier
+5. 画像のトレーニング
 
-After your images are uploaded, you are ready to train your classifier. All you have to do is click the **Train** button.
+画像がアップロードされたら、分類器をトレーニングする準備が整いまっした。あとは **Train** ボタンをクリックするだけです。
 
 ![The train button is near the right top of the browser window.](./media/getting-started-build-a-classifier/train01.png)
 
-It should only take a few minutes to train your classifier.
+分類器のトレーニングには、数分程度かかります。
 
 ![The train button is near the right top of the browser window.](./media/getting-started-build-a-classifier/train02.png)
 
-6. Evaluate your classifier
+6. 分類器の評価
 
-The precision and recall indicators tell you how good your classifier is, based on automatic testing. Note that Custom Vision Service uses the images you submitted for training to calculate these numbers, using a process called [k-fold cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
+precision (精度)と recall （リコール）のインジケーターは、自動テストによって分類器がどれくらい優れているかを表します。Custom Vision Service では、[k-fold cross validation (K-分割交差検証)](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) というプロセスを使い、トレーニング用の画像を使用してこれらの数値を計算します。
 
 ![The training results, which shows the overall precision and recall, and the precision and recall for each tag in the classifier.](./media/getting-started-build-a-classifier/train03.png)
 
-**Note:** Each time you hit the "Train" button, you create a new iteration of your classifier. You can view all your old iterations in the Performance tab, and you can delete any that may be obsolete. When you delete an iteration, you end up deleting any images uniquely associated with it.
+**メモ :** "Train"ボタンをクリックする度に、新しいイテレーションの分類器が作成されます。Performance タブで過去のイテレーションを見たり、不要なイテレーションを削除することができます。イテレーションを削除すると、そのイテレーションに一意に関連付けられた画像が削除されます。
 
-The classifier uses all the images to create a model that identifies each tag. To test the quality of the model, the classifier then tries each image on its model to see what the model finds.
+モデルの品質をテストするには、分類器でモデルが何を識別するかを見るために各画像を使って試します。
 
-The qualities of the classifier results are displayed
+分類器の品質が表示されます。
 
-|Term|Definition|
+|用語|定義|
 |---|---|
-|Precision|When you classify an image, how likely is your classifier to correctly classify the image? Out of all images used to train the classifier (dogs and ponies), what percent did the model get correct? 99 correct tags out of 100 images gives a Precision of 99%.|
-|Recall|Out of all images that should have been classified correctly, how many did your classifier identify correctly? A Recall of 100% would mean, if there were 38 dog images in the images used to train the classifier, 38 dogs were found by the classifier.|
+|Precision（精度）|画像を分類したとき、どれくらい正しく分類されたか。分類器（犬とポニー）を訓練するために使用されたすべての画像のうち、何パーセントが正しいか。100枚の画像のうち99枚を正しいタグ付けした場合、精度は99％になります。|
+|Recall（リコール）|正しく分類されるはずのすべての画像のうち、正しく識別した画像の数。リコールが100％というのは、分類器をトレーニングするために使用された画像のうち犬の画像が38枚で、分類器で犬の画像が38枚を検出した場合です。|
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Custom Vision API C# tutorial](csharp-tutorial.md)
+[Custom Vision API C# チュートリアル](csharp-tutorial.md)
