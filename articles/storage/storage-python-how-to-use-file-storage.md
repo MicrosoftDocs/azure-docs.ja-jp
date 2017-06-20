@@ -42,7 +42,7 @@ from azure.storage.file import FileService
 次のコードでは、ストレージ アカウント名とアカウント キーを使用して **FileService** オブジェクトを作成します。  'myaccount' と 'mykey' は、実際のアカウント名とキーに置き換えてください。
 
 ```python
-file_service = **FileService** (account_name='myaccount', account_key='mykey')
+file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 次のコード サンプルでコンテナーが存在しない場合は、 **FileService** オブジェクトを使用してコンテナーを作成できます。
