@@ -468,9 +468,10 @@ Azure Cosmos DBRepository および ItemController にコードを追加して�
             }
         }
    
-    1 つ目のメソッド **GetItem** は、Azure Cosmos DB から Item を取得します。この Item が **ItemController** に戻された後、**[Edit]** ビューに渡されます。
+   1 つ目のメソッド **UpdateItem** は、Azure Cosmos DB 内の **Document** を、**ItemController** から渡された **Document** に置き換えます。
+   2 つ目のメソッド **GetItem** は、Azure Cosmos DB から Item を取得します。この Item が **ItemController** に戻された後、**[Edit]** ビューに渡されます。
    
-    2 つ目のメソッドは、Azure Cosmos DB 内の **Document** を、**ItemController** から渡された **Document** に置き換えます。
+    
 2. **ItemController** クラスに次のコードを追加します。
    
         [HttpPost]
