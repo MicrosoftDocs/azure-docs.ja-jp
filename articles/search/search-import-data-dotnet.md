@@ -25,7 +25,7 @@ ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
-> * [REST ()](search-import-data-rest-api.md)
+> * [REST](search-import-data-rest-api.md)
 > 
 > 
 

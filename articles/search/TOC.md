@@ -14,7 +14,7 @@
 ## [インデックスの検索](search-query-overview.md)
 ### [Azure Portal](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
-### [REST ()](search-query-rest-api.md)
+### [REST](search-query-rest-api.md)
 # Tutorials (チュートリアル)
 ## [.NET](search-howto-dotnet-sdk.md)
 ## [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
@@ -70,7 +70,7 @@
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (管理)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
-## [REST ()](/rest/api/searchservice)
+## [REST](/rest/api/searchservice)
 ## [REST (管理)](/rest/api/searchmanagement)
 
 # リソース

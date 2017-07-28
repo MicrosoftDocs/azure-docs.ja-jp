@@ -140,7 +140,7 @@ Microsoft のお客様は、オンライン カタログ、基幹業務プログ
 
 |Platform |説明 |
 |-----|------------|
-|[REST ()](/rest/api/searchservice/) | あらゆるプログラミング プラットフォームと言語 (Xamarin、Java、JavaScript など) でサポートされている HTTP コマンド|
+|[REST](/rest/api/searchservice/) | あらゆるプログラミング プラットフォームと言語 (Xamarin、Java、JavaScript など) でサポートされている HTTP コマンド|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 用の .NET ラッパーにより、C# と .NET Framework をターゲットとするその他のマネージ コード言語で効率的なコーディングを実現できます。 |
 
 ## <a name="free-trial"></a>無料試用版
