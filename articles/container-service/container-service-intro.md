@@ -28,7 +28,7 @@ ms.lasthandoff: 04/18/2017
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Azure Container Service を使用した Docker コンテナー ホスティング ソリューションの概要 
 Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 Azure Container Service では、評判のよいオープンソースのスケジューリングおよびオーケストレーション ツールの最適化された構成を使用します。 これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure にコンテナーベースのアプリケーションをデプロイおよび管理できます。
 
-![Azure Container Service では、Azure 上の複数のホストのコンテナー化されたアプリケーションを管理できます。](./media/acs-intro/acs-cluster-new.png)
+Azure Container Service では、Azure 上の複数のホストのコンテナー化されたアプリケーションを管理できます。
 
 Azure Container Service では、Docker コンテナー形式を活用し、アプリケーション コンテナーの完全な移植性を保証しています。 また、このようなアプリケーションを何千、何万ものコンテナーに拡張できるように、ユーザーの選択に応じて Marathon と DC/OS、Docker Swarm、または Kubernetes もサポートしています。
 
@@ -46,7 +46,7 @@ Azure Container Service では、オーケストレーション用に Docker Swa
 ### <a name="using-dcos"></a>DC/OS の使用
 DC/OS は、Apache Mesos 分散システムのカーネルをベースとする分散オペレーティング システムです。 Apache Mesos は、Apache Software Foundation の下で管理されており、そのユーザーや協力会社として [大手 IT 企業](http://mesos.apache.org/documentation/latest/powered-by-mesos/) が名前を連ねています。
 
-![DC/OS 用に構成された Azure Container Service。エージェントとマスターが示されている。](media/acs-intro/dcos.png)
+DC/OS 用に構成された Azure Container Service。エージェントとマスターが示されている。
 
 DC/OS と Apache Mesos の特筆すべき機能を以下に示します。
 
@@ -60,19 +60,19 @@ DC/OS と Apache Mesos の特筆すべき機能を以下に示します。
 
 Azure Container Service 上で実行される DC/OS には、ワークロードをスケジューリングするための Marathon オーケストレーション プラットフォームが既定で備わっています。 ただし、ACS の DC/OS のデプロイには、サービスに追加できる Mesosphere Universe サービスが含まれ、 Spark、Hadoop、Cassandra などがこれに含まれます。
 
-![Azure コンテナー サービスの DC/OS Universe](media/dcos/universe.png)
+Azure コンテナー サービスの DC/OS Universe
 
 #### <a name="using-marathon"></a>Marathon の使用
 Marathon は、クラスター全体の cgroups (または Azure Container Service の場合は Docker 形式コンテナー) のサービスを、初期化および制御するシステムです。 Marathon には、アプリケーションをデプロイできる Web UI があります。 これには、`http://DNS_PREFIX.REGION.cloudapp.azure.com` のような URL からアクセスできます (この DNS\_PREFIX と REGION はいずれもデプロイ時に定義します)。 独自の DNS 名を作成することも可能です。 Marathon Web UI を使用したコンテナーの実行の詳細については、[Marathon Web UI での DC/OS コンテナー管理](container-service-mesos-marathon-ui.md)に関するページをご覧ください。
 
-![Marathon アプリケーションの一覧](media/dcos/marathon-applications-list.png)
+Marathon アプリケーションの一覧
 
 Marathon との通信には、REST API を使用することも可能です。 各ツールで利用可能なクライアント ライブラリが多数あります。 さまざまな言語に対応するだけでなく、当然、任意の言語で HTTP プロトコルを使用することもできます。 さらに、Marathon は、多数の人気の DevOps ツールによってもサポートされています。 このため、Azure Container Service クラスターで作業する際に、オペレーション チームに最大限の柔軟性を提供します。 Marathon REST API を使用したコンテナーの実行の詳細については、「[Marathon REST API を使用した DC/OS コンテナー管理](container-service-mesos-marathon-rest.md)」を参照してください。
 
 ### <a name="using-docker-swarm"></a>Docker Swarm の使用
 Docker Swarm は、Docker のネイティブ クラスタリングを提供しています。 Docker Swarm には標準の Docker API があるため、Docker デーモンと既に通信するすべてのツールは Swarm を使用し、Azure Container Service の複数のホストに透過的にスケーリングできます。
 
-![Swarm を使用するように構成された Azure Container Service。](media/acs-intro/acs-swarm2.png)
+Swarm を使用するように構成された Azure Container Service。
 
 [!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
@@ -86,7 +86,7 @@ Swarm クラスターでコンテナーを管理するためにサポートさ�
 ### <a name="using-kubernetes"></a>Kubernetes の使用
 Kubernetes は、一般的な運用グレードのオープン ソース コンテナー オーケストレーター ツールです。 この Kubernetes により、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理が自動化されます。 Kubernetes はオープン ソースのソリューションであり、オープン ソース コミュニティによって推進されているため、Azure Container Service 上でシームレスに実行され、Azure Container Service 上でコンテナーを大規模にデプロイするために使用できます。
 
-![Kubernetes を使用するように構成された Azure Container Service。](media/acs-intro/kubernetes.png)
+Kubernetes を使用するように構成された Azure Container Service。
 
 Kubernetes には、次に示す豊富な機能セットが用意されています。
 * 水平スケーリング
