@@ -68,7 +68,7 @@ ms.lasthandoff: 05/10/2017
 
     ![新しい Hello-world](./media/app-service-linux-ruby-get-started/rails-new-hello-world-2.png)
 
-    Rails 5.1 以降では、`--skip-yarn` オプションを使用しなかった場合は package.json が作成されます。 そのファイルはデプロイに含める必要がありません。 代替手段として、package.json ファイルを削除するか、ディレクトリの *.git-ignore* ファイルに次のように追加します。 
+    Rails 5.1 以降では、`--skip-yarn` オプションを使用しなかった場合は package.json が作成されます。 そのファイルはデプロイに含める必要がありません。 代替手段として、package.json ファイルを削除するか、ディレクトリの *.gitignore* ファイルに次のように追加します。 
 
         # Ignore package.json
         /package.json
