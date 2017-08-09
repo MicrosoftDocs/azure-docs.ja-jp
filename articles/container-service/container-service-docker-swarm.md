@@ -55,7 +55,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 このコンテナーで実行されているアプリケーションには、Swarm エージェント ロード バランサーのパブリック DNS 名を使用してアクセスできます。 この情報は、Azure ポータルで見つけることができます。  
 
-![Real visit results](media/real-visit.jpg)  
+![Real visit results](../media/container-service-docker-swarm/real-visit.jpg)  
 
 既定では、Load Balancer 用にポート 80、8080、443 が開放されています。 別のポートに接続する場合は、エージェント プール用に Azure Load Balancer でそのポートを開く必要があります。
 
