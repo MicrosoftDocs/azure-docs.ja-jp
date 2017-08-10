@@ -58,10 +58,7 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 3. **[基本]** ブレードで、次の情報を入力します。
 
-    * **[Orchestrator]**: クラスターにデプロイするコンテナー オーケストレーターのいずれかを選択します。
-        * **[DC/OS]**: DC/OS クラスターをデプロイします。
-        * **[Swarm]**: Docker Swarm クラスターをデプロイします。
-        * **[Kubernetes]**: Kubernetes クラスターをデプロイします。
+    * **[Name]**: 作成する Azure Container Service の名前を入力します。
     * **[サブスクリプション]**: Azure サブスクリプションを選択します。
     * **[リソース グループ]**: デプロイの新しいリソース グループの名前を入力します。
     * **[場所]**: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。 利用できるかどうかについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
@@ -72,9 +69,13 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 4. **[Master configuration (マスター構成)]** ブレードで、クラスターの Linux マスター ノードに対する次の設定を入力します (一部の設定はオーケストレーターに固有です)。
 
+    * **[Orchestrator]**: クラスターにデプロイするコンテナー オーケストレーターのいずれかを選択します。
+        * **[DC/OS]**: DC/OS クラスターをデプロイします。
+        * **[Swarm]**: Docker Swarm クラスターをデプロイします。
+        * **[Kubernetes]**: Kubernetes クラスターをデプロイします。
     * **[Master DNS name (マスター DNS 名)]**: マスターの一意の完全修飾ドメイン名 (FQDN) を作成するときに使用されるプレフィックス。 マスター FQDN は、*prefix*mgmt.*location*.cloudapp.azure.com という形式です。
-    * **[ユーザー名]**: クラスターにある各 Linux 仮想マシンのアカウントのユーザー名。
-    * **[SSH RSA public key (SSH RSA 公開キー)]**: Linux 仮想マシンに対する認証に使用される公開キーを追加します。 このキーに改行を含めないことと、`ssh-rsa` プレフィックスを付けることが重要です。 `username@domain` ポストフィックスは省略可能です。 キーは、**ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。 
+    * **[User name (ユーザー名)]**: クラスターにある各 Linux 仮想マシンのアカウントのユーザー名。
+    * **[SSH public key (SSH RSA 公開キー)]**: Linux 仮想マシンに対する認証に使用される公開キーを追加します。 このキーに改行を含めないことと、`ssh-rsa` プレフィックスを付けることが重要です。 `username@domain` ポストフィックスは省略可能です。 キーは、**ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。 
     * **[サービス プリンシパル]**: Kubernetes オーケストレーターを選択した場合は、Azure Active Directory の**サービス プリンシパルのクライアント ID** (appID とも呼ばれます) と**サービス プリンシパルのクライアント シークレット** (パスワード) を入力する必要があります。 詳細については、[Kubernetes クラスターのサービス プリンシパル](../kubernetes/container-service-kubernetes-service-principal.md)に関するページを参照してください。
     * **[Master count (マスター数)]**: クラスターのマスター数。
     * **[VM diagnostics (VM 診断)]**: 一部のオーケストレーターでは、マスターで VM 診断を有効にできます。
