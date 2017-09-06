@@ -180,7 +180,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
     </activity>
 ```
 
-1. `LoadApplication()` の呼び出しの前にある **MainActivity** クラスの **OnCreate** メソッドに次のコードを追加します。
+1. **MainActivity** クラスの **OnCreate** メソッドに次のコードを追加します。場所は `LoadApplication()` の呼び出しの直前です。
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -245,7 +245,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
 
-6. `LoadApplication()` の呼び出しの前の **FinishedLaunching** メソッドに、次のコード行を追加します。
+6. **FinishedLaunching** メソッドに、次のコード行を追加します。場所は `LoadApplication()` の呼び出しの直前です。
 
         App.Init(this);
 
@@ -309,7 +309,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
     Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
 
-1. `LoadApplication()` の呼び出しの前にある **MainPage** クラスのコンストラクター内に次のコード行を追加します。
+1. **MainPage** クラスのコンストラクター内に次のコード行を追加します。場所の `LoadApplication()` の呼び出しの直前です。
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
