@@ -65,7 +65,7 @@ App Service プランが **Free** ではない場合は、**[価格レベルの�
 
 Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Premium**) を選択します。 
 
-**[選択]**をクリックします。
+**[選択]** をクリックします。
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

@@ -538,7 +538,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 ![関数の呼び出しページのログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、 **[出力切り替え]**をクリックすると、WebJobs SDK のダッシュボードでアプリケーション ログの最新 100 件が表示されます。
+Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、 **[出力切り替え]** をクリックすると、WebJobs SDK のダッシュボードでアプリケーション ログの最新 100 件が表示されます。
 
 ![[出力切り替え] をクリックします](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 

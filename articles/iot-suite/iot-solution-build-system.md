@@ -127,7 +127,7 @@ Visual Studio で次のソリューションを開きます。
 * 信頼できない可能性があるいくつかのプロジェクトを信頼します。 先に進める場合は、これらのプロジェクトを開くことを選択します。
 * 新しい Windows 10 コンピューターで作業する場合は、開発者モードを設定します。
 * Xamarin の資格情報を入力します。
-* Xamarin Mac に接続します。 Mac を所有していない場合は、Visual Studio で iOS プロジェクトを右クリックして、 **[プロジェクトのアンロード]**を選択します。
+* Xamarin Mac に接続します。 Mac を所有していない場合は、Visual Studio で iOS プロジェクトを右クリックして、 **[プロジェクトのアンロード]** を選択します。
 
 ソリューションをリビルドします。
 
@@ -334,13 +334,13 @@ Web サービスでは、Azure Web アプリとしてデプロイを設定しま
 
 ![パフォーマンス グラフの例](./media/iot-solution-build-system/image11.png)
 
-手動で設定した Web サービスがある場合は、同じグラフを簡単に取得できます。 Web サービス ブレードで、**[ツール]** > **[拡張機能]** > **[追加]** の順に選択します。 **[Application Insights]**を選択します。
+手動で設定した Web サービスがある場合は、同じグラフを簡単に取得できます。 Web サービス ブレードで、**[ツール]** > **[拡張機能]** > **[追加]** の順に選択します。 **[Application Insights]** を選択します。
 
 ![グラフを取得する Application Insights を選択するためのインターフェイス](./media/iot-solution-build-system/image12.png)
 
 この機能は、Application Insights SDK を使用してアプリケーションをインストルメント化して動作します。
 
-開発時に [Application Insights SDK を追加して](../application-insights/app-insights-asp-net.md) 、カスタム テレメトリを追加できます (または、Azure の外部で実行されているアプリケーションをインストルメント化できます)。 これは、ユーザーの平均乗車距離や合計走行距離など、アプリケーションによって異なるメトリックを記録するために便利です。 Visual Studio でプロジェクトを右クリックし、 **[Application Insights の追加]**を選択します
+開発時に [Application Insights SDK を追加して](../application-insights/app-insights-asp-net.md) 、カスタム テレメトリを追加できます (または、Azure の外部で実行されているアプリケーションをインストルメント化できます)。 これは、ユーザーの平均乗車距離や合計走行距離など、アプリケーションによって異なるメトリックを記録するために便利です。 Visual Studio でプロジェクトを右クリックし、 **[Application Insights の追加]** を選択します。
 
 ![カスタム テレメトリを追加する [Application Insights の追加] を選択するためのインターフェイス](./media/iot-solution-build-system/image10.png)
 

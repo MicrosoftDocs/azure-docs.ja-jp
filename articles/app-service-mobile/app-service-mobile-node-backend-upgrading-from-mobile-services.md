@@ -96,12 +96,12 @@ scripts ディレクトリが格納されているディレクトリから次の
 ### <a name="create-a-new-mobile-app"></a>新しい Mobile App を作成する
 1. [Azure ポータル]にログインします。
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
-3. **[リソース グループ]**で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
+3. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
     別の App Service プランを選択するか、または新しいプランを作成することもできます。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「 [Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
-4. **[App Service プラン]**には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる [場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/) が決まります。
+4. **[App Service プラン]** には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる [場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/) が決まります。
 
-    プランを決定したら、 **[作成]**をクリックします。 モバイル アプリ バックエンドが作成されます。
+    プランを決定したら、 **[作成]** をクリックします。 モバイル アプリ バックエンドが作成されます。
 
 ### <a name="run-createviewssql"></a>CreateViews.SQL の実行
 スキャフォールディング済みのアプリには、 `createViews.sql`というファイルが存在します。  ターゲット データベースに対してこのスクリプトを実行する必要があります。  ターゲット データベースの接続文字列は、移行済みのモバイル サービスから取得できます (**[設定]** ブレードの **[接続文字列]**)。  名前は `MS_TableConnectionString`です。
@@ -113,7 +113,7 @@ App Service に既存のデータベースを関連付けるには、次の作�
 
 * [Azure ポータル]で、App Service を開きます。
 * **[すべての設定]** -> **[データ接続]** の順に選択します。
-* **[+ 追加]**をクリックします。
+* **[+ 追加]** をクリックします。
 * ボックスの一覧から **[SQL Database]**
 * **[SQL Database]** で既存のデータベースを選択し、**[選択]** をクリックします。
 * **[接続文字列]** にデータベースのユーザー名とパスワードを入力し、**[OK]** をクリックします。

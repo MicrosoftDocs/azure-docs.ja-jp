@@ -29,10 +29,10 @@ ms.lasthandoff: 03/09/2017
 このトピックの手順を完了するには、電子メール アドレスと電話番号を検証済みの Twitter アカウントが必要になります。 新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
-1. [Azure ポータル]にログオンし、アプリケーションに移動します。 **[URL]**をコピーします。 この URL は、Twitter アプリの構成で使用します。
-2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、 **[Create New App]**をクリックします。
+1. [Azure ポータル]にログオンし、アプリケーションに移動します。 **[URL]** をコピーします。 この URL は、Twitter アプリの構成で使用します。
+2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、 **[Create New App]** をクリックします。
 3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 次に、**[Callback URL (コールバック URL)]** に先ほどコピーした**コールバック URL** を貼り付けます。 この URL は、モバイル アプリ ゲートウェイの後にパス */.auth/login/twitter/callback* を追加したフォーマットです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。
-4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]**をクリックします。 これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
+4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]** をクリックします。 これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 5. **[Settings (設定)]** タブをクリックし、**[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、**[Update Settings (設定の更新)]** をクリックします。
 6. **[Keys and Access Tokens]** タブをクリックします。 **[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
    
@@ -43,8 +43,8 @@ ms.lasthandoff: 03/09/2017
 
 ## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
 1. [Azure ポータル]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
-2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]**に切り替えます。
-3. **[Twitter]**をクリックします。 以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。 次に、 **[OK]**をクリックします
+2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+3. **[Twitter]** をクリックします。 以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。 次に、 **[OK]** をクリックします
    
    ![][1]
    

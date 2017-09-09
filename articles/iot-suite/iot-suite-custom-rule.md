@@ -205,7 +205,7 @@ RemoteMonitoring Visual Studio ソリューションを変更して、シミュ�
 
 3. **ExternalTemperature** テレメトリを送信する、作成済みのカスタム デバイスを見つけて、**[デバイスの詳細]** パネルで **[ルールの追加]** をクリックします。
 
-4. **[Data Field (データ フィールド)]**で **[ExternalTemperature]** を選択します。
+4. **[Data Field (データ フィールド)]** で **[ExternalTemperature]** を選択します。
 
 5. **[Threshold (しきい値)]** を 56 に設定します。 次に、**[規則の保存と表示]** をクリックします。
 

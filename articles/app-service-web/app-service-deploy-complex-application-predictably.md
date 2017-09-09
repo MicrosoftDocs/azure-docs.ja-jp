@@ -65,7 +65,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 それでは早速本題に入りましょう。
 
 1. [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service のサンプルに移動します。
-2. readme.md の **[Azure にデプロイ]**をクリックします。
+2. readme.md の **[Azure にデプロイ]** をクリックします。
 3. [deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。**[次へ]** をクリックします。
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
@@ -75,7 +75,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
    
    UI は、初めて参照するときに少し時間がかかります。これは、アプリがちょうど起動中であるためですが、十分な機能を備えたアプリケーションと考えてください。
 5. [デプロイ] ページに戻り、 **[管理]** リンクをクリックすると、Azure ポータルに新しいアプリケーションが表示されます。
-6. **[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。 **[外部プロジェクト]**で、Web アプリが既に GitHub リポジトリに接続されていることにも注意してください。 
+6. **[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。 **[外部プロジェクト]** で、Web アプリが既に GitHub リポジトリに接続されていることにも注意してください。 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. リソース グループのブレードを見ると、リソース グループ内には 2 つの Web Apps と 1 つの SQL Database が既に存在します。
@@ -196,7 +196,7 @@ Web アプリにドリルダウンすると、下のスクリーンショット�
 ## <a name="deploy-the-resource-group-template-yourself"></a>リソース グループ テンプレートを自分でデプロイする
 **[Azure へのデプロイ]** ボタンは優れていますが、azuredeploy.json を GitHub に既にプッシュしている場合にのみ、azuredeploy.json でリソース グループ テンプレートをデプロイできます。 Azure .NET SDK には、ローカル コンピューターから直接 JSON テンプレート ファイルをデプロイするためのツールも用意されています。 これを行うには、次の手順に従います。
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]**をクリックします。
+1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
 2. **[Visual C#]** > **[クラウド]** > **[Azure リソース グループ]** をクリックした後、**[OK]** をクリックします。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
@@ -205,7 +205,7 @@ Web アプリにドリルダウンすると、下のスクリーンショット�
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. ソリューション エクスプローラーで、コピーした azuredeploy.json を開きます。
-6. デモで使用する目的のみで、 **[リソースの追加]**をクリックして、標準の Application Insights リソースをいくつか JSON ファイルに追加してみます。 JSON ファイルのデプロイのみに興味がある場合は、デプロイの手順に進んでください。
+6. デモで使用する目的のみで、 **[リソースの追加]** をクリックして、標準の Application Insights リソースをいくつか JSON ファイルに追加してみます。 JSON ファイルのデプロイのみに興味がある場合は、デプロイの手順に進んでください。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. **[Web Apps 用の Application Insights]** を選択し、既存の App Service プランと Web アプリが選択されていることを確認して、**[追加]** をクリックします。

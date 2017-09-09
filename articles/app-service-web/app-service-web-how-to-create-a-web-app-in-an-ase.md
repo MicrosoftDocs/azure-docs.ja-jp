@@ -57,7 +57,7 @@ ms.lasthandoff: 07/26/2017
     ![][5]
    
     App Service 環境に既に存在する App Service プランを使用する場合は、そのプランを選択します。 App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「 [App Service 環境で App Service プランを作成する](#createplan)」を参照してください。
-5. Web アプリの名前を入力し、 **[作成]**をクリックします。 
+5. Web アプリの名前を入力し、 **[作成]** をクリックします。 
    
     ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*サイト名*].azurewebsites.net ではなく、[*サイト名*].[*App Service Environment の名前*].p.azurewebsites.net になります。
    

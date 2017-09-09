@@ -184,7 +184,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
           "Description": "buy the dog a toy",
           "Owner": "*"
         }
-13. **[試してみる]**をクリックします。
+13. **[試してみる]** をクリックします。
     
     ToDoList API から、成功を示す HTTP 204 応答コードが返されます。
 14. 先頭の **[Get (Get)]** ボタンをクリックし、そのセクションにある **[Try it out (試してみる)]** ボタンをクリックします。
@@ -255,7 +255,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     **Web を発行**ウィザードの **[接続]** タブが開きます (下図参照)。
     
     **[接続]** タブの **[サーバー]** 設定と **[サイト名]** 設定は、API アプリを指しています。 **[ユーザー名]** と **[パスワード]** は、Azure で自動的に作成されるデプロイ資格情報です。 デプロイ後、Visual Studio によってブラウザーが開かれ、**[宛先 URL]** に指定したページが表示されます (これが **[宛先 URL]** の唯一の目的です)。  
-13. ページの下部にある **[次へ]**」を参照してください。
+13. ページの下部にある **[次へ]** 」を参照してください。
     
     ![Click Next in Connection tab of Publish Web](./media/app-service-api-dotnet-get-started/connnext.png)
     
@@ -266,12 +266,12 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     * App_Data フォルダーのファイルを除外する
     
     このチュートリアルでは、いずれも必要ありません。 これらの詳しい説明については、「 [How to: Deploy a Web Project Using One-Click Publish in Visual Studio (方法: Visual Studio でワンクリック発行を使用して Web プロジェクトをデプロイする)](https://msdn.microsoft.com/library/dd465337.aspx)」を参照してください。
-14. **[次へ]**をクリックします。
+14. **[次へ]** をクリックします。
     
     ![Click Next in Settings tab of Publish Web](./media/app-service-api-dotnet-get-started/settingsnext.png)
     
     次は **[プレビュー]** タブです (下図参照)。ここではプロジェクトから API アプリにコピーされるファイルを確認できます。 既にデプロイ済みの API アプリにプロジェクトをデプロイした場合は、変更されたファイルだけがコピーされます。 コピーされるファイルの一覧を確認するには、 **[プレビューの開始]** ボタンをクリックしてください。
-15. **[発行]**をクリックします。
+15. **[発行]** をクリックします。
     
     ![Click Publish in Preview tab of Publish Web](./media/app-service-api-dotnet-get-started/clickpublish.png)
     
@@ -387,7 +387,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 5. 使用している Azure **サブスクリプション** を選択します。
 6. **[リソース グループ]** ドロップダウンで、先に作成したものと同じリソース グループを選択します。
 7. **[App Service プラン]** ドロップダウンで、先に作成した同じプランを選択します。 その値が既定値となります。
-8. **[作成]**をクリックします。
+8. **[作成]** をクリックします。
    
     Visual Studio によって API アプリとその発行プロファイルが作成され、**Web を発行**ウィザードの **[接続]** ステップが表示されます。
 9. **Web を発行**ウィザードの **[接続]** ステップで、**[発行]** をクリックします。

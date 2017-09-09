@@ -229,7 +229,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 1. **[Let me define my own Device ID (自分で自分のデバイス ID を定義する)]** を選択し、**mydevice_01** など一意のデバイス ID 名を入力します。
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
    ![Save a new device][img-definedevice]
 
@@ -331,7 +331,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
    ![Command status in dashboard][img-pingcommand]
 
-ソリューションは、送信した各コマンドの状態を追跡します。 最初は結果が **[保留中]**になっています。 コマンドを実行したことがデバイスから報告されると、結果が **[成功]**に設定されます。
+ソリューションは、送信した各コマンドの状態を追跡します。 最初は結果が **[保留中]** になっています。 コマンドを実行したことがデバイスから報告されると、結果が **[成功]** に設定されます。
 
 ## <a name="behind-the-scenes"></a>バックグラウンド処理
 

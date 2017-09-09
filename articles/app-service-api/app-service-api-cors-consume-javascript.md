@@ -34,7 +34,7 @@ CORS は、Azure Portal、または [Azure Resource Manager](../azure-resource-m
 
 #### <a name="configure-cors-in-the-azure-portal"></a>Azure ポータルで CORS を構成する
 1. ブラウザーで、 [Azure ポータル](https://portal.azure.com/)に移動します。
-2. **[App Services]**をクリックした後、API アプリの名前をクリックします。
+2. **[App Services]** をクリックした後、API アプリの名前をクリックします。
    
     ![Select API app in portal](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 3. **[API アプリ]** ブレードの右側に表示される **[設定]** ブレードで、**[API]** セクションを探し、**[CORS]** をクリックします。
@@ -49,7 +49,7 @@ CORS は、Azure Portal、または [Azure Resource Manager](../azure-resource-m
    
    ![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
    
-   **[保存]**をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。
+   **[保存]** をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>Azure リソース マネージャー ツールを使用して CORS を構成する
 API アプリに使用する CORS は、コマンド ライン ツール ([Azure PowerShell](/powershell/azureps-cmdlets-docs)、[Azure CLI](../cli-install-nodejs.md) など) から [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って構成することもできます。 
@@ -101,7 +101,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 5. 使用する Azure **サブスクリプション** を選択します。
 6. **[リソース グループ]** ボックスの一覧で、先に作成したものと同じリソース グループを選択します。
 7. **[App Service プラン]** ボックスの一覧で、先に作成した同じプランを選択します。 
-8. **[作成]**をクリックします。
+8. **[作成]** をクリックします。
    
     Visual Studio により Web アプリが作成され、その発行プロファイルが作成され、**Web を発行**ウィザードの **[接続]** ステップが表示されます。
    
@@ -179,7 +179,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
    
    ![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
    
-   **[保存]**をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。 このスクリーン ショットでは、ToDoListAPI0223 API アプリは ToDoListAngular Web アプリから JavaScript クライアントの呼び出しを受け入れています。
+   **[保存]** をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。 このスクリーン ショットでは、ToDoListAPI0223 API アプリは ToDoListAngular Web アプリから JavaScript クライアントの呼び出しを受け入れています。
 
 ### <a name="test-the-application-with-cors-enabled"></a>CORS を有効にしてアプリケーションをテストする
 * ブラウザーを開き、Web アプリの HTTPS URL に移動します。 

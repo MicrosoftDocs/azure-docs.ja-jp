@@ -41,7 +41,7 @@ ms.lasthandoff: 06/20/2017
 
 Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的 Web プロジェクト\)]** の順にクリックします。
 
-**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]**をクリックします。
+**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]** をクリックします。
    
 ![[New Dynamic Web Project\(新しい動的 Web プロジェクト\)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -52,7 +52,7 @@ Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的
 ![Eclipse 用の Java EE ワークスペース](./media/app-service-web-get-started-java/pe.png)
 
 プロジェクト エクスプローラーで、**[MyFirstJavaOnAzureWebApp]** プロジェクトを展開します。
-**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]**の順にクリックします。
+**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]** の順にクリックします。
 
 ![プロジェクト エクスプローラーの新しい JSP ファイルのメニュー](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
@@ -87,13 +87,13 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
-**[作成]**を選択します。
+**[作成]** を選択します。
 
 ![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
 ### <a name="create-app-service-dialog-box"></a>[App Service の作成] ダイアログ ボックス
 
-既定値が設定された状態で**[App Service の作成]** ダイアログ ボックスが表示されます。 次の画像に示された **170602185241** という数値は、実際のダイアログ ボックスでは異なります。
+既定値が設定された状態で **[App Service の作成]** ダイアログ ボックスが表示されます。 次の画像に示された **170602185241** という数値は、実際のダイアログ ボックスでは異なります。
 
 ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/cas1.png)
 
@@ -120,7 +120,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-**[作成]**を選択します。
+**[作成]** を選択します。
 
 <!--
 ### The JDK tab
@@ -180,7 +180,7 @@ Web アプリを選択し、**[デプロイ]** をクリックして変更を発
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、作成した Web アプリを確認します。
 
-左のメニューから、**[リソース グループ]**を選びます。
+左のメニューから、**[リソース グループ]** を選びます。
 
 ![リソース グループへのポータル ナビゲーション](media/app-service-web-get-started-java/rg.png)
 

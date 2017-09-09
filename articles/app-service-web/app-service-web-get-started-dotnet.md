@@ -54,7 +54,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
       
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet/select-mvc-template.png)
 
@@ -109,7 +109,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
 | サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/)によって、ホスティング機能が決まります。 |
 
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 

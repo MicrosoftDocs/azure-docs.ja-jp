@@ -123,7 +123,7 @@ Raspberry Pi 上でサンプル プログラムを実行できます。 次の�
 
 1. **[メソッドの呼び出し]** ページで、**[方法]** ドロップダウンの **[InitiateFirmwareUpdate]** を選択します。
 
-1. **[FWPackageURI]** フィールドで、「**https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip**」と入力します。 このアーカイブ ファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
+1. **[FWPackageURI]** フィールドで、「 **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip** 」と入力します。 このアーカイブ ファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
 
 1. **[InvokeMethod]** を選択します。 Raspberry Pi 上のアプリは、ソリューション ダッシュボードに受信確認を送信します。 次に、ファームウェアの新しいバージョンをダウンロードしてファームウェアの更新プロセスが開始します。
 

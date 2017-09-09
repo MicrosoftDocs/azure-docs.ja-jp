@@ -68,7 +68,7 @@ WebJobs のデプロイ機能は、Azure SDK for .NET をインストールし�
 2. **[プロジェクト名]** ボックスの一覧で、コンソール アプリケーション プロジェクトを選択し、Web ジョブとして追加します。
    
     ![Selecting project in Add Azure WebJob dialog](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. [[Azure Web ジョブの追加]](#configure) ダイアログで必要な設定を完了し、 **[OK]**をクリックします。 
+3. [[Azure Web ジョブの追加]](#configure) ダイアログで必要な設定を完了し、 **[OK]** をクリックします。 
 
 ### <a id="convertnolink"></a> Web プロジェクトなしで Web ジョブ デプロイメントを有効にする
 1. **ソリューション エクスプローラー**でコンソール アプリケーション プロジェクトを右クリックし、**[Azure WebJob として発行する]** をクリックします。 
@@ -76,7 +76,7 @@ WebJobs のデプロイ機能は、Azure SDK for .NET をインストールし�
     ![[Azure Web ジョブとして発行]](./media/websites-dotnet-deploy-webjobs/paw.png)
    
     [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスが表示され、 **[プロジェクト名]** ボックスに選択されたプロジェクトが示されます。
-2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]**をクリックします。
+2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]** をクリックします。
    
    **Web の発行** ウィザードが表示されます。  すぐに発行しない場合は、ウィザードを閉じます。 [プロジェクトをデプロイする](#deploy)ときのために、入力した設定値は保存されます。
 
@@ -107,7 +107,7 @@ WebJobs のデプロイ機能は、Azure SDK for .NET をインストールし�
     ![New Azure WebJob Project menu entry](./media/websites-dotnet-deploy-webjobs/nawj.png)
    
     [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスが表示されます。
-2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]**をクリックします。
+2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]** をクリックします。
 
 ## <a id="configure"></a>[Azure Web ジョブの追加] ダイアログ ボックス
 **[Azure WebJob の追加]** ダイアログを使用して、Web ジョブの Web ジョブ名と実行モード設定を入力できます。 

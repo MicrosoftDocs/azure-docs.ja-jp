@@ -34,7 +34,7 @@ ms.lasthandoff: 03/09/2017
 3. **[Social APIs (ソーシャル API)]** で、**[Google+ API]**、**[Enable (有効化)]** の順にクリックします。
 4. 左側のナビゲーションで、**[Credentials (資格情報)]** > **[OAuth consent screen (OAuth 同意画面)]** の順にクリックした後、自分の**電子メール アドレス**を選択し、**製品名**を入力して、**[Save (保存)]** をクリックします。
 5. **[Credentials (資格情報)]** タブで、**[Create credentials (資格情報の作成)]** > **[OAuth client ID (OAuth クライアント ID)]** の順にクリックし、**[Web application (Web アプリケーション)]** を選択します。
-6. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]**をクリックします。
+6. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]** をクリックします。
 7. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
     > [!IMPORTANT]
@@ -43,9 +43,9 @@ ms.lasthandoff: 03/09/2017
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
 1. [Azure ポータル]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
-2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]**に切り替えます。
-3. **[Google]**にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]**をクリックします
-   
+2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+3. **[Google]** にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]** をクリックします。
+   
    ![][1]
    
    App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。

@@ -66,7 +66,7 @@ SSL 証明書の購入が完了した後は、[[App Service 証明書]](https://
 
 > [!NOTE]
 > 最小限の料金でこの証明書を Azure Key Vault に格納できます。
-> 詳細については、**[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)**に関するページをご覧ください。
+> 詳細については、**[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)** に関するページをご覧ください。
 >
 
 この証明書を格納する Key Vault リポジトリを選択すると、**[格納]** オプションに、成功したことが示されます。
@@ -80,7 +80,7 @@ SSL 証明書の購入が完了した後は、[[App Service 証明書]](https://
 
 手順 3 で使用したものと同じ **[証明書の構成]** ブレードで **[手順 2: 確認]** をクリックします。
 
-**ドメイン確認**: **[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
+**ドメイン確認**: **[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)** **場合にのみ**、最も便利な方法です。
 **[確認]** ボタンをクリックして、この手順を実行します。
 
 ![ドメイン確認のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
@@ -105,7 +105,7 @@ SSL 証明書の購入が完了した後は、[[App Service 証明書]](https://
 
 ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-**[SSL のバインディング]** セクションで **[バインディングの追加]** をクリックし、ドロップダウン リストから、SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**または IP ベースの SSL のどちらを使用するかを選択できます。
+**[SSL のバインディング]** セクションで **[バインディングの追加]** をクリックし、ドロップダウン リストから、SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** または IP ベースの SSL のどちらを使用するかを選択できます。
 
 ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
