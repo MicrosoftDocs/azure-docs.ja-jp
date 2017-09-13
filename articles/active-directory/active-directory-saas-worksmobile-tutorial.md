@@ -112,12 +112,10 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.worksmobile.com/jp/myservice` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値として「`worksmobile.com`」と入力します。
 
-    > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[WORKS MOBILE クライアント サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Raw)]\(証明書 (Raw)\)** をクリックし、コンピューターに証明書ファイルを保存します。
 
